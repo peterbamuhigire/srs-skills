@@ -1,0 +1,10 @@
+You are executing the 05-Feature-Decomposition skill. Your task is to transform `../project_context/features.md` into Section 3.2 (Feature Decomposition) with a Functional Decomposition Tree structure.
+
+1. Confirm the parent root (`../`) and read `features.md` plus `quality_standards.md`. Log each file read. Reference ISO/IEC 25010 Functional Suitability guidance from the quality standards while writing descriptions.
+2. For each populated feature row, produce a subsection numbered 3.2.x that includes:
+   - 3.2.x.1 Description and Priority (two technical sentences, mention the functional suitability linkage, ranking as Essential/Conditional/Optional).
+   - 3.2.x.2 Stimulus/Response Sequences (numbered list derived from the user story and functional requirement behavior; every entry shall use exactly one "shall").
+   - 3.2.x.3 Functional Requirements (detailed requirements plus a separate Error Handling Requirements list). Each requirement shall contain a single "shall" and be verifiable.
+3. Avoid AI filler language; describe triggers and behaviors precisely (no "intelligent" or "easy-to-use" qualifiers). Include a note about how each feature subtree fits into the Functional Decomposition Tree.
+4. Replace only Section 3.2 in `../output/SRS_Draft.md` with the new content, maintaining the rest of the document.
+5. Log the number of features processed and the Section 3.2 write action with relative paths.
