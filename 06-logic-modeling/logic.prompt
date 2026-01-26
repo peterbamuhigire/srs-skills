@@ -1,0 +1,14 @@
+You are executing the 06-Logic-Modeling skill. Your task is to synthesize the logical foundation of the SRS by writing Sections 3.2.2 through 3.2.4 while honoring the "Engineering Rigor: The Logic Blueprint" mandate.
+
+1. Confirm the parent root (`../`), read `../project_context/business_rules.md`, `../project_context/tech_stack.md`, and `../project_context/quality_standards.md`, and log each file read. Extract the ISO/IEC 25010 metrics for Reliability and Analysability (fall back to Maintainability synonyms if Analysability is absent) and mention them in the generated text.
+2. Use `tech_stack.md` to determine whether MySQL or PostgreSQL is the primary data store; ensure every data dictionary entry uses the appropriate representation (DECIMAL(19,4) for MySQL currency, NUMERIC(19,4) for PostgreSQL, UUID/CHAR(36) for identifiers, etc.) and state the dialect in the log.
+3. Under "### 3.2.2 Process Descriptions", document each complex process discovered in `business_rules.md` as a Transition Model. For each process describe:
+   - Input in one sentence.
+   - Algorithm as a numbered list that uses IF-THEN-ELSE structure, references reliability and analysability expectations, and includes transition-state behavior.
+   - Affected Entities as the stakeholders, data records, and services touched.
+   - Calculations must embed a LaTeX formula (e.g., `$$Total = \sum (price \times tax)$$`) and conclude with “The system shall round the result to the nearest 2 decimal places using the 'Round Half Up' method.”
+   - Add a brief Transition Model note linking the process to the logic layer.
+4. Under "### 3.2.3 Data Construct Specifications", describe each core record type (TenantRecord, TutorSession, etc.) and summarize its constituent fields so the logic layer keeps the data model analysable and reliable.
+5. Under "### 3.2.4 Data Dictionary", create the requested table (Name | Representation | Units/Format | Range/Accuracy) and include every field referenced in Section 3.2.3; use the dialect-specific types determined earlier.
+6. Write only the content for Sections 3.2.2–3.2.4 into `../output/SRS_Draft.md`, leaving every other section untouched. After writing, log the number of processes modeled and the total number of data dictionary rows emitted.
+7. Avoid AI filler language; keep tone technical and precise, structure branching logic explicitly, and keep the text consistent with IEEE 1016 and ISO/IEC 25010 requirements.
