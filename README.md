@@ -38,6 +38,36 @@ Fill out the generated markdown files in your `../project_context/` folder. This
 
 Run Skills 02 through 08 in numeric order. Each skill reads from `../project_context/` and appends/generates the corresponding IEEE section into the `../output/` folder in your parent project root.
 
+## ✅ Quick-Start Engineering Checklist
+
+- [ ] **Phase 0: Grounding (Context Seed):** Populate `../project_context/` with project-specific Vision, Technical Stack, and Business Rules so every following skill has precise grounding.
+- [ ] **Phase 1: Initialization:** Execute `01-initialize-srs` to seed the ISO/IEEE templates (vision, features, tech stack, business rules, quality standards, glossary).
+- [ ] **Phase 2: Introduction:** Run `02-context-engineering` to compose Section 1.0 (Purpose, Scope, Definitions).
+- [ ] **Phase 3: Overview:** Run `03-descriptive-modeling` to produce Section 2.0 (Product Perspective, Constraints).
+- [ ] **Phase 4: Connectivity:** Run `04-interface-specification` to define Section 3.1 (External Interfaces and protocols).
+- [ ] **Phase 5: Functional Behavior:** Run `05-feature-decomposition` to draft Section 3.2 (Stimulus/Response requirements).
+- [ ] **Phase 6: Logic Modeling:** Run `06-logic-modeling` to embed algorithms, LaTeX formulas, and data constructs under 3.2.x.
+- [ ] **Phase 7: Attribute Mapping:** Run `07-attribute-mapping` to document Sections 3.3–3.6 (NFR attributes, Performance/Security/Reliability).
+- [ ] **Phase 8: Audit:** Run `08-semantic-auditing` for IEEE 830/1012 verification plus the Requirements Traceability Matrix and `Audit_Report.md`.
+
+## 🔁 Iterative Development & Re-running Phases
+
+- **Idempotency Rule:** Skills 02–07 are additive or self-overwriting. If the target section already exists in `../output/SRS_Draft.md`, pause and ask the user whether to `[APPEND]` a new version, `[PATCH]` specific lines, or `[OVERWRITE]` the entire section before proceeding.
+- **State Management:** Use `01-initialize-srs --maintenance` (Maintenance Mode) whenever context files already exist; it will only add missing templates and will not delete user edits unless the user explicitly requests the `--force-clean` flag.
+- **Incremental Updates:** When only `business_rules.md` changes, re-run `06-logic-modeling` and `08-semantic-auditing` (Logic and Validation phases) rather than the entire pipeline.
+
+### Engineering Rigor: The Lifecycle Flow
+
+```mermaid
+flowchart LR
+ C[Context Seed]
+ S[Skill Execution Pipeline (01-08)]
+ O[Output SRS Draft]
+ A[Audit & RTM]
+ R[Context Refinement]
+ C --> S --> O --> A --> R --> C
+```
+
 ## 🧭 Full Skill Suite (Phases)
 
 | Phase | Skill | SRS Target | Deliverable Focus |

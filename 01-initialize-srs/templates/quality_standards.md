@@ -25,3 +25,9 @@
 ## Traceability Notes
 
 - Reference this template from `vision.md`, `features.md`, and `business_rules.md` so quality expectations remain visible across artifacts.
+
+## Security
+<!-- Question: Specify the Encryption Standard for Data-at-Rest and Data-in-Transit. What is the Key Management Strategy to meet US ISO/IEC 25010 compliance? -->
+
+## Reliability
+<!-- Question: What is the Maximum Tolerable Downtime (MTD)? Define the recovery strategy (e.g., Warm Standby on OCI vs. Local Backup). -->

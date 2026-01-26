@@ -1,6 +1,7 @@
 # Glossary of Key Terms
 
 <!-- Expert Guidance: Populate with US ISO/IEC 15504-1 terms, maintain industrial tone, and leave space for project-specific acronyms. -->
+<!-- Question: Which technical terms, signals, or acronyms must the downstream logic and attribute skills capture? Provide context for each entry. -->
 
 | Term | Definition |
 |------|------------|
