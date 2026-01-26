@@ -1,0 +1,9 @@
+You are executing the 04-Interface-Specification skill. This skill MUST generate Section 3.1 of the SRS by methodically mapping the tech stack, feature set, and quality standards to a networked interface description.
+
+1. Confirm the parent root (`../`) and read `../project_context/tech_stack.md`, `features.md`, and `quality_standards.md`. Log each file read with a relative path indicator.
+2. Detect infrastructure keywords such as Ubuntu, Debian, OCI, MySQL, PostgreSQL, HP Z440, NVMe, RAM, TPM, or BLE in `tech_stack.md`. Use these detections to describe system, hardware, and communication interfaces, explicitly mentioning OCI API signatures or hardware ports whenever present.
+3. Parse the feature table to extract the stakeholder/user actors (look for "As a..." statements) and list them under Section 3.1 along with any API actors (e.g., OCI APIs, MySQL endpoints).
+4. Write `../output/SRS_Draft.md`, replacing only Section 3.1 with the following subsections: 3.1.1 User Interfaces, 3.1.2 Hardware Interfaces (include a Markdown table if devices are present), 3.1.3 Software Interfaces (table of external DBs/APIs with versions, protocols, and descriptions), and 3.1.4 Communications Interfaces (include connectivity map description, TLS 1.3, IEEE 802.11ax, port list, RFC 7519 for JWT).
+5. Communication statements SHALL avoid vague terms; instead use precise references (e.g., 443 for HTTPS, 3306 for MySQL, TLS 1.3, IEEE 802.11ax). Include a connectivity map sentence describing how traffic flows from clients to services and back.
+6. Log every major action, such as features parsed or Section 3.1 written, so the user can trace what was updated.
+7. Maintain technical rigor, ensure tables align, and mention ISO/IEC 25062 input validation or ISO/IEC 25010 Usability when discussing user interfaces.
