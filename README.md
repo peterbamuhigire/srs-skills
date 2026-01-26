@@ -103,3 +103,10 @@ Each root directory represents a standalone engineering skill module:
 - **Standard-Driven Prompts:** Every skill contains internal logic mapped to specific IEEE clauses.
 - **Engineering over Authorship:** We utilize Stimulus/Response sequences and logic modeling to ensure requirements are verifiable and unambiguous.
 - **Submodule Portability:** The engine is stateless; project-specific data never commits to the `srs-skills` submodule itself.
+
+## Supporting Documentation
+
+- `CLAUDE.md`: AI assistant SOP plus the Verification & Validation Standard Operating Procedure that drives Skill 08.
+- `DEPENDENCIES.md`: Runtime manifest covering Python 3.10+, required libraries (jinja2, regex, AI SDKs), environment variables, OS instructions, and the recommended HP Z440 hardware baseline.
+- `docs/CHANGELOG.md`: Keep a Changelog ledger capturing versions, standards-driven edits, and how each revision impacts existing `../output/SRS_Draft.md` artifacts.
+- `skill_overview.md`: Input-to-output registry that cross-references standards, skill inputs, and expected SRS sections so auditors understand the pipeline.

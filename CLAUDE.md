@@ -62,3 +62,9 @@ Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: 
 - The tone remains formal, prescriptive, and objective; do not soften findings with marketing language.
 - Document Integrity Level, Baseline Verification, and Anomaly Identification for every V&V action so review artifacts remain auditable under ISO/IEC 15504.
 - Treat this SOP as the operating contract for Skill 08; no iteration resumes until the Verification Gateways confirm closure.
+
+## Documentation Maintenance
+
+- Update docs/CHANGELOG.md with every change to skill logic prompts, root protocols, or new standards; cite the Engineering Registry when the change alters input/process/output mappings.
+- Keep DEPENDENCIES.md current with runtime and environment requirements so onboarding scripts and the offline workflow remain consistent.
+- Reference README.md, CLAUDE.md, and other root docs when describing the documentation flow in change tickets to ensure traceability during audits.
