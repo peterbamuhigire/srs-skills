@@ -28,7 +28,7 @@ git submodule add https://github.com/peterbamuhigire/srs-skills.git skills
 Execute the **01-Initialize SRS** skill from within your IDE. This skill is path-aware and will:
 
 - Create a `../project_context/` directory in your parent project root.
-- Seed it with five `.md` templates (`vision.md`, `tech_stack.md`, `features.md`, `business_rules.md`, and `glossary.md`).
+- Seed it with core `.md` templates (`vision.md`, `tech_stack.md`, `features.md`, `business_rules.md`, `quality_standards.md`, and `glossary.md`).
 
 ### 3. Grounding
 
@@ -36,7 +36,22 @@ Fill out the generated markdown files in your `../project_context/` folder. This
 
 ### 4. Sequential Generation
 
-Execute the numbered skills (02 through 08) in order. Each skill reads from `../project_context/` and appends/generates the corresponding IEEE sections into the `../output/` folder in your parent project root.
+Run Skills 02 through 08 in numeric order. Each skill reads from `../project_context/` and appends/generates the corresponding IEEE section into the `../output/` folder in your parent project root.
+
+## 🧭 Full Skill Suite (Phases)
+
+| Phase | Skill | SRS Target | Deliverable Focus |
+|-------|-------|------------|-------------------|
+| 01 | Initialization | Grounding Data | Populate `../project_context/` templates.
+| 02 | Context Engineering | Section 1.0 Introduction | Purpose, scope, vision, definitions.
+| 03 | Descriptive Modeling | Section 2.0 Overview | Context, constraints, capability descriptions.
+| 04 | Interface Specification | Section 3.1 External Interfaces | Actors, devices, protocols.
+| 05 | Feature Decomposition | Section 3.2 Functional Requirements | Stimulus/response + SHALL statements.
+| 06 | Logic Modeling | Section 3.2.x Algorithms | Decision logic, LaTeX formulas, data constructs.
+| 07 | Attribute Mapping | Sections 3.3–3.6 NFRs | Performance/security/reliability attributes.
+| 08 | Semantic Auditing | Validation & Traceability | RTM, audit report, IEEE 830 conformance.
+
+Each phase targets a specific portion of the SRS and expects the previous phase's outputs to exist, forming a disciplined assembly line from grounding data to final validation.
 
 ## 📁 Repository Structure
 

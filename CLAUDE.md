@@ -28,6 +28,10 @@ You are an expert Systems Architect. You are assisting in developing and executi
 3. **Synthesis:** Generate the specific SRS section based on the skill's theme.
 4. **Validation:** Check the generated section against the "Correct, Unambiguous, Complete" criteria of IEEE 830.
 
+## Full Skill Suite
+
+Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: Initialization, Introduction, Overview, Interfaces, Functional Requirements, Logic Modeling, Attribute Mapping, and Semantic Auditing with verification artifacts.
+
 ## Prohibited Actions
 
 - Do not commit project-specific data (from `../project_context`) into this submodule repository.
