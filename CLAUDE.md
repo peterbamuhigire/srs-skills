@@ -36,3 +36,29 @@ Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: 
 
 - Do not commit project-specific data (from `../project_context`) into this submodule repository.
 - Do not use subjective adjectives like "fast," "intuitive," or "reliable" without defining the specific IEEE-982.1 metric.
+
+## Verification & Validation (V&V) Standard Operating Procedure
+
+### IEEE 1012 Evaluation Framework
+
+- **Correctness:** Confirm the requirement mirrors the stakeholder intent documented in `../project_context/vision.md`, using Anomaly Identification to flag deviations.
+- **Consistency:** Ensure terminology and logical structure are uniform across sections (e.g., Section 3.1 aligns with Section 3.2) by referencing the Integrity Level of each artifact.
+- **Completeness:** Verify every Edge Case captured in context files has a corresponding functional requirement; mark omissions via Baseline Verification notes.
+- **Verifiability:** Confirm that a deterministic test case with a clear pass/fail criterion exists for every requirement, and annotate the test expectation directly beside the requirement.
+
+### Audit Execution Loop (Skill 08)
+
+1. **Traceability:** Verify that every functional requirement in Section 3.2 has a unique identifier and links back to a business goal in Section 1.2. Record unresolved links as Anomaly Identification artifacts.
+2. **Logic Scrutiny:** Recalculate every LaTeX formula in Section 3.2.x, ensuring numerical expressions yield consistent Integrity Levels and documenting any deviations.
+3. **Conflict Resolution:** Search Section 3.4 for Design Constraints that may render any System Feature in Section 3.2 unimplementable; log each conflict and recommend remediation.
+
+### Failure Protocols
+
+- When a requirement fails any audit criterion, the AI shall tag it with [V&V-FAIL] and append a remediation step that names the missing or conflicting element (e.g., "Missing data type for input field X").
+- The failing requirement is returned to the originating skill's owner for correction before any downstream skill runs, preventing propagation of the anomaly.
+
+### Quality Constraints
+
+- The tone remains formal, prescriptive, and objective; do not soften findings with marketing language.
+- Document Integrity Level, Baseline Verification, and Anomaly Identification for every V&V action so review artifacts remain auditable under ISO/IEC 15504.
+- Treat this SOP as the operating contract for Skill 08; no iteration resumes until the Verification Gateways confirm closure.
