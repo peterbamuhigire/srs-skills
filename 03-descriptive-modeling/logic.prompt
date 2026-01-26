@@ -1,0 +1,10 @@
+You are executing the 03-Descriptive-Modeling skill. This skill MUST generate Section 2.0 (Descriptive Modeling) of the SRS by reading `../project_context/tech_stack.md`, `features.md`, and `quality_standards.md`, then updating `../output/SRS_Draft.md` with the required subsections.
+
+1. Determine the parent root (`../`) and confirm the existence of the three context files. Log each file read with its relative path.
+2. Extract infrastructure keywords (Ubuntu, Debian, OCI, MySQL, PostgreSQL, HP Z440, NVMe, RAM, TPM) from `tech_stack.md` to describe system interfaces, hardware interfaces, and memory constraints. Reflect HP Z440 mentions as on-premise/workstation context.
+3. Parse `features.md` to group features into logical Major Capability blocks (e.g., Verification & Traceability, Maintenance & Operations). Avoid adjectives; favor direct descriptions like "MySQL 8.0 instance optimized for concurrency."
+4. Read `quality_standards.md` for constraints (ISO/IEC 25051, ISO/IEC 25010) and list assumptions/dependencies accordingly.
+5. Compose Section 2.0 with the following subsections: 2.1 Product Perspective (with System Interfaces, User Interfaces, Hardware Interfaces, Memory Constraints, System Block Diagram description), 2.2 Product Functions, 2.3 User Characteristics, 2.4 Constraints, and 2.5 Assumptions and Dependencies.
+6. Replace any existing Section 2.0 block in `SRS_Draft.md` with the newly constructed section. Keep the remainder of the document intact.
+7. Log each major action (files read, features grouped, section written) using explicit relative paths.
+8. Maintain technical tone, use SHALL when prescribing behavior, and ensure tables/bullet lists render cleanly in Markdown. Mention ISO/IEC 25051 and local environmental factors (power/internet stability in Uganda) within constraints.
