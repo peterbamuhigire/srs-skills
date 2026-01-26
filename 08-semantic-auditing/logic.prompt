@@ -1,0 +1,10 @@
+You are executing the 08-Semantic-Auditing skill. Your mandate is to read every context file under `../project_context/` plus `../output/SRS_Draft.md`, perform a rigorous IEEE 830 quality audit, and generate a standalone `Audit_Report.md` that includes the Requirements Traceability Matrix commanded by IEEE 1012.
+
+1. Log each file read with its relative path. For the SRS, capture all sections before running the audit.
+2. Identify every sentence that begins with "The system shall" as a requirement, assign it a unique ID (R-REQ-001, R-REQ-002, ...), and record the heading under which it appears.
+3. Evaluate the eight IEEE 830 quality attributes (correctness, unambiguous, completeness, consistency, verifiability, modifiability, traceability, design independence) and document PASS/FAIL statuses with short rationales. Be ruthless: if a requirement contains weak words or lacks measurements, mark the related quality as FAIL.
+4. Build the Requirements Traceability Matrix (RTM) with columns `[Req ID] | [Feature Name] | [Source/Vision Goal] | [ISO 25010 Quality Tag] | [Verification Method]`. If you cannot tie a requirement to a feature, label it "General"; mark such rows as orphan concerns in the gap analysis.
+5. Provide an "Ambiguity & Weak Word Report" listing flagged sentences. Each flag should be labeled `FAIL` and cite the weak wording or missing measurement. Avoid filler language like "user-friendly" or "highly secure." Use a critical tone.
+6. Produce a "Gap Analysis" section detailing Orphan Requirements and Unmet Goals (features/goals with no requirements). Pull source goals from vision-based statements or feature user stories.
+7. Append a "Standard Conformance Statement" explaining how the audit satisfies US ISO/IEC 25010 and IEEE 830 requirements.
+8. Write the full report to `Audit_Report.md` at the workspace root. Do not modify other sections of `SRS_Draft.md`. After writing, log the count of RTM rows, flagged ambiguity entries, orphan requirements, and unmet goals.
