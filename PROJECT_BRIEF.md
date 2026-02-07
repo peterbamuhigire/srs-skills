@@ -8,9 +8,19 @@
 
 ---
 
-## What's New in v3.0?
+## What's New in v3.1?
 
-Previously called **SRS-Skills** (focused only on IEEE 830 SRS generation), v3.0 expands to support:
+**AI-Assisted Development Skills** (February 2026) - New skills that enhance Claude Code's ability to help you develop software:
+
+- ✅ **ai-assisted-development**: Orchestrate multiple AI agents (30-75% faster through parallelization)
+- ✅ **ai-error-prevention**: 7 strategies to catch Claude's mistakes early (saves 50-75% of tokens)
+- ✅ **orchestration-best-practices**: The 10 Commandments of Orchestration
+- ✅ **ai-error-handling**: 5-layer validation stack for AI-generated code
+- ✅ **Reference guides**: Prompting patterns, orchestration patterns, encoding patterns into skills
+
+## What Was New in v3.0?
+
+Previously called **SRS-Skills** (focused only on IEEE 830 SRS generation), v3.0 expanded to support:
 
 - ✅ **Multi-Methodology Support**: Waterfall (IEEE 830 SRS) + Agile (User Stories) + Hybrid
 - ✅ **23 Document Types**: PRD, SRS, User Stories, HLD, LLD, API Specs, Test Plans, Runbooks, Manuals, Compliance Docs

@@ -239,6 +239,118 @@ sdlc-docs-engine/
 
 ---
 
+## 🤖 AI-Assisted Development Skills (New in v3.1)
+
+**Purpose:** Skills that make Claude Code better at helping you develop software by enforcing patterns, preventing errors, and optimizing workflows.
+
+### Core AI Development Skills
+
+#### 1. **ai-assisted-development** - Multi-Agent Orchestration
+**Use when:** Coordinating multiple AI agents (Planning, Coding, Testing, Review)
+
+**Provides:**
+- 5 orchestration strategies (Sequential, Parallel, Conditional, Looping, Retry)
+- 3 AI-specific patterns (Agent Handoff, Fan-Out/Fan-In, Human-in-the-Loop)
+- Real-world examples from MADUUKA and BRIGHTSOMA projects
+- 30-75% faster development through parallelization
+
+👉 **[Learn AI Agent Orchestration](skills/ai-assisted-development/SKILL.md)**
+
+---
+
+#### 2. **ai-error-prevention** - Trust But Verify Workflow
+**Use when:** Working with Claude to generate code (always!)
+
+**Provides:**
+- 7 prevention strategies to catch Claude's mistakes early
+- Common failure modes: Hallucination, Incomplete Solutions, Misunderstanding, Lazy Solutions
+- App-specific checklists (MADUUKA, MEDIC8, BRIGHTSOMA, DDA, CROWNPOINT)
+- **Saves 50-75% of wasted tokens** through early error detection
+
+👉 **[Learn Error Prevention](skills/ai-error-prevention/SKILL.md)**
+
+---
+
+#### 3. **orchestration-best-practices** - The 10 Commandments
+**Use when:** Generating multi-step workflows or complex processes
+
+**Provides:**
+- The 10 orchestration rules (steps, dependencies, validation, error handling)
+- Complete code examples (good vs bad patterns)
+- Verification checklist
+- Anti-patterns guide
+
+👉 **[Learn Orchestration Rules](skills/orchestration-best-practices/SKILL.md)**
+
+---
+
+#### 4. **ai-error-handling** - 5-Layer Validation Stack
+**Use when:** Validating AI-generated code before production
+
+**Provides:**
+- 5 validation layers: Syntax, Requirements, Testing, Security, Documentation
+- Quality scoring system (0-100, threshold >= 80)
+- Validation loop with max 3 iterations
+- Automated recovery strategies
+
+👉 **[Learn Validation Stack](skills/ai-error-handling/SKILL.md)**
+
+---
+
+### Reference Guides
+
+#### **prompting-patterns-reference.md**
+10 essential patterns for better AI instructions
+- Reduces clarification questions by 50%
+- Improves first-time-right code by 60%
+- Patterns: Clear Task+Context+Constraints, Chain-of-Thought, Few-Shot Learning, etc.
+
+#### **orchestration-patterns-reference.md**
+Comprehensive guide for coordinating multiple agents/tasks
+- 5 orchestration types with examples
+- 4 core patterns (Map-Reduce, Pipeline, Fan-Out/Fan-In, Circuit Breaker)
+- Decision trees and performance analysis
+
+#### **encoding-patterns-into-skills.md**
+How to create skills that automatically enforce patterns
+- Formula: Rules + Examples + Checklists + Decision Trees
+- Pattern encoding templates
+- Skill iteration strategies
+
+---
+
+### How AI Skills Work Together
+
+```
+REQUEST PREPARATION (ai-error-prevention)
+├─ Use prompting patterns (prompting-patterns-reference)
+├─ Break into small steps
+└─ Clear task + context + constraints
+
+CLAUDE GENERATES CODE
+
+IMMEDIATE VERIFICATION (ai-error-prevention)
+├─ Verification-First strategy
+├─ Test-Driven Validation
+└─ Specification Matching
+
+STRUCTURE CHECK (orchestration-best-practices)
+├─ Steps clearly defined?
+├─ Dependencies identified?
+└─ Error handling present?
+
+VALIDATION (ai-error-handling)
+├─ 5-layer validation stack
+└─ Quality threshold check (>= 80/100)
+
+ACCEPTANCE OR ITERATION
+└─ All checks passed? → USE CODE ✓
+```
+
+**Result:** Production-ready code, 50-75% fewer wasted tokens, higher quality output
+
+---
+
 ## ✅ Methodology Selection Guide
 
 ### When to Use Waterfall SRS Pipeline
