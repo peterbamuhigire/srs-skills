@@ -1,0 +1,183 @@
+# User Personas
+
+**Project:** [Project Name]
+**Created:** [Date]
+**Purpose:** Define primary user types to guide user story generation
+
+---
+
+## Persona Template
+
+For each persona, provide:
+
+1. **Role/Title**: Who they are
+2. **Demographics**: Age, location, technical proficiency (if relevant)
+3. **Goals**: What they want to achieve
+4. **Pain Points**: Current frustrations or challenges
+5. **Behaviors**: How they interact with similar systems
+6. **Quote**: A representative statement capturing their mindset
+
+---
+
+## Persona 1: [Primary User Type]
+
+### Role/Title
+**Example:** Restaurant Manager, E-commerce Customer, Mobile App User
+
+### Demographics
+- **Age Range:** 25-45
+- **Location:** Urban/suburban areas
+- **Technical Proficiency:** Moderate (comfortable with smartphones, basic software)
+- **Context:** Small business owner managing daily operations
+
+### Goals
+- **Primary Goal:** [Main objective when using the system]
+- **Secondary Goals:**
+  - [Supporting goal 1]
+  - [Supporting goal 2]
+
+### Pain Points
+- **Current Challenge 1:** [Specific frustration with existing solutions]
+- **Current Challenge 2:** [Another problem this system should solve]
+
+### Behaviors
+- Accesses system primarily on [device type: desktop/mobile/tablet]
+- Uses system [frequency: daily/weekly]
+- Prefers [interaction style: quick tasks, visual dashboards, detailed reports]
+
+### Quote
+> "[A representative statement that captures this persona's mindset or priorities]"
+
+**User Story Implications:**
+- Stories should prioritize [specific needs]
+- Acceptance criteria should ensure [specific outcomes]
+- UI/UX should optimize for [specific use case]
+
+---
+
+## Persona 2: [Secondary User Type]
+
+[Repeat structure above]
+
+---
+
+## Persona 3: [Additional User Type]
+
+[Repeat structure above]
+
+---
+
+## Persona Prioritization
+
+| Persona | Primary? | Frequency of Use | Business Impact | Design Priority |
+|---------|----------|------------------|-----------------|-----------------|
+| [Persona 1 name] | ✅ Yes | Daily | High | 1 (Highest) |
+| [Persona 2 name] | No | Weekly | Medium | 2 |
+| [Persona 3 name] | No | Monthly | Low | 3 |
+
+**Note:** User stories should prioritize Primary personas first.
+
+---
+
+## Anti-Personas (Out of Scope)
+
+List user types that are **NOT** target users for this system:
+
+- **[Anti-persona 1]:** [Why they're not a target user]
+- **[Anti-persona 2]:** [Why they're not a target user]
+
+This helps avoid feature creep by clearly defining who we're NOT building for.
+
+---
+
+## Example: E-commerce Platform Personas
+
+### Persona 1: Online Shopper (Primary)
+
+**Role/Title:** Individual Consumer
+
+**Demographics:**
+- Age Range: 18-55
+- Location: Urban/suburban, primarily mobile users
+- Technical Proficiency: High (comfortable with apps, online payments)
+
+**Goals:**
+- Find products quickly with good search/filters
+- Complete checkout in <2 minutes
+- Track order status easily
+
+**Pain Points:**
+- Slow checkout processes with too many steps
+- Unclear shipping costs/timelines
+- Difficult to find products among thousands of listings
+
+**Behaviors:**
+- Accesses primarily via mobile app (70% of sessions)
+- Browses during commute or breaks
+- Abandons cart if checkout takes >3 minutes
+
+**Quote:**
+> "I just want to find what I need, pay, and get back to my day—no hassle."
+
+**User Story Implications:**
+- Stories should prioritize mobile-first design
+- Checkout flow must be <3 steps
+- Real-time order tracking is critical
+
+---
+
+### Persona 2: Store Administrator (Secondary)
+
+**Role/Title:** E-commerce Manager
+
+**Demographics:**
+- Age Range: 28-50
+- Location: Office/warehouse environment
+- Technical Proficiency: Moderate (uses back-office software daily)
+
+**Goals:**
+- Manage product catalog efficiently (add/edit/remove)
+- Process orders and refunds quickly
+- Monitor sales analytics
+
+**Pain Points:**
+- Bulk operations are tedious (uploading 100+ products)
+- No clear dashboard for daily tasks
+- Reporting is slow and hard to customize
+
+**Behaviors:**
+- Accesses system via desktop (90% of time)
+- Uses system daily for 2-4 hours
+- Needs quick access to order management and inventory
+
+**Quote:**
+> "I need to process 50 orders before lunch—don't make me click through five pages for each one."
+
+**User Story Implications:**
+- Stories should include bulk operations
+- Dashboard must show critical daily tasks
+- Reporting needs flexibility for custom date ranges
+
+---
+
+## Validation Checklist
+
+Before using these personas:
+
+- [ ] Each persona represents a **distinct user type** with unique goals
+- [ ] Personas are based on **real user research** (interviews, surveys, existing data)
+- [ ] **Primary persona** is clearly identified (80% of user stories will serve them)
+- [ ] Pain points are **specific and measurable**, not vague ("slow" → "checkout takes >3 min")
+- [ ] Demographics are **relevant** to system design (don't include irrelevant details)
+- [ ] Anti-personas help **prevent scope creep**
+
+---
+
+**Instructions for AI:**
+
+1. Use these personas to generate user stories in the format: "As a [persona], I want [action], so that [benefit]"
+2. Prioritize stories for Primary personas first
+3. Ensure acceptance criteria address persona-specific pain points
+4. Tag stories with persona names for backlog filtering
+
+**Last Updated:** [Date]
