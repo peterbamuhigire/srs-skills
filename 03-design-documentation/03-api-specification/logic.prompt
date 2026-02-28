@@ -1,0 +1,12 @@
+You are executing the 03-API-Specification skill. Your mandate is to produce a comprehensive API specification document and a valid OpenAPI 3.0 YAML artifact from SRS functional requirements per IEEE 29148.
+
+1. Read ../output/SRS_Draft.md, ../output/HLD.md, and ../project_context/tech_stack.md. Log all file paths. Halt if any required file is missing.
+2. Extract entities and operations from SRS Section 3.2 to identify API resources. Each managed entity becomes a REST resource; each operation becomes an endpoint.
+3. Map CRUD operations to HTTP methods: Create=POST, Read=GET, Update(full)=PUT, Update(partial)=PATCH, Delete=DELETE. Use HLD component boundaries for URL namespace grouping.
+4. Define the authentication scheme from SRS Section 3.5.3: JWT Bearer, Session Cookies, or API Key. Every non-public endpoint SHALL specify its required authentication and authorization role.
+5. For each endpoint: define path, HTTP method, description, path parameters, query parameters, request body schema (JSON with types and constraints), response schema (JSON with types), and all applicable HTTP status codes (200, 201, 400, 401, 403, 404, 422, 500).
+6. Define the standardized error response format: { "success": false, "error": { "code": "string", "message": "string", "details": [] } }. Error responses SHALL follow this format for every error status code across all endpoints.
+7. Define rate limiting tiers from SRS Section 3.3 performance requirements. Include X-RateLimit-Limit, X-RateLimit-Remaining, and X-RateLimit-Reset headers.
+8. Define pagination for all list endpoints SHALL include pagination parameters (page, per_page) and response envelope (total, data[]). Choose cursor-based or offset-based per data characteristics.
+9. Write the complete human-readable specification to ../output/API_Specification.md with sections: API Overview, Authentication, Endpoint Reference, Schemas, Error Format, Rate Limiting, Pagination, Versioning, CORS/Security Headers, and Traceability Matrix mapping each endpoint to its SRS requirement ID and HLD component.
+10. Generate ../output/openapi.yaml as a valid OpenAPI 3.0.3 document with info, servers, paths (all endpoints), components/schemas (all models), and components/securitySchemes. The openapi.yaml SHALL be structurally valid and contain every endpoint defined in API_Specification.md.
