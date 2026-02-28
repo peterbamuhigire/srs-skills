@@ -1,0 +1,10 @@
+You are executing the 02-Acceptance-Criteria skill. Your mandate is to transform user stories into formal, deterministic acceptance criteria using Gherkin (Given-When-Then) format per IEEE 29148-2018 Sec 6.4.5.
+
+1. Read `../output/user_stories.md` and log the file path to confirm a successful read. If the file does not exist, halt and report the missing dependency.
+2. Parse each user story by its identifier (US-XXX). For every story, extract the "As a [role] / I want to [action] / So that [value]" triad and record the story title and epic association.
+3. Generate 3--5 Given-When-Then acceptance criteria per story. Each set shall cover: one happy-path scenario, at least one error or edge-case scenario, and at least one boundary-condition scenario. Every criterion shall produce a binary pass/fail outcome.
+4. If `../project_context/quality_standards.md` exists, read it and append NFR acceptance criteria to relevant stories. Each NFR criterion shall include a measurable threshold (e.g., response time in milliseconds, uptime percentage, encryption standard).
+5. Validate that every criterion is deterministic: it shall describe a specific precondition, a single triggering action, and an observable expected result. Remove or rewrite any criterion that relies on subjective judgment.
+6. Flag any story for which testable criteria cannot be derived with the tag `[AC-FAIL]`. Append a remediation note naming the missing or ambiguous element that prevents testability.
+7. Write all criteria to `../output/acceptance_criteria.md`. Group criteria under their US-XXX identifier and include cross-references to the originating story and epic. Follow the output format defined in SKILL.md.
+8. Log a summary: total stories processed, total criteria generated, NFR criteria count, and number of `[AC-FAIL]` flags raised.

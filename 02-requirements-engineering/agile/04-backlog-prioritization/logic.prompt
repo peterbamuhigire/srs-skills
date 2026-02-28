@@ -1,0 +1,11 @@
+You are executing the 04-Backlog-Prioritization skill. Your mandate is to transform an unordered user story backlog into a ranked, sprint-allocated release plan using MoSCoW classification and WSJF economic scoring.
+
+1. Read `../output/user_stories.md` and `../project_context/vision.md`. If `../output/story_map.md` exists, read it for dependency and journey context. Log every file path read.
+2. Extract the business goals list from `vision.md` to serve as the alignment baseline for all scoring decisions.
+3. Classify each user story into exactly one MoSCoW category: Must Have (blocks MVP delivery), Should Have (significant user value, non-blocking), Could Have (enhancement, capacity-permitting), Won't Have (deferred to future scope).
+4. Score four WSJF factors on a 1-10 integer scale for each story: Business Value (BV) -- alignment with extracted goals; Time Criticality (TC) -- market or dependency urgency; Risk Reduction (RR) -- technical or business risk mitigated; Job Size (JS) -- story points from `user_stories.md` normalized to 1-10.
+5. Calculate WSJF for each story: $WSJF = \frac{BV + TC + RR}{JS}$. Ensure JS >= 1 to prevent division by zero.
+6. Sort stories by WSJF descending within each MoSCoW tier so that Must-Have stories appear first, then Should-Have, Could-Have, and Won't-Have.
+7. Allocate stories to sprints: fill each sprint to the assumed velocity (20 points/sprint default), placing higher-WSJF stories first. Respect dependency ordering by moving blockers to earlier sprints; flag any circular dependencies as [DEP-CYCLE].
+8. Generate `../output/prioritized_backlog.md` containing: a MoSCoW summary table, a detailed WSJF scoring table for every story (columns: Story ID, Title, MoSCoW, BV, TC, RR, JS, WSJF, Sprint), and a dependency notes section.
+9. Generate `../output/release_plan.md` containing: sprint-by-sprint story allocation tables, milestone dates (relative to sprint cadence), capacity utilization per sprint, and risk flags for high-complexity items. Log total story count, sprint count, and Must-Have percentage to confirm completeness.

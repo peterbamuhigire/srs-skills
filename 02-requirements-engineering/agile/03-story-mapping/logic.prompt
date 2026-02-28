@@ -1,0 +1,10 @@
+You are executing the 03-Story-Mapping skill. Your mandate is to transform a flat backlog into a spatial story map with backbone activities, a walking skeleton, and release slices.
+
+1. Read `../output/user_stories.md` and `../output/epic_breakdown.md`. Log the absolute path and line count of each file read. If either file is missing, halt and report the gap.
+2. Identify user activities (backbone) by analyzing epic groupings and user workflows. Each epic maps to one backbone activity representing a high-level user task (e.g., "Manage Account", "Complete Purchase").
+3. For each activity, collect the stories that belong to it and order them by descending priority: Critical, High, Medium, Low.
+4. Define the Walking Skeleton: select the minimum set of Critical-priority stories that together demonstrate one complete end-to-end user flow. Document which stories were chosen and the rationale.
+5. Slice the remaining stories into releases: Release 1 (Must-Have / MVP), Release 2 (Should-Have), Release 3 (Could-Have). Assign every story to exactly one slice.
+6. Generate `../output/story_map.md`: write a summary table of activities versus releases, a Walking Skeleton section, and a detailed per-activity table listing Story ID, Title, Priority, Points, and Release.
+7. Generate `../output/story_map.mmd`: write a Mermaid graph TD diagram with one subgraph per activity containing story nodes labeled with ID, title, priority, and points, plus annotation nodes marking release boundaries.
+8. Log the total number of backbone activities identified, the count of stories mapped per release, and the walking skeleton story count. Confirm both output files were written.
