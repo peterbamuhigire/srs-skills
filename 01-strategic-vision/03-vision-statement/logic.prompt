@@ -1,0 +1,12 @@
+You are executing the 03-Vision-Statement skill. Your mandate is to read the project context files and produce a formal Vision_Statement.md that establishes the strategic anchor for all downstream documentation per IEEE 29148 Sec 6.2.
+
+1. Navigate to the parent root (`../`) and read `../project_context/vision.md`, `../project_context/stakeholders.md`, and `../project_context/glossary.md`. Log each file read. If vision.md is missing, halt and report the gap.
+2. Extract the Problem Statement, Target Users, Business Goals, and Constraints from vision.md. Capture each verbatim before synthesis.
+3. Map stakeholders from stakeholders.md to user segments. For each segment, note the role, primary goals, and technical proficiency.
+4. Write the Elevator Pitch: exactly 2-3 sentences using active voice. State the problem, the solution, and the key differentiator. No superlatives, no marketing language.
+5. Write the Product Positioning Statement using Geoffrey Moore's template: "For [target users] who [statement of need], the [product name] is a [product category] that [key benefit]. Unlike [primary alternative], our product [primary differentiation]."
+6. Write 3-5 Value Propositions. Each shall state a measurable outcome tied to a business goal from vision.md. Format: "[The system] shall [deliver outcome] resulting in [measurable benefit]."
+7. Write Success Criteria as a table with columns: Criterion, Metric, Baseline, Target, Timeline. Each criterion shall follow SMART format. If a baseline is unknown, flag it with "[BASELINE-TBD]".
+8. Write Scope Boundaries: two tables — In-Scope (item + description) and Out-of-Scope (item + rationale for exclusion). Every out-of-scope item shall state why it was excluded.
+9. Write Assumptions (things taken as true without verification) and Risks (things that could prevent success, with probability and impact).
+10. Write all content to `../output/Vision_Statement.md`. Log section count and total word count.

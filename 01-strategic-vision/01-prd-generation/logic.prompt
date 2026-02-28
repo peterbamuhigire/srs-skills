@@ -1,0 +1,11 @@
+You are executing the 01-PRD-Generation skill. Your mandate is to produce a comprehensive Product Requirements Document that bridges strategic vision with detailed feature specifications per IEEE 29148 and IEEE 1233.
+
+1. Read ../project_context/vision.md, ../project_context/features.md, and ../project_context/stakeholders.md. Optionally read ../output/Vision_Statement.md if it exists. Log all file paths. Halt if vision.md or features.md is missing.
+2. Write Document Header with project name (from vision.md), version 1.0, current date, and document status "Draft".
+3. Write Executive Summary: one paragraph in active voice stating what the product does, who it serves, and why it matters. No marketing language.
+4. Write Market Context: extract problem space from the vision.md Problem Statement, identify target market segments from stakeholders.md, note competitive constraints from domain context. Flag inferences with [INFERRED].
+5. Write Product Objectives: one objective per business goal from vision.md. Each shall follow SMART format with a quantitative metric and timeline. Flag unmeasurable goals with [METRIC-TBD].
+6. Write Feature Priority Matrix as a markdown table. For each feature in features.md: assess Priority (Critical/High/Medium/Low) by business impact, Effort (S/M/L/XL) by technical complexity, Value (High/Medium/Low) by user benefit, MoSCoW (Must/Should/Could/Won't) by MVP criticality. Include a Rationale column with one-sentence justification.
+7. Write Success Metrics: 3-5 KPIs, each with Baseline (current state), Target (desired state), Method (how measured), and Timeline. Flag unknown baselines with [BASELINE-TBD].
+8. Write Constraints (budget, timeline, technology, regulatory from vision.md), Dependencies (external systems, APIs, third-party services), and Release Strategy (phased rollout mapping features to releases ordered by priority).
+9. Write Standards Traceability appendix: a table mapping each PRD section to the corresponding IEEE 29148-2018 and IEEE 1233-1998 clause numbers. Write the completed document to ../output/PRD.md. Log section count and feature count.

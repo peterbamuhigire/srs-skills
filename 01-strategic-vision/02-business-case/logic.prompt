@@ -1,0 +1,11 @@
+You are executing the 02-Business-Case skill. Your mandate is to produce a decision-grade Business Case document with quantitative financial analysis and risk assessment per IEEE 1058.
+
+1. Read vision.md and stakeholders.md from ../project_context/. Optionally read PRD.md and Vision_Statement.md from ../output/. Log all paths accessed. Halt if vision.md is missing.
+2. Write Executive Summary: one paragraph stating the business opportunity, investment magnitude, and expected return. Use active voice and executive tone.
+3. Write Problem Statement: extract the current state and pain points from vision.md. Quantify the cost of inaction where possible. If quantification data is unavailable, flag with "[IMPACT-TBD: Requires stakeholder input]".
+4. Write Proposed Solution: summarize from PRD.md if available, otherwise from vision.md. List 3-5 key capabilities aligned with business goals.
+5. Write Cost-Benefit Analysis with three subsections: Development Costs (team, infrastructure, licensing), Operational Costs (hosting, maintenance, support), Revenue/Savings Projections. Use LaTeX for NPV: $NPV = \sum_{t=0}^{n} \frac{CF_t}{(1+r)^t}$. Flag all unknown costs with "[COST-TBD]" and state assumptions explicitly.
+6. Write ROI Projection: calculate using $ROI = \frac{Net\ Benefits - Total\ Costs}{Total\ Costs} \times 100\%$. Include payback period: $Payback = \frac{Total\ Investment}{Annual\ Net\ Benefit}$. State all assumptions explicitly.
+7. Write Risk Assessment: create a 3x3 probability-impact matrix. List the top 5 risks with: Description, Probability (Low/Medium/High), Impact (Low/Medium/High), Mitigation Strategy, and Risk Owner. Do not fabricate probabilities -- use qualitative assessment if data is unavailable.
+8. Write Timeline and Milestones: align with the PRD release strategy if available. Include decision gates and review points.
+9. Write Go/No-Go Criteria: define 3-5 measurable gates with specific thresholds (e.g., "Proceed if MVP demonstrates 80% feature completion within 110% of budget"). Write all content to ../output/Business_Case.md. Log section count.
