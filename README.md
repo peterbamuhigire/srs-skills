@@ -2,7 +2,15 @@
 
 **SDLC-Docs-Engine** (formerly SRS-Skills) is a modular, AI-driven toolkit for generating **comprehensive, standards-compliant documentation** across all phases of software development. It supports **Waterfall, Agile, and Hybrid methodologies**, providing IEEE/ISO-aligned documentation from strategic vision to deployment operations.
 
-## 🌟 What's New in v3.0
+## What's New in v3.2
+
+- **Phase 01: Strategic Vision** - 3 new skills: Vision Statement (IEEE 29148), PRD (IEEE 29148/1233), Business Case (IEEE 1058)
+- **Phase 02: Agile Track Complete** - 3 new skills: Acceptance Criteria, Story Mapping, Backlog Prioritization (IEEE 29148)
+- **Phase 03: Design Documentation** - 4 new skills: HLD, LLD (IEEE 1016), API Specification (OpenAPI 3.0), Database Design (IEEE 1016)
+- **Setup Scripts** - PowerShell and Bash scripts for bootstrapping new SRS projects
+- **Coverage** increased from ~23% to ~50% of planned SDLC phases
+
+## What's New in v3.0
 
 - **Multi-Methodology Support**: Choose Waterfall (IEEE 830 SRS) or Agile (User Stories) pipelines
 - **Expanded Scope**: Beyond SRS—now supports PRDs, HLD/LLD, API docs, test plans, deployment guides, and more
@@ -629,21 +637,27 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 
 ## 📈 Roadmap
 
-### v3.0.0 (Current - 2026-02-07)
-- ✅ Multi-methodology support (Waterfall + Agile)
-- ✅ Reorganized phase structure (00-09)
-- ✅ Agile user story generation skill
-- ✅ Updated documentation and migration guides
+### v3.2.0 (Current - 2026-02-28)
+- Phase 01: Strategic Vision skills (Vision Statement, PRD, Business Case)
+- Phase 02: Agile track completion (Acceptance Criteria, Story Mapping, Backlog Prioritization)
+- Phase 03: Design Documentation skills (HLD, LLD, API Specification, Database Design)
+- Setup scripts for new project bootstrapping (PowerShell + Bash)
+- Fixed missing SKILL.md for waterfall feature-decomposition
 
-### v3.1.0 (Planned - Q1 2026)
-- ⏳ Design documentation skills (HLD, LLD, API specs)
-- ⏳ Testing documentation skills (test plans, test cases)
-- ⏳ Agile story mapping and backlog prioritization
+### v3.1.0 (2026-02-07)
+- AI-Assisted Development Skills (4 skills + 3 reference guides)
+- Token efficiency improvements (50-75% savings)
 
-### v3.2.0 (Planned - Q2 2026)
-- ⏳ Deployment & operations skills (runbooks, IaC docs)
-- ⏳ End-user documentation skills (manuals, FAQs)
-- ⏳ Compliance documentation (GDPR, HIPAA, SOC2)
+### v3.0.0 (2026-02-06)
+- Multi-methodology support (Waterfall + Agile)
+- Reorganized phase structure (00-09)
+- Agile user story generation skill
+
+### v3.3.0 (Planned - Q2 2026)
+- Testing documentation skills (test plans, test cases, test reports)
+- Deployment and operations skills (runbooks, IaC docs)
+- End-user documentation skills (manuals, FAQs)
+- Compliance documentation (GDPR, HIPAA, SOC2)
 
 ### v4.0.0 (Planned - Q3 2026)
 - ⏳ Automated doc generation from code (API docs, schema docs)

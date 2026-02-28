@@ -2,21 +2,43 @@
 
 ## What Is This?
 
-**SDLC-Docs-Engine** (v3.0) is an AI-powered, standards-driven documentation generator that creates **comprehensive, IEEE/ISO-compliant documentation** across all phases of software development.
+**SDLC-Docs-Engine** (v3.2) is an AI-powered, standards-driven documentation generator that creates **comprehensive, IEEE/ISO-compliant documentation** across all phases of software development.
 
 **Think of it as:** A portable "Documentation Engine" that lives in your project's `skills/` directory, reads your project context, and generates professional documentation for **Waterfall, Agile, or Hybrid** methodologies.
 
 ---
 
-## What's New in v3.1?
+## What's New in v3.2?
 
-**AI-Assisted Development Skills** (February 2026) - New skills that enhance Claude Code's ability to help you develop software:
+**Documentation Skills Expansion** (February 2026) - 11 new documentation generation skills across 3 phases:
 
-- ✅ **ai-assisted-development**: Orchestrate multiple AI agents (30-75% faster through parallelization)
-- ✅ **ai-error-prevention**: 7 strategies to catch Claude's mistakes early (saves 50-75% of tokens)
-- ✅ **orchestration-best-practices**: The 10 Commandments of Orchestration
-- ✅ **ai-error-handling**: 5-layer validation stack for AI-generated code
-- ✅ **Reference guides**: Prompting patterns, orchestration patterns, encoding patterns into skills
+**Phase 01: Strategic Vision** - Generate project justification documents before requirements:
+- **03-vision-statement**: Elevator pitch, product positioning, SMART success criteria (IEEE 29148)
+- **01-prd-generation**: Feature priority matrix, success metrics, market context (IEEE 29148/1233)
+- **02-business-case**: Cost-benefit analysis with LaTeX formulas, ROI, risk matrix (IEEE 1058)
+
+**Phase 02: Agile Track Complete** - Full Agile requirements pipeline (was 1/4, now 4/4):
+- **02-acceptance-criteria**: Gherkin Given-When-Then with NFR criteria (IEEE 29148)
+- **03-story-mapping**: Jeff Patton backbone activities, walking skeleton, release slices
+- **04-backlog-prioritization**: MoSCoW + WSJF scoring, sprint allocation
+
+**Phase 03: Design Documentation** - Translate requirements into implementable architecture:
+- **01-high-level-design**: System architecture with Mermaid diagrams (IEEE 1016 Sec 5)
+- **02-low-level-design**: Class/sequence/state diagrams, algorithm formalization (IEEE 1016 Sec 6)
+- **03-api-specification**: REST endpoints with OpenAPI 3.0 YAML artifact (OpenAPI 3.0)
+- **04-database-design**: ERD, normalization, data dictionary (IEEE 1016 Sec 6.7)
+
+**Infrastructure:** Setup scripts (PowerShell + Bash) for bootstrapping new SRS projects.
+
+## What Was New in v3.1?
+
+**AI-Assisted Development Skills** - Skills that enhance Claude Code's ability to help you develop software:
+
+- **ai-assisted-development**: Orchestrate multiple AI agents (30-75% faster through parallelization)
+- **ai-error-prevention**: 7 strategies to catch Claude's mistakes early (saves 50-75% of tokens)
+- **orchestration-best-practices**: The 10 Commandments of Orchestration
+- **ai-error-handling**: 5-layer validation stack for AI-generated code
+- **Reference guides**: Prompting patterns, orchestration patterns, encoding patterns into skills
 
 ## What Was New in v3.0?
 

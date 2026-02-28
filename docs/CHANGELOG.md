@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] - 2026-02-28
+
+### Added
+
+**Phase 01: Strategic Vision (3 new skills):**
+- **03-vision-statement** - Formal vision document with elevator pitch, Geoffrey Moore product positioning, SMART success criteria per IEEE 29148 Sec 6.2
+- **01-prd-generation** - Product Requirements Document with market context, feature priority matrix (MoSCoW), success metrics per IEEE 29148/1233
+- **02-business-case** - Business case with cost-benefit analysis (NPV/LaTeX), ROI projection, risk assessment matrix, go/no-go criteria per IEEE 1058
+
+**Phase 02: Agile Requirements Track Completion (3 new skills):**
+- **02-acceptance-criteria** - Gherkin Given-When-Then acceptance criteria with NFR criteria per IEEE 29148 Sec 6.4.5
+- **03-story-mapping** - Jeff Patton story maps with backbone activities, walking skeleton, release slices per IEEE 29148
+- **04-backlog-prioritization** - MoSCoW classification with WSJF scoring, sprint allocation, release planning per IEEE 29148 Sec 6.4.6
+
+**Phase 03: Design Documentation (4 new skills):**
+- **01-high-level-design** - System architecture with Mermaid C4/deployment/data flow diagrams, technology decisions per IEEE 1016-2009 Sec 5
+- **02-low-level-design** - Module specs with class/sequence/state diagrams (Mermaid), algorithm formalization (LaTeX) per IEEE 1016-2009 Sec 6
+- **03-api-specification** - REST API endpoints with OpenAPI 3.0 YAML artifact, standardized error format per IEEE 29148/RFC 7231
+- **04-database-design** - ERD (Mermaid), normalization analysis, data dictionary, migration strategy per IEEE 1016 Sec 6.7 with mandatory mysql-best-practices integration
+
+**Phase 02 Fix:**
+- **05-feature-decomposition** - Added missing SKILL.md wrapper for the waterfall feature decomposition skill
+
+**Infrastructure:**
+- Setup scripts for new SRS projects (PowerShell + Bash)
+- SETUP_GUIDE.md with complete workflow instructions
+- Updated skill_overview.md pipeline registry with all new skills
+
+### Changed
+
+- Agile requirements track expanded from 1/4 to 4/4 sub-phases (100% complete)
+- Waterfall requirements track now 8/8 sub-phases with all SKILL.md files present
+- Overall engine implementation coverage increased from ~23% to ~50%
+
 ## [3.1.0] - 2026-02-07
 
 ### Added
