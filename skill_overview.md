@@ -39,6 +39,59 @@ This registry documents the inputs, process logic, governing standards, and outp
 | 03-api-specification | ../output/SRS_Draft.md, HLD.md, ../project_context/tech_stack.md | Generate REST API endpoint definitions, schemas, auth, error format, and machine-readable OpenAPI 3.0 YAML | OpenAPI 3.0; IEEE 29148-2018; RFC 7231 | ../output/API_Specification.md, openapi.yaml |
 | 04-database-design | ../output/SRS_Draft.md, HLD.md, ../project_context/business_rules.md, tech_stack.md | Generate ERD (Mermaid), normalized table definitions, indexing strategy, data dictionary, migration strategy. MANDATORY: mysql-best-practices for MySQL | IEEE 1016-2009 Sec 6.7; ISO/IEC 25010 | ../output/Database_Design.md, erd.mmd |
 
+## Phase 04: Development Artifacts
+
+| Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
+|-----------------|--------|----------------|-------------------|----------------|
+| 01-technical-specification | ../output/SRS_Draft.md, HLD.md, LLD.md | Generate module-level technical specifications with interface contracts, data structures, algorithm details, and error handling design | IEEE 1016-2009; IEEE 830-1998 | ../output/Technical_Specification.md |
+| 02-coding-guidelines | ../project_context/tech_stack.md, quality_standards.md | Generate coding standards document covering naming conventions, formatting, patterns, error handling, and code review criteria | IEEE 730 – Software Quality Assurance | ../output/Coding_Guidelines.md |
+| 03-dev-environment-setup | ../project_context/tech_stack.md | Generate developer environment setup guide with toolchain installation, build configuration, local development workflow, and troubleshooting | IEEE 1074 – Software Life Cycle Process | ../output/Dev_Environment_Setup.md |
+| 04-contribution-guide | ../project_context/tech_stack.md, vision.md | Generate contribution guidelines covering branching strategy, commit conventions, PR workflow, code review standards, and CI/CD integration | IEEE 1074 – Software Life Cycle Process | ../output/Contribution_Guide.md |
+
+## Phase 05: Testing Documentation
+
+| Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
+|-----------------|--------|----------------|-------------------|----------------|
+| 01-test-strategy | ../project_context/quality_standards.md, tech_stack.md; ../output/SRS_Draft.md (optional) | Generate test strategy defining test levels, types, tools, environments, entry/exit criteria, and risk-based test prioritization | IEEE 829 Sec 6 – Test Strategy | ../output/Test_Strategy.md |
+| 02-test-plan | ../output/Test_Strategy.md, SRS_Draft.md; ../project_context/features.md | Generate detailed test plan with test cases, traceability to requirements, test data requirements, schedule, and resource allocation | IEEE 829 Sec 7-8 – Test Plan | ../output/Test_Plan.md |
+| 03-test-report | ../output/Test_Plan.md | Generate test execution report template with pass/fail summary, defect analysis, coverage metrics, and release recommendation | IEEE 829 Sec 9-10 – Test Report | ../output/Test_Report_Template.md |
+
+## Phase 06: Deployment & Operations
+
+| Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
+|-----------------|--------|----------------|-------------------|----------------|
+| 01-deployment-guide | ../project_context/tech_stack.md; ../output/HLD.md (optional) | Generate step-by-step deployment procedures with pre/post-deployment checklists, rollback procedures, and environment-specific configurations | IEEE 1062 – Software Acquisition | ../output/Deployment_Guide.md |
+| 02-runbook | ../output/Deployment_Guide.md (optional); ../project_context/tech_stack.md | Generate operational runbook with incident response procedures, escalation paths, health checks, and recovery playbooks per SRE practices | SRE Best Practices | ../output/Runbook.md |
+| 03-monitoring-setup | ../project_context/tech_stack.md, quality_standards.md | Generate monitoring configuration guide with metrics definitions, alerting rules, dashboard specifications, and SLI/SLO targets | ISO/IEC 25010 – Software Product Quality | ../output/Monitoring_Setup.md |
+| 04-infrastructure-docs | ../project_context/tech_stack.md; ../output/HLD.md (optional) | Generate infrastructure documentation with architecture diagrams (Mermaid), resource inventory, networking topology, and scaling policies | IEEE 1016-2009 – Software Design Descriptions | ../output/Infrastructure_Docs.md |
+
+## Phase 07: Agile Artifacts
+
+| Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
+|-----------------|--------|----------------|-------------------|----------------|
+| 01-sprint-planning | ../project_context/vision.md; ../output/prioritized_backlog.md, user_stories.md | Generate sprint planning template with sprint goal, team capacity calculation, selected backlog items, task breakdown, and risk tracking | Scrum Guide; IEEE 29148-2018 | ../output/Sprint_Planning_Template.md |
+| 02-definition-of-done | ../project_context/quality_standards.md, tech_stack.md | Generate Definition of Done checklist covering code quality, testing, documentation, review, and deployment readiness at story, increment, and release levels | Scrum Guide | ../output/Definition_of_Done.md |
+| 03-definition-of-ready | ../project_context/vision.md, features.md | Generate Definition of Ready checklist ensuring backlog items have acceptance criteria, sizing, dependency resolution, and design clarity before sprint commitment | Scrum Guide | ../output/Definition_of_Ready.md |
+| 04-retrospective-template | ../project_context/vision.md | Generate sprint retrospective template with multiple facilitation formats (Start-Stop-Continue, 4Ls, Sailboat), action item tracking, and improvement metrics | Scrum Guide | ../output/Retrospective_Template.md |
+
+## Phase 08: End-User Documentation
+
+| Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
+|-----------------|--------|----------------|-------------------|----------------|
+| 01-user-manual | ../project_context/vision.md, features.md; ../output/SRS_Draft.md (optional) | Generate comprehensive user manual with getting started guide, feature guides, role-based workflows, troubleshooting, and glossary | ISO 26514 – User Documentation | ../output/User_Manual.md |
+| 02-installation-guide | ../project_context/tech_stack.md; ../output/Deployment_Guide.md (optional) | Generate step-by-step installation instructions with system requirements, prerequisites, configuration, verification, and common issues | ISO 26514 – User Documentation | ../output/Installation_Guide.md |
+| 03-faq | ../project_context/vision.md, features.md; ../output/User_Manual.md (optional) | Generate structured FAQ organized by category with clear question-answer pairs and cross-references to detailed documentation | ISO 26514 – User Documentation | ../output/FAQ.md |
+| 04-release-notes | ../project_context/vision.md; ../output/SRS_Draft.md (optional) | Generate release notes template with version tracking, new features, bug fixes, breaking changes, migration instructions, and known issues | IEEE 830-1998 | ../output/Release_Notes_Template.md |
+
+## Phase 09: Governance & Compliance
+
+| Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
+|-----------------|--------|----------------|-------------------|----------------|
+| 01-traceability-matrix | ../output/SRS_Draft.md (required); HLD.md, LLD.md, user_stories.md (optional); ../project_context/vision.md | Generate requirements traceability matrix mapping every requirement to source, design element, test case, and implementation status with gap analysis | IEEE 1012-2016 – Verification & Validation | ../output/Traceability_Matrix.md |
+| 02-audit-report | ../output/Traceability_Matrix.md, SRS_Draft.md (required); ../project_context/quality_standards.md | Generate V&V audit report assessing completeness, consistency, correctness with severity-rated findings and remediation recommendations | IEEE 1012-2016 – Verification & Validation | ../output/Audit_Report.md |
+| 03-compliance-documentation | ../project_context/vision.md, quality_standards.md; ../output/SRS_Draft.md, HLD.md (optional) | Generate compliance documentation mapping requirements to applicable regulatory frameworks (GDPR, HIPAA, SOC2) with gap analysis and remediation roadmap | GDPR; HIPAA; SOC2 | ../output/Compliance_Docs.md |
+| 04-risk-assessment | ../project_context/vision.md, quality_standards.md; ../output/SRS_Draft.md, HLD.md (optional) | Generate systematic risk assessment with probability/impact matrix, risk register, mitigation strategies, and monitoring plan per ISO 31000 framework | ISO 31000; IEEE 1012-2016 | ../output/Risk_Assessment.md |
+
 ## Verification Gateways
 
 1. Each skill ingests the output of the preceding phase as its baseline artifact (e.g., Skill 02 uses the vision/glossary created by Skill 01). This ensures traceability of inputs back to original templates.
@@ -47,3 +100,9 @@ This registry documents the inputs, process logic, governing standards, and outp
 4. Phase 01 (Strategic Vision) produces Vision_Statement.md and PRD.md that feed into Phase 02 as upstream context. Business_Case.md provides the go/no-go decision gate.
 5. Phase 02 Agile track skills execute sequentially: user stories → acceptance criteria → story mapping → backlog prioritization. Each consumes the prior skill's output.
 6. Phase 03 (Design Documentation) requires Phase 02 outputs (SRS_Draft.md or user_stories.md). HLD runs first; LLD, API Spec, and Database Design can run in parallel after HLD completes. Each design artifact traces back to SRS requirements.
+7. Phase 04 (Development Artifacts) skills are independent and may run in any order after Phase 03 design docs are available.
+8. Phase 05 (Testing Documentation) executes sequentially: test strategy → test plan → test report. Test strategy establishes the framework; test plan requires it as input.
+9. Phase 06 (Deployment & Operations) skills are largely independent. Deployment guide typically runs first; runbook and monitoring can run in parallel after it.
+10. Phase 07 (Agile Artifacts) skills are independent and may run in any order. Sprint planning typically references Phase 02 agile outputs (prioritized backlog, user stories).
+11. Phase 08 (End-User Documentation) skills are independent. User manual and installation guide are typically generated first as they are most critical for end users.
+12. Phase 09 (Governance & Compliance) is the terminal verification phase. Run 01-traceability-matrix first as it feeds the audit report. Skills 03 (compliance) and 04 (risk) are independent and can run in parallel after 01 and 02 complete.

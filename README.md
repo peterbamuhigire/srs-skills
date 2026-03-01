@@ -2,13 +2,22 @@
 
 **SDLC-Docs-Engine** (formerly SRS-Skills) is a modular, AI-driven toolkit for generating **comprehensive, standards-compliant documentation** across all phases of software development. It supports **Waterfall, Agile, and Hybrid methodologies**, providing IEEE/ISO-aligned documentation from strategic vision to deployment operations.
 
+## What's New in v3.3
+
+- **Phase 04: Development Artifacts** - 4 new skills: Technical Specification, Coding Guidelines (IEEE 730), Dev Environment Setup, Contribution Guide (IEEE 1074)
+- **Phase 05: Testing Documentation** - 3 new skills: Test Strategy, Test Plan, Test Report (IEEE 829)
+- **Phase 06: Deployment & Operations** - 4 new skills: Deployment Guide (IEEE 1062), Runbook (SRE), Monitoring Setup (ISO 25010), Infrastructure Docs (IEEE 1016)
+- **Phase 07: Agile Artifacts** - 4 new skills: Sprint Planning, Definition of Done, Definition of Ready, Retrospective Template (Scrum Guide)
+- **Phase 08: End-User Documentation** - 4 new skills: User Manual, Installation Guide, FAQ (ISO 26514), Release Notes (IEEE 830)
+- **Phase 09: Governance & Compliance** - 4 new skills: Traceability Matrix, Audit Report (IEEE 1012), Compliance Docs (GDPR/HIPAA/SOC2), Risk Assessment (ISO 31000)
+- **100% phase coverage** - All 10 SDLC phases fully implemented with 46 documentation skills
+
 ## What's New in v3.2
 
 - **Phase 01: Strategic Vision** - 3 new skills: Vision Statement (IEEE 29148), PRD (IEEE 29148/1233), Business Case (IEEE 1058)
 - **Phase 02: Agile Track Complete** - 3 new skills: Acceptance Criteria, Story Mapping, Backlog Prioritization (IEEE 29148)
 - **Phase 03: Design Documentation** - 4 new skills: HLD, LLD (IEEE 1016), API Specification (OpenAPI 3.0), Database Design (IEEE 1016)
 - **Setup Scripts** - PowerShell and Bash scripts for bootstrapping new SRS projects
-- **Coverage** increased from ~23% to ~50% of planned SDLC phases
 
 ## What's New in v3.0
 
@@ -637,12 +646,16 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 
 ## 📈 Roadmap
 
-### v3.2.0 (Current - 2026-02-28)
+### v3.3.0 (Current - 2026-03-01)
+- Phase 04-09: 23 new documentation skills completing 100% phase coverage
+- Development Artifacts, Testing, Deployment, Agile, End-User, Governance phases
+- 46 total documentation generation skills across 10 SDLC phases
+
+### v3.2.0 (2026-02-28)
 - Phase 01: Strategic Vision skills (Vision Statement, PRD, Business Case)
 - Phase 02: Agile track completion (Acceptance Criteria, Story Mapping, Backlog Prioritization)
 - Phase 03: Design Documentation skills (HLD, LLD, API Specification, Database Design)
 - Setup scripts for new project bootstrapping (PowerShell + Bash)
-- Fixed missing SKILL.md for waterfall feature-decomposition
 
 ### v3.1.0 (2026-02-07)
 - AI-Assisted Development Skills (4 skills + 3 reference guides)
@@ -652,12 +665,6 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 - Multi-methodology support (Waterfall + Agile)
 - Reorganized phase structure (00-09)
 - Agile user story generation skill
-
-### v3.3.0 (Planned - Q2 2026)
-- Testing documentation skills (test plans, test cases, test reports)
-- Deployment and operations skills (runbooks, IaC docs)
-- End-user documentation skills (manuals, FAQs)
-- Compliance documentation (GDPR, HIPAA, SOC2)
 
 ### v4.0.0 (Planned - Q3 2026)
 - ⏳ Automated doc generation from code (API docs, schema docs)
@@ -710,8 +717,8 @@ This project builds on industry standards:
 **Built with precision. Powered by standards. Designed for portability.**
 
 **Maintained by:** Peter Bamuhigire
-**Version:** 3.0.0
-**Last Updated:** 2026-02-07
+**Version:** 3.3.0
+**Last Updated:** 2026-03-01
 
 ---
 

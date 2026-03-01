@@ -2,6 +2,55 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.0] - 2026-03-01
+
+### Added
+
+**Phase 04: Development Artifacts (4 new skills):**
+- **01-technical-specification** - Module-level technical specs with interface contracts, data structures, algorithm details per IEEE 1016/830
+- **02-coding-guidelines** - Naming conventions, formatting, patterns, code review criteria per IEEE 730
+- **03-dev-environment-setup** - Toolchain installation, build configuration, local development workflow per IEEE 1074
+- **04-contribution-guide** - Branching strategy, commit conventions, PR workflow, CI/CD integration per IEEE 1074
+
+**Phase 05: Testing Documentation (3 new skills):**
+- **01-test-strategy** - Test levels, types, tools, environments, entry/exit criteria per IEEE 829 Sec 6
+- **02-test-plan** - Test cases with requirements traceability, test data, schedule per IEEE 829 Sec 7-8
+- **03-test-report** - Execution report template with pass/fail summary, defect analysis, coverage metrics per IEEE 829 Sec 9-10
+
+**Phase 06: Deployment & Operations (4 new skills):**
+- **01-deployment-guide** - Step-by-step deployment procedures with rollback and environment configs per IEEE 1062
+- **02-runbook** - Incident response, escalation paths, health checks, recovery playbooks per SRE practices
+- **03-monitoring-setup** - Metrics definitions, alerting rules, dashboard specs, SLI/SLO targets per ISO/IEC 25010
+- **04-infrastructure-docs** - Architecture diagrams (Mermaid), resource inventory, networking topology per IEEE 1016
+
+**Phase 07: Agile Artifacts (4 new skills):**
+- **01-sprint-planning** - Sprint goal, capacity calculation, backlog selection, task breakdown per Scrum Guide/IEEE 29148
+- **02-definition-of-done** - Multi-level DoD checklist (story, increment, release) per Scrum Guide
+- **03-definition-of-ready** - Backlog item readiness criteria with acceptance criteria and sizing per Scrum Guide
+- **04-retrospective-template** - Multiple facilitation formats (Start-Stop-Continue, 4Ls, Sailboat) per Scrum Guide
+
+**Phase 08: End-User Documentation (4 new skills):**
+- **01-user-manual** - Getting started, feature guides, role-based workflows, troubleshooting per ISO 26514
+- **02-installation-guide** - System requirements, installation steps, configuration, verification per ISO 26514
+- **03-faq** - Categorized question-answer pairs with cross-references per ISO 26514
+- **04-release-notes** - Version tracking, features, bug fixes, breaking changes, migration guide per IEEE 830
+
+**Phase 09: Governance & Compliance (4 new skills):**
+- **01-traceability-matrix** - Bidirectional RTM with gap analysis and orphan detection per IEEE 1012-2016
+- **02-audit-report** - V&V audit with severity-rated findings and remediation plan per IEEE 1012-2016
+- **03-compliance-documentation** - Regulatory mapping (GDPR/HIPAA/SOC2) with gap analysis
+- **04-risk-assessment** - ISO 31000 risk framework with probability/impact matrix and risk register per ISO 31000/IEEE 1012
+
+**Infrastructure:**
+- Updated skill_overview.md pipeline registry with all 23 new skills
+- 6 new phase-level README.md files
+
+### Changed
+
+- All 10 SDLC phases now fully implemented (100% phase coverage)
+- Overall engine implementation increased from ~50% to 100% of planned documentation skills
+- Total skill count: 46 documentation generation skills across 10 phases
+
 ## [3.2.0] - 2026-02-28
 
 ### Added
