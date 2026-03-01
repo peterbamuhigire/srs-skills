@@ -1,0 +1,10 @@
+You are executing the 02-Installation-Guide skill. Your mandate is to generate step-by-step installation instructions covering prerequisites, system requirements, installation procedures, configuration, and verification per ISO 26514.
+
+1. Read ../project_context/tech_stack.md. Optionally read ../output/Deployment_Guide.md. Log all file paths. Halt if tech_stack.md is missing.
+2. Define System Requirements covering minimum and recommended OS versions, hardware specifications, network requirements, and browser requirements. Every requirement SHALL specify exact version numbers or measurable thresholds.
+3. List all Prerequisites including runtime environments with version numbers, package managers, database servers, required user permissions, and environment variables. Every dependency SHALL be explicitly named with its minimum version.
+4. Generate numbered Installation Steps with exact commands per platform, expected console output, and estimated time per step. Platform-specific variations SHALL use conditional blocks. Steps SHALL follow dependency order.
+5. Document Configuration covering configuration file locations, required parameters with example values, optional parameters with defaults, and environment-specific differences.
+6. Define Post-Installation Verification with version check commands, health check endpoints, a minimal functional test, and log file locations for failure diagnosis.
+7. Document Upgrading procedures with data backup steps and migration notes, and Uninstallation procedures with clean removal steps and data preservation guidance.
+8. Generate a Common Issues & Solutions section covering permission errors, port conflicts, dependency mismatches, and platform-specific known issues. Write to ../output/Installation_Guide.md. Log total count of installation steps.

@@ -1,0 +1,10 @@
+You are executing the 01-Sprint-Planning skill. Your mandate is to generate a sprint planning template with sprint goal, capacity calculation, selected backlog items, task breakdown, and risk tracking per the Scrum Guide and IEEE 29148.
+
+1. Read ../project_context/vision.md and ../output/prioritized_backlog.md. Optionally read ../output/user_stories.md. Log all file paths. Halt if any required file is missing.
+2. Define a Sprint Goal section: derive a single value-statement goal from vision.md, include goal rationale linking to a business objective, and provide success criteria for goal completion.
+3. Define a Team Capacity section: list team members with available days, deduct ceremonies and overhead, and calculate total capacity using $Capacity = AvailableDays \times FocusFactor \times HoursPerDay$.
+4. Define a Selected Backlog Items section: pull items from prioritized_backlog.md by priority, include ID/title/priority/estimate/acceptance-criteria columns, track cumulative effort against capacity, and flag items exceeding remaining capacity.
+5. Define a Task Breakdown section: decompose each selected item into tasks with ID, description, assignee, estimate, status, and dependency columns.
+6. Define a Sprint Risks & Dependencies section: list risks with probability/impact/mitigation, external dependencies with owner and resolution date, and a blocked-items tracker.
+7. Include a Definition of Done Reference section pointing to Definition_of_Done.md and a Sprint Commitment section for team sign-off.
+8. Assemble all sections under a document header (project name, sprint number, date range, standards). Write to ../output/Sprint_Planning_Template.md. Log completion.

@@ -1,0 +1,10 @@
+You are executing the 04-Retrospective-Template skill. Your mandate is to generate a sprint retrospective template with multiple facilitation formats, action item tracking, and continuous improvement metrics per the Scrum Guide.
+
+1. Read ../project_context/vision.md. Log the file path. Halt if vision.md is missing.
+2. Define a Sprint Summary section: sprint number, date range, sprint goal, team participants, sprint outcome (met/partially met/not met), and velocity.
+3. Define a What Went Well section: structured space for positive observations categorized by theme (process, collaboration, technical, delivery) with a voting mechanism to identify top themes.
+4. Define a What Could Be Improved section: structured space for improvement areas categorized by theme with voting to prioritize. Require specific, observable descriptions -- not blame-oriented statements.
+5. Define an Action Items section: each item SHALL have a unique ID, assigned owner, target completion date, measurable success criterion, and status (open/in progress/completed/deferred).
+6. Define three Facilitation Formats: (a) Start-Stop-Continue with three actionable columns, (b) 4Ls (Liked, Learned, Lacked, Longed For) with four quadrants linking observations to actions, (c) Sailboat with wind/anchors/rocks/island mapping to team experiences.
+7. Define Improvement Metrics: action item completion rate across sprints, recurring theme tracking, team satisfaction trend, and a follow-up table for previous sprint actions.
+8. Assemble all sections under a document header (project name, sprint number, date, standards). Write to ../output/Retrospective_Template.md. Log completion.

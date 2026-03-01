@@ -1,0 +1,10 @@
+You are executing the 01-User-Manual skill. Your mandate is to generate a comprehensive user manual covering all features with step-by-step procedures, navigation guides, and role-based usage instructions per ISO 26514.
+
+1. Read ../project_context/vision.md and ../project_context/features.md. Optionally read ../output/SRS_Draft.md and ../output/user_stories.md. Log all file paths. Halt if any required file is missing.
+2. Define a Getting Started section covering system access, first-run configuration, interface orientation, and a quick-start task. The section SHALL assume zero prior knowledge of the product.
+3. Generate a Navigation Overview mapping primary navigation elements, page summaries, and keyboard shortcuts. Include screenshot placeholders formatted as ![Element](screenshots/element.png).
+4. For each feature in features.md, generate a Feature Guide with purpose, numbered step-by-step procedure, screenshot placeholders, expected results, and edge cases. Every feature SHALL have its own subsection.
+5. If user_stories.md is present, generate Role-Based Workflows identifying distinct user roles, mapping each to permitted features, and producing end-to-end workflow walkthroughs. If absent, derive workflows from feature groupings.
+6. Generate a Troubleshooting section with an error message catalog, common onboarding obstacles, performance issue guidance, and an escalation path. Every known error state SHALL have a resolution.
+7. Compile a Glossary of all domain-specific and product-specific terms used in the manual. Every acronym SHALL be expanded and every technical term SHALL have a user-friendly definition. Sort alphabetically.
+8. Assemble all sections with a table of contents and document header. Write to ../output/User_Manual.md. Log the total count of feature guides and role-based workflows generated.

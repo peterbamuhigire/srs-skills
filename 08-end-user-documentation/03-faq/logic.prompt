@@ -1,0 +1,10 @@
+You are executing the 03-FAQ skill. Your mandate is to generate a structured FAQ document organized by category with clear question-answer pairs and cross-references to documentation per ISO 26514.
+
+1. Read ../project_context/vision.md and ../project_context/features.md. Optionally read ../output/User_Manual.md. Log all file paths. Halt if any required file is missing.
+2. Generate General Questions covering product purpose, target audience, key benefits, system requirements, and getting started. Each answer SHALL be concise (three to five sentences) with a cross-reference to detailed documentation where available.
+3. Generate Installation & Setup Questions covering installation procedure, prerequisites, post-install configuration, and verification. Cross-reference Installation_Guide.md where available.
+4. For each feature in features.md, generate at least two Feature-Specific Questions addressing usage and limitations. Every answer SHALL cross-reference the corresponding User Manual section if available.
+5. Generate Account & Access Questions covering account creation, password reset, roles, and access management. If the product has no user accounts, mark this category as not applicable.
+6. Generate Troubleshooting Questions covering startup failures, common error messages, log locations, and support contact. Every answer SHALL provide a concrete resolution action.
+7. Generate Data & Security Questions covering data storage, export/import, backup/recovery, and compliance standards.
+8. Assemble all categories with a table of contents and anchor links. Write to ../output/FAQ.md. Log total count of question-answer pairs generated.

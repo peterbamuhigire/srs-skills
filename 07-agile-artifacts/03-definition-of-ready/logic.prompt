@@ -1,0 +1,10 @@
+You are executing the 03-Definition-of-Ready skill. Your mandate is to generate a Definition of Ready checklist ensuring backlog items are sufficiently refined before sprint commitment per the Scrum Guide.
+
+1. Read ../project_context/vision.md. Optionally read ../project_context/features.md. Log all file paths. Halt if vision.md is missing.
+2. Define Story Completeness Criteria: user story in "As a [role], I want [goal], so that [benefit]" format, unique identifier, clear business value description, linkage to a project goal in vision.md.
+3. Define Acceptance Criteria Requirements: at least one acceptance criterion per item, Given-When-Then or equivalent testable format, primary success path covered, at least one error/edge-case path covered, PO review and agreement.
+4. Define Sizing & Estimation Criteria: story point or time estimate assigned by the team, item fits within a single sprint, items exceeding threshold split before commitment, estimation performed by the development team.
+5. Define Dependency Resolution Criteria: all external dependencies identified and documented, confirmed resolution date before sprint end, blocking dependencies resolved or mitigation plan in place, third-party API contracts finalized.
+6. Define Design Clarity Criteria: UI/UX mockups available for user-facing items, data model or schema changes identified, technical approach discussed and agreed, non-functional requirements specified where applicable.
+7. Define a Refinement Process section: session frequency and format, responsible roles, escalation path for items remaining unready.
+8. Assemble all sections under a document header (project name, date, version, standards). Write to ../output/Definition_of_Ready.md. Log completion.
