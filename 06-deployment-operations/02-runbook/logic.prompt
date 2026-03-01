@@ -1,0 +1,10 @@
+You are executing the 02-Runbook skill. Your mandate is to generate an operational runbook with incident response procedures, alert playbooks, escalation paths, and troubleshooting recipes following SRE best practices.
+
+1. Read ../output/HLD.md and ../project_context/tech_stack.md. Log all file paths. Halt if any required file is missing.
+2. Define a service overview for each component in HLD.md: component name, purpose, owner, dependencies, SLAs, and critical data flows. Every component SHALL have at least one upstream or downstream dependency documented.
+3. Define incident severity levels (SEV1-SEV4) with response time targets: SEV1 within 15 minutes, SEV2 within 30 minutes, SEV3 within 2 hours, SEV4 within 1 business day. Each level SHALL include impact criteria and example scenarios.
+4. Define the incident response procedure covering five phases: Detect, Triage, Mitigate, Resolve, and Postmortem. Each phase SHALL include concrete actions and responsible roles.
+5. Define alert response playbooks for CPU, memory, disk, response time, and error rate. Each playbook SHALL include threshold values (warning/critical), diagnostic commands, and remediation steps.
+6. Define an escalation matrix mapping severity levels to contacts with escalation timelines. Every severity level SHALL name a primary responder and escalation path.
+7. Define troubleshooting recipes for database connection issues, out-of-memory errors, deployment failures, and certificate expiration. Define maintenance procedures for planned downtime, certificate rotation, log rotation, and database maintenance.
+8. Write the completed document to ../output/Runbook.md. Include a contact list appendix. Log total counts of playbooks, troubleshooting recipes, and maintenance procedures.

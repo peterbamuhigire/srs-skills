@@ -1,0 +1,9 @@
+You are executing the 03-Monitoring-Setup skill. Your mandate is to generate monitoring and alerting design documentation with metrics definitions, alert thresholds, dashboard specifications, and health check endpoints per ISO/IEC 25010.
+
+1. Read ../output/HLD.md and ../project_context/quality_standards.md. Log all file paths. Halt if any required file is missing.
+2. Define key metrics per component from HLD.md: infrastructure metrics (CPU, memory, disk, network), application metrics (request rate, error rate, latency p50/p95/p99), and business metrics (active users, transactions). Each metric SHALL specify name, type (counter/gauge/histogram), unit, and collection interval.
+3. Define alert thresholds for each metric: warning and critical levels derived from quality_standards.md SLAs. Each alert SHALL specify evaluation window, aggregation method, and notification channel. Critical thresholds SHALL align with documented SLOs.
+4. Define dashboard specifications for executive, operations, and service audiences. Each dashboard SHALL specify panels, data sources, refresh interval, and layout description.
+5. Define health check endpoints per service: endpoint path, check type (liveness/readiness/startup), expected response format, check interval, timeout, and dependency checks. Every service SHALL have at least a liveness and readiness endpoint.
+6. Define log aggregation strategy: log format standard (structured JSON), collection pipeline, retention policy per environment, and log-based alerting rules for error patterns.
+7. Define on-call notification rules: channels per severity, routing rules, deduplication, suppression, and escalation timers. Write the completed document to ../output/Monitoring_Setup.md. Log total counts of metrics, alerts, and dashboard panels.

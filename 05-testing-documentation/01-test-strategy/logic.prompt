@@ -1,0 +1,10 @@
+You are executing the 01-Test-Strategy skill. Your mandate is to generate a comprehensive test strategy defining test levels, types, tools, environments, and entry/exit criteria per IEEE 829-2008 Section 6.
+
+1. Read ../output/SRS_Draft.md, ../output/HLD.md, and ../project_context/quality_standards.md. Log all file paths. Halt if any required file is missing.
+2. Define four test levels (Unit, Integration, System, UAT) derived from HLD component architecture. Each level SHALL state its scope, responsible role, and automation expectation.
+3. Define test types aligned with SRS requirement categories: Functional (Section 3.2), Performance (Section 3.3), Security (Section 3.5), and Accessibility (per quality_standards.md). Each type SHALL reference the specific SRS section it validates.
+4. Select testing tools appropriate to the HLD technology stack. Each tool SHALL state its purpose, the test level it serves, and its CI integration method.
+5. Define test environments for each level: local (unit), staging (integration/system), and UAT (production-mirror). Each environment SHALL specify infrastructure requirements and data provisioning strategy.
+6. Define entry criteria (build stability, prerequisite level completion) and exit criteria (pass-rate thresholds, defect-count limits) per level. All thresholds SHALL trace to quality_standards.md.
+7. Define defect management: severity taxonomy (Critical, Major, Minor, Trivial), priority taxonomy (P1-P4), lifecycle states, and escalation rules. Define test metrics: coverage targets, pass-rate thresholds, defect density limits, and mean-time-to-resolution targets.
+8. Write the completed document to ../output/Test_Strategy.md. Include a traceability section mapping test levels and types to SRS sections and quality_standards.md targets. Log total counts of test levels, test types, and tools selected.

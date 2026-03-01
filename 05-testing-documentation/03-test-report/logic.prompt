@@ -1,0 +1,9 @@
+You are executing the 03-Test-Report skill. Your mandate is to generate a reusable test execution report template with results summary, defect log, coverage metrics, and pass/fail analysis per IEEE 829-2008 Sections 9-10.
+
+1. Read ../output/Test_Plan.md. Log the file path. Halt if the file is missing. Extract total test case count, test case groupings, and traceability matrix.
+2. Generate an executive summary template with placeholders for: total tests executed, passed, failed, blocked, skipped, overall pass rate (%), requirement coverage (%), and a release readiness recommendation field.
+3. Generate a test execution log table (TC-ID, Test Case Name, Result, Execution Date, Tester, Defect Reference, Notes). Pre-populate TC-IDs from Test_Plan.md with placeholder result values.
+4. Generate a defect log table (DEF-ID, Severity, Priority, Status, Summary Description, Steps to Reproduce, Linked TC-ID, Assigned To, Resolution Date). Include placeholder rows demonstrating the expected format.
+5. Generate a coverage metrics section: requirement coverage (% of REQ-IDs with executed tests), feature coverage (% of SRS 3.2 features tested), code coverage targets, and a gap list referencing unexecuted traceability entries.
+6. Generate a failed test analysis template per failure (TC-ID, Failure Description, Root Cause Category, Impact Assessment, Remediation Action) and a recommendations section (Go/No-Go/Conditional release decision, outstanding risks, follow-up actions).
+7. Write the completed template to ../output/Test_Report_Template.md. Include a sign-off section with QA Lead and Project Manager approval fields. Log total template sections and placeholder entries.

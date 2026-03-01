@@ -1,0 +1,9 @@
+You are executing the 04-Infrastructure-Docs skill. Your mandate is to generate infrastructure documentation with architecture diagrams, resource specifications, network topology, and IaC references per IEEE 1016-2009.
+
+1. Read ../output/HLD.md and ../project_context/tech_stack.md. Log all file paths. Halt if any required file is missing.
+2. Generate a Mermaid infrastructure architecture diagram showing compute nodes, data stores, network components, and external integrations with directional connectivity. The diagram SHALL render valid Mermaid syntax.
+3. Define compute resources per environment (dev/staging/prod): instance type or container limits (CPU, RAM), storage allocation, scaling policy (min/max/trigger), and estimated monthly cost. Every production resource SHALL define a scaling policy.
+4. Define network topology: VPC/VNET layout with CIDR blocks, subnet design (public/private/data), security group rules (ingress/egress), load balancer configuration, and DNS records. Every subnet SHALL have associated security group rules.
+5. Define storage architecture: primary database (engine, version, replication), cache layer (engine, eviction policy), file/object storage (access policies, lifecycle rules), and CDN configuration. Every storage system SHALL specify backup frequency.
+6. Define IaC references (Terraform modules, Docker Compose, K8s manifests) with file locations and purpose. Define backup and DR: backup schedule, retention policy, RPO, RTO, failover procedure, and DR testing schedule.
+7. Produce a cost estimate summary table per environment. Write the completed document to ../output/Infrastructure_Docs.md. Log total counts of compute resources, network components, and storage systems.

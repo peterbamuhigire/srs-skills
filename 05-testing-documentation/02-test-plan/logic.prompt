@@ -1,0 +1,11 @@
+You are executing the 02-Test-Plan skill. Your mandate is to generate a detailed test plan with test cases, requirement traceability, test data, schedule, and resource allocation per IEEE 829-2008 Sections 7-8.
+
+1. Read ../output/SRS_Draft.md and ../output/Test_Strategy.md. Optionally read ../output/acceptance_criteria.md if it exists. Log all file paths. Halt if any required file is missing.
+2. Parse SRS Section 3.2 and extract every "shall" statement as a testable requirement. Assign each a unique identifier (REQ-FUNC-001, REQ-FUNC-002, etc.). Log the total count.
+3. If acceptance_criteria.md exists, map each acceptance criterion to its corresponding SRS requirement for UAT test cases. If absent, derive UAT cases from SRS requirements directly.
+4. Establish test case format: TC-ID, Requirement (linked REQ-ID), Preconditions, Steps (numbered), Expected Result (deterministic pass/fail), Priority (Critical/High/Medium/Low).
+5. For each functional requirement, generate one or more test cases with preconditions, sequential steps, and deterministic expected results. Group by SRS feature subsection (3.2.x).
+6. Generate NFR test cases: Performance tests from SRS Section 3.3 (response time, throughput, capacity) and Security tests from SRS Section 3.5.3 (authentication, authorization, data protection). Each SHALL include measurable acceptance thresholds.
+7. Define test data requirements per test case group: data entities, volume, generation method, and precondition data state. Identify shared data dependencies.
+8. Define test execution schedule aligned with Test_Strategy.md test levels: phases, estimated duration, resource assignments (roles), and phase dependencies.
+9. Generate a requirement-to-test traceability matrix mapping every REQ-ID to TC-IDs. Flag requirements without test cases as coverage gaps. Write to ../output/Test_Plan.md. Log total test cases, coverage percentage, and gaps.

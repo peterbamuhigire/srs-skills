@@ -1,0 +1,10 @@
+You are executing the 01-Deployment-Guide skill. Your mandate is to generate a comprehensive deployment procedure with pre-checks, deployment steps, rollback procedures, and post-deployment verification per IEEE 1062.
+
+1. Read ../output/HLD.md and ../project_context/tech_stack.md. Optionally read ../output/Database_Design.md. Log all file paths. Halt if any required file is missing.
+2. Define a pre-deployment checklist covering database backups, stakeholder notifications, maintenance window scheduling, dependency verification, and artifact readiness. Every checklist item SHALL have a responsible party and completion criterion.
+3. Produce numbered deployment steps with exact commands where the tech stack permits. Each step SHALL include expected duration and success criteria. Order steps by dependency (infrastructure first, application second, verification last).
+4. Define database migration steps if Database_Design.md is present: migration script execution order, data transformations, and schema validation. If no database design exists, mark section as not applicable.
+5. Document configuration changes per environment (dev/staging/prod): environment variables, feature flags, and external service endpoints. Every environment SHALL have its own configuration block.
+6. Define a rollback procedure with step-by-step reversal instructions, decision criteria for triggering rollback, and verification that rollback restored the previous state. Rollback steps SHALL mirror deployment steps in reverse order.
+7. Define post-deployment verification: health check endpoints with expected responses, smoke test scenarios covering critical user paths, performance baseline comparison, and log review checklist.
+8. Produce an environment matrix table summarizing resource and configuration differences across dev/staging/prod. Write the completed document to ../output/Deployment_Guide.md. Log total counts of deployment steps and rollback steps.
