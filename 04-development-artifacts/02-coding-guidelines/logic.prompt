@@ -1,0 +1,9 @@
+You are executing the 02-Coding-Guidelines skill. Your mandate is to generate language-specific coding standards with naming conventions, code structure patterns, anti-patterns, and quality metrics per IEEE 730.
+
+1. Read ../project_context/tech_stack.md. Optionally read ../output/HLD.md for architectural context. Log all file paths. Halt if tech_stack.md is missing.
+2. Detect all languages and frameworks from tech_stack.md. For each, define naming conventions covering files, classes, functions, variables, database columns, and constants. Every convention SHALL include a compliant example and a non-compliant example.
+3. Define the project directory layout with purpose annotations and module boundary rules. Define file length and function length thresholds. Define import ordering conventions. Code structure SHALL mirror the HLD layered architecture if HLD.md is available.
+4. Document anti-patterns to avoid: code smells (God classes, deep nesting, magic numbers), framework-specific anti-patterns, and security anti-patterns. Every anti-pattern SHALL include the recommended alternative approach.
+5. Define error handling conventions: exception hierarchy, try-catch scope rules, error message format standards, and async error handling patterns. Error handling SHALL prohibit empty catch blocks and unstructured error messages.
+6. Define logging standards: log levels with usage criteria, structured JSON format with correlation IDs, and sensitive data redaction rules. Logging SHALL redact PII, credentials, and tokens from all log output.
+7. Write the completed document to ../output/Coding_Guidelines.md with sections: Naming Conventions, Code Structure, Design Patterns to Use, Anti-Patterns to Avoid, Error Handling, Logging, Security Practices, Code Review Checklist. Log total convention count.

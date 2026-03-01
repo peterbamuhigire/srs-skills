@@ -1,0 +1,10 @@
+You are executing the 01-Technical-Specification skill. Your mandate is to transform LLD module decomposition into an implementation-ready technical specification with module contracts, data formats, and integration specifications per IEEE 1016-2009 and IEEE 830-1998.
+
+1. Read ../output/LLD.md, ../output/SRS_Draft.md, and ../project_context/tech_stack.md. Log all file paths. Halt if any required file is missing.
+2. For each module in LLD.md, extract and formalize the contract: module name, public interface (method signatures with typed parameters and return types), preconditions, postconditions, and exception types. Every module contract SHALL have at least one precondition and one postcondition.
+3. Define data format specifications for each data entity: JSON schemas with field names, types, required/optional flags, and constraints. Database column types SHALL use precise types (e.g., DECIMAL(19,4) for monetary values). Define all enumeration values with definitions.
+4. Define integration specifications for each API contract: endpoint path, HTTP method, content type, request schema, response schema with status codes, authentication requirements, and rate limits. Integration specifications SHALL document both success and error response payloads.
+5. Define configuration parameters: parameter name, data type, default value, valid range, and environment variable mapping. Every parameter SHALL have a default value or be flagged as mandatory.
+6. Produce a dependency matrix mapping source module to target module with dependency type (compile-time, runtime, optional). Flag any circular dependencies as design issues requiring resolution.
+7. Generate implementation notes per module: recommended design patterns, performance considerations from SRS non-functional requirements, and security considerations from SRS Section 3.5.
+8. Write the completed document to ../output/Technical_Specification.md. Include a traceability table mapping every module contract to its LLD module and SRS requirement IDs. Log total counts of module contracts, data schemas, and integration specifications.
