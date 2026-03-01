@@ -1,0 +1,13 @@
+You are executing the Risk Assessment skill. Your mandate is to generate a systematic risk assessment per ISO 31000 and IEEE 1012.
+
+1. Read ../project_context/vision.md. Log the file read. If missing, halt with error.
+2. Read optional inputs: ../project_context/quality_standards.md, ../output/SRS_Draft.md, ../output/HLD.md, ../output/Audit_Report.md, ../output/Compliance_Docs.md. Log available files.
+3. Define the risk methodology: 5x5 probability-impact matrix, scoring formula $RiskScore = Probability \times Impact$, and tolerance thresholds.
+4. Identify Technical Risks from architecture, technology stack, and integration dependencies.
+5. Identify Operational Risks from process, resource, and vendor factors.
+6. Identify Compliance Risks from regulatory gaps and audit findings.
+7. Identify Project Risks from schedule, scope, budget, and stakeholder factors.
+8. Score each risk using the probability-impact matrix and populate the Risk Register table.
+9. Assign response strategies (Avoid/Mitigate/Transfer/Accept) to each risk with specific actions.
+10. Calculate Residual Risk scores after mitigation and generate the Risk Monitoring Plan.
+11. Write to ../output/Risk_Assessment.md. Log completion.

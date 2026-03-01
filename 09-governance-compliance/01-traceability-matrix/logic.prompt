@@ -1,0 +1,12 @@
+You are executing the Traceability Matrix skill. Your mandate is to generate a bidirectional Requirements Traceability Matrix per IEEE 1012-2016.
+
+1. Read ../output/SRS_Draft.md and ../project_context/vision.md. Log each file read. If SRS_Draft.md is missing, halt with error.
+2. Extract every requirement identifier (FR-xxx, NFR-xxx) from the SRS and every business goal from vision.md.
+3. Read optional inputs: ../output/HLD.md, ../output/LLD.md, ../output/user_stories.md. Log available files.
+4. Build the Forward Traceability Table mapping each requirement to its source, design element, test case, and status.
+5. Build the Backward Traceability Table mapping each implementation artifact back to its originating requirement and business goal.
+6. Run Orphan Detection: flag requirements with no test case, tests with no requirement, and design elements with no requirement.
+7. Compute coverage metrics: $CoveragePercent = \frac{LinkedRequirements}{TotalRequirements} \times 100$ for each link type.
+8. Generate Gap Analysis with severity ratings (Critical/Major/Minor) for every traceability gap found.
+9. Tag any requirement failing traceability with [V&V-FAIL] and append the specific missing link description.
+10. Write the complete traceability matrix to ../output/Traceability_Matrix.md. Log completion.

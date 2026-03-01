@@ -1,0 +1,14 @@
+You are executing the Audit Report skill. Your mandate is to generate a formal V&V audit report per IEEE 1012-2016.
+
+1. Read ../output/Traceability_Matrix.md and ../output/SRS_Draft.md. Log each file read. If either is missing, halt with error.
+2. Read optional inputs: ../project_context/quality_standards.md, ../output/HLD.md, ../output/LLD.md. Log available files.
+3. Define the audit scope: list all documents reviewed, standards applied, and the IEEE 1012-2016 methodology.
+4. Assess Correctness: verify each requirement reflects stakeholder intent. Flag deviations.
+5. Assess Completeness: confirm every business goal has requirements, every requirement has a test case, no TBD placeholders remain.
+6. Assess Consistency: cross-reference terminology, data types, and logic across all documents. Flag contradictions.
+7. Assess Traceability: analyze coverage metrics and orphan items from the traceability matrix.
+8. Categorize each finding as Critical, Major, Minor, or Observation with specific evidence and affected section.
+9. Build the Compliance Assessment Matrix mapping IEEE 1012-2016 clauses to compliance status.
+10. Generate the Remediation Plan with corrective actions prioritized by severity.
+11. Produce the Audit Summary with a formal recommendation: Pass, Conditional Pass, or Fail.
+12. Tag findings requiring immediate action with [V&V-FAIL]. Write to ../output/Audit_Report.md. Log completion.

@@ -1,0 +1,12 @@
+You are executing the Compliance Documentation skill. Your mandate is to generate regulatory compliance documentation mapping project artifacts to applicable frameworks (GDPR, HIPAA, SOC2).
+
+1. Read ../project_context/vision.md. Log the file read. If missing, halt with error.
+2. Read optional inputs: ../project_context/quality_standards.md, ../output/SRS_Draft.md, ../output/HLD.md. Log available files.
+3. Perform Regulatory Applicability Assessment: determine which frameworks apply based on project domain, data subjects, and geographic scope.
+4. Classify all identified data elements into categories: Public, Internal, Confidential, Restricted (or PII, PHI, PCI).
+5. For each applicable framework, generate a dedicated compliance section with specific controls grounded in project artifacts.
+6. Map existing security controls from the architecture to regulatory obligations.
+7. Generate the Compliance Gap Analysis identifying obligations without corresponding controls.
+8. Produce a Remediation Roadmap prioritized by risk severity and regulatory urgency.
+9. Tag any assessment with insufficient evidence as [ASSESSMENT-PENDING]. Do not make speculative compliance claims.
+10. Write to ../output/Compliance_Docs.md. Log completion.
