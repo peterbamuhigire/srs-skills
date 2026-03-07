@@ -2,9 +2,21 @@
 
 This phase handles **requirements documentation** across different software development methodologies.
 
-## Choose Your Methodology
+## Choose Your Approach
 
-This directory contains **two distinct pipelines** for requirements engineering:
+This directory contains **three layers** for requirements engineering:
+
+### RE Fundamentals (`fundamentals/`)
+
+**Methodology-agnostic skills** that wrap around both pipelines. Run these before, during, and after your chosen pipeline for comprehensive requirements engineering.
+
+**11 skills** covering: Stakeholder Analysis, Elicitation, BRD Generation (optional), Requirements Analysis, Conceptual Data Modeling, Requirements Patterns, Validation, Management, Traceability, Metrics, and Reuse.
+
+**Sources:** Laplante (RE for Software & Systems), Wiegers & Beatty (RE Essentials), Leffingwell (Agile Software Requirements), Business Requirements Gathering & Data Architecture Modeling.
+
+[Start with Fundamentals](fundamentals/README.md)
+
+---
 
 ### 📋 Waterfall Pipeline (`waterfall/`)
 
@@ -42,7 +54,32 @@ This directory contains **two distinct pipelines** for requirements engineering:
 
 ---
 
+## Recommended Workflow
+
+```mermaid
+flowchart LR
+    F1[Fundamentals<br/>BEFORE] --> CHOOSE{Choose<br/>Pipeline}
+    CHOOSE -->|Regulated| WF[Waterfall<br/>Pipeline]
+    CHOOSE -->|Iterative| AG[Agile<br/>Pipeline]
+    WF <--> F2[Fundamentals<br/>DURING]
+    AG <--> F2
+    WF --> F3[Fundamentals<br/>AFTER]
+    AG --> F3
+
+    style F1 fill:#e8f5e9
+    style F2 fill:#fff3e0
+    style F3 fill:#e3f2fd
+```
+
 ## Comparison Matrix
+
+| Aspect | Fundamentals (`fundamentals/`) | Waterfall (`waterfall/`) | Agile (`agile/`) |
+|--------|-------------------------------|--------------------------|-------------------|
+| **Scope** | Cross-methodology RE lifecycle | IEEE 830 SRS generation | User stories & backlog |
+| **When** | Before + during + after pipeline | Sequential phases 01-08 | Iterative refinement |
+| **Required?** | Recommended for all projects | For regulated/fixed-scope | For Agile/Scrum teams |
+
+### Pipeline Comparison
 
 | Aspect | Waterfall (`waterfall/`) | Agile (`agile/`) |
 |--------|--------------------------|-------------------|
@@ -149,6 +186,7 @@ After requirements are documented:
 
 | Pipeline | Status | Version | Last Updated |
 |----------|--------|---------|--------------|
+| **fundamentals/** | ✅ Stable | 1.0.0 | 2026-03-07 |
 | **waterfall/** | ✅ Stable | 3.0.0 | 2026-02-07 |
 | **agile/** | 🚧 Beta | 1.0.0 | 2026-02-07 |
 | **use-cases/** | 📅 Planned | - | TBD |
@@ -169,6 +207,13 @@ Update your workflows:
 See [Migration Guide](../../docs/MIGRATION_V2_TO_V3.md) for details.
 
 ## Standards Reference
+
+### Fundamentals Standards
+- IEEE Std 29148-2018 (Requirements Engineering)
+- IEEE Std 1012-2016 (V&V)
+- IEEE Std 1016-2009 (Software Design — for conceptual data modeling)
+- ISO/IEC 25010 (Quality Model)
+- ISO/IEC 15504 (Process Assessment)
 
 ### Waterfall Standards
 - IEEE Std 830-1998 (SRS)
@@ -193,4 +238,4 @@ See [Migration Guide](../../docs/MIGRATION_V2_TO_V3.md) for details.
 
 **Need help choosing?** Consult the [Decision Tree](#decision-tree) above or review `CLAUDE.md` for AI assistant guidance.
 
-**Last Updated:** 2026-02-07
+**Last Updated:** 2026-03-07

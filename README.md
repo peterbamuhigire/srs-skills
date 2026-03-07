@@ -10,7 +10,7 @@
 - **Phase 07: Agile Artifacts** - 4 new skills: Sprint Planning, Definition of Done, Definition of Ready, Retrospective Template (Scrum Guide)
 - **Phase 08: End-User Documentation** - 4 new skills: User Manual, Installation Guide, FAQ (ISO 26514), Release Notes (IEEE 830)
 - **Phase 09: Governance & Compliance** - 4 new skills: Traceability Matrix, Audit Report (IEEE 1012), Compliance Docs (GDPR/HIPAA/SOC2), Risk Assessment (ISO 31000)
-- **100% phase coverage** - All 10 SDLC phases fully implemented with 46 documentation skills
+- **100% phase coverage** - All 10 SDLC phases fully implemented with 57 documentation skills
 
 ## What's New in v3.2
 
@@ -37,6 +37,19 @@
 - **Business Cases**
 
 ### **Requirements Engineering (Phase 02)**
+
+#### **RE Fundamentals (NEW):**
+- **Stakeholder Analysis** - IEEE 29148, Power/Interest grids, RACI
+- **Elicitation Toolkit** - Interviews, JAD, Prototyping, Observation, Surveys
+- **BRD Generation** (optional) - Business Requirements Document
+- **Requirements Analysis** - Conflict detection, feasibility, prioritization
+- **Conceptual Data Modeling** - Entity-relationship from business language
+- **Requirements Patterns** - Decision tables, state transitions, CRUD matrices
+- **Requirements Validation** - Reviews, inspections, prototype testing
+- **Requirements Management** - Baselining, change control, versioning
+- **Traceability Engineering** - Forward/backward trace links
+- **Requirements Metrics** - Universal quality gate (GREEN/YELLOW/RED)
+- **Requirements Reuse** (optional) - Product line requirements library
 
 #### **Waterfall Track:**
 - **SRS (Software Requirements Specification)** - IEEE 830-1998, IEEE 1233-1998
@@ -182,6 +195,10 @@ sdlc-docs-engine/
 ├── 00-meta-initialization/          # Methodology selection & project setup
 ├── 01-strategic-vision/             # PRD, vision statements, business cases
 ├── 02-requirements-engineering/
+│   ├── fundamentals/               # NEW: Methodology-agnostic RE lifecycle (11 skills)
+│   │   ├── before/                  # Stakeholder analysis, elicitation, BRD
+│   │   ├── during/                  # Analysis, data modeling, patterns, validation
+│   │   └── after/                   # Management, traceability, metrics, reuse
 │   ├── waterfall/                   # IEEE 830 SRS pipeline (8 phases)
 │   │   ├── 01-initialize-srs/
 │   │   ├── 02-context-engineering/
@@ -646,7 +663,14 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 
 ## 📈 Roadmap
 
-### v3.3.0 (Current - 2026-03-01)
+### v3.4.0 (Current - 2026-03-07)
+- **Requirements Engineering Fundamentals**: 11 new methodology-agnostic RE skills
+- Before/During/After lifecycle wrapping both Waterfall and Agile pipelines
+- Stakeholder Analysis, Elicitation Toolkit, BRD Generation, Requirements Analysis, Conceptual Data Modeling, Requirements Patterns, Validation, Management, Traceability Engineering, Metrics & Quality Gates, Requirements Reuse
+- Sources: Laplante, Wiegers & Beatty, Leffingwell, Business Requirements & Data Architecture
+- 57 total documentation generation skills across 10 SDLC phases
+
+### v3.3.0 (2026-03-01)
 - Phase 04-09: 23 new documentation skills completing 100% phase coverage
 - Development Artifacts, Testing, Deployment, Agile, End-User, Governance phases
 - 46 total documentation generation skills across 10 SDLC phases
@@ -717,8 +741,8 @@ This project builds on industry standards:
 **Built with precision. Powered by standards. Designed for portability.**
 
 **Maintained by:** Peter Bamuhigire
-**Version:** 3.3.0
-**Last Updated:** 2026-03-01
+**Version:** 3.4.0
+**Last Updated:** 2026-03-07
 
 ---
 
