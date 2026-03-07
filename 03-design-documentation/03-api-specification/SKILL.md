@@ -41,7 +41,7 @@ This skill generates comprehensive API documentation and a machine-readable Open
 
 ## Core Instructions
 
-Follow these ten steps in order. Halt and notify the user if a required input file is missing.
+Follow these eleven steps in order. Halt and notify the user if a required input file is missing.
 
 ### Step 1: Read Context Files
 
@@ -88,11 +88,22 @@ Extract performance constraints from SRS Section 3.3 (Performance Requirements).
 
 Define pagination strategy for all list endpoints: cursor-based or offset-based depending on data characteristics. Include standard parameters `page`, `per_page` and response envelope `total`, `data[]`. Reference `skills/api-pagination/` if available.
 
-### Step 9: Generate API_Specification.md
+### Step 9: Apply Advanced API Patterns (Optional)
+
+For APIs with operations beyond standard CRUD, apply patterns from `references/advanced-api-patterns.md`:
+
+- **Long-Running Operations:** If any endpoint processes >10 seconds, implement the LRO pattern from `references/long-running-operations.md` (POST returns 202 + operation resource)
+- **Batch Operations:** If bulk create/update/delete is needed, implement batch endpoints from `references/batch-operations.md` (POST /resources:batchCreate)
+- **Custom Methods:** For non-CRUD actions (cancel, approve, archive), use POST /resource:action pattern
+- **Field Masks:** For large resources, implement partial response via fields parameter
+
+**Source:** API Design Patterns (JJ Geewax)
+
+### Step 10: Generate API_Specification.md
 
 Write the human-readable specification to `../output/API_Specification.md` with all sections defined in the Output Format below.
 
-### Step 10: Generate openapi.yaml
+### Step 11: Generate openapi.yaml
 
 Generate a valid OpenAPI 3.0 document at `../output/openapi.yaml`. The document shall include: `openapi: "3.0.3"`, `info` block, `servers` block, `paths` with all endpoints, `components/schemas` with all request/response models, and `components/securitySchemes` with the authentication definition.
 

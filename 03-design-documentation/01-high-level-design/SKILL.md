@@ -41,7 +41,7 @@ This is the first skill in Phase 03 (Design Documentation). It transforms the ve
 
 ## Core Instructions
 
-Follow these ten steps in order. Halt and notify the user if a required input file is missing.
+Follow these eleven steps in order. Halt and notify the user if a required input file is missing.
 
 ### Step 1: Read Context Files
 
@@ -66,11 +66,23 @@ Produce a Mermaid graph TD diagram decomposing the system into architectural lay
 
 Produce a Mermaid deployment diagram mapping components to infrastructure targets (servers, containers, cloud services). Include ports, protocols, and TLS configuration derived from SRS Section 3.1 (External Interface Requirements).
 
-### Step 6: Generate Data Flow Diagrams
+### Step 6: Assess Scalability Requirements (Optional)
+
+If the system requires high availability (>99.9% uptime), handles >1000 concurrent users, or processes >100 requests/second, apply scalability patterns from `references/scalability-patterns.md`, `references/distributed-systems.md`, and `references/caching-strategies.md`. Document:
+
+- Scaling strategy (horizontal vs vertical) with triggers and limits
+- Caching layers and invalidation approach
+- Reliability patterns (circuit breakers, retries, graceful degradation)
+
+For systems requiring a full infrastructure design document, run `06-infrastructure-design` after completing HLD.
+
+**Source:** System Design - The Big Archive (ByteByteGo 2024)
+
+### Step 7: Generate Data Flow Diagrams
 
 Produce one or more Mermaid flowchart diagrams showing data entry points, transformation steps, storage locations, and retrieval paths. Each diagram shall cover a major data flow identified in the SRS functional requirements.
 
-### Step 7: Generate Technology Decisions Table
+### Step 8: Generate Technology Decisions Table
 
 Produce a table with the following columns:
 
@@ -78,7 +90,7 @@ Produce a table with the following columns:
 
 Every rationale entry shall cite a specific SRS constraint, non-functional requirement, or technology stack entry that justifies the choice.
 
-### Step 8: Document Integration Points
+### Step 9: Document Integration Points
 
 For each external system identified in SRS Section 3.1, document:
 - System name and purpose
@@ -87,7 +99,7 @@ For each external system identified in SRS Section 3.1, document:
 - Data format (JSON, XML, Protobuf)
 - Error handling strategy
 
-### Step 9: Document Cross-Cutting Concerns
+### Step 10: Document Cross-Cutting Concerns
 
 Address the following concerns with specific references to SRS sections:
 - **Authentication and Authorization**: reference SRS Section 3.5.3 (Security Requirements)
@@ -95,13 +107,13 @@ Address the following concerns with specific references to SRS sections:
 - **Error Handling**: global error strategy, error codes, retry policies
 - **Caching**: cache layers, invalidation strategy, TTL policies
 
-### Step 10: Generate Traceability Table
+### Step 11: Generate Traceability Table
 
 Produce a traceability table linking every HLD component to its originating SRS section and requirement IDs:
 
 | HLD Component | SRS Section | Requirement IDs | Notes |
 
-Every component defined in Steps 3-6 shall appear in this table at least once.
+Every component defined in Steps 3-7 shall appear in this table at least once.
 
 ## Output Format
 

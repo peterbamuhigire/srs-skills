@@ -10,7 +10,7 @@
 - **Phase 07: Agile Artifacts** - 4 new skills: Sprint Planning, Definition of Done, Definition of Ready, Retrospective Template (Scrum Guide)
 - **Phase 08: End-User Documentation** - 4 new skills: User Manual, Installation Guide, FAQ (ISO 26514), Release Notes (IEEE 830)
 - **Phase 09: Governance & Compliance** - 4 new skills: Traceability Matrix, Audit Report (IEEE 1012), Compliance Docs (GDPR/HIPAA/SOC2), Risk Assessment (ISO 31000)
-- **100% phase coverage** - All 10 SDLC phases fully implemented with 57 documentation skills
+- **100% phase coverage** - All 10 SDLC phases fully implemented with 63 documentation skills
 
 ## What's New in v3.2
 
@@ -35,6 +35,7 @@
 - **PRD (Product Requirements Document)** - IEEE 29148
 - **Vision Statements**
 - **Business Cases**
+- **Lean Canvas & Impact Mapping** (NEW) - MVP/startup alternative to PRD (decision gate)
 
 ### **Requirements Engineering (Phase 02)**
 
@@ -62,11 +63,12 @@
 - **Product Backlog** - Sprint-ready with story points
 
 ### **Design Documentation (Phase 03)**
-- **HLD (High-Level Design)** - IEEE 1016-2009
+- **HLD (High-Level Design)** - IEEE 1016-2009, scalability patterns (ByteByteGo)
 - **LLD (Low-Level Design)** - IEEE 1016-2009
-- **API Specifications** - OpenAPI 3.0, JSON Schema
+- **API Specifications** - OpenAPI 3.0, advanced API patterns (Geewax)
 - **Database Design** - ERDs, schema documentation
-- **UI/UX Specifications** - Wireframes, style guides
+- **UX Specification** (NEW) - Information architecture, wireframes, design systems, usability testing
+- **Infrastructure Design** (NEW) - Scalability, caching, reliability, monitoring (decision gate)
 
 ### **Testing Documentation (Phase 05)**
 - **Test Strategy** - IEEE 829
@@ -193,7 +195,7 @@ Each phase builds on the previous:
 ```
 sdlc-docs-engine/
 ├── 00-meta-initialization/          # Methodology selection & project setup
-├── 01-strategic-vision/             # PRD, vision statements, business cases
+├── 01-strategic-vision/             # PRD, vision statements, business cases, lean canvas
 ├── 02-requirements-engineering/
 │   ├── fundamentals/               # NEW: Methodology-agnostic RE lifecycle (11 skills)
 │   │   ├── before/                  # Stakeholder analysis, elicitation, BRD
@@ -207,13 +209,14 @@ sdlc-docs-engine/
 │   │   ├── 05-feature-decomposition/
 │   │   ├── 06-logic-modeling/
 │   │   ├── 07-attribute-mapping/
-│   │   └── 08-semantic-auditing/
+│   │   ├── 08-semantic-auditing/
+│   │   └── 09-use-case-modeling/    # NEW: UML use cases, activity diagrams
 │   └── agile/                       # User stories, story mapping, backlog
 │       ├── 01-user-story-generation/
 │       ├── 02-acceptance-criteria/
 │       ├── 03-story-mapping/
 │       └── 04-backlog-prioritization/
-├── 03-design-documentation/         # HLD, LLD, API specs, database design
+├── 03-design-documentation/         # HLD, LLD, API specs, database, UX spec, infrastructure
 ├── 04-development-artifacts/        # Technical specs, code documentation
 ├── 05-testing-documentation/        # Test strategy, plans, cases, reports
 ├── 06-deployment-operations/        # Deployment guides, runbooks, IaC docs
@@ -663,7 +666,17 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 
 ## 📈 Roadmap
 
-### v3.4.0 (Current - 2026-03-07)
+### v3.5.0 (Current - 2026-03-08)
+- **Design Documentation Enhancement**: 5 new skills + 9 reference files + 5 existing skill enhancements
+- Phase 03: UX Specification (IA, wireframes, design systems), Infrastructure Design (scalability, caching, reliability)
+- Phase 02: Use Case Modeling (UML use cases, activity diagrams) for waterfall pipeline
+- Phase 01: Lean Canvas & Impact Mapping (MVP/startup alternative to PRD)
+- New cross-cutting skill: Cognitive UX Framework (Six Minds, cognitive walkthroughs)
+- Enhanced HLD with scalability patterns (ByteByteGo), API Spec with advanced patterns (Geewax)
+- Sources: ByteByteGo, Dennis/Wixom/Tegarden, Whalen, Effective Product Designer, Geewax, BA Methodology Book
+- 63 total documentation generation skills across 10 SDLC phases
+
+### v3.4.0 (2026-03-07)
 - **Requirements Engineering Fundamentals**: 11 new methodology-agnostic RE skills
 - Before/During/After lifecycle wrapping both Waterfall and Agile pipelines
 - Stakeholder Analysis, Elicitation Toolkit, BRD Generation, Requirements Analysis, Conceptual Data Modeling, Requirements Patterns, Validation, Management, Traceability Engineering, Metrics & Quality Gates, Requirements Reuse
@@ -741,8 +754,8 @@ This project builds on industry standards:
 **Built with precision. Powered by standards. Designed for portability.**
 
 **Maintained by:** Peter Bamuhigire
-**Version:** 3.4.0
-**Last Updated:** 2026-03-07
+**Version:** 3.5.0
+**Last Updated:** 2026-03-08
 
 ---
 

@@ -34,7 +34,7 @@ flowchart LR
     S08 --> O[SRS Draft + RTM]
 ```
 
-## The 8 Phases
+## The 9 Phases
 
 | Phase | Skill | SRS Target | Standards | Output |
 |-------|-------|------------|-----------|--------|
@@ -46,6 +46,7 @@ flowchart LR
 | **06** | [Logic Modeling](06-logic-modeling/) | Section 3.2.x Algorithms | IEEE 1016 | LaTeX formulas, decision logic |
 | **07** | [Attribute Mapping](07-attribute-mapping/) | Sections 3.3–3.6 NFRs | ISO/IEC 25010 | Performance, security, reliability |
 | **08** | [Semantic Auditing](08-semantic-auditing/) | Validation & Traceability | IEEE 1012 | RTM, audit report, verification |
+| **09** | [Use Case Modeling](09-use-case-modeling/) | Use Case Model | UML 2.5, IEEE 29148 | Use case diagrams, descriptions, activity diagrams |
 
 ## Execution Instructions
 
@@ -186,8 +187,8 @@ Run skill: 02-requirements-engineering/waterfall/01-initialize-srs
 ## Related Pipelines
 
 - **Agile Requirements:** `../agile/` - User stories, story mapping, backlog management
-- **Use Case Modeling:** `../waterfall/09-use-case-modeling/` (coming soon)
-- **Design Documentation:** `../../03-design-documentation/` - HLD, LLD, API specs
+- **Use Case Modeling:** `09-use-case-modeling/` - UML use cases, activity diagrams
+- **Design Documentation:** `../../03-design-documentation/` - HLD, LLD, API specs, UX spec, infrastructure
 
 ## Support
 

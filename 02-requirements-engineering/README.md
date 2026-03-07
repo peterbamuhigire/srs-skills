@@ -187,9 +187,9 @@ After requirements are documented:
 | Pipeline | Status | Version | Last Updated |
 |----------|--------|---------|--------------|
 | **fundamentals/** | ✅ Stable | 1.0.0 | 2026-03-07 |
-| **waterfall/** | ✅ Stable | 3.0.0 | 2026-02-07 |
+| **waterfall/** | ✅ Stable | 3.1.0 | 2026-03-08 |
+| **waterfall/09-use-case-modeling** | ✅ Stable | 1.0.0 | 2026-03-08 |
 | **agile/** | 🚧 Beta | 1.0.0 | 2026-02-07 |
-| **use-cases/** | 📅 Planned | - | TBD |
 
 ## Migration from v2.x
 
