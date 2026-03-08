@@ -4,7 +4,23 @@ You are executing the 03-Descriptive-Modeling skill. This skill MUST generate Se
 2. Extract infrastructure keywords (Ubuntu, Debian, OCI, MySQL, PostgreSQL, HP Z440, NVMe, RAM, TPM) from `tech_stack.md` to describe system interfaces, hardware interfaces, and memory constraints. Reflect HP Z440 mentions as on-premise/workstation context.
 3. Parse `features.md` to group features into logical Major Capability blocks (e.g., Verification & Traceability, Maintenance & Operations). Avoid adjectives; favor direct descriptions like "MySQL 8.0 instance optimized for concurrency."
 4. Read `quality_standards.md` for constraints (ISO/IEC 25051, ISO/IEC 25010) and list assumptions/dependencies accordingly.
-5. Compose Section 2.0 with the following subsections: 2.1 Product Perspective (with System Interfaces, User Interfaces, Hardware Interfaces, Memory Constraints, System Block Diagram description), 2.2 Product Functions, 2.3 User Characteristics, 2.4 Constraints, and 2.5 Assumptions and Dependencies.
-6. Replace any existing Section 2.0 block in `SRS_Draft.md` with the newly constructed section. Keep the remainder of the document intact.
-7. Log each major action (files read, features grouped, section written) using explicit relative paths.
-8. Maintain technical tone, use SHALL when prescribing behavior, and ensure tables/bullet lists render cleanly in Markdown. Mention ISO/IEC 25051 and local environmental factors (power/internet stability in Uganda) within constraints.
+5. Compose Section 2.0 with the following subsections per IEEE 830 §5.2:
+   - 2.1 Product Perspective (with all eight sub-items per IEEE 830 §5.2.1):
+     - 2.1.1 System Interfaces (list each system interface with functionality and interface description)
+     - 2.1.2 User Interfaces (logical characteristics, screen layouts, accessibility constraints)
+     - 2.1.3 Hardware Interfaces (logical characteristics, ports, protocols, device support)
+     - 2.1.4 Software Interfaces (Name, Version, Source for each dependency; interface purpose and message format)
+     - 2.1.5 Communications Interfaces (network protocols, local network requirements)
+     - 2.1.6 Memory Constraints (primary and secondary memory characteristics and limits)
+     - 2.1.7 Operations (normal/special operations, interactive/unattended periods, backup and recovery)
+     - 2.1.8 Site Adaptation Requirements (site-specific data, initialization sequences, mission-related modifications)
+     - System Block Diagram description mentioning actual infrastructure components
+   - 2.2 Product Functions (major capability buckets with logical relationships)
+   - 2.3 User Characteristics (education, experience, technical expertise of intended user groups)
+   - 2.4 Constraints (regulatory, hardware, interface, parallel operation, audit, control, language, protocol, reliability, criticality, safety/security — reference ISO/IEC 25051)
+   - 2.5 Assumptions and Dependencies (factors affecting requirements that are not design constraints)
+   - 2.6 Apportioning of Requirements (IEEE 830 §5.2.6 — list requirements deferred to future versions; if none exist, state: "No requirements are apportioned to future versions at this time.")
+6. Reference the IEEE 830 compliance checklist at `../ieee-830-compliance-checklist.md` (IDs IEEE830-5.2.1 through IEEE830-5.2.6) to verify all required subsections are present before writing output.
+7. Replace any existing Section 2.0 block in `SRS_Draft.md` with the newly constructed section. Keep the remainder of the document intact.
+8. Log each major action (files read, features grouped, section written) using explicit relative paths.
+9. Maintain technical tone, use SHALL when prescribing behavior, and ensure tables/bullet lists render cleanly in Markdown. Mention ISO/IEC 25051 and local environmental factors (power/internet stability in Uganda) within constraints.

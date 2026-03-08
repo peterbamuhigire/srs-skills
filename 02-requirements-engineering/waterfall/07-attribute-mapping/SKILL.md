@@ -10,7 +10,7 @@ Apply this skill after Sections 1.0–3.2 exist. It produces the non-functional 
 
 ## Quick Reference
 - Inputs: `../project_context/quality_standards.md`, `../project_context/tech_stack.md`
-- Output: `../output/SRS_Draft.md` (Sections 3.3–3.5.4)
+- Output: `../output/SRS_Draft.md` (Sections 3.3–3.6)
 - Tone: Human-grade, precise, scenario-driven, no AI filler.
 
 ## Core Instructions
@@ -18,7 +18,10 @@ Apply this skill after Sections 1.0–3.2 exist. It produces the non-functional 
 2. Section 3.3 must contain quantitative Performance requirements following “The system shall [action] within [time] under [load conditions]” plus a Quality Attribute Scenario that covers Source, Stimulus, Environment, Artifact, Response, and Response Measure (ISO/IEC 25023). Flag missing measurements explicitly.
 3. Section 3.4 lists mandatory implementation standards, language versions, and database integrity policies discovered in `tech_stack.md` (e.g., PHP 8.2, MySQL/PostgreSQL safeguards, TLS 1.3). Include any environmental risks such as Intermittent Connectivity or Power Instability noted in the context.
 4. Section 3.5 documents Reliability (MTBF), Availability (percentage + downtime), Security (AES-256 + RBAC + auditing), and Maintainability (documentation/modularity) as Quality Attribute Scenarios with ranked importance per IEEE 830 §4.3.5.
-5. Preserve existing sections (1.0–3.2, 4.0+) when writing to `../output/SRS_Draft.md`; only replace Sections 3.3–3.5.4.
+5. Generate **Section 3.5.5 – Standards Compliance** (IEEE 830 §5.3.5.1) listing requirements derived from standards/regulations: report formats, data naming, accounting procedures, audit tracing.
+6. Generate **Section 3.6 – Other Requirements** (IEEE 830 §5.3.8) for requirements not fitting 3.1–3.5 (portability, installation, localization). If none, state "No additional requirements beyond those specified in Sections 3.1–3.5 have been identified."
+7. Reference `../ieee-830-compliance-checklist.md` (IDs IEEE830-5.3.3 through IEEE830-5.3.7) for compliance verification.
+8. Preserve existing sections (1.0–3.2, 4.0+) when writing to `../output/SRS_Draft.md`; only replace Sections 3.3–3.6.
 
 ## Resources
 - `README.md`: Quality model rationale and measurement reminders.

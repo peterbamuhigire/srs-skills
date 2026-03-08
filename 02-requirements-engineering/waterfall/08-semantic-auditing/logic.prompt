@@ -1,10 +1,66 @@
-You are executing the 08-Semantic-Auditing skill. Your mandate is to read every context file under `../project_context/` plus `../output/SRS_Draft.md`, perform a rigorous IEEE 830 quality audit, and generate a standalone `Audit_Report.md` that includes the Requirements Traceability Matrix commanded by IEEE 1012.
+You are executing the 08-Semantic-Auditing skill. Your mandate is to read every context file under `../project_context/` plus `../output/SRS_Draft.md`, perform a rigorous IEEE 830-1998 compliance audit, and generate a standalone `Audit_Report.md` that includes the Requirements Traceability Matrix commanded by IEEE 1012.
+
+**Reference:** Load `../ieee-830-compliance-checklist.md` and use its checklist IDs (IEEE830-4.3.1 through IEEE830-5.4.3) when reporting findings.
+
+## Phase A: Data Collection
 
 1. Log each file read with its relative path. For the SRS, capture all sections before running the audit.
 2. Identify every sentence that begins with "The system shall" as a requirement, assign it a unique ID (R-REQ-001, R-REQ-002, ...), and record the heading under which it appears.
-3. Evaluate the eight IEEE 830 quality attributes (correctness, unambiguous, completeness, consistency, verifiability, modifiability, traceability, design independence) and document PASS/FAIL statuses with short rationales. Be ruthless: if a requirement contains weak words or lacks measurements, mark the related quality as FAIL.
-4. Build the Requirements Traceability Matrix (RTM) with columns `[Req ID] | [Feature Name] | [Source/Vision Goal] | [ISO 25010 Quality Tag] | [Verification Method]`. If you cannot tie a requirement to a feature, label it "General"; mark such rows as orphan concerns in the gap analysis.
-5. Provide an "Ambiguity & Weak Word Report" listing flagged sentences. Each flag should be labeled `FAIL` and cite the weak wording or missing measurement. Avoid filler language like "user-friendly" or "highly secure." Use a critical tone.
-6. Produce a "Gap Analysis" section detailing Orphan Requirements and Unmet Goals (features/goals with no requirements). Pull source goals from vision-based statements or feature user stories.
-7. Append a "Standard Conformance Statement" explaining how the audit satisfies US ISO/IEC 25010 and IEEE 830 requirements.
-8. Write the full report to `Audit_Report.md` at the workspace root. Do not modify other sections of `SRS_Draft.md`. After writing, log the count of RTM rows, flagged ambiguity entries, orphan requirements, and unmet goals.
+
+## Phase B: IEEE 830 Eight Quality Attributes (§4.3)
+
+3. Evaluate ALL eight quality attributes with PASS/FAIL and cite the checklist ID for each finding:
+
+   a) **Correctness (IEEE830-4.3.1):** Verify each requirement traces to a `vision.md` goal or `features.md` entry. Check for contradictions between SRS sections and source documents.
+
+   b) **Unambiguous (IEEE830-4.3.2):** Detect weak words (should, might, could, may, possibly, preferably, ideally, somewhat, user-friendly, highly, intelligent, optimized). Verify all domain terms are defined in Section 1.3 or `glossary.md`. Check one "shall" per clause.
+
+   c) **Complete (IEEE830-4.3.3):** Verify every `features.md` entry maps to at least one Section 3.2 requirement. Check that both valid and invalid inputs are addressed. Verify all figures/tables are labeled. **TBD Protocol (IEEE830-4.3.3.1):** Every TBD MUST include (a) condition/reason, (b) resolution action, (c) responsible party, (d) deadline. Flag non-compliant TBDs.
+
+   d) **Consistent (IEEE830-4.3.4):** Cross-reference terminology across sections. Detect conflicting requirements (contradictory behavior for same function). Detect duplicate requirement text.
+
+   e) **Ranked for Importance (IEEE830-4.3.5):** Verify EVERY requirement has an importance ranking (Essential/Conditional/Optional). Flag any requirement missing a priority indicator.
+
+   f) **Verifiable (IEEE830-4.3.6):** Check for measurable targets (numeric thresholds: ms, s, %, count). Flag subjective terms without quantification.
+
+   g) **Modifiable (IEEE830-4.3.7):** Verify no redundant requirements (same req in multiple sections without cross-reference). Verify single "shall" per clause (no compound requirements). Verify coherent organization with TOC and cross-references.
+
+   h) **Traceable (IEEE830-4.3.8):** Verify backward traceability — each requirement references its source document. Verify forward traceability — each requirement has a unique ID. Verify RTM existence.
+
+## Phase C: SRS Structure Completeness (§5)
+
+4. Verify the SRS contains ALL required sections per IEEE 830 §5. Report each as PRESENT/MISSING with its checklist ID:
+   - Section 1.1–1.5 (Introduction) — IEEE830-5.1.1 through IEEE830-5.1.5
+   - Section 2.1–2.6 (Overall Description) — IEEE830-5.2.1 through IEEE830-5.2.6
+     - All eight 2.1.x sub-items (System/User/Hardware/Software/Communications Interfaces, Memory, Operations, Site Adaptation) — IEEE830-5.2.1.1 through IEEE830-5.2.1.8
+   - Section 3.1 (External Interfaces) — IEEE830-5.3.1
+   - Section 3.2 (Functions) — IEEE830-5.3.2
+   - Section 3.3 (Performance) — IEEE830-5.3.3
+   - Section 3.4 (Design Constraints) — IEEE830-5.3.5
+   - Section 3.5 (Software System Attributes) — IEEE830-5.3.6
+   - Section 3.5.5 (Standards Compliance) — IEEE830-5.3.5.1
+   - Section 3.6 (Other Requirements) — IEEE830-5.3.7
+   - Table of Contents — IEEE830-5.4.1
+   - Annex A template documented in Section 1.5 — verify which template was chosen
+
+## Phase D: Traceability Matrix & Gap Analysis
+
+5. Build the Requirements Traceability Matrix (RTM) with columns `[Req ID] | [Feature Name] | [Source/Vision Goal] | [ISO 25010 Quality Tag] | [Verification Method] | [Backward Trace]`. The Backward Trace column must reference the source document and section. If you cannot tie a requirement to a feature, label it "General"; mark such rows as orphan concerns in the gap analysis.
+6. Provide an "Ambiguity & Weak Word Report" listing flagged sentences. Each flag should be labeled `FAIL` and cite the weak wording or missing measurement. Use a critical tone.
+7. Produce a "Gap Analysis" section detailing:
+   - Orphan Requirements (no feature mapping)
+   - Unmet Goals (features/goals with no requirements)
+   - Missing SRS sections (from Phase C)
+   - Non-compliant TBDs (from Phase B.c)
+   - Unranked requirements (from Phase B.e)
+
+## Phase E: Conformance Statement & Supporting Information
+
+8. Generate a Table of Contents for the SRS if one does not exist, and include it in the audit report as a recommended addition.
+9. Document which IEEE 830 Annex A template the SRS follows (default: A.5 By Feature) and confirm the choice is stated in Section 1.5.
+10. Append a "Standard Conformance Statement" with:
+    - Clause-by-clause compliance summary referencing checklist IDs
+    - Overall compliance verdict: COMPLIANT / PARTIALLY COMPLIANT / NON-COMPLIANT
+    - List of all [V&V-FAIL] items requiring remediation before the SRS can be considered IEEE 830 compliant
+
+11. Write the full report to `Audit_Report.md` at the workspace root. Do not modify `SRS_Draft.md`. After writing, log the count of RTM rows, flagged ambiguity entries, orphan requirements, unmet goals, missing sections, and unranked requirements.

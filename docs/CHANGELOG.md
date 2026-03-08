@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.1] - 2026-03-08
+
+### Added
+
+**IEEE 830-1998 Full Compliance Enforcement:**
+- **ieee-830-compliance-checklist.md** - Authoritative compliance reference for all waterfall SRS skills
+  - Part 1: Eight Quality Attributes (§4.3) with pass/fail criteria and examples
+  - Part 2: SRS Structure Checklist (§5.1–§5.4) with checklist IDs (IEEE830-x.x.x)
+  - Part 3: Annex A Template Selection Guide (A.1–A.8)
+  - Part 4: TBD Protocol (§4.3.3.1) with mandatory fields
+  - Part 5: Anti-Patterns and Fixes
+  - Part 6: Skill-to-Clause Mapping
+
+### Changed
+
+**Phase 03 (Descriptive Modeling) - IEEE 830 §5.2 compliance:**
+- Now generates all eight §5.2.1 sub-items: System/User/Hardware/Software/Communications Interfaces, Memory Constraints, Operations, Site Adaptation
+- Added Section 2.6 Apportioning of Requirements (§5.2.6)
+
+**Phase 05 (Feature Decomposition) - IEEE 830 §5.3.2 compliance:**
+- Added validity checks on inputs (§5.3.2a)
+- Added exact sequence of operations (§5.3.2b)
+- Added responses to abnormal situations: overflow, communication failure, error recovery (§5.3.2c)
+- Added effect of parameters (§5.3.2d)
+- Added input/output relationships and formulas (§5.3.2e)
+- Enforced importance ranking on every requirement (§4.3.5)
+- Enforced backward traceability reference on every requirement (§4.3.8)
+
+**Phase 07 (Attribute Mapping) - IEEE 830 §5.3.5.1 and §5.3.8:**
+- Added Section 3.5.5 Standards Compliance (§5.3.5.1): report formats, data naming, audit tracing
+- Added Section 3.6 Other Requirements (§5.3.8): portability, installation, localization
+- Output range expanded from Sections 3.3–3.5.4 to Sections 3.3–3.6
+
+**Phase 08 (Semantic Auditing) - Comprehensive IEEE 830 audit:**
+- Enhanced to validate all 8 quality attributes with checklist ID references
+- Added ranking completeness check (§4.3.5): flags every unranked requirement
+- Added TBD protocol enforcement (§4.3.3.1): validates condition, resolution, owner, deadline
+- Added modifiability checks (§4.3.7): compound-shall detection, redundancy detection
+- Added backward traceability validation (§4.3.8): every requirement must reference source
+- Added SRS structure completeness check (§5.1–§5.4): verifies all required sections exist
+- Added Annex A template verification (confirms Section 1.5 documents template choice)
+- Enhanced Python automation (`semantic_auditing.py`) with 8 new validation functions
+- Overall compliance verdict: COMPLIANT / PARTIALLY COMPLIANT / NON-COMPLIANT
+- RTM now includes Backward Trace column
+
 ## [3.3.0] - 2026-03-01
 
 ### Added

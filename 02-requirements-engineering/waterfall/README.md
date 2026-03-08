@@ -139,10 +139,12 @@ When re-running skills on an existing SRS:
 Each phase has built-in quality checks:
 
 - **Phase 02-07:** Verify input files exist before execution
-- **Phase 05:** Validate all requirements follow Stimulus/Response pattern
+- **Phase 03:** Generate all 8 Product Perspective sub-items (§5.2.1.1–§5.2.1.8) plus Section 2.6 Apportioning
+- **Phase 05:** Validate all requirements follow Stimulus/Response pattern with validity checks, abnormal responses, and I/O relationships (§5.3.2 a–e); enforce importance ranking (§4.3.5) and backward traceability (§4.3.8)
 - **Phase 06:** Ensure all LaTeX formulas are syntactically correct
-- **Phase 07:** Check all NFRs have measurable acceptance criteria
-- **Phase 08:** Full IEEE 830 conformance audit (Correctness, Unambiguous, Complete, Consistent, Verifiable)
+- **Phase 07:** Check all NFRs have measurable acceptance criteria; generate Section 3.5.5 Standards Compliance (§5.3.5.1) and Section 3.6 Other Requirements (§5.3.8)
+- **Phase 08:** Full IEEE 830-1998 conformance audit covering all 8 quality attributes (§4.3.1–§4.3.8), SRS structure completeness (§5.1–§5.4), TBD protocol (§4.3.3.1), ranking completeness, backward traceability, modifiability, and compound-shall detection
+- **Compliance Checklist:** `ieee-830-compliance-checklist.md` provides the authoritative reference for all skills
 
 ## Common Pitfalls
 
@@ -200,6 +202,6 @@ For issues specific to this pipeline:
 
 ---
 
-**Last Updated:** 2026-02-07
-**Pipeline Version:** 3.0.0
+**Last Updated:** 2026-03-08
+**Pipeline Version:** 3.5.1
 **Maintained by:** Peter Bamuhigire

@@ -17,8 +17,12 @@ Invoke this skill after initializing the project context and generating Section 
 1. Run `python descriptive_modeling.py` from this directory or trigger `logic.prompt` through your skill runner.
 2. The script analyzes the tech stack keywords, groups features into Major Capability buckets, reads quality constraints, and writes Section 2.0 with subsections 2.1–2.5.
 3. Ensure the script replaces any existing Section 2.0 block in `../output/SRS_Draft.md` and leaves the rest of the document untouched.
-4. Verify the new section includes System Interfaces, User Interfaces, Hardware Interfaces, Memory Constraints, Product Functions, User Characteristics, Constraints (including ISO/IEC 25051 and Uganda environmental factors), and Assumptions/Dependencies.
+4. Verify the new section includes ALL IEEE 830 §5.2 subsections:
+   - 2.1 Product Perspective with all eight sub-items (§5.2.1.1–§5.2.1.8): System Interfaces, User Interfaces, Hardware Interfaces, Software Interfaces, Communications Interfaces, Memory Constraints, Operations, Site Adaptation Requirements.
+   - 2.2 Product Functions, 2.3 User Characteristics, 2.4 Constraints (including ISO/IEC 25051 and environmental factors), 2.5 Assumptions and Dependencies.
+   - **2.6 Apportioning of Requirements** (IEEE 830 §5.2.6) — lists requirements deferred to future versions, or explicitly states none are deferred.
 5. Confirm Section 2.0 references the governance standards and maintains traceability back to vision-derived stakeholder needs.
+6. Reference `../ieee-830-compliance-checklist.md` (IDs IEEE830-5.2.1 through IEEE830-5.2.6) for compliance verification.
 
 ## Resources
 - `README.md`: Skill intent, environmental mapping, and quality reminders.
