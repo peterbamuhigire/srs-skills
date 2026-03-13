@@ -1,2 +1,5 @@
 # Client project workspaces — stays local, never committed
 projects/
+
+# Word template — binary, org-specific, stays local
+templates/reference.docx
