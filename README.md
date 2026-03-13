@@ -123,6 +123,24 @@
 
 This repository is architected as a **"Stateless Documentation Engine."** It provides the logic and templates, while your parent project provides the context.
 
+### Starting a New Client Project
+
+Tell Claude: **"start a new project"**
+
+Claude will:
+1. Invoke `superpowers:brainstorming` to explore requirements and design
+2. Ask 4 quick questions (project name, description, methodology, client contact)
+3. Deduce the domain automatically from your description
+4. Scaffold `projects/<ProjectName>/` with all 9 phase directories
+5. Pre-populate `_context/` with your answers
+6. Inject domain-default requirements tagged `[DOMAIN-DEFAULT]`
+
+Then fill in remaining `_context/` files and say:
+**"generate PRD for \<ProjectName\>"** or **"generate SRS for \<ProjectName\>"**
+
+To export a finished document to Word:
+**"build the SRS"** → outputs `SRS_Draft.docx` in the phase directory
+
 ### Installation
 
 Add this project as a submodule in your existing repository:
@@ -195,6 +213,22 @@ Each phase builds on the previous:
 ```
 sdlc-docs-engine/
 ├── 00-meta-initialization/          # Methodology selection & project setup
+├── domains/                         # Domain knowledge bases (tracked)
+│   ├── INDEX.md
+│   ├── healthcare/                  # HIPAA, HL7/FHIR, NFR defaults
+│   ├── finance/                     # PCI-DSS, SOX, AML
+│   ├── education/                   # FERPA, COPPA
+│   ├── retail/                      # PCI-DSS, GDPR
+│   ├── logistics/                   # DOT, ISO 28000
+│   └── government/                  # FISMA, FedRAMP
+├── projects/                        # [UNTRACKED] Per-client project workspaces
+│   └── <ProjectName>/
+│       ├── _context/                # Project inputs (vision, features, tech stack)
+│       └── 01-09 <phases>/          # Generated section files + .docx output
+├── scripts/
+│   └── build-doc.sh                 # Pandoc: stitch .md sections → .docx
+├── templates/
+│   └── reference.docx               # [LOCAL ONLY] Word style template
 ├── 01-strategic-vision/             # PRD, vision statements, business cases, lean canvas
 ├── 02-requirements-engineering/
 │   ├── fundamentals/               # NEW: Methodology-agnostic RE lifecycle (11 skills)
