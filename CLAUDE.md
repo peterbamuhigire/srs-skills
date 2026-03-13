@@ -6,11 +6,43 @@ You are an expert Systems Architect. You are assisting in developing and executi
 
 ## Directory Logic & Pathing
 
-- **Submodule Root:** This directory (where `README.md` and `01-` to `08-` folders live).
+- **Submodule Root:** This directory (where `README.md` and phase folders live).
 - **Internal Tools:** Located in `/skills/`. Use these internal skills to help author or refine the main SRS generation skills.
-- **Parent Root:** Accessible via `../`. This is where the user's software code and project data live.
-- **Source of Truth:** All project-specific data MUST be read from `../project_context/`.
-- **Output Destination:** All generated SRS content MUST be written to `../output/`.
+- **Domain Knowledge:** Located in `/domains/`. Read the relevant domain `INDEX.md` when generating requirements for a domain-specific project.
+- **Project Workspace:** Located in `projects/<ProjectName>/` (untracked, gitignored). All client documentation is built here.
+- **Context Source of Truth:** Read all project-specific data from `projects/<ProjectName>/_context/`.
+- **Output Destination:** Write all generated section files to `projects/<ProjectName>/<phase>/<document>/`. Write final `.docx` files to `projects/<ProjectName>/<phase>/`.
+- **Templates:** `templates/reference.docx` is the Pandoc Word style reference.
+- **Build Script:** `scripts/build-doc.sh` stitches `.md` files into `.docx`.
+
+## New Project Protocol
+
+When the user says "start a new project" or equivalent:
+1. Invoke `superpowers:brainstorming` first — mandatory, no exceptions
+2. Ask 4 questions (name, description, methodology, owner) — one at a time
+3. Deduce domain automatically from the project description using `domains/INDEX.md` keyword signals
+4. If domain is ambiguous, ask during brainstorming session only
+5. Scaffold the full directory structure under `projects/<ProjectName>/`
+6. Pre-populate `_context/` files with interview answers and guided TODO prompts
+7. Copy `domains/<domain>/INDEX.md` into `_context/domain.md`
+8. Inject `[DOMAIN-DEFAULT]` blocks from `domains/<domain>/references/nfr-defaults.md` into section stubs
+9. Print scaffold summary showing pre-populated files and outstanding TODOs
+
+## Build Document Protocol
+
+When the user says "build the [document]":
+1. Resolve the document directory using the mapping in `00-meta-initialization/new-project/SKILL.md`
+2. Check for `manifest.md` in the document directory — use it if present, otherwise sort all `*.md` files (excluding `manifest.md`) alphabetically
+3. Execute: `bash scripts/build-doc.sh <doc-dir> <OutputName>`
+4. Report the output `.docx` path to the user
+
+## Domain Injection Protocol
+
+`[DOMAIN-DEFAULT]` tagged blocks are pre-populated at scaffold time. They are:
+- Clearly marked with opening `<!-- [DOMAIN-DEFAULT: <domain>] -->` and closing `<!-- [END DOMAIN-DEFAULT] -->` tags
+- Sourced from `domains/<domain>/references/nfr-defaults.md`
+- Reviewed and either kept, edited, or deleted by the consultant before building
+- Never silently removed by Claude — only the consultant removes them
 
 ## Core Engineering Principles
 
