@@ -47,7 +47,7 @@ When the user says "build the [document]":
 ## Core Engineering Principles
 
 1. **IEEE/ASTM Grounding:** Every requirement generated must be mapped to the standards listed in the README (IEEE 830, 1233, 610.12, and ASTM E1340).
-2. **Strict Grounding:** Never "hallucinate" features. If a detail is missing from `../project_context/`, flag the gap to the user instead of making an assumption.
+2. **Strict Grounding:** Never "hallucinate" features. If a detail is missing from `projects/<ProjectName>/_context/`, flag the gap to the user instead of making an assumption.
 3. **The "Stimulus-Response" Rule:** Functional requirements (Skill 05) must follow a stimulus-response pattern to ensure they are **Verifiable**.
 4. **Terminology:** Use **IEEE Std 610.12-1990** definitions. Maintain a strict glossary in the parent project to avoid ambiguity.
 5. **Technical Precision:** - Use LaTeX for any mathematical logic or algorithms: $LateFee = Balance \times Rate$.
@@ -55,8 +55,8 @@ When the user says "build the [document]":
 
 ## Skill Execution Workflow
 
-1. **Initialization (Skill 01):** Must check for the existence of `../project_context/` and seed it if missing.
-2. **Analysis:** Read inputs from `../project_context/*.md`.
+1. **Initialization (Skill 01):** Must check for the existence of `projects/<ProjectName>/_context/` and seed it if missing.
+2. **Analysis:** Read inputs from `projects/<ProjectName>/_context/*.md`.
 3. **Synthesis:** Generate the specific SRS section based on the skill's theme.
 4. **Validation:** Check the generated section against the "Correct, Unambiguous, Complete" criteria of IEEE 830.
 
