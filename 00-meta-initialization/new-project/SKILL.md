@@ -141,6 +141,36 @@ Format:
 -->
 ```
 
+**`_context/stakeholders.md`**:
+```markdown
+# Stakeholders
+
+<!-- TODO: List all stakeholder groups. Required by Phase 01 skills (Vision Statement, PRD, Business Case).
+Format:
+## Role Title
+- **Influence:** High / Medium / Low
+- **Interest:** High / Medium / Low
+- **Primary Needs:** What this stakeholder needs from the system
+- **Key Concerns:** Risks or constraints they care about
+- **Communication Preference:** How and how often to communicate
+-->
+```
+
+**`_context/personas.md`**:
+```markdown
+# User Personas
+
+<!-- TODO: Define user personas for the system. Required by Phase 02 Agile user story generation.
+Format:
+## Persona Name (Role)
+- **Age / Background:** Brief demographic context
+- **Goals:** What they are trying to accomplish
+- **Pain Points:** Current frustrations this system should solve
+- **Tech Comfort:** Low / Medium / High
+- **Typical Workflow:** Step-by-step description of how they currently do the task
+-->
+```
+
 **`_context/domain.md`** — copy content from `domains/<deduced-domain>/INDEX.md`
 and prepend:
 ```markdown
@@ -200,6 +230,8 @@ _context/ status:
   ○ business_rules.md    — TODO: define business rules
   ○ quality_standards.md — TODO: set quality targets
   ○ glossary.md          — TODO: add project terminology
+  ○ stakeholders.md     — TODO: add stakeholder register (required by Phase 01)
+  ○ personas.md         — TODO: define user personas (required by Phase 02 Agile)
 
 Domain defaults injected: <N> [DOMAIN-DEFAULT] requirements
   → 02-requirements-engineering/01-srs/06-nfr.md
