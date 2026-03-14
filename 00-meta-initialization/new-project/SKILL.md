@@ -207,6 +207,24 @@ Phase directory → document subdirectories mapping:
 09-governance-compliance/    → 01-traceability-matrix/, 02-audit-report/, 03-compliance/, 04-risk-assessment/
 ```
 
+### 3b. Create `manifest.md` Stubs
+
+For each document subdirectory created above, also create a `manifest.md` file with this template:
+
+```markdown
+# Document Manifest
+# List section files in assembly order, one per line.
+# Lines starting with # are comments and are excluded from the build.
+# If this file is absent, build-doc.sh sorts *.md files alphabetically.
+#
+# Example:
+# 01-introduction.md
+# 02-scope.md
+# 03-requirements.md
+```
+
+This file is empty by default. Claude will populate it with the correct section order when generating sections for this document.
+
 ### 4. Inject Domain Defaults
 
 If domain is not `other`:
