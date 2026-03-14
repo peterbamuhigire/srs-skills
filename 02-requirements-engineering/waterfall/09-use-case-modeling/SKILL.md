@@ -49,7 +49,11 @@ Read `SRS_Draft.md` (Sections 3.1 and 3.2), `features.md`, and `business_rules.m
 
 ### Step 2: Identify and Classify Actors
 
-Analyze the input files to identify all actors that interact with or have interest in the system. Classify each actor into one of three categories:
+Analyze the input files to identify all actors that interact with or have interest in the system.
+
+**Two complementary actor taxonomies are available. Choose based on project type:**
+
+**Option A — Cockburn's 3-Class Model** (use for software-centric systems):
 
 | Actor Type | Definition | Identification Method |
 |------------|------------|----------------------|
@@ -57,7 +61,20 @@ Analyze the input files to identify all actors that interact with or have intere
 | **Supporting** | Provides a service to the system during use case execution | System boundary analysis, integration point review |
 | **Offstage** | Has an interest in the use case outcome but does not directly interact | Regulatory review, business rule owner analysis |
 
-Apply actor generalization where two or more actors share common behaviors. Document the generalization hierarchy. Distinguish human actors from system actors explicitly.
+**Option B — Whitten & Bentley's 4-Class Model** (use for enterprise/business information systems):
+
+| Actor Type | Definition | Identification Method |
+|------------|------------|----------------------|
+| **Primary Business Actor** | Receives measurable value from the use case **without initiating it** | Who benefits? Who is the beneficiary? |
+| **Primary System Actor** | **Directly initiates or triggers** the use case event | Who starts the interaction? Who clicks "submit"? |
+| **External Server Actor** | Responds to a request from a use case (provides a service) | What external systems or roles respond to requests? |
+| **External Receiver Actor** | Receives output/value from the use case but is not a primary actor | Who else gets a report, notification, or deliverable? |
+
+> **Guidance:** Use Option B when the system is an enterprise business application (ERP, CRM, HR, billing, approval workflows) where the distinction between "who benefits" and "who initiates" is critical for correct workflow design. Use Option A for simpler or software-product contexts.
+
+**Temporal Actors:** When the system has scheduled or time-triggered processes (nightly batch jobs, billing cycles, session expiry, automated reminders), model **time** as a Temporal Actor. Document: `Temporal Actor: System Clock — initiates [Use Case Name] at [schedule/frequency]`. Temporal actors are positioned outside the system boundary like other actors.
+
+**Actor Generalization:** Apply actor generalization where two or more actors share common behaviors. Use an inheritance arrow from the specialized actor to the general actor. Document the generalization hierarchy. Distinguish human actors from system actors explicitly.
 
 ### Step 3: Identify Use Cases
 
@@ -79,6 +96,7 @@ Produce a system-level use case diagram using Mermaid notation or structured tex
 - **Include relationships** for mandatory shared behavior (`<<include>>`)
 - **Extend relationships** for optional conditional behavior (`<<extend>>`)
 - **Actor generalization** using inheritance arrows where applicable
+- **Depends-on relationships** (`<<depends on>>`) between use cases that have development sequencing dependencies — use case B cannot be built until use case A is complete. This relationship aids sprint planning and release sequencing.
 
 ### Step 5: Generate Fully-Dressed Use Case Descriptions
 
@@ -133,6 +151,14 @@ For each use case identified in Step 3, produce a fully-dressed description usin
 #### Data Requirements
 
 - [List data entities read, created, updated, or deleted]
+
+#### Assumptions
+
+- [List assumptions made by the analyst that affect this use case — e.g., "Assumes single currency; multi-currency not in scope"]
+
+#### Implementation Constraints
+
+- [Technical constraints that bound implementation choices — e.g., "Must use existing OAuth 2.0 provider", "Response time shall not exceed 2 seconds on 3G connection"]
 
 #### Open Issues
 
@@ -276,6 +302,7 @@ The generated `Use_Case_Model.md` shall contain the following sections:
 - **IEEE 29148-2018** -- Systems and software engineering: behavioral requirements modeling
 - **IEEE 830-1998 Clause 5.3.1** -- Stimulus-response pairs for functional requirements
 - **Dennis, Wixom, Tegarden** -- "Systems Analysis and Design with UML" (fully-dressed use case format)
+- **Whitten & Bentley (2007)** -- "Systems Analysis and Design Methods" — 4-class actor taxonomy (Primary Business, Primary System, External Server, External Receiver), use case relationship types including `<<depends on>>`
 
 ## Resources
 

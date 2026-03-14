@@ -11,6 +11,24 @@ questions before invoking brainstorming.
 
 ---
 
+## How to Use the SRS-Skills Engine (PRIME Workflow)
+
+Every skill in this engine follows the **PRIME methodology** (Kodukula & Vinueza, 2024):
+
+| Step | What the Consultant Does | SRS-Skills Equivalent |
+|------|--------------------------|----------------------|
+| **P — Prepare** | Gather all project data before prompting | Populate `_context/` files with real stakeholder data, not placeholders |
+| **R — Relay** | Submit the prompt with precise instructions | Invoke the SKILL.md (tell Claude: "Run the [skill name] skill") |
+| **I — Inspect** | Critically evaluate AI output against objectives | Read the generated document; check it against `_context/` source files |
+| **M — Modify** | Refine if output diverges from expectations | Edit the output or update `_context/` and re-invoke the skill |
+| **E — Execute** | Approve and build the final artifact | Run `build-doc.sh` to produce the `.docx` |
+
+> **Quality rule:** Never execute (build the `.docx`) without completing Inspect and Modify. The first AI output is a draft, not a deliverable.
+
+The `_context/` directory is the **Project Input Folder (PIF)** for this project — a living repository of project-specific context that feeds every skill. The richer the PIF, the higher the quality of every generated document (Kodukula & Vinueza, 2024).
+
+---
+
 ## Interview Protocol
 
 After brainstorming, ask these questions ONE AT A TIME. Do not ask the next until

@@ -42,6 +42,10 @@ Use this skill to bootstrap the parent project with industrial templates that ca
 - Ensure `../output/` exists before downstream IEEE/ISO skills execute.
 - Use Maintenance Mode when existing content must stay untouched; use Clean mode only when a fresh baseline is required.
 
+## Anti-Hallucination Guard
+
+> **CRITICAL:** Do NOT generate, invent, or assume any requirements, stakeholder names, features, or system behaviors that are not explicitly present in the `_context/` files. If a context file is empty or a required field is missing, **halt and prompt the consultant to fill it in** rather than making assumptions. Flag every gap with `[CONTEXT-GAP: <file> is missing <field>]`. This engine is a grounding tool, not a generation tool — all content must trace to stakeholder-provided context. *(Derived from hallucination mitigation guidance: Kodukula & Vinueza, 2024)*
+
 ## Core Instructions
 1. Run `python init_skill.py` from this directory or call the `logic.prompt` via your skill runner.
 2. The automation checks for `../project_context/`. Offer Maintenance Mode (add missing templates) or Clean (delete and reseed). Maintenance Mode must never overwrite user edits.

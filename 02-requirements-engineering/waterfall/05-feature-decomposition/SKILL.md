@@ -8,6 +8,8 @@ description: Convert features.md into IEEE 830 Section 3.2 (Functional Requireme
 ## Overview
 Use this skill after Sections 1.0, 2.0, and 3.1 are generated. It transforms the feature set and quality standards into Section 3.2 (Feature Decomposition), ensuring every functional requirement follows a stimulus/response pattern with a single verifiable "shall" per clause per IEEE 830 Clause 5.3.1.
 
+> **WBS Alignment:** The output of this skill forms the **requirements baseline** equivalent to a WBS Work Package layer (per PMBOK Guide, 7th Ed.): it decomposes scope from Features (Epic level) → Subfunctions (Story level) → Verifiable Requirements (task-level acceptance criteria). Project managers familiar with WBS methodology can use this output directly to populate their WBS dictionary for the requirements scope baseline.
+
 ## Quick Reference
 - Inputs: `../project_context/features.md`, `../project_context/quality_standards.md`
 - Output: `../output/SRS_Draft.md` (Section 3.2 only)

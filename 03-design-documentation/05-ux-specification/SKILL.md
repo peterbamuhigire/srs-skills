@@ -46,6 +46,22 @@ Produces a complete UX specification document that bridges user research insight
 
 Follow these eight steps in order. Halt and notify the user if a required input file is missing.
 
+### Step 0: Invoke Frontend Design Plugin
+
+Before executing this skill, invoke the `frontend-design` plugin to analyze the project requirements and determine the most ideal UI/UX approach for this specific project:
+
+```
+Use the frontend-design skill to study the project requirements from `_context/` and recommend the optimal UI/UX approach before we generate the formal UX Specification.
+```
+
+The frontend-design plugin will analyze:
+- Target user segments (from `stakeholder_register.md` or `personas.md`)
+- Platform context (web, mobile, desktop — from `tech_stack.md`)
+- Domain-specific UI patterns (e.g., clinical dashboards, retail POS, enterprise admin panels)
+- Recommended design framework (Bootstrap, Material Design, Tabler, etc.)
+
+Capture the plugin's UI/UX recommendation and incorporate it into all subsequent steps of this skill — especially Step 2 (IA), Step 3 (Wireframe Standards), and Step 4 (Design System).
+
 ### Step 1: Read Context Files
 
 Read `SRS_Draft.md` and `HLD.md` from `../output/`. Read `vision.md`, `features.md`, `stakeholder_register.md`, and `user_stories.md` from `../project_context/`. Log the absolute path of each file read. If `SRS_Draft.md` is missing, fall back to `user_stories.md`. If both are missing, halt execution and report the gap. If `HLD.md` or `vision.md` is missing, halt execution and report the gap. If `features.md` or `stakeholder_register.md` is missing, log a warning and proceed with available data.
@@ -172,6 +188,8 @@ The system shall define a usability testing framework:
 | Task Completion Rate | >= 85% | Binary pass/fail per task per participant |
 | Time on Task | Varies by complexity | Stopwatch from task start to completion |
 | Error Rate | <= 2 errors per task | Count of incorrect actions or missteps |
+| Time to Learn | First-time task completion within [N] minutes | Measured in orientation session; user completes target task unassisted |
+| User Memory Retention | [X]% recall of core workflows after 2-week gap | Measured in follow-up session without training refresher |
 | SUS Score | >= 68 (above average) | Post-test System Usability Scale questionnaire |
 
 **7.4 Observation Recording Format**
@@ -183,6 +201,25 @@ The system shall define a usability testing framework:
 - Each finding shall be classified by severity (Critical, Major, Minor, Cosmetic).
 - Critical and Major findings shall generate new or revised requirements traceable to SRS Section 3.2.
 - The system shall maintain a findings register mapping each observation to a requirement ID.
+
+**7.6 Heuristic Evaluation — Eight Golden Rules**
+
+Before conducting participant usability tests, perform a heuristic evaluation of the design against Shneiderman & Plaisant's Eight Golden Rules of Interface Design (Designing the User Interface, 7th Ed., 2016):
+
+| Rule | Principle | Evaluation Question |
+|------|-----------|---------------------|
+| 1. Strive for Consistency | Identical terminology, layout, and color across similar situations | Are menus, labels, and button styles consistent across all screens? |
+| 2. Seek Universal Usability | Design for diverse user abilities; provide novice and expert paths | Does the interface work for both first-time and power users? |
+| 3. Offer Informative Feedback | Every user action receives an interface response | Does every action (button click, form submit) give visible feedback? |
+| 4. Design Dialogs to Yield Closure | Actions have a beginning, middle, and end | Do multi-step processes (wizards, checkout flows) have clear completion states? |
+| 5. Prevent Errors | Interface design minimizes serious user errors | Are irreversible actions (delete, submit) protected with confirmations? |
+| 6. Permit Easy Reversal | Actions should be reversible to reduce anxiety | Can users undo or go back at every stage? |
+| 7. Keep Users in Control | Experienced users feel in charge; no unexpected behavior | Can users customize their workflow? Are surprises avoided? |
+| 8. Reduce Short-term Memory Load | Avoid requiring users to remember information across screens | Is context information visible in-view when needed (not hidden behind tabs)? |
+
+Rate each rule: **Pass** / **Partial** / **Fail**. Each **Fail** generates a design issue logged in the findings register per §7.5.
+
+**Standard:** Shneiderman & Plaisant (2016), *Designing the User Interface: Strategies for Effective Human-Computer Interaction*, 6th Ed.
 
 See `references/usability-testing.md` for the SUS questionnaire and scoring methodology.
 

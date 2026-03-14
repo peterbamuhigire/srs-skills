@@ -55,10 +55,12 @@ When the user says "build the [document]":
 
 ## Skill Execution Workflow
 
+> **PRIME Methodology (Kodukula & Vinueza, 2024):** Every skill execution follows the PRIME cycle — **P**repare (`_context/` files populated with real data), **R**elay (invoke the skill), **I**nspect (review output against context), **M**odify (refine and re-invoke if needed), **E**xecute (run `build-doc.sh`). Never skip Inspect and Modify — the first AI output is a draft, not a deliverable.
+
 1. **Initialization (Skill 01):** Must check for the existence of `projects/<ProjectName>/_context/` and seed it if missing.
-2. **Analysis:** Read inputs from `projects/<ProjectName>/_context/*.md`.
-3. **Synthesis:** Generate the specific SRS section based on the skill's theme.
-4. **Validation:** Check the generated section against the "Correct, Unambiguous, Complete" criteria of IEEE 830.
+2. **Analysis (Prepare):** Read inputs from `projects/<ProjectName>/_context/*.md`. The `_context/` directory is the Project Input Folder (PIF) — the richer the context files, the higher the output quality.
+3. **Synthesis (Relay):** Generate the specific SRS section based on the skill's theme.
+4. **Validation (Inspect + Modify):** Check the generated section against the "Correct, Unambiguous, Complete" criteria of IEEE 830. Flag any gaps with `[CONTEXT-GAP]` rather than fabricating missing information.
 
 ## Full Skill Suite
 
