@@ -115,6 +115,8 @@ Produce a traceability table linking every HLD component to its originating SRS 
 
 Every component defined in Steps 3-7 shall appear in this table at least once.
 
+> **Royce Test Planning Trigger (IEEE WESCON 1970, p.335):** Per Royce's Step 4, test planning begins at Program Design phase — not at the testing phase. When generating the HLD, simultaneously trigger `05-testing-documentation/01-test-strategy/SKILL.md` if it has not yet been started. The Test Strategy document (Doc 5 in Royce's canonical set) must be initiated no later than the completion of HLD.
+
 ## Output Format
 
 The generated `HLD.md` shall contain these sections in order: Document Header (project name, date, version, standard), 1. Architectural Style, 2. System Context Diagram, 3. Component Architecture, 4. Deployment Topology, 5. Data Flow Diagrams, 6. Technology Decisions, 7. Integration Points, 8. Cross-Cutting Concerns (8.1 AuthN/AuthZ, 8.2 Logging, 8.3 Error Handling, 8.4 Caching), 9. Traceability Matrix, Appendix A: Glossary.

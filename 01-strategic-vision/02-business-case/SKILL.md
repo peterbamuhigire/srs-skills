@@ -150,6 +150,18 @@ This ensures `scripts/build-doc.sh` assembles sections in the intended order rat
 - **Vague go/no-go criteria.** Decision gates must include specific, measurable thresholds.
 - **Ignoring cost of inaction.** Failing to quantify the consequences of not proceeding weakens the business justification.
 
+### Royce Pilot Model Recommendation
+
+Per Royce (1970) Step 3: "Do It Twice" — if this project is being developed for the first time, the Business Case should explicitly plan for a pilot/prototype phase. Royce's recommendation: for a 30-month project, schedule a 10-month pilot. The pilot is the entire development process done in miniature, to surface timing, storage, and interface unknowns before full development commits.
+
+**Add to the Business Case document if applicable:**
+- Section: Pilot/Proof of Concept Plan
+  - Scope of pilot (which critical features/risks to model)
+  - Pilot timeline (target: 25-33% of total project duration)
+  - Pilot success criteria
+  - How pilot learnings feed into full development planning
+  - Cost of pilot vs. cost of discovery at testing phase
+
 ## Verification Checklist
 
 - [ ] `Business_Case.md` exists in `../output/`.

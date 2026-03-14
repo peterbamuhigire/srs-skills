@@ -12,6 +12,26 @@ description: Set up IEEE Std 830-1998 and US ISO/IEC 25051 compliant project con
 >
 > _This skill is fully executable without Python or logic.prompt by providing context directly to Claude._
 
+## Royce's 5 Critical Steps (IEEE WESCON 1970)
+
+> Royce's original paper explicitly states the basic sequential waterfall (analysis → design → coding → testing) **"is risky and invites failure."** His real contribution was five corrective steps that all must be present for waterfall to succeed. Consultants must verify all five are planned before proceeding.
+
+| Step | Requirement | Status Check |
+|------|-------------|--------------|
+| **1. Design First** | Preliminary program design (storage, timing, interfaces) must exist BEFORE analysis begins | `_context/` must include architecture constraints in `tech_stack.md` |
+| **2. Document Everything** | Documentation IS the design. "If the documentation does not yet exist there is as yet no design." | All 6 Royce canonical docs must be planned |
+| **3. Do It Twice** | Build a pilot/prototype first. Delivered version should be the second version | Pilot plan should exist in `01-strategic-vision/` |
+| **4. Plan Testing Early** | Test planning starts at Program Design phase, not at the testing phase | Test Strategy should be initiated during Phase 03 Design |
+| **5. Involve the Customer** | Three formal review gates: PSR (after prelim design), CSR (during design), FSAR (after testing) | Review gate dates must be in project schedule |
+
+**Royce's 6 Canonical Documents (all must exist at delivery):**
+1. Software Requirements → `SRS_Draft.docx` (this pipeline)
+2. Preliminary Design Spec → `HLD.docx` (Phase 03)
+3. Interface Design Spec → `APISpec.docx` + `DatabaseDesign.docx` (Phase 03)
+4. Final Design Spec (As-Built) → `LLD.docx` updated after coding (Phase 03/04)
+5. Test Plan + Test Results → `TestPlan.docx` + `TestReport.docx` (Phase 05)
+6. Operating Instructions → `UserManual.docx` + `DeploymentGuide.docx` (Phase 06/08)
+
 # Initialize-SRS Skill Guidance
 
 ## Overview
