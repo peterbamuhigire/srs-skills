@@ -3,6 +3,15 @@ name: descriptive-modeling
 description: Build Section 2.0 by analyzing tech_stack.md, features.md, and quality_standards.md to describe product perspective, functions, users, constraints, and dependencies with ISO/IEEE rigor.
 ---
 
+> **[MISSING FILE FALLBACK]**
+> This skill references auxiliary files (`logic.prompt`, Python scripts) for automated execution.
+> **If those files are unavailable in your environment**, Claude can execute this skill directly:
+> 1. Read all files in `projects/<ProjectName>/_context/`
+> 2. Follow the step-by-step instructions in the **Manual Execution** section below (or ask Claude to generate the relevant SRS section by describing the context inline)
+> 3. Write output to `projects/<ProjectName>/02-requirements-engineering/01-srs/<section-file>.md`
+>
+> _This skill is fully executable without Python or logic.prompt by providing context directly to Claude._
+
 # Descriptive Modeling Skill Guidance
 
 ## Overview
