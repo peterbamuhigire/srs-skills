@@ -32,6 +32,21 @@ This is the first skill in Phase 05 (Testing Documentation). It reads the SRS an
 | HLD.md | `../output/HLD.md` | Yes | System architecture defining component boundaries for integration testing |
 | quality_standards.md | `../project_context/quality_standards.md` | Yes | Project-specific quality targets, compliance mandates, and coverage thresholds |
 
+### Methodology Fallback (Agile / Hybrid)
+
+If `SRS_Draft.md` is absent, Claude shall use the following agile-compatible inputs instead:
+
+| Agile Input | Replaces | Notes |
+|---|---|---|
+| `user_stories.md` | `SRS_Draft.md` | Use accepted stories as the test scope source |
+| `acceptance_criteria.md` | SRS functional requirements | Given-When-Then criteria map directly to test cases |
+| `tech_stack.md` | `HLD.md` | Derive architecture context from stack when HLD is absent |
+
+**Detection logic:** At execution start, check for `SRS_Draft.md`:
+- If found → proceed with standard waterfall path
+- If absent → check for `user_stories.md`; if found → switch to agile path and note in the generated Test Strategy document: *"This test strategy is scoped to the agile user story backlog per IEEE 829-2008 Section 4.1 (scope flexibility)."*
+- If neither exists → halt and instruct consultant to run Phase 02 first
+
 ## Output Files
 
 | File | Location | Description |
