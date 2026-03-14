@@ -66,14 +66,14 @@ Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: 
 
 ## Prohibited Actions
 
-- Do not commit project-specific data (from `../project_context`) into this submodule repository.
+- Do not commit project-specific data (from `projects/<ProjectName>/_context`) into this submodule repository.
 - Do not use subjective adjectives like "fast," "intuitive," or "reliable" without defining the specific IEEE-982.1 metric.
 
 ## Verification & Validation (V&V) Standard Operating Procedure
 
 ### IEEE 1012 Evaluation Framework
 
-- **Correctness:** Confirm the requirement mirrors the stakeholder intent documented in `../project_context/vision.md`, using Anomaly Identification to flag deviations.
+- **Correctness:** Confirm the requirement mirrors the stakeholder intent documented in `projects/<ProjectName>/_context/vision.md`, using Anomaly Identification to flag deviations.
 - **Consistency:** Ensure terminology and logical structure are uniform across sections (e.g., Section 3.1 aligns with Section 3.2) by referencing the Integrity Level of each artifact.
 - **Completeness:** Verify every Edge Case captured in context files has a corresponding functional requirement; mark omissions via Baseline Verification notes.
 - **Verifiability:** Confirm that a deterministic test case with a clear pass/fail criterion exists for every requirement, and annotate the test expectation directly beside the requirement.
