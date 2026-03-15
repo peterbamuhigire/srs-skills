@@ -19,9 +19,10 @@ You are an expert Systems Architect. You are assisting in developing and executi
 
 When the user says "start a new project" or equivalent:
 1. Invoke `superpowers:brainstorming` first — mandatory, no exceptions
-2. Ask 4 questions (name, description, methodology, owner) — one at a time
-3. Deduce domain automatically from the project description using `domains/INDEX.md` keyword signals
-4. If domain is ambiguous, ask during brainstorming session only
+2. Ask 5 questions (name, description, methodology, owner, team size) — one at a time
+3. After the methodology answer, run the **hybrid-detection heuristic**: if the user answers "Agile" or "Scrum" but also describes formal documentation gates, detailed up-front requirements, or testing at the end — flag this as a potential Water-Scrum-Fall pattern and note it in `_context/vision.md`. Ask: "Does your team have a formal requirements sign-off before development begins?" A "yes" answer confirms the hybrid.
+4. Deduce domain automatically from the project description using `domains/INDEX.md` keyword signals
+5. If domain is ambiguous, ask during brainstorming session only
 5. Scaffold the full directory structure under `projects/<ProjectName>/`
 6. Pre-populate `_context/` files with interview answers and guided TODO prompts
 7. Copy `domains/<domain>/INDEX.md` into `_context/domain.md`
@@ -50,15 +51,16 @@ When the user says "build the [document]":
 2. **Strict Grounding:** Never "hallucinate" features. If a detail is missing from `projects/<ProjectName>/_context/`, flag the gap to the user instead of making an assumption.
 3. **The "Stimulus-Response" Rule:** Functional requirements (Skill 05) must follow a stimulus-response pattern to ensure they are **Verifiable**.
 4. **Terminology:** Use **IEEE Std 610.12-1990** definitions. Maintain a strict glossary in the parent project to avoid ambiguity.
-5. **Technical Precision:** - Use LaTeX for any mathematical logic or algorithms: $LateFee = Balance \times Rate$.
-   - Use professional, active-voice engineering prose (e.g., "The system shall..." instead of "The system can...").
+5. **Technical Precision:** Use LaTeX for any mathematical logic or algorithms: $LateFee = Balance \times Rate$. Use professional, active-voice engineering prose (e.g., "The system shall..." instead of "The system can...").
+6. **Minimum-Length Directive:** Output only the content required for verifiability and completeness. Every sentence must earn its length. No padding, no restatements of the obvious, no vague qualifiers. Long sentences are acceptable only when every word is load-bearing. *(Cunningham, 2013)*
+7. **Prohibition on Vague Adjectives:** Do not use "fast," "intuitive," "reliable," "robust," "seamless," or similar adjectives without defining the specific IEEE-982.1 metric. Replace with measurable thresholds: "response time ≤ 500 ms at P95 under normal load."
 
 ## Skill Execution Workflow
 
 > **PRIME Methodology (Kodukula & Vinueza, 2024):** Every skill execution follows the PRIME cycle — **P**repare (`_context/` files populated with real data), **R**elay (invoke the skill), **I**nspect (review output against context), **M**odify (refine and re-invoke if needed), **E**xecute (run `build-doc.sh`). Never skip Inspect and Modify — the first AI output is a draft, not a deliverable.
 
 1. **Initialization (Skill 01):** Must check for the existence of `projects/<ProjectName>/_context/` and seed it if missing.
-2. **Analysis (Prepare):** Read inputs from `projects/<ProjectName>/_context/*.md`. The `_context/` directory is the Project Input Folder (PIF) — the richer the context files, the higher the output quality.
+2. **Analysis (Prepare):** Read inputs from `projects/<ProjectName>/_context/*.md`. The `_context/` directory is the Project Input Folder (PIF) — the richer the context files, the higher the output quality. Also read `_context/glossary.md` if it exists — every domain-specific term used in generated output must appear there. Flag any term that is used but not defined as `[GLOSSARY-GAP: <term>]` and list all gaps in the Human Review Gate step.
 3. **Synthesis (Relay):** Generate the specific SRS section based on the skill's theme.
 4. **Human Review Gate (Inspect):** Present the generated output to the consultant before proceeding. Explicitly list all `[CONTEXT-GAP]` flags and all `[V&V-FAIL]` tags. Do NOT run downstream skills until the consultant acknowledges review. *(Etter, 2016 — "AI-generated content must be human-verified; verification is not optional.")*
 5. **Validation (Modify):** Apply consultant feedback; re-invoke the skill if context files were updated. Check against the "Correct, Unambiguous, Complete" criteria of IEEE 830.
@@ -67,10 +69,40 @@ When the user says "build the [document]":
 
 Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: Initialization, Introduction, Overview, Interfaces, Functional Requirements, Logic Modeling, Attribute Mapping, and Semantic Auditing with verification artifacts.
 
+## Documentation & Writing Standards
+
+These rules apply to all generated output — SRS sections, design documents, test plans, and skill template files.
+
+### Three-Emphasis Rule *(Cunningham, 2013; Etter, 2016)*
+- `**Bold**` — UI element names, field labels, and requirement identifiers only: "Click **Save**." / "**FR-001**"
+- `*Italic*` — critical warnings, caveats, and first introduction of defined terms only
+- `` `Monospace` `` — file paths, terminal commands, environment variable names, code, and system identifiers
+- Never bold more than 4 consecutive words in body text. Never combine bold and italic on the same element. Underline is prohibited.
+
+### List Formatting Rules
+- **Ordered lists are mandatory for all sequential procedures** — every numbered procedure must use `1.`, `2.`, `3.`, never prose paragraphs.
+- Bullet items that are complete sentences get a period. Bullet items that are phrases do not.
+- All items in a list must follow the same grammatical pattern (parallel structure).
+- A lead-in sentence ending with a colon treats the bullet items as continuations of that sentence.
+
+### Heading Standards
+- Headings must stand on their own — not just label a category. "Requirements" is weak; "Functional Requirements for the Loan Processing Module" is informative.
+- Choose one capitalization style per document and hold it throughout.
+
+### Numbers in Technical Documents
+- Always use figures (not words) for: version numbers, section references, page numbers, measurements, performance thresholds, and data values.
+- "Section 3.2.1" not "section three point two." "Response time ≤ 2 seconds" not "two seconds."
+- Percentages always use the % symbol.
+
+### Acronyms and Glossary *(M-09)*
+- Every IEEE standard, domain acronym, and project-specific term must be defined in `_context/glossary.md`.
+- Spell out on first use in the document: "Software Requirements Specification (SRS)" — then "SRS" thereafter.
+- Undefined acronym in a delivered SRS = audit anomaly. Flag with `[GLOSSARY-GAP: <term>]`.
+
 ## Prohibited Actions
 
 - Do not commit project-specific data (from `projects/<ProjectName>/_context`) into this submodule repository.
-- Do not use subjective adjectives like "fast," "intuitive," or "reliable" without defining the specific IEEE-982.1 metric.
+- Do not use subjective adjectives like "fast," "intuitive," or "reliable" without defining the specific IEEE-982.1 metric (see Principle 7 above).
 
 ## Verification & Validation (V&V) Standard Operating Procedure
 
@@ -89,8 +121,16 @@ Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: 
 
 ### Failure Protocols
 
-- When a requirement fails any audit criterion, the AI shall tag it with [V&V-FAIL] and append a remediation step that names the missing or conflicting element (e.g., "Missing data type for input field X").
-- The failing requirement is returned to the originating skill's owner for correction before any downstream skill runs, preventing propagation of the anomaly.
+- When a requirement fails any audit criterion, tag it with the appropriate fail tag and append a remediation step naming the missing or conflicting element.
+- The failing artifact is returned to the originating skill's owner for correction before any downstream skill runs, preventing anomaly propagation.
+
+**Fail Tags:**
+- `[V&V-FAIL: <reason>]` — requirement fails verification/validation (e.g., "Missing data type for input field X"; "Expected result is not a test oracle")
+- `[CONTEXT-GAP: <topic>]` — required context is absent from `_context/` files
+- `[GLOSSARY-GAP: <term>]` — term used in output is not defined in `_context/glossary.md`
+- `[SMART-FAIL: NFR not measurable]` — non-functional requirement lacks a specific, measurable metric
+- `[TRACE-GAP: <FR-ID>]` — functional requirement has no traceability to a business goal or test case
+- `[VERIFIABILITY-FAIL: <reason>]` — expected result is not a deterministic test oracle (judgment call required)
 
 ### Quality Constraints
 
