@@ -7,7 +7,7 @@ description: Multi-technique requirements gathering skill that guides the AI thr
 
 ## Overview
 
-This skill provides a structured, multi-technique approach to requirements elicitation. It guides the AI through selecting the most appropriate elicitation technique based on stakeholder availability, domain complexity, and requirements maturity, then executes the chosen technique to produce a grounded elicitation log. The skill supports interviews, Joint Application Development (JAD) workshops, prototyping, observation, and questionnaires, with domain-specific checklist hooks for specialized industries.
+This skill provides a structured, multi-technique approach to requirements elicitation. It guides the AI through selecting the most appropriate elicitation technique based on stakeholder availability, domain complexity, and requirements maturity, then executes the chosen technique to produce a grounded elicitation log. The skill supports interviews, Joint Application Development (JAD) workshops, prototyping, observation, questionnaires, contextual inquiry, benchmarking, and artifact analysis, with domain-specific checklist hooks for specialized industries.
 
 ## When to Use This Skill
 
@@ -85,11 +85,14 @@ Use the following decision matrix to recommend one or more techniques:
 |---------|-------------------|---------------------|
 | High availability + High complexity + Greenfield | JAD Workshop | Interview |
 | High availability + Low complexity + Greenfield | Interview | Prototyping |
-| Medium availability + High complexity + Evolving | Interview | Observation |
+| Medium availability + High complexity + Evolving | Interview | Contextual Inquiry |
 | Medium availability + Medium complexity + Evolving | Prototyping | Questionnaire |
-| Low availability + Any complexity + Any maturity | Questionnaire | Document Analysis |
-| Any availability + High complexity + Mature | Observation | Interview |
-| Any availability + Low complexity + Mature | Questionnaire | Document Analysis |
+| Low availability + Any complexity + Any maturity | Questionnaire | Artifact Analysis |
+| Any availability + High complexity + Mature | Contextual Inquiry | Interview |
+| Any availability + Low complexity + Mature | Questionnaire | Artifact Analysis |
+| New system replacing legacy / migration project | Artifact Analysis | Interview |
+| NFR definition or competitive positioning needed | Benchmarking | Interview |
+| Users cannot articulate needs verbally | Contextual Inquiry | Observation |
 
 Present the recommendation to the user with rationale. The user may override the selection.
 
@@ -159,6 +162,58 @@ Reference: `references/observation-ethnography.md`
 
 Reference: `references/questionnaires-surveys.md`
 
+#### Technique F: Contextual Inquiry
+
+1. Arrange to observe target stakeholders in their actual working environment while they perform real tasks (not a staged demo)
+2. Adopt the "apprentice" posture — the analyst is a learner; the stakeholder is the expert performing their normal work
+3. Ask questions in real time while observing; do not defer all questions to a separate debrief session
+4. Document observed workflows with:
+   - Step-by-step task descriptions including physical environment interactions
+   - Tacit knowledge and undocumented workarounds currently in use
+   - Physical or environmental constraints that affect system requirements
+   - Discrepancies between what stakeholders say they do and what they actually do
+5. Derive requirements from observations; tag requirements sourced solely from verbal statements vs. observed behaviour
+6. Record field notes immediately; produce process maps from the notes before the next working session
+
+- **Best for:** Discovering undocumented workflows, tacit knowledge, physical environment constraints; domains where users cannot fully articulate their needs in a formal interview setting
+- **Output:** Field notes, process maps, discovered requirements that users could not articulate verbally
+
+Reference: `references/observation-ethnography.md`
+
+#### Technique G: Benchmarking
+
+1. Identify the comparison targets: industry standards, regulatory benchmarks, or direct competitor products relevant to the project domain
+2. Define the comparison dimensions aligned to the project scope (features, performance thresholds, NFR values, UX patterns)
+3. For each dimension, record:
+   - The client's current state (from context files or stakeholder interviews)
+   - The benchmark value or feature presence in the comparison target
+   - The gap classification: Functional Gap (missing feature), Performance Gap (below threshold), or Parity (meets benchmark)
+4. Derive NFR targets from benchmark performance data; express as measurable thresholds (e.g., "The system shall process a transaction in ≤ 2 seconds, per industry median of 1.8 seconds")
+5. Use the gap list to set stakeholder expectations before detailed requirements are written; attach the benchmark table to the elicitation log
+
+- **Best for:** Establishing NFR baselines, identifying table-stakes features, setting stakeholder expectations for new system capabilities
+- **Output:** Benchmark comparison table, functional and performance gap list, NFR targets derived from industry standards
+
+Reference: `references/benchmarking-template.md`
+
+#### Technique H: Data Gathering / Artifact Analysis
+
+1. Collect all available existing artefacts from the client: documents, reports, spreadsheets, database schemas, input forms, screen captures, and logs from the current system
+2. For each artefact, record:
+   - Artefact ID and type (form, report, schema, screenshot, policy document)
+   - Source system or process
+   - Business rules embedded in the artefact (calculated fields, validation rules, conditional logic)
+   - Data entities, attributes, and observed relationships
+3. Annotate each artefact with derived requirements and business rules; use `[ARTEFACT-SOURCE: <ID>]` tags to preserve traceability
+4. Identify discrepancies between artefact-derived requirements and verbally stated requirements; flag each discrepancy with `[CONFLICT: Artefact vs. Stated Requirement]`
+5. Build a data dictionary entry for every data entity discovered; feed entries into the project glossary
+6. For legacy system migration projects, map every existing field and rule to a proposed new-system equivalent; mark gaps with `[MIGRATION-GAP]`
+
+- **Best for:** Understanding as-is processes, identifying hidden business rules, legacy system migration, and cross-checking verbally stated requirements against physical evidence
+- **Output:** Annotated artefacts, business rule inventory, data dictionary entries, migration gap list (if applicable)
+
+Reference: `references/artifact-analysis-checklist.md`
+
 ### Step 5: Apply Domain-Specific Checklists
 
 If the project domain matches one of the following, apply the corresponding checklist to ensure domain-critical requirements are not missed:
@@ -189,7 +244,7 @@ The generated `elicitation_log.md` shall follow this structure:
 - Project: [Name]
 - Version: 1.0
 - Date: [Current Date]
-- Technique(s) Used: [Interview / JAD / Prototyping / Observation / Questionnaire]
+- Technique(s) Used: [Interview / JAD / Prototyping / Observation / Questionnaire / Contextual Inquiry / Benchmarking / Artifact Analysis]
 - Status: Draft
 
 ## 1. Elicitation Context
@@ -270,8 +325,9 @@ Each finding in Section 2 shall use this format:
 | IEEE 29148-2018 Section 6.3 | Requirements elicitation process and techniques |
 | Laplante Ch.4 | Elicitation technique selection and execution |
 | Wiegers Practice 4 | Interview and workshop facilitation |
-| Wiegers Practice 5 | Observation and contextual inquiry |
+| Wiegers Practice 5 | Observation and contextual inquiry (Techniques D and F) |
 | Wiegers Practice 6 | Survey and questionnaire design |
+| Adzic (2012) — Impact Mapping | Contextual Inquiry apprentice model; discovering tacit requirements |
 | IEEE Std 610.12-1990 | Terminology definitions |
 
 ## Resources
@@ -279,6 +335,8 @@ Each finding in Section 2 shall use this format:
 - `references/interview-guide.md` -- Structured interview protocol
 - `references/jad-workshop.md` -- JAD workshop facilitation guide
 - `references/prototyping-for-elicitation.md` -- Low-fi prototyping workflow
-- `references/observation-ethnography.md` -- Contextual inquiry checklist
+- `references/observation-ethnography.md` -- Contextual inquiry and observation checklist (Techniques D and F)
 - `references/questionnaires-surveys.md` -- Survey design templates
 - `references/domain-checklists.md` -- Domain-specific elicitation checklists
+- `references/benchmarking-template.md` -- Benchmark comparison table and gap classification guide (Technique G)
+- `references/artifact-analysis-checklist.md` -- Artifact inventory, business rule extraction, and migration gap checklist (Technique H)

@@ -28,7 +28,7 @@ The system shall [verb] [object] when [condition].
 - **When** [trigger action — exactly one]
 - **Then** [observable outcome — externally verifiable]
 
-*Priority: [Must/Should/Could/Won't] | Audience: [End User / Admin / Developer]*
+*Priority: [Must/Should/Could/Won't] | Audience: [End User / Admin / Developer] | Precondition: [System state required before this requirement applies, or "None"]*
 ```
 
 **GWT Rules (Adzic, 2023):**
@@ -39,6 +39,8 @@ The system shall [verb] [object] when [condition].
 
 **Checklist:**
 - [ ] Every SHALL requirement has an inline GWT stub with exactly one When clause
+- [ ] Every FR has a Precondition clause (even if "None")
+- [ ] Every FR has an [AUDIENCE] tag
 
 ## Core Instructions
 1. Run `python feature_decomposition.py` from this directory or invoke the `logic.prompt` through your skill runner.

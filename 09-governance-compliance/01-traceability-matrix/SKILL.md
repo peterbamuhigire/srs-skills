@@ -71,6 +71,18 @@ This skill generates a Requirements Traceability Matrix (RTM) that establishes b
 
 10. The skill SHALL tag any requirement failing traceability with `[V&V-FAIL]` and append the specific missing link.
 
+## RTM Table Template
+
+The Requirements Traceability Matrix table SHALL use the following column structure:
+
+```markdown
+| Req ID | Requirement Summary | Source | Priority | Test Case ID(s) | Verification Method | Status | Regulatory Reference |
+|--------|--------------------|----|----------|-----------------|--------------------|----|---------------------|
+| FR-001 | | | | TC-001 | Test | Pass | [Standard clause or "N/A"] |
+```
+
+**Regulatory Reference column guidance:** The Regulatory Reference column cites the specific standard clause that mandates this requirement (e.g., `ISO 27001:2022 §A.8.2`, `GDPR Art. 17`, `PCI DSS Req. 6.4`). Enter `N/A` for requirements not driven by regulation. This column enables compliance auditors to trace from standard clause to implemented feature.
+
 ## Output Format Specification
 
 The generated `Traceability_Matrix.md` SHALL contain the following sections:
@@ -129,6 +141,7 @@ This ensures `scripts/build-doc.sh` assembles sections in the intended order rat
 6. `[V&V-FAIL]` tags are applied to every requirement with a missing critical link.
 7. The matrix uses consistent identifier formats throughout.
 8. Forward and backward traceability tables are both present.
+9. Every compliance-driven requirement has a Regulatory Reference entry.
 
 ## Integration
 

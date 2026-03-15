@@ -79,6 +79,23 @@ After the interview, Claude performs these actions in order:
 ### 1. Create project root
 `projects/<ProjectName>/`
 
+Also create **`projects/<ProjectName>/README.md`** — project README:
+```markdown
+# <ProjectName>
+
+**Status:** In Progress
+**Owner:** <owner>
+**Domain:** <domain>
+**Methodology:** <methodology>
+**Started:** <date>
+
+## Quick Links
+
+- `_context/vision.md` — Project vision and scope
+- `_context/stakeholders.md` — Stakeholder register
+- `_context/glossary.md` — Project terminology
+```
+
 ### 2. Create `_context/` files
 
 **`_context/vision.md`** — pre-populate with Q2 answer:
@@ -189,6 +206,44 @@ Format:
 -->
 ```
 
+**`_context/quality-log.md`** — quality tracking log:
+```markdown
+# Quality Log
+
+| Date | Skill | Issue Found | Resolution | Resolved By |
+|------|-------|-------------|------------|-------------|
+| <today's date> | — | Project initialized: <ProjectName> | — | — |
+```
+
+Pre-populate the first row with today's date and the project name. The QA engineer updates this log throughout the project lifecycle, recording every `[V&V-FAIL]`, `[CONTEXT-GAP]`, and `[GLOSSARY-GAP]` discovered during skill execution.
+
+**`_context/metrics.md`** — project metrics dashboard:
+```markdown
+# Project Metrics
+
+## Earned Value Metrics
+
+| Metric | Planned | Actual | Variance |
+|--------|---------|--------|----------|
+| PV (Planned Value) | | | |
+| EV (Earned Value) | | | |
+| AC (Actual Cost) | | | |
+
+## KPIs
+
+| KPI | Target | Current | Status |
+|-----|--------|---------|--------|
+
+## Phase Gate Criteria
+
+| Gate | Status | Date | Notes |
+|------|--------|------|-------|
+| Stakeholder Vision | Pending | | |
+| Proven Architecture | Pending | | |
+| Sufficient Functionality | Pending | | |
+| Production Ready | Pending | | |
+```
+
 **`_context/domain.md`** — copy content from `domains/<deduced-domain>/INDEX.md`
 and prepend:
 ```markdown
@@ -268,6 +323,11 @@ _context/ status:
   ○ glossary.md          — TODO: add project terminology
   ○ stakeholders.md     — TODO: add stakeholder register (required by Phase 01)
   ○ personas.md         — TODO: define user personas (required by Phase 02 Agile)
+  ✓ quality-log.md      — initialized with project entry
+  ○ metrics.md          — TODO: set EVM baselines and KPI targets
+
+Root files:
+  ✓ README.md           — pre-populated with project metadata
 
 Domain defaults injected: <N> [DOMAIN-DEFAULT] requirements
   → 02-requirements-engineering/01-srs/06-nfr.md

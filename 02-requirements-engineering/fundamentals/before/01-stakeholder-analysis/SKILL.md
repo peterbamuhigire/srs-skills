@@ -89,33 +89,57 @@ For each classification, provide a one-sentence rationale grounded in evidence f
 
 ### Step 4: Assess Stakeholder Influence and Impact
 
-For each stakeholder, assess the following attributes on a 1-5 scale:
+For each stakeholder, assess the following attributes and populate the enhanced Stakeholder Register:
+
+### Stakeholder Register (Enhanced — PMBOK 7th Edition + Impact Mapping)
+
+| ID | Name / Role | Organization | Interest | Influence (H/M/L) | Impact (H/M/L) | Current Engagement | Desired Engagement | Impact Map Role | Communication Channel | Frequency |
+|----|-------------|--------------|----------|-------------------|----------------|-------------------|-------------------|-----------------|----------------------|-----------|
+| STK-001 | | | | | | Unaware/Resistant/Neutral/Supportive/Leading | | Actor/Deliverable/Goal | | |
+
+**Engagement levels (PMBOK 7th):** Unaware → Resistant → Neutral → Supportive → Leading
+**Impact Map roles:** Goal (WHY — business objective), Actor (WHO — who can change behaviour), Deliverable (WHAT — what to build/change)
+**Engagement strategy:** For each stakeholder where Current ≠ Desired, document the strategy to close the gap in the Communications Plan below.
+
+Influence and Impact use a H/M/L scale in the register. For internal scoring, a 1-5 numeric scale may also be used:
 
 | Attribute | Scale | Definition |
 |-----------|-------|------------|
 | **Influence** | 1 (Minimal) to 5 (Decisive) | Ability to affect project decisions |
 | **Impact** | 1 (Negligible) to 5 (Critical) | Degree to which the project affects this stakeholder |
-| **Engagement Level** | Unaware, Resistant, Neutral, Supportive, Leading | Current posture toward the project |
+| **Current Engagement** | Unaware, Resistant, Neutral, Supportive, Leading | Current posture toward the project (PMBOK 7th) |
 | **Desired Engagement** | Neutral, Supportive, Leading | Target posture for project success |
+| **Impact Map Role** | Goal, Actor, Deliverable | Role within the Impact Map (Adzic, 2012) |
 
-Flag any stakeholder where Engagement Level is "Resistant" with `[RISK: Stakeholder resistance -- mitigation required]`.
+Flag any stakeholder where Current Engagement is "Resistant" with `[RISK: Stakeholder resistance -- mitigation required]`.
+Flag any stakeholder where Current Engagement ≠ Desired Engagement with `[GAP: Engagement gap -- communications strategy required]`.
 
 ### Step 5: Generate Communication Plan
 
-For each stakeholder (or stakeholder group), define a communication plan entry:
+For each stakeholder (or stakeholder group), define a communication plan entry using the enhanced PMBOK 7th Edition format:
 
-| Stakeholder | Frequency | Format | Channel | Content | Owner |
-|-------------|-----------|--------|---------|---------|-------|
-| SH-001: Project Sponsor | Weekly | Status Report | Email + Meeting | Budget, milestones, risks | PM |
-| SH-002: Primary Users | Bi-weekly | Demo + Feedback | Workshop | Feature previews, usability | BA |
-| SH-003: Regulators | Monthly | Compliance Brief | Formal Document | Regulatory alignment | Compliance Lead |
+### Communications Plan (PMBOK 7th Edition)
+
+| Stakeholder ID | Information Need | Format | Frequency | Owner | Escalation Path |
+|----------------|-----------------|--------|-----------|-------|-----------------|
+| STK-001 | | | | | |
+
+**Rule:** Every stakeholder with Desired engagement = Supportive or Leading must have at least one active communication channel documented here.
 
 The communication plan shall cover:
-- **Frequency**: Daily, Weekly, Bi-weekly, Monthly, Ad-hoc, or Milestone-based
+- **Information Need**: What the stakeholder requires to remain engaged at the desired level
 - **Format**: Meeting, Status Report, Demo, Workshop, Newsletter, Formal Document
-- **Channel**: Email, Video Call, In-Person, Collaboration Tool, Formal Submission
-- **Content**: What information the stakeholder needs
+- **Frequency**: Daily, Weekly, Bi-weekly, Monthly, Ad-hoc, or Milestone-based
 - **Owner**: Who is responsible for the communication (use role titles; mark `[OWNER-TBD]` if unknown)
+- **Escalation Path**: Who to contact if the stakeholder becomes disengaged or raises a blocking concern
+
+Example entries for reference:
+
+| Stakeholder ID | Information Need | Format | Frequency | Owner | Escalation Path |
+|----------------|-----------------|--------|-----------|-------|-----------------|
+| STK-001: Project Sponsor | Budget status, milestone health, risks | Status Report + Meeting | Weekly | PM | Programme Director |
+| STK-002: Primary Users | Feature previews, usability feedback | Demo + Workshop | Bi-weekly | BA | Product Owner |
+| STK-003: Regulators | Regulatory alignment, compliance evidence | Formal Document | Monthly | Compliance Lead | Legal Counsel |
 
 ### Step 6: Generate RACI Matrix
 
@@ -163,10 +187,12 @@ The generated `stakeholder_register.md` shall follow this structure:
 ### 2.1 Grid Summary
 ### 2.2 Quadrant Details
 
-## 3. Influence and Impact Assessment
+## 3. Stakeholder Register (Enhanced — PMBOK 7th + Impact Mapping)
+### 3.1 Register Table (ID, Role, Org, Interest, Influence, Impact, Current/Desired Engagement, Impact Map Role, Channel, Frequency)
+### 3.2 Engagement Gap Analysis
 
-## 4. Communication Plan
-### 4.1 Communication Schedule
+## 4. Communications Plan (PMBOK 7th Edition)
+### 4.1 Communication Schedule (Information Need, Format, Frequency, Owner, Escalation Path)
 ### 4.2 Escalation Procedures
 
 ## 5. RACI Matrix
@@ -192,8 +218,12 @@ The generated `stakeholder_register.md` shall follow this structure:
 - [ ] All required input files were read and logged
 - [ ] All eight stakeholder categories were evaluated (with gaps flagged where applicable)
 - [ ] Every stakeholder has a Power/Interest quadrant assignment with rationale
-- [ ] Influence and Impact scores use the defined 1-5 scale consistently
-- [ ] Communication plan specifies frequency, format, channel, content, and owner for every stakeholder
+- [ ] Influence and Impact scores use the defined H/M/L scale (and optional 1-5 numeric scale) consistently
+- [ ] Every stakeholder has Current Engagement and Desired Engagement populated using PMBOK 7th levels
+- [ ] Every stakeholder has an Impact Map Role assigned (Goal / Actor / Deliverable)
+- [ ] All stakeholders where Current ≠ Desired Engagement are flagged with `[GAP: Engagement gap]`
+- [ ] Communications Plan specifies Information Need, Format, Frequency, Owner, and Escalation Path for every stakeholder
+- [ ] Every stakeholder with Desired engagement = Supportive or Leading has at least one active communication channel
 - [ ] RACI matrix has exactly one "A" per activity row
 - [ ] Resistant stakeholders are flagged with risk tags
 - [ ] No subjective adjectives appear without a defined metric or evidence reference
@@ -213,6 +243,8 @@ The generated `stakeholder_register.md` shall follow this structure:
 | Standard | Governs |
 |----------|---------|
 | IEEE 29148-2018 Section 6.2 | Stakeholder identification and requirements sources |
+| PMBOK 7th Edition (PMI, 2021) | Stakeholder engagement levels (Unaware → Resistant → Neutral → Supportive → Leading) and Communications Plan structure |
+| Adzic (2012) — Impact Mapping | Impact Map roles: Goal (WHY), Actor (WHO), Deliverable (WHAT) |
 | Wiegers Practice 1 | Stakeholder identification techniques |
 | Wiegers Practice 2 | Stakeholder classification and prioritization |
 | Wiegers Practice 3 | Stakeholder engagement planning |

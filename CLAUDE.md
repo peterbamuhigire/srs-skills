@@ -94,6 +94,13 @@ These rules apply to all generated output — SRS sections, design documents, te
 - "Section 3.2.1" not "section three point two." "Response time ≤ 2 seconds" not "two seconds."
 - Percentages always use the % symbol.
 
+### Markdown Syntax Rules *(Etter, 2016; Cone, 2023)*
+- **Unordered lists:** Always use `-` as the bullet character. Never use `*` or `+`.
+- **Headings:** Never use `---` or `===` underline-style headings. Always use ATX-style `#` prefixes. The `---` underline syntax conflicts with Pandoc YAML front matter and horizontal rule detection.
+- **Table cells:** Never place nested lists, blockquotes, or fenced code blocks inside a Markdown table cell. Use a footnote reference instead.
+- **Blank lines:** Always place a blank line before and after: headings, fenced code blocks, blockquotes, and tables. Omitting blank lines causes Pandoc rendering errors.
+- **Emphasis syntax:** Always use asterisks (`**bold**`, `*italic*`), never underscores (`__bold__`, `_italic_`). Underscores have inconsistent behaviour inside words.
+
 ### Acronyms and Glossary *(M-09)*
 - Every IEEE standard, domain acronym, and project-specific term must be defined in `_context/glossary.md`.
 - Spell out on first use in the document: "Software Requirements Specification (SRS)" — then "SRS" thereafter.
