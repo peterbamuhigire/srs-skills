@@ -15,6 +15,31 @@ Use this skill after Sections 1.0, 2.0, and 3.1 are generated. It transforms the
 - Output: `../output/SRS_Draft.md` (Section 3.2 only)
 - Tone: Technical, precise, employing SHALL statements; avoid subjective adjectives and reference ISO/IEC 25010 Functional Suitability.
 
+## Functional Requirement Template
+
+Every SHALL requirement must include an inline GWT (Given-When-Then) acceptance stub immediately after the requirement statement:
+
+```
+**FR-[ID]: [Requirement Title]**
+The system shall [verb] [object] when [condition].
+
+**Acceptance:**
+- **Given** [precondition — system state before the action]
+- **When** [trigger action — exactly one]
+- **Then** [observable outcome — externally verifiable]
+
+*Priority: [Must/Should/Could/Won't] | Audience: [End User / Admin / Developer]*
+```
+
+**GWT Rules (Adzic, 2023):**
+- Exactly ONE `When` clause per stub. Two Whens = two requirements.
+- `Then` must describe an externally observable state change, not an internal variable.
+- `Given` uses past tense (preconditions that existed before the action).
+- If the expected result requires judgment to determine pass/fail → tag `[VERIFIABILITY-FAIL: expected result is not a test oracle]`.
+
+**Checklist:**
+- [ ] Every SHALL requirement has an inline GWT stub with exactly one When clause
+
 ## Core Instructions
 1. Run `python feature_decomposition.py` from this directory or invoke the `logic.prompt` through your skill runner.
 2. Parse each feature entry from `features.md`, extract user story triggers, and build a Functional Decomposition Tree with numbered subsections (3.2.x.1 Description/Priority, 3.2.x.2 Stimulus/Response Sequences, 3.2.x.3 Functional Requirements).

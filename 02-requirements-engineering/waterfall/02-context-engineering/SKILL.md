@@ -31,6 +31,18 @@ Use this skill once the project context templates have been populated. It turns 
 5. Always keep the Standardized Document Header in place; do not allow the section to drift into conversational or promotional language.
 6. Validate that `../output/SRS_Draft.md` exists and contains the new introduction before closing the skill run.
 
+### Out of Scope
+
+The following items are explicitly **excluded** from this project's scope. Listing exclusions prevents false assumptions and scope creep.
+
+| # | Out-of-Scope Item | Reason / Notes |
+|---|-------------------|----------------|
+| 1 | [Item] | [Why excluded or deferred] |
+
+**Generation rule:** For every major feature area mentioned in the project description, explicitly state whether it is IN or OUT of scope. If something a stakeholder might reasonably expect is not being built, list it here. A blank Out of Scope table is a red flag — revisit with stakeholders.
+
+**Audit tag:** If this section is empty or absent, Skill 08 (Semantic Auditing) shall flag `[CONTEXT-GAP: Out of Scope not defined]`.
+
 ## Resources
 - `README.md`: Provides the synthesis intent for this skill.
 - `context_engineering.py`: The automation script that performs the extraction, synthesis, and file writing described above.

@@ -26,6 +26,19 @@ Run this skill after Sections 1.0–3.5 have been generated so it can audit the 
 6. Gap Analysis covers: orphan requirements, unmet goals, missing SRS sections, non-compliant TBDs, and unranked requirements.
 7. The Standard Conformance Statement provides a clause-by-clause compliance summary with overall verdict: COMPLIANT / PARTIALLY COMPLIANT / NON-COMPLIANT.
 
+### Glossary Audit
+
+For every domain-specific term, acronym, or project-specific phrase used in the SRS output:
+1. Check whether it is defined in `_context/glossary.md`
+2. If undefined, tag the occurrence as `[GLOSSARY-GAP: <term>]`
+3. List all GLOSSARY-GAP findings in the audit report under a "Terminology Gaps" section
+4. The SRS is not considered complete until all GLOSSARY-GAP tags are resolved or explicitly accepted by the consultant
+
+**Acceptance criteria:** Zero unresolved [GLOSSARY-GAP] tags before Skill 08 closure.
+
+**Checklist:**
+- [ ] Zero [GLOSSARY-GAP] tags unresolved
+
 ## Resources
 - `README.md`: Execution steps and precision reminders.
 - `semantic_auditing.py`: Automation that reads the SRS/context files, audits requirements, and writes `Audit_Report.md`.
