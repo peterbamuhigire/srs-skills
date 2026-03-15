@@ -54,7 +54,12 @@ echo "$FILES" | while read -r f; do echo "  + $(basename "$f")"; done
 echo ""
 
 # Build
+# -f markdown_github ensures GitHub Flavored Markdown rendering (consistent with
+# how SKILL.md authors preview files on GitHub). Without this flag, Pandoc uses
+# its own Markdown variant which differs in whitespace, footnote, and nested-list
+# handling. (Etter, 2016 — Modern Technical Writing)
 pandoc $FILES \
+  -f markdown_github \
   --reference-doc="$TEMPLATE" \
   --table-of-contents \
   --toc-depth=3 \

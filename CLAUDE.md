@@ -60,7 +60,8 @@ When the user says "build the [document]":
 1. **Initialization (Skill 01):** Must check for the existence of `projects/<ProjectName>/_context/` and seed it if missing.
 2. **Analysis (Prepare):** Read inputs from `projects/<ProjectName>/_context/*.md`. The `_context/` directory is the Project Input Folder (PIF) — the richer the context files, the higher the output quality.
 3. **Synthesis (Relay):** Generate the specific SRS section based on the skill's theme.
-4. **Validation (Inspect + Modify):** Check the generated section against the "Correct, Unambiguous, Complete" criteria of IEEE 830. Flag any gaps with `[CONTEXT-GAP]` rather than fabricating missing information.
+4. **Human Review Gate (Inspect):** Present the generated output to the consultant before proceeding. Explicitly list all `[CONTEXT-GAP]` flags and all `[V&V-FAIL]` tags. Do NOT run downstream skills until the consultant acknowledges review. *(Etter, 2016 — "AI-generated content must be human-verified; verification is not optional.")*
+5. **Validation (Modify):** Apply consultant feedback; re-invoke the skill if context files were updated. Check against the "Correct, Unambiguous, Complete" criteria of IEEE 830.
 
 ## Full Skill Suite
 
