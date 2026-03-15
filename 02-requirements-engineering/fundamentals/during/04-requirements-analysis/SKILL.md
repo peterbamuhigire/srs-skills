@@ -20,7 +20,7 @@ This skill transforms raw elicitation artifacts into a structured analysis repor
 
 | Attribute     | Value                                                                  |
 |---------------|------------------------------------------------------------------------|
-| **Inputs**    | `../project_context/elicitation_log.md`, `vision.md`, `features.md`, `business_rules.md` |
+| **Inputs**    | `../output/elicitation_log.md`, `vision.md`, `features.md`, `business_rules.md` |
 | **Output**    | `../output/requirements_analysis_report.md`                            |
 | **Tone**      | Analytical, objective, evidence-based; no subjective adjectives        |
 | **Standards** | IEEE 29148-2018 Section 6.5, IEEE 830-1998, IEEE 1233-1998            |
@@ -29,7 +29,7 @@ This skill transforms raw elicitation artifacts into a structured analysis repor
 
 | File               | Location                                  | Required | Purpose                                          |
 |--------------------|-------------------------------------------|----------|--------------------------------------------------|
-| elicitation_log.md | `../project_context/elicitation_log.md`   | Yes      | Raw requirements gathered from stakeholders       |
+| elicitation_log.md | `../output/elicitation_log.md`            | Yes      | Raw requirements gathered from stakeholders       |
 | vision.md          | `../project_context/vision.md`            | Yes      | Business goals for traceability and prioritization|
 | features.md        | `../project_context/features.md`          | Yes      | Feature descriptions for classification           |
 | business_rules.md  | `../project_context/business_rules.md`    | No       | Business rules for conflict detection             |
