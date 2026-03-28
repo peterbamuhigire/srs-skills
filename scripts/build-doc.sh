@@ -59,7 +59,7 @@ echo ""
 # its own Markdown variant which differs in whitespace, footnote, and nested-list
 # handling. (Etter, 2016 — Modern Technical Writing)
 pandoc $FILES \
-  -f markdown_github \
+  -f gfm \
   --reference-doc="$TEMPLATE" \
   --table-of-contents \
   --toc-depth=3 \
