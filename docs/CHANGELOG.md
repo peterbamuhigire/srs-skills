@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] — AcademiaPro Phase 2 Requirements Engineering — 2026-03-29
+
+### Project: AcademiaPro (Chwezi Core Concepts)
+
+**Phase 2 — Requirements Engineering completed.** All IEEE 830-compliant SRS sections authored, built to `.docx`, and project documentation updated.
+
+**Deliverables produced:**
+
+- `02-requirements-engineering/AcademiaPro_SRS.docx` — 6-section SRS: Introduction, Overall Description, External Interfaces, 49 Functional Requirements (FR-AUTH/TNT/SIS/ACA/FEE/ATT/EXM/RPT/RBAC/EMIS/AUD), System Constraints, 13 NFRs
+- `02-requirements-engineering/AcademiaPro_UserStories.docx` — 20 user stories with Gherkin acceptance criteria
+- `02-requirements-engineering/AcademiaPro_RBAC_Stakeholder.docx` — Full RBAC permission matrix (60+ permissions × 8 roles); closes HIGH-005
+
+**Skill alignments explicit in SRS:**
+
+- `multi-tenant-saas-architecture` — three-tier panel architecture, `tenant_id` enforcement, rate limits, audit retention
+- `dual-auth-rbac` — session prefix `academia_pro_`, JWT 15 min/30 day, Argon2ID (C-003), 5-level permission resolution
+- `mysql-best-practices` — InnoDB/utf8mb4, non-destructive migrations
+- PRD 7-day mobile refresh token superseded by skill's 30-day standard (documented in C-002)
+
+**Gap analysis updates:**
+
+- HIGH-005 (RBAC matrix): ✅ Resolved
+- HIGH-006 (double-payment, Phase 1 manual scope): ✅ Resolved in FR-FEE-002/003
+- HIGH-001, HIGH-002, HIGH-003, HIGH-004, HIGH-007, HIGH-008: Pending (next phase)
+
+**Context gaps flagged for external resolution:**
+
+- `[CONTEXT-GAP: UNEB registration format]` — contact UNEB; blocks FR-EXM-008
+- `[CONTEXT-GAP: MoES EMIS data dictionary]` — obtain from MoES; blocks FR-EMIS-001
+
+---
+
 ## [3.5.1] - 2026-03-08
 
 ### Added
