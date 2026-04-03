@@ -8,7 +8,10 @@
       "Bash(find /c/wamp64/www/srs-skills/skills -type d -name *plan* -o -type d -name *status* -o -type d -name *document*)",
       "mcp__filesystem__get_file_info",
       "Bash(ls:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Bash(bash scripts/build-doc.sh projects/AcademiaPro/02-requirements-engineering/01-srs AcademiaPro_SRS)",
+      "Bash(cd:*)",
+      "Bash(bash scripts/build-doc.sh projects/AcademiaPro/03-design-documentation/02-lld AcademiaPro_LLD 2>&1)"
     ]
   }
 }
