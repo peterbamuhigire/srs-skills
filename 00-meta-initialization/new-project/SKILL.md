@@ -91,10 +91,156 @@ Also create **`projects/<ProjectName>/README.md`** — project README:
 
 ## Quick Links
 
+- `DOCUMENTATION-STATUS.md` — Full document inventory, generation status, and progress summary
 - `_context/vision.md` — Project vision and scope
 - `_context/stakeholders.md` — Stakeholder register
 - `_context/glossary.md` — Project terminology
 ```
+
+Also create **`projects/<ProjectName>/DOCUMENTATION-STATUS.md`** — documentation status tracker:
+```markdown
+# Documentation Status — <ProjectName>
+
+**Project:** <ProjectName>
+**Owner:** <owner>
+**Domain:** <domain>
+**Last Updated:** <date>
+**Total Documents:** 0
+
+---
+
+## What We Are Building
+
+<Q2 answer — project description>
+
+**Tech stack:** <!-- TODO: specify after populating _context/tech_stack.md -->
+**Methodology:** <methodology>
+
+---
+
+## Document Inventory by Phase
+
+### Phase 01 — Strategic Vision 🔲 Not Started
+
+| Document | Sections | `.docx` Built | Status |
+|---|---|---|---|
+| Product Requirements Document (PRD) | `01-prd/` | — | 🔲 Not started |
+| Vision Statement | `02-vision-statement/` | — | 🔲 Not started |
+| Business Case | `03-business-case/` | — | 🔲 Not started |
+
+### Phase 02 — Requirements Engineering 🔲 Not Started
+
+| Document | Sections | `.docx` Built | Status |
+|---|---|---|---|
+| Software Requirements Specification (SRS) | `01-srs/` | — | 🔲 Not started |
+| User Stories | `02-user-stories/` | — | 🔲 Not started |
+| Stakeholder Analysis | `03-stakeholder-analysis/` | — | 🔲 Not started |
+
+### Phase 03 — Design Documentation 🔲 Not Started
+
+| Document | Files | `.docx` Built | Status |
+|---|---|---|---|
+| High-Level Design | `01-hld/` | — | 🔲 Not started |
+| Low-Level Design | `02-lld/` | — | 🔲 Not started |
+| API Specification | `03-api-spec/` | — | 🔲 Not started |
+| Database Design | `04-database-design/` | — | 🔲 Not started |
+| UX Specification | `05-ux-spec/` | — | 🔲 Not started |
+
+### Phase 04 — Development Artifacts 🔲 Not Started
+
+| Document | Files | `.docx` Built | Status |
+|---|---|---|---|
+| Technical Specification | `01-technical-spec/` | — | 🔲 Not started |
+| Coding Guidelines | `02-coding-guidelines/` | — | 🔲 Not started |
+
+### Phase 05 — Testing Documentation 🔲 Not Started
+
+| Document | Files | Status |
+|---|---|---|
+| Test Strategy | `01-test-strategy/` | 🔲 Not started |
+| Test Plan | `02-test-plan/` | 🔲 Not started |
+| Test Report | `03-test-report/` | 🔲 Not started |
+
+### Phase 06 — Deployment Operations 🔲 Not Started
+
+| Document | Files | Status |
+|---|---|---|
+| Deployment Guide | `01-deployment-guide/` | 🔲 Not started |
+| Runbook | `02-runbook/` | 🔲 Not started |
+
+### Phase 07 — Agile Artifacts 🔲 Not Started
+
+| Document | Files | Status |
+|---|---|---|
+| Sprint Planning | `01-sprint-planning/` | 🔲 Not started |
+| Definition of Done | `02-dod/` | 🔲 Not started |
+| Definition of Ready | `03-dor/` | 🔲 Not started |
+
+### Phase 08 — End User Documentation 🔲 Not Started
+
+| Document | Files | Status |
+|---|---|---|
+| User Manual | `01-user-manual/` | 🔲 Not started |
+| Installation Guide | `02-installation-guide/` | 🔲 Not started |
+| FAQ | `03-faq/` | 🔲 Not started |
+
+### Phase 09 — Governance Compliance 🔲 Not Started
+
+| Document | Files | Status |
+|---|---|---|
+| Traceability Matrix | `01-traceability-matrix/` | 🔲 Not started |
+| Audit Report | `02-audit-report/` | 🔲 Not started |
+| Compliance | `03-compliance/` | 🔲 Not started |
+| Risk Assessment | `04-risk-assessment/` | 🔲 Not started |
+
+---
+
+## Context Files (`_context/`)
+
+| File | Status |
+|---|---|
+| `vision.md` | ✅ Populated |
+| `domain.md` | ✅ Populated |
+| `features.md` | 🔲 TODO |
+| `tech_stack.md` | 🔲 TODO |
+| `business_rules.md` | 🔲 TODO |
+| `quality_standards.md` | 🔲 TODO |
+| `glossary.md` | 🔲 TODO |
+| `stakeholders.md` | 🔲 TODO |
+| `personas.md` | 🔲 TODO |
+| `quality-log.md` | ✅ Initialized |
+| `metrics.md` | 🔲 TODO |
+
+---
+
+## Progress Summary
+
+| Phase | Documents | Complete | In Progress | Not Started |
+|---|---|---|---|---|
+| 01 — Strategic Vision | 3 | 0 | 0 | 3 |
+| 02 — Requirements Engineering | 3 | 0 | 0 | 3 |
+| 03 — Design Documentation | 5 | 0 | 0 | 5 |
+| 04 — Development Artifacts | 2 | 0 | 0 | 2 |
+| 05 — Testing Documentation | 3 | 0 | 0 | 3 |
+| 06 — Deployment Operations | 2 | 0 | 0 | 2 |
+| 07 — Agile Artifacts | 3 | 0 | 0 | 3 |
+| 08 — End User Documentation | 3 | 0 | 0 | 3 |
+| 09 — Governance Compliance | 4 | 0 | 0 | 4 |
+| **Total** | **28** | **0** | **0** | **28** |
+
+**Overall document completion: 0 of 28 documents (0%).**
+
+---
+
+## Immediate Next Steps
+
+1. Fill in `_context/` files with real project data
+2. Generate Phase 01 documents: PRD, Vision Statement, Business Case
+3. Generate Phase 02 documents: SRS and/or User Stories
+```
+
+Update this file each time a document is written or built. Use the status
+indicators: ✅ Complete, 🔶 Partially Complete, 🔲 Not Started.
 
 ### 2. Create `_context/` files
 
@@ -327,7 +473,8 @@ _context/ status:
   ○ metrics.md          — TODO: set EVM baselines and KPI targets
 
 Root files:
-  ✓ README.md           — pre-populated with project metadata
+  ✓ README.md                — pre-populated with project metadata
+  ✓ DOCUMENTATION-STATUS.md  — document inventory and generation tracker
 
 Domain defaults injected: <N> [DOMAIN-DEFAULT] requirements
   → 02-requirements-engineering/01-srs/06-nfr.md
