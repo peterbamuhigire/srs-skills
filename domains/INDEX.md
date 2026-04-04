@@ -15,6 +15,7 @@ to auto-inject `[DOMAIN-DEFAULT]` tagged requirements into the project scaffold.
 | Retail | PCI-DSS, GDPR | Medium | [retail/](retail/INDEX.md) |
 | Logistics | DOT, ISO 28000 | Medium | [logistics/](logistics/INDEX.md) |
 | Government | FISMA, FedRAMP, GDPR | High | [government/](government/INDEX.md) |
+| Agriculture | Uganda DPA, EUDR, GlobalGAP, Employment Act | Medium | [agriculture/](agriculture/INDEX.md) |
 
 ## How Domain Injection Works
 

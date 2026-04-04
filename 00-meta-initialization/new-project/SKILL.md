@@ -62,6 +62,7 @@ using these signals:
 | inventory, POS, e-commerce, retail, products, orders, cart, warehouse (retail context) | `retail` |
 | fleet, shipments, tracking, logistics, freight, warehouse (supply chain), delivery, routing | `logistics` |
 | government, citizens, public services, procurement, permits, case management, municipal | `government` |
+| farm, crops, livestock, agriculture, harvest, planting, irrigation, cattle, poultry, FMIS | `agriculture` |
 
 **If ambiguous (two domains equally match):** Ask the user during the brainstorming
 session — e.g., "This sounds like it could be healthcare OR government — which primary
