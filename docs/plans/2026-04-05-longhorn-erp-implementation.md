@@ -2,9 +2,9 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Produce 45 professional, IEEE-compliant documentation deliverables for Longhorn ERP — a multi-tenant SaaS ERP platform by Chwezi Core Concepts — covering all 01-09 document sets.
+**Goal:** Produce 45 professional, IEEE-compliant documentation deliverables for Longhorn ERP — a multi-tenant SaaS ERP platform by Chwezi Core Systems — covering all 01-09 document sets.
 
-**Architecture:** Documents are produced in dependency order: Foundation → Platform SRS → Module SRS → Design Documentation → Testing/Operations → End-User → Governance. All output is prospective ("shall" language). Localisation is configuration-only. All 17 modules are universal. Every `.docx` carries Chwezi Core Concepts ownership in its cover page.
+**Architecture:** Documents are produced in dependency order: Foundation → Platform SRS → Module SRS → Design Documentation → Testing/Operations → End-User → Governance. All output is prospective ("shall" language). Localisation is configuration-only. All 17 modules are universal. Every `.docx` carries Chwezi Core Systems ownership in its cover page.
 
 **Tech Stack:** PHP 8.3, MySQL 9.1, Bootstrap 5.3, jQuery, PHP-DI, JWT Mobile API, Android (Kotlin/Compose), iOS (Swift/SwiftUI). Build tool: Pandoc via `scripts/build-doc.sh`.
 
@@ -17,7 +17,7 @@
 **Ownership block (required in every document's `00-cover.md`):**
 
 ```
-© Chwezi Core Concepts | chwezicore.com | info@chwezicore.com
+© Chwezi Core Systems | chwezicore.com | info@chwezicore.com
 Lead Developer: Peter Bamuhigire | techguypeter.com | peter@techguypeter.com | +256784464178
 Confidential — All Rights Reserved
 ```
@@ -59,13 +59,13 @@ projects/LonghornERP/_context/glossary.md      ✓
 
 **Date:** {DATE}
 
-**Prepared by:** Chwezi Core Concepts
+**Prepared by:** Chwezi Core Systems
 
 ---
 
 | Field | Detail |
 |---|---|
-| Company | Chwezi Core Concepts |
+| Company | Chwezi Core Systems |
 | Website | chwezicore.com |
 | Email | info@chwezicore.com |
 | Lead Developer | Peter Bamuhigire |
@@ -73,7 +73,7 @@ projects/LonghornERP/_context/glossary.md      ✓
 | Developer Email | peter@techguypeter.com |
 | Developer Phone | +256784464178 |
 
-*Confidential — All Rights Reserved. This document is the intellectual property of Chwezi Core Concepts. No part may be reproduced or disclosed without written permission.*
+*Confidential — All Rights Reserved. This document is the intellectual property of Chwezi Core Systems. No part may be reproduced or disclosed without written permission.*
 
 ---
 ```
@@ -1252,7 +1252,7 @@ Cover:
 - Performance degradation diagnosis
 - Tenant suspension / reactivation procedure
 - Data export / tenant offboarding procedure
-- Emergency contact escalation path (Chwezi Core Concepts support)
+- Emergency contact escalation path (Chwezi Core Systems support)
 
 **Step 2: Build .docx**
 

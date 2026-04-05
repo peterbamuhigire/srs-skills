@@ -1,11 +1,11 @@
 # Academia Pro — Project Design Document
 
-> **Chwezi Core Concepts** | Owner: Peter | Date: 2026-03-28
+> **Chwezi Core Systems** | Owner: Peter | Date: 2026-03-28
 
 ## 1. Product Identity
 
 **Product:** Academia Pro — multi-tenant SaaS school management platform, Uganda-first, pan-Africa expansion.
-**Company:** Chwezi Core Concepts (chwezicore.com)
+**Company:** Chwezi Core Systems (chwezicore.com)
 **Team:** Solo / micro team (1–3 people)
 **Methodology:** Hybrid (Water-Scrum-Fall) — formal requirements and phase gate sign-off before each phase begins; iterative delivery within phases.
 
@@ -103,7 +103,7 @@ Country profiles: Kenya, Tanzania, Rwanda, Nigeria, Ghana, Francophone Africa
 
 | Portal | User | Scope |
 |---|---|---|
-| Super Admin | Chwezi Core Concepts (Peter) | Platform-wide: all schools, billing, support |
+| Super Admin | Chwezi Core Systems (Peter) | Platform-wide: all schools, billing, support |
 | Owner/Director | School owner / chain director | Their school(s): consolidated view, approvals |
 | School Admin | Head teacher / administrator | Full school daily operations |
 | Teacher | Subject & class teachers | Attendance, marks, homework, lesson plans |
@@ -207,7 +207,7 @@ SLA per tier, security patches, annual PAYE/NSSF updates, curriculum updates, cl
 
 ## 9. Legal & Compliance
 
-- **Uganda Copyright Act 2006:** Register software with URSB. All developer contracts assign IP to Chwezi Core Concepts. Student DB qualifies as protected electronic data bank — ToS must define data ownership between platform and subscribing school.
+- **Uganda Copyright Act 2006:** Register software with URSB. All developer contracts assign IP to Chwezi Core Systems. Student DB qualifies as protected electronic data bank — ToS must define data ownership between platform and subscribing school.
 - **Bank of Uganda:** Payment Systems Operator licence required for Phase 3+ direct mobile money processing. Phase 1–2 uses SchoolPay API (no BoU licence needed).
 - **NITA-U PDPO:** Personal data protection compliance. Health data encrypted at rest and in transit.
 - **EMIS/MoES:** All EMIS-required fields captured at admission. EMIS returns generated with one click.

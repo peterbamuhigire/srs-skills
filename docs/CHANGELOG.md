@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. This projec
 
 ## [Unreleased] — AcademiaPro Phase 2 Requirements Engineering — 2026-03-29
 
-### Project: AcademiaPro (Chwezi Core Concepts)
+### Project: AcademiaPro (Chwezi Core Systems)
 
 **Phase 2 — Requirements Engineering completed.** All IEEE 830-compliant SRS sections authored, built to `.docx`, and project documentation updated.
 

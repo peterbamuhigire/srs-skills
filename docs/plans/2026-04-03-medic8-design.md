@@ -1,7 +1,7 @@
 # Medic8 — Project Design Document
 
 **Date:** 2026-04-03
-**Author:** Peter — Chwezi Core Concepts (chwezicore.com)
+**Author:** Peter — Chwezi Core Systems (chwezicore.com)
 **Status:** Approved
 **Domain:** Healthcare
 **Methodology:** Hybrid (Water-Scrum-Fall)

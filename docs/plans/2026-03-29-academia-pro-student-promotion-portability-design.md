@@ -3,7 +3,7 @@ title: "Academia Pro — Student Promotion, Departure, and Portability Design"
 date: 2026-03-29
 project: AcademiaPro
 status: Approved
-author: Peter (Chwezi Core Concepts)
+author: Peter (Chwezi Core Systems)
 resolves: HIGH-004 (Academic Year Lifecycle), SRS amendment required
 ---
 
