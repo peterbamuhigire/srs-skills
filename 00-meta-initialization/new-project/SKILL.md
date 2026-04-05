@@ -80,6 +80,65 @@ After the interview, Claude performs these actions in order:
 ### 1. Create project root
 `projects/<ProjectName>/`
 
+Also create **`projects/<ProjectName>/export/`** — deliverable export folder:
+- Create an empty `export/` directory with a `.gitkeep` file.
+- Create **`projects/<ProjectName>/export-docs.sh`** — bash export script:
+
+```bash
+#!/usr/bin/env bash
+# export-docs.sh — Copy all .docx deliverables into this project's export/ folder.
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+EXPORT_DIR="$SCRIPT_DIR/export"
+mkdir -p "$EXPORT_DIR"
+echo "Project   : $(basename "$SCRIPT_DIR")"
+echo "Exporting : $EXPORT_DIR"
+echo ""
+count=0
+while IFS= read -r -d '' f; do
+    dest="$EXPORT_DIR/$(basename "$f")"
+    if [ -f "$dest" ]; then
+        base="${f%.*}"; ext="${f##*.}"; n=2
+        while [ -f "$EXPORT_DIR/$(basename "$base")_${n}.${ext}" ]; do n=$((n+1)); done
+        dest="$EXPORT_DIR/$(basename "$base")_${n}.${ext}"
+    fi
+    cp "$f" "$dest"
+    echo "  + $(basename "$f")"
+    count=$((count + 1))
+done < <(find "$SCRIPT_DIR" -name "*.docx" -not -path "*/export/*" -print0 | sort -z)
+echo ""
+echo "Done — $count file(s) copied to export/"
+```
+
+- Create **`projects/<ProjectName>/export-docs.ps1`** — PowerShell export script:
+
+```powershell
+# export-docs.ps1 — Copy all .docx deliverables into this project's export\ folder.
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+$ExportDir = Join-Path $ScriptDir "export"
+New-Item -ItemType Directory -Force -Path $ExportDir | Out-Null
+Write-Host "Project   : $(Split-Path -Leaf $ScriptDir)"
+Write-Host "Exporting : $ExportDir"
+Write-Host ""
+$files = Get-ChildItem -Path $ScriptDir -Filter "*.docx" -Recurse `
+    | Where-Object { $_.FullName -notlike "*\export\*" } | Sort-Object Name
+$count = 0
+foreach ($f in $files) {
+    $dest = Join-Path $ExportDir $f.Name
+    if (Test-Path $dest) {
+        $base = [System.IO.Path]::GetFileNameWithoutExtension($f.Name)
+        $ext = $f.Extension; $n = 2
+        while (Test-Path (Join-Path $ExportDir "${base}_${n}${ext}")) { $n++ }
+        $dest = Join-Path $ExportDir "${base}_${n}${ext}"
+    }
+    Copy-Item $f.FullName -Destination $dest
+    Write-Host "  + $($f.Name)"
+    $count++
+}
+Write-Host ""
+Write-Host "Done — $count file(s) copied to export\"
+```
+
 Also create **`projects/<ProjectName>/README.md`** — project README:
 ```markdown
 # <ProjectName>
@@ -96,6 +155,7 @@ Also create **`projects/<ProjectName>/README.md`** — project README:
 - `_context/vision.md` — Project vision and scope
 - `_context/stakeholders.md` — Stakeholder register
 - `_context/glossary.md` — Project terminology
+- `export/` — Flat copy of all built `.docx` deliverables (run `export-docs.sh` or `export-docs.ps1`)
 ```
 
 Also create **`projects/<ProjectName>/DOCUMENTATION-STATUS.md`** — documentation status tracker:

@@ -129,6 +129,8 @@ def build_reference_docx(output_path):
     normal.paragraph_format.space_before = Pt(0)
     normal.paragraph_format.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
     normal.paragraph_format.line_spacing = 1.15
+    normal.paragraph_format.keep_together = True    # never split a paragraph across pages
+    normal.paragraph_format.widow_control = True    # no orphan/widow lines
 
     # --- Heading 1 ---
     h1 = styles["Heading 1"]
@@ -139,7 +141,7 @@ def build_reference_docx(output_path):
     h1.paragraph_format.space_before = Pt(20)
     h1.paragraph_format.space_after  = Pt(6)
     h1.paragraph_format.keep_with_next = True
-    h1.paragraph_format.page_break_before = False
+    h1.paragraph_format.page_break_before = True   # H1 always opens a new page
     # Left bar accent
     pPr = h1._element.get_or_add_pPr()
     pBdr = OxmlElement("w:pBdr")
@@ -160,6 +162,7 @@ def build_reference_docx(output_path):
     h2.paragraph_format.space_before = Pt(14)
     h2.paragraph_format.space_after  = Pt(4)
     h2.paragraph_format.keep_with_next = True
+    h2.paragraph_format.keep_together  = True
 
     # --- Heading 3 ---
     h3 = styles["Heading 3"]
@@ -171,6 +174,7 @@ def build_reference_docx(output_path):
     h3.paragraph_format.space_before = Pt(10)
     h3.paragraph_format.space_after  = Pt(3)
     h3.paragraph_format.keep_with_next = True
+    h3.paragraph_format.keep_together  = True
 
     # --- Heading 4 ---
     h4 = styles["Heading 4"]
@@ -182,6 +186,7 @@ def build_reference_docx(output_path):
     h4.paragraph_format.space_before = Pt(8)
     h4.paragraph_format.space_after  = Pt(2)
     h4.paragraph_format.keep_with_next = True
+    h4.paragraph_format.keep_together  = True
 
     # --- Title ---
     try:
