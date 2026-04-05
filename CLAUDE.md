@@ -21,7 +21,7 @@ When the user says "start a new project" or equivalent:
 1. Invoke `superpowers:brainstorming` first — mandatory, no exceptions
 2. Ask 5 questions (name, description, methodology, owner, team size) — one at a time
 3. After the methodology answer, run the **hybrid-detection heuristic**: if the user answers "Agile" or "Scrum" but also describes formal documentation gates, detailed up-front requirements, or testing at the end — flag this as a potential Water-Scrum-Fall pattern and note it in `_context/vision.md`. Ask: "Does your team have a formal requirements sign-off before development begins?" A "yes" answer confirms the hybrid.
-4. Deduce domain automatically from the project description using `domains/INDEX.md` keyword signals
+4. Deduce domain automatically from the project description using `domains/INDEX.md` keyword signals. **Uganda domain keyword signals:** `Uganda`, `BIRDC`, `PIBID`, `URA`, `EFRIS`, `PPDA`, `OAG`, `NSSF Uganda`, `NIRA`, `NIN`, `matooke`, `cooperative farmers`, `Kampala`, `Bushenyi`, `MTN MoMo`, `Airtel Money`, `parliamentary budget vote`, `ICPAU`, `DPPA`. If 2 or more Uganda signals are present, select the `uganda` domain automatically.
 5. If domain is ambiguous, ask during brainstorming session only
 5. Scaffold the full directory structure under `projects/<ProjectName>/`
 6. Pre-populate `_context/` files with interview answers and guided TODO prompts
@@ -68,6 +68,22 @@ When the user says "build the [document]":
 ## Full Skill Suite
 
 Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: Initialization, Introduction, Overview, Interfaces, Functional Requirements, Logic Modeling, Attribute Mapping, and Semantic Auditing with verification artifacts.
+
+## Compliance Skills (Uganda Domain)
+
+For Uganda-based projects, two additional compliance skills are available and should be invoked as cross-cutting tasks alongside the main SRS skill flow:
+
+- **`uganda-dppa-compliance`** — Generates the DPPA 2019 compliance annex: PII inventory, classification (financial info = special personal data), consent FRs, data subject rights FRs, breach notification procedure (immediate → PDPO), retention/destruction schedule, DPIA trigger assessment, DPO/PDPO registration requirements. Invoke after Skill 05 (Functional Requirements) for any module that collects personal data.
+- **`dpia-generator`** — Generates a Regulation 12-compliant DPIA document for any processing operation flagged `[DPIA-REQUIRED]`. Invoke when `uganda-dppa-compliance` raises a DPIA flag.
+
+## Compliance Fail Tags (Uganda)
+
+In addition to the standard V&V fail tags, use these for Uganda DPPA compliance:
+- `[DPPA-FAIL: S-tier field not encrypted]` — special personal data field without AES-256-GCM
+- `[DPPA-FAIL: no consent mechanism]` — personal data collected without lawful basis or consent FR
+- `[DPPA-FAIL: breach notification > immediate]` — breach SLA longer than immediate
+- `[DPPA-FAIL: no data subject rights FR]` — module collects personal data but no rights FRs
+- `[DPIA-REQUIRED: <reason>]` — processing operation triggers mandatory DPIA
 
 ## Documentation & Writing Standards
 
