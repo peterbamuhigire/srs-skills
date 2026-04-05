@@ -113,7 +113,7 @@ echo "Done — $count file(s) copied to export/"
 - Create **`projects/<ProjectName>/export-docs.ps1`** — PowerShell export script:
 
 ```powershell
-# export-docs.ps1 — Copy all .docx deliverables into this project's export\ folder.
+# export-docs.ps1 - Copy all .docx deliverables into this project's export folder.
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $ExportDir = Join-Path $ScriptDir "export"
 New-Item -ItemType Directory -Force -Path $ExportDir | Out-Null
@@ -136,7 +136,7 @@ foreach ($f in $files) {
     $count++
 }
 Write-Host ""
-Write-Host "Done — $count file(s) copied to export\"
+Write-Host "Done - $count file(s) copied to export/"
 ```
 
 Also create **`projects/<ProjectName>/README.md`** — project README:
