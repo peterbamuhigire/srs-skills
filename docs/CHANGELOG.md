@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026-04-07] — AI Module Upgrade Across All Active Projects
+
+### Added
+
+- **Kulima** — AI Farm Advisor module: PRD `FR-AI` business section (5 features: Natural Language Q&A, Photo Pest/Disease Diagnosis, Personalised Farm Plan, Seasonal Planting Advisory, Market Timing Advice); SRS FR-AI-001–006 technical requirements verified and strengthened with measurable thresholds; `Kulima_PRD.docx` and `Kulima_SRS.docx` built.
+- **Medic8** — AI Clinical Intelligence module: PRD `FR-AI` business section (5 features: At-Risk Patient EWS, Differential Diagnosis Support, SOAP Note Summarisation, Pharmacy Demand Forecasting, Disease Surveillance); SRS FR-AI-001–005 technical requirements added to `04-functional-requirements.md`; `Medic8_PRD.docx` and `Medic8_SRS.docx` built.
+- **LonghornERP** — AI Intelligence module: new PRD file `10-ai-intelligence.md` (5 features: Cash Flow Intelligence, GL Anomaly Detection, Demand Forecasting and Reorder, Debtor Default Risk Scoring, Narrative Financial Reports); new SRS Module 15 directory (`15-ai-intelligence/`) with cover, introduction, FR-AI-001–005, NFRs, and traceability; `LonghornERP_PRD.docx` rebuilt and `LonghornERP_SRS_AIIntelligence.docx` built.
+- **Maduuka** — AI Business Intelligence module: PRD section `7A` (4 features: Sales Forecasting, Smart Reorder Advisor, Fraud and Anomaly Alerts, Business Health Advisor) inserted into `01-prd.md`; SRS FR-AI-001–004 appended to `04-functional-requirements.md`; `Maduuka_PRD.docx` and `Maduuka_SRS_Phase1.docx` rebuilt.
+- **BIRDC-ERP** — AI Intelligence Phase 7 contract extension: new PRD file `11-ai-module.md` (5 capabilities: Production Yield Prediction, Quality Defect Pattern Detection, Farmer Supply Forecasting, Predictive Equipment Maintenance, Export Demand Intelligence); SRS `08-fr-ai.md` added to Phase 6 (`06-srs-phase6-research-admin/`) with FR-AI-001–005; `PRD_BIRDC_ERP.docx` and `SRS_BIRDC_ERP_Phase6_ResearchAdmin.docx` rebuilt.
+- Implementation plan saved to `docs/plans/2026-04-07-ai-module-upgrade-all-projects.md`.
+
+### Changed
+
+- All 5 active projects now have domain-specific AI modules specified at both PRD (business language) and SRS (IEEE 830 stimulus-response) levels, consistent with the AcademiaPro AI module pattern established previously.
+
+---
+
 ## [Unreleased] — AcademiaPro Phase 2 Requirements Engineering — 2026-03-29
 
 ### Project: AcademiaPro (Chwezi Core Systems)
