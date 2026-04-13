@@ -1,8 +1,17 @@
 ---
-name: formal-review-gates
+name: "formal-review-gates"
 phase: "09-governance-compliance"
-description: Generate PSR, CSR, and FSAR formal customer review gate documents per Royce (1970) Step 5
-standard: IEEE 1028-2008 (Software Reviews), IEEE 15288 (System Life Cycle)
+description: "Generate PSR, CSR, and FSAR formal customer review gate documents per Royce (1970) Step 5"
+standard: "IEEE 1028-2008 (Software Reviews), IEEE 15288 (System Life Cycle)"
+metadata:
+  use_when: "Use when the task matches skill: formal review gates (psr / csr / fsar) and this skill's local workflow."
+  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
+  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
+  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
+  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
+  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
+  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
+  references: "Use sibling files in this directory when deeper detail is needed."
 ---
 
 # Skill: Formal Review Gates (PSR / CSR / FSAR)

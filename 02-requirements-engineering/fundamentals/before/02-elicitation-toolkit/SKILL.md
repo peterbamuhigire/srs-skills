@@ -1,6 +1,15 @@
 ---
-name: elicitation-toolkit
-description: Multi-technique requirements gathering skill that guides the AI through choosing and executing the right elicitation techniques per IEEE 29148 Section 6.3 and Wiegers Practices 4-6.
+name: "elicitation-toolkit"
+description: "Multi-technique requirements gathering skill that guides the AI through choosing and executing the right elicitation techniques per IEEE 29148 Section 6.3 and Wiegers Practices 4-6."
+metadata:
+  use_when: "Use when the task matches elicitation toolkit skill and this skill's local workflow."
+  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
+  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
+  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
+  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
+  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
+  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
+  references: "Use `references/` when deeper detail is needed."
 ---
 
 # Elicitation Toolkit Skill
