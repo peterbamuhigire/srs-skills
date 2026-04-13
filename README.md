@@ -546,6 +546,7 @@ When re-running skills on existing documentation:
 - **[skill_overview.md](skill_overview.md)**: Input-to-output registry for each skill
 - **[PROJECT_BRIEF.md](PROJECT_BRIEF.md)**: Quick overview for new users
 - **[ARCHITECTURE.md](ARCHITECTURE.md)**: Technical architecture and design decisions
+- **[docs/deterministic-governance.md](docs/deterministic-governance.md)**: Clause-level gate checklist that extends the ISO/IEEE 29119 deterministic model to other phases.
 
 ---
 
