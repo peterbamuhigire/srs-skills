@@ -45,7 +45,7 @@ Establish product vision, goals, and high-level requirements.
 #### 01-prd-generation
 - **Description:** Generate Product Requirements Document
 - **Input:** Project vision, stakeholder interviews
-- **Output:** `../output/PRD.md`
+- **Output:** `projects/<ProjectName>/01-strategic-vision/.../PRD.md`
 - **Estimated Time:** [X hours/days]
 - **Priority:** [Critical / High / Medium / Low]
 - **Status:** ⏳ Pending
@@ -67,7 +67,7 @@ Establish product vision, goals, and high-level requirements.
 #### 01-initialize-srs
 - **Description:** Initialize SRS context files
 - **Input:** Project vision, tech stack, business rules
-- **Output:** Context templates in `../project_context/`
+- **Output:** Context templates in `projects/<ProjectName>/_context/`
 - **Estimated Time:** 2 hours
 - **Priority:** Critical
 - **Status:** ⏳ Pending
@@ -77,7 +77,7 @@ Establish product vision, goals, and high-level requirements.
 #### 02-context-engineering
 - **Description:** Generate SRS Section 1.0 (Introduction)
 - **Input:** `vision.md`, `glossary.md`
-- **Output:** `../output/SRS_Draft.md` Section 1.0
+- **Output:** `projects/<ProjectName>/02-requirements-engineering/.../SRS_Draft.md` Section 1.0
 - **Estimated Time:** 4 hours
 - **Priority:** Critical
 - **Status:** ⏳ Pending
@@ -91,7 +91,7 @@ Establish product vision, goals, and high-level requirements.
 #### 01-user-story-generation
 - **Description:** Generate INVEST-compliant user stories
 - **Input:** `features.md`, `personas.md`
-- **Output:** `../output/user_stories.md`, `story_map.mmd`
+- **Output:** `projects/<ProjectName>/02-requirements-engineering/.../user_stories.md`, `story_map.mmd`
 - **Estimated Time:** 1 day
 - **Priority:** Critical
 - **Status:** ⏳ Pending
@@ -112,7 +112,7 @@ Document system architecture and detailed design.
 #### 01-high-level-design
 - **Description:** Generate HLD with C4 diagrams
 - **Input:** Requirements (SRS or User Stories), `tech_stack.md`
-- **Output:** `../output/HLD.md`, architecture diagrams
+- **Output:** `projects/<ProjectName>/03-design-documentation/.../HLD.md`, architecture diagrams
 - **Estimated Time:** [X days]
 - **Priority:** High
 - **Status:** ⏳ Pending
@@ -122,7 +122,7 @@ Document system architecture and detailed design.
 #### 02-low-level-design (Waterfall only)
 - **Description:** Generate LLD with class/sequence diagrams
 - **Input:** `HLD.md`, detailed requirements
-- **Output:** `../output/LLD.md`
+- **Output:** `projects/<ProjectName>/03-design-documentation/.../LLD.md`
 - **Estimated Time:** [X days]
 - **Priority:** High
 - **Status:** [⏳ Pending / ❌ Skipped for Agile]
@@ -141,7 +141,7 @@ Define test strategy and create test plans/cases.
 #### 01-test-strategy
 - **Description:** Define overall testing approach
 - **Input:** Requirements, quality standards
-- **Output:** `../output/Test_Strategy.md`
+- **Output:** `projects/<ProjectName>/05-testing-documentation/.../Test_Strategy.md`
 - **Estimated Time:** [X hours]
 - **Priority:** Medium
 - **Status:** ⏳ Pending
@@ -160,7 +160,7 @@ Document deployment procedures and operational runbooks.
 #### 01-deployment-guide
 - **Description:** Step-by-step deployment instructions
 - **Input:** `tech_stack.md`, infrastructure setup
-- **Output:** `../output/Deployment_Guide.md`
+- **Output:** `projects/<ProjectName>/06-deployment-operations/.../Deployment_Guide.md`
 - **Estimated Time:** [X hours]
 - **Priority:** Medium
 - **Status:** ⏳ Pending
@@ -179,7 +179,7 @@ Generate sprint-level artifacts for Agile teams.
 #### 01-sprint-planning
 - **Description:** Create sprint backlog from product backlog
 - **Input:** `user_stories.md`, team velocity
-- **Output:** `../output/sprint_X_backlog.md`
+- **Output:** `projects/<ProjectName>/07-agile-artifacts/.../sprint_X_backlog.md`
 - **Estimated Time:** 2 hours per sprint
 - **Priority:** High
 - **Status:** [⏳ Pending / ❌ Skipped for Waterfall]
@@ -198,7 +198,7 @@ Create user-facing documentation (manuals, FAQs, guides).
 #### 01-user-manual
 - **Description:** Generate end-user manual
 - **Input:** Requirements, UI mockups, feature descriptions
-- **Output:** `../output/User_Manual.md`
+- **Output:** `projects/<ProjectName>/08-end-user-documentation/.../User_Manual.md`
 - **Estimated Time:** [X days]
 - **Priority:** Medium
 - **Status:** ⏳ Pending
@@ -217,7 +217,7 @@ Generate traceability matrices, audit reports, compliance docs.
 #### 01-traceability-matrix
 - **Description:** Generate RTM linking requirements to tests
 - **Input:** `SRS_Draft.md` or `user_stories.md`, test cases
-- **Output:** `../output/Traceability_Matrix.md`
+- **Output:** `projects/<ProjectName>/09-governance-compliance/.../Traceability_Matrix.md`
 - **Estimated Time:** [X hours]
 - **Priority:** Critical (for Waterfall), Medium (for Agile)
 - **Status:** ⏳ Pending
@@ -227,7 +227,7 @@ Generate traceability matrices, audit reports, compliance docs.
 #### 02-audit-reports
 - **Description:** Validate documentation against standards
 - **Input:** All generated docs
-- **Output:** `../output/Audit_Report.md`
+- **Output:** `projects/<ProjectName>/09-governance-compliance/.../Audit_Report.md`
 - **Estimated Time:** [X hours]
 - **Priority:** High
 - **Status:** ⏳ Pending

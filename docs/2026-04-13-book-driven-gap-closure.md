@@ -47,11 +47,12 @@ Close high-value SDLC engine gaps using the software engineering, requirements, 
 - It now supports prototype-driven discovery and solution comparison before detailed design hardens.
 - It now extends beyond requirements closure into transition planning and solution evaluation.
 - It now covers IoT-specific architecture and launch-readiness assessment.
+- Root-level pathing ambiguity has been reduced by formalizing `projects/<ProjectName>/...` as the canonical workspace model and treating `../project_context/` and `../output/` as compatibility aliases.
 
 ## Remaining High-Value Gaps
 
 - Deterministic enforcement and machine-checkable quality gates remain the main structural weakness.
-- The pathing/runtime model still mixes legacy relative-path assumptions with the newer project-scoped workspace design.
+- Skill-level path migration is still incomplete even though the root runtime model is now clarified.
 - Hybrid synchronization, ADRs, change impact analysis, formal waivers, and requirement-to-code traceability are still underpowered or missing.
 - Domain compliance still needs deeper control libraries and evidence-oriented enforcement.
 

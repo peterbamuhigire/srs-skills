@@ -2,6 +2,8 @@
 
 This directory contains the **complete 8-phase IEEE 830-1998 compliant SRS generation pipeline** for traditional Waterfall projects.
 
+The canonical runtime workspace for this pipeline is `projects/<ProjectName>/`. References inside older skill-local files to `../project_context/` and `../output/` should be interpreted as aliases into that active project workspace.
+
 ## When to Use This Pipeline
 
 ✅ **USE for:**
@@ -38,7 +40,7 @@ flowchart LR
 
 | Phase | Skill | SRS Target | Standards | Output |
 |-------|-------|------------|-----------|--------|
-| **01** | [Initialize SRS](01-initialize-srs/) | Grounding Data | ISO/IEC 15504, IEEE 1074 | Context templates in `../project_context/` |
+| **01** | [Initialize SRS](01-initialize-srs/) | Grounding Data | ISO/IEC 15504, IEEE 1074 | Context templates in `projects/<ProjectName>/_context/` |
 | **02** | [Context Engineering](02-context-engineering/) | Section 1.0 Introduction | IEEE 830 §5.1 | Purpose, Scope, Definitions |
 | **03** | [Descriptive Modeling](03-descriptive-modeling/) | Section 2.0 Overview | IEEE 830 §5.2 | System context, constraints |
 | **04** | [Interface Specification](04-interface-specification/) | Section 3.1 Interfaces | IEEE 1233, ISO/IEC 25051 | External interfaces, protocols |
@@ -56,7 +58,7 @@ flowchart LR
    ```
    Run skill: 02-requirements-engineering/waterfall/01-initialize-srs
    ```
-   This creates `../project_context/` with 6 templates:
+   This creates `projects/<ProjectName>/_context/` with 6 templates:
    - `vision.md` - Product vision and stakeholder goals
    - `features.md` - Feature catalog
    - `tech_stack.md` - Technology constraints
@@ -99,9 +101,9 @@ Run skill: 02-requirements-engineering/waterfall/08-semantic-auditing
 
 After completing all 8 phases, you will have:
 
-- **`../output/SRS_Draft.md`**: Complete IEEE 830-compliant SRS document
-- **`../output/Traceability_Matrix.md`**: Requirements traceability matrix (IEEE 1012)
-- **`../output/Audit_Report.md`**: Verification and validation report
+- **`projects/<ProjectName>/02-requirements-engineering/.../SRS_Draft.md`**: Complete IEEE 830-compliant SRS document
+- **`projects/<ProjectName>/09-governance-compliance/.../Traceability_Matrix.md`**: Requirements traceability matrix (IEEE 1012)
+- **`projects/<ProjectName>/09-governance-compliance/.../Audit_Report.md`**: Verification and validation report
 
 ## Re-running Phases (Iterative Updates)
 

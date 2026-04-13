@@ -41,7 +41,7 @@ Gate outputs should be machine-readable and block downstream progression unless 
 
 ### 3. Unify the Pathing Model
 
-Pick one canonical runtime model and refactor everything to it.
+Pick one canonical runtime model and continue refactoring skill-local assets toward it.
 
 Recommended model:
 
@@ -50,15 +50,18 @@ Recommended model:
 - `projects/<ProjectName>/artifacts/metadata/`
 - `projects/<ProjectName>/build/`
 
-Then update:
+Current status:
 
-- `README.md`
-- `skill_overview.md`
-- phase READMEs
+- root docs and repository protocols now treat this as the canonical model
+- legacy `../project_context/` and `../output/` references are now explicitly documented as compatibility aliases
+
+Next update targets:
+
 - all SKILL files
 - scripts
+- helper prompts and templates that still imply the legacy model
 
-This is foundational. Without it, the engine remains harder to automate and trust.
+This remains foundational. The ambiguity is reduced, but full automation and trust still require skill-level cleanup and stronger runtime abstraction.
 
 ### 4. Create a Single Validation Kernel
 

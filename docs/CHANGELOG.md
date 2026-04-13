@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026-04-13] - Workspace Pathing Model Clarification
+
+### Changed
+
+- Defined `projects/<ProjectName>/...` as the canonical runtime workspace model in root repository documentation.
+- Added `docs/pathing-model.md` to formalize the relationship between canonical project paths and legacy execution aliases such as `../project_context/` and `../output/`.
+- Updated `README.md`, `AGENTS.md`, `CLAUDE.md`, `ARCHITECTURE.md`, `skill_overview.md`, `00-meta-initialization/templates/doc_roadmap.md.template`, and `02-requirements-engineering/waterfall/README.md` to remove the root-level path ambiguity.
+- Updated evaluation documents so pathing is no longer described as an unresolved root-architecture inconsistency, but as a remaining skill-level migration task.
+
 ## [2026-04-07] — AI Module Upgrade Across All Active Projects
 
 ### Added

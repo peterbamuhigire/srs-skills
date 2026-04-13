@@ -30,6 +30,13 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 - Do not duplicate logic between `SKILL.md` and reference files when a short link is enough.
 - When a skill has both concise metadata and a longer body, use metadata for routing and the body for execution detail.
 
+## Pathing Model
+
+- The canonical project workspace model is `projects/<ProjectName>/...`.
+- The source of truth for project context is `projects/<ProjectName>/_context/`.
+- Existing skill-local references such as `../project_context/` and `../output/` should be treated as execution aliases into the active project workspace, not as a separate architecture.
+- Root documentation should prefer the canonical model described in [docs/pathing-model.md](/C:/wamp64/www/srs-skills/docs/pathing-model.md).
+
 ## Quality Bar
 
 - Outputs must be specific, grounded in local context, and appropriate for production or delivery review.

@@ -15,21 +15,24 @@ The engine relies too much on SKILL prose, checklists, and human review rather t
 
 This is the central blocker.
 
-## 2. Architecture and Path Model Are Inconsistent
+## 2. Pathing Model Has Been Clarified, But Skill-Level Migration Is Incomplete
 
-The repository is split between an older submodule-era path model and a newer project-scoped workspace model.
+The repository now has a documented canonical path model:
 
-Observed inconsistency:
+- `projects/<ProjectName>/` is the workspace root
+- `projects/<ProjectName>/_context/` is the source of truth for project inputs
+- root documentation now treats legacy `../project_context/` and `../output/` references as compatibility aliases, not as a separate architecture
 
-- root docs and many skills still refer to `../project_context/` and `../output/`
-- `CLAUDE.md` positions `projects/<ProjectName>/_context/` as the source of truth
-- the scaffold creates project-level directories, but many skills still describe legacy relative-path execution
+Remaining limitation:
+
+- many skill-local files, prompts, and helper assets still use the older relative shorthand directly
+- this is now a **controlled compatibility layer**, but not yet a full skill-by-skill migration
 
 Impact:
 
-- weak operational clarity
-- higher failure rate for real project execution
-- harder automation and orchestration
+- root-level architectural ambiguity is materially reduced
+- operational clarity is better than before
+- automation is still constrained until more skill-local files are normalized or wrapped by a stronger runtime abstraction
 
 ## 3. Waterfall Is Stronger Than Agile and Hybrid
 
@@ -179,13 +182,13 @@ Current state:
 ### High-Severity Gaps
 
 - Lack of deterministic enforcement
-- Path and architecture inconsistency
 - Weak hybrid synchronization
 - Incomplete standards proof model
 - Fragmented validation architecture
 
 ### Medium-Severity Gaps
 
+- Incomplete skill-level path migration despite a clarified canonical model
 - Domain compliance depth not yet sufficient
 - Output consistency controls too weak
 - Phase 09 assurance stronger in appearance than in verification

@@ -2,6 +2,14 @@
 
 This registry documents the inputs, process logic, governing standards, and outputs for each skill in the SRS-Skills pipeline. It is formatted as an Engineering Interface Control Document to ensure compliance with ISO/IEC 15504 and IEEE 1002 taxonomy requirements.
 
+## Path Interpretation
+
+Repository-level pathing is canonicalized to `projects/<ProjectName>/...`.
+
+- `projects/<ProjectName>/_context/` is the source of truth for project inputs.
+- Table entries that still show `../project_context/` and `../output/` are legacy execution aliases preserved for compatibility with existing skill-local instructions.
+- Read those aliases as references into the active project workspace, not as a separate repository architecture.
+
 | Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
 |-----------------|--------|----------------|-------------------|----------------|
 | 01-initialize-srs | User input, existing context, project anchors | Populate ../project_context/ with IEEE/ISO-driven templates, ensuring baseline artifacts and seeds exist | ISO/IEC 15504 – Process Assessment Framework; IEEE 1074 – Software Life Cycle Process | Seeded templates in ../project_context/ (vision.md, tech_stack.md, features.md, business_rules.md, quality_standards.md, glossary.md) |

@@ -194,7 +194,7 @@ Run skill: 00-meta-initialization
 
 This will:
 - Detect your project type (Waterfall, Agile, Hybrid)
-- Create `../project_context/methodology.md`
+- Create `projects/<ProjectName>/_context/methodology.md`
 - Generate a documentation roadmap
 - Activate appropriate pipelines
 
@@ -232,9 +232,9 @@ Start with: `02-requirements-engineering/agile/01-user-story-generation`
 
 Each phase builds on the previous:
 
-1. **Initialize context** (seed `../project_context/` with vision, features, tech stack)
+1. **Initialize context** (seed `projects/<ProjectName>/_context/` with vision, features, tech stack)
 2. **Run sequential skills** in your chosen pipeline
-3. **Generate outputs** to `../output/` directory
+3. **Generate outputs** inside `projects/<ProjectName>/...` under the active phase/document workspace
 4. **Validate with auditing skills** (Phase 09)
 
 ---
@@ -297,6 +297,16 @@ sdlc-docs-engine/
     └── [25+ additional skills]
 ```
 
+## Pathing Model
+
+The canonical runtime model is the project workspace under `projects/<ProjectName>/`.
+
+- Context source of truth: `projects/<ProjectName>/_context/`
+- Generated markdown and phase artifacts: `projects/<ProjectName>/<phase>/...`
+- Final `.docx` outputs: `projects/<ProjectName>/<phase>/`
+
+Many existing skill-local files still use `../project_context/` and `../output/`. Those are compatibility aliases used inside skill execution contexts. They are not a second architecture. Root documentation follows the canonical workspace model described in [docs/pathing-model.md](/C:/wamp64/www/srs-skills/docs/pathing-model.md).
+
 ---
 
 ## 📋 Documentation Pipelines
@@ -317,7 +327,7 @@ sdlc-docs-engine/
 7. Generate Sections 3.3-3.6 (Non-Functional Requirements)
 8. Validate & generate Traceability Matrix
 
-**Output:** `../output/SRS_Draft.md`, `Traceability_Matrix.md`, `Audit_Report.md`
+**Output:** canonical project artifacts under `projects/<ProjectName>/02-requirements-engineering/...` and `projects/<ProjectName>/09-governance-compliance/...`
 
 👉 **[Start Waterfall SRS Pipeline](02-requirements-engineering/waterfall/README.md)**
 
@@ -335,7 +345,7 @@ sdlc-docs-engine/
 3. Create story map visualization
 4. Prioritize backlog (MoSCoW/WSJF)
 
-**Output:** `../output/user_stories.md`, `story_map.mmd`, `backlog_summary.md`
+**Output:** canonical project artifacts under `projects/<ProjectName>/02-requirements-engineering/...`
 
 👉 **[Start Agile User Story Pipeline](02-requirements-engineering/agile/README.md)**
 
@@ -519,7 +529,7 @@ When re-running skills on existing documentation:
 
 ## 🧠 Design Philosophy
 
-- **Parent-Root Targeting:** Skills execute within the submodule but operate on `../project_context/` and `../output/`
+- **Project-Workspace Targeting:** Skills execute within the submodule but target the active project workspace under `projects/<ProjectName>/`
 - **Standards-Driven Prompts:** Every skill maps to specific IEEE/ISO clauses
 - **Engineering over Authorship:** Requirements use stimulus-response patterns and logic modeling for verifiability
 - **Methodology-Agnostic Core:** Choose Waterfall, Agile, or Hybrid based on project needs
@@ -548,12 +558,12 @@ When re-running skills on existing documentation:
 Run skill: 02-requirements-engineering/waterfall/01-initialize-srs
 
 # Step 2: Populate context files (manually)
-Edit ../project_context/vision.md
-Edit ../project_context/features.md
-Edit ../project_context/tech_stack.md
-Edit ../project_context/business_rules.md
-Edit ../project_context/quality_standards.md
-Edit ../project_context/glossary.md
+Edit `projects/<ProjectName>/_context/vision.md`
+Edit `projects/<ProjectName>/_context/features.md`
+Edit `projects/<ProjectName>/_context/tech_stack.md`
+Edit `projects/<ProjectName>/_context/business_rules.md`
+Edit `projects/<ProjectName>/_context/quality_standards.md`
+Edit `projects/<ProjectName>/_context/glossary.md`
 
 # Step 3: Generate SRS sections sequentially
 Run skill: 02-requirements-engineering/waterfall/02-context-engineering
@@ -564,7 +574,7 @@ Run skill: 02-requirements-engineering/waterfall/06-logic-modeling
 Run skill: 02-requirements-engineering/waterfall/07-attribute-mapping
 Run skill: 02-requirements-engineering/waterfall/08-semantic-auditing
 
-# Output: ../output/SRS_Draft.md (IEEE 830 compliant)
+# Output: generated SRS artifacts in `projects/<ProjectName>/02-requirements-engineering/...`
 ```
 
 ### Workflow 2: Agile E-commerce Startup
@@ -582,7 +592,7 @@ Run skill: 02-requirements-engineering/agile/03-story-mapping
 # Step 4: Sprint planning
 Run skill: 07-agile-artifacts/01-sprint-planning
 
-# Output: ../output/user_stories.md, story_map.mmd, sprint_1_backlog.md
+# Output: generated Agile artifacts in `projects/<ProjectName>/02-requirements-engineering/...` and `projects/<ProjectName>/07-agile-artifacts/...`
 ```
 
 ### Workflow 3: Hybrid SaaS Platform

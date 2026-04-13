@@ -12,6 +12,7 @@ You are an expert Systems Architect. You are assisting in developing and executi
 - **Project Workspace:** Located in `projects/<ProjectName>/` (untracked, gitignored). All client documentation is built here.
 - **Context Source of Truth:** Read all project-specific data from `projects/<ProjectName>/_context/`.
 - **Output Destination:** Write all generated section files to `projects/<ProjectName>/<phase>/<document>/`. Write final `.docx` files to `projects/<ProjectName>/<phase>/`.
+- **Relative Alias Compatibility:** Existing skill bodies may still mention `../project_context/` and `../output/`. Treat these as shorthand aliases to the active project's canonical workspace, not as a competing path model.
 - **Templates:** `templates/reference.docx` is the Pandoc Word style reference.
 - **Build Script:** `scripts/build-doc.sh` stitches `.md` files into `.docx`.
 
