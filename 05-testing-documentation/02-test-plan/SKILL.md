@@ -1,6 +1,6 @@
 ---
 name: "test-plan"
-description: "Generate a detailed test plan with test cases, requirement traceability, test data, schedule, and resource allocation per IEEE 829-2008."
+description: "Generate a detailed test plan with test cases, requirement traceability, test data, schedule, and resource allocation per BS ISO/IEC/IEEE 29119-3 Sections 7-8."
 metadata:
   use_when: "Use when the task matches test plan skill and this skill's local workflow."
   do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
@@ -16,7 +16,7 @@ metadata:
 
 ## Overview
 
-This is the second skill in Phase 05 (Testing Documentation). It transforms the SRS functional and non-functional requirements into a detailed test plan containing test cases, test data definitions, schedule, resource allocation, and a requirement-to-test traceability matrix. Every "shall" statement in SRS Section 3.2 becomes a test case. The output conforms to IEEE 829-2008 Sections 7-8.
+This is the second skill in Phase 05 (Testing Documentation). It transforms the SRS functional and non-functional requirements into a detailed test plan containing test cases, test data definitions, schedule, resource allocation, and a requirement-to-test traceability matrix. Every "shall" statement in SRS Section 3.2 becomes a test case. The output conforms to BS ISO/IEC/IEEE 29119-3 Sections 7-8 and references the deterministic checklist for artifact completeness.
 
 ## When to Use
 
@@ -31,7 +31,7 @@ This is the second skill in Phase 05 (Testing Documentation). It transforms the 
 | **Inputs**  | `../output/SRS_Draft.md`, `../output/Test_Strategy.md`, `../output/acceptance_criteria.md` (optional) |
 | **Output**  | `../output/Test_Plan.md` |
 | **Tone**    | Detailed, case-driven, QA-facing |
-| **Standard** | IEEE 829-2008 Sec 7-8 |
+| **Standard** | BS ISO/IEC/IEEE 29119-3 Sec 7-8 |
 
 ## Input Files
 
@@ -63,9 +63,11 @@ Parse SRS Section 3.2 and extract every "shall" statement as a testable requirem
 
 If `acceptance_criteria.md` exists, map each acceptance criterion to its corresponding SRS requirement and note which test cases shall validate it at the UAT level. If the file does not exist, skip this step and note that UAT cases derive from SRS requirements directly.
 
-### Step 4: Define Test Case Format
+### Step 4: Define Test Design Specification & Test Case Format
 
-Establish the test case format: TC-ID (unique identifier), Requirement (linked REQ-ID), Preconditions (system state before execution), Steps (numbered actions), Expected Result (observable outcome with pass/fail criterion), and Priority (Critical, High, Medium, Low derived from requirement priority).
+Document the selected test design techniques (equivalence partitioning, boundary values, state machine testing, decision tables, use case testing) and cite the applicable 29119-3 clause (§7.3.3). Each technique shall reference the requirements it exercises.
+
+Establish the test case format using the nine normative 29119-3 fields: TC-ID, Objective/Purpose, Priority, Traceability to requirement ID, Preconditions, Test Input, Expected Result (with deterministic pass/fail), Actual Result (filled at execution), and Test Result (Pass/Incident). Include Steps (numbered actions) beneath the structured fields.
 
 ### Step 5: Generate Functional Test Cases
 
@@ -85,7 +87,7 @@ Define the test execution schedule: phases aligned with Test_Strategy.md test le
 
 ### Step 9: Generate Traceability Matrix and Write Output
 
-Generate a requirement-to-test traceability matrix mapping every REQ-ID to its TC-IDs, confirming full coverage. Flag any requirements without test cases as coverage gaps. Write the completed document to `../output/Test_Plan.md`. Log the total count of test cases, coverage percentage, and any gaps.
+Generate a requirement-to-test traceability matrix mapping every REQ-ID to its TC-IDs, confirming full coverage. Flag any requirements without test cases as coverage gaps. Before writing output, verify the deterministic gate in `../references/29119-deterministic-checks.md` has been satisfied (mandatory artifact tree, clause annotations, entry/exit criteria). Write the completed document to `../output/Test_Plan.md`. Log the total count of test cases, coverage percentage, and any gaps.
 
 ## Output Format
 
@@ -139,7 +141,7 @@ This ensures `scripts/build-doc.sh` assembles sections in the intended order rat
 
 ## Standards
 
-- **IEEE 829-2008** -- Standard for Software and System Test Documentation. Governs test plan structure (Sections 7-8).
+- **BS ISO/IEC/IEEE 29119-3** -- Current international standard for test documentation; governs project-level test plans, traceability, and required artifact set (Sections 7-8).
 
 ## Resources
 

@@ -1,6 +1,6 @@
 ---
 name: "test-strategy"
-description: "Generate an overall test strategy defining test levels, types, tools, environments, and entry/exit criteria per IEEE 829-2008."
+description: "Generate an overall test strategy defining test levels, types, tools, environments, and entry/exit criteria per BS ISO/IEC/IEEE 29119-3 Section 6."
 metadata:
   use_when: "Use when the task matches test strategy skill and this skill's local workflow."
   do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
@@ -16,7 +16,7 @@ metadata:
 
 ## Overview
 
-This is the first skill in Phase 05 (Testing Documentation). It reads the SRS and HLD to produce a comprehensive test strategy that defines test levels (Unit, Integration, System, UAT), test types (functional, performance, security, accessibility), tooling selections, environment configurations, and entry/exit criteria. The output establishes the quality assurance framework that governs all downstream testing artifacts and conforms to IEEE 829-2008 Section 6.
+This is the first skill in Phase 05 (Testing Documentation). It reads the SRS and HLD to produce a comprehensive test strategy that defines test levels (Unit, Integration, System, UAT), test types (functional, performance, security, accessibility), tooling selections, environment configurations, and entry/exit criteria. The output establishes the quality assurance framework that governs all downstream testing artifacts and conforms to BS ISO/IEC/IEEE 29119-3 Section 6.
 
 ## When to Use
 
@@ -31,7 +31,7 @@ This is the first skill in Phase 05 (Testing Documentation). It reads the SRS an
 | **Inputs**  | `../output/SRS_Draft.md`, `../output/HLD.md`, `../project_context/quality_standards.md` |
 | **Output**  | `../output/Test_Strategy.md` |
 | **Tone**    | Prescriptive, standards-driven, QA-facing |
-| **Standard** | IEEE 829-2008 Sec 6 |
+| **Standard** | BS ISO/IEC/IEEE 29119-3 Sec 6 |
 
 ## Input Files
 
@@ -94,6 +94,8 @@ Define entry criteria (conditions that shall be met before testing begins at eac
 
 Define the defect management process: severity taxonomy (Critical, Major, Minor, Trivial), priority taxonomy (P1-P4), defect lifecycle states (Open, In Progress, Resolved, Verified, Closed), and escalation rules. Define test metrics including coverage targets, pass-rate thresholds, defect density limits, and mean-time-to-resolution targets. All thresholds shall trace to quality_standards.md.
 
+Before writing the artifact, confirm the deterministic gate by checking `../references/29119-deterministic-checks.md`. Use it to prove each required document exists and references the relevant 29119 clause.
+
 ### Step 8: Write Output with Traceability
 
 Write the completed document to `../output/Test_Strategy.md`. Include a traceability section mapping each test level and test type to the SRS sections and quality_standards.md targets they validate. Log the total count of test levels, test types, and tools selected.
@@ -132,7 +134,7 @@ The generated `Test_Strategy.md` shall contain these sections in order: Document
 
 ## Standards
 
-- **IEEE 829-2008** -- Standard for Software and System Test Documentation. Governs test strategy structure (Section 6).
+- **BS ISO/IEC/IEEE 29119-3** -- Current international standard for test documentation; governs the structure of organizational and project-level test strategies (Section 6).
 
 ## Resources
 

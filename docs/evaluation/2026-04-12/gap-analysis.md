@@ -67,7 +67,7 @@ The repo cites IEEE, ISO, Scrum, OpenAPI, and compliance frameworks extensively.
 Examples:
 
 - many skills map to standards in narrative form, but do not validate clause-level conformance mechanically
-- testing still centers IEEE 829 references instead of a modernized test documentation regime
+- testing now uses BS ISO/IEC/IEEE 29119-3 with deterministic gate checklists and templates in Phase 05, but clause-level enforcement is still mostly descriptive elsewhere in the repo
 - compliance docs cover GDPR/HIPAA/SOC2 framing, but there is limited evidence of control-by-control trace enforcement
 
 Impact:

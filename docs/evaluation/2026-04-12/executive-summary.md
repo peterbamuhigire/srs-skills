@@ -35,7 +35,7 @@ For regulated-industry readiness, that is not enough.
 - **Hard validation is weak relative to the claims.** Most quality gates are narrative, not executable. The engine still trusts the model too much.
 - **Pathing and architecture are inconsistent.** Root docs still mix legacy `../project_context` / `../output` assumptions with the newer `projects/<ProjectName>/_context/` structure.
 - **Some methodology support is materially shallower than advertised.** Agile is usable but lighter; Hybrid is conceptual routing rather than a deeply integrated operating model.
-- **Standards alignment is uneven.** The repo cites many standards well, but often at the template/prompt layer rather than through deterministic conformance checks. Testing still references IEEE 829 widely instead of current 29119-based practice.
+- **Standards alignment has improved but remains uneven.** The repo still relies on narrative guidance more than deterministic enforcement, though Phase 05 now references BS ISO/IEC/IEEE 29119-3 with deterministic gate checklists, incident reports, and completion reports so testing is verifiable. Other phases still need similar clause-level assurance.
 - **Regulated-industry evidence depth is not yet sufficient.** It can draft compliance-oriented documents, but not reliably prove compliance completeness, control coverage, or audit-grade traceability from regulation to requirement to design to test to operational control.
 
 ## Overall Score

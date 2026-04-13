@@ -106,16 +106,12 @@ Update HLD and LLD to require:
 
 ### 3. Strengthen Testing Documentation
 
-Modernize test documentation beyond legacy IEEE 829 framing.
+Phase 05 now follows ISO/IEC/IEEE 29119-3 with deterministic gate checklists, incident logs, and completion reports, but the rest of the engine needs similar clause-level proof. Build on the existing improvements by:
 
-Add:
-
-- formal test design technique selection
-- regression strategy
-- test data management
-- incident reporting
-- test completion reporting
-- explicit environment fidelity controls
+- formalizing technique selection and tracing it to the deterministic checklist
+- documenting regression, UAT, and Test Data Management sections per 29119-3
+- embedding incident reporting and test completion reporting templates inside every project workspace
+- codifying explicit environment/automation fidelity controls linked to the strategy
 
 ### 4. Strengthen Compliance Documentation
 

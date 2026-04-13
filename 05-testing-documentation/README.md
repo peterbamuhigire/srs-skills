@@ -2,15 +2,19 @@
 
 ## Purpose
 
-This phase generates testing documentation that ensures quality assurance coverage across all verified requirements. It transforms the SRS and design artifacts into a structured testing framework comprising strategy, planning, and reporting artifacts per IEEE 829-2008.
+This phase codifies deterministic test governance aligned with BS ISO/IEC/IEEE 29119-3:2013 so that strategy, planning, and reporting artifacts are auditable and traceable.
 
 ## Sub-Skills
 
 | Order | Skill | Output | Standard |
 |-------|-------|--------|----------|
-| 1 | 01-test-strategy | Test_Strategy.md | IEEE 829-2008 Sec 6 |
-| 2 | 02-test-plan | Test_Plan.md | IEEE 829-2008 Sec 7-8 |
-| 3 | 03-test-report | Test_Report_Template.md | IEEE 829-2008 Sec 9-10 |
+| 1 | 01-test-strategy | Test_Strategy.md | BS ISO/IEC/IEEE 29119-3 Sec 6 |
+| 2 | 02-test-plan | Test_Plan.md | BS ISO/IEC/IEEE 29119-3 Sec 7-8 |
+| 3 | 03-test-report | Test_Report_Template.md | BS ISO/IEC/IEEE 29119-3 Sec 9-10 |
+
+## Deterministic Conformance
+
+Phase 05 now references the deterministic conformance checklist in `05-testing-documentation/references/29119-deterministic-checks.md`, which ensures each artifact enumerates the required document tree, normative fields, traceability, and exit criteria defined by 29119-3.
 
 ## Execution Order
 
@@ -28,3 +32,11 @@ All skills read from `../output/` (SRS_Draft.md, HLD.md, Test_Strategy.md, Test_
 ## Output Destination
 
 All skills write to `../output/`.
+## Auxiliary Artifacts
+
+Described templates include:
+
+- `templates/incident-report.md` (BS ISO/IEC/IEEE 29119-3 §7.5) — structured incident record with severity, trace links, and resolution tracking.
+- `templates/test-completion-report.md` (BS ISO/IEC/IEEE 29119-3 §7.6) — final closure artifact capturing coverage, metrics, exit criteria, and waiver log.
+
+Phase 05 skills reference the deterministic checklist in `references/29119-deterministic-checks.md` before writing each artifact to prove clause-level conformance. When executing the test plan or report skills, copy the relevant templates into the project workspace so auditors can cite the numbered sections required by 29119-3.

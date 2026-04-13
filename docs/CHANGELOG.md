@@ -11,6 +11,19 @@ All notable changes to this project will be documented in this file. This projec
 - Updated `README.md`, `AGENTS.md`, `CLAUDE.md`, `ARCHITECTURE.md`, `skill_overview.md`, `00-meta-initialization/templates/doc_roadmap.md.template`, and `02-requirements-engineering/waterfall/README.md` to remove the root-level path ambiguity.
 - Updated evaluation documents so pathing is no longer described as an unresolved root-architecture inconsistency, but as a remaining skill-level migration task.
 
+## [2026-04-13] - Testing Standards Modernization
+
+### Added
+
+- **Phase 05 deterministic checklist** (`05-testing-documentation/references/29119-deterministic-checks.md`) enumerating the mandatory ISO/IEC/IEEE 29119-3 artifact tree, normative fields, traceability, and gate criteria.
+- **Running templates** for incident reports and test completion reports per 29119-3 §§7.5-7.6 (`05-testing-documentation/templates/incident-report.md`, `test-completion-report.md`) so every execution log can cite a structured artifact.
+
+### Changed
+
+- **Phase 05 README** now highlights the 29119-3 alignment and supporting templates.
+- **01-Test-Strategy**, **02-Test-Plan**, and **03-Test-Report** SKILLs now reference BS ISO/IEC/IEEE 29119-3, invoke the deterministic checklist before writing artifacts, and document obligation to include normative fields and technique taxonomies.
+- **Book-driven gap analysis** and evaluation summaries now cite these testing improvements so standards alignment is seen as actionable, not just declarative.
+
 ## [2026-04-07] — AI Module Upgrade Across All Active Projects
 
 ### Added

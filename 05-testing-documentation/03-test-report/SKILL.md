@@ -1,6 +1,6 @@
 ---
 name: "test-report"
-description: "Generate a test execution report template with results summary, defect log, coverage metrics, and pass/fail analysis per IEEE 829-2008."
+description: "Generate a test execution report template with results summary, defect log, coverage metrics, and pass/fail analysis per BS ISO/IEC/IEEE 29119-3 Sections 9-10."
 metadata:
   use_when: "Use when the task matches test report skill and this skill's local workflow."
   do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
@@ -16,7 +16,7 @@ metadata:
 
 ## Overview
 
-This is the third and final skill in Phase 05 (Testing Documentation). It reads the test plan to produce a reusable test execution report template containing an executive summary, test execution log, defect log, coverage metrics, failed test analysis, and recommendations. The template includes structured placeholders for actual results to be filled during test execution. The output conforms to IEEE 829-2008 Sections 9-10.
+This is the third and final skill in Phase 05 (Testing Documentation). It reads the test plan to produce a reusable test execution report template containing an executive summary, test execution log, defect log, coverage metrics, failed test analysis, and recommendations. The template includes structured placeholders for actual results to be filled during test execution. The output conforms to BS ISO/IEC/IEEE 29119-3 Sections 9-10 and references the deterministic gate checklist plus the incident/test completion templates.
 
 ## When to Use
 
@@ -30,7 +30,7 @@ This is the third and final skill in Phase 05 (Testing Documentation). It reads 
 | **Inputs**  | `../output/Test_Plan.md` |
 | **Output**  | `../output/Test_Report_Template.md` |
 | **Tone**    | Structured, metrics-driven, stakeholder-facing |
-| **Standard** | IEEE 829-2008 Sec 9-10 |
+| **Standard** | BS ISO/IEC/IEEE 29119-3 Sec 9-10 |
 
 ## Input Files
 
@@ -74,7 +74,7 @@ Create a failed test analysis section with a template per failure: TC-ID, Failur
 
 ### Step 7: Write Template with Sign-Off
 
-Write the completed template to `../output/Test_Report_Template.md`. Include a sign-off section with fields for: QA Lead (name, date, signature), Project Manager (name, date, signature), and stakeholder approval fields. Log the total number of template sections and placeholder test case entries.
+Before writing output, confirm the deterministic gate in `../references/29119-deterministic-checks.md` is satisfied and that incident-report.md plus test-completion-report.md templates are referenced for use during execution reporting. Write the completed template to `../output/Test_Report_Template.md`. Include a sign-off section with fields for: QA Lead (name, date, signature), Project Manager (name, date, signature), and stakeholder approval fields. Log the total number of template sections and placeholder test case entries.
 
 ## Output Format
 
@@ -109,7 +109,7 @@ The generated `Test_Report_Template.md` shall contain these sections in order: D
 
 ## Standards
 
-- **IEEE 829-2008** -- Standard for Software and System Test Documentation. Governs test report structure (Sections 9-10).
+- **BS ISO/IEC/IEEE 29119-3** -- Current international standard for test documentation; governs test execution reports, incident logging, and completion reporting structure (Sections 9-10).
 
 ## Resources
 
