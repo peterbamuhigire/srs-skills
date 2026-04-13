@@ -19,6 +19,13 @@ The following client projects are maintained under `projects/` (gitignored — n
 
 ---
 
+## What's New in v3.6
+
+- **Requirements Engineering Fundamentals Expanded** - Added Business Analysis Planning, Business Process Modeling, Business Rules Analysis, Prototyping and Solution Discovery, and Solution Evaluation and Transition
+- **Phase 03: Design Documentation** - Added IoT System Design for connected-device and edge-enabled products
+- **Phase 06: Deployment & Operations** - Added Go-Live Readiness for structured launch governance and release decision support
+- **Book-driven gap closure** - Reduced major coverage gaps in BA planning, workflow modeling, rule analysis, connected-product design, and launch readiness without restructuring the repository
+
 ## What's New in v3.3
 
 - **Phase 04: Development Artifacts** - 4 new skills: Technical Specification, Coding Guidelines (IEEE 730), Dev Environment Setup, Contribution Guide (IEEE 1074)
@@ -64,10 +71,15 @@ The following client projects are maintained under `projects/` (gitignored — n
 - **Conceptual Data Modeling** - Entity-relationship from business language
 - **Requirements Patterns** - Decision tables, state transitions, CRUD matrices
 - **Requirements Validation** - Reviews, inspections, prototype testing
+- **Business Analysis Planning** (NEW) - Governance, stakeholder engagement, BA approach
+- **Business Process Modeling** (NEW) - Events, workflows, handoffs, decision points
+- **Business Rules Analysis** (NEW) - Rule catalogs, ownership, contradictions, fit criteria
+- **Prototyping and Solution Discovery** (NEW) - Candidate comparison, prototype strategy, decision support
 - **Requirements Management** - Baselining, change control, versioning
 - **Traceability Engineering** - Forward/backward trace links
 - **Requirements Metrics** - Universal quality gate (GREEN/YELLOW/RED)
 - **Requirements Reuse** (optional) - Product line requirements library
+- **Solution Evaluation and Transition** (NEW) - Readiness, adoption, organizational transition, outcome evaluation
 
 #### **Waterfall Track:**
 - **SRS (Software Requirements Specification)** - IEEE 830-1998, IEEE 1233-1998
@@ -86,6 +98,7 @@ The following client projects are maintained under `projects/` (gitignored — n
 - **Database Design** - ERDs, schema documentation
 - **UX Specification** (NEW) - Information architecture, wireframes, design systems, usability testing
 - **Infrastructure Design** (NEW) - Scalability, caching, reliability, monitoring (decision gate)
+- **IoT System Design** (NEW) - Device, edge, connectivity, fleet lifecycle, secure operations
 
 ### **Testing Documentation (Phase 05)**
 - **Test Strategy** - IEEE 829
@@ -97,6 +110,7 @@ The following client projects are maintained under `projects/` (gitignored — n
 - **Runbooks** - SRE best practices
 - **Monitoring Documentation**
 - **Infrastructure as Code Docs**
+- **Go-Live Readiness** (NEW) - Launch gates, blocker register, rollback, hypercare
 
 ### **Agile Artifacts (Phase 07)**
 - **Sprint Planning Documents**
@@ -717,7 +731,14 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 
 ## 📈 Roadmap
 
-### v3.5.0 (Current - 2026-03-08)
+### v3.6.0 (Current - 2026-04-13)
+- Requirements fundamentals expanded with 5 new skills covering BA planning, process modeling, business rules, prototyping, and transition
+- Phase 03 extended with IoT System Design
+- Phase 06 extended with Go-Live Readiness
+- Added book-driven gap-closure analysis in `docs/2026-04-13-book-driven-gap-closure.md`
+- Expanded SDLC-engine coverage across all 10 phases without restructuring the repository
+
+### v3.5.0 (2026-03-08)
 - **Design Documentation Enhancement**: 5 new skills + 9 reference files + 5 existing skill enhancements
 - Phase 03: UX Specification (IA, wireframes, design systems), Infrastructure Design (scalability, caching, reliability)
 - Phase 02: Use Case Modeling (UML use cases, activity diagrams) for waterfall pipeline
@@ -805,8 +826,8 @@ This project builds on industry standards:
 **Built with precision. Powered by standards. Designed for portability.**
 
 **Maintained by:** Peter Bamuhigire
-**Version:** 3.5.0
-**Last Updated:** 2026-03-08
+**Version:** 3.6.0
+**Last Updated:** 2026-04-13
 
 ---
 
