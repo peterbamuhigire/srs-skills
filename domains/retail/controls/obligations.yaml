@@ -1,0 +1,15 @@
+obligations:
+  - obligation: "Render stored cardholder data unreadable"
+    framework: "PCI-DSS v4.0"
+    clause: "3.5"
+    satisfied_by: [CTRL-RT-001]
+
+  - obligation: "Erase personal data on request of the data subject without undue delay"
+    framework: "GDPR"
+    clause: "Art. 17"
+    satisfied_by: [CTRL-RT-002]
+
+  - obligation: "Implement appropriate technical measures to ensure security of processing"
+    framework: "GDPR"
+    clause: "Art. 32"
+    satisfied_by: [CTRL-RT-003]

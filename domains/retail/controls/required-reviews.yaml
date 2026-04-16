@@ -1,0 +1,7 @@
+required_reviews:
+  - control_category: encryption
+    reviewer_role: "Security Architect"
+    cadence: "per release"
+  - control_category: retention
+    reviewer_role: "DPO"
+    cadence: "per quarter"

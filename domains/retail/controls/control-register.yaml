@@ -1,0 +1,38 @@
+# TODO: expand with additional controls — this is a minimum-viable starter library.
+# Contribute additions via PR; engine validates the schema at load time.
+domain: retail
+version: "1.0"
+source_framework: "PCI-DSS v4.0 + GDPR"
+controls:
+  - id: CTRL-RT-001
+    title: Render stored cardholder data unreadable
+    category: encryption
+    verification_kinds: [config_inspection, test]
+    minimum_evidence:
+      - "Database design specifies strong cryptography for stored PAN"
+      - "Test case verifies PAN is never returned in plaintext by any API"
+    regulatory_anchor:
+      framework: "PCI-DSS v4.0"
+      clause: "3.5"
+
+  - id: CTRL-RT-002
+    title: Right to erasure handling
+    category: retention
+    verification_kinds: [test, design_review]
+    minimum_evidence:
+      - "Functional requirement for account deletion including downstream cascade"
+      - "Test case verifies PII is removed within 30 days of request"
+    regulatory_anchor:
+      framework: "GDPR"
+      clause: "Art. 17"
+
+  - id: CTRL-RT-003
+    title: Security of processing
+    category: encryption
+    verification_kinds: [config_inspection, design_review]
+    minimum_evidence:
+      - "Design documents encryption in transit and at rest for all PII"
+      - "Key management procedure documented"
+    regulatory_anchor:
+      framework: "GDPR"
+      clause: "Art. 32"
