@@ -29,7 +29,7 @@ This is the **entry point** for the SDLC-Docs-Engine. It analyzes your project, 
 - Setting up documentation standards for a team
 
 ❌ **DO NOT USE when:**
-- You've already run this skill and have `../project_context/methodology.md`
+- You've already run this skill and have `projects/<ProjectName>/_context/methodology.md`
 - You're just updating existing documentation (use specific phase skills instead)
 
 ## Input Requirements
@@ -40,11 +40,11 @@ This skill requires **minimal input** and will prompt for missing information:
 |-------|--------|-----------|
 | Project directory | Parent project root (`../`) | ✅ Yes (auto-detected) |
 | User responses | Interactive prompts | ✅ Yes |
-| Existing context files | `../project_context/` | Optional (will be detected) |
+| Existing context files | `projects/<ProjectName>/_context/` | Optional (will be detected) |
 
 ## Output Files
 
-This skill creates/updates files in `../project_context/`:
+This skill creates/updates files in `projects/<ProjectName>/_context/`:
 
 | File | Purpose | Format |
 |------|---------|--------|
@@ -94,7 +94,7 @@ Scan `../` (parent project root) for indicators:
 **Existing Documentation:**
 - **README.md** → Check for methodology mentions
 - **ARCHITECTURE.md** → Check for design approach
-- **../project_context/methodology.md** → Previous methodology selection
+- **projects/<ProjectName>/_context/methodology.md** → Previous methodology selection
 
 **Development Artifacts:**
 - **.git/** → Git repository (check for branch strategy)
@@ -368,11 +368,11 @@ Then: 02-requirements-engineering/agile/01-user-story-generation
 
 ### Step 6: Initialize Project Context
 
-Check if `../project_context/` exists:
+Check if `projects/<ProjectName>/_context/` exists:
 
 **If missing:**
 ```bash
-mkdir -p ../project_context
+mkdir -p projects/<ProjectName>/_context
 echo "Project context directory created."
 ```
 
@@ -392,15 +392,15 @@ Missing:
 
 ### Step 7: Write Output Files
 
-#### **File 1: `../project_context/methodology.md`**
+#### **File 1: `projects/<ProjectName>/_context/methodology.md`**
 
 Use template from `templates/methodology.md.template` (populated with detection results).
 
-#### **File 2: `../project_context/doc_roadmap.md`**
+#### **File 2: `projects/<ProjectName>/_context/doc_roadmap.md`**
 
 Use template from `templates/doc_roadmap.md.template` (populated based on methodology).
 
-#### **File 3: `../project_context/project_profile.md`**
+#### **File 3: `projects/<ProjectName>/_context/project_profile.md`**
 
 ```markdown
 # Project Profile
@@ -451,9 +451,9 @@ See `methodology.md` for full rationale.
 
 Before proceeding to Phase 01/02:
 
-- [ ] `../project_context/methodology.md` exists and is populated
-- [ ] `../project_context/doc_roadmap.md` exists with checklist
-- [ ] `../project_context/project_profile.md` exists
+- [ ] `projects/<ProjectName>/_context/methodology.md` exists and is populated
+- [ ] `projects/<ProjectName>/_context/doc_roadmap.md` exists with checklist
+- [ ] `projects/<ProjectName>/_context/project_profile.md` exists
 - [ ] Methodology selection is documented with rationale
 - [ ] Next steps are clear (which skill to run next)
 - [ ] Team agrees with methodology choice (if applicable)

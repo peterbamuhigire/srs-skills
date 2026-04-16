@@ -15,9 +15,9 @@ Run skill: 00-meta-initialization
 # Follow the prompts to select methodology
 
 # Review generated files:
-# - ../project_context/methodology.md
-# - ../project_context/doc_roadmap.md
-# - ../project_context/project_profile.md
+# - projects/<ProjectName>/_context/methodology.md
+# - projects/<ProjectName>/_context/doc_roadmap.md
+# - projects/<ProjectName>/_context/project_profile.md
 
 # Execute first skill in roadmap (shown in output)
 ```
@@ -35,9 +35,9 @@ Run skill: 00-meta-initialization
 
 ### Primary Outputs
 
-- **`../project_context/methodology.md`**: Selected methodology with rationale
-- **`../project_context/doc_roadmap.md`**: Documentation execution plan
-- **`../project_context/project_profile.md`**: Project characteristics summary
+- **`projects/<ProjectName>/_context/methodology.md`**: Selected methodology with rationale
+- **`projects/<ProjectName>/_context/doc_roadmap.md`**: Documentation execution plan
+- **`projects/<ProjectName>/_context/project_profile.md`**: Project characteristics summary
 
 ### Console Output
 
