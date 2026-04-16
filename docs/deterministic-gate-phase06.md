@@ -1,3 +1,17 @@
+---
+gate: phase06
+checks:
+  - phase06.deployment_guide_has_rollback
+  - phase06.runbook_has_escalation
+  - phase06.monitoring_has_slo
+  - phase06.infra_has_ir_diagram
+  - phase06.go_live_readiness_checklist_complete
+  - phase06.change_window_documented
+clause_refs:
+  - standard: "IEEE Std 1062-2015"
+    clause: "6.3"
+---
+
 # Phase 06 Deterministic Gate
 
 Ensure deployment and operations artifacts cite standards (IEEE 1062, ISO/IEC 27001, ISO 22301, ISO 42010) and include clause-level proof.
