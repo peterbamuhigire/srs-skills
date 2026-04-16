@@ -12,6 +12,7 @@ _PHASE08_DIR_TOKEN = "08-end-user-documentation/"
 
 _USER_MANUAL_NAME_TOKENS = ("user-manual", "user-guide", "manual")
 _IMAGE_REF_RE = re.compile(r"!\[[^\]]*\]\([^)]+\)")
+_FR_ID_RE = re.compile(r"\bFR-\d{3,5}\b")
 
 
 def _posix(path) -> str:
@@ -32,6 +33,16 @@ def _find_user_manual(graph: ArtifactGraph):
     return None
 
 
+def _find_release_notes(graph: ArtifactGraph):
+    for art in graph.artifacts:
+        if not _under_phase08(art):
+            continue
+        name = art.path.name.lower()
+        if "release-notes" in name or name == "changelog.md" or name == "release.md":
+            return art
+    return None
+
+
 class Phase08Gate(Gate):
     id = "phase08"
     title = "End-User Documentation phase gate"
@@ -39,6 +50,7 @@ class Phase08Gate(Gate):
 
     def evaluate(self, graph: ArtifactGraph, findings: FindingCollection) -> None:
         self._check_user_manual_has_screenshots(graph, findings)
+        self._check_release_notes_link_to_fr(graph, findings)
 
     # -- Check 1: user manual has screenshots ----------------------------
     def _check_user_manual_has_screenshots(
@@ -69,5 +81,37 @@ class Phase08Gate(Gate):
                 f"(expected markdown image references: ![alt](path))"
             ),
             location=manual.path,
+            line=None,
+        ), _CLAUSE))
+
+    # -- Check 2: release notes link to FR -------------------------------
+    def _check_release_notes_link_to_fr(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        notes = _find_release_notes(graph)
+        if notes is None:
+            findings.add(attach_clause(Finding(
+                gate_id=f"{self.id}.release_notes_link_to_fr",
+                severity=Severity.HIGH,
+                message=(
+                    "No release notes found under "
+                    "08-end-user-documentation/ (expected filename "
+                    "containing 'release-notes', 'changelog.md', or "
+                    "'release.md')"
+                ),
+                location=None,
+                line=None,
+            ), _CLAUSE))
+            return
+        if _FR_ID_RE.search(notes.body):
+            return
+        findings.add(attach_clause(Finding(
+            gate_id=f"{self.id}.release_notes_link_to_fr",
+            severity=Severity.HIGH,
+            message=(
+                f"Release notes '{_posix(notes.path)}' have no FR-* "
+                f"traceability links"
+            ),
+            location=notes.path,
             line=None,
         ), _CLAUSE))
