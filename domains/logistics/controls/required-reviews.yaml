@@ -1,0 +1,7 @@
+required_reviews:
+  - control_category: retention
+    reviewer_role: "Compliance Officer"
+    cadence: "per quarter"
+  - control_category: risk_management
+    reviewer_role: "Supply Chain Security Lead"
+    cadence: "annual"

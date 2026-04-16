@@ -1,0 +1,38 @@
+# TODO: expand with additional controls — this is a minimum-viable starter library.
+# Contribute additions via PR; engine validates the schema at load time.
+domain: logistics
+version: "1.0"
+source_framework: "DOT 49 CFR + ISO 28000"
+controls:
+  - id: CTRL-LOG-001
+    title: Hazardous materials manifest retention
+    category: retention
+    verification_kinds: [policy_inspection, audit_log_inspection]
+    minimum_evidence:
+      - "Retention policy stores hazmat shipping papers for at least two years"
+      - "Audit trail records manifest access events"
+    regulatory_anchor:
+      framework: "DOT 49 CFR"
+      clause: "§172.201"
+
+  - id: CTRL-LOG-002
+    title: Supply chain security risk assessment
+    category: risk_management
+    verification_kinds: [policy_inspection, design_review]
+    minimum_evidence:
+      - "Risk register documents supply-chain threats and mitigations"
+      - "Risk assessment procedure reviewed annually"
+    regulatory_anchor:
+      framework: "ISO 28000"
+      clause: "§4.3"
+
+  - id: CTRL-LOG-003
+    title: Driver qualification file
+    category: retention
+    verification_kinds: [policy_inspection, audit_log_inspection]
+    minimum_evidence:
+      - "Driver records include license, medical, and road-test documents"
+      - "Retention policy matches the regulatory minimum"
+    regulatory_anchor:
+      framework: "DOT 49 CFR"
+      clause: "§391.51"

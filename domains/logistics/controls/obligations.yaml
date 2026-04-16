@@ -1,0 +1,15 @@
+obligations:
+  - obligation: "Retain hazardous materials shipping papers for the regulatory minimum"
+    framework: "DOT 49 CFR"
+    clause: "§172.201"
+    satisfied_by: [CTRL-LOG-001]
+
+  - obligation: "Perform documented supply-chain security risk assessments"
+    framework: "ISO 28000"
+    clause: "§4.3"
+    satisfied_by: [CTRL-LOG-002]
+
+  - obligation: "Maintain a complete driver qualification file for every driver"
+    framework: "DOT 49 CFR"
+    clause: "§391.51"
+    satisfied_by: [CTRL-LOG-003]
