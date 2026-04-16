@@ -79,6 +79,8 @@ This document is validated by `scripts/validate_engine.py`: every check ID that 
 | `phase09.waivers_have_expiry` | ISO/IEC 27001:2022 | §9 | `engine/gates/phase09.py` |
 | `phase09.id_registry.unknown_id` | ISO/IEC 27001:2022 | §9 | `engine/checks/identifier_registry.py` |
 | `phase09.id_registry.orphan_id` | ISO/IEC 27001:2022 | §9 | `engine/checks/identifier_registry.py` |
+| `phase09.glossary_registry.missing_term` | ISO/IEC 27001:2022 | §9 | `engine/checks/glossary_registry.py` |
+| `phase09.glossary_registry.orphan_term` | ISO/IEC 27001:2022 | §9 | `engine/checks/glossary_registry.py` |
 
 ## Deferred Checks (not yet emitted)
 

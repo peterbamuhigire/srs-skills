@@ -7,6 +7,8 @@ checks:
   - phase09.waivers_have_expiry
   - phase09.id_registry.unknown_id
   - phase09.id_registry.orphan_id
+  - phase09.glossary_registry.missing_term
+  - phase09.glossary_registry.orphan_term
 deferred_checks:
   - phase09.compliance_controls_have_evidence  # blocked on Plan 06 ControlsCheck
   - phase09.evidence_pack_buildable            # blocked on Plan 07 `engine pack`
