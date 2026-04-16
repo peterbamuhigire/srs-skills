@@ -41,7 +41,14 @@ This skill generates regulatory compliance documentation that maps project requi
 | File | Purpose | Required? |
 |------|---------|-----------|
 | `projects/<ProjectName>/_context/vision.md` | Project scope, domain, and data subjects to determine regulatory applicability | Yes |
-| `projects/<ProjectName>/_context/quality_standards.md` | Security and compliance requirements specified by stakeholders | No |
+| `projects/<ProjectName>/_context/domain.md` | Resolves the active domain (`uganda`, `healthcare`, `finance`, `education`, `retail`, `logistics`, `government`, `agriculture`) | Yes |
+| `projects/<ProjectName>/_context/quality-standards.md` | Stakeholder-specified security and compliance frameworks (scopes which obligations are in force) | Yes |
+| `projects/<ProjectName>/_registry/controls.yaml` | Consultant's control selection (`selected[]` entries with `id`, `applies_because`, optional `owner`, `exemption`) | Yes |
+| `projects/<ProjectName>/_registry/identifiers.yaml` | Identifier registry — supplies the verification test case IDs (`TC-*`) per control | Yes |
+| `domains/<domain>/controls/control-register.yaml` | Domain control library — source of `title`, `category`, `verification_kinds`, `minimum_evidence`, and `regulatory_anchor` for each selected control | Yes |
+| `domains/<domain>/controls/obligations.yaml` | Obligation-to-control map used for the gap analysis | Yes |
+| `domains/<domain>/controls/evidence-expectations.yaml` | Per-category artifact patterns — identifies satisfying artifacts for each control | Yes |
+| `domains/<domain>/controls/required-reviews.yaml` | Per-category reviewer roles assigned to each control section | Yes |
 | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Requirements referencing data handling, authentication, and access control | No |
 | `projects/<ProjectName>/<phase>/<document>/HLD.md` | Architecture decisions affecting data flow, storage, and transmission | No |
 
@@ -51,31 +58,48 @@ This skill generates regulatory compliance documentation that maps project requi
 |------|-------------|
 | `projects/<ProjectName>/<phase>/<document>/Compliance_Docs.md` | Complete compliance documentation with applicability assessment and gap analysis |
 
+## Stimulus / Process / Response
+
+- **Stimulus:** the consultant requests a compliance annex for a project whose `_registry/controls.yaml` has been populated with the applicable controls selected from the domain control library.
+- **Process:** the skill hydrates the control library, joins it with the consultant's selection, gathers satisfying artifacts and verification test case IDs, and emits a deterministic per-control section.
+- **Response:** a `Compliance_Docs.md` whose body sections are driven by the selected controls, each tied back to a regulatory anchor and an assigned reviewer; no free-text claims about frameworks that were not enumerated in `_context/quality-standards.md`.
+
 ## Core Instructions
 
 1. The skill SHALL read `projects/<ProjectName>/_context/vision.md` to determine the project domain, target users, data subjects, and geographic scope. If the file is missing, halt execution and report the error.
 
-2. The skill SHALL perform a Regulatory Applicability Assessment, determining which frameworks apply based on:
-   - **GDPR:** Project processes personal data of EU/EEA residents
-   - **HIPAA:** Project processes protected health information in a US healthcare context
-   - **SOC2:** Project operates as a service organization handling client data
+2. The skill SHALL resolve the active domain from `projects/<ProjectName>/_context/domain.md`. If the file does not name one of the eight engine-recognized domains, halt and emit `[CONTEXT-GAP: domain]`.
 
-3. The skill SHALL classify all data elements identified in the project into categories: Public, Internal, Confidential, Restricted (or PII, PHI, PCI as applicable).
+3. The skill SHALL load `projects/<ProjectName>/_registry/controls.yaml` and extract every entry under `selected[]`. If the file is missing or `selected` is empty, halt and emit `[CONTEXT-GAP: controls.yaml]`. Each entry supplies the control `id`, the `applies_because` justification, and optional `owner` and `exemption` values.
 
-4. For each applicable framework, the skill SHALL generate a dedicated compliance section:
+4. The skill SHALL load `domains/<domain>/controls/control-register.yaml` and join each selected `id` to its `title`, `category`, `verification_kinds`, `minimum_evidence`, and `regulatory_anchor`. An `id` present in the selection but absent from the register SHALL be tagged `[V&V-FAIL: unknown_control]` and excluded from the output.
+
+5. The skill SHALL load `domains/<domain>/controls/evidence-expectations.yaml` and, for each control's `category`, enumerate the expected artifact path patterns. The skill SHALL then scan the project workspace for artifacts matching each pattern (`fnmatch` on POSIX-normalized relative paths) and list the matching artifacts as the satisfying evidence. A pattern with no matching artifact SHALL be recorded in the Compliance Gap Analysis.
+
+6. The skill SHALL load `projects/<ProjectName>/_registry/identifiers.yaml` and, for each selected control, extract every test case identifier (`TC-*`) that references the control `id` or is tagged with the control's `category`, and list those identifiers under the control's verification subsection.
+
+7. The skill SHALL load `domains/<domain>/controls/required-reviews.yaml` and, for each control's `category`, record the `reviewer_role` and `cadence`. Controls whose category has no required-review entry SHALL be tagged `[REVIEWER-UNASSIGNED]`.
+
+8. The skill SHALL perform a Regulatory Applicability Assessment grounded in `_context/quality-standards.md`. A framework is "in scope" only if its name appears (case-insensitive substring) in that file. Controls whose `regulatory_anchor.framework` is not in scope SHALL be excluded from the main body and listed in an appendix.
+
+9. The skill SHALL classify all data elements identified in the project into categories: Public, Internal, Confidential, Restricted (or PII, PHI, PCI as applicable).
+
+10. For each selected, in-scope control the skill SHALL emit a section containing (a) control `id` and `title`, (b) the `regulatory_anchor.framework` and `clause`, (c) the `applies_because` justification, (d) the satisfying artifacts listed under step 5, (e) the verification test case IDs listed under step 6, and (f) the assigned reviewer listed under step 7.
+
+11. For each applicable framework, the skill SHALL generate a dedicated compliance section:
    - **GDPR:** Lawful basis for processing, data subject rights implementation, Data Protection Impact Assessment (DPIA) triggers, data retention policies, cross-border transfer mechanisms
    - **HIPAA:** PHI identification, administrative/physical/technical safeguards, Business Associate Agreement (BAA) requirements, minimum necessary standard
    - **SOC2:** Trust Service Criteria mapping (Security, Availability, Processing Integrity, Confidentiality, Privacy)
 
-5. The skill SHALL map security controls from the project architecture to regulatory requirements, identifying which controls satisfy which obligations.
+12. The skill SHALL map security controls from the project architecture to regulatory requirements by loading `domains/<domain>/controls/obligations.yaml` and, for each in-scope obligation, listing the `satisfied_by` control IDs and whether each is present in the project selection.
 
-6. The skill SHALL generate a Compliance Gap Analysis identifying obligations without corresponding controls or requirements.
+13. The skill SHALL generate a Compliance Gap Analysis listing (a) obligations whose `framework` is in scope but for which no `satisfied_by` control is selected, (b) selected controls with no satisfying artifact, and (c) selected controls without a registered verification test case identifier.
 
-7. The skill SHALL produce a Remediation Roadmap prioritizing compliance gaps by risk severity and regulatory deadline pressure.
+14. The skill SHALL produce a Remediation Roadmap prioritizing compliance gaps by risk severity and regulatory deadline pressure.
 
-8. The skill SHALL explicitly state when a framework is determined to be not applicable, with justification.
+15. The skill SHALL explicitly state when a framework is determined to be not applicable, with justification.
 
-9. The skill SHALL avoid speculative compliance claims -- if insufficient information exists to assess a control, flag it as `[ASSESSMENT-PENDING]` rather than assuming compliance.
+16. The skill SHALL avoid speculative compliance claims -- if insufficient information exists to assess a control, flag it as `[ASSESSMENT-PENDING]` rather than assuming compliance.
 
 ## Output Format Specification
 
