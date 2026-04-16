@@ -162,6 +162,24 @@ These rules apply to all generated output — SRS sections, design documents, te
 - Document Integrity Level, Baseline Verification, and Anomaly Identification for every V&V action so review artifacts remain auditable under ISO/IEC 15504.
 - Treat this SOP as the operating contract for Skill 08; no iteration resumes until the Verification Gateways confirm closure.
 
+### Project Registries
+
+Every project workspace MUST contain `_registry/identifiers.yaml` and `_registry/glossary.yaml`. Generate or refresh them with:
+
+```bash
+python -m engine sync projects/<ProjectName>
+```
+
+Manual edits to these files are allowed for `links:` and `title:` fields. Identifier `id`, `kind`, and `defined_in` fields are derived from the artifacts and will be overwritten on the next sync.
+
+The validation kernel (`python -m engine validate <project>`) will fail if:
+
+- An artifact references an ID that is not in `identifiers.yaml` (`phase09.id_registry.unknown_id`).
+- A registry entry is orphaned — no artifact mentions it (`phase09.id_registry.orphan_id`).
+- A domain-specific term is used in artifacts but missing from `glossary.yaml` (`phase09.glossary_registry.missing_term`).
+- A glossary term is defined but never referenced (`phase09.glossary_registry.orphan_term`).
+- Two NFRs specify contradicting thresholds for the same metric (`phase09.nfr_threshold_dedup.contradiction`).
+
 ## Documentation Maintenance
 
 - Update docs/CHANGELOG.md with every change to skill logic prompts, root protocols, or new standards; cite the Engineering Registry when the change alters input/process/output mappings.
