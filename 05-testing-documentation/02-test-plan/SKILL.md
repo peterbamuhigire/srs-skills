@@ -147,3 +147,7 @@ This ensures `scripts/build-doc.sh` assembles sections in the intended order rat
 
 - `logic.prompt` -- Executable prompt containing the step-by-step test plan generation logic.
 - `README.md` -- Quick-start guide for this skill.
+
+## Worked example
+
+See [`examples/representative/`](examples/representative/).
