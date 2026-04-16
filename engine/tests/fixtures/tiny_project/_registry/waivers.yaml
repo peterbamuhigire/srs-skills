@@ -1,0 +1,8 @@
+waivers:
+  - id: WAIVE-001
+    gate: kernel.no_unresolved_fail_markers
+    scope: "_context/vision.md"
+    reason: "Pending stakeholder workshop scheduled for 2026-04-30."
+    approver: "Peter Bamuhigire"
+    approved_on: 2026-04-15
+    expires_on: 2026-05-15
