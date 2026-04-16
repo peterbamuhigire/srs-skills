@@ -563,6 +563,15 @@ If domain is not `other`:
   - `02-requirements-engineering/01-srs/06-nfr.md` (waterfall/hybrid)
   - `02-requirements-engineering/02-user-stories/01-epics.md` (agile/hybrid — as tagged notes)
 
+### 4b. Seed Project Control Selection (`_registry/controls.yaml`)
+
+If domain is not `other`:
+
+1. Ensure `projects/<ProjectName>/_registry/` exists.
+2. Copy `00-meta-initialization/new-project/templates/controls.yaml.template` to `projects/<ProjectName>/_registry/controls.yaml`.
+3. Prompt the consultant to open `domains/<domain>/controls/control-register.yaml` and select the applicable controls. The consultant edits `_registry/controls.yaml` by appending each chosen control as an entry under `selected:` with the control `id`, a free-text `applies_because` justification (minimum 5 characters), and optional `owner` and `exemption` fields.
+4. The project-controls file is validated against `engine/registry/schemas/project-controls.schema.json` and consumed by `Phase09Gate`'s `ControlsCheck` and `ObligationsCheck`.
+
 ### 5. Print Scaffold Summary
 
 ```
