@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterator, List, Optional, Tuple
+from typing import Any, Dict, Iterator, List, Optional, Tuple
 from engine.workspace import Workspace
 from engine.parsers.frontmatter import parse_frontmatter
 from engine.parsers.markers import Marker, find_markers
@@ -20,6 +20,7 @@ class Artifact:
     identifiers: Tuple[str, ...]
     markers: Tuple[Marker, ...]
     body: str
+    frontmatter: Dict[str, Any] = field(default_factory=dict, compare=False, hash=False)
 
     @classmethod
     def from_file(cls, root: Path, path: Path) -> "Artifact":
@@ -37,6 +38,7 @@ class Artifact:
             identifiers=ids,
             markers=markers,
             body=content,
+            frontmatter=fm,
         )
 
 def _extract_title(body: str) -> str:
