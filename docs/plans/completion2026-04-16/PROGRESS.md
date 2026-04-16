@@ -87,11 +87,24 @@ All 7 tasks done in 7 commits: `a8e09f7` through `eadf0d3`. 18 new tests (137 �
 
 ## Plan 04 — Skill Pathing Migration
 
-**Status:** ⬜ **NOT STARTED**
+**Status:** ✅ **COMPLETE** (2026-04-16)
 
 File: [`04-skill-pathing-migration.md`](04-skill-pathing-migration.md)
 
-Deliverables: migrate every skill's in-body paths to canonical `projects/<ProjectName>/` form; deterministic CI check that blocks future drift.
+All 7 tasks done in 15 commits: `c15bd21` through `1e6b710`. 164 tests passing. `validate-skills` command live and green.
+
+| Task | Commit | Summary |
+|------|--------|---------|
+| 1. Audit script | `c15bd21` | `scripts/audit_skill_paths.py` — plan-verbatim. Discovered **678 legacy references across 122 files**. CSV written to `docs/migration/skill-paths-2026-04-16.csv`. |
+| 2. Migration plan | `8fb4323` | `docs/migration/skill-paths-2026-04-16.md` — per-file action table. 117 REWRITE, 5 WRAP, 0 DELETE. WRAP candidates: the 5 phase-level README.md files that narrate the alias relationship. |
+| 3-5. Bulk migration | `ed36f93` (script) + `4eb2c59`..`034cab5` (10 directory batches) | `scripts/migrate_skill_paths.py` applied substitutions deterministically; 10 commits grouped by skill directory for reviewability. 117 files rewritten, 5 wrapped. |
+| 6. `LegacyPathCheck` + `validate-skills` | `3d6cf9e` | Kernel check `kernel.legacy_skill_paths` emits findings for naked legacy refs outside `<!-- alias-block ... -->` comments. New CLI command `python -m engine validate-skills` walks all 10 skill directories. Added to `.github/workflows/engine.yml` CI. Registry + validator updated. 3 new tests. |
+| 7. `CLAUDE.md` strict-pathing rule | `1e6b710` | Replaced the "Relative Alias Compatibility" disclaimer with the strict canonical-pathing rule citing `validate-skills`. Retained `alias` keyword + canonical path so `validate_root_pathing()` still passes. |
+
+### Plan 04 follow-ups
+
+- **Audit script's `\balias\b` regex misses `aliases` (plural).** In practice this didn't cause a classification error because the migration used a hard-coded WRAP set derived from manual review of the 5 phase-READMEs. If the script is re-run against new skill files, the `ALIAS_HINT` regex in `scripts/audit_skill_paths.py` should be loosened to `\balias(es)?\b` for more reliable classification.
+- **CSV is overwritten on every audit run.** Normal flow: audit → commit CSV → migrate → re-audit shows residual 5 wrapped refs. The CSV is intentionally a historical artifact — subsequent runs must not commit the post-migration CSV unless explicitly versioning it.
 
 ---
 
