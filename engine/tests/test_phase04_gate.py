@@ -87,3 +87,61 @@ def test_flags_env_setup_missing_install_step(tmp_path):
             if f.gate_id == "phase04.env_setup_reproducible"]
     assert msgs, "expected an env_setup_reproducible finding when install step missing"
     assert "install" in msgs[0].lower() or "bootstrap" in msgs[0].lower()
+
+
+# -- tech_spec_links_to_fr --------------------------------------------------
+
+def _complete_phase04_fixtures():
+    return {
+        "04-development/coding-standards.md": "# Coding Standards",
+        "04-development/env-setup.md": (
+            "# Env Setup\n"
+            "## Prerequisites\nNode 20.\n"
+            "## Install\n`npm install`.\n"
+            "## Verify\n`npm test`."
+        ),
+        "CONTRIBUTING.md": "# Contributing\nSee PR process.",
+    }
+
+
+def test_passes_when_tech_spec_cites_fr(tmp_path):
+    files = {
+        "_context/vision.md": "# Vision",
+        "04-development/tech-spec-orders.md": (
+            "# Orders Tech Spec\nImplements FR-001 and FR-014."
+        ),
+    }
+    files.update(_complete_phase04_fixtures())
+    graph = _ws(tmp_path, files)
+    findings = FindingCollection()
+    Phase04Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase04.tech_spec_links_to_fr") == []
+
+
+def test_flags_tech_spec_without_fr_reference(tmp_path):
+    files = {
+        "_context/vision.md": "# Vision",
+        "04-development/tech-spec.md": (
+            "# Tech Spec\nNo requirement IDs referenced here."
+        ),
+    }
+    files.update(_complete_phase04_fixtures())
+    graph = _ws(tmp_path, files)
+    findings = FindingCollection()
+    Phase04Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase04.tech_spec_links_to_fr"]
+    assert msgs, "expected a tech_spec_links_to_fr finding"
+    assert "tech-spec.md" in msgs[0]
+    assert "FR-" in msgs[0]
+
+
+def test_skips_tech_spec_check_when_no_tech_spec_artifacts(tmp_path):
+    files = {
+        "_context/vision.md": "# Vision",
+    }
+    files.update(_complete_phase04_fixtures())
+    graph = _ws(tmp_path, files)
+    findings = FindingCollection()
+    Phase04Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase04.tech_spec_links_to_fr") == []

@@ -24,6 +24,9 @@ _ENV_PREREQ_MARKERS = ("prerequisites", "requires", "dependencies")
 _ENV_INSTALL_MARKERS = ("install", "bootstrap")
 _ENV_VERIFY_MARKERS = ("verify", "test", "check", "validate")
 
+_TECH_SPEC_NAME_TOKENS = ("tech-spec", "technical-specification")
+_FR_REF_RE = re.compile(r"\bFR-\d{3,5}\b")
+
 
 def _posix(path) -> str:
     return str(path).replace("\\", "/")
@@ -44,6 +47,7 @@ class Phase04Gate(Gate):
     def evaluate(self, graph: ArtifactGraph, findings: FindingCollection) -> None:
         self._check_coding_standards_referenced(graph, findings)
         self._check_env_setup_reproducible(graph, findings)
+        self._check_tech_spec_links_to_fr(graph, findings)
 
     # -- Check 1: coding standards referenced ----------------------------
     def _check_coding_standards_referenced(
@@ -110,5 +114,29 @@ class Phase04Gate(Gate):
                     f"incomplete: missing {', '.join(missing_parts)}"
                 ),
                 location=env_art.path,
+                line=None,
+            ), _CLAUSE))
+
+    # -- Check 3: tech spec links to FR ----------------------------------
+    def _check_tech_spec_links_to_fr(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        for art in graph.artifacts:
+            posix_lower = f"/{_posix(art.path).lower()}"
+            if _PHASE04_DIR_TOKEN not in posix_lower:
+                continue
+            name = art.path.name.lower()
+            if not any(tok in name for tok in _TECH_SPEC_NAME_TOKENS):
+                continue
+            if _FR_REF_RE.search(art.body):
+                continue
+            findings.add(attach_clause(Finding(
+                gate_id=f"{self.id}.tech_spec_links_to_fr",
+                severity=Severity.HIGH,
+                message=(
+                    f"Technical specification '{_posix(art.path)}' has "
+                    f"no FR-* traceability links"
+                ),
+                location=art.path,
                 line=None,
             ), _CLAUSE))
