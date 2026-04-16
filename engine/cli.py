@@ -16,9 +16,23 @@ from engine.reporters.sarif import render_sarif
 
 def _default_registry() -> GateRegistry:
     from engine.gates.phase01 import Phase01Gate
+    from engine.gates.phase03 import Phase03Gate
+    from engine.gates.phase04 import Phase04Gate
+    from engine.gates.phase05 import Phase05Gate
+    from engine.gates.phase06 import Phase06Gate
+    from engine.gates.phase07 import Phase07Gate
+    from engine.gates.phase08 import Phase08Gate
+    from engine.gates.phase09 import Phase09Gate
     reg = GateRegistry()
     reg.register(NoUnresolvedFailMarkersGate())
     reg.register(Phase01Gate())
+    reg.register(Phase03Gate())
+    reg.register(Phase04Gate())
+    reg.register(Phase05Gate())
+    reg.register(Phase06Gate())
+    reg.register(Phase07Gate())
+    reg.register(Phase08Gate())
+    reg.register(Phase09Gate())
     return reg
 
 @click.group()
