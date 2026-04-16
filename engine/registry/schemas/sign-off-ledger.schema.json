@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["sign_offs"],
+  "properties": {
+    "sign_offs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gate", "signer", "role", "signed_on", "artifact_set"],
+        "properties": {
+          "gate": {"type": "string"},
+          "signer": {"type": "string"},
+          "role": {"type": "string"},
+          "signed_on": {"type": "string", "format": "date"},
+          "artifact_set": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "comment": {"type": "string"}
+        }
+      }
+    }
+  }
+}
