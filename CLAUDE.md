@@ -147,6 +147,10 @@ These rules apply to all generated output — SRS sections, design documents, te
 2. **Logic Scrutiny:** Recalculate every LaTeX formula in Section 3.2.x, ensuring numerical expressions yield consistent Integrity Levels and documenting any deviations.
 3. **Conflict Resolution:** Search Section 3.4 for Design Constraints that may render any System Feature in Section 3.2 unimplementable; log each conflict and recommend remediation.
 
+### Filling Context Gaps
+
+When the kernel reports `[CONTEXT-GAP: <topic>]`, consult `00-meta-initialization/new-project/prompts/context-gap-fillers.md` before authoring from scratch. It contains an opinionated prompt per topic you can paste into a fresh assistant session.
+
 ### Failure Protocols
 
 - When a requirement fails any audit criterion, tag it with the appropriate fail tag and append a remediation step naming the missing or conflicting element.
