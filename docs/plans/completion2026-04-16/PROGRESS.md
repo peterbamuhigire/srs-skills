@@ -28,7 +28,7 @@ Evidence: commits `890eda0` (bootstrap) through `d3f0a77` (pre-commit hook), all
 
 ## Plan 02 — Executable Phase Gates
 
-**Status:** 🟡 **IN PROGRESS** — 4 of 11 tasks complete
+**Status:** 🟡 **IN PROGRESS** — 5 of 11 tasks complete
 
 File: [`02-executable-phase-gates.md`](02-executable-phase-gates.md)
 
@@ -38,7 +38,7 @@ File: [`02-executable-phase-gates.md`](02-executable-phase-gates.md)
 | 2. SMART NFR check (`engine/checks/nfr_smart.py`) | ✅ | `ceeb16d` | Reviewer flagged regex limitations: unit tokens missing `\b` right-side boundary (500 sessions false-negative), and no support for "or less" / "at most" / "within" phrasings. Both are plan-level issues (plan prescribes the regex verbatim). Log at Task 11 follow-up. |
 | 3. Traceability check (`engine/checks/traceability.py`) | ✅ | `7f3dbbd` | Plan-verbatim. Verified by controller directly (35/35 pass). |
 | 4. Stimulus-response check (`engine/checks/stimulus_response.py`) | ✅ | `74cecc2` | Plan-verbatim. Verified by controller directly. |
-| 5. Phase 01 Strategic Vision gate (`engine/gates/phase01.py`) | ⬜ | — | 5 checks per `docs/deterministic-gate-phase01.md`. Needs frontmatter added to the prose gate first. ~145 lines of plan. |
+| 5. Phase 01 Strategic Vision gate (`engine/gates/phase01.py`) | ✅ | `1c3f2e5` | Plan-verbatim for API/logic; two narrow deviations accepted — (a) split the stakeholder-text collection and feature-check into two passes (plan's single-loop version is order-dependent and flaked on Windows filesystem ordering), (b) added `encoding="utf-8"` to test helper's `write_text` (plan omitted it; Windows cp1252 collided with `artifact_graph.py`'s utf-8 reader on the em-dash). 38/38 pass. Frontmatter lists 4 check IDs but Step 3 implementation only emits 2 (`no_context_gaps`, `glossary_seeded` absent); logged for Task 11. |
 | 6. Register Phase01Gate in CLI | ⬜ | — | Small: `engine/cli.py` `_default_registry()` addition + test. |
 | 7. Phase 02 gate | ⬜ | — | 8 checks — composes `SmartNfrCheck` + `StimulusResponseCheck` from Tasks 2 & 4. |
 | 8. Phase 05 gate | ⬜ | — | 7 checks — reference implementation from prose. |
@@ -46,9 +46,7 @@ File: [`02-executable-phase-gates.md`](02-executable-phase-gates.md)
 | 10. Phase 09 gate | ⬜ | — | 8 checks — the verification gate. |
 | 11. Standards-clause registry doc + CI assertion | ⬜ | — | `docs/standards-clause-registry.md`; CI check every registered check ID appears there. Also address the Task 1 and Task 2 reviewer follow-ups here. |
 
-**Resume with Task 5.** Dispatch an implementer using `superpowers:subagent-driven-development` and the prompt template at `C:\Users\BIRDC\.claude\plugins\cache\claude-plugins-official\superpowers\5.0.7\skills\subagent-driven-development\implementer-prompt.md`. Full task text lives in `02-executable-phase-gates.md` lines 340–484.
-
-Before starting Task 5, read `docs/deterministic-gate-phase01.md` — Task 5 Step 1 requires adding YAML frontmatter to that file listing the 5 check IDs.
+**Resume with Task 6.** Task 6 is small: register `Phase01Gate` in `engine/cli.py`'s `_default_registry()` and add a CLI test. Plan text lives in `02-executable-phase-gates.md` starting at line 485 — load that range and dispatch an implementer (the pragmatic deviation likely applies — it's a small plan-verbatim change).
 
 ---
 
@@ -146,6 +144,7 @@ To address at Plan 02 Task 11:
 - `ClauseRef.label()` — add `__post_init__` validation rejecting `[`, `]`, `§` in inputs; add idempotency guard so `attach_clause(attach_clause(f, c), c)` doesn't double-stamp.
 - `SmartNfrCheck._METRIC` — anchor unit alternation with right-side `\b` to prevent `500 sessions` matching `5 s`. Consider adding "or less" / "at most" / "within" alternative comparators, but only after discussing whether to update `CLAUDE.md` Principle 7's prescribed form first.
 - `SmartNfrCheck` — decide whether to tighten `_NFR_LINE` to bullet-only lines (`^\s*-\s+\*\*`), or update the plan narrative to match the current "any line with `**NFR-###**`" behaviour.
+- `Phase01Gate` frontmatter vs. implementation — `docs/deterministic-gate-phase01.md` frontmatter lists 4 check IDs (`canonical_inputs_present`, `feature_has_stakeholder`, `no_context_gaps`, `glossary_seeded`) but `engine/gates/phase01.py` only emits findings for the first two. Decide: add the missing two checks, or trim frontmatter to match code. Task 11's clause-registry CI assertion will force this decision.
 
 ### Network state
 
