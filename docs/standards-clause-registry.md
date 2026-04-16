@@ -11,6 +11,17 @@ This document is validated by `scripts/validate_engine.py`: every check ID that 
 | `phase01.canonical_inputs_present` | IEEE Std 29148-2018 | §5.2 | `engine/gates/phase01.py` |
 | `phase01.feature_has_stakeholder` | IEEE Std 29148-2018 | §5.2 | `engine/gates/phase01.py` |
 
+## Phase 02 — Requirements Engineering
+
+| Check ID | Standard | Clause | Engine module |
+|---|---|---|---|
+| `phase02.smart_nfr` | IEEE Std 830-1998 | §4.3.2 | `engine/checks/nfr_smart.py` |
+| `phase02.stimulus_response` | IEEE Std 830-1998 | §4.3.1 | `engine/checks/stimulus_response.py` |
+| `phase02.id_registry.unknown_id` | IEEE Std 830-1998 | §4.3 | `engine/checks/identifier_registry.py` |
+| `phase02.id_registry.orphan_id` | IEEE Std 830-1998 | §4.3 | `engine/checks/identifier_registry.py` |
+| `phase02.glossary_registry.missing_term` | IEEE Std 830-1998 | §4.3 | `engine/checks/glossary_registry.py` |
+| `phase02.glossary_registry.orphan_term` | IEEE Std 830-1998 | §4.3 | `engine/checks/glossary_registry.py` |
+
 ## Phase 03 — Design Documentation
 
 | Check ID | Standard | Clause | Engine module |

@@ -1,3 +1,17 @@
+---
+gate: phase02
+checks:
+  - phase02.smart_nfr
+  - phase02.stimulus_response
+  - phase02.id_registry.unknown_id
+  - phase02.id_registry.orphan_id
+  - phase02.glossary_registry.missing_term
+  - phase02.glossary_registry.orphan_term
+clause_refs:
+  - standard: "IEEE Std 830-1998"
+    clause: "4.3"
+---
+
 # Phase 02 Deterministic Gate
 
 Use this checklist before declaring requirements complete to ensure BS ISO/IEC/IEEE 29148, ISO/IEC 25010, and applicable regulatory clauses are enforced.

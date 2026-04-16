@@ -124,6 +124,16 @@ def _collect_check_ids_from_source(errors: list[str]) -> set[str]:
     # from engine/checks/. Add it explicitly so the registry assertion covers
     # it.
     ids.add("phase09.nfr_threshold_dedup.contradiction")
+    # Phase 02 delegates its four checks (smart_nfr, stimulus_response,
+    # id_registry, glossary_registry) to engine/checks/ modules. None of
+    # them emit findings via the `gate_id=f"{self.id}.<name>"` literal the
+    # regex scanner looks for, so add them explicitly.
+    ids.add("phase02.smart_nfr")
+    ids.add("phase02.stimulus_response")
+    ids.add("phase02.id_registry.unknown_id")
+    ids.add("phase02.id_registry.orphan_id")
+    ids.add("phase02.glossary_registry.missing_term")
+    ids.add("phase02.glossary_registry.orphan_term")
     return ids
 
 def validate_standards_clause_registry(errors: list[str]) -> None:
