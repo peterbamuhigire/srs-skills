@@ -55,3 +55,41 @@ def test_flags_dor_without_baseline_reference(tmp_path):
             if f.gate_id == "phase07.dor_references_baseline"]
     assert msgs, "expected a dor_references_baseline finding"
     assert "does not reference any baseline ID" in msgs[0]
+
+
+# -- dod_references_compliance ----------------------------------------------
+
+def test_passes_when_dod_references_compliance(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "07-agile-artifacts/definition-of-ready.md": (
+            "# DoR\n- Linked to **FR-0100**."
+        ),
+        "07-agile-artifacts/definition-of-done.md": (
+            "# Definition of Done\n"
+            "- Security review completed, WCAG AA verified, "
+            "and compliance checks passed.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase07Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase07.dod_references_compliance") == []
+
+
+def test_flags_dod_without_compliance_reference(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "07-agile-artifacts/definition-of-ready.md": (
+            "# DoR\n- Linked to **FR-0100**."
+        ),
+        "07-agile-artifacts/definition-of-done.md": (
+            "# Definition of Done\n"
+            "- Code merged and unit tests pass.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase07Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase07.dod_references_compliance"]
+    assert msgs, "expected a dod_references_compliance finding"
+    assert "does not reference any compliance or quality standard" in msgs[0]
