@@ -13,6 +13,9 @@ _PHASE08_DIR_TOKEN = "08-end-user-documentation/"
 _USER_MANUAL_NAME_TOKENS = ("user-manual", "user-guide", "manual")
 _IMAGE_REF_RE = re.compile(r"!\[[^\]]*\]\([^)]+\)")
 _FR_ID_RE = re.compile(r"\bFR-\d{3,5}\b")
+_FAQ_NAME_RE = re.compile(r"\bfaq\b", re.IGNORECASE)
+_FAQ_BOLD_Q_RE = re.compile(r"^\s*\*\*Q\d*[:.]?\s*.*?\*\*", re.MULTILINE)
+_FAQ_HEADING_Q_RE = re.compile(r"^#{2,6}\s+.+\?\s*$", re.MULTILINE)
 
 
 def _posix(path) -> str:
@@ -43,6 +46,15 @@ def _find_release_notes(graph: ArtifactGraph):
     return None
 
 
+def _find_faq(graph: ArtifactGraph):
+    for art in graph.artifacts:
+        if not _under_phase08(art):
+            continue
+        if _FAQ_NAME_RE.search(art.path.name):
+            return art
+    return None
+
+
 class Phase08Gate(Gate):
     id = "phase08"
     title = "End-User Documentation phase gate"
@@ -51,6 +63,7 @@ class Phase08Gate(Gate):
     def evaluate(self, graph: ArtifactGraph, findings: FindingCollection) -> None:
         self._check_user_manual_has_screenshots(graph, findings)
         self._check_release_notes_link_to_fr(graph, findings)
+        self._check_faq_has_at_least_5_qa(graph, findings)
 
     # -- Check 1: user manual has screenshots ----------------------------
     def _check_user_manual_has_screenshots(
@@ -113,5 +126,38 @@ class Phase08Gate(Gate):
                 f"traceability links"
             ),
             location=notes.path,
+            line=None,
+        ), _CLAUSE))
+
+    # -- Check 3: FAQ has at least 5 Q&A ---------------------------------
+    def _check_faq_has_at_least_5_qa(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        faq = _find_faq(graph)
+        if faq is None:
+            findings.add(attach_clause(Finding(
+                gate_id=f"{self.id}.faq_has_at_least_5_qa",
+                severity=Severity.HIGH,
+                message=(
+                    "No FAQ found under 08-end-user-documentation/ "
+                    "(expected filename containing 'FAQ')"
+                ),
+                location=None,
+                line=None,
+            ), _CLAUSE))
+            return
+        bold_q_count = len(_FAQ_BOLD_Q_RE.findall(faq.body))
+        heading_q_count = len(_FAQ_HEADING_Q_RE.findall(faq.body))
+        count = max(bold_q_count, heading_q_count)
+        if count >= 5:
+            return
+        findings.add(attach_clause(Finding(
+            gate_id=f"{self.id}.faq_has_at_least_5_qa",
+            severity=Severity.HIGH,
+            message=(
+                f"FAQ '{_posix(faq.path)}' has {count} question(s); "
+                f"at least 5 required"
+            ),
+            location=faq.path,
             line=None,
         ), _CLAUSE))

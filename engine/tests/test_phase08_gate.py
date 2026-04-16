@@ -114,3 +114,113 @@ def test_flags_release_notes_without_fr(tmp_path):
             if f.gate_id == "phase08.release_notes_link_to_fr"]
     assert msgs, "expected a release_notes_link_to_fr finding"
     assert "no FR-* traceability links" in msgs[0]
+
+
+# -- faq_has_at_least_5_qa -------------------------------------------------
+
+def test_passes_when_faq_has_five_qa_headings(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "08-end-user-documentation/faq.md": (
+            "# FAQ\n"
+            "\n"
+            "## How do I reset my password?\n"
+            "Use the reset link on the login screen.\n"
+            "\n"
+            "## How do I contact support?\n"
+            "Email support@example.com.\n"
+            "\n"
+            "## Where is my data stored?\n"
+            "Data is stored in a Uganda-based data centre.\n"
+            "\n"
+            "## How do I export my records?\n"
+            "Use the Export button on the Reports screen.\n"
+            "\n"
+            "## Can I use the system offline?\n"
+            "No, an internet connection is required.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase08Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase08.faq_has_at_least_5_qa") == []
+
+
+def test_passes_when_faq_has_five_bold_q_markers(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "08-end-user-documentation/faq.md": (
+            "# FAQ\n"
+            "\n"
+            "**Q1: How do I reset my password?**\n"
+            "Use the reset link.\n"
+            "\n"
+            "**Q2: How do I contact support?**\n"
+            "Email support.\n"
+            "\n"
+            "**Q3: Where is my data stored?**\n"
+            "Uganda data centre.\n"
+            "\n"
+            "**Q4: How do I export records?**\n"
+            "Export button.\n"
+            "\n"
+            "**Q5: Can I use offline?**\n"
+            "No.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase08Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase08.faq_has_at_least_5_qa") == []
+
+
+def test_flags_missing_faq(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "08-end-user-documentation/user-manual.md": (
+            "# User Manual\n![Home](images/home.png)\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase08Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase08.faq_has_at_least_5_qa"]
+    assert msgs, "expected a faq_has_at_least_5_qa finding"
+    assert "No FAQ found" in msgs[0]
+
+
+def test_flags_faq_with_three_questions(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "08-end-user-documentation/faq.md": (
+            "# FAQ\n"
+            "\n"
+            "## How do I reset my password?\n"
+            "Use the reset link.\n"
+            "\n"
+            "## How do I contact support?\n"
+            "Email support.\n"
+            "\n"
+            "## Where is my data stored?\n"
+            "Uganda data centre.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase08Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase08.faq_has_at_least_5_qa"]
+    assert msgs, "expected a faq_has_at_least_5_qa finding"
+    assert "has 3 question(s)" in msgs[0]
+    assert "at least 5 required" in msgs[0]
+
+
+# -- clause attachment ------------------------------------------------------
+
+def test_findings_carry_ieee_26514_clause_label(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+    })
+    findings = FindingCollection()
+    Phase08Gate().evaluate(graph, findings)
+    assert len(findings) > 0
+    for f in findings:
+        assert "IEEE Std 26514-2022" in f.message
+        assert "8" in f.message
