@@ -253,3 +253,96 @@ def test_flags_missing_threat_model_when_design_artifacts_exist(tmp_path):
         "expected a security_threat_model_present finding when "
         "no threat-model.md exists and body lacks 'threat model'"
     )
+
+
+# -- iot_signal_inventory_present -------------------------------------------
+
+def test_skips_iot_check_when_not_iot_project(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/01-high-level-design/HLD.md": (
+            "# HLD\nRegular web application."
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.iot_signal_inventory_present") == []
+
+
+def test_flags_iot_project_without_signal_inventory(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/07-iot-system-design/overview.md": (
+            "# IoT Overview\nDevice layer..."
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase03.iot_signal_inventory_present"]
+    assert msgs, "expected an iot_signal_inventory_present finding"
+    assert "signal inventory" in msgs[0]
+
+
+def test_passes_iot_project_with_signal_inventory(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/07-iot-system-design/overview.md": (
+            "# IoT Overview\nDevice layer..."
+        ),
+        "03-design-documentation/07-iot-system-design/signal-inventory.md": (
+            "# Signal Inventory\n| signal | unit |"
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.iot_signal_inventory_present") == []
+
+
+def test_passes_iot_project_with_signals_md(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/07-iot-system-design/overview.md": (
+            "# IoT Overview\nDevice layer..."
+        ),
+        "03-design-documentation/07-iot-system-design/signals.md": (
+            "# Signals"
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.iot_signal_inventory_present") == []
+
+
+def test_flags_iot_project_detected_via_body_without_inventory(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/01-high-level-design/HLD.md": (
+            "# HLD\nThis system integrates IoT sensors across buildings."
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.iot_signal_inventory_present"), (
+        "expected an iot_signal_inventory_present finding when "
+        "body mentions IoT but no signal inventory exists"
+    )
+
+
+# -- clause attachment ------------------------------------------------------
+
+def test_findings_carry_iso_42010_clause_label(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert len(findings) > 0
+    for f in findings:
+        assert "ISO/IEC/IEEE 42010:2011" in f.message
+        assert "5.3" in f.message

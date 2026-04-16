@@ -49,6 +49,7 @@ class Phase03Gate(Gate):
         self._check_data_model_has_keys(graph, findings)
         self._check_nfrs_link_to_design_choices(graph, findings)
         self._check_security_threat_model_present(graph, findings)
+        self._check_iot_signal_inventory_present(graph, findings)
 
     # -- Check 1: architecture decisions recorded ------------------------
     def _check_architecture_decisions_recorded(
@@ -165,6 +166,40 @@ class Phase03Gate(Gate):
                 "No threat model found under 03-design-documentation/ "
                 "(expected 'threat-model.md' file or 'threat model' "
                 "reference in a design artifact)"
+            ),
+            location=None,
+            line=None,
+        ), _CLAUSE))
+
+    # -- Check 6: IoT signal inventory present ---------------------------
+    def _check_iot_signal_inventory_present(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        is_iot = False
+        for art in graph.artifacts:
+            if _IOT_DIR_TOKEN in f"/{_posix(art.path)}":
+                is_iot = True
+                break
+            if "IoT" in art.body:
+                is_iot = True
+                break
+        if not is_iot:
+            return
+        for art in graph.artifacts:
+            posix = _posix(art.path)
+            if not posix.startswith(_PHASE03_ROOT):
+                continue
+            if _IOT_ROOT not in posix:
+                continue
+            if any(posix.endswith(sfx) for sfx in _SIGNAL_INVENTORY_SUFFIXES):
+                return
+        findings.add(attach_clause(Finding(
+            gate_id=f"{self.id}.iot_signal_inventory_present",
+            severity=Severity.HIGH,
+            message=(
+                "IoT scope detected but no signal inventory found "
+                "(expected '07-iot-system-design/signal-inventory.md' "
+                "or 'signals.md')"
             ),
             location=None,
             line=None,
