@@ -6,8 +6,8 @@ This skill produces a detailed test plan that translates every SRS "shall" state
 
 ## Execution Steps
 
-1. Verify `../output/SRS_Draft.md` and `../output/Test_Strategy.md` exist. Optionally check for `../output/acceptance_criteria.md`. Halt if any required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill extracts testable requirements, generates test cases, defines test data, builds the schedule, and writes `../output/Test_Plan.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` and `projects/<ProjectName>/<phase>/<document>/Test_Strategy.md` exist. Optionally check for `projects/<ProjectName>/<phase>/<document>/acceptance_criteria.md`. Halt if any required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill extracts testable requirements, generates test cases, defines test data, builds the schedule, and writes `projects/<ProjectName>/<phase>/<document>/Test_Plan.md`.
 3. Review the traceability matrix to confirm every SRS "shall" statement maps to at least one test case. Investigate any coverage gaps flagged in the appendix.
 4. Proceed to `03-test-report` which consumes the test plan to structure the execution report template.
 

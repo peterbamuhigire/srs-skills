@@ -20,16 +20,16 @@ This is the second skill in Phase 05 (Testing Documentation). It transforms the 
 
 ## When to Use
 
-- After 01-test-strategy completes and `Test_Strategy.md` exists in `../output/` with test levels, types, and criteria.
-- When `SRS_Draft.md` exists in `../output/` with functional requirements containing "shall" statements.
-- Optionally, when `acceptance_criteria.md` exists in `../output/` for agile projects requiring acceptance-test mapping.
+- After 01-test-strategy completes and `Test_Strategy.md` exists in `projects/<ProjectName>/<phase>/<document>/` with test levels, types, and criteria.
+- When `SRS_Draft.md` exists in `projects/<ProjectName>/<phase>/<document>/` with functional requirements containing "shall" statements.
+- Optionally, when `acceptance_criteria.md` exists in `projects/<ProjectName>/<phase>/<document>/` for agile projects requiring acceptance-test mapping.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../output/SRS_Draft.md`, `../output/Test_Strategy.md`, `../output/acceptance_criteria.md` (optional) |
-| **Output**  | `../output/Test_Plan.md` |
+| **Inputs**  | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/<phase>/<document>/Test_Strategy.md`, `projects/<ProjectName>/<phase>/<document>/acceptance_criteria.md` (optional) |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Test_Plan.md` |
 | **Tone**    | Detailed, case-driven, QA-facing |
 | **Standard** | BS ISO/IEC/IEEE 29119-3 Sec 7-8 |
 
@@ -37,15 +37,15 @@ This is the second skill in Phase 05 (Testing Documentation). It transforms the 
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Functional (Section 3.2) and non-functional (Sections 3.3, 3.5) requirements as test case sources |
-| Test_Strategy.md | `../output/Test_Strategy.md` | Yes | Test levels, types, tools, and criteria governing test case structure |
-| acceptance_criteria.md | `../output/acceptance_criteria.md` | No | Agile acceptance criteria for mapping to UAT test cases |
+| SRS_Draft.md | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Yes | Functional (Section 3.2) and non-functional (Sections 3.3, 3.5) requirements as test case sources |
+| Test_Strategy.md | `projects/<ProjectName>/<phase>/<document>/Test_Strategy.md` | Yes | Test levels, types, tools, and criteria governing test case structure |
+| acceptance_criteria.md | `projects/<ProjectName>/<phase>/<document>/acceptance_criteria.md` | No | Agile acceptance criteria for mapping to UAT test cases |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Test_Plan.md | `../output/Test_Plan.md` | Complete test plan with test cases, traceability matrix, schedule, and resources |
+| Test_Plan.md | `projects/<ProjectName>/<phase>/<document>/Test_Plan.md` | Complete test plan with test cases, traceability matrix, schedule, and resources |
 
 ## Core Instructions
 
@@ -53,7 +53,7 @@ Follow these nine steps in order. Halt and notify the user if a required input f
 
 ### Step 1: Read Context Files
 
-Read `SRS_Draft.md` and `Test_Strategy.md` from `../output/`. Optionally read `acceptance_criteria.md` from `../output/` if it exists. Log the absolute path of each file read. If any required file is missing, halt execution and report the gap.
+Read `SRS_Draft.md` and `Test_Strategy.md` from `projects/<ProjectName>/<phase>/<document>/`. Optionally read `acceptance_criteria.md` from `projects/<ProjectName>/<phase>/<document>/` if it exists. Log the absolute path of each file read. If any required file is missing, halt execution and report the gap.
 
 ### Step 2: Extract Testable Requirements
 
@@ -87,7 +87,7 @@ Define the test execution schedule: phases aligned with Test_Strategy.md test le
 
 ### Step 9: Generate Traceability Matrix and Write Output
 
-Generate a requirement-to-test traceability matrix mapping every REQ-ID to its TC-IDs, confirming full coverage. Flag any requirements without test cases as coverage gaps. Before writing output, verify the deterministic gate in `../references/29119-deterministic-checks.md` has been satisfied (mandatory artifact tree, clause annotations, entry/exit criteria). Write the completed document to `../output/Test_Plan.md`. Log the total count of test cases, coverage percentage, and any gaps.
+Generate a requirement-to-test traceability matrix mapping every REQ-ID to its TC-IDs, confirming full coverage. Flag any requirements without test cases as coverage gaps. Before writing output, verify the deterministic gate in `../references/29119-deterministic-checks.md` has been satisfied (mandatory artifact tree, clause annotations, entry/exit criteria). Write the completed document to `projects/<ProjectName>/<phase>/<document>/Test_Plan.md`. Log the total count of test cases, coverage percentage, and any gaps.
 
 ## Output Format
 
@@ -122,7 +122,7 @@ This ensures `scripts/build-doc.sh` assembles sections in the intended order rat
 
 ## Verification Checklist
 
-- [ ] `Test_Plan.md` exists in `../output/` with all seven sections populated.
+- [ ] `Test_Plan.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all seven sections populated.
 - [ ] Every "shall" statement in SRS Section 3.2 has at least one corresponding test case.
 - [ ] Test cases include preconditions, sequential steps, and deterministic expected results.
 - [ ] NFR test cases include measurable acceptance thresholds from SRS Sections 3.3 and 3.5.

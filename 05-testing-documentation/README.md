@@ -22,16 +22,16 @@ Run 01-test-strategy FIRST (it defines test levels, types, tools, and criteria t
 
 ## Dependencies
 
-- **Upstream:** Phase 02 (Requirements Engineering) -- requires `SRS_Draft.md` in `../output/`. Phase 03 (Design Documentation) -- requires `HLD.md` in `../output/`.
+- **Upstream:** Phase 02 (Requirements Engineering) -- requires `SRS_Draft.md` in `projects/<ProjectName>/<phase>/<document>/`. Phase 03 (Design Documentation) -- requires `HLD.md` in `projects/<ProjectName>/<phase>/<document>/`.
 - **Downstream:** Phase 09 (Governance) -- consumes testing artifacts for compliance and audit evidence.
 
 ## Input Source
 
-All skills read from `../output/` (SRS_Draft.md, HLD.md, Test_Strategy.md, Test_Plan.md) and `../project_context/quality_standards.md`.
+All skills read from `projects/<ProjectName>/<phase>/<document>/` (SRS_Draft.md, HLD.md, Test_Strategy.md, Test_Plan.md) and `projects/<ProjectName>/_context/quality_standards.md`.
 
 ## Output Destination
 
-All skills write to `../output/`.
+All skills write to `projects/<ProjectName>/<phase>/<document>/`.
 ## Auxiliary Artifacts
 
 Described templates include:

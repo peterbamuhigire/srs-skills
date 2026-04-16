@@ -20,16 +20,16 @@ This is the first skill in Phase 05 (Testing Documentation). It reads the SRS an
 
 ## When to Use
 
-- After Phase 02 completes and `SRS_Draft.md` exists in `../output/` with functional and non-functional requirements.
-- After Phase 03 completes and `HLD.md` exists in `../output/` with system architecture and component boundaries.
-- When `quality_standards.md` exists in `../project_context/` with project-specific quality targets.
+- After Phase 02 completes and `SRS_Draft.md` exists in `projects/<ProjectName>/<phase>/<document>/` with functional and non-functional requirements.
+- After Phase 03 completes and `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` with system architecture and component boundaries.
+- When `quality_standards.md` exists in `projects/<ProjectName>/_context/` with project-specific quality targets.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../output/SRS_Draft.md`, `../output/HLD.md`, `../project_context/quality_standards.md` |
-| **Output**  | `../output/Test_Strategy.md` |
+| **Inputs**  | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/_context/quality_standards.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Test_Strategy.md` |
 | **Tone**    | Prescriptive, standards-driven, QA-facing |
 | **Standard** | BS ISO/IEC/IEEE 29119-3 Sec 6 |
 
@@ -37,9 +37,9 @@ This is the first skill in Phase 05 (Testing Documentation). It reads the SRS an
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Functional and non-functional requirements driving test scope |
-| HLD.md | `../output/HLD.md` | Yes | System architecture defining component boundaries for integration testing |
-| quality_standards.md | `../project_context/quality_standards.md` | Yes | Project-specific quality targets, compliance mandates, and coverage thresholds |
+| SRS_Draft.md | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Yes | Functional and non-functional requirements driving test scope |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | Yes | System architecture defining component boundaries for integration testing |
+| quality_standards.md | `projects/<ProjectName>/_context/quality_standards.md` | Yes | Project-specific quality targets, compliance mandates, and coverage thresholds |
 
 ### Methodology Fallback (Agile / Hybrid)
 
@@ -60,7 +60,7 @@ If `SRS_Draft.md` is absent, Claude shall use the following agile-compatible inp
 
 | File | Location | Description |
 |------|----------|-------------|
-| Test_Strategy.md | `../output/Test_Strategy.md` | Complete test strategy with levels, types, tools, environments, and criteria |
+| Test_Strategy.md | `projects/<ProjectName>/<phase>/<document>/Test_Strategy.md` | Complete test strategy with levels, types, tools, environments, and criteria |
 
 ## Core Instructions
 
@@ -68,7 +68,7 @@ Follow these eight steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `SRS_Draft.md` and `HLD.md` from `../output/` and `quality_standards.md` from `../project_context/`. Log the absolute path of each file read. If any required file is missing, halt execution and report the gap.
+Read `SRS_Draft.md` and `HLD.md` from `projects/<ProjectName>/<phase>/<document>/` and `quality_standards.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. If any required file is missing, halt execution and report the gap.
 
 ### Step 2: Define Test Levels
 
@@ -98,7 +98,7 @@ Before writing the artifact, confirm the deterministic gate by checking `../refe
 
 ### Step 8: Write Output with Traceability
 
-Write the completed document to `../output/Test_Strategy.md`. Include a traceability section mapping each test level and test type to the SRS sections and quality_standards.md targets they validate. Log the total count of test levels, test types, and tools selected.
+Write the completed document to `projects/<ProjectName>/<phase>/<document>/Test_Strategy.md`. Include a traceability section mapping each test level and test type to the SRS sections and quality_standards.md targets they validate. Log the total count of test levels, test types, and tools selected.
 
 ## Output Format
 
@@ -115,7 +115,7 @@ The generated `Test_Strategy.md` shall contain these sections in order: Document
 
 ## Verification Checklist
 
-- [ ] `Test_Strategy.md` exists in `../output/` with all nine sections populated.
+- [ ] `Test_Strategy.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all nine sections populated.
 - [ ] Four test levels are defined with scope, responsible role, and automation expectation.
 - [ ] Test types reference specific SRS sections they validate.
 - [ ] Tool selections cite the HLD technology stack as justification.

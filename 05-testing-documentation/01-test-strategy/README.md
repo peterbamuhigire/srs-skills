@@ -6,8 +6,8 @@ This skill produces a test strategy that defines the quality assurance framework
 
 ## Execution Steps
 
-1. Verify `../output/SRS_Draft.md`, `../output/HLD.md`, and `../project_context/quality_standards.md` exist. Halt if any required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill defines test levels, types, tools, environments, criteria, defect management, and metrics, then writes `../output/Test_Strategy.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/<phase>/<document>/HLD.md`, and `projects/<ProjectName>/_context/quality_standards.md` exist. Halt if any required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill defines test levels, types, tools, environments, criteria, defect management, and metrics, then writes `projects/<ProjectName>/<phase>/<document>/Test_Strategy.md`.
 3. Review the traceability section to confirm every test level and type maps to SRS sections and quality_standards.md targets.
 4. Proceed to `02-test-plan` which consumes the strategy as its governing framework.
 

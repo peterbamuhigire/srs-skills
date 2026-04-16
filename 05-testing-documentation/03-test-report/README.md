@@ -6,8 +6,8 @@ This skill produces a reusable test execution report template that structures te
 
 ## Execution Steps
 
-1. Verify `../output/Test_Plan.md` exists with test cases and traceability matrix. Halt if the file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates the report template with executive summary, execution log, defect log, coverage metrics, analysis, recommendations, and sign-off sections, then writes `../output/Test_Report_Template.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/Test_Plan.md` exists with test cases and traceability matrix. Halt if the file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates the report template with executive summary, execution log, defect log, coverage metrics, analysis, recommendations, and sign-off sections, then writes `projects/<ProjectName>/<phase>/<document>/Test_Report_Template.md`.
 3. Review the template to confirm TC-IDs from the test plan are pre-populated in the execution log and that all placeholder fields are clearly marked for completion during test execution.
 4. This is the final skill in Phase 05. The completed testing documentation suite (Test_Strategy.md, Test_Plan.md, Test_Report_Template.md) feeds downstream to Phase 09 (Governance) as audit evidence.
 

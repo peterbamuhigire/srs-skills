@@ -20,15 +20,15 @@ This is the third and final skill in Phase 05 (Testing Documentation). It reads 
 
 ## When to Use
 
-- After 02-test-plan completes and `Test_Plan.md` exists in `../output/` with test cases and traceability matrix.
+- After 02-test-plan completes and `Test_Plan.md` exists in `projects/<ProjectName>/<phase>/<document>/` with test cases and traceability matrix.
 - When the project requires a standardized report template for recording test execution outcomes.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../output/Test_Plan.md` |
-| **Output**  | `../output/Test_Report_Template.md` |
+| **Inputs**  | `projects/<ProjectName>/<phase>/<document>/Test_Plan.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Test_Report_Template.md` |
 | **Tone**    | Structured, metrics-driven, stakeholder-facing |
 | **Standard** | BS ISO/IEC/IEEE 29119-3 Sec 9-10 |
 
@@ -36,13 +36,13 @@ This is the third and final skill in Phase 05 (Testing Documentation). It reads 
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| Test_Plan.md | `../output/Test_Plan.md` | Yes | Test case inventory, traceability matrix, and schedule driving report structure |
+| Test_Plan.md | `projects/<ProjectName>/<phase>/<document>/Test_Plan.md` | Yes | Test case inventory, traceability matrix, and schedule driving report structure |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Test_Report_Template.md | `../output/Test_Report_Template.md` | Reusable report template with placeholders for test execution results |
+| Test_Report_Template.md | `projects/<ProjectName>/<phase>/<document>/Test_Report_Template.md` | Reusable report template with placeholders for test execution results |
 
 ## Core Instructions
 
@@ -50,7 +50,7 @@ Follow these seven steps in order. Halt and notify the user if the required inpu
 
 ### Step 1: Read Test Plan
 
-Read `Test_Plan.md` from `../output/`. Log the absolute path. If the file is missing, halt execution and report the gap. Extract the total test case count, test case groupings, and traceability matrix.
+Read `Test_Plan.md` from `projects/<ProjectName>/<phase>/<document>/`. Log the absolute path. If the file is missing, halt execution and report the gap. Extract the total test case count, test case groupings, and traceability matrix.
 
 ### Step 2: Generate Executive Summary Template
 
@@ -74,7 +74,7 @@ Create a failed test analysis section with a template per failure: TC-ID, Failur
 
 ### Step 7: Write Template with Sign-Off
 
-Before writing output, confirm the deterministic gate in `../references/29119-deterministic-checks.md` is satisfied and that incident-report.md plus test-completion-report.md templates are referenced for use during execution reporting. Write the completed template to `../output/Test_Report_Template.md`. Include a sign-off section with fields for: QA Lead (name, date, signature), Project Manager (name, date, signature), and stakeholder approval fields. Log the total number of template sections and placeholder test case entries.
+Before writing output, confirm the deterministic gate in `../references/29119-deterministic-checks.md` is satisfied and that incident-report.md plus test-completion-report.md templates are referenced for use during execution reporting. Write the completed template to `projects/<ProjectName>/<phase>/<document>/Test_Report_Template.md`. Include a sign-off section with fields for: QA Lead (name, date, signature), Project Manager (name, date, signature), and stakeholder approval fields. Log the total number of template sections and placeholder test case entries.
 
 ## Output Format
 
@@ -91,7 +91,7 @@ The generated `Test_Report_Template.md` shall contain these sections in order: D
 
 ## Verification Checklist
 
-- [ ] `Test_Report_Template.md` exists in `../output/` with all seven sections populated.
+- [ ] `Test_Report_Template.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all seven sections populated.
 - [ ] Executive summary includes placeholders for total, passed, failed, blocked, and coverage metrics.
 - [ ] Test execution log table pre-populates TC-IDs from Test_Plan.md.
 - [ ] Defect log includes severity, priority, status, steps to reproduce, and linked TC-ID columns.
