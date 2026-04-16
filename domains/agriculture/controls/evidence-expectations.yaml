@@ -1,0 +1,13 @@
+expectations:
+  audit_logging:
+    must_appear_in:
+      - 03-design-documentation/*
+      - 06-deployment-operations/runbook/*
+  monitoring:
+    must_appear_in:
+      - 05-testing-documentation/test-plan/*
+      - 06-deployment-operations/runbook/*
+  risk_management:
+    must_appear_in:
+      - 09-governance-compliance/*
+      - 03-design-documentation/*

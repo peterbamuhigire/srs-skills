@@ -1,0 +1,15 @@
+obligations:
+  - obligation: "Maintain traceability one step back and one step forward in the food chain"
+    framework: "Codex Alimentarius"
+    clause: "CAC/GL 60-2006 §5"
+    satisfied_by: [CTRL-AG-001]
+
+  - obligation: "Enforce Codex maximum residue limits for pesticides"
+    framework: "Codex Alimentarius"
+    clause: "CAC/RCP 44-1995"
+    satisfied_by: [CTRL-AG-002]
+
+  - obligation: "Apply HACCP principles to identify and control food-safety hazards"
+    framework: "Codex Alimentarius"
+    clause: "CAC/RCP 1-1969 rev 4"
+    satisfied_by: [CTRL-AG-003]

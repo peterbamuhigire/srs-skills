@@ -1,0 +1,7 @@
+required_reviews:
+  - control_category: risk_management
+    reviewer_role: "HACCP Team Leader"
+    cadence: "annual"
+  - control_category: monitoring
+    reviewer_role: "Quality Assurance"
+    cadence: "per batch"

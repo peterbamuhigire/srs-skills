@@ -1,0 +1,38 @@
+# TODO: expand with additional controls — this is a minimum-viable starter library.
+# Contribute additions via PR; engine validates the schema at load time.
+domain: agriculture
+version: "1.0"
+source_framework: "FAO Codex Alimentarius"
+controls:
+  - id: CTRL-AG-001
+    title: Traceability of source and destination for food products
+    category: audit_logging
+    verification_kinds: [audit_log_inspection, design_review]
+    minimum_evidence:
+      - "Batch records identify immediate supplier and immediate customer"
+      - "Recall procedure uses the traceability records"
+    regulatory_anchor:
+      framework: "Codex Alimentarius"
+      clause: "CAC/GL 60-2006 §5"
+
+  - id: CTRL-AG-002
+    title: Pesticide residue limits
+    category: monitoring
+    verification_kinds: [test, policy_inspection]
+    minimum_evidence:
+      - "Residue-testing policy specifies sampling frequency and method"
+      - "Test results are retained and trended"
+    regulatory_anchor:
+      framework: "Codex Alimentarius"
+      clause: "CAC/RCP 44-1995"
+
+  - id: CTRL-AG-003
+    title: HACCP critical control point documentation
+    category: risk_management
+    verification_kinds: [policy_inspection, design_review]
+    minimum_evidence:
+      - "HACCP plan enumerates critical control points and critical limits"
+      - "Monitoring and corrective-action procedures are documented"
+    regulatory_anchor:
+      framework: "Codex Alimentarius"
+      clause: "CAC/RCP 1-1969 rev 4"
