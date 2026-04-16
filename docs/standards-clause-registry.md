@@ -81,6 +81,7 @@ This document is validated by `scripts/validate_engine.py`: every check ID that 
 | `phase09.id_registry.orphan_id` | ISO/IEC 27001:2022 | §9 | `engine/checks/identifier_registry.py` |
 | `phase09.glossary_registry.missing_term` | ISO/IEC 27001:2022 | §9 | `engine/checks/glossary_registry.py` |
 | `phase09.glossary_registry.orphan_term` | ISO/IEC 27001:2022 | §9 | `engine/checks/glossary_registry.py` |
+| `phase09.nfr_threshold_dedup.contradiction` | IEEE Std 830-1998 | §4.3.2 | `engine/checks/nfr_threshold_dedup.py` |
 
 ## Deferred Checks (not yet emitted)
 

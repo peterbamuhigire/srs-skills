@@ -119,6 +119,11 @@ def _collect_check_ids_from_source(errors: list[str]) -> set[str]:
     ids.add("phase09.id_registry.orphan_id")
     ids.add("phase09.glossary_registry.missing_term")
     ids.add("phase09.glossary_registry.orphan_term")
+    # Phase 09 nfr_threshold_dedup delegates to NfrThresholdDedupCheck, which
+    # emits its own nested gate ID `phase09.nfr_threshold_dedup.contradiction`
+    # from engine/checks/. Add it explicitly so the registry assertion covers
+    # it.
+    ids.add("phase09.nfr_threshold_dedup.contradiction")
     return ids
 
 def validate_standards_clause_registry(errors: list[str]) -> None:

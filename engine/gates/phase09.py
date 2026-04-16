@@ -5,6 +5,7 @@ from pathlib import Path
 from engine.artifact_graph import Artifact, ArtifactGraph
 from engine.checks.glossary_registry import GlossaryRegistryCheck
 from engine.checks.identifier_registry import IdentifierRegistryCheck
+from engine.checks.nfr_threshold_dedup import NfrThresholdDedupCheck
 from engine.checks.traceability import TraceabilityCheck
 from engine.findings import Finding, FindingCollection, Severity
 from engine.gates.base import Gate
@@ -63,6 +64,7 @@ class Phase09Gate(Gate):
         self._check_waivers_have_expiry(graph, findings)
         self._check_identifier_registry(graph, findings)
         self._check_glossary_registry(graph, findings)
+        self._check_nfr_threshold_dedup(graph, findings)
 
     # -- Check 1: traceability (delegates to TraceabilityCheck) ----------
     def _check_traceability(
@@ -219,6 +221,17 @@ class Phase09Gate(Gate):
         tmp = FindingCollection()
         GlossaryRegistryCheck(
             f"{self.id}.glossary_registry", registry_path
+        ).run(graph, tmp)
+        for f in tmp:
+            findings.add(attach_clause(f, _CLAUSE))
+
+    # -- Check 7: NFR threshold dedup (delegates to NfrThresholdDedupCheck) --
+    def _check_nfr_threshold_dedup(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        tmp = FindingCollection()
+        NfrThresholdDedupCheck(
+            f"{self.id}.nfr_threshold_dedup"
         ).run(graph, tmp)
         for f in tmp:
             findings.add(attach_clause(f, _CLAUSE))
