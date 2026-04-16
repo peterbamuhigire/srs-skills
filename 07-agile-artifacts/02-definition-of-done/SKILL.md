@@ -21,16 +21,16 @@ This skill produces a comprehensive Definition of Done (DoD) checklist that esta
 ## When to Use This Skill
 
 - When establishing or revising the team's quality gate for "done" increments.
-- After `quality_standards.md` is present in `../project_context/` with project-specific quality requirements.
-- When `tech_stack.md` is present in `../project_context/` to tailor criteria to the technology platform.
+- After `quality_standards.md` is present in `projects/<ProjectName>/_context/` with project-specific quality requirements.
+- When `tech_stack.md` is present in `projects/<ProjectName>/_context/` to tailor criteria to the technology platform.
 - Before sprint planning to ensure the team has a shared DoD reference.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../project_context/quality_standards.md`, `../project_context/tech_stack.md` |
-| **Output**  | `../output/Definition_of_Done.md` |
+| **Inputs**  | `projects/<ProjectName>/_context/quality_standards.md`, `projects/<ProjectName>/_context/tech_stack.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Definition_of_Done.md` |
 | **Standard** | Scrum Guide |
 | **Time**    | 10-15 minutes |
 
@@ -38,14 +38,14 @@ This skill produces a comprehensive Definition of Done (DoD) checklist that esta
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| quality_standards.md | `../project_context/quality_standards.md` | Yes | Project quality requirements, coding standards, coverage targets |
-| tech_stack.md | `../project_context/tech_stack.md` | No | Technology choices to tailor criteria (linters, test frameworks, CI/CD tools) |
+| quality_standards.md | `projects/<ProjectName>/_context/quality_standards.md` | Yes | Project quality requirements, coding standards, coverage targets |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | No | Technology choices to tailor criteria (linters, test frameworks, CI/CD tools) |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Definition_of_Done.md | `../output/Definition_of_Done.md` | Complete DoD checklist with item-level, increment-level, and release-level criteria |
+| Definition_of_Done.md | `projects/<ProjectName>/<phase>/<document>/Definition_of_Done.md` | Complete DoD checklist with item-level, increment-level, and release-level criteria |
 
 ## Core Instructions
 
@@ -53,7 +53,7 @@ Follow these eight steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `quality_standards.md` from `../project_context/`. Optionally read `tech_stack.md` from `../project_context/`. Log the absolute path of each file read. Halt if the required file is missing.
+Read `quality_standards.md` from `projects/<ProjectName>/_context/`. Optionally read `tech_stack.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. Halt if the required file is missing.
 
 ### Step 2: Define Code Quality Criteria
 
@@ -104,7 +104,7 @@ Generate higher-level DoD criteria:
 
 ### Step 8: Assemble and Write Output
 
-Assemble all criteria into the final checklist document. Write the completed document to `../output/Definition_of_Done.md`. Log completion and total count of checklist items.
+Assemble all criteria into the final checklist document. Write the completed document to `projects/<ProjectName>/<phase>/<document>/Definition_of_Done.md`. Log completion and total count of checklist items.
 
 ## Output Format Specification
 
@@ -129,7 +129,7 @@ The generated `Definition_of_Done.md` SHALL contain these sections in order:
 
 ## Verification Checklist
 
-1. `Definition_of_Done.md` exists in `../output/` with all eight sections populated.
+1. `Definition_of_Done.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all eight sections populated.
 2. Every criterion is verifiable with a clear pass/fail outcome.
 3. Testing criteria reference specific coverage thresholds from `quality_standards.md`.
 4. Code quality criteria reference the project coding standard.

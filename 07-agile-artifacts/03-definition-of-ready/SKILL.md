@@ -21,16 +21,16 @@ This skill produces a Definition of Ready (DoR) checklist that establishes the m
 ## When to Use This Skill
 
 - When establishing or revising the team's readiness gate for backlog refinement.
-- After `vision.md` is present in `../project_context/` with project goals for context.
-- When `features.md` is present in `../project_context/` with feature definitions to inform readiness criteria.
+- After `vision.md` is present in `projects/<ProjectName>/_context/` with project goals for context.
+- When `features.md` is present in `projects/<ProjectName>/_context/` with feature definitions to inform readiness criteria.
 - Before sprint planning to ensure backlog items meet readiness standards.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../project_context/vision.md`, `../project_context/features.md` |
-| **Output**  | `../output/Definition_of_Ready.md` |
+| **Inputs**  | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/features.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Definition_of_Ready.md` |
 | **Standard** | Scrum Guide |
 | **Time**    | 10-15 minutes |
 
@@ -38,14 +38,14 @@ This skill produces a Definition of Ready (DoR) checklist that establishes the m
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| vision.md | `../project_context/vision.md` | Yes | Project goals and scope to ground readiness criteria |
-| features.md | `../project_context/features.md` | No | Feature definitions to inform story completeness and design clarity criteria |
+| vision.md | `projects/<ProjectName>/_context/vision.md` | Yes | Project goals and scope to ground readiness criteria |
+| features.md | `projects/<ProjectName>/_context/features.md` | No | Feature definitions to inform story completeness and design clarity criteria |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Definition_of_Ready.md | `../output/Definition_of_Ready.md` | Complete DoR checklist with refinement criteria and process guidance |
+| Definition_of_Ready.md | `projects/<ProjectName>/<phase>/<document>/Definition_of_Ready.md` | Complete DoR checklist with refinement criteria and process guidance |
 
 ## Core Instructions
 
@@ -53,7 +53,7 @@ Follow these seven steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `vision.md` from `../project_context/`. Optionally read `features.md` from `../project_context/`. Log the absolute path of each file read. Halt if the required file is missing.
+Read `vision.md` from `projects/<ProjectName>/_context/`. Optionally read `features.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. Halt if the required file is missing.
 
 ### Step 2: Define Story Completeness Criteria
 
@@ -102,7 +102,7 @@ Generate a refinement process section describing how items move from "not ready"
 - Frequency and format of refinement sessions.
 - Roles responsible for ensuring readiness.
 - Escalation path for items that remain unready.
-Assemble all sections into the final document. Write to `../output/Definition_of_Ready.md`. Log completion.
+Assemble all sections into the final document. Write to `projects/<ProjectName>/<phase>/<document>/Definition_of_Ready.md`. Log completion.
 
 ## Output Format Specification
 
@@ -126,7 +126,7 @@ The generated `Definition_of_Ready.md` SHALL contain these sections in order:
 
 ## Verification Checklist
 
-1. `Definition_of_Ready.md` exists in `../output/` with all seven sections populated.
+1. `Definition_of_Ready.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all seven sections populated.
 2. Story completeness requires user story format and goal linkage.
 3. Acceptance criteria require Given-When-Then or equivalent testable format.
 4. Sizing criteria require items to fit within a single sprint.

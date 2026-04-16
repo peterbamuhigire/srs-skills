@@ -6,8 +6,8 @@ This skill produces a reusable sprint retrospective template that structures the
 
 ## Execution Steps
 
-1. Verify `../project_context/vision.md` exists. Halt if the required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates sprint summary, observation sections, action tracking, facilitation formats, and metrics, then writes `../output/Retrospective_Template.md`.
+1. Verify `projects/<ProjectName>/_context/vision.md` exists. Halt if the required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates sprint summary, observation sections, action tracking, facilitation formats, and metrics, then writes `projects/<ProjectName>/<phase>/<document>/Retrospective_Template.md`.
 3. Review action item fields to confirm each requires an owner, deadline, and success criterion.
 4. Verify at least three facilitation formats are present with clear instructions.
 5. Iterate if needed, then use the template at the end of each sprint ceremony.

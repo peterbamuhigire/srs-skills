@@ -6,8 +6,8 @@ This skill produces a reusable sprint planning template that structures the spri
 
 ## Execution Steps
 
-1. Verify `../project_context/vision.md` and `../output/prioritized_backlog.md` exist. Optionally check for `../output/user_stories.md`. Halt if any required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates sprint goal, capacity, backlog selection, task breakdown, and risk sections, then writes `../output/Sprint_Planning_Template.md`.
+1. Verify `projects/<ProjectName>/_context/vision.md` and `projects/<ProjectName>/<phase>/<document>/prioritized_backlog.md` exist. Optionally check for `projects/<ProjectName>/<phase>/<document>/user_stories.md`. Halt if any required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates sprint goal, capacity, backlog selection, task breakdown, and risk sections, then writes `projects/<ProjectName>/<phase>/<document>/Sprint_Planning_Template.md`.
 3. Review the sprint goal to confirm it is a value statement linked to a business objective, not a task list.
 4. Verify capacity calculation accounts for ceremonies and non-sprint overhead.
 5. Iterate if needed, then proceed to other Phase 07 skills or downstream phases.

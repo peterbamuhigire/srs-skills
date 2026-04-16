@@ -24,4 +24,4 @@ Skills 01-04 are independent and may run in any order. Sprint planning typically
 
 ## I/O
 
-All skills read from `../project_context/` (vision.md, features.md, quality_standards.md, tech_stack.md) and `../output/` (prioritized_backlog.md, user_stories.md). All skills write to `../output/`.
+All skills read from `projects/<ProjectName>/_context/` (vision.md, features.md, quality_standards.md, tech_stack.md) and `projects/<ProjectName>/<phase>/<document>/` (prioritized_backlog.md, user_stories.md). All skills write to `projects/<ProjectName>/<phase>/<document>/`.

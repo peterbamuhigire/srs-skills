@@ -21,7 +21,7 @@ This skill produces a reusable sprint retrospective template that structures the
 ## When to Use This Skill
 
 - When establishing or refreshing the team's retrospective ceremony structure.
-- After `vision.md` is present in `../project_context/` for project context.
+- After `vision.md` is present in `projects/<ProjectName>/_context/` for project context.
 - At the end of each sprint to generate a fresh retrospective artifact.
 - When the team wants to rotate facilitation formats to prevent ceremony fatigue.
 
@@ -29,8 +29,8 @@ This skill produces a reusable sprint retrospective template that structures the
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../project_context/vision.md` |
-| **Output**  | `../output/Retrospective_Template.md` |
+| **Inputs**  | `projects/<ProjectName>/_context/vision.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Retrospective_Template.md` |
 | **Standard** | Scrum Guide |
 | **Time**    | 10-15 minutes |
 
@@ -38,13 +38,13 @@ This skill produces a reusable sprint retrospective template that structures the
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| vision.md | `../project_context/vision.md` | Yes | Project goals and context for grounding retrospective themes |
+| vision.md | `projects/<ProjectName>/_context/vision.md` | Yes | Project goals and context for grounding retrospective themes |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Retrospective_Template.md | `../output/Retrospective_Template.md` | Complete retrospective template with facilitation formats, action tracking, and metrics |
+| Retrospective_Template.md | `projects/<ProjectName>/<phase>/<document>/Retrospective_Template.md` | Complete retrospective template with facilitation formats, action tracking, and metrics |
 
 ## Core Instructions
 
@@ -52,7 +52,7 @@ Follow these seven steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `vision.md` from `../project_context/`. Log the absolute path of each file read. Halt if the required file is missing.
+Read `vision.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. Halt if the required file is missing.
 
 ### Step 2: Define Sprint Summary Section
 
@@ -104,7 +104,7 @@ Generate a continuous improvement metrics section that SHALL:
 - Track recurring themes to identify systemic issues.
 - Measure team satisfaction or morale trend (optional anonymous survey).
 - Include a follow-up tracking table for previous sprint action items.
-Assemble all sections into the final template. Write to `../output/Retrospective_Template.md`. Log completion.
+Assemble all sections into the final template. Write to `projects/<ProjectName>/<phase>/<document>/Retrospective_Template.md`. Log completion.
 
 ## Output Format Specification
 
@@ -129,7 +129,7 @@ The generated `Retrospective_Template.md` SHALL contain these sections in order:
 
 ## Verification Checklist
 
-1. `Retrospective_Template.md` exists in `../output/` with all eight sections populated.
+1. `Retrospective_Template.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all eight sections populated.
 2. Sprint summary captures goal, outcome, participants, and velocity.
 3. "What Went Well" and "What Could Be Improved" sections include categorization and voting.
 4. Every action item has an owner, deadline, and measurable success criterion.

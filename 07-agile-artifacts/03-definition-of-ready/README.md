@@ -6,8 +6,8 @@ This skill produces a Definition of Ready checklist that establishes the minimum
 
 ## Execution Steps
 
-1. Verify `../project_context/vision.md` exists. Optionally check for `../project_context/features.md`. Halt if the required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates readiness criteria across five categories plus a refinement process, then writes `../output/Definition_of_Ready.md`.
+1. Verify `projects/<ProjectName>/_context/vision.md` exists. Optionally check for `projects/<ProjectName>/_context/features.md`. Halt if the required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates readiness criteria across five categories plus a refinement process, then writes `projects/<ProjectName>/<phase>/<document>/Definition_of_Ready.md`.
 3. Review acceptance criteria requirements to confirm they mandate Given-When-Then or equivalent testable format.
 4. Verify sizing criteria require items to fit within a single sprint.
 5. Iterate if needed, then share the DoR with the team and reference it during backlog refinement.

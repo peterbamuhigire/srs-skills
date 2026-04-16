@@ -20,17 +20,17 @@ This skill produces a reusable sprint planning template that structures the spri
 
 ## When to Use This Skill
 
-- After Phase 02 completes and `prioritized_backlog.md` exists in `../output/` with ranked work items.
-- When `user_stories.md` is present in `../output/` with acceptance criteria for candidate stories.
-- When `vision.md` is present in `../project_context/` with project goals to derive sprint goals from.
+- After Phase 02 completes and `prioritized_backlog.md` exists in `projects/<ProjectName>/<phase>/<document>/` with ranked work items.
+- When `user_stories.md` is present in `projects/<ProjectName>/<phase>/<document>/` with acceptance criteria for candidate stories.
+- When `vision.md` is present in `projects/<ProjectName>/_context/` with project goals to derive sprint goals from.
 - At the start of each sprint cycle to produce a fresh planning artifact.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../project_context/vision.md`, `../output/prioritized_backlog.md`, `../output/user_stories.md` |
-| **Output**  | `../output/Sprint_Planning_Template.md` |
+| **Inputs**  | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/<phase>/<document>/prioritized_backlog.md`, `projects/<ProjectName>/<phase>/<document>/user_stories.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Sprint_Planning_Template.md` |
 | **Standard** | Scrum Guide, IEEE 29148 |
 | **Time**    | 10-15 minutes |
 
@@ -38,15 +38,15 @@ This skill produces a reusable sprint planning template that structures the spri
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| vision.md | `../project_context/vision.md` | Yes | Project goals and strategic objectives for sprint goal derivation |
-| prioritized_backlog.md | `../output/prioritized_backlog.md` | Yes | Ranked backlog items with priority and estimated effort |
-| user_stories.md | `../output/user_stories.md` | No | User stories with acceptance criteria for task breakdown |
+| vision.md | `projects/<ProjectName>/_context/vision.md` | Yes | Project goals and strategic objectives for sprint goal derivation |
+| prioritized_backlog.md | `projects/<ProjectName>/<phase>/<document>/prioritized_backlog.md` | Yes | Ranked backlog items with priority and estimated effort |
+| user_stories.md | `projects/<ProjectName>/<phase>/<document>/user_stories.md` | No | User stories with acceptance criteria for task breakdown |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Sprint_Planning_Template.md | `../output/Sprint_Planning_Template.md` | Complete sprint planning template with all ceremony sections |
+| Sprint_Planning_Template.md | `projects/<ProjectName>/<phase>/<document>/Sprint_Planning_Template.md` | Complete sprint planning template with all ceremony sections |
 
 ## Core Instructions
 
@@ -54,7 +54,7 @@ Follow these seven steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `vision.md` from `../project_context/` and `prioritized_backlog.md` from `../output/`. Optionally read `user_stories.md` from `../output/`. Log the absolute path of each file read. Halt if any required file is missing.
+Read `vision.md` from `projects/<ProjectName>/_context/` and `prioritized_backlog.md` from `projects/<ProjectName>/<phase>/<document>/`. Optionally read `user_stories.md` from `projects/<ProjectName>/<phase>/<document>/`. Log the absolute path of each file read. Halt if any required file is missing.
 
 ### Step 2: Define Sprint Goal Section
 
@@ -97,7 +97,7 @@ Generate a risk and dependency tracking section that SHALL:
 
 ### Step 7: Assemble and Write Output
 
-Assemble all sections into the final template. Include a Definition of Done reference section that points to `Definition_of_Done.md`. Include a Sprint Commitment section for the team to record their commitment. Write the completed document to `../output/Sprint_Planning_Template.md`. Log completion.
+Assemble all sections into the final template. Include a Definition of Done reference section that points to `Definition_of_Done.md`. Include a Sprint Commitment section for the team to record their commitment. Write the completed document to `projects/<ProjectName>/<phase>/<document>/Sprint_Planning_Template.md`. Log completion.
 
 ## Output Format Specification
 
@@ -122,7 +122,7 @@ The generated `Sprint_Planning_Template.md` SHALL contain these sections in orde
 
 ## Verification Checklist
 
-1. `Sprint_Planning_Template.md` exists in `../output/` with all eight sections populated.
+1. `Sprint_Planning_Template.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all eight sections populated.
 2. Sprint goal is a single value statement with rationale linked to a business objective.
 3. Capacity calculation includes the formula and accounts for non-sprint overhead.
 4. Selected backlog items table includes cumulative effort tracking.
