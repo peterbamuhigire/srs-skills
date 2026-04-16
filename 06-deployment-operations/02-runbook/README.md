@@ -6,8 +6,8 @@ This skill produces an operational runbook that defines incident response proced
 
 ## Execution Steps
 
-1. Verify `../output/HLD.md` and `../project_context/tech_stack.md` exist. Halt if any required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates service overview, incident severity levels, alert playbooks, escalation matrix, troubleshooting recipes, and maintenance procedures, then writes `../output/Runbook.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/HLD.md` and `projects/<ProjectName>/_context/tech_stack.md` exist. Halt if any required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates service overview, incident severity levels, alert playbooks, escalation matrix, troubleshooting recipes, and maintenance procedures, then writes `projects/<ProjectName>/<phase>/<document>/Runbook.md`.
 3. Review alert response playbooks to confirm each playbook includes diagnostic commands and remediation steps.
 4. This skill runs in parallel with `03-monitoring-setup`. Once both complete, proceed to `04-infrastructure-docs`.
 

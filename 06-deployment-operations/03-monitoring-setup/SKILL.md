@@ -21,15 +21,15 @@ This is the third skill in Phase 06 (Deployment & Operations). It produces monit
 ## When to Use
 
 - After 01-deployment-guide completes and the deployment topology is established.
-- When `HLD.md` exists in `../output/` with component architecture for per-component metric definition.
-- When `quality_standards.md` is present in `../project_context/` with SLAs and quality targets.
+- When `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` with component architecture for per-component metric definition.
+- When `quality_standards.md` is present in `projects/<ProjectName>/_context/` with SLAs and quality targets.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../output/HLD.md`, `../project_context/quality_standards.md` |
-| **Output**  | `../output/Monitoring_Setup.md` |
+| **Inputs**  | `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/_context/quality_standards.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Monitoring_Setup.md` |
 | **Tone**    | Technical, observability-focused, SRE-facing |
 | **Standard** | ISO/IEC 25010 |
 
@@ -37,14 +37,14 @@ This is the third skill in Phase 06 (Deployment & Operations). It produces monit
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| HLD.md | `../output/HLD.md` | Yes | Component architecture for per-component metric definition |
-| quality_standards.md | `../project_context/quality_standards.md` | Yes | SLAs, SLOs, and quality targets for alert threshold derivation |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | Yes | Component architecture for per-component metric definition |
+| quality_standards.md | `projects/<ProjectName>/_context/quality_standards.md` | Yes | SLAs, SLOs, and quality targets for alert threshold derivation |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Monitoring_Setup.md | `../output/Monitoring_Setup.md` | Complete monitoring design with metrics, alerts, dashboards, and health checks |
+| Monitoring_Setup.md | `projects/<ProjectName>/<phase>/<document>/Monitoring_Setup.md` | Complete monitoring design with metrics, alerts, dashboards, and health checks |
 
 ## Core Instructions
 
@@ -52,7 +52,7 @@ Follow these seven steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `HLD.md` from `../output/` and `quality_standards.md` from `../project_context/`. Log the absolute path of each file read. Halt if any required file is missing.
+Read `HLD.md` from `projects/<ProjectName>/<phase>/<document>/` and `quality_standards.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. Halt if any required file is missing.
 
 ### Step 2: Define Key Metrics per Component
 
@@ -102,7 +102,7 @@ Document on-call notification configuration:
 - Notification routing rules (which team receives which alerts)
 - Notification deduplication and suppression rules
 - Escalation timers for unacknowledged alerts
-Write the completed document to `../output/Monitoring_Setup.md`. Log the total count of metrics, alerts, and dashboard panels.
+Write the completed document to `projects/<ProjectName>/<phase>/<document>/Monitoring_Setup.md`. Log the total count of metrics, alerts, and dashboard panels.
 
 ## Output Format
 
@@ -119,7 +119,7 @@ The generated `Monitoring_Setup.md` shall contain these sections in order: Docum
 
 ## Verification Checklist
 
-- [ ] `Monitoring_Setup.md` exists in `../output/` with all six sections populated.
+- [ ] `Monitoring_Setup.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all six sections populated.
 - [ ] Metrics catalog covers infrastructure, application, and business metrics per component.
 - [ ] Alert definitions include warning and critical thresholds tied to SLAs.
 - [ ] Dashboard specifications define panels with data sources and refresh intervals.

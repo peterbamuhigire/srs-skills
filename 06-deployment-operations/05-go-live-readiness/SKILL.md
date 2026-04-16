@@ -29,8 +29,8 @@ This skill closes the loop between design, delivery, and operations by determini
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../output/Deployment_Guide.md`, `../output/Runbook.md`, `../output/Monitoring_Setup.md`, `../output/Infrastructure_Docs.md` (recommended), release-specific evidence |
-| **Output** | `../output/Go_Live_Readiness.md` |
+| **Inputs** | `projects/<ProjectName>/<phase>/<document>/Deployment_Guide.md`, `projects/<ProjectName>/<phase>/<document>/Runbook.md`, `projects/<ProjectName>/<phase>/<document>/Monitoring_Setup.md`, `projects/<ProjectName>/<phase>/<document>/Infrastructure_Docs.md` (recommended), release-specific evidence |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/Go_Live_Readiness.md` |
 | **Tone** | Decision-oriented, risk-aware, operationally concrete |
 | **Standards** | Production readiness, transition governance, and operational acceptance practices |
 
@@ -86,7 +86,7 @@ State the reasoning, unresolved risks, and exact conditions for changing the dec
 
 ### Step 6: Generate Output
 
-Write `../output/Go_Live_Readiness.md` with readiness assessment, blocker register, cutover plan, and recommendation.
+Write `projects/<ProjectName>/<phase>/<document>/Go_Live_Readiness.md` with readiness assessment, blocker register, cutover plan, and recommendation.
 
 ## Common Pitfalls
 

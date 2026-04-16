@@ -6,8 +6,8 @@ This skill produces a step-by-step deployment guide that defines pre-deployment 
 
 ## Execution Steps
 
-1. Verify `../output/HLD.md` and `../project_context/tech_stack.md` exist. Optionally check for `../output/Database_Design.md`. Halt if any required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates pre-deployment checklists, deployment steps, rollback procedures, and post-deployment verification, then writes `../output/Deployment_Guide.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/HLD.md` and `projects/<ProjectName>/_context/tech_stack.md` exist. Optionally check for `projects/<ProjectName>/<phase>/<document>/Database_Design.md`. Halt if any required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates pre-deployment checklists, deployment steps, rollback procedures, and post-deployment verification, then writes `projects/<ProjectName>/<phase>/<document>/Deployment_Guide.md`.
 3. Review the deployment steps to confirm each step includes exact commands, expected duration, and success criteria.
 4. Proceed to `02-runbook` and `03-monitoring-setup` which can run in parallel once this skill completes.
 

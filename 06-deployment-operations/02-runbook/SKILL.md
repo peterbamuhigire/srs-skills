@@ -20,16 +20,16 @@ This is the second skill in Phase 06 (Deployment & Operations). It produces an o
 
 ## When to Use
 
-- After 01-deployment-guide completes and `Deployment_Guide.md` exists in `../output/`.
-- When `HLD.md` exists in `../output/` with system architecture and component dependencies.
-- When `tech_stack.md` is present in `../project_context/` with technology choices and runtime details.
+- After 01-deployment-guide completes and `Deployment_Guide.md` exists in `projects/<ProjectName>/<phase>/<document>/`.
+- When `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` with system architecture and component dependencies.
+- When `tech_stack.md` is present in `projects/<ProjectName>/_context/` with technology choices and runtime details.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../output/HLD.md`, `../project_context/tech_stack.md` |
-| **Output**  | `../output/Runbook.md` |
+| **Inputs**  | `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/_context/tech_stack.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Runbook.md` |
 | **Tone**    | Procedural, actionable, on-call-facing |
 | **Standard** | SRE Best Practices (Google SRE Book) |
 
@@ -37,14 +37,14 @@ This is the second skill in Phase 06 (Deployment & Operations). It produces an o
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| HLD.md | `../output/HLD.md` | Yes | System architecture, component dependencies, service boundaries |
-| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, runtime details, infrastructure tooling |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | Yes | System architecture, component dependencies, service boundaries |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes | Technology choices, runtime details, infrastructure tooling |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Runbook.md | `../output/Runbook.md` | Complete operational runbook with incident response, playbooks, and maintenance procedures |
+| Runbook.md | `projects/<ProjectName>/<phase>/<document>/Runbook.md` | Complete operational runbook with incident response, playbooks, and maintenance procedures |
 
 ## Core Instructions
 
@@ -52,7 +52,7 @@ Follow these eight steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `HLD.md` from `../output/` and `tech_stack.md` from `../project_context/`. Log the absolute path of each file read. Halt if any required file is missing.
+Read `HLD.md` from `projects/<ProjectName>/<phase>/<document>/` and `tech_stack.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. Halt if any required file is missing.
 
 ### Step 2: Define Service Overview
 
@@ -113,7 +113,7 @@ Document routine maintenance:
 
 ### Step 8: Write Output
 
-Write the completed document to `../output/Runbook.md`. Include a contact list appendix. Log the total count of playbooks, troubleshooting recipes, and maintenance procedures.
+Write the completed document to `projects/<ProjectName>/<phase>/<document>/Runbook.md`. Include a contact list appendix. Log the total count of playbooks, troubleshooting recipes, and maintenance procedures.
 
 ## Output Format
 
@@ -130,7 +130,7 @@ The generated `Runbook.md` shall contain these sections in order: Document Heade
 
 ## Verification Checklist
 
-- [ ] `Runbook.md` exists in `../output/` with all eight sections populated.
+- [ ] `Runbook.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all eight sections populated.
 - [ ] Service overview lists all components from HLD with dependencies.
 - [ ] Incident severity levels define SEV1 through SEV4 with response time targets.
 - [ ] Alert response playbooks exist for CPU, memory, disk, response time, and error rate.

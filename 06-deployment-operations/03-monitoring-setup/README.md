@@ -6,8 +6,8 @@ This skill produces monitoring and alerting design documentation that defines a 
 
 ## Execution Steps
 
-1. Verify `../output/HLD.md` and `../project_context/quality_standards.md` exist. Halt if any required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates metrics catalog, alert definitions, dashboard specs, health checks, log aggregation, and notification rules, then writes `../output/Monitoring_Setup.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/HLD.md` and `projects/<ProjectName>/_context/quality_standards.md` exist. Halt if any required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates metrics catalog, alert definitions, dashboard specs, health checks, log aggregation, and notification rules, then writes `projects/<ProjectName>/<phase>/<document>/Monitoring_Setup.md`.
 3. Review alert thresholds to confirm each critical threshold references a specific SLA or SLO from quality_standards.md.
 4. This skill runs in parallel with `02-runbook`. Once both complete, proceed to `04-infrastructure-docs`.
 

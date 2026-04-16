@@ -21,15 +21,15 @@ This is the fourth skill in Phase 06 (Deployment & Operations). It produces infr
 ## When to Use
 
 - After 02-runbook and 03-monitoring-setup complete (they provide operational and observability context).
-- When `HLD.md` exists in `../output/` with system architecture and component topology.
-- When `tech_stack.md` is present in `../project_context/` with technology choices and infrastructure tooling.
+- When `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` with system architecture and component topology.
+- When `tech_stack.md` is present in `projects/<ProjectName>/_context/` with technology choices and infrastructure tooling.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../output/HLD.md`, `../project_context/tech_stack.md` |
-| **Output**  | `../output/Infrastructure_Docs.md` |
+| **Inputs**  | `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/_context/tech_stack.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Infrastructure_Docs.md` |
 | **Tone**    | Technical, architecture-focused, DevOps-facing |
 | **Standard** | IEEE 1016-2009 |
 
@@ -37,14 +37,14 @@ This is the fourth skill in Phase 06 (Deployment & Operations). It produces infr
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| HLD.md | `../output/HLD.md` | Yes | System architecture, component topology, deployment targets |
-| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, infrastructure tooling, cloud provider details |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | Yes | System architecture, component topology, deployment targets |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes | Technology choices, infrastructure tooling, cloud provider details |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Infrastructure_Docs.md | `../output/Infrastructure_Docs.md` | Complete infrastructure documentation with diagrams, resources, network, storage, IaC, and DR |
+| Infrastructure_Docs.md | `projects/<ProjectName>/<phase>/<document>/Infrastructure_Docs.md` | Complete infrastructure documentation with diagrams, resources, network, storage, IaC, and DR |
 
 ## Core Instructions
 
@@ -52,7 +52,7 @@ Follow these seven steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `HLD.md` from `../output/` and `tech_stack.md` from `../project_context/`. Log the absolute path of each file read. Halt if any required file is missing.
+Read `HLD.md` from `projects/<ProjectName>/<phase>/<document>/` and `tech_stack.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. Halt if any required file is missing.
 
 ### Step 2: Generate Infrastructure Architecture Diagram
 
@@ -102,7 +102,7 @@ Document backup and disaster recovery:
 
 ### Step 7: Write Output with Cost Estimates
 
-Produce a cost estimate summary table per environment. Write the completed document to `../output/Infrastructure_Docs.md`. Log the total count of compute resources, network components, and storage systems documented.
+Produce a cost estimate summary table per environment. Write the completed document to `projects/<ProjectName>/<phase>/<document>/Infrastructure_Docs.md`. Log the total count of compute resources, network components, and storage systems documented.
 
 ## Output Format
 
@@ -119,7 +119,7 @@ The generated `Infrastructure_Docs.md` shall contain these sections in order: Do
 
 ## Verification Checklist
 
-- [ ] `Infrastructure_Docs.md` exists in `../output/` with all seven sections populated.
+- [ ] `Infrastructure_Docs.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all seven sections populated.
 - [ ] Infrastructure architecture diagram renders valid Mermaid with directional data flows.
 - [ ] Compute resources specify instance types, scaling policies for dev/staging/prod.
 - [ ] Network topology defines VPC layout, subnets, security groups, and load balancers.

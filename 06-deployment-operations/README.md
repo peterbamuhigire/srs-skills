@@ -34,6 +34,8 @@ The canonical runtime workspace for this phase is `projects/<ProjectName>/`.
 - Design and test evidence inputs: `projects/<ProjectName>/03-design-documentation/...` and `projects/<ProjectName>/05-testing-documentation/...`
 - Generated operational artifacts: `projects/<ProjectName>/06-deployment-operations/...`
 
+<!-- alias-block start -->
 Existing skill-local references to `../project_context/` and `../output/` are compatibility aliases into the active project workspace.
+<!-- alias-block end -->
 
 Common inputs include `HLD.md`, `Database_Design.md`, `Deployment_Guide.md`, `Runbook.md`, `Monitoring_Setup.md`, `Infrastructure_Docs.md`, `quality_standards.md`, and `solution_evaluation_transition_plan.md`.

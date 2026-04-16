@@ -6,8 +6,8 @@ This skill produces infrastructure documentation that defines architecture diagr
 
 ## Execution Steps
 
-1. Verify `../output/HLD.md` and `../project_context/tech_stack.md` exist. Halt if any required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates infrastructure architecture diagram, compute resources, network topology, storage architecture, IaC references, backup/DR, and cost estimates, then writes `../output/Infrastructure_Docs.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/HLD.md` and `projects/<ProjectName>/_context/tech_stack.md` exist. Halt if any required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates infrastructure architecture diagram, compute resources, network topology, storage architecture, IaC references, backup/DR, and cost estimates, then writes `projects/<ProjectName>/<phase>/<document>/Infrastructure_Docs.md`.
 3. Review the Mermaid infrastructure diagram to confirm it renders valid syntax with directional data flows.
 4. This is the final skill in Phase 06. Once complete, Phase 08 (User Documentation) can consume the infrastructure documentation.
 

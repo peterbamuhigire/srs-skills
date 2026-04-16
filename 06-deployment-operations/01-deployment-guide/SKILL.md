@@ -20,16 +20,16 @@ This is the first skill in Phase 06 (Deployment & Operations). It produces a com
 
 ## When to Use
 
-- After Phase 03 completes and `HLD.md` exists in `../output/` with system architecture and component topology.
-- When `tech_stack.md` is present in `../project_context/` with technology choices and runtime versions.
-- Optionally when `Database_Design.md` exists in `../output/` for database migration steps.
+- After Phase 03 completes and `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` with system architecture and component topology.
+- When `tech_stack.md` is present in `projects/<ProjectName>/_context/` with technology choices and runtime versions.
+- Optionally when `Database_Design.md` exists in `projects/<ProjectName>/<phase>/<document>/` for database migration steps.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../output/HLD.md`, `../project_context/tech_stack.md`, `../output/Database_Design.md` (optional) |
-| **Output**  | `../output/Deployment_Guide.md` |
+| **Inputs**  | `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/_context/tech_stack.md`, `projects/<ProjectName>/<phase>/<document>/Database_Design.md` (optional) |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Deployment_Guide.md` |
 | **Tone**    | Procedural, precise, operations-facing |
 | **Standard** | IEEE 1062 |
 
@@ -37,15 +37,15 @@ This is the first skill in Phase 06 (Deployment & Operations). It produces a com
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| HLD.md | `../output/HLD.md` | Yes | System architecture, component topology, deployment targets |
-| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, runtime versions, package managers |
-| Database_Design.md | `../output/Database_Design.md` | No | Database schema for migration step generation |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | Yes | System architecture, component topology, deployment targets |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes | Technology choices, runtime versions, package managers |
+| Database_Design.md | `projects/<ProjectName>/<phase>/<document>/Database_Design.md` | No | Database schema for migration step generation |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Deployment_Guide.md | `../output/Deployment_Guide.md` | Complete deployment procedure with pre-checks, steps, rollback, and verification |
+| Deployment_Guide.md | `projects/<ProjectName>/<phase>/<document>/Deployment_Guide.md` | Complete deployment procedure with pre-checks, steps, rollback, and verification |
 
 ## Core Instructions
 
@@ -53,7 +53,7 @@ Follow these eight steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `HLD.md` from `../output/` and `tech_stack.md` from `../project_context/`. Optionally read `Database_Design.md` from `../output/`. Log the absolute path of each file read. Halt if any required file is missing.
+Read `HLD.md` from `projects/<ProjectName>/<phase>/<document>/` and `tech_stack.md` from `projects/<ProjectName>/_context/`. Optionally read `Database_Design.md` from `projects/<ProjectName>/<phase>/<document>/`. Log the absolute path of each file read. Halt if any required file is missing.
 
 ### Step 2: Define Pre-Deployment Checklist
 
@@ -106,7 +106,7 @@ Document verification procedures after deployment completes:
 
 ### Step 8: Define Environment Matrix and Write Output
 
-Produce an environment matrix summarizing resource differences across dev/staging/prod. Write the completed document to `../output/Deployment_Guide.md`. Log the total count of deployment steps and rollback steps.
+Produce an environment matrix summarizing resource differences across dev/staging/prod. Write the completed document to `projects/<ProjectName>/<phase>/<document>/Deployment_Guide.md`. Log the total count of deployment steps and rollback steps.
 
 ## Output Format
 
@@ -123,7 +123,7 @@ The generated `Deployment_Guide.md` shall contain these sections in order: Docum
 
 ## Verification Checklist
 
-- [ ] `Deployment_Guide.md` exists in `../output/` with all seven sections populated.
+- [ ] `Deployment_Guide.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all seven sections populated.
 - [ ] Pre-deployment checklist includes backup verification and stakeholder notification.
 - [ ] Deployment steps are numbered with exact commands and expected durations.
 - [ ] Rollback procedure reverses every deployment step.
