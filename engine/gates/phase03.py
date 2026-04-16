@@ -45,6 +45,7 @@ class Phase03Gate(Gate):
 
     def evaluate(self, graph: ArtifactGraph, findings: FindingCollection) -> None:
         self._check_architecture_decisions_recorded(graph, findings)
+        self._check_interfaces_have_contracts(graph, findings)
 
     # -- Check 1: architecture decisions recorded ------------------------
     def _check_architecture_decisions_recorded(
@@ -66,3 +67,28 @@ class Phase03Gate(Gate):
             location=None,
             line=None,
         ), _CLAUSE))
+
+    # -- Check 2: interfaces have contracts ------------------------------
+    def _check_interfaces_have_contracts(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        for art in graph.artifacts:
+            posix = f"/{_posix(art.path)}"
+            if not any(tok in posix for tok in _API_SPEC_TOKENS):
+                continue
+            missing = []
+            if not _HTTP_METHOD_RE.search(art.body):
+                missing.append("HTTP method")
+            if not _RESPONSE_RE.search(art.body):
+                missing.append("response/status")
+            if missing:
+                findings.add(attach_clause(Finding(
+                    gate_id=f"{self.id}.interfaces_have_contracts",
+                    severity=Severity.HIGH,
+                    message=(
+                        f"API spec '{_posix(art.path)}' missing required "
+                        f"contract fields: {', '.join(missing)}"
+                    ),
+                    location=art.path,
+                    line=None,
+                ), _CLAUSE))
