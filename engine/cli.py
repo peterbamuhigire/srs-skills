@@ -15,9 +15,10 @@ from engine.reporters.junit import render_junit
 from engine.reporters.sarif import render_sarif
 
 def _default_registry() -> GateRegistry:
+    from engine.gates.phase01 import Phase01Gate
     reg = GateRegistry()
     reg.register(NoUnresolvedFailMarkersGate())
-    # Plan 02 will register phase gates here.
+    reg.register(Phase01Gate())
     return reg
 
 @click.group()
