@@ -20,6 +20,7 @@ _IR_DIAGRAM_RE = re.compile(
     r"\b(incident[- ]?response|\bIR\b)\b.*(diagram|flow|mermaid|plantuml|!\[)",
     re.IGNORECASE | re.DOTALL,
 )
+_UNCHECKED_ITEM_RE = re.compile(r"^\s*-\s+\[\s\]", re.MULTILINE)
 
 
 def _posix(path) -> str:
@@ -68,6 +69,16 @@ def _find_infra_doc(graph: ArtifactGraph):
     return None
 
 
+def _find_go_live_doc(graph: ArtifactGraph):
+    for art in graph.artifacts:
+        if not _under_phase06(art):
+            continue
+        name = art.path.name.lower()
+        if "go-live" in name or "go_live" in name or "readiness" in name:
+            return art
+    return None
+
+
 class Phase06Gate(Gate):
     id = "phase06"
     title = "Deployment & Operations phase gate"
@@ -78,6 +89,7 @@ class Phase06Gate(Gate):
         self._check_runbook_has_escalation(graph, findings)
         self._check_monitoring_has_slo(graph, findings)
         self._check_infra_has_ir_diagram(graph, findings)
+        self._check_go_live_readiness_checklist_complete(graph, findings)
 
     # -- Check 1: deployment guide has rollback --------------------------
     def _check_deployment_guide_has_rollback(
@@ -196,6 +208,38 @@ class Phase06Gate(Gate):
             message=(
                 f"Infrastructure doc '{_posix(doc.path)}' has no "
                 f"incident-response diagram reference"
+            ),
+            location=doc.path,
+            line=None,
+        ), _CLAUSE))
+
+    # -- Check 5: go-live readiness checklist complete -------------------
+    def _check_go_live_readiness_checklist_complete(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        doc = _find_go_live_doc(graph)
+        if doc is None:
+            findings.add(attach_clause(Finding(
+                gate_id=f"{self.id}.go_live_readiness_checklist_complete",
+                severity=Severity.HIGH,
+                message=(
+                    "No go-live readiness checklist found under "
+                    "06-deployment-operations/ (expected filename "
+                    "containing 'go-live' or 'readiness')"
+                ),
+                location=None,
+                line=None,
+            ), _CLAUSE))
+            return
+        unchecked = _UNCHECKED_ITEM_RE.findall(doc.body)
+        if not unchecked:
+            return
+        findings.add(attach_clause(Finding(
+            gate_id=f"{self.id}.go_live_readiness_checklist_complete",
+            severity=Severity.HIGH,
+            message=(
+                f"Go-live readiness '{_posix(doc.path)}' has "
+                f"{len(unchecked)} unchecked item(s)"
             ),
             location=doc.path,
             line=None,

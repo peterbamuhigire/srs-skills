@@ -182,3 +182,66 @@ def test_flags_infra_doc_without_ir_diagram(tmp_path):
             if f.gate_id == "phase06.infra_has_ir_diagram"]
     assert msgs, "expected an infra_has_ir_diagram finding"
     assert "no incident-response diagram reference" in msgs[0]
+
+
+# -- go_live_readiness_checklist_complete ---------------------------------
+
+def test_passes_when_go_live_checklist_all_checked(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "06-deployment-operations/deployment-guide.md": (
+            "# Deployment Guide\nRollback via tag."
+        ),
+        "06-deployment-operations/runbook.md": (
+            "# Runbook\nEscalation: on-call SRE."
+        ),
+        "06-deployment-operations/monitoring.md": (
+            "# Monitoring\nSLO 99.9%."
+        ),
+        "06-deployment-operations/infrastructure.md": (
+            "# Infrastructure\nIR diagram: ![IR](incident-response.png)."
+        ),
+        "06-deployment-operations/go-live-readiness.md": (
+            "# Go-Live Readiness\n\n"
+            "- [x] Deployment rehearsed\n"
+            "- [x] On-call rota confirmed\n"
+            "- [x] Monitoring verified\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase06Gate().evaluate(graph, findings)
+    assert findings.for_gate(
+        "phase06.go_live_readiness_checklist_complete"
+    ) == []
+
+
+def test_flags_go_live_checklist_with_unchecked_items(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "06-deployment-operations/deployment-guide.md": (
+            "# Deployment Guide\nRollback via tag."
+        ),
+        "06-deployment-operations/runbook.md": (
+            "# Runbook\nEscalation: on-call SRE."
+        ),
+        "06-deployment-operations/monitoring.md": (
+            "# Monitoring\nSLO 99.9%."
+        ),
+        "06-deployment-operations/infrastructure.md": (
+            "# Infrastructure\nIR diagram: ![IR](incident-response.png)."
+        ),
+        "06-deployment-operations/go-live-readiness.md": (
+            "# Go-Live Readiness\n\n"
+            "- [x] Deployment rehearsed\n"
+            "- [ ] On-call rota confirmed\n"
+            "- [ ] Monitoring verified\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase06Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase06.go_live_readiness_checklist_complete"]
+    assert msgs, (
+        "expected a go_live_readiness_checklist_complete finding"
+    )
+    assert "2 unchecked item(s)" in msgs[0]
