@@ -30,8 +30,8 @@ This skill translates business language from feature descriptions, business rule
 
 | Attribute     | Value                                                                  |
 |---------------|------------------------------------------------------------------------|
-| **Inputs**    | `../project_context/features.md`, `business_rules.md`, `elicitation_log.md`, `glossary.md` |
-| **Output**    | `../output/conceptual_data_model.md`                                   |
+| **Inputs**    | `projects/<ProjectName>/_context/features.md`, `business_rules.md`, `elicitation_log.md`, `glossary.md` |
+| **Output**    | `projects/<ProjectName>/<phase>/<document>/conceptual_data_model.md`                                   |
 | **Tone**      | Technical, precise, business-facing; no implementation-specific terms   |
 | **Standards** | IEEE 1016-2009, IEEE 29148-2018, Book 2 Ch.5-7                        |
 
@@ -39,16 +39,16 @@ This skill translates business language from feature descriptions, business rule
 
 | File               | Location                                  | Required | Purpose                                          |
 |--------------------|-------------------------------------------|----------|--------------------------------------------------|
-| features.md        | `../project_context/features.md`          | Yes      | Feature descriptions containing entity references |
-| business_rules.md  | `../project_context/business_rules.md`    | Yes      | Business rules defining entity constraints        |
-| elicitation_log.md | `../project_context/elicitation_log.md`   | No       | Raw stakeholder statements with domain vocabulary |
-| glossary.md        | `../project_context/glossary.md`          | No       | Controlled vocabulary for entity and attribute naming |
+| features.md        | `projects/<ProjectName>/_context/features.md`          | Yes      | Feature descriptions containing entity references |
+| business_rules.md  | `projects/<ProjectName>/_context/business_rules.md`    | Yes      | Business rules defining entity constraints        |
+| elicitation_log.md | `projects/<ProjectName>/_context/elicitation_log.md`   | No       | Raw stakeholder statements with domain vocabulary |
+| glossary.md        | `projects/<ProjectName>/_context/glossary.md`          | No       | Controlled vocabulary for entity and attribute naming |
 
 ## Output Files
 
 | File                      | Location                                | Description                                    |
 |---------------------------|----------------------------------------|------------------------------------------------|
-| conceptual_data_model.md  | `../output/conceptual_data_model.md`   | Complete conceptual ER model with Mermaid diagrams, entity catalog, and data quality rules |
+| conceptual_data_model.md  | `projects/<ProjectName>/<phase>/<document>/conceptual_data_model.md`   | Complete conceptual ER model with Mermaid diagrams, entity catalog, and data quality rules |
 
 ## Core Instructions
 
@@ -56,7 +56,7 @@ Follow these steps in order. Halt and notify the user if a required input file i
 
 ### Step 1: Read and Catalog Context Files
 
-Read `features.md`, `business_rules.md`, and optionally `elicitation_log.md` and `glossary.md` from `../project_context/`. If `glossary.md` exists, load it as the controlled vocabulary for entity and attribute naming. Log every file path read.
+Read `features.md`, `business_rules.md`, and optionally `elicitation_log.md` and `glossary.md` from `projects/<ProjectName>/_context/`. If `glossary.md` exists, load it as the controlled vocabulary for entity and attribute naming. Log every file path read.
 
 ### Step 2: Entity Identification
 
@@ -164,7 +164,7 @@ See `references/mdm-requirements.md` for MDM assessment guidance.
 
 ### Step 8: Generate Conceptual Data Model Document
 
-Write the completed model to `../output/conceptual_data_model.md` using the output format below. Log summary statistics: total entities, relationships, attributes, and data quality rules defined.
+Write the completed model to `projects/<ProjectName>/<phase>/<document>/conceptual_data_model.md` using the output format below. Log summary statistics: total entities, relationships, attributes, and data quality rules defined.
 
 ## Output Format Specification
 

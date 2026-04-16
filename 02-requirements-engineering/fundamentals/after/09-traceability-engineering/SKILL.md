@@ -28,30 +28,30 @@ Run this skill after requirements have been baselined and validated. It builds a
 
 ## Quick Reference
 
-- **Inputs:** `../project_context/vision.md`, `../project_context/stakeholder_register.md`, all `../output/` artifacts
-- **Outputs:** `../output/traceability_matrix.md`
+- **Inputs:** `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/stakeholder_register.md`, all `projects/<ProjectName>/<phase>/<document>/` artifacts
+- **Outputs:** `projects/<ProjectName>/<phase>/<document>/traceability_matrix.md`
 - **Tone:** Analytical, systematic, gap-focused
 
 ## Input Files
 
 | File | Source | Required? |
 |------|--------|-----------|
-| `vision.md` | `../project_context/` | Yes |
-| `stakeholder_register.md` | `../project_context/` | Yes |
-| All `*.md` artifacts | `../output/` | Yes |
-| `requirements_baseline.md` | `../output/` | Recommended |
+| `vision.md` | `projects/<ProjectName>/_context/` | Yes |
+| `stakeholder_register.md` | `projects/<ProjectName>/_context/` | Yes |
+| All `*.md` artifacts | `projects/<ProjectName>/<phase>/<document>/` | Yes |
+| `requirements_baseline.md` | `projects/<ProjectName>/<phase>/<document>/` | Recommended |
 
 ## Output Files
 
 | File | Contents | Destination |
 |------|----------|-------------|
-| `traceability_matrix.md` | Four-level trace matrix with gap analysis and coverage metrics | `../output/` |
+| `traceability_matrix.md` | Four-level trace matrix with gap analysis and coverage metrics | `projects/<ProjectName>/<phase>/<document>/` |
 
 ## Core Instructions
 
 ### Step 1: Read All Inputs
 
-Read `../project_context/vision.md`, `../project_context/stakeholder_register.md`, and every artifact in `../output/`. Log each file path read. Extract:
+Read `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/stakeholder_register.md`, and every artifact in `projects/<ProjectName>/<phase>/<document>/`. Log each file path read. Extract:
 
 - **Business Goals:** From `vision.md` -- assign identifiers (BG-001, BG-002, ...) if not already present.
 - **Requirements:** From all output artifacts -- collect every requirement ID (REQ-xxx, FR-xxx, NFR-xxx, US-xxx).
@@ -143,7 +143,7 @@ Scan all requirements for contradictions. Two requirements conflict when they sp
 
 ### Step 9: Generate Output
 
-Write `../output/traceability_matrix.md` following the output format below.
+Write `projects/<ProjectName>/<phase>/<document>/traceability_matrix.md` following the output format below.
 
 ## Output Format
 

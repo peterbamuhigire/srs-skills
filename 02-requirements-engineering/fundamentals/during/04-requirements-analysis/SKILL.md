@@ -29,8 +29,8 @@ This skill transforms raw elicitation artifacts into a structured analysis repor
 
 | Attribute     | Value                                                                  |
 |---------------|------------------------------------------------------------------------|
-| **Inputs**    | `../output/elicitation_log.md`, `vision.md`, `features.md`, `business_rules.md` |
-| **Output**    | `../output/requirements_analysis_report.md`                            |
+| **Inputs**    | `projects/<ProjectName>/<phase>/<document>/elicitation_log.md`, `vision.md`, `features.md`, `business_rules.md` |
+| **Output**    | `projects/<ProjectName>/<phase>/<document>/requirements_analysis_report.md`                            |
 | **Tone**      | Analytical, objective, evidence-based; no subjective adjectives        |
 | **Standards** | IEEE 29148-2018 Section 6.5, IEEE 830-1998, IEEE 1233-1998            |
 
@@ -38,16 +38,16 @@ This skill transforms raw elicitation artifacts into a structured analysis repor
 
 | File               | Location                                  | Required | Purpose                                          |
 |--------------------|-------------------------------------------|----------|--------------------------------------------------|
-| elicitation_log.md | `../output/elicitation_log.md`            | Yes      | Raw requirements gathered from stakeholders       |
-| vision.md          | `../project_context/vision.md`            | Yes      | Business goals for traceability and prioritization|
-| features.md        | `../project_context/features.md`          | Yes      | Feature descriptions for classification           |
-| business_rules.md  | `../project_context/business_rules.md`    | No       | Business rules for conflict detection             |
+| elicitation_log.md | `projects/<ProjectName>/<phase>/<document>/elicitation_log.md`            | Yes      | Raw requirements gathered from stakeholders       |
+| vision.md          | `projects/<ProjectName>/_context/vision.md`            | Yes      | Business goals for traceability and prioritization|
+| features.md        | `projects/<ProjectName>/_context/features.md`          | Yes      | Feature descriptions for classification           |
+| business_rules.md  | `projects/<ProjectName>/_context/business_rules.md`    | No       | Business rules for conflict detection             |
 
 ## Output Files
 
 | File                           | Location                                       | Description                                    |
 |--------------------------------|------------------------------------------------|------------------------------------------------|
-| requirements_analysis_report.md| `../output/requirements_analysis_report.md`    | Complete analysis with classification, conflicts, feasibility, and prioritization |
+| requirements_analysis_report.md| `projects/<ProjectName>/<phase>/<document>/requirements_analysis_report.md`    | Complete analysis with classification, conflicts, feasibility, and prioritization |
 
 ## Core Instructions
 
@@ -55,7 +55,7 @@ Follow these steps in order. Halt and notify the user if a required input file i
 
 ### Step 1: Read and Inventory Context Files
 
-Read `elicitation_log.md`, `vision.md`, `features.md`, and optionally `business_rules.md` from `../project_context/`. Assign a temporary identifier (e.g., RAW-001) to each requirement that lacks one. Log the total count of raw requirements discovered.
+Read `elicitation_log.md`, `vision.md`, `features.md`, and optionally `business_rules.md` from `projects/<ProjectName>/_context/`. Assign a temporary identifier (e.g., RAW-001) to each requirement that lacks one. Log the total count of raw requirements discovered.
 
 ### Step 2: Classify Requirements
 
@@ -149,7 +149,7 @@ See `references/goal-modeling.md` for KAOS and i* modeling guidance.
 
 ### Step 7: Generate Analysis Report
 
-Write the completed analysis to `../output/requirements_analysis_report.md` using the output format below. Log summary statistics: total requirements, classifications, conflicts detected, feasibility failures, and priority distribution.
+Write the completed analysis to `projects/<ProjectName>/<phase>/<document>/requirements_analysis_report.md` using the output format below. Log summary statistics: total requirements, classifications, conflicts detected, feasibility failures, and priority distribution.
 
 ## Output Format Specification
 

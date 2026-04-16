@@ -27,30 +27,30 @@ Run this skill as the universal quality gate for both Waterfall and Agile pipeli
 
 ## Quick Reference
 
-- **Inputs:** All artifacts in `../output/`, `../project_context/vision.md`
-- **Outputs:** `../output/requirements_metrics_report.md`
+- **Inputs:** All artifacts in `projects/<ProjectName>/<phase>/<document>/`, `projects/<ProjectName>/_context/vision.md`
+- **Outputs:** `projects/<ProjectName>/<phase>/<document>/requirements_metrics_report.md`
 - **Tone:** Quantitative, data-driven, pass/fail oriented
 
 ## Input Files
 
 | File | Source | Required? |
 |------|--------|-----------|
-| All `*.md` artifacts | `../output/` | Yes |
-| `vision.md` | `../project_context/` | Yes |
-| `traceability_matrix.md` | `../output/` | Recommended |
-| `requirements_baseline.md` | `../output/` | Recommended |
+| All `*.md` artifacts | `projects/<ProjectName>/<phase>/<document>/` | Yes |
+| `vision.md` | `projects/<ProjectName>/_context/` | Yes |
+| `traceability_matrix.md` | `projects/<ProjectName>/<phase>/<document>/` | Recommended |
+| `requirements_baseline.md` | `projects/<ProjectName>/<phase>/<document>/` | Recommended |
 
 ## Output Files
 
 | File | Contents | Destination |
 |------|----------|-------------|
-| `requirements_metrics_report.md` | Per-metric scores, overall gate verdict, remediation guidance | `../output/` |
+| `requirements_metrics_report.md` | Per-metric scores, overall gate verdict, remediation guidance | `projects/<ProjectName>/<phase>/<document>/` |
 
 ## Core Instructions
 
 ### Step 1: Read All Artifacts
 
-Read every file in `../output/` and `../project_context/vision.md`. Log each file path read. Build a consolidated requirements inventory with all requirement identifiers, their fields, and their trace links.
+Read every file in `projects/<ProjectName>/<phase>/<document>/` and `projects/<ProjectName>/_context/vision.md`. Log each file path read. Build a consolidated requirements inventory with all requirement identifiers, their fields, and their trace links.
 
 ### Step 2: Calculate Metrics
 
@@ -141,7 +141,7 @@ Where:
 
 $$\text{INVEST Compliance} = \frac{S_{\text{passing}}}{S_{\text{total}}} \times 100$$
 
-A user story passes INVEST when it satisfies all six criteria: Independent, Negotiable, Valuable, Estimable, Small, Testable. Apply only when user stories exist in `../output/`.
+A user story passes INVEST when it satisfies all six criteria: Independent, Negotiable, Valuable, Estimable, Small, Testable. Apply only when user stories exist in `projects/<ProjectName>/<phase>/<document>/`.
 
 ### Step 3: Apply Quality Gate Thresholds
 
@@ -181,7 +181,7 @@ For each metric, provide:
 
 ### Step 6: Generate Output
 
-Write `../output/requirements_metrics_report.md` following the output format below.
+Write `projects/<ProjectName>/<phase>/<document>/requirements_metrics_report.md` following the output format below.
 
 ## Output Format
 

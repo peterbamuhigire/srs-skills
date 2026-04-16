@@ -12,21 +12,21 @@ Run this skill after `05-feature-decomposition` has generated Section 3.2 in `SR
 
 | File | Required | Source |
 |------|----------|--------|
-| `SRS_Draft.md` (Sections 3.1-3.2) | Yes | `../output/` |
-| `features.md` | Yes | `../project_context/` |
-| `business_rules.md` | Recommended | `../project_context/` |
-| `stakeholder_register.md` | Optional | `../project_context/` |
+| `SRS_Draft.md` (Sections 3.1-3.2) | Yes | `projects/<ProjectName>/<phase>/<document>/` |
+| `features.md` | Yes | `projects/<ProjectName>/_context/` |
+| `business_rules.md` | Recommended | `projects/<ProjectName>/_context/` |
+| `stakeholder_register.md` | Optional | `projects/<ProjectName>/_context/` |
 
 ## Output
 
 | File | Location |
 |------|----------|
-| `Use_Case_Model.md` | `../output/Use_Case_Model.md` |
+| `Use_Case_Model.md` | `projects/<ProjectName>/<phase>/<document>/Use_Case_Model.md` |
 
 ## Execution Steps
 
-1. Verify `../output/SRS_Draft.md` contains Sections 3.1 and 3.2 and that `../project_context/features.md` exists. Halt if either is missing.
-2. Invoke the skill through your runner. The skill reads context files, identifies actors, extracts use cases, generates diagrams and descriptions, and writes `../output/Use_Case_Model.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` contains Sections 3.1 and 3.2 and that `projects/<ProjectName>/_context/features.md` exists. Halt if either is missing.
+2. Invoke the skill through your runner. The skill reads context files, identifies actors, extracts use cases, generates diagrams and descriptions, and writes `projects/<ProjectName>/<phase>/<document>/Use_Case_Model.md`.
 3. Review the generated model to confirm: every actor is classified (Primary, Supporting, Offstage); every use case has a fully-dressed description with stimulus-response steps; activity diagrams cover complex workflows; the traceability matrix maps all Section 3.2 requirements.
 4. Resolve any `[TRACE-FAIL]` or `[V&V-FAIL]` tags before proceeding to `06-logic-modeling`.
 

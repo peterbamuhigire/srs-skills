@@ -27,8 +27,8 @@ metadata:
 Use this skill after Sections 1.0 and 2.0 are generated. It analyzes the technology stack, feature set, and quality standards to produce Section 3.1 (Interface Specification), ensuring the project transitions from descriptive modeling to explicit connectivity requirements.
 
 ## Quick Reference
-- Inputs: `../project_context/tech_stack.md`, `../project_context/features.md`, `../project_context/quality_standards.md`
-- Output: `../output/SRS_Draft.md` (Section 3.1 only)
+- Inputs: `projects/<ProjectName>/_context/tech_stack.md`, `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/_context/quality_standards.md`
+- Output: `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` (Section 3.1 only)
 - Tone: Technical, precise, employing SHALL statements; avoid subjective adjectives and mention standards such as ISO/IEC 25010 and ISO/IEC 25062.
 
 ## Core Instructions

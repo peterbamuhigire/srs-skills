@@ -29,8 +29,8 @@ This skill generates a Business Requirements Document (BRD) that bridges strateg
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../project_context/vision.md`, `../project_context/features.md`, `../output/stakeholder_register.md`, `../output/elicitation_log.md` |
-| **Output** | `../output/brd.md` |
+| **Inputs** | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/<phase>/<document>/stakeholder_register.md`, `projects/<ProjectName>/<phase>/<document>/elicitation_log.md` |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/brd.md` |
 | **Tone** | Business-formal, objective, decision-oriented |
 | **Standards** | IEEE 29148-2018 Section 6.4, Business Requirements Gathering Ch.2-4 |
 | **Optional** | Yes -- includes decision gate |
@@ -39,17 +39,17 @@ This skill generates a Business Requirements Document (BRD) that bridges strateg
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| vision.md | `../project_context/vision.md` | Yes | Business goals, problem statement, constraints |
-| features.md | `../project_context/features.md` | Yes | Feature list with descriptions |
-| stakeholder_register.md | `../output/stakeholder_register.md` | Yes | Stakeholder roles, classifications, communication plan |
-| elicitation_log.md | `../output/elicitation_log.md` | No | Elicitation findings with source attribution |
-| glossary.md | `../project_context/glossary.md` | No | Domain terminology (IEEE 610.12) |
+| vision.md | `projects/<ProjectName>/_context/vision.md` | Yes | Business goals, problem statement, constraints |
+| features.md | `projects/<ProjectName>/_context/features.md` | Yes | Feature list with descriptions |
+| stakeholder_register.md | `projects/<ProjectName>/<phase>/<document>/stakeholder_register.md` | Yes | Stakeholder roles, classifications, communication plan |
+| elicitation_log.md | `projects/<ProjectName>/<phase>/<document>/elicitation_log.md` | No | Elicitation findings with source attribution |
+| glossary.md | `projects/<ProjectName>/_context/glossary.md` | No | Domain terminology (IEEE 610.12) |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| brd.md | `../output/brd.md` | Complete Business Requirements Document |
+| brd.md | `projects/<ProjectName>/<phase>/<document>/brd.md` | Complete Business Requirements Document |
 
 ## Core Instructions
 
@@ -203,7 +203,7 @@ If a process cannot be fully described from available context, flag it with `[PR
 - Align definitions with IEEE Std 610.12-1990 where applicable
 - Reference `glossary.md` if available
 
-Write the completed document to `../output/brd.md`. Log the total count of business objectives, requirements, rules, and process flows.
+Write the completed document to `projects/<ProjectName>/<phase>/<document>/brd.md`. Log the total count of business objectives, requirements, rules, and process flows.
 
 ## Output Format Specification
 

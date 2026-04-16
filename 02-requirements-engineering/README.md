@@ -159,7 +159,7 @@ Answer these questions:
 # Initialize context
 Run skill: 02-requirements-engineering/waterfall/01-initialize-srs
 
-# Populate ../project_context/*.md files
+# Populate projects/<ProjectName>/_context/*.md files
 
 # Run phases 02-08 sequentially
 Run skill: 02-requirements-engineering/waterfall/02-context-engineering

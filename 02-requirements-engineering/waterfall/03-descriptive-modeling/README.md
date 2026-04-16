@@ -6,10 +6,10 @@ This skill synthesizes Section 2.0 (Descriptive Modeling) of the SRS by analyzin
 
 ## Execution Steps
 
-1. Run `python descriptive_modeling.py` from this directory. The script accesses `../project_context/tech_stack.md`, `features.md`, and `quality_standards.md`, then updates `../output/SRS_Draft.md` by replacing Section 2.0 with freshly synthesized content.
+1. Run `python descriptive_modeling.py` from this directory. The script accesses `projects/<ProjectName>/_context/tech_stack.md`, `features.md`, and `quality_standards.md`, then updates `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` by replacing Section 2.0 with freshly synthesized content.
 2. The output includes a System Block Diagram description, separates hardware + memory constraints, and groups features into Major Capability summaries.
 3. Constraints include ISO/IEC 25051 Ready-to-Use principles and local environmental factors (e.g., Uganda power/internet stability). Technical realism is enforced—HP Z440 mentions produce on-premise descriptions, and adjectives are avoided.
-4. Verify the new section in `../output/SRS_Draft.md` and ensure the diagrams, constraints, assumptions, and dependencies align with the governing standards.
+4. Verify the new section in `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` and ensure the diagrams, constraints, assumptions, and dependencies align with the governing standards.
 
 ## Quality Commitment
 

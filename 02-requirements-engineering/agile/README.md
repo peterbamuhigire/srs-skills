@@ -2,7 +2,9 @@
 
 This directory contains skills for generating Agile-compliant requirements documentation using user stories, story mapping, and backlog management.
 
+<!-- alias-block start -->
 The canonical runtime workspace for this pipeline is `projects/<ProjectName>/`. References inside older skill-local files to `../project_context/` and `../output/` should be interpreted as compatibility aliases into that active project workspace.
+<!-- alias-block end -->
 
 ## When to Use This Pipeline
 

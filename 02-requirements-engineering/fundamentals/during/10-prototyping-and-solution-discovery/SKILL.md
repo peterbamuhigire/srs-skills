@@ -29,8 +29,8 @@ This skill creates structured candidate solutions and prototype-driven learning 
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../project_context/vision.md`, `../project_context/features.md`, `../output/stakeholder_register.md` (recommended), `../output/requirements_analysis_report.md` (optional) |
-| **Output** | `../output/solution_discovery_report.md` |
+| **Inputs** | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/<phase>/<document>/stakeholder_register.md` (recommended), `projects/<ProjectName>/<phase>/<document>/requirements_analysis_report.md` (optional) |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/solution_discovery_report.md` |
 | **Tone** | Exploratory but disciplined, evidence-seeking |
 | **Standards** | Volere discovery and prototype-driven requirements practices |
 
@@ -83,7 +83,7 @@ For each prototype or experiment, document:
 
 ### Step 6: Write Output
 
-Write `../output/solution_discovery_report.md` including candidates, prototype strategy, evaluation matrix, learnings, and recommendation.
+Write `projects/<ProjectName>/<phase>/<document>/solution_discovery_report.md` including candidates, prototype strategy, evaluation matrix, learnings, and recommendation.
 
 ## Common Pitfalls
 

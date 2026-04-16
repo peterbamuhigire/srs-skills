@@ -6,7 +6,7 @@ This skill anchors Sections 3.3–3.5 of the SRS by aligning the SQuaRE quality 
 
 ## Execution Steps
 
-1. Run `python attribute_mapping.py` from this directory. The script reads `../project_context/quality_standards.md` and `../project_context/tech_stack.md`, infers prioritized quality characteristics, evaluates hardware ceilings (e.g., SATA/NVMe storage, CPU counts), and builds Sections 3.3–3.5.4 in `../output/SRS_Draft.md`.
+1. Run `python attribute_mapping.py` from this directory. The script reads `projects/<ProjectName>/_context/quality_standards.md` and `projects/<ProjectName>/_context/tech_stack.md`, infers prioritized quality characteristics, evaluates hardware ceilings (e.g., SATA/NVMe storage, CPU counts), and builds Sections 3.3–3.5.4 in `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`.
 2. Validate that every Performance requirement follows the canonical format, cites an ISO/IEC 25023 measurement method, and states the load and latency ceilings derived from the hardware specifications. Flag missing measurements before moving on.
 3. Confirm that Design Constraints capture implementation standards (language versions, security levels, database integrity policies) referenced in the tech stack and that the Software System Attribute entries use Quality Attribute Scenarios (source, stimulus, environment, artifact, response, response measure) with ranked importance.
 

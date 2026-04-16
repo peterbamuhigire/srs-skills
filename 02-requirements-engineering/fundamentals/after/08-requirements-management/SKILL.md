@@ -21,36 +21,36 @@ Run this skill after all requirements artifacts have been generated and validate
 ## When to Use This Skill
 
 - After all requirements elicitation, analysis, specification, and validation skills have completed.
-- When requirements artifacts in `../output/` have reached a stable state suitable for baselining.
+- When requirements artifacts in `projects/<ProjectName>/<phase>/<document>/` have reached a stable state suitable for baselining.
 - Before development begins, to lock down the initial requirements baseline.
 - Whenever a new baseline is needed after a controlled batch of changes.
 
 ## Quick Reference
 
-- **Inputs:** All artifacts in `../output/`, `../project_context/vision.md`, `../project_context/stakeholder_register.md`
-- **Outputs:** `../output/requirements_baseline.md`, `../output/change_control_process.md`
+- **Inputs:** All artifacts in `projects/<ProjectName>/<phase>/<document>/`, `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/stakeholder_register.md`
+- **Outputs:** `projects/<ProjectName>/<phase>/<document>/requirements_baseline.md`, `projects/<ProjectName>/<phase>/<document>/change_control_process.md`
 - **Tone:** Formal, procedural, governance-oriented
 
 ## Input Files
 
 | File | Source | Required? |
 |------|--------|-----------|
-| All `*.md` artifacts | `../output/` | Yes |
-| `vision.md` | `../project_context/` | Yes |
-| `stakeholder_register.md` | `../project_context/` | Optional |
+| All `*.md` artifacts | `projects/<ProjectName>/<phase>/<document>/` | Yes |
+| `vision.md` | `projects/<ProjectName>/_context/` | Yes |
+| `stakeholder_register.md` | `projects/<ProjectName>/_context/` | Optional |
 
 ## Output Files
 
 | File | Contents | Destination |
 |------|----------|-------------|
-| `requirements_baseline.md` | Versioned snapshot of all requirements with state tracking | `../output/` |
-| `change_control_process.md` | Change request format, impact analysis, approval workflow | `../output/` |
+| `requirements_baseline.md` | Versioned snapshot of all requirements with state tracking | `projects/<ProjectName>/<phase>/<document>/` |
+| `change_control_process.md` | Change request format, impact analysis, approval workflow | `projects/<ProjectName>/<phase>/<document>/` |
 
 ## Core Instructions
 
 ### Step 1: Read All Output Artifacts
 
-Read every file in `../output/` and `../project_context/vision.md`. Log each file path read. Catalog every requirement identifier found across all artifacts. If no requirement identifiers exist, halt and report `[MGMT-FAIL]: No requirement identifiers found in output artifacts`.
+Read every file in `projects/<ProjectName>/<phase>/<document>/` and `projects/<ProjectName>/_context/vision.md`. Log each file path read. Catalog every requirement identifier found across all artifacts. If no requirement identifiers exist, halt and report `[MGMT-FAIL]: No requirement identifiers found in output artifacts`.
 
 ### Step 2: Create Requirements Inventory
 
@@ -155,7 +155,7 @@ Create a version history log that records every baseline change:
 
 ### Step 7: Generate Output Files
 
-Write `../output/requirements_baseline.md` and `../output/change_control_process.md` following the output format below.
+Write `projects/<ProjectName>/<phase>/<document>/requirements_baseline.md` and `projects/<ProjectName>/<phase>/<document>/change_control_process.md` following the output format below.
 
 ## Output Format
 
@@ -266,7 +266,7 @@ Write `../output/requirements_baseline.md` and `../output/change_control_process
 
 ## Verification Checklist
 
-- [ ] Every requirement in `../output/` has a unique identifier in the inventory.
+- [ ] Every requirement in `projects/<ProjectName>/<phase>/<document>/` has a unique identifier in the inventory.
 - [ ] Baseline ID follows the `BL-[PROJECT]-[VERSION]` format.
 - [ ] Version numbering uses semantic versioning (MAJOR.MINOR.PATCH).
 - [ ] All six requirement states are defined with entry and exit criteria.

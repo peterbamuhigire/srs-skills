@@ -6,10 +6,10 @@ This skill synthesizes the introduction (Section 1.0) of the SRS by transforming
 
 ## Execution Steps
 
-1. Run `python context_engineering.py` from this directory. The script reads `../project_context/vision.md` and `../project_context/glossary.md`, then writes a standardized `SRS_Draft.md` in `../output/` that contains Section 1.0.
+1. Run `python context_engineering.py` from this directory. The script reads `projects/<ProjectName>/_context/vision.md` and `projects/<ProjectName>/_context/glossary.md`, then writes a standardized `SRS_Draft.md` in `projects/<ProjectName>/<phase>/<document>/` that contains Section 1.0.
 2. The script follows the Standardized Document Header format for Section 1.0, ensuring the introduction looks like an engineered artifact rather than conversational prose.
 3. The output lists Purpose, Scope, Definitions, References, and Overview subsections, reusing ISS/IEEE definitions and linking every scope item to the Stakeholder Needs matrix.
-4. Review `../output/SRS_Draft.md` after running the skill to confirm all scope items and definitions meet the traceability and ISO/IEC requirements.
+4. Review `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` after running the skill to confirm all scope items and definitions meet the traceability and ISO/IEC requirements.
 
 ## Quality Commitment
 

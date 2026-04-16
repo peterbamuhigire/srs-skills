@@ -27,8 +27,8 @@ metadata:
 Use this skill once the project context templates have been populated. It turns `vision.md` and `glossary.md` into Section 1.0 of the SRS, emphasizing the legal/technical boundaries, definitions, and governing standards before downstream requirements are generated.
 
 ## Quick Reference
-- Input files: `../project_context/vision.md`, `../project_context/glossary.md`
-- Output file: `../output/SRS_Draft.md` (Section 1.0 only)
+- Input files: `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/glossary.md`
+- Output file: `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` (Section 1.0 only)
 - Tone: Standardized Document Header + active engineering prose; avoid conversational phrases.
 - Traceability: Each scope bullet must refer back to a Stakeholder Need entry in `vision.md`.
 
@@ -38,7 +38,7 @@ Use this skill once the project context templates have been populated. It turns 
 3. The glossary table drives Section 1.3 (Definitions, Acronyms, and Abbreviations) so that IEEE 610.12 and ISO/IEC 15504-1 terms are standardized and unambiguous.
 4. References include the required IEEE and ISO/IEC standards plus the project context files used for traceability.
 5. Always keep the Standardized Document Header in place; do not allow the section to drift into conversational or promotional language.
-6. Validate that `../output/SRS_Draft.md` exists and contains the new introduction before closing the skill run.
+6. Validate that `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` exists and contains the new introduction before closing the skill run.
 
 ### Out of Scope
 

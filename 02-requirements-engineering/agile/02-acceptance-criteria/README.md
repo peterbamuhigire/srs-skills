@@ -6,10 +6,10 @@ This skill formalizes acceptance criteria for every user story produced by `01-u
 
 ## Execution Steps
 
-1. Read `../output/user_stories.md` and extract all user stories by their US-XXX identifiers, parsing the role-action-value triad from each.
-2. Generate 3--5 acceptance criteria per story in Given-When-Then format, covering the happy path, error/edge cases, and boundary conditions. If `../project_context/quality_standards.md` exists, append NFR criteria with measurable thresholds.
+1. Read `projects/<ProjectName>/<phase>/<document>/user_stories.md` and extract all user stories by their US-XXX identifiers, parsing the role-action-value triad from each.
+2. Generate 3--5 acceptance criteria per story in Given-When-Then format, covering the happy path, error/edge cases, and boundary conditions. If `projects/<ProjectName>/_context/quality_standards.md` exists, append NFR criteria with measurable thresholds.
 3. Flag stories that cannot produce testable criteria with `[AC-FAIL]` and include a remediation note identifying the gap.
-4. Write the complete criteria set to `../output/acceptance_criteria.md` with cross-references back to each originating story and epic.
+4. Write the complete criteria set to `projects/<ProjectName>/<phase>/<document>/acceptance_criteria.md` with cross-references back to each originating story and epic.
 
 ## Quality Reminder
 

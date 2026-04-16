@@ -6,10 +6,10 @@ This skill applies MoSCoW classification and Weighted Shortest Job First (WSJF) 
 
 ## Execution Steps
 
-1. Read `../output/user_stories.md`, `../project_context/vision.md`, and optionally `../output/story_map.md`. Log all paths.
+1. Read `projects/<ProjectName>/<phase>/<document>/user_stories.md`, `projects/<ProjectName>/_context/vision.md`, and optionally `projects/<ProjectName>/<phase>/<document>/story_map.md`. Log all paths.
 2. Classify stories by MoSCoW category and score each on four WSJF factors (BV, TC, RR, JS) using a 1-10 scale aligned to business goals.
 3. Calculate WSJF = (BV + TC + RR) / JS, sort within MoSCoW tiers, and allocate to sprints at 20 points/sprint default velocity.
-4. Write `../output/prioritized_backlog.md` and `../output/release_plan.md` with scoring tables, sprint allocations, and dependency notes.
+4. Write `projects/<ProjectName>/<phase>/<document>/prioritized_backlog.md` and `projects/<ProjectName>/<phase>/<document>/release_plan.md` with scoring tables, sprint allocations, and dependency notes.
 
 ## Quality Reminder
 

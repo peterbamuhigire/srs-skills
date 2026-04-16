@@ -27,30 +27,30 @@ Run this skill after user stories, acceptance criteria, and (optionally) story m
 
 ## Quick Reference
 
-- **Inputs:** `../output/user_stories.md`, `../project_context/vision.md`, optionally `../output/story_map.md`
-- **Outputs:** `../output/prioritized_backlog.md`, `../output/release_plan.md`
+- **Inputs:** `projects/<ProjectName>/<phase>/<document>/user_stories.md`, `projects/<ProjectName>/_context/vision.md`, optionally `projects/<ProjectName>/<phase>/<document>/story_map.md`
+- **Outputs:** `projects/<ProjectName>/<phase>/<document>/prioritized_backlog.md`, `projects/<ProjectName>/<phase>/<document>/release_plan.md`
 - **Tone:** Analytical, data-driven, quantitative
 
 ## Input Files
 
 | File | Source | Required? |
 |------|--------|-----------|
-| `user_stories.md` | `../output/` | Yes |
-| `vision.md` | `../project_context/` | Yes |
-| `story_map.md` | `../output/` | Optional |
+| `user_stories.md` | `projects/<ProjectName>/<phase>/<document>/` | Yes |
+| `vision.md` | `projects/<ProjectName>/_context/` | Yes |
+| `story_map.md` | `projects/<ProjectName>/<phase>/<document>/` | Optional |
 
 ## Output Files
 
 | File | Contents | Destination |
 |------|----------|-------------|
-| `prioritized_backlog.md` | MoSCoW classification, WSJF scores, dependency notes | `../output/` |
-| `release_plan.md` | Sprint-by-sprint allocation, milestones, capacity, risk flags | `../output/` |
+| `prioritized_backlog.md` | MoSCoW classification, WSJF scores, dependency notes | `projects/<ProjectName>/<phase>/<document>/` |
+| `release_plan.md` | Sprint-by-sprint allocation, milestones, capacity, risk flags | `projects/<ProjectName>/<phase>/<document>/` |
 
 ## Core Instructions
 
 ### Step 1: Read Inputs
 
-Read `../output/user_stories.md` and `../project_context/vision.md`. If `../output/story_map.md` exists, read it for journey and dependency context. Log every file path read.
+Read `projects/<ProjectName>/<phase>/<document>/user_stories.md` and `projects/<ProjectName>/_context/vision.md`. If `projects/<ProjectName>/<phase>/<document>/story_map.md` exists, read it for journey and dependency context. Log every file path read.
 
 ### Step 2: MoSCoW Classification
 
@@ -94,7 +94,7 @@ Review dependency chains across allocated sprints. Move blocking stories earlier
 
 ### Step 8: Generate Output Files
 
-Write `../output/prioritized_backlog.md` and `../output/release_plan.md` following the output format below. Log story count, sprint count, and Must-Have percentage.
+Write `projects/<ProjectName>/<phase>/<document>/prioritized_backlog.md` and `projects/<ProjectName>/<phase>/<document>/release_plan.md` following the output format below. Log story count, sprint count, and Must-Have percentage.
 
 ## Output Format
 

@@ -29,8 +29,8 @@ This skill establishes how requirements and business analysis work will be run b
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../project_context/vision.md`, `../output/stakeholder_register.md` (recommended), `../project_context/features.md`, `../project_context/constraints.md` (optional) |
-| **Output** | `../output/business_analysis_plan.md` |
+| **Inputs** | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/<phase>/<document>/stakeholder_register.md` (recommended), `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/_context/constraints.md` (optional) |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/business_analysis_plan.md` |
 | **Tone** | Operational, governance-oriented, precise |
 | **Standards** | PMI Business Analysis for Practitioners, IEEE 29148 |
 
@@ -100,7 +100,7 @@ Each gate shall state required evidence and approvers.
 
 ### Step 7: Write Output
 
-Write `../output/business_analysis_plan.md` with the sections below. Log the analysis activities planned, the stakeholder groups engaged, and all unresolved governance gaps.
+Write `projects/<ProjectName>/<phase>/<document>/business_analysis_plan.md` with the sections below. Log the analysis activities planned, the stakeholder groups engaged, and all unresolved governance gaps.
 
 ## Output Format
 

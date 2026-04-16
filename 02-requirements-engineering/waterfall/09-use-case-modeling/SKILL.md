@@ -28,8 +28,8 @@ This skill runs after Phase 05 (Feature Decomposition). It transforms functional
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../project_context/features.md`, `../project_context/business_rules.md`, `../project_context/stakeholder_register.md` (optional), `../output/SRS_Draft.md` (Sections 3.1-3.2) |
-| **Output** | `../output/Use_Case_Model.md` |
+| **Inputs** | `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/_context/business_rules.md`, `projects/<ProjectName>/_context/stakeholder_register.md` (optional), `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` (Sections 3.1-3.2) |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/Use_Case_Model.md` |
 | **Tone** | Technical, precise, active voice with stimulus-response pairs |
 | **Standards** | UML 2.5.1, IEEE 29148-2018, IEEE 830-1998 Clause 5.3.1 |
 
@@ -37,16 +37,16 @@ This skill runs after Phase 05 (Feature Decomposition). It transforms functional
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| `SRS_Draft.md` | `../output/SRS_Draft.md` | **Required** | Sections 3.1 (System Features) and 3.2 (Functional Requirements) |
-| `features.md` | `../project_context/features.md` | **Required** | Feature list with user story triggers and acceptance criteria |
-| `business_rules.md` | `../project_context/business_rules.md` | Recommended | Business rules referenced by use cases |
-| `stakeholder_register.md` | `../project_context/stakeholder_register.md` | Optional | Stakeholder roles for actor identification |
+| `SRS_Draft.md` | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | **Required** | Sections 3.1 (System Features) and 3.2 (Functional Requirements) |
+| `features.md` | `projects/<ProjectName>/_context/features.md` | **Required** | Feature list with user story triggers and acceptance criteria |
+| `business_rules.md` | `projects/<ProjectName>/_context/business_rules.md` | Recommended | Business rules referenced by use cases |
+| `stakeholder_register.md` | `projects/<ProjectName>/_context/stakeholder_register.md` | Optional | Stakeholder roles for actor identification |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| `Use_Case_Model.md` | `../output/Use_Case_Model.md` | Complete use case model with diagrams, descriptions, and traceability |
+| `Use_Case_Model.md` | `projects/<ProjectName>/<phase>/<document>/Use_Case_Model.md` | Complete use case model with diagrams, descriptions, and traceability |
 
 ## Core Instructions
 
@@ -229,7 +229,7 @@ Perform these validation checks:
 
 ### Step 9: Write Output
 
-Assemble the complete use case model and write it to `../output/Use_Case_Model.md`.
+Assemble the complete use case model and write it to `projects/<ProjectName>/<phase>/<document>/Use_Case_Model.md`.
 
 ## Output Format
 
@@ -287,7 +287,7 @@ The generated `Use_Case_Model.md` shall contain the following sections:
 
 ## Verification Checklist
 
-- [ ] `Use_Case_Model.md` exists in `../output/`
+- [ ] `Use_Case_Model.md` exists in `projects/<ProjectName>/<phase>/<document>/`
 - [ ] Every actor is classified as Primary, Supporting, or Offstage
 - [ ] Every use case has a unique UC-ID and verb-noun name
 - [ ] Every fully-dressed description includes preconditions, postconditions, main scenario, alternatives, and exceptions

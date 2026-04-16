@@ -30,8 +30,8 @@ This skill applies structured specification patterns to requirements that are to
 
 | Attribute     | Value                                                                  |
 |---------------|------------------------------------------------------------------------|
-| **Inputs**    | `../project_context/features.md`, `business_rules.md`; `../output/requirements_analysis_report.md` |
-| **Output**    | `../output/requirements_patterns.md`                                   |
+| **Inputs**    | `projects/<ProjectName>/_context/features.md`, `business_rules.md`; `projects/<ProjectName>/<phase>/<document>/requirements_analysis_report.md` |
+| **Output**    | `projects/<ProjectName>/<phase>/<document>/requirements_patterns.md`                                   |
 | **Tone**      | Technical, precise, tabular; no narrative ambiguity                     |
 | **Standards** | IEEE 830-1998 Section 5.3.1, IEEE 29148-2018, Wiegers Practices 10-12 |
 
@@ -39,15 +39,15 @@ This skill applies structured specification patterns to requirements that are to
 
 | File                            | Location                                         | Required | Purpose                                       |
 |---------------------------------|--------------------------------------------------|----------|-----------------------------------------------|
-| features.md                     | `../project_context/features.md`                 | Yes      | Feature descriptions with behavioral requirements |
-| business_rules.md               | `../project_context/business_rules.md`           | Yes      | Business logic requiring pattern formalization |
-| requirements_analysis_report.md | `../output/requirements_analysis_report.md`      | No       | Classified and prioritized requirements        |
+| features.md                     | `projects/<ProjectName>/_context/features.md`                 | Yes      | Feature descriptions with behavioral requirements |
+| business_rules.md               | `projects/<ProjectName>/_context/business_rules.md`           | Yes      | Business logic requiring pattern formalization |
+| requirements_analysis_report.md | `projects/<ProjectName>/<phase>/<document>/requirements_analysis_report.md`      | No       | Classified and prioritized requirements        |
 
 ## Output Files
 
 | File                     | Location                              | Description                                    |
 |--------------------------|---------------------------------------|------------------------------------------------|
-| requirements_patterns.md | `../output/requirements_patterns.md`  | Decision tables, state diagrams, and CRUD matrices for complex requirements |
+| requirements_patterns.md | `projects/<ProjectName>/<phase>/<document>/requirements_patterns.md`  | Decision tables, state diagrams, and CRUD matrices for complex requirements |
 
 ## Core Instructions
 
@@ -55,7 +55,7 @@ Follow these steps in order. Halt and notify the user if a required input file i
 
 ### Step 1: Read Context Files
 
-Read `features.md` and `business_rules.md` from `../project_context/`. Optionally read `requirements_analysis_report.md` from `../output/` if available. Log every file path read.
+Read `features.md` and `business_rules.md` from `projects/<ProjectName>/_context/`. Optionally read `requirements_analysis_report.md` from `projects/<ProjectName>/<phase>/<document>/` if available. Log every file path read.
 
 ### Step 2: Pattern Selection
 
@@ -178,7 +178,7 @@ Flag all validation failures with the appropriate tag and document remediation s
 
 ### Step 7: Generate Requirements Patterns Document
 
-Write the completed patterns to `../output/requirements_patterns.md` using the output format below. Log summary statistics: total decision tables, state models, CRUD matrices, and validation issues found.
+Write the completed patterns to `projects/<ProjectName>/<phase>/<document>/requirements_patterns.md` using the output format below. Log summary statistics: total decision tables, state models, CRUD matrices, and validation issues found.
 
 ## Output Format Specification
 

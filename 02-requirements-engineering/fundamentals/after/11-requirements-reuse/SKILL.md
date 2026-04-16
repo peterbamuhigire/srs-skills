@@ -27,30 +27,30 @@ This skill is OPTIONAL and intended for organizations building multiple related 
 
 ## Quick Reference
 
-- **Inputs:** All artifacts in `../output/`, `../project_context/vision.md`
-- **Outputs:** `../output/requirements_library.md`
+- **Inputs:** All artifacts in `projects/<ProjectName>/<phase>/<document>/`, `projects/<ProjectName>/_context/vision.md`
+- **Outputs:** `projects/<ProjectName>/<phase>/<document>/requirements_library.md`
 - **Tone:** Cataloging, systematic, pattern-oriented
 
 ## Input Files
 
 | File | Source | Required? |
 |------|--------|-----------|
-| All `*.md` artifacts | `../output/` | Yes |
-| `vision.md` | `../project_context/` | Yes |
-| `requirements_baseline.md` | `../output/` | Recommended |
-| `traceability_matrix.md` | `../output/` | Recommended |
+| All `*.md` artifacts | `projects/<ProjectName>/<phase>/<document>/` | Yes |
+| `vision.md` | `projects/<ProjectName>/_context/` | Yes |
+| `requirements_baseline.md` | `projects/<ProjectName>/<phase>/<document>/` | Recommended |
+| `traceability_matrix.md` | `projects/<ProjectName>/<phase>/<document>/` | Recommended |
 
 ## Output Files
 
 | File | Contents | Destination |
 |------|----------|-------------|
-| `requirements_library.md` | Reusable requirements catalog with classification and adaptation guidelines | `../output/` |
+| `requirements_library.md` | Reusable requirements catalog with classification and adaptation guidelines | `projects/<ProjectName>/<phase>/<document>/` |
 
 ## Core Instructions
 
 ### Step 1: Read All Artifacts
 
-Read every file in `../output/` and `../project_context/vision.md`. Log each file path read. Build a consolidated list of all requirements with their full definitions, acceptance criteria, and trace links.
+Read every file in `projects/<ProjectName>/<phase>/<document>/` and `projects/<ProjectName>/_context/vision.md`. Log each file path read. Build a consolidated list of all requirements with their full definitions, acceptance criteria, and trace links.
 
 ### Step 2: Identify Reuse Candidates
 
@@ -178,7 +178,7 @@ Document variation points with:
 
 ### Step 7: Generate Output
 
-Write `../output/requirements_library.md` following the output format below.
+Write `projects/<ProjectName>/<phase>/<document>/requirements_library.md` following the output format below.
 
 ## Output Format
 

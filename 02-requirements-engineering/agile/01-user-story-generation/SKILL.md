@@ -36,7 +36,7 @@ This skill is the Agile equivalent of the Waterfall SRS pipeline, producing ligh
 
 ## Input Files
 
-This skill reads from `../project_context/`:
+This skill reads from `projects/<ProjectName>/_context/`:
 
 | File | Purpose | Required? |
 |------|---------|-----------|
@@ -50,7 +50,7 @@ This skill reads from `../project_context/`:
 
 ## Output Files
 
-This skill writes to `../output/`:
+This skill writes to `projects/<ProjectName>/<phase>/<document>/`:
 
 | File | Contents | Format |
 |------|----------|--------|
@@ -83,7 +83,7 @@ flowchart TD
 
 ### Step 1: Persona Identification
 
-1. Read `../project_context/personas.md`. If missing, prompt user:
+1. Read `projects/<ProjectName>/_context/personas.md`. If missing, prompt user:
    ```
    personas.md not found. Would you like to:
    [1] Create personas now (recommended)
@@ -98,14 +98,14 @@ flowchart TD
 
 ### Step 2: Epic Extraction
 
-1. Parse `../project_context/features.md` to identify **Epics** (large features requiring multiple sprints)
+1. Parse `projects/<ProjectName>/_context/features.md` to identify **Epics** (large features requiring multiple sprints)
 
 2. For each feature, determine if it's:
    - **Epic** (>13 story points, requires breakdown) → Tag as Epic
    - **Story** (2-13 story points) → Keep as single story
    - **Task** (<2 story points) → Flag to merge with related stories
 
-3. Create epic hierarchy in `../output/epic_breakdown.md`
+3. Create epic hierarchy in `projects/<ProjectName>/<phase>/<document>/epic_breakdown.md`
 
 ### Step 3: Story Decomposition
 
@@ -206,7 +206,7 @@ Assign priority based on:
 
 ### Step 8: Story Mapping
 
-Generate `../output/story_map.mmd` using **Jeff Patton's Story Mapping** approach:
+Generate `projects/<ProjectName>/<phase>/<document>/story_map.mmd` using **Jeff Patton's Story Mapping** approach:
 
 ```mermaid
 graph TD
@@ -230,7 +230,7 @@ graph TD
 
 ## Output Format Specification
 
-### File: `../output/user_stories.md`
+### File: `projects/<ProjectName>/<phase>/<document>/user_stories.md`
 
 ```markdown
 # User Story Backlog: [Project Name]
@@ -309,10 +309,10 @@ All stories validated against INVEST criteria. No failures detected.
 
 ## Appendix C: Personas Reference
 
-[Link to ../project_context/personas.md]
+[Link to projects/<ProjectName>/_context/personas.md]
 ```
 
-### File: `../output/backlog_summary.md`
+### File: `projects/<ProjectName>/<phase>/<document>/backlog_summary.md`
 
 ```markdown
 # Backlog Summary

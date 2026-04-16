@@ -20,38 +20,38 @@ Run this skill after user stories are generated. It transforms each user story p
 
 ## When to Use
 
-Execute this skill after `01-user-story-generation` has produced `../output/user_stories.md`. Each user story in that file shall already follow the "As a / I want / So that" format. This skill shall not run until the upstream file exists and contains at least one valid story identifier (US-XXX).
+Execute this skill after `01-user-story-generation` has produced `projects/<ProjectName>/<phase>/<document>/user_stories.md`. Each user story in that file shall already follow the "As a / I want / So that" format. This skill shall not run until the upstream file exists and contains at least one valid story identifier (US-XXX).
 
 ## Quick Reference
 
-- **Inputs:** `../output/user_stories.md` (required), `../project_context/quality_standards.md` (optional, for NFR criteria)
-- **Output:** `../output/acceptance_criteria.md`
+- **Inputs:** `projects/<ProjectName>/<phase>/<document>/user_stories.md` (required), `projects/<ProjectName>/_context/quality_standards.md` (optional, for NFR criteria)
+- **Output:** `projects/<ProjectName>/<phase>/<document>/acceptance_criteria.md`
 - **Tone:** Precise, testable, deterministic -- no subjective adjectives
 
 ## Input Files
 
 | File | Source | Purpose | Required? |
 |------|--------|---------|-----------|
-| `user_stories.md` | `../output/` | User stories with "As a / I want / So that" triads | Yes |
-| `quality_standards.md` | `../project_context/` | NFR targets for performance, security, and reliability thresholds | No |
+| `user_stories.md` | `projects/<ProjectName>/<phase>/<document>/` | User stories with "As a / I want / So that" triads | Yes |
+| `quality_standards.md` | `projects/<ProjectName>/_context/` | NFR targets for performance, security, and reliability thresholds | No |
 
 ## Output Files
 
 | File | Destination | Contents |
 |------|-------------|----------|
-| `acceptance_criteria.md` | `../output/` | Gherkin-format acceptance criteria cross-referenced to story IDs |
+| `acceptance_criteria.md` | `projects/<ProjectName>/<phase>/<document>/` | Gherkin-format acceptance criteria cross-referenced to story IDs |
 
 ## Core Instructions
 
-1. **Read upstream output.** Open `../output/user_stories.md` and log the file path to confirm the read succeeded.
+1. **Read upstream output.** Open `projects/<ProjectName>/<phase>/<document>/user_stories.md` and log the file path to confirm the read succeeded.
 2. **Extract story triads.** For each user story identified by US-XXX, parse the "As a [role]", "I want to [action]", and "So that [value]" triad. Record the story ID, title, and epic association.
 3. **Generate Gherkin criteria.** Produce 3--5 acceptance criteria per story using the format: `Given [precondition], When [action], Then [expected result]`. Criteria shall cover:
    - The happy-path scenario (normal successful flow)
    - At least one error or edge-case scenario
    - At least one boundary-condition scenario
-4. **Append NFR criteria.** If `../project_context/quality_standards.md` exists, read it and append non-functional acceptance criteria with measurable thresholds (response time, throughput, encryption standard, etc.) to each relevant story.
+4. **Append NFR criteria.** If `projects/<ProjectName>/_context/quality_standards.md` exists, read it and append non-functional acceptance criteria with measurable thresholds (response time, throughput, encryption standard, etc.) to each relevant story.
 5. **Flag untestable stories.** If a story cannot yield deterministic, binary pass/fail criteria, tag it with `[AC-FAIL]` and append a remediation note identifying the missing or ambiguous element.
-6. **Write output.** Write `../output/acceptance_criteria.md` with each story's criteria grouped under its US-XXX identifier, including cross-references back to the originating story and epic.
+6. **Write output.** Write `projects/<ProjectName>/<phase>/<document>/acceptance_criteria.md` with each story's criteria grouped under its US-XXX identifier, including cross-references back to the originating story and epic.
 
 ## Output Format Specification
 

@@ -18,8 +18,8 @@ metadata:
 Use this skill after Sections 1.0–3.1 exist. It reads `business_rules.md`, `tech_stack.md`, and `quality_standards.md` to produce the logical and mathematical foundations required by IEEE 1016 before moving on to validation, traceability, or testing chapters.
 
 ## Quick Reference
-- Inputs: `../project_context/business_rules.md`, `../project_context/tech_stack.md`, `../project_context/quality_standards.md`
-- Output: `../output/SRS_Draft.md` (Sections 3.2.2–3.2.4)
+- Inputs: `projects/<ProjectName>/_context/business_rules.md`, `projects/<ProjectName>/_context/tech_stack.md`, `projects/<ProjectName>/_context/quality_standards.md`
+- Output: `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` (Sections 3.2.2–3.2.4)
 - Tone: Precise, formal, transition-model oriented. Use IF-THEN-ELSE prose where logic branches exist, and avoid subjective adjectives.
 
 ## Core Instructions

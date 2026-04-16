@@ -2,7 +2,7 @@
 
 ## Objective
 
-This skill performs a ruthless audit of `../output/SRS_Draft.md` plus every file in `../project_context/`, validates the eight IEEE 830 qualities, and emits a traceability matrix plus verification artifacts aligned with IEEE 1012.
+This skill performs a ruthless audit of `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` plus every file in `projects/<ProjectName>/_context/`, validates the eight IEEE 830 qualities, and emits a traceability matrix plus verification artifacts aligned with IEEE 1012.
 
 ## Execution Steps
 

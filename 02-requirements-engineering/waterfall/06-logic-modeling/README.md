@@ -6,7 +6,7 @@ This skill builds the logical core of the SRS by translating `business_rules.md`
 
 ## Execution Steps
 
-1. Run `python logic_modeling.py` from this directory. The script reads `../project_context/business_rules.md`, `../project_context/tech_stack.md`, and `../project_context/quality_standards.md`, decides whether MySQL or PostgreSQL is the primary store, and writes Sections 3.2.2 (Process Descriptions), 3.2.3 (Data Construct Specifications), and 3.2.4 (Data Dictionary) into `../output/SRS_Draft.md` without disturbing earlier sections.
+1. Run `python logic_modeling.py` from this directory. The script reads `projects/<ProjectName>/_context/business_rules.md`, `projects/<ProjectName>/_context/tech_stack.md`, and `projects/<ProjectName>/_context/quality_standards.md`, decides whether MySQL or PostgreSQL is the primary store, and writes Sections 3.2.2 (Process Descriptions), 3.2.3 (Data Construct Specifications), and 3.2.4 (Data Dictionary) into `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` without disturbing earlier sections.
 2. Confirm that each process description uses a Transition Model narrative (input, algorithm with IF-THEN-ELSE, affected entities) and references the ISO/IEC 25010 reliability and analysability targets before moving on to interface or validation skills.
 3. Review the data dictionary output and verify each field uses the database-specific representation (e.g., `DECIMAL(19,4)` for MySQL, `NUMERIC(19,4)` for PostgreSQL) that the script inferred from `tech_stack.md`.
 

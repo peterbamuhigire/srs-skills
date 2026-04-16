@@ -49,9 +49,9 @@ Rows represent entities (data objects). Columns represent roles (actors). Cell v
 ### Step 1: List Entities
 
 Extract all data entities from:
-- The conceptual data model (`../output/conceptual_data_model.md`)
-- Feature descriptions (`../project_context/features.md`)
-- Business rules (`../project_context/business_rules.md`)
+- The conceptual data model (`projects/<ProjectName>/<phase>/<document>/conceptual_data_model.md`)
+- Feature descriptions (`projects/<ProjectName>/_context/features.md`)
+- Business rules (`projects/<ProjectName>/_context/business_rules.md`)
 
 Include every entity that stores persistent data.
 

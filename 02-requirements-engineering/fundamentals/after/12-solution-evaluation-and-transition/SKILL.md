@@ -29,8 +29,8 @@ This skill closes the gap between completed requirements or delivery artifacts a
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../output/validation_report.md`, `../output/Deployment_Guide.md` (optional), `../output/Runbook.md` (optional), `../output/Test_Report.md` (optional), `../output/stakeholder_register.md` |
-| **Output** | `../output/solution_evaluation_transition_plan.md` |
+| **Inputs** | `projects/<ProjectName>/<phase>/<document>/validation_report.md`, `projects/<ProjectName>/<phase>/<document>/Deployment_Guide.md` (optional), `projects/<ProjectName>/<phase>/<document>/Runbook.md` (optional), `projects/<ProjectName>/<phase>/<document>/Test_Report.md` (optional), `projects/<ProjectName>/<phase>/<document>/stakeholder_register.md` |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/solution_evaluation_transition_plan.md` |
 | **Tone** | Operational, adoption-focused, evidence-based |
 | **Standards** | PMI BA transition and solution evaluation practices |
 
@@ -84,7 +84,7 @@ Define post-launch evaluation measures:
 
 ### Step 6: Write Output
 
-Write `../output/solution_evaluation_transition_plan.md` with transition actions, readiness gaps, decision criteria, and evaluation metrics.
+Write `projects/<ProjectName>/<phase>/<document>/solution_evaluation_transition_plan.md` with transition actions, readiness gaps, decision criteria, and evaluation metrics.
 
 ## Common Pitfalls
 

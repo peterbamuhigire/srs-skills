@@ -27,14 +27,14 @@ metadata:
 Invoke this skill after initializing the project context and generating Section 1.0. It reads the technology stack, feature set, and quality standards to produce Section 2.0 (Descriptive Modeling) with technical realism, block diagram descriptions, and constraint traceability.
 
 ## Quick Reference
-- Inputs: `../project_context/tech_stack.md`, `../project_context/features.md`, `../project_context/quality_standards.md`
-- Output: `../output/SRS_Draft.md` (Section 2.0 only)
+- Inputs: `projects/<ProjectName>/_context/tech_stack.md`, `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/_context/quality_standards.md`
+- Output: `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` (Section 2.0 only)
 - Tone: Engineering prose using SHALL statements; System Block Diagram descriptions must mention actual infrastructure components (OCI, HP Z440, MySQL 8.0, etc.).
 
 ## Core Instructions
 1. Run `python descriptive_modeling.py` from this directory or trigger `logic.prompt` through your skill runner.
 2. The script analyzes the tech stack keywords, groups features into Major Capability buckets, reads quality constraints, and writes Section 2.0 with subsections 2.1–2.5.
-3. Ensure the script replaces any existing Section 2.0 block in `../output/SRS_Draft.md` and leaves the rest of the document untouched.
+3. Ensure the script replaces any existing Section 2.0 block in `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` and leaves the rest of the document untouched.
 4. Verify the new section includes ALL IEEE 830 §5.2 subsections:
    - 2.1 Product Perspective with all eight sub-items (§5.2.1.1–§5.2.1.8): System Interfaces, User Interfaces, Hardware Interfaces, Software Interfaces, Communications Interfaces, Memory Constraints, Operations, Site Adaptation Requirements.
    - 2.2 Product Functions, 2.3 User Characteristics, 2.4 Constraints (including ISO/IEC 25051 and environmental factors), 2.5 Assumptions and Dependencies.

@@ -44,11 +44,11 @@ metadata:
 # Initialize-SRS Skill Guidance
 
 ## Overview
-Use this skill to bootstrap the parent project with industrial templates that capture vision, features, technology constraints, business rules, quality standards, and glossary definitions before running any other SRS skills. The skill provides an automation script plus template guidance so Claude can reliably seed `../project_context/` and `../output/`.
+Use this skill to bootstrap the parent project with industrial templates that capture vision, features, technology constraints, business rules, quality standards, and glossary definitions before running any other SRS skills. The skill provides an automation script plus template guidance so Claude can reliably seed `projects/<ProjectName>/_context/` and `projects/<ProjectName>/<phase>/<document>/`.
 
 ## Quick Reference
-- Initialize or refresh `../project_context/` with six templates (vision, features, tech stack, business rules, quality standards, glossary).
-- Ensure `../output/` exists before downstream IEEE/ISO skills execute.
+- Initialize or refresh `projects/<ProjectName>/_context/` with six templates (vision, features, tech stack, business rules, quality standards, glossary).
+- Ensure `projects/<ProjectName>/<phase>/<document>/` exists before downstream IEEE/ISO skills execute.
 - Use Maintenance Mode when existing content must stay untouched; use Clean mode only when a fresh baseline is required.
 
 ## Anti-Hallucination Guard
@@ -57,9 +57,9 @@ Use this skill to bootstrap the parent project with industrial templates that ca
 
 ## Core Instructions
 1. Run `python init_skill.py` from this directory or call the `logic.prompt` via your skill runner.
-2. The automation checks for `../project_context/`. Offer Maintenance Mode (add missing templates) or Clean (delete and reseed). Maintenance Mode must never overwrite user edits.
-3. After provisioning, create `../output/` if missing so downstream skills always find a writeable folder.
-4. Copy templates from `templates/`. Each template embeds Expert Guidance comments, SHALL/MUST phrasing, and aligned Markdown tables. Log every directory action and template copy/skip with explicit paths (e.g., `../project_context/vision.md`).
+2. The automation checks for `projects/<ProjectName>/_context/`. Offer Maintenance Mode (add missing templates) or Clean (delete and reseed). Maintenance Mode must never overwrite user edits.
+3. After provisioning, create `projects/<ProjectName>/<phase>/<document>/` if missing so downstream skills always find a writeable folder.
+4. Copy templates from `templates/`. Each template embeds Expert Guidance comments, SHALL/MUST phrasing, and aligned Markdown tables. Log every directory action and template copy/skip with explicit paths (e.g., `projects/<ProjectName>/_context/vision.md`).
 5. After completion, echo: “The quality of the final SRS depends entirely on the technical density of these files. Avoid vague language; provide specific numbers and models.”
 
 ## Resources

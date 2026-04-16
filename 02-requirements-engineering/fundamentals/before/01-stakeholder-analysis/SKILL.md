@@ -29,8 +29,8 @@ This skill identifies, classifies, and prioritizes all project stakeholders usin
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../project_context/vision.md`, `../project_context/features.md` |
-| **Output** | `../output/stakeholder_register.md` |
+| **Inputs** | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/features.md` |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/stakeholder_register.md` |
 | **Tone** | Analytical, objective, no assumptions without grounding |
 | **Standards** | IEEE 29148-2018 Section 6.2, Wiegers Practices 1-3 |
 
@@ -38,14 +38,14 @@ This skill identifies, classifies, and prioritizes all project stakeholders usin
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| vision.md | `../project_context/vision.md` | Yes | Business goals, problem statement, constraints, target audience |
-| features.md | `../project_context/features.md` | Yes | Feature list to identify impacted user groups and technical domains |
+| vision.md | `projects/<ProjectName>/_context/vision.md` | Yes | Business goals, problem statement, constraints, target audience |
+| features.md | `projects/<ProjectName>/_context/features.md` | Yes | Feature list to identify impacted user groups and technical domains |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| stakeholder_register.md | `../output/stakeholder_register.md` | Complete stakeholder register with classification, communication plan, and RACI matrix |
+| stakeholder_register.md | `projects/<ProjectName>/<phase>/<document>/stakeholder_register.md` | Complete stakeholder register with classification, communication plan, and RACI matrix |
 
 ## Core Instructions
 
@@ -53,7 +53,7 @@ Follow these seven steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `vision.md` and `features.md` from `../project_context/`. Log every file path read. If either file is missing, halt execution and report the gap to the user.
+Read `vision.md` and `features.md` from `projects/<ProjectName>/_context/`. Log every file path read. If either file is missing, halt execution and report the gap to the user.
 
 ### Step 2: Identify Stakeholder Categories
 
@@ -173,7 +173,7 @@ Every activity row shall have exactly one "A" assignment. Flag violations with `
 
 ### Step 7: Write Output
 
-Assemble all sections and write the completed document to `../output/stakeholder_register.md`. Log the total stakeholder count, the number of gaps flagged, and the number of risk tags applied.
+Assemble all sections and write the completed document to `projects/<ProjectName>/<phase>/<document>/stakeholder_register.md`. Log the total stakeholder count, the number of gaps flagged, and the number of risk tags applied.
 
 ## Output Format Specification
 

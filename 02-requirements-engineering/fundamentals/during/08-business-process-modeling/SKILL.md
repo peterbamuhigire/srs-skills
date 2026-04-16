@@ -29,8 +29,8 @@ This skill turns workflow knowledge into structured process models that expose r
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../output/elicitation_log.md`, `../output/stakeholder_register.md`, `../project_context/features.md`, `../project_context/business_rules.md` (optional) |
-| **Output** | `../output/business_process_models.md` |
+| **Inputs** | `projects/<ProjectName>/<phase>/<document>/elicitation_log.md`, `projects/<ProjectName>/<phase>/<document>/stakeholder_register.md`, `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/_context/business_rules.md` (optional) |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/business_process_models.md` |
 | **Tone** | Analytical, operational, role-aware |
 | **Standards** | BPM-inspired process analysis, PMI BA practice guidance |
 
@@ -95,7 +95,7 @@ Record validation questions for each process:
 
 ### Step 7: Write Output
 
-Write `../output/business_process_models.md` containing current-state and future-state models, exception flows, and requirement implications.
+Write `projects/<ProjectName>/<phase>/<document>/business_process_models.md` containing current-state and future-state models, exception flows, and requirement implications.
 
 ## Output Format
 

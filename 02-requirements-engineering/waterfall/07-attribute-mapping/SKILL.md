@@ -18,8 +18,8 @@ metadata:
 Apply this skill after Sections 1.0–3.2 exist. It produces the non-functional attribute sections (Performance, Design Constraints, Reliability/Availability/Security/Maintainability) by analyzing quality standards and tech stack artifacts, which must already describe ISO/IEC 25010 expectations and the primary database/language arsenal.
 
 ## Quick Reference
-- Inputs: `../project_context/quality_standards.md`, `../project_context/tech_stack.md`
-- Output: `../output/SRS_Draft.md` (Sections 3.3–3.6)
+- Inputs: `projects/<ProjectName>/_context/quality_standards.md`, `projects/<ProjectName>/_context/tech_stack.md`
+- Output: `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` (Sections 3.3–3.6)
 - Tone: Human-grade, precise, scenario-driven, no AI filler.
 
 ## Core Instructions
@@ -30,7 +30,7 @@ Apply this skill after Sections 1.0–3.2 exist. It produces the non-functional 
 5. Generate **Section 3.5.5 – Standards Compliance** (IEEE 830 §5.3.5.1) listing requirements derived from standards/regulations: report formats, data naming, accounting procedures, audit tracing.
 6. Generate **Section 3.6 – Other Requirements** (IEEE 830 §5.3.8) for requirements not fitting 3.1–3.5 (portability, installation, localization). If none, state "No additional requirements beyond those specified in Sections 3.1–3.5 have been identified."
 7. Reference `../ieee-830-compliance-checklist.md` (IDs IEEE830-5.3.3 through IEEE830-5.3.7) for compliance verification.
-8. Preserve existing sections (1.0–3.2, 4.0+) when writing to `../output/SRS_Draft.md`; only replace Sections 3.3–3.6.
+8. Preserve existing sections (1.0–3.2, 4.0+) when writing to `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`; only replace Sections 3.3–3.6.
 
 ## Resources
 - `README.md`: Quality model rationale and measurement reminders.

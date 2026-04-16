@@ -18,7 +18,7 @@ metadata:
 Run this skill after Sections 1.0–3.5 have been generated so it can audit the entire SRS and the project context before verification activities begin.
 
 ## Quick Reference
-- Inputs: `../output/SRS_Draft.md`, every file within `../project_context/`
+- Inputs: `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, every file within `projects/<ProjectName>/_context/`
 - Output: `Audit_Report.md` containing the Requirements Audit, RTM, Ambiguity & Weak Word Report, Gap Analysis, and Standard Conformance Statement.
 - Tone: Ruthless, technical, PASS/FAIL oriented; avoid filler.
 

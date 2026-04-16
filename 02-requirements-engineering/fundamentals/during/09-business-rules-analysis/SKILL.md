@@ -29,8 +29,8 @@ This skill isolates the domain rules that govern decisions, calculations, constr
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../output/elicitation_log.md`, `../output/business_process_models.md` (recommended), `../project_context/business_rules.md` (optional), `vision.md` |
-| **Output** | `../output/business_rules_catalog.md` |
+| **Inputs** | `projects/<ProjectName>/<phase>/<document>/elicitation_log.md`, `projects/<ProjectName>/<phase>/<document>/business_process_models.md` (recommended), `projects/<ProjectName>/_context/business_rules.md` (optional), `vision.md` |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/business_rules_catalog.md` |
 | **Tone** | Precise, policy-aware, test-oriented |
 | **Standards** | Wiegers & Beatty, Volere-style rule analysis |
 
@@ -89,7 +89,7 @@ For each rule, identify its effect on:
 
 ### Step 6: Write Output
 
-Write `../output/business_rules_catalog.md` with the normalized rule catalog, issue log, and downstream mapping.
+Write `projects/<ProjectName>/<phase>/<document>/business_rules_catalog.md` with the normalized rule catalog, issue log, and downstream mapping.
 
 ## Output Format
 

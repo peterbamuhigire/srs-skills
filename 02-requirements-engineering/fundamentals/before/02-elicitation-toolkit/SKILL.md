@@ -30,8 +30,8 @@ This skill provides a structured, multi-technique approach to requirements elici
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../output/stakeholder_register.md`, `../project_context/vision.md`, `../project_context/features.md` |
-| **Output** | `../output/elicitation_log.md` |
+| **Inputs** | `projects/<ProjectName>/<phase>/<document>/stakeholder_register.md`, `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/features.md` |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/elicitation_log.md` |
 | **Tone** | Investigative, methodical, source-attributed |
 | **Standards** | IEEE 29148-2018 Section 6.3, Laplante Ch.4, Wiegers Practices 4-6 |
 
@@ -39,16 +39,16 @@ This skill provides a structured, multi-technique approach to requirements elici
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| stakeholder_register.md | `../output/stakeholder_register.md` | Yes | Stakeholder roles, communication preferences, engagement levels |
-| vision.md | `../project_context/vision.md` | Yes | Business goals, problem statement, domain context |
-| features.md | `../project_context/features.md` | Yes | Feature list for elicitation scoping |
-| glossary.md | `../project_context/glossary.md` | No | Domain terminology for consistent language |
+| stakeholder_register.md | `projects/<ProjectName>/<phase>/<document>/stakeholder_register.md` | Yes | Stakeholder roles, communication preferences, engagement levels |
+| vision.md | `projects/<ProjectName>/_context/vision.md` | Yes | Business goals, problem statement, domain context |
+| features.md | `projects/<ProjectName>/_context/features.md` | Yes | Feature list for elicitation scoping |
+| glossary.md | `projects/<ProjectName>/_context/glossary.md` | No | Domain terminology for consistent language |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| elicitation_log.md | `../output/elicitation_log.md` | Structured findings with source attribution, technique used, and confidence levels |
+| elicitation_log.md | `projects/<ProjectName>/<phase>/<document>/elicitation_log.md` | Structured findings with source attribution, technique used, and confidence levels |
 
 ## Core Instructions
 
@@ -56,7 +56,7 @@ Follow these six steps in order. Halt and notify the user if a required input fi
 
 ### Step 1: Read Context Files
 
-Read `stakeholder_register.md` from `../output/`, and `vision.md` and `features.md` from `../project_context/`. Optionally read `glossary.md`. Log every file path read. If any required file is missing, halt execution and report the gap.
+Read `stakeholder_register.md` from `projects/<ProjectName>/<phase>/<document>/`, and `vision.md` and `features.md` from `projects/<ProjectName>/_context/`. Optionally read `glossary.md`. Log every file path read. If any required file is missing, halt execution and report the gap.
 
 ### Step 2: Assess Elicitation Context
 
@@ -240,7 +240,7 @@ Reference: `references/domain-checklists.md`
 
 ### Step 6: Write Elicitation Log
 
-Assemble all findings and write to `../output/elicitation_log.md`. Log the total finding count, technique(s) used, and the number of unresolved items.
+Assemble all findings and write to `projects/<ProjectName>/<phase>/<document>/elicitation_log.md`. Log the total finding count, technique(s) used, and the number of unresolved items.
 
 ## Output Format Specification
 

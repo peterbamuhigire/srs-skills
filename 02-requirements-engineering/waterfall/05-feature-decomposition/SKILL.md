@@ -20,8 +20,8 @@ Use this skill after Sections 1.0, 2.0, and 3.1 are generated. It transforms the
 > **WBS Alignment:** The output of this skill forms the **requirements baseline** equivalent to a WBS Work Package layer (per PMBOK Guide, 7th Ed.): it decomposes scope from Features (Epic level) → Subfunctions (Story level) → Verifiable Requirements (task-level acceptance criteria). Project managers familiar with WBS methodology can use this output directly to populate their WBS dictionary for the requirements scope baseline.
 
 ## Quick Reference
-- Inputs: `../project_context/features.md`, `../project_context/quality_standards.md`
-- Output: `../output/SRS_Draft.md` (Section 3.2 only)
+- Inputs: `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/_context/quality_standards.md`
+- Output: `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` (Section 3.2 only)
 - Tone: Technical, precise, employing SHALL statements; avoid subjective adjectives and reference ISO/IEC 25010 Functional Suitability.
 
 ## Functional Requirement Template
@@ -68,7 +68,7 @@ The system shall [verb] [object] when [condition].
 
 ## Final Step: Write `manifest.md`
 
-After generating all section files, create (or overwrite) `manifest.md` in the SRS document directory (`../output/01-srs/`) listing the section files in the correct assembly order:
+After generating all section files, create (or overwrite) `manifest.md` in the SRS document directory (`projects/<ProjectName>/<phase>/<document>/01-srs/`) listing the section files in the correct assembly order:
 
 ```markdown
 # Document Manifest — SRS Feature Decomposition

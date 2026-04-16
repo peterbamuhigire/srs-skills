@@ -2,7 +2,9 @@
 
 This directory contains the **complete 8-phase IEEE 830-1998 compliant SRS generation pipeline** for traditional Waterfall projects.
 
+<!-- alias-block start -->
 The canonical runtime workspace for this pipeline is `projects/<ProjectName>/`. References inside older skill-local files to `../project_context/` and `../output/` should be interpreted as aliases into that active project workspace.
+<!-- alias-block end -->
 
 ## When to Use This Pipeline
 
