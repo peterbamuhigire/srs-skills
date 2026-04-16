@@ -1,3 +1,18 @@
+---
+gate: phase09
+checks:
+  - phase09.traceability
+  - phase09.audit_report_present
+  - phase09.risk_register_links_to_fr
+  - phase09.waivers_have_expiry
+deferred_checks:
+  - phase09.compliance_controls_have_evidence  # blocked on Plan 06 ControlsCheck
+  - phase09.evidence_pack_buildable            # blocked on Plan 07 `engine pack`
+clause_refs:
+  - standard: "ISO/IEC 27001:2022"
+    clause: "9"
+---
+
 # Phase 09 Deterministic Gate
 
 Use this checklist before governance and compliance outputs are treated as audit-ready.
