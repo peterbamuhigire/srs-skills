@@ -42,6 +42,13 @@ def main() -> None:
     """srs-skills validation kernel."""
 
 @main.command()
+def doctor() -> None:
+    """Run pre-flight diagnostics."""
+    from engine.doctor import run
+    sys.exit(run())
+
+
+@main.command()
 @click.argument("project", type=click.Path(exists=True, file_okay=False))
 @click.option("--junit", type=click.Path(), default=None)
 @click.option("--sarif", type=click.Path(), default=None)
