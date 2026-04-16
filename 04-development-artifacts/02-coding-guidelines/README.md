@@ -6,8 +6,8 @@ This skill produces a coding standards document that defines language-specific n
 
 ## Execution Steps
 
-1. Verify `../project_context/tech_stack.md` exists. Optionally check for `../output/HLD.md` to align conventions with architectural decisions.
-2. Invoke `logic.prompt` or trigger the skill. The skill detects languages and frameworks, generates conventions for each, and writes `../output/Coding_Guidelines.md`.
+1. Verify `projects/<ProjectName>/_context/tech_stack.md` exists. Optionally check for `projects/<ProjectName>/<phase>/<document>/HLD.md` to align conventions with architectural decisions.
+2. Invoke `logic.prompt` or trigger the skill. The skill detects languages and frameworks, generates conventions for each, and writes `projects/<ProjectName>/<phase>/<document>/Coding_Guidelines.md`.
 3. Review that every naming convention includes compliant and non-compliant examples, and that anti-patterns include recommended alternatives.
 4. This skill can run in parallel with `03-dev-environment-setup`. Once both complete, proceed to `04-contribution-guide`.
 

@@ -6,8 +6,8 @@ This skill produces a technical specification that bridges Low-Level Design modu
 
 ## Execution Steps
 
-1. Verify `../output/LLD.md`, `../output/SRS_Draft.md`, and `../project_context/tech_stack.md` exist. Halt if any required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill extracts module contracts, defines data formats and integration specs, and writes `../output/Technical_Specification.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/LLD.md`, `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, and `projects/<ProjectName>/_context/tech_stack.md` exist. Halt if any required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill extracts module contracts, defines data formats and integration specs, and writes `projects/<ProjectName>/<phase>/<document>/Technical_Specification.md`.
 3. Review the traceability matrix to confirm every module contract maps to an LLD module and at least one SRS requirement ID.
 4. Proceed to `02-coding-guidelines` and `03-dev-environment-setup` which can run in parallel once this skill completes.
 

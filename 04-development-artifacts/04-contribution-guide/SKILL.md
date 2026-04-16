@@ -20,15 +20,15 @@ This is the fourth skill in Phase 04 (Development Artifacts). It generates a con
 
 ## When to Use
 
-- After `tech_stack.md` exists in `../project_context/` with VCS and CI/CD tooling details.
+- After `tech_stack.md` exists in `projects/<ProjectName>/_context/` with VCS and CI/CD tooling details.
 - After `02-coding-guidelines` and `03-dev-environment-setup` have completed, since the contribution guide references coding standards and environment setup.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../project_context/tech_stack.md` |
-| **Output**  | `../output/Contribution_Guide.md` |
+| **Inputs**  | `projects/<ProjectName>/_context/tech_stack.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Contribution_Guide.md` |
 | **Tone**    | Prescriptive, process-oriented, team-facing |
 | **Standard** | IEEE 1074 |
 
@@ -36,13 +36,13 @@ This is the fourth skill in Phase 04 (Development Artifacts). It generates a con
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| tech_stack.md | `../project_context/tech_stack.md` | Yes | VCS platform, CI/CD tooling, deployment targets |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes | VCS platform, CI/CD tooling, deployment targets |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Contribution_Guide.md | `../output/Contribution_Guide.md` | Complete contribution workflow guide with branching, commits, PRs, and review standards |
+| Contribution_Guide.md | `projects/<ProjectName>/<phase>/<document>/Contribution_Guide.md` | Complete contribution workflow guide with branching, commits, PRs, and review standards |
 
 ## Core Instructions
 
@@ -50,7 +50,7 @@ Follow these seven steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `tech_stack.md` from `../project_context/`. Log the absolute path of each file read. If `tech_stack.md` is missing, halt execution and report the gap. Identify the VCS platform (GitHub, GitLab, Bitbucket), CI/CD tooling, and deployment targets.
+Read `tech_stack.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. If `tech_stack.md` is missing, halt execution and report the gap. Identify the VCS platform (GitHub, GitLab, Bitbucket), CI/CD tooling, and deployment targets.
 
 ### Step 2: Define Branching Strategy
 
@@ -96,7 +96,7 @@ Document what the CI/CD pipeline shall enforce:
 
 ### Step 7: Write Output
 
-Write the completed document to `../output/Contribution_Guide.md`. Include a Getting Started section that references `Dev_Environment_Setup.md` for initial setup and `Coding_Guidelines.md` for code standards. Include an Issue Reporting section with templates for bug reports and feature requests. Log the total count of process rules defined.
+Write the completed document to `projects/<ProjectName>/<phase>/<document>/Contribution_Guide.md`. Include a Getting Started section that references `Dev_Environment_Setup.md` for initial setup and `Coding_Guidelines.md` for code standards. Include an Issue Reporting section with templates for bug reports and feature requests. Log the total count of process rules defined.
 
 ## Output Format
 
@@ -113,7 +113,7 @@ The generated `Contribution_Guide.md` shall contain these sections in order: Doc
 
 ## Verification Checklist
 
-- [ ] `Contribution_Guide.md` exists in `../output/` with all seven sections populated.
+- [ ] `Contribution_Guide.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all seven sections populated.
 - [ ] Branching strategy defines branch naming conventions with examples.
 - [ ] Commit conventions follow Conventional Commits format with allowed types and scope rules.
 - [ ] PR process defines template, review requirements, and merge strategy.
@@ -127,7 +127,7 @@ The generated `Contribution_Guide.md` shall contain these sections in order: Doc
 |-----------|-------|-------------|
 | Upstream | 02-coding-guidelines | References coding standards for review checklist items |
 | Upstream | 03-dev-environment-setup | References environment setup in Getting Started section |
-| Upstream | `../project_context/tech_stack.md` | Reads VCS and CI/CD tooling details |
+| Upstream | `projects/<ProjectName>/_context/tech_stack.md` | Reads VCS and CI/CD tooling details |
 | Downstream | Development teams | Primary workflow reference for all contributors |
 
 ## Standards

@@ -19,13 +19,13 @@ Run 01-technical-specification FIRST (it translates LLD module contracts into im
 
 ## Dependencies
 
-- **Upstream:** Phase 03 (Design Documentation) -- requires `LLD.md` and `HLD.md` in `../output/`
+- **Upstream:** Phase 03 (Design Documentation) -- requires `LLD.md` and `HLD.md` in `projects/<ProjectName>/<phase>/<document>/`
 - **Downstream:** Phase 05 (Testing) -- consumes Technical_Specification.md for test derivation. Development teams consume all four artifacts during implementation.
 
 ## Input Source
 
-All skills read from `../output/` (LLD.md, HLD.md, SRS_Draft.md) and `../project_context/tech_stack.md`.
+All skills read from `projects/<ProjectName>/<phase>/<document>/` (LLD.md, HLD.md, SRS_Draft.md) and `projects/<ProjectName>/_context/tech_stack.md`.
 
 ## Output Destination
 
-All skills write to `../output/`.
+All skills write to `projects/<ProjectName>/<phase>/<document>/`.

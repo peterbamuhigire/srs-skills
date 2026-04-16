@@ -20,16 +20,16 @@ This is the second skill in Phase 04 (Development Artifacts). It generates langu
 
 ## When to Use
 
-- After `tech_stack.md` exists in `../project_context/` with language and framework details.
-- Optionally after `HLD.md` exists in `../output/` to align coding patterns with architectural decisions.
+- After `tech_stack.md` exists in `projects/<ProjectName>/_context/` with language and framework details.
+- Optionally after `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` to align coding patterns with architectural decisions.
 - Can run in parallel with `03-dev-environment-setup` since they address independent concerns.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../project_context/tech_stack.md`; optionally `../output/HLD.md` |
-| **Output**  | `../output/Coding_Guidelines.md` |
+| **Inputs**  | `projects/<ProjectName>/_context/tech_stack.md`; optionally `projects/<ProjectName>/<phase>/<document>/HLD.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Coding_Guidelines.md` |
 | **Tone**    | Prescriptive, example-driven, enforceable |
 | **Standard** | IEEE 730 |
 
@@ -37,14 +37,14 @@ This is the second skill in Phase 04 (Development Artifacts). It generates langu
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| tech_stack.md | `../project_context/tech_stack.md` | Yes | Languages, frameworks, and tooling to derive conventions from |
-| HLD.md | `../output/HLD.md` | No | Architectural patterns to align coding conventions with |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes | Languages, frameworks, and tooling to derive conventions from |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | No | Architectural patterns to align coding conventions with |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Coding_Guidelines.md | `../output/Coding_Guidelines.md` | Complete coding standards document with conventions, patterns, and quality metrics |
+| Coding_Guidelines.md | `projects/<ProjectName>/<phase>/<document>/Coding_Guidelines.md` | Complete coding standards document with conventions, patterns, and quality metrics |
 
 ## Core Instructions
 
@@ -52,7 +52,7 @@ Follow these seven steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `tech_stack.md` from `../project_context/`. Optionally read `HLD.md` from `../output/`. Log the absolute path of each file read. If `tech_stack.md` is missing, halt execution and report the gap.
+Read `tech_stack.md` from `projects/<ProjectName>/_context/`. Optionally read `HLD.md` from `projects/<ProjectName>/<phase>/<document>/`. Log the absolute path of each file read. If `tech_stack.md` is missing, halt execution and report the gap.
 
 ### Step 2: Define Naming Conventions
 
@@ -97,7 +97,7 @@ Establish logging conventions:
 
 ### Step 7: Write Output
 
-Write the completed document to `../output/Coding_Guidelines.md`. The document shall include a Code Review Checklist section that summarizes all conventions as a reviewable checklist. Log the total count of conventions defined.
+Write the completed document to `projects/<ProjectName>/<phase>/<document>/Coding_Guidelines.md`. The document shall include a Code Review Checklist section that summarizes all conventions as a reviewable checklist. Log the total count of conventions defined.
 
 ## Output Format
 
@@ -114,7 +114,7 @@ The generated `Coding_Guidelines.md` shall contain these sections in order: Docu
 
 ## Verification Checklist
 
-- [ ] `Coding_Guidelines.md` exists in `../output/` with all eight sections populated.
+- [ ] `Coding_Guidelines.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all eight sections populated.
 - [ ] Naming conventions cover files, classes, functions, variables, database columns, and constants.
 - [ ] Anti-patterns include framework-specific items derived from `tech_stack.md`.
 - [ ] Error handling conventions define an exception hierarchy and message format.
@@ -125,7 +125,7 @@ The generated `Coding_Guidelines.md` shall contain these sections in order: Docu
 
 | Direction | Skill | Relationship |
 |-----------|-------|-------------|
-| Upstream | `../project_context/tech_stack.md` | Reads language and framework details |
+| Upstream | `projects/<ProjectName>/_context/tech_stack.md` | Reads language and framework details |
 | Parallel | 03-dev-environment-setup | Independent concern; can run simultaneously |
 | Downstream | 04-contribution-guide | Informs code review checklist and PR standards |
 | Downstream | Phase 05 (Testing) | Informs test naming and test structure conventions |

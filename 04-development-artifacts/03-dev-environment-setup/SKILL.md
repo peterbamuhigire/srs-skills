@@ -20,16 +20,16 @@ This is the third skill in Phase 04 (Development Artifacts). It generates compre
 
 ## When to Use
 
-- After `tech_stack.md` exists in `../project_context/` with toolchain and runtime details.
-- Optionally after `HLD.md` exists in `../output/` to derive infrastructure dependencies (databases, caches, message queues).
+- After `tech_stack.md` exists in `projects/<ProjectName>/_context/` with toolchain and runtime details.
+- Optionally after `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` to derive infrastructure dependencies (databases, caches, message queues).
 - Can run in parallel with `02-coding-guidelines` since they address independent concerns.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../project_context/tech_stack.md`; optionally `../output/HLD.md` |
-| **Output**  | `../output/Dev_Environment_Setup.md` |
+| **Inputs**  | `projects/<ProjectName>/_context/tech_stack.md`; optionally `projects/<ProjectName>/<phase>/<document>/HLD.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Dev_Environment_Setup.md` |
 | **Tone**    | Instructional, step-by-step, platform-aware |
 | **Standard** | IEEE 1074 |
 
@@ -37,14 +37,14 @@ This is the third skill in Phase 04 (Development Artifacts). It generates compre
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| tech_stack.md | `../project_context/tech_stack.md` | Yes | Runtimes, package managers, databases, and infrastructure tools |
-| HLD.md | `../output/HLD.md` | No | Deployment topology to derive local infrastructure dependencies |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes | Runtimes, package managers, databases, and infrastructure tools |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | No | Deployment topology to derive local infrastructure dependencies |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Dev_Environment_Setup.md | `../output/Dev_Environment_Setup.md` | Complete environment setup guide with numbered steps and verification commands |
+| Dev_Environment_Setup.md | `projects/<ProjectName>/<phase>/<document>/Dev_Environment_Setup.md` | Complete environment setup guide with numbered steps and verification commands |
 
 ## Core Instructions
 
@@ -52,7 +52,7 @@ Follow these seven steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `tech_stack.md` from `../project_context/`. Optionally read `HLD.md` from `../output/` for infrastructure context. Log the absolute path of each file read. If `tech_stack.md` is missing, halt execution and report the gap.
+Read `tech_stack.md` from `projects/<ProjectName>/_context/`. Optionally read `HLD.md` from `projects/<ProjectName>/<phase>/<document>/` for infrastructure context. Log the absolute path of each file read. If `tech_stack.md` is missing, halt execution and report the gap.
 
 ### Step 2: Define Prerequisites
 
@@ -97,7 +97,7 @@ Provide IDE configuration guidance:
 
 ### Step 7: Write Output with Verification Steps
 
-Write the completed document to `../output/Dev_Environment_Setup.md`. Include a Verification Checklist section with commands that confirm each component is correctly installed and configured. Include a Troubleshooting section addressing common setup failures. Log the total count of installation steps and verification checks.
+Write the completed document to `projects/<ProjectName>/<phase>/<document>/Dev_Environment_Setup.md`. Include a Verification Checklist section with commands that confirm each component is correctly installed and configured. Include a Troubleshooting section addressing common setup failures. Log the total count of installation steps and verification checks.
 
 ## Output Format
 
@@ -114,7 +114,7 @@ The generated `Dev_Environment_Setup.md` shall contain these sections in order: 
 
 ## Verification Checklist
 
-- [ ] `Dev_Environment_Setup.md` exists in `../output/` with all seven sections populated.
+- [ ] `Dev_Environment_Setup.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all seven sections populated.
 - [ ] Prerequisites list exact version numbers for all runtimes and tools.
 - [ ] Installation steps provide platform-specific commands for at least two operating systems.
 - [ ] Configuration section documents all environment variables with example values.
@@ -126,7 +126,7 @@ The generated `Dev_Environment_Setup.md` shall contain these sections in order: 
 
 | Direction | Skill | Relationship |
 |-----------|-------|-------------|
-| Upstream | `../project_context/tech_stack.md` | Reads toolchain and infrastructure details |
+| Upstream | `projects/<ProjectName>/_context/tech_stack.md` | Reads toolchain and infrastructure details |
 | Parallel | 02-coding-guidelines | Independent concern; can run simultaneously |
 | Downstream | 04-contribution-guide | Informs the "Getting Started" section of the contribution guide |
 | Downstream | Development teams | Primary onboarding reference for new developers |

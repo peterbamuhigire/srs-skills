@@ -6,8 +6,8 @@ This skill produces a development environment setup guide that enables any devel
 
 ## Execution Steps
 
-1. Verify `../project_context/tech_stack.md` exists. Optionally check for `../output/HLD.md` to derive infrastructure dependencies.
-2. Invoke `logic.prompt` or trigger the skill. The skill reads toolchain details, generates platform-specific setup steps, and writes `../output/Dev_Environment_Setup.md`.
+1. Verify `projects/<ProjectName>/_context/tech_stack.md` exists. Optionally check for `projects/<ProjectName>/<phase>/<document>/HLD.md` to derive infrastructure dependencies.
+2. Invoke `logic.prompt` or trigger the skill. The skill reads toolchain details, generates platform-specific setup steps, and writes `projects/<ProjectName>/<phase>/<document>/Dev_Environment_Setup.md`.
 3. Run the verification commands in the Verification Checklist section to confirm the setup guide produces a working environment.
 4. This skill can run in parallel with `02-coding-guidelines`. Once both complete, proceed to `04-contribution-guide`.
 

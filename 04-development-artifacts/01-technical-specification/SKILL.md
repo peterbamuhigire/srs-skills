@@ -20,16 +20,16 @@ This is the first skill in Phase 04 (Development Artifacts). It transforms the L
 
 ## When to Use
 
-- After Phase 03 completes and `LLD.md` exists in `../output/` with module decomposition and class diagrams.
-- When `SRS_Draft.md` is present in `../output/` for requirement traceability.
-- When `tech_stack.md` is present in `../project_context/` for technology-specific implementation details.
+- After Phase 03 completes and `LLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` with module decomposition and class diagrams.
+- When `SRS_Draft.md` is present in `projects/<ProjectName>/<phase>/<document>/` for requirement traceability.
+- When `tech_stack.md` is present in `projects/<ProjectName>/_context/` for technology-specific implementation details.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../output/LLD.md`, `../output/SRS_Draft.md`, `../project_context/tech_stack.md` |
-| **Output**  | `../output/Technical_Specification.md` |
+| **Inputs**  | `projects/<ProjectName>/<phase>/<document>/LLD.md`, `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/_context/tech_stack.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Technical_Specification.md` |
 | **Tone**    | Implementation-precise, contract-driven, developer-facing |
 | **Standard** | IEEE 1016-2009, IEEE 830-1998 |
 
@@ -37,15 +37,15 @@ This is the first skill in Phase 04 (Development Artifacts). It transforms the L
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| LLD.md | `../output/LLD.md` | Yes | Module decomposition, class diagrams, algorithms to formalize as contracts |
-| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Functional requirements for traceability and interface constraints |
-| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, runtime versions, framework-specific implementation details |
+| LLD.md | `projects/<ProjectName>/<phase>/<document>/LLD.md` | Yes | Module decomposition, class diagrams, algorithms to formalize as contracts |
+| SRS_Draft.md | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Yes | Functional requirements for traceability and interface constraints |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes | Technology choices, runtime versions, framework-specific implementation details |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Technical_Specification.md | `../output/Technical_Specification.md` | Complete technical specification with module contracts, data formats, and integration specs |
+| Technical_Specification.md | `projects/<ProjectName>/<phase>/<document>/Technical_Specification.md` | Complete technical specification with module contracts, data formats, and integration specs |
 
 ## Core Instructions
 
@@ -53,7 +53,7 @@ Follow these eight steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `LLD.md` and `SRS_Draft.md` from `../output/` and `tech_stack.md` from `../project_context/`. Log the absolute path of each file read. If any required file is missing, halt execution and report the gap.
+Read `LLD.md` and `SRS_Draft.md` from `projects/<ProjectName>/<phase>/<document>/` and `tech_stack.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. If any required file is missing, halt execution and report the gap.
 
 ### Step 2: Extract Module Contracts from LLD
 
@@ -101,7 +101,7 @@ For each module, provide implementation guidance:
 
 ### Step 8: Write Output with Traceability
 
-Write the completed document to `../output/Technical_Specification.md`. Include a traceability table mapping every module contract to its LLD module and originating SRS requirement IDs. Log the total count of module contracts, data schemas, and integration specifications.
+Write the completed document to `projects/<ProjectName>/<phase>/<document>/Technical_Specification.md`. Include a traceability table mapping every module contract to its LLD module and originating SRS requirement IDs. Log the total count of module contracts, data schemas, and integration specifications.
 
 ## Output Format
 
@@ -118,7 +118,7 @@ The generated `Technical_Specification.md` shall contain these sections in order
 
 ## Verification Checklist
 
-- [ ] `Technical_Specification.md` exists in `../output/` with all eight sections populated.
+- [ ] `Technical_Specification.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all eight sections populated.
 - [ ] Every LLD module has a corresponding contract with public interface, preconditions, and postconditions.
 - [ ] Data format specifications include JSON schemas with typed fields and constraints.
 - [ ] Integration specifications document request/response schemas with status codes.
