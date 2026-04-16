@@ -5,6 +5,8 @@ checks:
   - phase09.audit_report_present
   - phase09.risk_register_links_to_fr
   - phase09.waivers_have_expiry
+  - phase09.id_registry.unknown_id
+  - phase09.id_registry.orphan_id
 deferred_checks:
   - phase09.compliance_controls_have_evidence  # blocked on Plan 06 ControlsCheck
   - phase09.evidence_pack_buildable            # blocked on Plan 07 `engine pack`

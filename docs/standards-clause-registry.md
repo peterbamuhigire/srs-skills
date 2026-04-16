@@ -77,6 +77,8 @@ This document is validated by `scripts/validate_engine.py`: every check ID that 
 | `phase09.audit_report_present` | ISO/IEC 27001:2022 | §9 | `engine/gates/phase09.py` |
 | `phase09.risk_register_links_to_fr` | ISO/IEC 27001:2022 | §9 | `engine/gates/phase09.py` |
 | `phase09.waivers_have_expiry` | ISO/IEC 27001:2022 | §9 | `engine/gates/phase09.py` |
+| `phase09.id_registry.unknown_id` | ISO/IEC 27001:2022 | §9 | `engine/checks/identifier_registry.py` |
+| `phase09.id_registry.orphan_id` | ISO/IEC 27001:2022 | §9 | `engine/checks/identifier_registry.py` |
 
 ## Deferred Checks (not yet emitted)
 

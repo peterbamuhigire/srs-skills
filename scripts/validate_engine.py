@@ -110,6 +110,12 @@ def _collect_check_ids_from_source(errors: list[str]) -> set[str]:
     # appears as a literal gate_id=f"{self.id}.<name>" string. Add it
     # explicitly so the registry assertion covers it.
     ids.add("phase09.traceability")
+    # Phase 09 identifier_registry delegates to IdentifierRegistryCheck,
+    # which emits its own nested gate IDs (`phase09.id_registry.<name>`)
+    # from engine/checks/identifier_registry.py. Add them explicitly so
+    # the registry assertion covers them.
+    ids.add("phase09.id_registry.unknown_id")
+    ids.add("phase09.id_registry.orphan_id")
     return ids
 
 def validate_standards_clause_registry(errors: list[str]) -> None:

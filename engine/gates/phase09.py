@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 from engine.artifact_graph import Artifact, ArtifactGraph
+from engine.checks.identifier_registry import IdentifierRegistryCheck
 from engine.checks.traceability import TraceabilityCheck
 from engine.findings import Finding, FindingCollection, Severity
 from engine.gates.base import Gate
@@ -59,6 +60,7 @@ class Phase09Gate(Gate):
         self._check_audit_report_present(graph, findings)
         self._check_risk_register_links_to_fr(graph, findings)
         self._check_waivers_have_expiry(graph, findings)
+        self._check_identifier_registry(graph, findings)
 
     # -- Check 1: traceability (delegates to TraceabilityCheck) ----------
     def _check_traceability(
@@ -186,3 +188,19 @@ class Phase09Gate(Gate):
                     location=Path("_registry/waivers.yaml"),
                     line=None,
                 ), _CLAUSE))
+
+    # -- Check 5: identifier registry (delegates to IdentifierRegistryCheck) -
+    def _check_identifier_registry(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        if graph.root is None:
+            return
+        registry_path = graph.root / "_registry" / "identifiers.yaml"
+        if not registry_path.exists():
+            return
+        tmp = FindingCollection()
+        IdentifierRegistryCheck(
+            f"{self.id}.id_registry", registry_path
+        ).run(graph, tmp)
+        for f in tmp:
+            findings.add(attach_clause(f, _CLAUSE))
