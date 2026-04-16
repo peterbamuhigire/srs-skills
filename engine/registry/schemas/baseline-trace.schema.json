@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["baseline", "stories"],
+  "properties": {
+    "baseline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "locked_on"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^(FR|NFR)-\\d{3,5}$"},
+          "locked_on": {"type": "string", "format": "date"},
+          "change_control_body": {"type": "string"}
+        }
+      }
+    },
+    "stories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "traces"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^US-\\d{3,5}$"},
+          "traces": {
+            "type": "array",
+            "items": {"type": "string", "pattern": "^(FR|NFR)-\\d{3,5}$"},
+            "minItems": 1
+          },
+          "delta_to_baseline": {"type": "string"}
+        }
+      }
+    }
+  }
+}
