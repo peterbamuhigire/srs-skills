@@ -6,10 +6,14 @@ prefer `python -m engine validate <project-path>`, which validates a single
 project workspace; this script validates the repo-level engine contract.
 """
 from __future__ import annotations
+import re as _re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+_CHECK_ID_PATTERN = _re.compile(r'gate_id=f"\{self\.id\}\.(\w+)"')
+_GATE_ID_PATTERN = _re.compile(r'^\s*id\s*=\s*"(phase\d{2})"', _re.MULTILINE)
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
@@ -79,6 +83,49 @@ def validate_deterministic_gates(errors: list[str]) -> None:
                 f"docs/deterministic-governance.md does not reference the Phase {phase} gate file"
             )
 
+def _collect_check_ids_from_source(errors: list[str]) -> set[str]:
+    """Scan engine/gates/phase*.py for every emitted check ID.
+
+    Scans gate source files (not the CLI registry) so the assertion stays
+    robust even if a gate is temporarily unregistered. Also adds kernel-level
+    check IDs that live outside engine/gates/.
+    """
+    ids: set[str] = set()
+    gates_dir = ROOT / "engine" / "gates"
+    for path in sorted(gates_dir.glob("phase*.py")):
+        src = read_text(path)
+        gate_id_match = _GATE_ID_PATTERN.search(src)
+        if not gate_id_match:
+            errors.append(
+                f"{path.relative_to(ROOT)} does not declare an id = 'phaseNN' attribute"
+            )
+            continue
+        gate_id = gate_id_match.group(1)
+        for check_name in _CHECK_ID_PATTERN.findall(src):
+            ids.add(f"{gate_id}.{check_name}")
+    # Kernel-level check IDs (hard-coded: the kernel markers check lives
+    # outside engine/gates/, so source scanning would miss it).
+    ids.add("kernel.no_unresolved_fail_markers")
+    # Phase 09 traceability delegates to TraceabilityCheck, so it never
+    # appears as a literal gate_id=f"{self.id}.<name>" string. Add it
+    # explicitly so the registry assertion covers it.
+    ids.add("phase09.traceability")
+    return ids
+
+def validate_standards_clause_registry(errors: list[str]) -> None:
+    """Assert every emitted check ID has a row in standards-clause-registry.md."""
+    registry_path = must_exist("docs/standards-clause-registry.md", errors)
+    if registry_path is None:
+        return
+    registry_body = read_text(registry_path)
+    emitted = _collect_check_ids_from_source(errors)
+    for check_id in sorted(emitted):
+        if f"`{check_id}`" not in registry_body:
+            errors.append(
+                f"docs/standards-clause-registry.md does not cover check id `{check_id}` — "
+                f"add a row mapping it to a standard and clause"
+            )
+
 def validate_hybrid_and_regulated_models(errors: list[str]) -> None:
     required_docs = [
         "docs/hybrid-operating-model.md",
@@ -96,6 +143,7 @@ def main() -> int:
     errors: list[str] = []
     validate_root_pathing(errors)
     validate_deterministic_gates(errors)
+    validate_standards_clause_registry(errors)
     validate_hybrid_and_regulated_models(errors)
     if errors:
         print("ENGINE CONTRACT: FAIL")
@@ -105,6 +153,7 @@ def main() -> int:
     print("ENGINE CONTRACT: PASS")
     print("- Canonical pathing and alias semantics are documented.")
     print("- Deterministic gate docs exist for phases 01-09.")
+    print("- Standards clause registry is complete.")
     print("- Hybrid operating model is documented.")
     print("- Regulated evidence model is documented.")
     print()
