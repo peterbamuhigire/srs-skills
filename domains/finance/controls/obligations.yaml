@@ -1,0 +1,20 @@
+obligations:
+  - obligation: "Render stored cardholder data unreadable"
+    framework: "PCI-DSS v4.0"
+    clause: "3.5"
+    satisfied_by: [CTRL-FIN-001]
+
+  - obligation: "Limit access to system components and cardholder data to business need-to-know"
+    framework: "PCI-DSS v4.0"
+    clause: "7.1"
+    satisfied_by: [CTRL-FIN-002]
+
+  - obligation: "Run external vulnerability scans at least quarterly"
+    framework: "PCI-DSS v4.0"
+    clause: "11.3"
+    satisfied_by: [CTRL-FIN-003]
+
+  - obligation: "Establish segregation of duties for financial reporting controls"
+    framework: "Sarbanes-Oxley Act"
+    clause: "§404"
+    satisfied_by: [CTRL-FIN-004]

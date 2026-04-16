@@ -1,0 +1,49 @@
+# TODO: expand with additional controls — this is a minimum-viable starter library.
+# Contribute additions via PR; engine validates the schema at load time.
+domain: finance
+version: "1.0"
+source_framework: "PCI-DSS v4.0 + SOX §404"
+controls:
+  - id: CTRL-FIN-001
+    title: Encrypt cardholder data at rest
+    category: encryption
+    verification_kinds: [config_inspection, test]
+    minimum_evidence:
+      - "Database design specifies strong cryptography for stored PAN"
+      - "Test case verifies PAN is never returned in plaintext by any API"
+    regulatory_anchor:
+      framework: "PCI-DSS v4.0"
+      clause: "3.5"
+
+  - id: CTRL-FIN-002
+    title: Restrict access by business need-to-know
+    category: access_control
+    verification_kinds: [policy_inspection, design_review]
+    minimum_evidence:
+      - "Access-control matrix enumerates roles and permitted data scopes"
+      - "Review procedure documents quarterly access recertification"
+    regulatory_anchor:
+      framework: "PCI-DSS v4.0"
+      clause: "7.1"
+
+  - id: CTRL-FIN-003
+    title: Quarterly vulnerability scans
+    category: monitoring
+    verification_kinds: [audit_log_inspection, policy_inspection]
+    minimum_evidence:
+      - "Runbook schedules quarterly ASV scans"
+      - "Scan report retention policy documented"
+    regulatory_anchor:
+      framework: "PCI-DSS v4.0"
+      clause: "11.3"
+
+  - id: CTRL-FIN-004
+    title: Segregation of duties for financial reporting
+    category: change_control
+    verification_kinds: [policy_inspection, design_review]
+    minimum_evidence:
+      - "Approval workflow requires preparer and approver to be different identities"
+      - "Audit trail records both roles for each reporting cycle"
+    regulatory_anchor:
+      framework: "Sarbanes-Oxley Act"
+      clause: "§404"

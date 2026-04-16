@@ -1,0 +1,29 @@
+expectations:
+  consent:
+    must_appear_in:
+      - 02-requirements-engineering/srs/3.2*
+      - 03-design-documentation/05-ux-specification/*
+  encryption:
+    must_appear_in:
+      - 03-design-documentation/04-database-design/*
+      - 05-testing-documentation/test-plan/*
+  incident_response:
+    must_appear_in:
+      - 06-deployment-operations/runbook/*
+      - 06-deployment-operations/incident-response/*
+  access_control:
+    must_appear_in:
+      - 02-requirements-engineering/srs/3.2*
+      - 05-testing-documentation/test-plan/*
+  audit_logging:
+    must_appear_in:
+      - 03-design-documentation/*
+      - 06-deployment-operations/runbook/*
+  monitoring:
+    must_appear_in:
+      - 06-deployment-operations/runbook/*
+      - 06-deployment-operations/monitoring/*
+  change_control:
+    must_appear_in:
+      - 03-design-documentation/*
+      - 04-development/*

@@ -1,0 +1,10 @@
+required_reviews:
+  - control_category: encryption
+    reviewer_role: "Security Architect"
+    cadence: "per release"
+  - control_category: access_control
+    reviewer_role: "Internal Audit"
+    cadence: "per quarter"
+  - control_category: change_control
+    reviewer_role: "SOX Compliance Lead"
+    cadence: "per release"
