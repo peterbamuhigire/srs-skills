@@ -3,11 +3,15 @@ from __future__ import annotations
 import re
 from pathlib import Path
 from engine.artifact_graph import Artifact, ArtifactGraph
+from engine.checks.adr_catalog import AdrCatalogCheck
+from engine.checks.baseline_delta import BaselineDeltaCheck
+from engine.checks.change_impact import ChangeImpactCheck
 from engine.checks.controls import ControlsCheck
 from engine.checks.glossary_registry import GlossaryRegistryCheck
 from engine.checks.identifier_registry import IdentifierRegistryCheck
 from engine.checks.nfr_threshold_dedup import NfrThresholdDedupCheck
 from engine.checks.obligations import ObligationsCheck
+from engine.checks.sign_off import SignOffCheck
 from engine.checks.traceability import TraceabilityCheck
 from engine.findings import Finding, FindingCollection, Severity
 from engine.gates.base import Gate
@@ -92,6 +96,11 @@ class Phase09Gate(Gate):
         self._check_nfr_threshold_dedup(graph, findings)
         self._check_controls(graph, findings)
         self._check_obligations(graph, findings)
+        self._check_adr_catalog(graph, findings)
+        self._check_change_impact(graph, findings)
+        self._check_baseline_delta(graph, findings)
+        self._check_sign_off(graph, findings)
+        self._check_evidence_pack_buildable(graph, findings)
 
     # -- Check 1: traceability (delegates to TraceabilityCheck) ----------
     def _check_traceability(
@@ -304,3 +313,97 @@ class Phase09Gate(Gate):
         ).run(graph, tmp)
         for f in tmp:
             findings.add(attach_clause(f, _CLAUSE))
+
+    # -- Check 10: ADR catalog (delegates to AdrCatalogCheck) ----------------
+    def _check_adr_catalog(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        if graph.root is None:
+            return
+        catalog_path = graph.root / "_registry" / "adr-catalog.yaml"
+        if not catalog_path.exists():
+            return
+        tmp = FindingCollection()
+        AdrCatalogCheck(
+            f"{self.id}.adr_catalog", graph.root
+        ).run(graph, tmp)
+        for f in tmp:
+            findings.add(attach_clause(f, _CLAUSE))
+
+    # -- Check 11: change-impact (delegates to ChangeImpactCheck) ------------
+    def _check_change_impact(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        if graph.root is None:
+            return
+        cia_path = graph.root / "_registry" / "change-impact.yaml"
+        if not cia_path.exists():
+            return
+        tmp = FindingCollection()
+        ChangeImpactCheck(
+            f"{self.id}.change_impact", graph.root
+        ).run(graph, tmp)
+        for f in tmp:
+            findings.add(attach_clause(f, _CLAUSE))
+
+    # -- Check 12: baseline-delta (delegates to BaselineDeltaCheck) ----------
+    def _check_baseline_delta(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        if graph.root is None:
+            return
+        baselines_path = graph.root / "_registry" / "baselines.yaml"
+        if not baselines_path.exists():
+            return
+        tmp = FindingCollection()
+        BaselineDeltaCheck(
+            f"{self.id}.baseline_delta", graph.root
+        ).run(graph, tmp)
+        for f in tmp:
+            findings.add(attach_clause(f, _CLAUSE))
+
+    # -- Check 13: sign-off ledger (delegates to SignOffCheck) ---------------
+    def _check_sign_off(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        if graph.root is None:
+            return
+        ledger_path = graph.root / "_registry" / "sign-off-ledger.yaml"
+        if not ledger_path.exists():
+            return
+        tmp = FindingCollection()
+        SignOffCheck(
+            f"{self.id}.sign_off", graph.root
+        ).run(graph, tmp)
+        for f in tmp:
+            findings.add(attach_clause(f, _CLAUSE))
+
+    # -- Check 14: evidence pack buildable -----------------------------------
+    def _check_evidence_pack_buildable(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        if graph.root is None:
+            return
+        import tempfile
+        from engine.pack import build_evidence_pack
+        tmp_fh = tempfile.NamedTemporaryFile(suffix=".zip", delete=False)
+        tmp_path = Path(tmp_fh.name)
+        tmp_fh.close()
+        try:
+            try:
+                build_evidence_pack(graph.root, tmp_path)
+                if tmp_path.stat().st_size == 0:
+                    raise RuntimeError("empty pack")
+            except Exception as exc:
+                findings.add(attach_clause(Finding(
+                    gate_id=f"{self.id}.evidence_pack_buildable",
+                    severity=Severity.HIGH,
+                    message=f"Evidence pack could not be built: {exc}",
+                    location=None, line=None,
+                ), _CLAUSE))
+        finally:
+            if tmp_path.exists():
+                try:
+                    tmp_path.unlink()
+                except OSError:
+                    pass

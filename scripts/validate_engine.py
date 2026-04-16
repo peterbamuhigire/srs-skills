@@ -137,6 +137,19 @@ def _collect_check_ids_from_source(errors: list[str]) -> set[str]:
     # (engine/checks/obligations.py).
     ids.add("phase09.obligations.missing_framework_coverage")
     ids.add("phase09.obligations.unsatisfied")
+    # Phase 09 enterprise-artifact checks (Plan 07): adr_catalog,
+    # change_impact, baseline_delta, sign_off each delegate to a Check
+    # class in engine/checks/, so their nested gate IDs are not scanned
+    # from gate source. Add them explicitly.
+    ids.add("phase09.adr_catalog.uncatalogued")
+    ids.add("phase09.adr_catalog.missing_file")
+    ids.add("phase09.adr_catalog.dangling_supersession")
+    ids.add("phase09.adr_catalog.schema_violation")
+    ids.add("phase09.change_impact.missing_rollback_plan")
+    ids.add("phase09.change_impact.schema_violation")
+    ids.add("phase09.baseline_delta.current_missing")
+    ids.add("phase09.sign_off.missing_artifact")
+    ids.add("phase09.sign_off.schema_violation")
     # Phase 02 delegates its four checks (smart_nfr, stimulus_response,
     # id_registry, glossary_registry) to engine/checks/ modules. None of
     # them emit findings via the `gate_id=f"{self.id}.<name>"` literal the

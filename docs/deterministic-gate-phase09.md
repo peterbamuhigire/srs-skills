@@ -16,9 +16,18 @@ checks:
   - phase09.controls.unused_in_artifacts
   - phase09.obligations.missing_framework_coverage
   - phase09.obligations.unsatisfied
+  - phase09.adr_catalog.uncatalogued
+  - phase09.adr_catalog.missing_file
+  - phase09.adr_catalog.dangling_supersession
+  - phase09.adr_catalog.schema_violation
+  - phase09.change_impact.missing_rollback_plan
+  - phase09.change_impact.schema_violation
+  - phase09.baseline_delta.current_missing
+  - phase09.sign_off.missing_artifact
+  - phase09.sign_off.schema_violation
+  - phase09.evidence_pack_buildable
 deferred_checks:
   - phase09.compliance_controls_have_evidence  # blocked on Plan 06 ControlsCheck
-  - phase09.evidence_pack_buildable            # blocked on Plan 07 `engine pack`
 clause_refs:
   - standard: "ISO/IEC 27001:2022"
     clause: "9"

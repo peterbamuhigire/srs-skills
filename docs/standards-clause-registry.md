@@ -99,6 +99,16 @@ This document is validated by `scripts/validate_engine.py`: every check ID that 
 | `phase09.controls.unused_in_artifacts` | ISO/IEC 27001:2022 | §9 | `engine/checks/controls.py` |
 | `phase09.obligations.missing_framework_coverage` | ISO/IEC 27001:2022 | §9 | `engine/checks/obligations.py` |
 | `phase09.obligations.unsatisfied` | ISO/IEC 27001:2022 | §9 | `engine/checks/obligations.py` |
+| `phase09.adr_catalog.uncatalogued` | ISO/IEC 27001:2022 | §9 | `engine/checks/adr_catalog.py` |
+| `phase09.adr_catalog.missing_file` | ISO/IEC 27001:2022 | §9 | `engine/checks/adr_catalog.py` |
+| `phase09.adr_catalog.dangling_supersession` | ISO/IEC 27001:2022 | §9 | `engine/checks/adr_catalog.py` |
+| `phase09.adr_catalog.schema_violation` | ISO/IEC 27001:2022 | §9 | `engine/checks/adr_catalog.py` |
+| `phase09.change_impact.missing_rollback_plan` | ISO/IEC 27001:2022 | §9 | `engine/checks/change_impact.py` |
+| `phase09.change_impact.schema_violation` | ISO/IEC 27001:2022 | §9 | `engine/checks/change_impact.py` |
+| `phase09.baseline_delta.current_missing` | ISO/IEC 27001:2022 | §9 | `engine/checks/baseline_delta.py` |
+| `phase09.sign_off.missing_artifact` | ISO/IEC 27001:2022 | §9 | `engine/checks/sign_off.py` |
+| `phase09.sign_off.schema_violation` | ISO/IEC 27001:2022 | §9 | `engine/checks/sign_off.py` |
+| `phase09.evidence_pack_buildable` | ISO/IEC 27001:2022 | §9 | `engine/gates/phase09.py` |
 
 ## Hybrid Synchronization (active only when methodology: hybrid)
 
@@ -117,7 +127,6 @@ These check IDs are listed in phase-gate frontmatter as deferred — their imple
 | Check ID | Blocker | Expected Standard / Clause |
 |---|---|---|
 | `phase09.compliance_controls_have_evidence` | Plan 06 `ControlsCheck` | ISO/IEC 27001:2022 §9 |
-| `phase09.evidence_pack_buildable` | Plan 07 `engine pack` command | ISO/IEC 27001:2022 §9 |
 
 ## Kernel-Level Checks
 
