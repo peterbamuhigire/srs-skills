@@ -16,4 +16,4 @@ def test_raises_when_no_context_dir(tmp_path: Path):
 def test_lists_all_artifacts(tiny_project: Path):
     ws = Workspace.load(tiny_project)
     paths = sorted(p.name for p in ws.iter_artifacts())
-    assert paths == ["glossary.md", "vision.md"]
+    assert paths == ["3.2-functional-requirements.md", "glossary.md", "vision.md"]
