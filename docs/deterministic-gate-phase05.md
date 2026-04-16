@@ -1,3 +1,15 @@
+---
+gate: phase05
+checks:
+  - phase05.normative_test_structure
+  - phase05.required_evidence
+  - phase05.coverage_measurable
+  - phase05.exit_evidence
+clause_refs:
+  - standard: "BS ISO/IEC/IEEE 29119-3:2013"
+    clause: "7.2"
+---
+
 # Phase 05 Deterministic Gate
 
 Phase 05 is the current reference implementation for deterministic enforcement.
