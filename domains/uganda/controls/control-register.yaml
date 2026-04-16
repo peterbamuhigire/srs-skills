@@ -1,0 +1,47 @@
+domain: uganda
+version: "1.0"
+source_framework: "Uganda Data Protection and Privacy Act 2019"
+controls:
+  - id: CTRL-UG-001
+    title: Lawful basis for personal data collection
+    category: consent
+    verification_kinds: [policy_inspection, design_review]
+    minimum_evidence:
+      - "_context/quality-standards.md references DPPA-2019 §7"
+      - "Functional requirement that collects PII has a paired FR for consent capture"
+    regulatory_anchor:
+      framework: "Uganda DPPA 2019"
+      clause: "§7"
+
+  - id: CTRL-UG-002
+    title: Encryption of special personal data at rest
+    category: encryption
+    verification_kinds: [config_inspection, test]
+    minimum_evidence:
+      - "Database design specifies AES-256-GCM for fields tagged S-tier"
+      - "Test case verifies ciphertext is never returned in API responses"
+    regulatory_anchor:
+      framework: "Uganda DPPA 2019"
+      clause: "§19"
+
+  - id: CTRL-UG-003
+    title: Breach notification to PDPO
+    category: incident_response
+    verification_kinds: [policy_inspection, design_review]
+    minimum_evidence:
+      - "Runbook contains a 'Notify PDPO immediately' step"
+      - "Incident-response design includes the PDPO contact channel"
+    regulatory_anchor:
+      framework: "Uganda DPPA 2019"
+      clause: "§23"
+
+  - id: CTRL-UG-004
+    title: Data subject access request handling
+    category: access_control
+    verification_kinds: [test, design_review]
+    minimum_evidence:
+      - "FR for DSAR exists with stimulus-response form"
+      - "Test case proves DSAR fulfilment within 30 days"
+    regulatory_anchor:
+      framework: "Uganda DPPA 2019"
+      clause: "§30"

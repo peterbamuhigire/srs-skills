@@ -1,0 +1,20 @@
+obligations:
+  - obligation: "Obtain lawful basis before processing personal data"
+    framework: "Uganda DPPA 2019"
+    clause: "§7"
+    satisfied_by: [CTRL-UG-001]
+
+  - obligation: "Encrypt special personal data at rest"
+    framework: "Uganda DPPA 2019"
+    clause: "§19(2)"
+    satisfied_by: [CTRL-UG-002]
+
+  - obligation: "Notify the PDPO of any data breach without undue delay"
+    framework: "Uganda DPPA 2019"
+    clause: "§23"
+    satisfied_by: [CTRL-UG-003]
+
+  - obligation: "Provide data subjects with access to their data within 30 days"
+    framework: "Uganda DPPA 2019"
+    clause: "§30"
+    satisfied_by: [CTRL-UG-004]

@@ -1,0 +1,10 @@
+required_reviews:
+  - control_category: encryption
+    reviewer_role: "Security Architect"
+    cadence: "per release"
+  - control_category: incident_response
+    reviewer_role: "DPO"
+    cadence: "per quarter"
+  - control_category: consent
+    reviewer_role: "Legal"
+    cadence: "per release"
