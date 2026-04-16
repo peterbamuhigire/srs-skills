@@ -93,3 +93,45 @@ def test_flags_dod_without_compliance_reference(tmp_path):
             if f.gate_id == "phase07.dod_references_compliance"]
     assert msgs, "expected a dod_references_compliance finding"
     assert "does not reference any compliance or quality standard" in msgs[0]
+
+
+# -- sprint_artifacts_have_ids ----------------------------------------------
+
+def test_passes_when_sprint_items_have_ids(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "07-agile-artifacts/sprint-plan.md": (
+            "# Sprint Plan\n"
+            "\n"
+            "## Committed items\n"
+            "\n"
+            "- **FR-0101** Implement loan scoring module.\n"
+            "- **FR-0102** Add reviewer assignment UI.\n"
+            "- **NFR-0210** Latency budget for scoring endpoint.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase07Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase07.sprint_artifacts_have_ids") == []
+
+
+def test_flags_sprint_items_without_ids(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "07-agile-artifacts/sprint-plan.md": (
+            "# Sprint Plan\n"
+            "\n"
+            "## Committed items\n"
+            "\n"
+            "- Implement loan scoring module.\n"
+            "- **FR-0102** Add reviewer assignment UI.\n"
+            "- Improve dashboard performance.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase07Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase07.sprint_artifacts_have_ids"]
+    assert len(msgs) == 2, f"expected 2 findings, got {len(msgs)}: {msgs}"
+    assert all("no identifier" in m for m in msgs)
+    assert all("expected **XX-###** marker" in m for m in msgs)

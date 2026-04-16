@@ -26,6 +26,9 @@ _DOD_SIGNAL_RE = re.compile(
     r"|\bGDPR\b|\bHIPAA\b|\bPCI[- ]DSS\b|\bDPPA\b",
     re.IGNORECASE,
 )
+_SPRINT_PREFIX_RE = re.compile(r"sprint-\d+", re.IGNORECASE)
+_BULLET_LINE_RE = re.compile(r"^- +")
+_BULLET_ID_RE = re.compile(r"\*\*([A-Z]{2,5}-\d{3,5})\*\*")
 
 
 def _posix(path) -> str:
@@ -54,6 +57,25 @@ def _find_dod(graph: ArtifactGraph):
     return None
 
 
+def _is_sprint_artifact(art: Artifact) -> bool:
+    name = art.path.name.lower()
+    if "sprint-plan" in name or "sprint-backlog" in name:
+        return True
+    if _SPRINT_PREFIX_RE.match(name):
+        return True
+    return False
+
+
+def _find_sprint_artifacts(graph: ArtifactGraph):
+    out = []
+    for art in graph.artifacts:
+        if not _under_phase07(art):
+            continue
+        if _is_sprint_artifact(art):
+            out.append(art)
+    return out
+
+
 class Phase07Gate(Gate):
     id = "phase07"
     title = "Agile Artifacts phase gate"
@@ -62,6 +84,7 @@ class Phase07Gate(Gate):
     def evaluate(self, graph: ArtifactGraph, findings: FindingCollection) -> None:
         self._check_dor_references_baseline(graph, findings)
         self._check_dod_references_compliance(graph, findings)
+        self._check_sprint_artifacts_have_ids(graph, findings)
 
     # -- Check 1: DoR references baseline --------------------------------
     def _check_dor_references_baseline(
@@ -127,3 +150,26 @@ class Phase07Gate(Gate):
             location=dod.path,
             line=None,
         ), _CLAUSE))
+
+    # -- Check 3: sprint artifacts have IDs ------------------------------
+    def _check_sprint_artifacts_have_ids(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        sprint_arts = _find_sprint_artifacts(graph)
+        for art in sprint_arts:
+            for idx, line in enumerate(art.body.splitlines(), start=1):
+                if not _BULLET_LINE_RE.match(line):
+                    continue
+                if _BULLET_ID_RE.search(line):
+                    continue
+                findings.add(attach_clause(Finding(
+                    gate_id=f"{self.id}.sprint_artifacts_have_ids",
+                    severity=Severity.HIGH,
+                    message=(
+                        f"Sprint artifact '{_posix(art.path)}' line "
+                        f"{idx} has no identifier "
+                        f"(expected **XX-###** marker)"
+                    ),
+                    location=art.path,
+                    line=idx,
+                ), _CLAUSE))
