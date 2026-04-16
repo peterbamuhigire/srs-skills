@@ -27,6 +27,12 @@ _ENV_VERIFY_MARKERS = ("verify", "test", "check", "validate")
 _TECH_SPEC_NAME_TOKENS = ("tech-spec", "technical-specification")
 _FR_REF_RE = re.compile(r"\bFR-\d{3,5}\b")
 
+_CONTRIB_GUIDE_SUFFIXES = (
+    "contributing.md",
+    "contribution-guide.md",
+    "contrib.md",
+)
+
 
 def _posix(path) -> str:
     return str(path).replace("\\", "/")
@@ -48,6 +54,7 @@ class Phase04Gate(Gate):
         self._check_coding_standards_referenced(graph, findings)
         self._check_env_setup_reproducible(graph, findings)
         self._check_tech_spec_links_to_fr(graph, findings)
+        self._check_contrib_guide_present(graph, findings)
 
     # -- Check 1: coding standards referenced ----------------------------
     def _check_coding_standards_referenced(
@@ -140,3 +147,21 @@ class Phase04Gate(Gate):
                 location=art.path,
                 line=None,
             ), _CLAUSE))
+
+    # -- Check 4: contribution guide present -----------------------------
+    def _check_contrib_guide_present(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        for art in graph.artifacts:
+            if art.path.name.lower() in _CONTRIB_GUIDE_SUFFIXES:
+                return
+        findings.add(attach_clause(Finding(
+            gate_id=f"{self.id}.contrib_guide_present",
+            severity=Severity.HIGH,
+            message=(
+                "No contribution guide found (expected 'CONTRIBUTING.md', "
+                "'contribution-guide.md', or 'contrib.md')"
+            ),
+            location=None,
+            line=None,
+        ), _CLAUSE))

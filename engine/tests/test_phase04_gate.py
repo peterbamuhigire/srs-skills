@@ -145,3 +145,49 @@ def test_skips_tech_spec_check_when_no_tech_spec_artifacts(tmp_path):
     findings = FindingCollection()
     Phase04Gate().evaluate(graph, findings)
     assert findings.for_gate("phase04.tech_spec_links_to_fr") == []
+
+
+# -- contrib_guide_present --------------------------------------------------
+
+def test_passes_when_contrib_guide_present(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "04-development/coding-standards.md": "# Coding Standards",
+        "04-development/env-setup.md": (
+            "# Env Setup\nPrerequisites: Node.\nInstall: npm install.\nVerify: npm test."
+        ),
+        "CONTRIBUTING.md": "# Contributing",
+    })
+    findings = FindingCollection()
+    Phase04Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase04.contrib_guide_present") == []
+
+
+def test_flags_missing_contrib_guide(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "04-development/coding-standards.md": "# Coding Standards",
+        "04-development/env-setup.md": (
+            "# Env Setup\nPrerequisites: Node.\nInstall: npm install.\nVerify: npm test."
+        ),
+    })
+    findings = FindingCollection()
+    Phase04Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase04.contrib_guide_present"]
+    assert msgs, "expected a contrib_guide_present finding"
+    assert "CONTRIBUTING.md" in msgs[0] or "contribution" in msgs[0].lower()
+
+
+# -- clause attachment ------------------------------------------------------
+
+def test_findings_carry_iso_12207_clause_label(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+    })
+    findings = FindingCollection()
+    Phase04Gate().evaluate(graph, findings)
+    assert len(findings) > 0
+    for f in findings:
+        assert "ISO/IEC/IEEE 12207:2017" in f.message
+        assert "6.4.5" in f.message
