@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This phase generates design documentation that translates verified requirements into implementable system blueprints. It now covers core software architecture plus UX, infrastructure, and IoT-specific design so the engine can support both conventional systems and connected products.
+This phase generates design documentation that translates verified requirements into implementable system blueprints. It covers core software architecture plus UX, infrastructure, and IoT-specific design so the engine can support both conventional systems and connected products.
 
 ## Sub-Skills
 
@@ -28,21 +28,18 @@ Once the architectural baseline exists:
 
 ## Dependencies
 
-- **Upstream:** Phase 02 (Requirements Engineering) requires `SRS_Draft.md` in `../output/`.
-- **Additional upstream context:** business process models, rule catalogs, and discovery outputs improve the quality of design decisions when available.
-- **Downstream:** Phase 04 (Development) consumes HLD, LLD, API, database, UX, infrastructure, and IoT design outputs as applicable. Phase 05 (Testing) uses these artifacts to derive test strategy and detailed test assets. Phase 06 (Deployment & Operations) consumes infrastructure and IoT operational assumptions.
+- Upstream: Phase 02 (Requirements Engineering) provides `SRS_Draft.md`, user stories, and related traceable requirement artifacts in the active project workspace.
+- Additional upstream context: business process models, rule catalogs, and discovery outputs improve design quality when available.
+- Downstream: Phase 04 (Development), Phase 05 (Testing), and Phase 06 (Deployment & Operations) consume the outputs as applicable.
 
-## Input Source
+## Workspace Model
 
-All skills read from `../output/` and `../project_context/`, with `SRS_Draft.md` and `tech_stack.md` as the common baseline inputs.
+The canonical runtime workspace for this phase is `projects/<ProjectName>/`.
 
-Additional high-value inputs include:
+- Context source of truth: `projects/<ProjectName>/_context/`
+- Requirements inputs: `projects/<ProjectName>/02-requirements-engineering/...`
+- Generated design artifacts: `projects/<ProjectName>/03-design-documentation/...`
 
-- `business_process_models.md`
-- `business_rules_catalog.md`
-- `solution_discovery_report.md`
-- `quality_standards.md`
+Existing skill-local references to `../project_context/` and `../output/` are compatibility aliases into the active project workspace.
 
-## Output Destination
-
-All skills write to `../output/`.
+Common baseline inputs include `SRS_Draft.md`, `tech_stack.md`, `business_process_models.md`, `business_rules_catalog.md`, `solution_discovery_report.md`, and `quality_standards.md`.

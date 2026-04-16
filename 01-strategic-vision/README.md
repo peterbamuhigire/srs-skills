@@ -14,17 +14,18 @@ This phase generates the strategic foundation documents that define project dire
 
 ## Execution Order
 
-Run vision-statement FIRST (it establishes the formal vision), then PRD (which builds on the vision to define product requirements), then business-case (which justifies the investment using PRD data).
+Run vision-statement first because it establishes the formal product and stakeholder direction. Run PRD next to convert that direction into scoped capabilities and quality expectations. Run business-case last so investment logic uses the current vision and PRD assumptions.
 
 ## Dependencies
 
-- **Upstream:** Phase 00 (Meta-Initialization) — requires methodology.md
-- **Downstream:** Phase 02 (Requirements Engineering) — consumes Vision_Statement.md and PRD.md
+- Upstream: Phase 00 (Meta-Initialization) establishes methodology and workspace targeting.
+- Downstream: Phase 02 (Requirements Engineering) consumes the strategic outputs to derive formal requirements or Agile stories.
 
-## Input Source
+## Workspace Model
 
-All skills read from `../project_context/` (vision.md, stakeholders.md, features.md, glossary.md).
+The canonical runtime workspace for this phase is `projects/<ProjectName>/`.
 
-## Output Destination
+- Context source of truth: `projects/<ProjectName>/_context/`
+- Generated artifacts: `projects/<ProjectName>/01-strategic-vision/...`
 
-All skills write to `../output/`.
+Existing skill-local references to `../project_context/` and `../output/` are compatibility aliases into the active project workspace, not a second architecture.

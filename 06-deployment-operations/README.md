@@ -16,27 +16,24 @@ This phase generates deployment and operational documentation that prepares the 
 
 ## Execution Order
 
-Run `01-deployment-guide` first because it establishes the baseline release procedure. Then run `02-runbook` and `03-monitoring-setup` in parallel, since they cover distinct operational concerns.
+Run `01-deployment-guide` first because it establishes the baseline release procedure. Then run `02-runbook` and `03-monitoring-setup` in parallel because they cover distinct operational concerns.
 
-Run `04-infrastructure-docs` after the deployment and observability picture is clear. Run `05-go-live-readiness` last, because it consumes evidence from the other operational skills and turns them into an explicit launch recommendation with blockers, conditions, rollback triggers, and hypercare planning.
+Run `04-infrastructure-docs` after the deployment and observability picture is clear. Run `05-go-live-readiness` last because it consumes evidence from the other operational skills and turns them into an explicit launch recommendation with blockers, conditions, rollback triggers, and hypercare planning.
 
 ## Dependencies
 
-- **Upstream:** Phase 03 (Design Documentation) requires `HLD.md` and other design artifacts in `../output/`.
-- **Additional upstream context:** transition planning, evaluation results, and quality targets strengthen launch readiness decisions when present.
-- **Downstream:** Phase 08 (User Documentation) consumes operational outputs for administrator and support guidance. Release governance and product stakeholders consume the go-live readiness report directly.
+- Upstream: Phase 03 (Design Documentation) provides HLD and related design artifacts in the active project workspace.
+- Additional upstream context: testing evidence, transition planning, evaluation results, and quality targets strengthen launch readiness decisions.
+- Downstream: Phase 08 (End-User Documentation) and Phase 09 (Governance & Compliance) consume operational outputs and evidence.
 
-## I/O
+## Workspace Model
 
-All skills read from `../output/` and `../project_context/`. Common inputs include:
+The canonical runtime workspace for this phase is `projects/<ProjectName>/`.
 
-- `HLD.md`
-- `Database_Design.md`
-- `Deployment_Guide.md`
-- `Runbook.md`
-- `Monitoring_Setup.md`
-- `Infrastructure_Docs.md`
-- `quality_standards.md`
-- `solution_evaluation_transition_plan.md`
+- Context source of truth: `projects/<ProjectName>/_context/`
+- Design and test evidence inputs: `projects/<ProjectName>/03-design-documentation/...` and `projects/<ProjectName>/05-testing-documentation/...`
+- Generated operational artifacts: `projects/<ProjectName>/06-deployment-operations/...`
 
-All skills write to `../output/`.
+Existing skill-local references to `../project_context/` and `../output/` are compatibility aliases into the active project workspace.
+
+Common inputs include `HLD.md`, `Database_Design.md`, `Deployment_Guide.md`, `Runbook.md`, `Monitoring_Setup.md`, `Infrastructure_Docs.md`, `quality_standards.md`, and `solution_evaluation_transition_plan.md`.
