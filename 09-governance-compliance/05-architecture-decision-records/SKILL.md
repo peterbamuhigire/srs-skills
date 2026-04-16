@@ -65,3 +65,7 @@ adrs:
     deciders: ["Chief Architect", "Tech Lead"]
     affects: ["03-design-documentation"]
 ```
+
+## Worked example
+
+See [`examples/representative/`](examples/representative/).
