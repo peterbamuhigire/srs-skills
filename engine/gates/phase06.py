@@ -16,6 +16,10 @@ _RUNBOOK_NAMES = ("runbook.md", "operations-runbook.md")
 _ROLLBACK_RE = re.compile(r"\b(rollback|roll\s+back)\b", re.IGNORECASE)
 _ESCALATION_RE = re.compile(r"\b(escalat(e|ion))\b", re.IGNORECASE)
 _SLO_RE = re.compile(r"\b(SLO|SLI|SLA)\b", re.IGNORECASE)
+_IR_DIAGRAM_RE = re.compile(
+    r"\b(incident[- ]?response|\bIR\b)\b.*(diagram|flow|mermaid|plantuml|!\[)",
+    re.IGNORECASE | re.DOTALL,
+)
 
 
 def _posix(path) -> str:
@@ -54,6 +58,16 @@ def _find_monitoring_doc(graph: ArtifactGraph):
     return None
 
 
+def _find_infra_doc(graph: ArtifactGraph):
+    for art in graph.artifacts:
+        if not _under_phase06(art):
+            continue
+        name = art.path.name.lower()
+        if "infra" in name or "infrastructure" in name:
+            return art
+    return None
+
+
 class Phase06Gate(Gate):
     id = "phase06"
     title = "Deployment & Operations phase gate"
@@ -63,6 +77,7 @@ class Phase06Gate(Gate):
         self._check_deployment_guide_has_rollback(graph, findings)
         self._check_runbook_has_escalation(graph, findings)
         self._check_monitoring_has_slo(graph, findings)
+        self._check_infra_has_ir_diagram(graph, findings)
 
     # -- Check 1: deployment guide has rollback --------------------------
     def _check_deployment_guide_has_rollback(
@@ -150,6 +165,37 @@ class Phase06Gate(Gate):
             message=(
                 f"Monitoring document '{_posix(doc.path)}' has no "
                 f"SLO/SLI/SLA reference"
+            ),
+            location=doc.path,
+            line=None,
+        ), _CLAUSE))
+
+    # -- Check 4: infrastructure has IR diagram --------------------------
+    def _check_infra_has_ir_diagram(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        doc = _find_infra_doc(graph)
+        if doc is None:
+            findings.add(attach_clause(Finding(
+                gate_id=f"{self.id}.infra_has_ir_diagram",
+                severity=Severity.HIGH,
+                message=(
+                    "No infrastructure document found under "
+                    "06-deployment-operations/ (expected filename "
+                    "containing 'infra' or 'infrastructure')"
+                ),
+                location=None,
+                line=None,
+            ), _CLAUSE))
+            return
+        if _IR_DIAGRAM_RE.search(doc.body):
+            return
+        findings.add(attach_clause(Finding(
+            gate_id=f"{self.id}.infra_has_ir_diagram",
+            severity=Severity.HIGH,
+            message=(
+                f"Infrastructure doc '{_posix(doc.path)}' has no "
+                f"incident-response diagram reference"
             ),
             location=doc.path,
             line=None,

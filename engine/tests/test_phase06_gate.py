@@ -133,3 +133,52 @@ def test_flags_monitoring_doc_without_slo(tmp_path):
             if f.gate_id == "phase06.monitoring_has_slo"]
     assert msgs, "expected a monitoring_has_slo finding"
     assert "no SLO/SLI/SLA reference" in msgs[0]
+
+
+# -- infra_has_ir_diagram --------------------------------------------------
+
+def test_passes_when_infra_doc_has_ir_diagram(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "06-deployment-operations/deployment-guide.md": (
+            "# Deployment Guide\nRollback via tag."
+        ),
+        "06-deployment-operations/runbook.md": (
+            "# Runbook\nEscalation: on-call SRE."
+        ),
+        "06-deployment-operations/monitoring.md": (
+            "# Monitoring\nSLO 99.9%."
+        ),
+        "06-deployment-operations/infrastructure.md": (
+            "# Infrastructure\n\n"
+            "Incident response diagram below describes the on-call flow.\n\n"
+            "![IR diagram](diagrams/incident-response.png)\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase06Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase06.infra_has_ir_diagram") == []
+
+
+def test_flags_infra_doc_without_ir_diagram(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "06-deployment-operations/deployment-guide.md": (
+            "# Deployment Guide\nRollback via tag."
+        ),
+        "06-deployment-operations/runbook.md": (
+            "# Runbook\nEscalation: on-call SRE."
+        ),
+        "06-deployment-operations/monitoring.md": (
+            "# Monitoring\nSLO 99.9%."
+        ),
+        "06-deployment-operations/infrastructure.md": (
+            "# Infrastructure\nAWS regions and VPC layout."
+        ),
+    })
+    findings = FindingCollection()
+    Phase06Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase06.infra_has_ir_diagram"]
+    assert msgs, "expected an infra_has_ir_diagram finding"
+    assert "no incident-response diagram reference" in msgs[0]
