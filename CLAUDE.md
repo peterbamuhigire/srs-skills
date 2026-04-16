@@ -184,6 +184,15 @@ The validation kernel (`python -m engine validate <project>`) will fail if:
 - A glossary term is defined but never referenced (`phase09.glossary_registry.orphan_term`).
 - Two NFRs specify contradicting thresholds for the same metric (`phase09.nfr_threshold_dedup.contradiction`).
 
+### Governance Artifacts
+
+- **ADR catalog** — every significant architectural decision is captured as `projects/<ProjectName>/09-governance-compliance/05-adr/NNNN-slug.md` and indexed in `_registry/adr-catalog.yaml`.
+- **Change Impact Analysis** — any change to a baselined FR/NFR/CTRL requires a CIA entry in `_registry/change-impact.yaml` with a rollback plan.
+- **Baseline snapshots** — run `python -m engine baseline snapshot <project> --label vX.Y` at each phase closure; `python -m engine baseline diff <project> old new` produces a reviewable delta.
+- **Waivers** — `python -m engine waive <project> --gate <gate_id> --reason "..." --approver "..." --days N` appends a waiver to `_registry/waivers.yaml`. Max 90 days.
+- **Sign-off ledger** — `python -m engine signoff <project> --gate phaseNN --signer "..." --role "..." --artifact path1 --artifact path2`. Required before the next phase begins.
+- **Evidence pack** — `python -m engine pack <project> --out <project>/evidence-pack-<date>.zip` assembles an auditor-ready bundle.
+
 ## Documentation Maintenance
 
 - Update docs/CHANGELOG.md with every change to skill logic prompts, root protocols, or new standards; cite the Engineering Registry when the change alters input/process/output mappings.

@@ -143,6 +143,12 @@ The following client projects are maintained under `projects/` (gitignored — n
 - **Audit Reports** - IEEE 1012 V&V
 - **Compliance Documentation** - GDPR, HIPAA, SOC2
 - **Risk Assessments**
+- **Architecture Decision Records** - catalog + status lifecycle
+- **Change Impact Analysis** - mandatory for every baselined change
+- **Baseline Delta** - snapshot/diff of identifier hashes
+- **Waiver Management** - 90-day bounded exceptions
+- **Sign-Off Ledger** - role-based phase-gate approvals
+- **Evidence Pack Builder** - auditor-ready ZIP via `python -m engine pack`
 
 ---
 
