@@ -111,3 +111,51 @@ def test_flags_audit_report_without_gate_references(tmp_path):
             if f.gate_id == "phase09.audit_report_present"]
     assert msgs, "expected an audit_report_present finding"
     assert "does not list pass/fail status" in msgs[0]
+
+
+# -- risk_register_links_to_fr --------------------------------------------
+
+def test_passes_when_risks_link_to_fr(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "09-governance-compliance/risk-register.md": (
+            "# Risk Register\n"
+            "\n"
+            "- **R-001** Data loss risk; mitigated by FR-0101.\n"
+            "- **R-002** Unauthorised access; mitigated by CTRL-0210.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase09Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase09.risk_register_links_to_fr") == []
+
+
+def test_flags_missing_risk_register(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+    })
+    findings = FindingCollection()
+    Phase09Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase09.risk_register_links_to_fr"]
+    assert msgs, "expected a risk_register_links_to_fr finding"
+    assert "No risk register found" in msgs[0]
+
+
+def test_flags_unlinked_risk(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "09-governance-compliance/risk-register.md": (
+            "# Risk Register\n"
+            "\n"
+            "- **R-001** Data loss risk; mitigated by FR-0101.\n"
+            "- **R-002** Operational risk with no associated control.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase09Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase09.risk_register_links_to_fr"]
+    assert len(msgs) == 1
+    assert "Risk R-002" in msgs[0]
+    assert "not linked to any FR-, NFR-, or CTRL- identifier" in msgs[0]
