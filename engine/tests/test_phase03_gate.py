@@ -109,3 +109,57 @@ def test_skips_interfaces_check_when_no_api_spec(tmp_path):
     findings = FindingCollection()
     Phase03Gate().evaluate(graph, findings)
     assert findings.for_gate("phase03.interfaces_have_contracts") == []
+
+
+# -- data_model_has_keys ----------------------------------------------------
+
+def test_passes_when_database_design_has_primary_key(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/04-database-design/schema.md": (
+            "# Schema\nusers.id PRIMARY KEY."
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.data_model_has_keys") == []
+
+
+def test_passes_when_database_design_has_lowercase_primary_key(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/04-database-design/schema.md": (
+            "# Schema\nusers.id is the primary key of the table."
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.data_model_has_keys") == []
+
+
+def test_flags_database_design_missing_pk(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/04-database-design/schema.md": (
+            "# Schema\nA table of users with no key declaration."
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase03.data_model_has_keys"]
+    assert msgs, "expected a data_model_has_keys finding"
+    assert "no primary key declaration" in msgs[0]
+
+
+def test_skips_data_model_check_when_no_database_design(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.data_model_has_keys") == []

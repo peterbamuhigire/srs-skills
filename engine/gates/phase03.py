@@ -46,6 +46,7 @@ class Phase03Gate(Gate):
     def evaluate(self, graph: ArtifactGraph, findings: FindingCollection) -> None:
         self._check_architecture_decisions_recorded(graph, findings)
         self._check_interfaces_have_contracts(graph, findings)
+        self._check_data_model_has_keys(graph, findings)
 
     # -- Check 1: architecture decisions recorded ------------------------
     def _check_architecture_decisions_recorded(
@@ -92,3 +93,25 @@ class Phase03Gate(Gate):
                     location=art.path,
                     line=None,
                 ), _CLAUSE))
+
+    # -- Check 3: data model has keys ------------------------------------
+    def _check_data_model_has_keys(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        for art in graph.artifacts:
+            posix = f"/{_posix(art.path)}"
+            if not any(tok in posix for tok in _DB_DESIGN_TOKENS):
+                continue
+            if _PRIMARY_KEY_RE.search(art.body):
+                continue
+            findings.add(attach_clause(Finding(
+                gate_id=f"{self.id}.data_model_has_keys",
+                severity=Severity.HIGH,
+                message=(
+                    f"Database design artifact '{_posix(art.path)}' has "
+                    f"no primary key declaration (expected 'PRIMARY KEY', "
+                    f"'primary key', or 'PK')"
+                ),
+                location=art.path,
+                line=None,
+            ), _CLAUSE))
