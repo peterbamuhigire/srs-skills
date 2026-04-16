@@ -28,7 +28,7 @@ Evidence: commits `890eda0` (bootstrap) through `d3f0a77` (pre-commit hook), all
 
 ## Plan 02 — Executable Phase Gates
 
-**Status:** 🟡 **IN PROGRESS** — 6 of 11 tasks complete
+**Status:** 🟡 **IN PROGRESS** — 7 of 11 tasks complete
 
 File: [`02-executable-phase-gates.md`](02-executable-phase-gates.md)
 
@@ -41,14 +41,14 @@ File: [`02-executable-phase-gates.md`](02-executable-phase-gates.md)
 | 5. Phase 01 Strategic Vision gate (`engine/gates/phase01.py`) | ✅ | `1c3f2e5` | Plan-verbatim for API/logic; two narrow deviations accepted — (a) split the stakeholder-text collection and feature-check into two passes (plan's single-loop version is order-dependent and flaked on Windows filesystem ordering), (b) added `encoding="utf-8"` to test helper's `write_text` (plan omitted it; Windows cp1252 collided with `artifact_graph.py`'s utf-8 reader on the em-dash). 38/38 pass. Frontmatter lists 4 check IDs but Step 3 implementation only emits 2 (`no_context_gaps`, `glossary_seeded` absent); logged for Task 11. |
 | 6. Register Phase01Gate in CLI | ✅ | `cd652d9` | `_default_registry()` modified byte-for-byte per plan. Two existing CLI fixtures (`test_validate_passes_clean_project`, `test_validate_emits_junit_when_requested`) extended with the 4 canonical `_context/*.md` files plus explicit `encoding="utf-8"`. Features content uses `--` (double hyphen) not `—` so Phase01Gate's feature-matching regex skips those lines — behavior is fully tested in `test_phase01_gate.py` so CLI tests only need canonical_inputs_present to pass. 38/38 pass. |
 | 7. Phase 02 gate | ⬜ | — | 8 checks — composes `SmartNfrCheck` + `StimulusResponseCheck` from Tasks 2 & 4. |
-| 8. Phase 05 gate | ⬜ | — | 7 checks — reference implementation from prose. |
+| 8. Phase 05 gate | ✅ | `42875ce`, `11f5ddd` | 4 checks per plan prose (`normative_test_structure`, `required_evidence`, `coverage_measurable`, `exit_evidence`). Added `Artifact.frontmatter: Dict[str, Any]` in a prep commit (required to check arbitrary frontmatter keys — minimal `field(default_factory=dict, compare=False, hash=False)` addition; 38 pre-existing tests all still pass). 11 new tests, 49/49 pass, 99% line coverage on `phase05.py`. Code reviewer APPROVED WITH NITS — follow-ups merged into Task 11 list below (scope-tighten `_find_by_suffix` to `05-testing-documentation/`, add one test for missing-`result` exit-evidence branch, use word-boundary for `tested`/`result` keyword match, DRY the `findings.add(attach_clause(...))` block across phase gates). Plan 02 Task 8 prose only specifies 4 checks even though the Plan 02 table originally said "7 checks" — deferred the gap (the 3 extra prose numbered items — test incidents, blocked cases, residual risks — are not checks in the plan's Task 8 text). |
 | 9. Phases 03, 04, 06, 07, 08 gates | ⬜ | — | Template repeat — 5 gates. |
 | 10. Phase 09 gate | ⬜ | — | 8 checks — the verification gate. |
 | 11. Standards-clause registry doc + CI assertion | ⬜ | — | `docs/standards-clause-registry.md`; CI check every registered check ID appears there. Also address the Task 1 and Task 2 reviewer follow-ups here. |
 
-**Resume with Task 8 (not Task 7).** Task 7 (Phase 02 gate) composes `GlossaryCheck` which is produced by Task 8 AND `IdentifierRegistryCheck` from Plan 03 — both need to land first. Task 8 (Phase 05 gate + `GlossaryCheck`) is ~7 checks and self-contained per the plan prose. Plan text lives in `02-executable-phase-gates.md` — load from the Task 8 heading and dispatch an implementer.
+**Task 8 complete as of 2026-04-16.** The plan's Task 8 prose specifies 4 checks (not 7 as the Plan 02 table row suggested); the 3 prose gate numbered items that weren't coded as checks (test incidents, blocked cases, residual risks from Section 3 of the prose gate) are covered by future registries/plans, not Task 8 — logged for clause-registry reconciliation in Task 11. Plan 02 Task 8 does NOT register Phase05Gate in `engine/cli.py` — that's deliberately deferred (registering now would break existing CLI fixtures that lack phase-05 canonical files). **`GlossaryCheck` was NOT added** in Task 8 — the original PROGRESS.md line read "Phase 05 gate + `GlossaryCheck`" but the plan prose at the Task 8 heading only lists the 4 phase-05 checks. `GlossaryCheck` is referenced in Task 7 as a dependency but never defined anywhere in Plan 02 — treat this as a plan bug to resolve at Task 7/11.
 
-After Task 8, the next highest-leverage move is **Plan 03** (identifier & glossary registry, 491 lines) — it unblocks Plan 02 Task 7 AND Plans 05/06/07 simultaneously.
+**Resume at Task 9 or Plan 03.** Task 7 (Phase 02 gate) still blocked by the missing `GlossaryCheck` definition and `IdentifierRegistryCheck` from Plan 03. Task 9 (Phases 03/04/06/07/08 — template repeat) is unblocked and self-contained per-phase. Task 10 (Phase 09) uses `TraceabilityCheck` (already landed in Task 3) and `ControlsCheck` (needs Plan 06). Highest-leverage next move is still **Plan 03** (identifier & glossary registry) — unblocks Plan 02 Task 7 and most of Plans 05/06/07.
 
 ---
 
@@ -147,6 +147,11 @@ To address at Plan 02 Task 11:
 - `SmartNfrCheck._METRIC` — anchor unit alternation with right-side `\b` to prevent `500 sessions` matching `5 s`. Consider adding "or less" / "at most" / "within" alternative comparators, but only after discussing whether to update `CLAUDE.md` Principle 7's prescribed form first.
 - `SmartNfrCheck` — decide whether to tighten `_NFR_LINE` to bullet-only lines (`^\s*-\s+\*\*`), or update the plan narrative to match the current "any line with `**NFR-###**`" behaviour.
 - `Phase01Gate` frontmatter vs. implementation — `docs/deterministic-gate-phase01.md` frontmatter lists 4 check IDs (`canonical_inputs_present`, `feature_has_stakeholder`, `no_context_gaps`, `glossary_seeded`) but `engine/gates/phase01.py` only emits findings for the first two. Decide: add the missing two checks, or trim frontmatter to match code. Task 11's clause-registry CI assertion will force this decision.
+- `Phase05Gate._find_by_suffix` is unscoped — matches `test-completion-report.md` / `coverage-matrix.md` anywhere in the tree, not just under `05-testing-documentation/`. Tighten to require `"05-testing-documentation/"` in the path before the suffix match.
+- `Phase05Gate` exit-evidence keyword match uses plain `in` — matches `untested`, `results`, etc. Switch to word-boundary regex (`\btested\b`, `\bresult\b`) when we address the broader regex-boundary cleanup prescribed for `SmartNfrCheck`. Add a test for the "has `tested`+FR- but missing `result`" branch (currently uncovered — one of two uncovered lines in `phase05.py`).
+- DRY the `findings.add(attach_clause(Finding(...), _CLAUSE))` block across Phase01 and Phase05 gates — a `Gate._emit(findings, check_name, message, …)` helper on `Gate` base class would remove 10+ lines of repetition and prevent the bypass-attach-clause regression that test `test_findings_carry_iso_29119_clause_label` was added to guard against.
+- `Phase 05` table row in Task 9 / Task 11 review: the Plan 02 file-structure comment in `02-executable-phase-gates.md` says "Phase 05 gate (7 checks — reference impl from prose)" but the Task 8 prose only enumerates 4 checks. Either expand Task 8 or correct the file-structure comment for consistency.
+- `GlossaryCheck` is referenced by Task 7 as a Task-8-produced dependency but Task 8's plan prose does not define it. Either define `GlossaryCheck` in Task 8 or move its definition to Plan 03 (where the glossary registry lives). Blocks Task 7.
 
 ### Network state
 
