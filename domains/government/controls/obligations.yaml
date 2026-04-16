@@ -1,0 +1,20 @@
+obligations:
+  - obligation: "Manage information system accounts per AC-2"
+    framework: "NIST SP 800-53 Rev 5"
+    clause: "AC-2"
+    satisfied_by: [CTRL-GOV-001]
+
+  - obligation: "Generate and review audit records for defined events"
+    framework: "NIST SP 800-53 Rev 5"
+    clause: "AU-2"
+    satisfied_by: [CTRL-GOV-002]
+
+  - obligation: "Use FIPS-validated cryptography to protect the confidentiality of information"
+    framework: "NIST SP 800-53 Rev 5"
+    clause: "SC-13"
+    satisfied_by: [CTRL-GOV-003]
+
+  - obligation: "Implement an incident-handling capability for security incidents"
+    framework: "NIST SP 800-53 Rev 5"
+    clause: "IR-4"
+    satisfied_by: [CTRL-GOV-004]

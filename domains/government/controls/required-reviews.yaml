@@ -1,0 +1,10 @@
+required_reviews:
+  - control_category: access_control
+    reviewer_role: "System Owner"
+    cadence: "per quarter"
+  - control_category: encryption
+    reviewer_role: "Information System Security Officer"
+    cadence: "per release"
+  - control_category: incident_response
+    reviewer_role: "Authorizing Official"
+    cadence: "annual"
