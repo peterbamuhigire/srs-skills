@@ -25,6 +25,19 @@ The following client projects are maintained under `projects/` (gitignored — n
 
 ---
 
+> **Version: v4.0.0-completion-2026-04-16.** End-to-end engine kernel completion. See [docs/plans/completion2026-04-16/](docs/plans/completion2026-04-16/) for the nine sub-plans and [projects/_demo-hybrid-regulated/README.md](projects/_demo-hybrid-regulated/README.md) for the end-to-end proof project.
+
+## What changed in v4.0
+
+- **Engine kernel completion** — nine deterministic gates (phase01..phase09) plus hybrid sync gate registered in the default CLI registry; 210 unit tests, ENGINE CONTRACT PASS.
+- **End-to-end proof project** — `projects/_demo-hybrid-regulated/` (Uganda DPPA 2019, Water-Scrum-Fall hybrid) proves every gate passes on a realistic workload. Evidence pack ZIP committed.
+- **Sabotage flag** — `python -m engine validate <project> --break-something` injects deterministic findings in `kernel.no_unresolved_fail_markers`, `phase02.smart_nfr`, and `phase09.traceability` so CI proves gates can fail as well as pass.
+- **CI positive + negative path** — `.github/workflows/engine.yml` now runs both the clean demo validation and the sabotaged demo (expected to fail), guarding against silent-pass regressions.
+- **New registries** — `_registry/adr-catalog.yaml`, `change-impact.yaml`, `baselines.yaml`, `baseline-trace.yaml`, `sign-off-ledger.yaml`, `waivers.yaml` are all schema-validated and enforced by phase09 checks.
+- **Operator seeder** — `scripts/seed_demo_project.py` is idempotent; re-running reproduces a PASSING demo workspace including `engine sync` and baseline snapshot.
+
+See [docs/plans/completion2026-04-16/PROGRESS.md](docs/plans/completion2026-04-16/PROGRESS.md) for the full execution ledger.
+
 ## What's New in v3.6
 
 - **Requirements Engineering Fundamentals Expanded** - Added Business Analysis Planning, Business Process Modeling, Business Rules Analysis, Prototyping and Solution Discovery, and Solution Evaluation and Transition
