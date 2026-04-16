@@ -29,6 +29,13 @@ _DOD_SIGNAL_RE = re.compile(
 _SPRINT_PREFIX_RE = re.compile(r"sprint-\d+", re.IGNORECASE)
 _BULLET_LINE_RE = re.compile(r"^- +")
 _BULLET_ID_RE = re.compile(r"\*\*([A-Z]{2,5}-\d{3,5})\*\*")
+_RETRO_ACTION_RE = re.compile(
+    r"^\s*-\s+\*\*((?:A|ACTION|RETRO)-\d+)\*\*"
+)
+_OWNER_WORD_RE = re.compile(r"\bowner\s*:\s*\S+", re.IGNORECASE)
+_HANDLE_RE = re.compile(r"@\w+")
+_DUE_WORD_RE = re.compile(r"\bdue\b", re.IGNORECASE)
+_ISO_DATE_RE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
 
 
 def _posix(path) -> str:
@@ -76,6 +83,17 @@ def _find_sprint_artifacts(graph: ArtifactGraph):
     return out
 
 
+def _find_retro_artifacts(graph: ArtifactGraph):
+    out = []
+    for art in graph.artifacts:
+        if not _under_phase07(art):
+            continue
+        name = art.path.name.lower()
+        if "retrospective" in name or "retro" in name:
+            out.append(art)
+    return out
+
+
 class Phase07Gate(Gate):
     id = "phase07"
     title = "Agile Artifacts phase gate"
@@ -85,6 +103,7 @@ class Phase07Gate(Gate):
         self._check_dor_references_baseline(graph, findings)
         self._check_dod_references_compliance(graph, findings)
         self._check_sprint_artifacts_have_ids(graph, findings)
+        self._check_retro_actions_assigned(graph, findings)
 
     # -- Check 1: DoR references baseline --------------------------------
     def _check_dor_references_baseline(
@@ -169,6 +188,43 @@ class Phase07Gate(Gate):
                         f"Sprint artifact '{_posix(art.path)}' line "
                         f"{idx} has no identifier "
                         f"(expected **XX-###** marker)"
+                    ),
+                    location=art.path,
+                    line=idx,
+                ), _CLAUSE))
+
+    # -- Check 4: retro actions assigned ---------------------------------
+    def _check_retro_actions_assigned(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        retro_arts = _find_retro_artifacts(graph)
+        for art in retro_arts:
+            for idx, line in enumerate(art.body.splitlines(), start=1):
+                m = _RETRO_ACTION_RE.match(line)
+                if not m:
+                    continue
+                action_id = m.group(1)
+                has_owner = bool(
+                    _OWNER_WORD_RE.search(line) or _HANDLE_RE.search(line)
+                )
+                has_due = bool(
+                    _DUE_WORD_RE.search(line) or _ISO_DATE_RE.search(line)
+                )
+                missing_parts = []
+                if not has_owner:
+                    missing_parts.append("owner")
+                if not has_due:
+                    missing_parts.append("due date")
+                if not missing_parts:
+                    continue
+                missing = ", ".join(missing_parts)
+                findings.add(attach_clause(Finding(
+                    gate_id=f"{self.id}.retro_actions_assigned",
+                    severity=Severity.HIGH,
+                    message=(
+                        f"Retro action '{action_id}' in "
+                        f"'{_posix(art.path)}' line {idx} "
+                        f"missing: {missing}"
                     ),
                     location=art.path,
                     line=idx,

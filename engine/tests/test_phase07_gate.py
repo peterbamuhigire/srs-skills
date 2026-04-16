@@ -135,3 +135,63 @@ def test_flags_sprint_items_without_ids(tmp_path):
     assert len(msgs) == 2, f"expected 2 findings, got {len(msgs)}: {msgs}"
     assert all("no identifier" in m for m in msgs)
     assert all("expected **XX-###** marker" in m for m in msgs)
+
+
+# -- retro_actions_assigned -------------------------------------------------
+
+def test_passes_when_retro_actions_have_owner_and_due(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "07-agile-artifacts/retrospective-sprint-01.md": (
+            "# Retrospective - Sprint 01\n"
+            "\n"
+            "## Actions\n"
+            "\n"
+            "- **A-001** Harden CI pipeline. owner: @alice due 2026-05-01\n"
+            "- **ACTION-002** Refresh onboarding docs. "
+            "owner: @bob due 2026-05-08\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase07Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase07.retro_actions_assigned") == []
+
+
+def test_flags_retro_action_missing_owner(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "07-agile-artifacts/retro-sprint-01.md": (
+            "# Retro - Sprint 01\n"
+            "\n"
+            "## Actions\n"
+            "\n"
+            "- **A-001** Harden CI pipeline. due 2026-05-01\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase07Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase07.retro_actions_assigned"]
+    assert len(msgs) == 1, f"expected 1 finding, got {len(msgs)}: {msgs}"
+    assert "A-001" in msgs[0]
+    assert "missing: owner" in msgs[0]
+
+
+def test_flags_retro_action_missing_due_date(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "07-agile-artifacts/retrospective.md": (
+            "# Retrospective\n"
+            "\n"
+            "## Actions\n"
+            "\n"
+            "- **ACTION-007** Review deployment cadence. owner: @carol\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase07Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase07.retro_actions_assigned"]
+    assert len(msgs) == 1, f"expected 1 finding, got {len(msgs)}: {msgs}"
+    assert "ACTION-007" in msgs[0]
+    assert "missing: due date" in msgs[0]
