@@ -14,6 +14,15 @@ _CODING_STANDARDS_SUFFIXES = (
     "coding-guidelines.md",
     "style-guide.md",
 )
+_ENV_SETUP_SUFFIXES = (
+    "env-setup.md",
+    "environment-setup.md",
+    "setup.md",
+    "development-environment.md",
+)
+_ENV_PREREQ_MARKERS = ("prerequisites", "requires", "dependencies")
+_ENV_INSTALL_MARKERS = ("install", "bootstrap")
+_ENV_VERIFY_MARKERS = ("verify", "test", "check", "validate")
 
 
 def _posix(path) -> str:
@@ -34,17 +43,17 @@ class Phase04Gate(Gate):
 
     def evaluate(self, graph: ArtifactGraph, findings: FindingCollection) -> None:
         self._check_coding_standards_referenced(graph, findings)
+        self._check_env_setup_reproducible(graph, findings)
 
     # -- Check 1: coding standards referenced ----------------------------
     def _check_coding_standards_referenced(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
         for art in graph.artifacts:
-            posix = f"/{_posix(art.path)}"
+            posix = f"/{_posix(art.path).lower()}"
             if _PHASE04_DIR_TOKEN not in posix:
                 continue
-            name = art.path.name.lower()
-            if name in _CODING_STANDARDS_SUFFIXES:
+            if any(posix.endswith("/" + sfx) for sfx in _CODING_STANDARDS_SUFFIXES):
                 return
         findings.add(attach_clause(Finding(
             gate_id=f"{self.id}.coding_standards_referenced",
@@ -57,3 +66,49 @@ class Phase04Gate(Gate):
             location=None,
             line=None,
         ), _CLAUSE))
+
+    # -- Check 2: env setup reproducible ---------------------------------
+    def _check_env_setup_reproducible(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        env_art = None
+        for art in graph.artifacts:
+            posix_lower = f"/{_posix(art.path).lower()}"
+            if _PHASE04_DIR_TOKEN not in posix_lower:
+                continue
+            if any(posix_lower.endswith("/" + sfx) for sfx in _ENV_SETUP_SUFFIXES):
+                env_art = art
+                break
+        if env_art is None:
+            findings.add(attach_clause(Finding(
+                gate_id=f"{self.id}.env_setup_reproducible",
+                severity=Severity.HIGH,
+                message=(
+                    "No environment setup document found under "
+                    "04-development/ (expected 'env-setup.md', "
+                    "'environment-setup.md', 'setup.md', or "
+                    "'development-environment.md')"
+                ),
+                location=None,
+                line=None,
+            ), _CLAUSE))
+            return
+        lower = env_art.body.lower()
+        missing_parts = []
+        if not any(m in lower for m in _ENV_PREREQ_MARKERS):
+            missing_parts.append("prerequisites/requirements/dependencies")
+        if not any(m in lower for m in _ENV_INSTALL_MARKERS):
+            missing_parts.append("install/bootstrap instructions")
+        if not any(m in lower for m in _ENV_VERIFY_MARKERS):
+            missing_parts.append("verification steps")
+        if missing_parts:
+            findings.add(attach_clause(Finding(
+                gate_id=f"{self.id}.env_setup_reproducible",
+                severity=Severity.HIGH,
+                message=(
+                    f"Environment setup '{_posix(env_art.path)}' is "
+                    f"incomplete: missing {', '.join(missing_parts)}"
+                ),
+                location=env_art.path,
+                line=None,
+            ), _CLAUSE))
