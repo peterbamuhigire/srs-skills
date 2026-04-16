@@ -163,3 +163,49 @@ def test_skips_data_model_check_when_no_database_design(tmp_path):
     findings = FindingCollection()
     Phase03Gate().evaluate(graph, findings)
     assert findings.for_gate("phase03.data_model_has_keys") == []
+
+
+# -- nfrs_link_to_design_choices --------------------------------------------
+
+def test_passes_when_nfr_referenced_in_design(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "02-nonfunctional-requirements/nfrs.md": (
+            "# NFRs\n- **NFR-001** availability 99.9%"
+        ),
+        "03-design-documentation/adr/0001.md": (
+            "# ADR\nThis decision satisfies NFR-001 under expected load."
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.nfrs_link_to_design_choices") == []
+
+
+def test_flags_nfr_not_referenced_in_design(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "02-nonfunctional-requirements/nfrs.md": (
+            "# NFRs\n- **NFR-001** availability 99.9%\n"
+            "- **NFR-002** response time under 500ms"
+        ),
+        "03-design-documentation/adr/0001.md": (
+            "# ADR\nThis decision satisfies NFR-001 under expected load."
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase03.nfrs_link_to_design_choices"]
+    assert msgs, "expected an nfrs_link_to_design_choices finding"
+    assert "NFR-002" in msgs[0]
+
+
+def test_passes_nfr_check_when_no_nfrs_declared(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.nfrs_link_to_design_choices") == []

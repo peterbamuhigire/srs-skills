@@ -47,6 +47,7 @@ class Phase03Gate(Gate):
         self._check_architecture_decisions_recorded(graph, findings)
         self._check_interfaces_have_contracts(graph, findings)
         self._check_data_model_has_keys(graph, findings)
+        self._check_nfrs_link_to_design_choices(graph, findings)
 
     # -- Check 1: architecture decisions recorded ------------------------
     def _check_architecture_decisions_recorded(
@@ -113,5 +114,33 @@ class Phase03Gate(Gate):
                     f"'primary key', or 'PK')"
                 ),
                 location=art.path,
+                line=None,
+            ), _CLAUSE))
+
+    # -- Check 4: NFRs link to design choices ----------------------------
+    def _check_nfrs_link_to_design_choices(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        nfr_ids = sorted({
+            i for i in graph.all_identifiers() if i.startswith(_NFR_PREFIX)
+        })
+        if not nfr_ids:
+            return
+        phase03_body_parts = []
+        for art in graph.artifacts:
+            if art.phase == "03" or _posix(art.path).startswith(_PHASE03_ROOT):
+                phase03_body_parts.append(art.body)
+        phase03_text = "\n".join(phase03_body_parts)
+        for nfr in nfr_ids:
+            if nfr in phase03_text:
+                continue
+            findings.add(attach_clause(Finding(
+                gate_id=f"{self.id}.nfrs_link_to_design_choices",
+                severity=Severity.HIGH,
+                message=(
+                    f"{nfr} is declared but not referenced in any "
+                    f"Phase 03 design artifact"
+                ),
+                location=None,
                 line=None,
             ), _CLAUSE))
