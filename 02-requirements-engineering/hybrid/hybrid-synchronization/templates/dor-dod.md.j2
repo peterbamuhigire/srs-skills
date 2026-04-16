@@ -1,0 +1,25 @@
+# Definitions of Ready and Done
+
+## Definition of Ready
+
+A user story is ready when:
+
+1. It cites at least one baseline identifier (FR-, NFR-) from `_registry/baseline-trace.yaml`.
+2. Acceptance criteria include {% for ctrl in compliance_controls %}`{{ ctrl }}`{% if not loop.last %}, {% endif %}{% endfor %} where applicable.
+3. Scope fits inside one sprint ({{ sprint_length_weeks }} weeks).
+4. Test oracle is deterministic (pass/fail criterion stated).
+
+## Definition of Done
+
+A user story is done when:
+
+1. Code merged behind review gates defined in `_context/quality-standards.md`.
+2. Tests pass, including at least one test case that references the baseline ID.
+3. Security review complete (cite `CTRL-*` IDs satisfied).
+4. Documentation updated (release notes cite the baseline ID).
+5. Deployment steps match `projects/<ProjectName>/06-deployment-operations/runbook.md`.
+
+## Traceability
+
+Every acceptance criterion MUST name a baseline FR-, NFR-, or CTRL- ID.
+The kernel's `HybridSyncGate` fails if this file contains no baseline IDs.

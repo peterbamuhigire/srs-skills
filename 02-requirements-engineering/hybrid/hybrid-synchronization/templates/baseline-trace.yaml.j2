@@ -1,0 +1,12 @@
+# Populated by `python -m engine sync <project>` and the hybrid-synchronization skill.
+# Schema: engine/registry/schemas/baseline-trace.schema.json
+baseline:
+{% for item in baseline %}  - id: {{ item.id }}
+    locked_on: {{ item.locked_on }}
+    change_control_body: {{ item.change_control_body }}
+{% endfor %}
+stories:
+{% for story in stories %}  - id: {{ story.id }}
+    traces: {{ story.traces | tojson }}
+{% if story.delta_to_baseline %}    delta_to_baseline: "{{ story.delta_to_baseline }}"
+{% endif %}{% endfor %}

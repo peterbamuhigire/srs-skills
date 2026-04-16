@@ -1,0 +1,33 @@
+---
+methodology: hybrid
+change_control_body: {{ change_control_body }}
+sprint_length_weeks: {{ sprint_length_weeks }}
+baseline_signed_off_on: {{ baseline_signed_off_on }}
+---
+
+# Methodology — Hybrid (Water-Scrum-Fall)
+
+This project uses a Water-Scrum-Fall pattern: Waterfall up-front planning and
+sign-off, Scrum for iterative execution within the baseline, and Waterfall
+exit gates before release.
+
+## Baseline lock
+
+- Baseline signed off: **{{ baseline_signed_off_on }}**
+- Change control body: **{{ change_control_body }}**
+- Locked features: see `_registry/baseline-trace.yaml`.
+
+## Flexible features
+
+{% for feature in flexible_features %}- {{ feature }}
+{% endfor %}
+
+## Sprint cadence
+
+{{ sprint_length_weeks }}-week sprints. Each sprint increment must map to
+at least one baseline item via `_registry/baseline-trace.yaml`.
+
+## Change log
+
+Changes to the baseline are recorded in `_context/change-log.md` with date,
+approver from {{ change_control_body }}, and affected baseline IDs.
