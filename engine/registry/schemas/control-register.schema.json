@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["domain", "controls"],
+  "properties": {
+    "domain": {"type": "string"},
+    "version": {"type": "string"},
+    "source_framework": {"type": "string"},
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "category", "verification_kinds"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^CTRL-[A-Z0-9]{2,8}-\\d{3}$"},
+          "title": {"type": "string"},
+          "category": {"enum": [
+            "access_control", "data_protection", "audit_logging",
+            "incident_response", "encryption", "key_management",
+            "retention", "consent", "third_party", "physical",
+            "monitoring", "change_control", "training", "risk_management"
+          ]},
+          "verification_kinds": {
+            "type": "array",
+            "items": {"enum": ["test", "design_review", "audit_log_inspection", "config_inspection", "policy_inspection"]},
+            "minItems": 1
+          },
+          "minimum_evidence": {"type": "array", "items": {"type": "string"}},
+          "regulatory_anchor": {
+            "type": "object",
+            "required": ["framework", "clause"],
+            "properties": {
+              "framework": {"type": "string"},
+              "clause": {"type": "string"}
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
