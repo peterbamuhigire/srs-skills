@@ -36,6 +36,8 @@ _OWNER_WORD_RE = re.compile(r"\bowner\s*:\s*\S+", re.IGNORECASE)
 _HANDLE_RE = re.compile(r"@\w+")
 _DUE_WORD_RE = re.compile(r"\bdue\b", re.IGNORECASE)
 _ISO_DATE_RE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
+_VELOCITY_NAME_TOKENS = ("velocity", "sprint-metrics", "sprint-history")
+_SPRINT_REF_RE = re.compile(r"\bsprint[- ]\d+\b", re.IGNORECASE)
 
 
 def _posix(path) -> str:
@@ -94,6 +96,16 @@ def _find_retro_artifacts(graph: ArtifactGraph):
     return out
 
 
+def _find_velocity_artifact(graph: ArtifactGraph):
+    for art in graph.artifacts:
+        if not _under_phase07(art):
+            continue
+        name = art.path.name.lower()
+        if any(tok in name for tok in _VELOCITY_NAME_TOKENS):
+            return art
+    return None
+
+
 class Phase07Gate(Gate):
     id = "phase07"
     title = "Agile Artifacts phase gate"
@@ -104,6 +116,7 @@ class Phase07Gate(Gate):
         self._check_dod_references_compliance(graph, findings)
         self._check_sprint_artifacts_have_ids(graph, findings)
         self._check_retro_actions_assigned(graph, findings)
+        self._check_velocity_history_present(graph, findings)
 
     # -- Check 1: DoR references baseline --------------------------------
     def _check_dor_references_baseline(
@@ -229,3 +242,36 @@ class Phase07Gate(Gate):
                     location=art.path,
                     line=idx,
                 ), _CLAUSE))
+
+    # -- Check 5: velocity history present -------------------------------
+    def _check_velocity_history_present(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        art = _find_velocity_artifact(graph)
+        if art is None:
+            findings.add(attach_clause(Finding(
+                gate_id=f"{self.id}.velocity_history_present",
+                severity=Severity.HIGH,
+                message=(
+                    "No velocity history found under "
+                    "07-agile-artifacts/ (expected filename containing "
+                    "'velocity', 'sprint-metrics', or 'sprint-history')"
+                ),
+                location=None,
+                line=None,
+            ), _CLAUSE))
+            return
+        n = len(_SPRINT_REF_RE.findall(art.body))
+        if n >= 2:
+            return
+        findings.add(attach_clause(Finding(
+            gate_id=f"{self.id}.velocity_history_present",
+            severity=Severity.HIGH,
+            message=(
+                f"Velocity history '{_posix(art.path)}' references "
+                f"fewer than 2 sprints (found {n}; need history "
+                f"across multiple sprints)"
+            ),
+            location=art.path,
+            line=None,
+        ), _CLAUSE))

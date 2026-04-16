@@ -195,3 +195,68 @@ def test_flags_retro_action_missing_due_date(tmp_path):
     assert len(msgs) == 1, f"expected 1 finding, got {len(msgs)}: {msgs}"
     assert "ACTION-007" in msgs[0]
     assert "missing: due date" in msgs[0]
+
+
+# -- velocity_history_present -----------------------------------------------
+
+def test_passes_when_velocity_history_has_multiple_sprints(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "07-agile-artifacts/velocity.md": (
+            "# Velocity History\n"
+            "\n"
+            "| Sprint    | Points |\n"
+            "|-----------|--------|\n"
+            "| sprint-01 | 24     |\n"
+            "| sprint-02 | 28     |\n"
+            "| sprint-03 | 26     |\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase07Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase07.velocity_history_present") == []
+
+
+def test_flags_missing_velocity_history(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "07-agile-artifacts/sprint-plan.md": "# Sprint Plan\n- **FR-001** item",
+    })
+    findings = FindingCollection()
+    Phase07Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase07.velocity_history_present"]
+    assert msgs, "expected a velocity_history_present finding"
+    assert "No velocity history found" in msgs[0]
+
+
+def test_flags_velocity_history_with_single_sprint(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "07-agile-artifacts/sprint-metrics.md": (
+            "# Sprint Metrics\n"
+            "\n"
+            "Only sprint-01 has been completed so far.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase07Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase07.velocity_history_present"]
+    assert msgs, "expected a velocity_history_present finding"
+    assert "fewer than 2 sprints" in msgs[0]
+    assert "found 1" in msgs[0]
+
+
+# -- clause attachment ------------------------------------------------------
+
+def test_findings_carry_pmbok_clause_label(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+    })
+    findings = FindingCollection()
+    Phase07Gate().evaluate(graph, findings)
+    assert len(findings) > 0
+    for f in findings:
+        assert "PMBOK Guide 7th Edition" in f.message
+        assert "2.6" in f.message
