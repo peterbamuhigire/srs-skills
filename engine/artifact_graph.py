@@ -50,6 +50,7 @@ def _extract_title(body: str) -> str:
 @dataclass(frozen=True)
 class ArtifactGraph:
     artifacts: Tuple[Artifact, ...]
+    root: Optional[Path] = field(default=None, compare=False, hash=False)
 
     @classmethod
     def build(cls, workspace: Workspace) -> "ArtifactGraph":
@@ -57,7 +58,7 @@ class ArtifactGraph:
             Artifact.from_file(workspace.root, p)
             for p in workspace.iter_artifacts()
         )
-        return cls(artifacts=items)
+        return cls(artifacts=items, root=workspace.root)
 
     def in_phase(self, phase: str) -> Iterator[Artifact]:
         return (a for a in self.artifacts if a.phase == phase)
