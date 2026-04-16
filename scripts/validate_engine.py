@@ -133,6 +133,10 @@ def _collect_check_ids_from_source(errors: list[str]) -> set[str]:
     ids.add("phase09.controls.unknown_control")
     ids.add("phase09.controls.missing_evidence")
     ids.add("phase09.controls.unused_in_artifacts")
+    # Phase 09 obligations delegates to ObligationsCheck
+    # (engine/checks/obligations.py).
+    ids.add("phase09.obligations.missing_framework_coverage")
+    ids.add("phase09.obligations.unsatisfied")
     # Phase 02 delegates its four checks (smart_nfr, stimulus_response,
     # id_registry, glossary_registry) to engine/checks/ modules. None of
     # them emit findings via the `gate_id=f"{self.id}.<name>"` literal the

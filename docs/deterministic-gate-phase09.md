@@ -14,6 +14,8 @@ checks:
   - phase09.controls.unknown_control
   - phase09.controls.missing_evidence
   - phase09.controls.unused_in_artifacts
+  - phase09.obligations.missing_framework_coverage
+  - phase09.obligations.unsatisfied
 deferred_checks:
   - phase09.compliance_controls_have_evidence  # blocked on Plan 06 ControlsCheck
   - phase09.evidence_pack_buildable            # blocked on Plan 07 `engine pack`

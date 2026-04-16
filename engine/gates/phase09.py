@@ -7,6 +7,7 @@ from engine.checks.controls import ControlsCheck
 from engine.checks.glossary_registry import GlossaryRegistryCheck
 from engine.checks.identifier_registry import IdentifierRegistryCheck
 from engine.checks.nfr_threshold_dedup import NfrThresholdDedupCheck
+from engine.checks.obligations import ObligationsCheck
 from engine.checks.traceability import TraceabilityCheck
 from engine.findings import Finding, FindingCollection, Severity
 from engine.gates.base import Gate
@@ -90,6 +91,7 @@ class Phase09Gate(Gate):
         self._check_glossary_registry(graph, findings)
         self._check_nfr_threshold_dedup(graph, findings)
         self._check_controls(graph, findings)
+        self._check_obligations(graph, findings)
 
     # -- Check 1: traceability (delegates to TraceabilityCheck) ----------
     def _check_traceability(
@@ -278,6 +280,27 @@ class Phase09Gate(Gate):
         tmp = FindingCollection()
         ControlsCheck(
             f"{self.id}.controls", graph.root, domain_register
+        ).run(graph, tmp)
+        for f in tmp:
+            findings.add(attach_clause(f, _CLAUSE))
+
+    # -- Check 9: regulatory obligations (delegates to ObligationsCheck) -----
+    def _check_obligations(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        if graph.root is None:
+            return
+        domain = _detect_domain(graph.root)
+        if domain is None:
+            return
+        obligations_file = (
+            _REPO_ROOT / "domains" / domain / "controls" / "obligations.yaml"
+        )
+        if not obligations_file.exists():
+            return
+        tmp = FindingCollection()
+        ObligationsCheck(
+            f"{self.id}.obligations", graph.root, obligations_file
         ).run(graph, tmp)
         for f in tmp:
             findings.add(attach_clause(f, _CLAUSE))

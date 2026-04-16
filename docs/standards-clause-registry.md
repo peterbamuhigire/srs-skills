@@ -97,6 +97,8 @@ This document is validated by `scripts/validate_engine.py`: every check ID that 
 | `phase09.controls.unknown_control` | ISO/IEC 27001:2022 | §9 | `engine/checks/controls.py` |
 | `phase09.controls.missing_evidence` | ISO/IEC 27001:2022 | §9 | `engine/checks/controls.py` |
 | `phase09.controls.unused_in_artifacts` | ISO/IEC 27001:2022 | §9 | `engine/checks/controls.py` |
+| `phase09.obligations.missing_framework_coverage` | ISO/IEC 27001:2022 | §9 | `engine/checks/obligations.py` |
+| `phase09.obligations.unsatisfied` | ISO/IEC 27001:2022 | §9 | `engine/checks/obligations.py` |
 
 ## Hybrid Synchronization (active only when methodology: hybrid)
 
