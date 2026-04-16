@@ -6,11 +6,11 @@ This skill produces a systematic risk assessment that identifies, scores, and mi
 
 ## Execution Steps
 
-1. Populate `../project_context/vision.md` with project objectives, constraints, and stakeholder context
-2. Optionally provide `../project_context/quality_standards.md` for risk tolerance thresholds
+1. Populate `projects/<ProjectName>/_context/vision.md` with project objectives, constraints, and stakeholder context
+2. Optionally provide `projects/<ProjectName>/_context/quality_standards.md` for risk tolerance thresholds
 3. Optionally ensure upstream outputs exist (`SRS_Draft.md`, `HLD.md`, `Audit_Report.md`, `Compliance_Docs.md`)
 4. Run this skill
-5. Review `../output/Risk_Assessment.md` for completeness of risk identification and scoring accuracy
+5. Review `projects/<ProjectName>/<phase>/<document>/Risk_Assessment.md` for completeness of risk identification and scoring accuracy
 6. Iterate if new risk vectors are identified during review
 
 ## Quality Reminder

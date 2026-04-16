@@ -40,22 +40,22 @@ This skill generates a systematic risk assessment that identifies, analyzes, and
 
 | File | Purpose | Required? |
 |------|---------|-----------|
-| `../project_context/vision.md` | Project scope, objectives, and constraints for risk context establishment | Yes |
-| `../project_context/quality_standards.md` | Quality thresholds and acceptance criteria for risk tolerance definition | No |
-| `../output/SRS_Draft.md` | Requirements for technical risk identification and dependency analysis | No |
-| `../output/HLD.md` | Architecture decisions for technical and operational risk identification | No |
-| `../output/Audit_Report.md` | Audit findings that may indicate risk areas requiring formal assessment | No |
-| `../output/Compliance_Docs.md` | Compliance gaps that translate directly into compliance risks | No |
+| `projects/<ProjectName>/_context/vision.md` | Project scope, objectives, and constraints for risk context establishment | Yes |
+| `projects/<ProjectName>/_context/quality_standards.md` | Quality thresholds and acceptance criteria for risk tolerance definition | No |
+| `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Requirements for technical risk identification and dependency analysis | No |
+| `projects/<ProjectName>/<phase>/<document>/HLD.md` | Architecture decisions for technical and operational risk identification | No |
+| `projects/<ProjectName>/<phase>/<document>/Audit_Report.md` | Audit findings that may indicate risk areas requiring formal assessment | No |
+| `projects/<ProjectName>/<phase>/<document>/Compliance_Docs.md` | Compliance gaps that translate directly into compliance risks | No |
 
 ## Output Files
 
 | File | Description |
 |------|-------------|
-| `../output/Risk_Assessment.md` | Complete risk assessment with register, scoring matrix, and mitigation plans |
+| `projects/<ProjectName>/<phase>/<document>/Risk_Assessment.md` | Complete risk assessment with register, scoring matrix, and mitigation plans |
 
 ## Core Instructions
 
-1. The skill SHALL read `../project_context/vision.md` to establish the risk context including project objectives, stakeholders, constraints, and risk appetite. If the file is missing, halt execution and report the error.
+1. The skill SHALL read `projects/<ProjectName>/_context/vision.md` to establish the risk context including project objectives, stakeholders, constraints, and risk appetite. If the file is missing, halt execution and report the error.
 
 2. The skill SHALL read all available optional inputs to build a comprehensive risk inventory. Log each file read.
 

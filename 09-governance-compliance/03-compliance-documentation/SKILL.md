@@ -40,20 +40,20 @@ This skill generates regulatory compliance documentation that maps project requi
 
 | File | Purpose | Required? |
 |------|---------|-----------|
-| `../project_context/vision.md` | Project scope, domain, and data subjects to determine regulatory applicability | Yes |
-| `../project_context/quality_standards.md` | Security and compliance requirements specified by stakeholders | No |
-| `../output/SRS_Draft.md` | Requirements referencing data handling, authentication, and access control | No |
-| `../output/HLD.md` | Architecture decisions affecting data flow, storage, and transmission | No |
+| `projects/<ProjectName>/_context/vision.md` | Project scope, domain, and data subjects to determine regulatory applicability | Yes |
+| `projects/<ProjectName>/_context/quality_standards.md` | Security and compliance requirements specified by stakeholders | No |
+| `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Requirements referencing data handling, authentication, and access control | No |
+| `projects/<ProjectName>/<phase>/<document>/HLD.md` | Architecture decisions affecting data flow, storage, and transmission | No |
 
 ## Output Files
 
 | File | Description |
 |------|-------------|
-| `../output/Compliance_Docs.md` | Complete compliance documentation with applicability assessment and gap analysis |
+| `projects/<ProjectName>/<phase>/<document>/Compliance_Docs.md` | Complete compliance documentation with applicability assessment and gap analysis |
 
 ## Core Instructions
 
-1. The skill SHALL read `../project_context/vision.md` to determine the project domain, target users, data subjects, and geographic scope. If the file is missing, halt execution and report the error.
+1. The skill SHALL read `projects/<ProjectName>/_context/vision.md` to determine the project domain, target users, data subjects, and geographic scope. If the file is missing, halt execution and report the error.
 
 2. The skill SHALL perform a Regulatory Applicability Assessment, determining which frameworks apply based on:
    - **GDPR:** Project processes personal data of EU/EEA residents

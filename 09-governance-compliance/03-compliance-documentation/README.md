@@ -6,11 +6,11 @@ This skill produces regulatory compliance documentation that maps project requir
 
 ## Execution Steps
 
-1. Populate `../project_context/vision.md` with project domain, data subjects, and geographic scope
-2. Optionally provide `../project_context/quality_standards.md` with security requirements
-3. Optionally ensure `../output/SRS_Draft.md` and `../output/HLD.md` exist for richer controls mapping
+1. Populate `projects/<ProjectName>/_context/vision.md` with project domain, data subjects, and geographic scope
+2. Optionally provide `projects/<ProjectName>/_context/quality_standards.md` with security requirements
+3. Optionally ensure `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` and `projects/<ProjectName>/<phase>/<document>/HLD.md` exist for richer controls mapping
 4. Run this skill
-5. Review `../output/Compliance_Docs.md` for applicability determinations and gap analysis
+5. Review `projects/<ProjectName>/<phase>/<document>/Compliance_Docs.md` for applicability determinations and gap analysis
 6. Resolve any `[ASSESSMENT-PENDING]` items by providing additional project context
 
 ## Quality Reminder

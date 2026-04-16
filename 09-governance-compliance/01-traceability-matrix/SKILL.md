@@ -40,23 +40,23 @@ This skill generates a Requirements Traceability Matrix (RTM) that establishes b
 
 | File | Purpose | Required? |
 |------|---------|-----------|
-| `../output/SRS_Draft.md` | Source of all functional and non-functional requirements | Yes |
-| `../project_context/vision.md` | Business goals and stakeholder needs for backward traceability | Yes |
-| `../output/HLD.md` | High-level design elements for design-to-requirement mapping | No |
-| `../output/LLD.md` | Low-level design elements for detailed traceability | No |
-| `../output/user_stories.md` | User stories for requirement-to-story mapping | No |
+| `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Source of all functional and non-functional requirements | Yes |
+| `projects/<ProjectName>/_context/vision.md` | Business goals and stakeholder needs for backward traceability | Yes |
+| `projects/<ProjectName>/<phase>/<document>/HLD.md` | High-level design elements for design-to-requirement mapping | No |
+| `projects/<ProjectName>/<phase>/<document>/LLD.md` | Low-level design elements for detailed traceability | No |
+| `projects/<ProjectName>/<phase>/<document>/user_stories.md` | User stories for requirement-to-story mapping | No |
 
 ## Output Files
 
 | File | Description |
 |------|-------------|
-| `../output/Traceability_Matrix.md` | Complete bidirectional traceability matrix with gap analysis |
+| `projects/<ProjectName>/<phase>/<document>/Traceability_Matrix.md` | Complete bidirectional traceability matrix with gap analysis |
 
 ## Core Instructions
 
-1. The skill SHALL read `../output/SRS_Draft.md` and extract every requirement with its unique identifier (e.g., FR-001, NFR-001). If the file is missing, halt execution and report the error.
+1. The skill SHALL read `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` and extract every requirement with its unique identifier (e.g., FR-001, NFR-001). If the file is missing, halt execution and report the error.
 
-2. The skill SHALL read `../project_context/vision.md` and extract every business goal and stakeholder need, assigning identifiers if none exist (e.g., BG-001, SN-001).
+2. The skill SHALL read `projects/<ProjectName>/_context/vision.md` and extract every business goal and stakeholder need, assigning identifiers if none exist (e.g., BG-001, SN-001).
 
 3. The skill SHALL read optional design artifacts (`HLD.md`, `LLD.md`) and extract design element identifiers for forward traceability mapping.
 

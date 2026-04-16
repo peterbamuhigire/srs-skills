@@ -6,11 +6,11 @@ This skill produces a formal Verification and Validation audit report that asses
 
 ## Execution Steps
 
-1. Ensure `../output/Traceability_Matrix.md` exists (run 01-traceability-matrix first)
-2. Ensure `../output/SRS_Draft.md` exists with finalized requirements
-3. Optionally provide `../project_context/quality_standards.md` for quality benchmarks
+1. Ensure `projects/<ProjectName>/<phase>/<document>/Traceability_Matrix.md` exists (run 01-traceability-matrix first)
+2. Ensure `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` exists with finalized requirements
+3. Optionally provide `projects/<ProjectName>/_context/quality_standards.md` for quality benchmarks
 4. Run this skill
-5. Review `../output/Audit_Report.md` for findings and recommendation
+5. Review `projects/<ProjectName>/<phase>/<document>/Audit_Report.md` for findings and recommendation
 6. Remediate any `[V&V-FAIL]` tagged findings before proceeding
 
 ## Quality Reminder

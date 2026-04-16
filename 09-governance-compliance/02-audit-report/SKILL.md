@@ -40,21 +40,21 @@ This skill generates a formal Verification and Validation (V&V) audit report tha
 
 | File | Purpose | Required? |
 |------|---------|-----------|
-| `../output/Traceability_Matrix.md` | Traceability data and coverage metrics for audit assessment | Yes |
-| `../output/SRS_Draft.md` | Primary document under audit for correctness and completeness | Yes |
-| `../project_context/quality_standards.md` | Quality benchmarks and acceptance criteria for compliance assessment | No |
-| `../output/HLD.md` | Design documentation for consistency cross-check | No |
-| `../output/LLD.md` | Detailed design documentation for consistency cross-check | No |
+| `projects/<ProjectName>/<phase>/<document>/Traceability_Matrix.md` | Traceability data and coverage metrics for audit assessment | Yes |
+| `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Primary document under audit for correctness and completeness | Yes |
+| `projects/<ProjectName>/_context/quality_standards.md` | Quality benchmarks and acceptance criteria for compliance assessment | No |
+| `projects/<ProjectName>/<phase>/<document>/HLD.md` | Design documentation for consistency cross-check | No |
+| `projects/<ProjectName>/<phase>/<document>/LLD.md` | Detailed design documentation for consistency cross-check | No |
 
 ## Output Files
 
 | File | Description |
 |------|-------------|
-| `../output/Audit_Report.md` | Complete V&V audit report with findings and recommendations |
+| `projects/<ProjectName>/<phase>/<document>/Audit_Report.md` | Complete V&V audit report with findings and recommendations |
 
 ## Core Instructions
 
-1. The skill SHALL read `../output/Traceability_Matrix.md` and `../output/SRS_Draft.md`. If either file is missing, halt execution and report the error.
+1. The skill SHALL read `projects/<ProjectName>/<phase>/<document>/Traceability_Matrix.md` and `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`. If either file is missing, halt execution and report the error.
 
 2. The skill SHALL define the audit scope, listing every document reviewed, the standards applied, and the methodology used (IEEE 1012-2016 V&V framework).
 

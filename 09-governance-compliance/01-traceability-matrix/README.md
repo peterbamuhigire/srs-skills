@@ -6,11 +6,11 @@ This skill produces a bidirectional Requirements Traceability Matrix (RTM) that 
 
 ## Execution Steps
 
-1. Populate `../project_context/` with `vision.md` containing business goals and stakeholder needs
-2. Ensure `../output/SRS_Draft.md` exists with uniquely identified requirements
-3. Optionally provide `../output/HLD.md`, `../output/LLD.md`, and `../output/user_stories.md` for richer traceability
+1. Populate `projects/<ProjectName>/_context/` with `vision.md` containing business goals and stakeholder needs
+2. Ensure `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` exists with uniquely identified requirements
+3. Optionally provide `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/<phase>/<document>/LLD.md`, and `projects/<ProjectName>/<phase>/<document>/user_stories.md` for richer traceability
 4. Run this skill
-5. Review `../output/Traceability_Matrix.md` for completeness and accuracy
+5. Review `projects/<ProjectName>/<phase>/<document>/Traceability_Matrix.md` for completeness and accuracy
 6. Resolve any `[V&V-FAIL]` tagged requirements before proceeding to 02-audit-report
 
 ## Quality Reminder
