@@ -137,11 +137,28 @@ All 6 tasks in 6 commits: `7859685`..`7fc9372`. 8 new tests (164 → 172). `ENGI
 
 ## Plan 06 — Domain Control Libraries
 
-**Status:** ⬜ **NOT STARTED**
+**Status:** ✅ **COMPLETE** (2026-04-16)
 
 File: [`06-domain-control-libraries.md`](06-domain-control-libraries.md)
 
-Depends on Plans 01 + 03. Deliverables: `domains/<domain>/controls/` schema (control register, obligation map, evidence expectations, required reviews); kernel check `engine.checks.controls`.
+All 7 tasks in 13 commits: `7e6f4a1`..`83de7ff`. 7 new tests (172 → 179). `ENGINE CONTRACT: PASS`. All 8 domain libraries validate against schema.
+
+| Task | Commit | Summary |
+|------|--------|---------|
+| 1. Control register schema | `7e6f4a1` | `engine/registry/schemas/control-register.schema.json` (plan-verbatim). |
+| 2. Uganda DPPA library | `7a306b0` | 4 controls CTRL-UG-001..004 + obligations + expectations + reviews (plan-verbatim). |
+| 3. 7 domain libraries (MVP) | `04b4164`, `461c3f7`, `c1f3fac`, `65edf83`, `6f80f83`, `341c22a`, `97a8cda` | Minimum-viable starter control registers for healthcare (HIPAA), finance (PCI-DSS/SOX), education (FERPA/COPPA), retail (PCI-DSS/GDPR), logistics (DOT/ISO 28000), government (FISMA/NIST 800-53), agriculture (Codex Alimentarius). 3-4 controls per domain with `# TODO: expand` markers. |
+| 4. Project-controls schema + template | `b7e1a6e` | `project-controls.schema.json` + `00-meta-initialization/new-project/templates/controls.yaml.template` + scaffolding step added to new-project SKILL.md. |
+| 5. `ControlsCheck` | `fe334bd` | Emits `phase09.controls.{no_selection,unknown_control,missing_evidence,unused_in_artifacts}`. Wired into `Phase09Gate` via a new `_detect_domain` helper that reads `_context/domain.md`. 3 tests. |
+| 6. `ObligationsCheck` | `a2c8073` | Mirror of Task 5. Emits `phase09.obligations.{missing_framework_coverage,unsatisfied}`. Framework detection via lowercase substring match on `_context/quality-standards.md`. 4 tests. |
+| 7. Compliance skill updated | `83de7ff` | `09-governance-compliance/03-compliance-documentation/SKILL.md` now reads `_registry/controls.yaml` + domain library + produces one compliance-annex section per selected control. |
+
+### Plan 06 follow-ups
+
+- **`phase09.compliance_controls_have_evidence` effectively satisfied.** The previously-deferred check from Plan 02 Task 10 (control evidence coverage) is now covered by `phase09.controls.missing_evidence`. The deferred entry stays in the Phase 09 frontmatter `deferred_checks` list because the stricter historical semantic (evidence in at least one design AND one test file) is slightly different from what `ControlsCheck` enforces (evidence matches `evidence-expectations.yaml` path patterns). Task 11 follow-up: decide whether to tighten `ControlsCheck` or remove the deferred entry.
+- **Compliance skill path mismatch.** Plan 06 Task 7 referred to `09-governance-compliance/03-compliance/SKILL.md`; the actual directory is `03-compliance-documentation/`. Subagent targeted the real path. No renaming.
+- **`ObligationsCheck` framework detection is naive.** Substring match on `_context/quality-standards.md` will false-positive when a framework is mentioned in a "not applicable" context. Acceptable MVP; upgrade would require NLP.
+- **7 starter domain libraries are thin.** 3-4 controls each with `# TODO: expand`. New projects in non-Uganda domains will surface many gaps until these are fleshed out.
 
 ---
 
