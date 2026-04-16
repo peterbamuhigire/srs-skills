@@ -18,3 +18,4 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: pytest --cov=engine --cov-fail-under=90
       - run: python scripts/validate_engine.py
+      - run: python -m engine validate-skills

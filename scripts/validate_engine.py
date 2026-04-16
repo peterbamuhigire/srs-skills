@@ -106,6 +106,7 @@ def _collect_check_ids_from_source(errors: list[str]) -> set[str]:
     # Kernel-level check IDs (hard-coded: the kernel markers check lives
     # outside engine/gates/, so source scanning would miss it).
     ids.add("kernel.no_unresolved_fail_markers")
+    ids.add("kernel.legacy_skill_paths")
     # Phase 09 traceability delegates to TraceabilityCheck, so it never
     # appears as a literal gate_id=f"{self.id}.<name>" string. Add it
     # explicitly so the registry assertion covers it.

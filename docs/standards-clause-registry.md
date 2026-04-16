@@ -108,6 +108,7 @@ These check IDs are listed in phase-gate frontmatter as deferred — their imple
 | Check ID | Standard | Clause | Engine module |
 |---|---|---|---|
 | `kernel.no_unresolved_fail_markers` | (internal contract) | — | `engine/checks/markers.py` |
+| `kernel.legacy_skill_paths` | (internal contract) | — | `engine/checks/legacy_paths.py` |
 
 ## Maintenance
 

@@ -87,5 +87,23 @@ def sync(project: str) -> None:
     gloss.save(reg_dir / "glossary.yaml")
     click.echo(f"Wrote {len(ids)} identifiers and {len(gloss)} glossary terms.")
 
+@main.command("validate-skills")
+def validate_skills() -> None:
+    """Scan skill files for legacy path references."""
+    from engine.checks.legacy_paths import LegacyPathCheck
+    findings = FindingCollection()
+    chk = LegacyPathCheck()
+    for d in ["00-meta-initialization", "01-strategic-vision", "02-requirements-engineering",
+              "03-design-documentation", "04-development-artifacts", "05-testing-documentation",
+              "06-deployment-operations", "07-agile-artifacts", "08-end-user-documentation",
+              "09-governance-compliance"]:
+        for p in Path(d).rglob("*.md"):
+            chk.scan_file(p, findings)
+    if findings.is_blocking:
+        for f in findings:
+            click.echo(f"- {f.location}:{f.line} {f.message}")
+        sys.exit(1)
+    click.echo("SKILLS OK: no legacy path references outside alias-blocks.")
+
 if __name__ == "__main__":
     main()
