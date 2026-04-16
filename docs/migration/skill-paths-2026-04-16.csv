@@ -1,0 +1,679 @@
+file,line,snippet,alias_documented_in_file
+00-meta-initialization\README.md,18,# - ../project_context/methodology.md,False
+00-meta-initialization\README.md,19,# - ../project_context/doc_roadmap.md,False
+00-meta-initialization\README.md,20,# - ../project_context/project_profile.md,False
+00-meta-initialization\README.md,38,- **`../project_context/methodology.md`**: Selected methodology with rationale,False
+00-meta-initialization\README.md,39,- **`../project_context/doc_roadmap.md`**: Documentation execution plan,False
+00-meta-initialization\README.md,40,- **`../project_context/project_profile.md`**: Project characteristics summary,False
+00-meta-initialization\SKILL.md,32,- You've already run this skill and have `../project_context/methodology.md`,False
+00-meta-initialization\SKILL.md,43,| Existing context files | `../project_context/` | Optional (will be detected) |,False
+00-meta-initialization\SKILL.md,47,This skill creates/updates files in `../project_context/`:,False
+00-meta-initialization\SKILL.md,97,- **../project_context/methodology.md** → Previous methodology selection,False
+00-meta-initialization\SKILL.md,371,Check if `../project_context/` exists:,False
+00-meta-initialization\SKILL.md,395,#### **File 1: `../project_context/methodology.md`**,False
+00-meta-initialization\SKILL.md,399,#### **File 2: `../project_context/doc_roadmap.md`**,False
+00-meta-initialization\SKILL.md,403,#### **File 3: `../project_context/project_profile.md`**,False
+00-meta-initialization\SKILL.md,454,- [ ] `../project_context/methodology.md` exists and is populated,False
+00-meta-initialization\SKILL.md,455,- [ ] `../project_context/doc_roadmap.md` exists with checklist,False
+00-meta-initialization\SKILL.md,456,- [ ] `../project_context/project_profile.md` exists,False
+01-strategic-vision\README.md,31,"Existing skill-local references to `../project_context/` and `../output/` are compatibility aliases into the active project workspace, not a second architecture",False
+01-strategic-vision\01-prd-generation\README.md,9,1. Verify `../project_context/vision.md` and `../project_context/features.md` exist. Optionally check for `../output/Vision_Statement.md` to enrich the PRD.,False
+01-strategic-vision\01-prd-generation\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill reads context files, generates all PRD sections, and writes `../output/PRD.md`.",False
+01-strategic-vision\01-prd-generation\SKILL.md,23,- After the `03-vision-statement` skill has produced `Vision_Statement.md` in `../output/`.,False
+01-strategic-vision\01-prd-generation\SKILL.md,24,- Directly after `00-meta-initialization` if the team is working without a formal vision document but has populated `vision.md` and `features.md` in `../project,False
+01-strategic-vision\01-prd-generation\SKILL.md,30,"| **Inputs**  | `../project_context/vision.md`, `features.md`, `stakeholders.md`; optionally `../output/Vision_Statement.md` |",False
+01-strategic-vision\01-prd-generation\SKILL.md,31,| **Output**  | `../output/PRD.md`                                                    |,False
+01-strategic-vision\01-prd-generation\SKILL.md,39,"| vision.md             | `../project_context/vision.md`  | Yes      | Business goals, problem statement, constraints|",False
+01-strategic-vision\01-prd-generation\SKILL.md,40,| features.md           | `../project_context/features.md`| Yes      | Feature list with descriptions                |,False
+01-strategic-vision\01-prd-generation\SKILL.md,41,"| stakeholders.md       | `../project_context/stakeholders.md` | Yes | User roles, personas, stakeholder groups      |",False
+01-strategic-vision\01-prd-generation\SKILL.md,42,| Vision_Statement.md   | `../output/Vision_Statement.md` | No       | Enriches executive summary and market context |,False
+01-strategic-vision\01-prd-generation\SKILL.md,48,| PRD.md  | `../output/PRD.md`   | Complete Product Requirements Document with all sections |,False
+01-strategic-vision\01-prd-generation\SKILL.md,56,"Read `vision.md`, `features.md`, and `stakeholders.md` from `../project_context/`. Optionally read `Vision_Statement.md` from `../output/`. Log every file path ",False
+01-strategic-vision\01-prd-generation\SKILL.md,126,Write the completed document to `../output/PRD.md`. Log the total section count and feature count.,False
+01-strategic-vision\02-business-case\README.md,9,1. Verify `../project_context/vision.md` exists. Optionally check for `../output/PRD.md` and `../output/Vision_Statement.md` to enrich the analysis.,False
+01-strategic-vision\02-business-case\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill reads context files, generates financial analysis with LaTeX formulas, and writes `../output/Business_C",False
+01-strategic-vision\02-business-case\SKILL.md,29,"| **Inputs**  | `../project_context/vision.md`, `../project_context/stakeholders.md`, optionally `../output/PRD.md`, `../output/Vision_Statement.md` |",False
+01-strategic-vision\02-business-case\SKILL.md,30,| **Output**  | `../output/Business_Case.md`                                                          |,False
+01-strategic-vision\02-business-case\SKILL.md,37,| `vision.md`         | `../project_context/vision.md`     | **Required** | Primary source for problem domain and goals   |,False
+01-strategic-vision\02-business-case\SKILL.md,38,| `stakeholders.md`   | `../project_context/stakeholders.md` | **Required** | Identifies decision-makers and beneficiaries |,False
+01-strategic-vision\02-business-case\SKILL.md,39,| `PRD.md`            | `../output/PRD.md`                 | Recommended  | Enriches solution description and timeline    |,False
+01-strategic-vision\02-business-case\SKILL.md,40,| `Vision_Statement.md` | `../output/Vision_Statement.md`  | Optional     | Provides strategic alignment language         |,False
+01-strategic-vision\02-business-case\SKILL.md,46,| `Business_Case.md`  | `../output/Business_Case.md`   | Complete business case with financial analysis |,False
+01-strategic-vision\02-business-case\SKILL.md,176,- [ ] `Business_Case.md` exists in `../output/`.,False
+01-strategic-vision\03-vision-statement\README.md,9,1. Verify `../project_context/vision.md` and `../project_context/stakeholders.md` exist and are populated. Halt if vision.md is missing.,False
+01-strategic-vision\03-vision-statement\README.md,10,"2. Invoke `logic.prompt` or trigger the skill through your runner. The skill reads context files, synthesizes strategic sections, and writes `../output/Vision_S",False
+01-strategic-vision\03-vision-statement\SKILL.md,23,- After 00-meta-initialization has produced `methodology.md` in `../project_context/`.,False
+01-strategic-vision\03-vision-statement\SKILL.md,31,"| **Inputs** | `../project_context/vision.md`, `../project_context/stakeholders.md`, `../project_context/glossary.md` |",False
+01-strategic-vision\03-vision-statement\SKILL.md,32,| **Output** | `../output/Vision_Statement.md` |,False
+01-strategic-vision\03-vision-statement\SKILL.md,40,"| `../project_context/vision.md` | Yes | Problem statement, target users, business goals, constraints |",False
+01-strategic-vision\03-vision-statement\SKILL.md,41,"| `../project_context/stakeholders.md` | Yes | Stakeholder roles, segments, goals, technical proficiency |",False
+01-strategic-vision\03-vision-statement\SKILL.md,42,| `../project_context/glossary.md` | Recommended | Domain terminology per IEEE 610.12-1990 |,False
+01-strategic-vision\03-vision-statement\SKILL.md,48,"| `../output/Vision_Statement.md` | Formal vision document with elevator pitch, positioning, value propositions, success criteria, and scope boundaries |",False
+01-strategic-vision\03-vision-statement\SKILL.md,56,"Read `vision.md`, `stakeholders.md`, and `glossary.md` from `../project_context/`. Log the absolute path of each file read. If `vision.md` is missing, halt exec",False
+01-strategic-vision\03-vision-statement\SKILL.md,167,- [ ] `Vision_Statement.md` exists in `../output/`,False
+01-strategic-vision\03-vision-statement\SKILL.md,178,| Upstream | 00-meta-initialization | Requires `methodology.md` in `../project_context/` |,False
+01-strategic-vision\04-lean-canvas\README.md,28,| `vision.md` | Yes | `../project_context/` |,False
+01-strategic-vision\04-lean-canvas\README.md,29,| `features.md` | Recommended | `../project_context/` |,False
+01-strategic-vision\04-lean-canvas\README.md,30,| `stakeholders.md` | Optional | `../project_context/` |,False
+01-strategic-vision\04-lean-canvas\README.md,36,| `Lean_Canvas.md` | `../output/Lean_Canvas.md` |,False
+01-strategic-vision\04-lean-canvas\README.md,40,1. Verify `../project_context/vision.md` exists. Halt if missing.,False
+01-strategic-vision\04-lean-canvas\README.md,42,"3. Invoke the skill through your runner. The skill reads context files, populates all nine canvas blocks, generates the Impact Map and Hypothesis Board, and wri",False
+01-strategic-vision\04-lean-canvas\SKILL.md,45,"| **Inputs** | `../project_context/vision.md`, `../project_context/features.md`, `../project_context/stakeholders.md` (optional) |",False
+01-strategic-vision\04-lean-canvas\SKILL.md,46,| **Output** | `../output/Lean_Canvas.md` |,False
+01-strategic-vision\04-lean-canvas\SKILL.md,54,"| `vision.md` | `../project_context/vision.md` | **Required** | Problem domain, target users, business goals, constraints |",False
+01-strategic-vision\04-lean-canvas\SKILL.md,55,| `features.md` | `../project_context/features.md` | Recommended | Feature list for Solution and Deliverables blocks |,False
+01-strategic-vision\04-lean-canvas\SKILL.md,56,| `stakeholders.md` | `../project_context/stakeholders.md` | Optional | Stakeholder roles for actor identification in Impact Map |,False
+01-strategic-vision\04-lean-canvas\SKILL.md,62,"| `Lean_Canvas.md` | `../output/Lean_Canvas.md` | Complete Lean Canvas, Impact Map, and Hypothesis Board |",False
+01-strategic-vision\04-lean-canvas\SKILL.md,70,Read `vision.md` and `features.md` from `../project_context/`. Optionally read `stakeholders.md`. Log the absolute path of each file read. Halt execution if `vi,False
+01-strategic-vision\04-lean-canvas\SKILL.md,212,Assemble the complete Lean Canvas document and write it to `../output/Lean_Canvas.md`.,False
+01-strategic-vision\04-lean-canvas\SKILL.md,268,- [ ] `Lean_Canvas.md` exists in `../output/`,False
+01-strategic-vision\04-lean-canvas\SKILL.md,282,| Upstream | `00-meta-initialization` | Requires `methodology.md` in `../project_context/` |,False
+02-requirements-engineering\README.md,162,# Populate ../project_context/*.md files,False
+02-requirements-engineering\agile\README.md,5,The canonical runtime workspace for this pipeline is `projects/<ProjectName>/`. References inside older skill-local files to `../project_context/` and `../outpu,False
+02-requirements-engineering\fundamentals\README.md,134,### Inputs (from `../project_context/`),False
+02-requirements-engineering\fundamentals\README.md,145,### Outputs (to `../output/`),False
+02-requirements-engineering\waterfall\README.md,5,The canonical runtime workspace for this pipeline is `projects/<ProjectName>/`. References inside older skill-local files to `../project_context/` and `../outpu,False
+02-requirements-engineering\agile\01-user-story-generation\SKILL.md,39,This skill reads from `../project_context/`:,False
+02-requirements-engineering\agile\01-user-story-generation\SKILL.md,53,This skill writes to `../output/`:,False
+02-requirements-engineering\agile\01-user-story-generation\SKILL.md,86,"1. Read `../project_context/personas.md`. If missing, prompt user:",False
+02-requirements-engineering\agile\01-user-story-generation\SKILL.md,101,1. Parse `../project_context/features.md` to identify **Epics** (large features requiring multiple sprints),False
+02-requirements-engineering\agile\01-user-story-generation\SKILL.md,108,3. Create epic hierarchy in `../output/epic_breakdown.md`,False
+02-requirements-engineering\agile\01-user-story-generation\SKILL.md,209,Generate `../output/story_map.mmd` using **Jeff Patton's Story Mapping** approach:,False
+02-requirements-engineering\agile\01-user-story-generation\SKILL.md,233,### File: `../output/user_stories.md`,False
+02-requirements-engineering\agile\01-user-story-generation\SKILL.md,312,[Link to ../project_context/personas.md],False
+02-requirements-engineering\agile\01-user-story-generation\SKILL.md,315,### File: `../output/backlog_summary.md`,False
+02-requirements-engineering\agile\02-acceptance-criteria\README.md,9,"1. Read `../output/user_stories.md` and extract all user stories by their US-XXX identifiers, parsing the role-action-value triad from each.",False
+02-requirements-engineering\agile\02-acceptance-criteria\README.md,10,"2. Generate 3--5 acceptance criteria per story in Given-When-Then format, covering the happy path, error/edge cases, and boundary conditions. If `../project_con",False
+02-requirements-engineering\agile\02-acceptance-criteria\README.md,12,4. Write the complete criteria set to `../output/acceptance_criteria.md` with cross-references back to each originating story and epic.,False
+02-requirements-engineering\agile\02-acceptance-criteria\SKILL.md,23,"Execute this skill after `01-user-story-generation` has produced `../output/user_stories.md`. Each user story in that file shall already follow the ""As a / I wa",False
+02-requirements-engineering\agile\02-acceptance-criteria\SKILL.md,27,"- **Inputs:** `../output/user_stories.md` (required), `../project_context/quality_standards.md` (optional, for NFR criteria)",False
+02-requirements-engineering\agile\02-acceptance-criteria\SKILL.md,28,- **Output:** `../output/acceptance_criteria.md`,False
+02-requirements-engineering\agile\02-acceptance-criteria\SKILL.md,35,"| `user_stories.md` | `../output/` | User stories with ""As a / I want / So that"" triads | Yes |",False
+02-requirements-engineering\agile\02-acceptance-criteria\SKILL.md,36,"| `quality_standards.md` | `../project_context/` | NFR targets for performance, security, and reliability thresholds | No |",False
+02-requirements-engineering\agile\02-acceptance-criteria\SKILL.md,42,| `acceptance_criteria.md` | `../output/` | Gherkin-format acceptance criteria cross-referenced to story IDs |,False
+02-requirements-engineering\agile\02-acceptance-criteria\SKILL.md,46,1. **Read upstream output.** Open `../output/user_stories.md` and log the file path to confirm the read succeeded.,False
+02-requirements-engineering\agile\02-acceptance-criteria\SKILL.md,52,"4. **Append NFR criteria.** If `../project_context/quality_standards.md` exists, read it and append non-functional acceptance criteria with measurable threshold",False
+02-requirements-engineering\agile\02-acceptance-criteria\SKILL.md,54,"6. **Write output.** Write `../output/acceptance_criteria.md` with each story's criteria grouped under its US-XXX identifier, including cross-references back to",False
+02-requirements-engineering\agile\03-story-mapping\README.md,9,1. Ensure `../output/user_stories.md` and `../output/epic_breakdown.md` exist. Run `01-user-story-generation` first if they are missing.,False
+02-requirements-engineering\agile\03-story-mapping\README.md,11,3. Verify that `../output/story_map.md` and `../output/story_map.mmd` were generated. Confirm the Mermaid diagram renders without syntax errors.,False
+02-requirements-engineering\agile\03-story-mapping\SKILL.md,27,"- **Inputs:** `../output/user_stories.md`, `../output/epic_breakdown.md`",False
+02-requirements-engineering\agile\03-story-mapping\SKILL.md,28,"- **Outputs:** `../output/story_map.md`, `../output/story_map.mmd`",False
+02-requirements-engineering\agile\03-story-mapping\SKILL.md,35,| `user_stories.md` | `../output/user_stories.md` | Yes |,False
+02-requirements-engineering\agile\03-story-mapping\SKILL.md,36,| `epic_breakdown.md` | `../output/epic_breakdown.md` | Yes |,False
+02-requirements-engineering\agile\03-story-mapping\SKILL.md,47,1. **Read inputs.** Parse `../output/user_stories.md` and `../output/epic_breakdown.md`. Log the absolute path and line count of each file read.,False
+02-requirements-engineering\agile\04-backlog-prioritization\README.md,9,"1. Read `../output/user_stories.md`, `../project_context/vision.md`, and optionally `../output/story_map.md`. Log all paths.",False
+02-requirements-engineering\agile\04-backlog-prioritization\README.md,12,"4. Write `../output/prioritized_backlog.md` and `../output/release_plan.md` with scoring tables, sprint allocations, and dependency notes.",False
+02-requirements-engineering\agile\04-backlog-prioritization\SKILL.md,30,"- **Inputs:** `../output/user_stories.md`, `../project_context/vision.md`, optionally `../output/story_map.md`",False
+02-requirements-engineering\agile\04-backlog-prioritization\SKILL.md,31,"- **Outputs:** `../output/prioritized_backlog.md`, `../output/release_plan.md`",False
+02-requirements-engineering\agile\04-backlog-prioritization\SKILL.md,38,| `user_stories.md` | `../output/` | Yes |,False
+02-requirements-engineering\agile\04-backlog-prioritization\SKILL.md,39,| `vision.md` | `../project_context/` | Yes |,False
+02-requirements-engineering\agile\04-backlog-prioritization\SKILL.md,40,| `story_map.md` | `../output/` | Optional |,False
+02-requirements-engineering\agile\04-backlog-prioritization\SKILL.md,46,"| `prioritized_backlog.md` | MoSCoW classification, WSJF scores, dependency notes | `../output/` |",False
+02-requirements-engineering\agile\04-backlog-prioritization\SKILL.md,47,"| `release_plan.md` | Sprint-by-sprint allocation, milestones, capacity, risk flags | `../output/` |",False
+02-requirements-engineering\agile\04-backlog-prioritization\SKILL.md,53,"Read `../output/user_stories.md` and `../project_context/vision.md`. If `../output/story_map.md` exists, read it for journey and dependency context. Log every f",False
+02-requirements-engineering\agile\04-backlog-prioritization\SKILL.md,97,"Write `../output/prioritized_backlog.md` and `../output/release_plan.md` following the output format below. Log story count, sprint count, and Must-Have percent",False
+02-requirements-engineering\fundamentals\after\08-requirements-management\SKILL.md,24,- When requirements artifacts in `../output/` have reached a stable state suitable for baselining.,False
+02-requirements-engineering\fundamentals\after\08-requirements-management\SKILL.md,30,"- **Inputs:** All artifacts in `../output/`, `../project_context/vision.md`, `../project_context/stakeholder_register.md`",False
+02-requirements-engineering\fundamentals\after\08-requirements-management\SKILL.md,31,"- **Outputs:** `../output/requirements_baseline.md`, `../output/change_control_process.md`",False
+02-requirements-engineering\fundamentals\after\08-requirements-management\SKILL.md,38,| All `*.md` artifacts | `../output/` | Yes |,False
+02-requirements-engineering\fundamentals\after\08-requirements-management\SKILL.md,39,| `vision.md` | `../project_context/` | Yes |,False
+02-requirements-engineering\fundamentals\after\08-requirements-management\SKILL.md,40,| `stakeholder_register.md` | `../project_context/` | Optional |,False
+02-requirements-engineering\fundamentals\after\08-requirements-management\SKILL.md,46,| `requirements_baseline.md` | Versioned snapshot of all requirements with state tracking | `../output/` |,False
+02-requirements-engineering\fundamentals\after\08-requirements-management\SKILL.md,47,"| `change_control_process.md` | Change request format, impact analysis, approval workflow | `../output/` |",False
+02-requirements-engineering\fundamentals\after\08-requirements-management\SKILL.md,53,Read every file in `../output/` and `../project_context/vision.md`. Log each file path read. Catalog every requirement identifier found across all artifacts. If,False
+02-requirements-engineering\fundamentals\after\08-requirements-management\SKILL.md,158,Write `../output/requirements_baseline.md` and `../output/change_control_process.md` following the output format below.,False
+02-requirements-engineering\fundamentals\after\08-requirements-management\SKILL.md,269,- [ ] Every requirement in `../output/` has a unique identifier in the inventory.,False
+02-requirements-engineering\fundamentals\after\09-traceability-engineering\SKILL.md,31,"- **Inputs:** `../project_context/vision.md`, `../project_context/stakeholder_register.md`, all `../output/` artifacts",False
+02-requirements-engineering\fundamentals\after\09-traceability-engineering\SKILL.md,32,- **Outputs:** `../output/traceability_matrix.md`,False
+02-requirements-engineering\fundamentals\after\09-traceability-engineering\SKILL.md,39,| `vision.md` | `../project_context/` | Yes |,False
+02-requirements-engineering\fundamentals\after\09-traceability-engineering\SKILL.md,40,| `stakeholder_register.md` | `../project_context/` | Yes |,False
+02-requirements-engineering\fundamentals\after\09-traceability-engineering\SKILL.md,41,| All `*.md` artifacts | `../output/` | Yes |,False
+02-requirements-engineering\fundamentals\after\09-traceability-engineering\SKILL.md,42,| `requirements_baseline.md` | `../output/` | Recommended |,False
+02-requirements-engineering\fundamentals\after\09-traceability-engineering\SKILL.md,48,| `traceability_matrix.md` | Four-level trace matrix with gap analysis and coverage metrics | `../output/` |,False
+02-requirements-engineering\fundamentals\after\09-traceability-engineering\SKILL.md,54,"Read `../project_context/vision.md`, `../project_context/stakeholder_register.md`, and every artifact in `../output/`. Log each file path read. Extract:",False
+02-requirements-engineering\fundamentals\after\09-traceability-engineering\SKILL.md,146,Write `../output/traceability_matrix.md` following the output format below.,False
+02-requirements-engineering\fundamentals\after\10-requirements-metrics\SKILL.md,30,"- **Inputs:** All artifacts in `../output/`, `../project_context/vision.md`",False
+02-requirements-engineering\fundamentals\after\10-requirements-metrics\SKILL.md,31,- **Outputs:** `../output/requirements_metrics_report.md`,False
+02-requirements-engineering\fundamentals\after\10-requirements-metrics\SKILL.md,38,| All `*.md` artifacts | `../output/` | Yes |,False
+02-requirements-engineering\fundamentals\after\10-requirements-metrics\SKILL.md,39,| `vision.md` | `../project_context/` | Yes |,False
+02-requirements-engineering\fundamentals\after\10-requirements-metrics\SKILL.md,40,| `traceability_matrix.md` | `../output/` | Recommended |,False
+02-requirements-engineering\fundamentals\after\10-requirements-metrics\SKILL.md,41,| `requirements_baseline.md` | `../output/` | Recommended |,False
+02-requirements-engineering\fundamentals\after\10-requirements-metrics\SKILL.md,47,"| `requirements_metrics_report.md` | Per-metric scores, overall gate verdict, remediation guidance | `../output/` |",False
+02-requirements-engineering\fundamentals\after\10-requirements-metrics\SKILL.md,53,Read every file in `../output/` and `../project_context/vision.md`. Log each file path read. Build a consolidated requirements inventory with all requirement id,False
+02-requirements-engineering\fundamentals\after\10-requirements-metrics\SKILL.md,144,"A user story passes INVEST when it satisfies all six criteria: Independent, Negotiable, Valuable, Estimable, Small, Testable. Apply only when user stories exist",False
+02-requirements-engineering\fundamentals\after\10-requirements-metrics\SKILL.md,184,Write `../output/requirements_metrics_report.md` following the output format below.,False
+02-requirements-engineering\fundamentals\after\11-requirements-reuse\SKILL.md,30,"- **Inputs:** All artifacts in `../output/`, `../project_context/vision.md`",False
+02-requirements-engineering\fundamentals\after\11-requirements-reuse\SKILL.md,31,- **Outputs:** `../output/requirements_library.md`,False
+02-requirements-engineering\fundamentals\after\11-requirements-reuse\SKILL.md,38,| All `*.md` artifacts | `../output/` | Yes |,False
+02-requirements-engineering\fundamentals\after\11-requirements-reuse\SKILL.md,39,| `vision.md` | `../project_context/` | Yes |,False
+02-requirements-engineering\fundamentals\after\11-requirements-reuse\SKILL.md,40,| `requirements_baseline.md` | `../output/` | Recommended |,False
+02-requirements-engineering\fundamentals\after\11-requirements-reuse\SKILL.md,41,| `traceability_matrix.md` | `../output/` | Recommended |,False
+02-requirements-engineering\fundamentals\after\11-requirements-reuse\SKILL.md,47,| `requirements_library.md` | Reusable requirements catalog with classification and adaptation guidelines | `../output/` |,False
+02-requirements-engineering\fundamentals\after\11-requirements-reuse\SKILL.md,53,Read every file in `../output/` and `../project_context/vision.md`. Log each file path read. Build a consolidated list of all requirements with their full defin,False
+02-requirements-engineering\fundamentals\after\11-requirements-reuse\SKILL.md,181,Write `../output/requirements_library.md` following the output format below.,False
+02-requirements-engineering\fundamentals\after\12-solution-evaluation-and-transition\SKILL.md,32,"| **Inputs** | `../output/validation_report.md`, `../output/Deployment_Guide.md` (optional), `../output/Runbook.md` (optional), `../output/Test_Report.md` (opti",False
+02-requirements-engineering\fundamentals\after\12-solution-evaluation-and-transition\SKILL.md,33,| **Output** | `../output/solution_evaluation_transition_plan.md` |,False
+02-requirements-engineering\fundamentals\after\12-solution-evaluation-and-transition\SKILL.md,87,"Write `../output/solution_evaluation_transition_plan.md` with transition actions, readiness gaps, decision criteria, and evaluation metrics.",False
+02-requirements-engineering\fundamentals\before\01-stakeholder-analysis\SKILL.md,32,"| **Inputs** | `../project_context/vision.md`, `../project_context/features.md` |",False
+02-requirements-engineering\fundamentals\before\01-stakeholder-analysis\SKILL.md,33,| **Output** | `../output/stakeholder_register.md` |,False
+02-requirements-engineering\fundamentals\before\01-stakeholder-analysis\SKILL.md,41,"| vision.md | `../project_context/vision.md` | Yes | Business goals, problem statement, constraints, target audience |",False
+02-requirements-engineering\fundamentals\before\01-stakeholder-analysis\SKILL.md,42,| features.md | `../project_context/features.md` | Yes | Feature list to identify impacted user groups and technical domains |,False
+02-requirements-engineering\fundamentals\before\01-stakeholder-analysis\SKILL.md,48,"| stakeholder_register.md | `../output/stakeholder_register.md` | Complete stakeholder register with classification, communication plan, and RACI matrix |",False
+02-requirements-engineering\fundamentals\before\01-stakeholder-analysis\SKILL.md,56,"Read `vision.md` and `features.md` from `../project_context/`. Log every file path read. If either file is missing, halt execution and report the gap to the use",False
+02-requirements-engineering\fundamentals\before\01-stakeholder-analysis\SKILL.md,176,"Assemble all sections and write the completed document to `../output/stakeholder_register.md`. Log the total stakeholder count, the number of gaps flagged, and ",False
+02-requirements-engineering\fundamentals\before\02-elicitation-toolkit\SKILL.md,33,"| **Inputs** | `../output/stakeholder_register.md`, `../project_context/vision.md`, `../project_context/features.md` |",False
+02-requirements-engineering\fundamentals\before\02-elicitation-toolkit\SKILL.md,34,| **Output** | `../output/elicitation_log.md` |,False
+02-requirements-engineering\fundamentals\before\02-elicitation-toolkit\SKILL.md,42,"| stakeholder_register.md | `../output/stakeholder_register.md` | Yes | Stakeholder roles, communication preferences, engagement levels |",False
+02-requirements-engineering\fundamentals\before\02-elicitation-toolkit\SKILL.md,43,"| vision.md | `../project_context/vision.md` | Yes | Business goals, problem statement, domain context |",False
+02-requirements-engineering\fundamentals\before\02-elicitation-toolkit\SKILL.md,44,| features.md | `../project_context/features.md` | Yes | Feature list for elicitation scoping |,False
+02-requirements-engineering\fundamentals\before\02-elicitation-toolkit\SKILL.md,45,| glossary.md | `../project_context/glossary.md` | No | Domain terminology for consistent language |,False
+02-requirements-engineering\fundamentals\before\02-elicitation-toolkit\SKILL.md,51,"| elicitation_log.md | `../output/elicitation_log.md` | Structured findings with source attribution, technique used, and confidence levels |",False
+02-requirements-engineering\fundamentals\before\02-elicitation-toolkit\SKILL.md,59,"Read `stakeholder_register.md` from `../output/`, and `vision.md` and `features.md` from `../project_context/`. Optionally read `glossary.md`. Log every file pa",False
+02-requirements-engineering\fundamentals\before\02-elicitation-toolkit\SKILL.md,243,"Assemble all findings and write to `../output/elicitation_log.md`. Log the total finding count, technique(s) used, and the number of unresolved items.",False
+02-requirements-engineering\fundamentals\before\03-brd-generation\SKILL.md,32,"| **Inputs** | `../project_context/vision.md`, `../project_context/features.md`, `../output/stakeholder_register.md`, `../output/elicitation_log.md` |",False
+02-requirements-engineering\fundamentals\before\03-brd-generation\SKILL.md,33,| **Output** | `../output/brd.md` |,False
+02-requirements-engineering\fundamentals\before\03-brd-generation\SKILL.md,42,"| vision.md | `../project_context/vision.md` | Yes | Business goals, problem statement, constraints |",False
+02-requirements-engineering\fundamentals\before\03-brd-generation\SKILL.md,43,| features.md | `../project_context/features.md` | Yes | Feature list with descriptions |,False
+02-requirements-engineering\fundamentals\before\03-brd-generation\SKILL.md,44,"| stakeholder_register.md | `../output/stakeholder_register.md` | Yes | Stakeholder roles, classifications, communication plan |",False
+02-requirements-engineering\fundamentals\before\03-brd-generation\SKILL.md,45,| elicitation_log.md | `../output/elicitation_log.md` | No | Elicitation findings with source attribution |,False
+02-requirements-engineering\fundamentals\before\03-brd-generation\SKILL.md,46,| glossary.md | `../project_context/glossary.md` | No | Domain terminology (IEEE 610.12) |,False
+02-requirements-engineering\fundamentals\before\03-brd-generation\SKILL.md,52,| brd.md | `../output/brd.md` | Complete Business Requirements Document |,False
+02-requirements-engineering\fundamentals\before\03-brd-generation\SKILL.md,206,"Write the completed document to `../output/brd.md`. Log the total count of business objectives, requirements, rules, and process flows.",False
+02-requirements-engineering\fundamentals\before\04-business-analysis-planning\SKILL.md,32,"| **Inputs** | `../project_context/vision.md`, `../output/stakeholder_register.md` (recommended), `../project_context/features.md`, `../project_context/constrai",False
+02-requirements-engineering\fundamentals\before\04-business-analysis-planning\SKILL.md,33,| **Output** | `../output/business_analysis_plan.md` |,False
+02-requirements-engineering\fundamentals\before\04-business-analysis-planning\SKILL.md,103,"Write `../output/business_analysis_plan.md` with the sections below. Log the analysis activities planned, the stakeholder groups engaged, and all unresolved gov",False
+02-requirements-engineering\fundamentals\during\04-requirements-analysis\SKILL.md,32,"| **Inputs**    | `../output/elicitation_log.md`, `vision.md`, `features.md`, `business_rules.md` |",False
+02-requirements-engineering\fundamentals\during\04-requirements-analysis\SKILL.md,33,| **Output**    | `../output/requirements_analysis_report.md`                            |,False
+02-requirements-engineering\fundamentals\during\04-requirements-analysis\SKILL.md,41,| elicitation_log.md | `../output/elicitation_log.md`            | Yes      | Raw requirements gathered from stakeholders       |,False
+02-requirements-engineering\fundamentals\during\04-requirements-analysis\SKILL.md,42,| vision.md          | `../project_context/vision.md`            | Yes      | Business goals for traceability and prioritization|,False
+02-requirements-engineering\fundamentals\during\04-requirements-analysis\SKILL.md,43,| features.md        | `../project_context/features.md`          | Yes      | Feature descriptions for classification           |,False
+02-requirements-engineering\fundamentals\during\04-requirements-analysis\SKILL.md,44,| business_rules.md  | `../project_context/business_rules.md`    | No       | Business rules for conflict detection             |,False
+02-requirements-engineering\fundamentals\during\04-requirements-analysis\SKILL.md,50,"| requirements_analysis_report.md| `../output/requirements_analysis_report.md`    | Complete analysis with classification, conflicts, feasibility, and prioritiz",False
+02-requirements-engineering\fundamentals\during\04-requirements-analysis\SKILL.md,58,"Read `elicitation_log.md`, `vision.md`, `features.md`, and optionally `business_rules.md` from `../project_context/`. Assign a temporary identifier (e.g., RAW-0",False
+02-requirements-engineering\fundamentals\during\04-requirements-analysis\SKILL.md,152,"Write the completed analysis to `../output/requirements_analysis_report.md` using the output format below. Log summary statistics: total requirements, classific",False
+02-requirements-engineering\fundamentals\during\05-conceptual-data-modeling\SKILL.md,33,"| **Inputs**    | `../project_context/features.md`, `business_rules.md`, `elicitation_log.md`, `glossary.md` |",False
+02-requirements-engineering\fundamentals\during\05-conceptual-data-modeling\SKILL.md,34,| **Output**    | `../output/conceptual_data_model.md`                                   |,False
+02-requirements-engineering\fundamentals\during\05-conceptual-data-modeling\SKILL.md,42,| features.md        | `../project_context/features.md`          | Yes      | Feature descriptions containing entity references |,False
+02-requirements-engineering\fundamentals\during\05-conceptual-data-modeling\SKILL.md,43,| business_rules.md  | `../project_context/business_rules.md`    | Yes      | Business rules defining entity constraints        |,False
+02-requirements-engineering\fundamentals\during\05-conceptual-data-modeling\SKILL.md,44,| elicitation_log.md | `../project_context/elicitation_log.md`   | No       | Raw stakeholder statements with domain vocabulary |,False
+02-requirements-engineering\fundamentals\during\05-conceptual-data-modeling\SKILL.md,45,| glossary.md        | `../project_context/glossary.md`          | No       | Controlled vocabulary for entity and attribute naming |,False
+02-requirements-engineering\fundamentals\during\05-conceptual-data-modeling\SKILL.md,51,"| conceptual_data_model.md  | `../output/conceptual_data_model.md`   | Complete conceptual ER model with Mermaid diagrams, entity catalog, and data quality rule",False
+02-requirements-engineering\fundamentals\during\05-conceptual-data-modeling\SKILL.md,59,"Read `features.md`, `business_rules.md`, and optionally `elicitation_log.md` and `glossary.md` from `../project_context/`. If `glossary.md` exists, load it as t",False
+02-requirements-engineering\fundamentals\during\05-conceptual-data-modeling\SKILL.md,167,"Write the completed model to `../output/conceptual_data_model.md` using the output format below. Log summary statistics: total entities, relationships, attribut",False
+02-requirements-engineering\fundamentals\during\06-requirements-patterns\SKILL.md,33,"| **Inputs**    | `../project_context/features.md`, `business_rules.md`; `../output/requirements_analysis_report.md` |",False
+02-requirements-engineering\fundamentals\during\06-requirements-patterns\SKILL.md,34,| **Output**    | `../output/requirements_patterns.md`                                   |,False
+02-requirements-engineering\fundamentals\during\06-requirements-patterns\SKILL.md,42,| features.md                     | `../project_context/features.md`                 | Yes      | Feature descriptions with behavioral requirements |,False
+02-requirements-engineering\fundamentals\during\06-requirements-patterns\SKILL.md,43,| business_rules.md               | `../project_context/business_rules.md`           | Yes      | Business logic requiring pattern formalization |,False
+02-requirements-engineering\fundamentals\during\06-requirements-patterns\SKILL.md,44,| requirements_analysis_report.md | `../output/requirements_analysis_report.md`      | No       | Classified and prioritized requirements        |,False
+02-requirements-engineering\fundamentals\during\06-requirements-patterns\SKILL.md,50,"| requirements_patterns.md | `../output/requirements_patterns.md`  | Decision tables, state diagrams, and CRUD matrices for complex requirements |",False
+02-requirements-engineering\fundamentals\during\06-requirements-patterns\SKILL.md,58,Read `features.md` and `business_rules.md` from `../project_context/`. Optionally read `requirements_analysis_report.md` from `../output/` if available. Log eve,False
+02-requirements-engineering\fundamentals\during\06-requirements-patterns\SKILL.md,181,"Write the completed patterns to `../output/requirements_patterns.md` using the output format below. Log summary statistics: total decision tables, state models,",False
+02-requirements-engineering\fundamentals\during\07-requirements-validation\SKILL.md,33,| **Inputs**    | All `../output/` artifacts generated by skills 04-06                   |,False
+02-requirements-engineering\fundamentals\during\07-requirements-validation\SKILL.md,34,| **Output**    | `../output/validation_report.md`                                       |,False
+02-requirements-engineering\fundamentals\during\07-requirements-validation\SKILL.md,42,| requirements_analysis_report.md   | `../output/requirements_analysis_report.md`     | Yes      | Classified and prioritized requirements        |,False
+02-requirements-engineering\fundamentals\during\07-requirements-validation\SKILL.md,43,| conceptual_data_model.md          | `../output/conceptual_data_model.md`            | No       | Entity-relationship model for data validation  |,False
+02-requirements-engineering\fundamentals\during\07-requirements-validation\SKILL.md,44,"| requirements_patterns.md          | `../output/requirements_patterns.md`            | No       | Decision tables, state models, CRUD matrices   |",False
+02-requirements-engineering\fundamentals\during\07-requirements-validation\SKILL.md,45,| vision.md                         | `../project_context/vision.md`                  | Yes      | Business goals for traceability validation     |,False
+02-requirements-engineering\fundamentals\during\07-requirements-validation\SKILL.md,46,| features.md                       | `../project_context/features.md`                | Yes      | Feature list for completeness checking         |,False
+02-requirements-engineering\fundamentals\during\07-requirements-validation\SKILL.md,47,| business_rules.md                 | `../project_context/business_rules.md`          | No       | Business rules for consistency checking        |,False
+02-requirements-engineering\fundamentals\during\07-requirements-validation\SKILL.md,53,| validation_report.md  | `../output/validation_report.md`    | Complete validation findings with defect log and remediation instructions |,False
+02-requirements-engineering\fundamentals\during\07-requirements-validation\SKILL.md,164,"Write the completed validation to `../output/validation_report.md` using the output format below. Log summary statistics: total requirements validated, pass rat",False
+02-requirements-engineering\fundamentals\during\08-business-process-modeling\SKILL.md,32,"| **Inputs** | `../output/elicitation_log.md`, `../output/stakeholder_register.md`, `../project_context/features.md`, `../project_context/business_rules.md` (op",False
+02-requirements-engineering\fundamentals\during\08-business-process-modeling\SKILL.md,33,| **Output** | `../output/business_process_models.md` |,False
+02-requirements-engineering\fundamentals\during\08-business-process-modeling\SKILL.md,98,"Write `../output/business_process_models.md` containing current-state and future-state models, exception flows, and requirement implications.",False
+02-requirements-engineering\fundamentals\during\09-business-rules-analysis\SKILL.md,32,"| **Inputs** | `../output/elicitation_log.md`, `../output/business_process_models.md` (recommended), `../project_context/business_rules.md` (optional), `vision.",False
+02-requirements-engineering\fundamentals\during\09-business-rules-analysis\SKILL.md,33,| **Output** | `../output/business_rules_catalog.md` |,False
+02-requirements-engineering\fundamentals\during\09-business-rules-analysis\SKILL.md,92,"Write `../output/business_rules_catalog.md` with the normalized rule catalog, issue log, and downstream mapping.",False
+02-requirements-engineering\fundamentals\during\10-prototyping-and-solution-discovery\SKILL.md,32,"| **Inputs** | `../project_context/vision.md`, `../project_context/features.md`, `../output/stakeholder_register.md` (recommended), `../output/requirements_anal",False
+02-requirements-engineering\fundamentals\during\10-prototyping-and-solution-discovery\SKILL.md,33,| **Output** | `../output/solution_discovery_report.md` |,False
+02-requirements-engineering\fundamentals\during\10-prototyping-and-solution-discovery\SKILL.md,86,"Write `../output/solution_discovery_report.md` including candidates, prototype strategy, evaluation matrix, learnings, and recommendation.",False
+02-requirements-engineering\fundamentals\during\06-requirements-patterns\references\crud-matrix.md,52,- The conceptual data model (`../output/conceptual_data_model.md`),False
+02-requirements-engineering\fundamentals\during\06-requirements-patterns\references\crud-matrix.md,53,- Feature descriptions (`../project_context/features.md`),False
+02-requirements-engineering\fundamentals\during\06-requirements-patterns\references\crud-matrix.md,54,- Business rules (`../project_context/business_rules.md`),False
+02-requirements-engineering\waterfall\01-initialize-srs\SKILL.md,47,"Use this skill to bootstrap the parent project with industrial templates that capture vision, features, technology constraints, business rules, quality standard",False
+02-requirements-engineering\waterfall\01-initialize-srs\SKILL.md,50,"- Initialize or refresh `../project_context/` with six templates (vision, features, tech stack, business rules, quality standards, glossary).",False
+02-requirements-engineering\waterfall\01-initialize-srs\SKILL.md,51,- Ensure `../output/` exists before downstream IEEE/ISO skills execute.,False
+02-requirements-engineering\waterfall\01-initialize-srs\SKILL.md,60,2. The automation checks for `../project_context/`. Offer Maintenance Mode (add missing templates) or Clean (delete and reseed). Maintenance Mode must never ove,False
+02-requirements-engineering\waterfall\01-initialize-srs\SKILL.md,61,"3. After provisioning, create `../output/` if missing so downstream skills always find a writeable folder.",False
+02-requirements-engineering\waterfall\01-initialize-srs\SKILL.md,62,"4. Copy templates from `templates/`. Each template embeds Expert Guidance comments, SHALL/MUST phrasing, and aligned Markdown tables. Log every directory action",False
+02-requirements-engineering\waterfall\02-context-engineering\README.md,9,"1. Run `python context_engineering.py` from this directory. The script reads `../project_context/vision.md` and `../project_context/glossary.md`, then writes a ",False
+02-requirements-engineering\waterfall\02-context-engineering\README.md,12,4. Review `../output/SRS_Draft.md` after running the skill to confirm all scope items and definitions meet the traceability and ISO/IEC requirements.,False
+02-requirements-engineering\waterfall\02-context-engineering\SKILL.md,30,"- Input files: `../project_context/vision.md`, `../project_context/glossary.md`",False
+02-requirements-engineering\waterfall\02-context-engineering\SKILL.md,31,- Output file: `../output/SRS_Draft.md` (Section 1.0 only),False
+02-requirements-engineering\waterfall\02-context-engineering\SKILL.md,41,6. Validate that `../output/SRS_Draft.md` exists and contains the new introduction before closing the skill run.,False
+02-requirements-engineering\waterfall\03-descriptive-modeling\README.md,9,"1. Run `python descriptive_modeling.py` from this directory. The script accesses `../project_context/tech_stack.md`, `features.md`, and `quality_standards.md`, ",False
+02-requirements-engineering\waterfall\03-descriptive-modeling\README.md,12,"4. Verify the new section in `../output/SRS_Draft.md` and ensure the diagrams, constraints, assumptions, and dependencies align with the governing standards.",False
+02-requirements-engineering\waterfall\03-descriptive-modeling\SKILL.md,30,"- Inputs: `../project_context/tech_stack.md`, `../project_context/features.md`, `../project_context/quality_standards.md`",False
+02-requirements-engineering\waterfall\03-descriptive-modeling\SKILL.md,31,- Output: `../output/SRS_Draft.md` (Section 2.0 only),False
+02-requirements-engineering\waterfall\03-descriptive-modeling\SKILL.md,37,3. Ensure the script replaces any existing Section 2.0 block in `../output/SRS_Draft.md` and leaves the rest of the document untouched.,False
+02-requirements-engineering\waterfall\04-interface-specification\README.md,9,"1. Run `python interface_specification.py` from this directory. The script reads the three context files, identifies external actors, validates protocol compati",False
+02-requirements-engineering\waterfall\04-interface-specification\SKILL.md,30,"- Inputs: `../project_context/tech_stack.md`, `../project_context/features.md`, `../project_context/quality_standards.md`",False
+02-requirements-engineering\waterfall\04-interface-specification\SKILL.md,31,- Output: `../output/SRS_Draft.md` (Section 3.1 only),False
+02-requirements-engineering\waterfall\05-feature-decomposition\README.md,9,"1. Run `python feature_decomposition.py` from this directory. The script reads `../project_context/features.md` and `../project_context/quality_standards.md`, t",False
+02-requirements-engineering\waterfall\05-feature-decomposition\SKILL.md,23,"- Inputs: `../project_context/features.md`, `../project_context/quality_standards.md`",False
+02-requirements-engineering\waterfall\05-feature-decomposition\SKILL.md,24,- Output: `../output/SRS_Draft.md` (Section 3.2 only),False
+02-requirements-engineering\waterfall\05-feature-decomposition\SKILL.md,71,"After generating all section files, create (or overwrite) `manifest.md` in the SRS document directory (`../output/01-srs/`) listing the section files in the cor",False
+02-requirements-engineering\waterfall\06-logic-modeling\README.md,9,"1. Run `python logic_modeling.py` from this directory. The script reads `../project_context/business_rules.md`, `../project_context/tech_stack.md`, and `../proj",False
+02-requirements-engineering\waterfall\06-logic-modeling\SKILL.md,21,"- Inputs: `../project_context/business_rules.md`, `../project_context/tech_stack.md`, `../project_context/quality_standards.md`",False
+02-requirements-engineering\waterfall\06-logic-modeling\SKILL.md,22,- Output: `../output/SRS_Draft.md` (Sections 3.2.2–3.2.4),False
+02-requirements-engineering\waterfall\07-attribute-mapping\README.md,9,"1. Run `python attribute_mapping.py` from this directory. The script reads `../project_context/quality_standards.md` and `../project_context/tech_stack.md`, inf",False
+02-requirements-engineering\waterfall\07-attribute-mapping\SKILL.md,21,"- Inputs: `../project_context/quality_standards.md`, `../project_context/tech_stack.md`",False
+02-requirements-engineering\waterfall\07-attribute-mapping\SKILL.md,22,- Output: `../output/SRS_Draft.md` (Sections 3.3–3.6),False
+02-requirements-engineering\waterfall\07-attribute-mapping\SKILL.md,33,"8. Preserve existing sections (1.0–3.2, 4.0+) when writing to `../output/SRS_Draft.md`; only replace Sections 3.3–3.6.",False
+02-requirements-engineering\waterfall\08-semantic-auditing\README.md,5,"This skill performs a ruthless audit of `../output/SRS_Draft.md` plus every file in `../project_context/`, validates the eight IEEE 830 qualities, and emits a t",False
+02-requirements-engineering\waterfall\08-semantic-auditing\SKILL.md,21,"- Inputs: `../output/SRS_Draft.md`, every file within `../project_context/`",False
+02-requirements-engineering\waterfall\09-use-case-modeling\README.md,15,| `SRS_Draft.md` (Sections 3.1-3.2) | Yes | `../output/` |,False
+02-requirements-engineering\waterfall\09-use-case-modeling\README.md,16,| `features.md` | Yes | `../project_context/` |,False
+02-requirements-engineering\waterfall\09-use-case-modeling\README.md,17,| `business_rules.md` | Recommended | `../project_context/` |,False
+02-requirements-engineering\waterfall\09-use-case-modeling\README.md,18,| `stakeholder_register.md` | Optional | `../project_context/` |,False
+02-requirements-engineering\waterfall\09-use-case-modeling\README.md,24,| `Use_Case_Model.md` | `../output/Use_Case_Model.md` |,False
+02-requirements-engineering\waterfall\09-use-case-modeling\README.md,28,1. Verify `../output/SRS_Draft.md` contains Sections 3.1 and 3.2 and that `../project_context/features.md` exists. Halt if either is missing.,False
+02-requirements-engineering\waterfall\09-use-case-modeling\README.md,29,"2. Invoke the skill through your runner. The skill reads context files, identifies actors, extracts use cases, generates diagrams and descriptions, and writes `",False
+02-requirements-engineering\waterfall\09-use-case-modeling\SKILL.md,31,"| **Inputs** | `../project_context/features.md`, `../project_context/business_rules.md`, `../project_context/stakeholder_register.md` (optional), `../output/SRS",False
+02-requirements-engineering\waterfall\09-use-case-modeling\SKILL.md,32,| **Output** | `../output/Use_Case_Model.md` |,False
+02-requirements-engineering\waterfall\09-use-case-modeling\SKILL.md,40,| `SRS_Draft.md` | `../output/SRS_Draft.md` | **Required** | Sections 3.1 (System Features) and 3.2 (Functional Requirements) |,False
+02-requirements-engineering\waterfall\09-use-case-modeling\SKILL.md,41,| `features.md` | `../project_context/features.md` | **Required** | Feature list with user story triggers and acceptance criteria |,False
+02-requirements-engineering\waterfall\09-use-case-modeling\SKILL.md,42,| `business_rules.md` | `../project_context/business_rules.md` | Recommended | Business rules referenced by use cases |,False
+02-requirements-engineering\waterfall\09-use-case-modeling\SKILL.md,43,| `stakeholder_register.md` | `../project_context/stakeholder_register.md` | Optional | Stakeholder roles for actor identification |,False
+02-requirements-engineering\waterfall\09-use-case-modeling\SKILL.md,49,"| `Use_Case_Model.md` | `../output/Use_Case_Model.md` | Complete use case model with diagrams, descriptions, and traceability |",False
+02-requirements-engineering\waterfall\09-use-case-modeling\SKILL.md,232,Assemble the complete use case model and write it to `../output/Use_Case_Model.md`.,False
+02-requirements-engineering\waterfall\09-use-case-modeling\SKILL.md,290,- [ ] `Use_Case_Model.md` exists in `../output/`,False
+03-design-documentation\README.md,43,Existing skill-local references to `../project_context/` and `../output/` are compatibility aliases into the active project workspace.,False
+03-design-documentation\01-high-level-design\README.md,9,1. Verify `../output/SRS_Draft.md` and `../project_context/tech_stack.md` exist. Optionally check for `../output/PRD.md` to enrich architectural context.,False
+03-design-documentation\01-high-level-design\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill reads input files, generates all HLD sections with Mermaid diagrams, and writes `../output/HLD.md`.",False
+03-design-documentation\01-high-level-design\SKILL.md,23,- After Phase 02 completes and `SRS_Draft.md` exists in `../output/` with Sections 1.0 through 3.5 or later.,False
+03-design-documentation\01-high-level-design\SKILL.md,24,- When `tech_stack.md` is present in `../project_context/` to inform technology decisions.,False
+03-design-documentation\01-high-level-design\SKILL.md,25,- Can also incorporate `PRD.md` from `../output/` for additional product context.,False
+03-design-documentation\01-high-level-design\SKILL.md,32,"| **Inputs**  | `../output/SRS_Draft.md`, `../project_context/tech_stack.md`; optionally `../output/PRD.md` |",False
+03-design-documentation\01-high-level-design\SKILL.md,33,| **Output**  | `../output/HLD.md` |,False
+03-design-documentation\01-high-level-design\SKILL.md,41,"| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Functional requirements, interfaces, constraints, user classes |",False
+03-design-documentation\01-high-level-design\SKILL.md,42,"| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, framework versions, infrastructure targets |",False
+03-design-documentation\01-high-level-design\SKILL.md,43,"| PRD.md | `../output/PRD.md` | No | Product context, feature priorities, success metrics |",False
+03-design-documentation\01-high-level-design\SKILL.md,49,"| HLD.md | `../output/HLD.md` | Complete High-Level Design document with architecture diagrams, technology decisions, and traceability |",False
+03-design-documentation\01-high-level-design\SKILL.md,57,Read `SRS_Draft.md` (all sections) from `../output/` and `tech_stack.md` from `../project_context/`. Optionally read `PRD.md` from `../output/`. Log the absolut,False
+03-design-documentation\01-high-level-design\SKILL.md,173,- [ ] `HLD.md` exists in `../output/` with all nine sections populated.,False
+03-design-documentation\01-high-level-design\SKILL.md,184,| Upstream | Phase 02 (Requirements Engineering) | Consumes `SRS_Draft.md` from `../output/` |,False
+03-design-documentation\02-low-level-design\README.md,9,"1. Verify `../output/HLD.md`, `../output/SRS_Draft.md`, and `../project_context/business_rules.md` exist. Halt if any required file is missing.",False
+03-design-documentation\02-low-level-design\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill decomposes HLD components, generates Mermaid diagrams, formalizes algorithms, and writes `../output/LLD",False
+03-design-documentation\02-low-level-design\SKILL.md,23,- After the `01-high-level-design` skill has produced `HLD.md` in `../output/`.,False
+03-design-documentation\02-low-level-design\SKILL.md,24,- Requires `business_rules.md` in `../project_context/` for algorithm formalization and calculation logic.,False
+03-design-documentation\02-low-level-design\SKILL.md,30,"| **Inputs**    | `../output/HLD.md`, `../output/SRS_Draft.md`, `../project_context/business_rules.md` |",False
+03-design-documentation\02-low-level-design\SKILL.md,31,| **Output**    | `../output/LLD.md`                                                    |,False
+03-design-documentation\02-low-level-design\SKILL.md,39,| HLD.md             | `../output/HLD.md`                        | Yes      | Component architecture to decompose into modules |,False
+03-design-documentation\02-low-level-design\SKILL.md,40,| SRS_Draft.md       | `../output/SRS_Draft.md`                  | Yes      | Stimulus-response pairs for sequence diagrams    |,False
+03-design-documentation\02-low-level-design\SKILL.md,41,| business_rules.md  | `../project_context/business_rules.md`    | Yes      | Business logic and calculations to formalize     |,False
+03-design-documentation\02-low-level-design\SKILL.md,47,| LLD.md  | `../output/LLD.md`   | Complete Low-Level Design with diagrams and algorithms   |,False
+03-design-documentation\02-low-level-design\SKILL.md,55,"Read `HLD.md` and `SRS_Draft.md` from `../output/`, and `business_rules.md` from `../project_context/`. Log every file path read. If any required file is missin",False
+03-design-documentation\02-low-level-design\SKILL.md,150,"Write the completed document to `../output/LLD.md`. Log the total module count, diagram count, and algorithm count.",False
+03-design-documentation\03-api-specification\README.md,9,"1. Verify `../output/SRS_Draft.md`, `../output/HLD.md`, and `../project_context/tech_stack.md` exist. Halt if any required file is missing.",False
+03-design-documentation\03-api-specification\README.md,11,3. Review the generated `../output/API_Specification.md` to confirm all SRS entities have corresponding endpoints with complete request/response schemas and sta,False
+03-design-documentation\03-api-specification\README.md,12,4. Validate that `../output/openapi.yaml` is a structurally valid OpenAPI 3.0 document containing every endpoint defined in the specification.,False
+03-design-documentation\03-api-specification\SKILL.md,23,"- After `01-high-level-design` has produced `HLD.md` in `../output/`, which identifies system components and integration points.",False
+03-design-documentation\03-api-specification\SKILL.md,31,"| **Inputs**    | `../output/SRS_Draft.md`, `../output/HLD.md`, `../project_context/tech_stack.md` |",False
+03-design-documentation\03-api-specification\SKILL.md,32,"| **Outputs**   | `../output/API_Specification.md`, `../output/openapi.yaml`           |",False
+03-design-documentation\03-api-specification\SKILL.md,40,"| SRS_Draft.md   | `../output/SRS_Draft.md`              | Yes      | Functional requirements, security, performance  |",False
+03-design-documentation\03-api-specification\SKILL.md,41,"| HLD.md         | `../output/HLD.md`                    | Yes      | System components, integration points, data flow|",False
+03-design-documentation\03-api-specification\SKILL.md,42,"| tech_stack.md  | `../project_context/tech_stack.md`    | Yes      | Technology choices, framework conventions        |",False
+03-design-documentation\03-api-specification\SKILL.md,48,| API_Specification.md   | `../output/API_Specification.md`      | Human-readable API reference with all sections   |,False
+03-design-documentation\03-api-specification\SKILL.md,49,| openapi.yaml           | `../output/openapi.yaml`              | Machine-readable OpenAPI 3.0 specification       |,False
+03-design-documentation\03-api-specification\SKILL.md,57,"Read `SRS_Draft.md` and `HLD.md` from `../output/`, and `tech_stack.md` from `../project_context/`. Log every file path read. If any required file is missing, h",False
+03-design-documentation\03-api-specification\SKILL.md,113,Write the human-readable specification to `../output/API_Specification.md` with all sections defined in the Output Format below.,False
+03-design-documentation\03-api-specification\SKILL.md,117,"Generate a valid OpenAPI 3.0 document at `../output/openapi.yaml`. The document shall include: `openapi: ""3.0.3""`, `info` block, `servers` block, `paths` with a",False
+03-design-documentation\04-database-design\README.md,12,4. **Produce Outputs** -- Write `Database_Design.md` and `erd.mmd` to `../output/`. Generate the data dictionary and migration strategy.,False
+03-design-documentation\04-database-design\SKILL.md,23,- After `HLD.md` exists in `../output/` and identifies data storage components.,False
+03-design-documentation\04-database-design\SKILL.md,25,"- `business_rules.md` in `../project_context/` provides data relationships, validation rules, and constraints.",False
+03-design-documentation\04-database-design\SKILL.md,26,- `tech_stack.md` in `../project_context/` specifies the database platform.,False
+03-design-documentation\04-database-design\SKILL.md,32,"| **Inputs**  | `../output/SRS_Draft.md`, `../output/HLD.md`, `../project_context/business_rules.md`, `../project_context/tech_stack.md` |",False
+03-design-documentation\04-database-design\SKILL.md,33,"| **Outputs** | `../output/Database_Design.md`, `../output/erd.mmd` |",False
+03-design-documentation\04-database-design\SKILL.md,41,"| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Entity candidates from Section 3.2, data objects from Section 2.0 |",False
+03-design-documentation\04-database-design\SKILL.md,42,"| HLD.md | `../output/HLD.md` | Yes | Data storage components, architectural context, data flow paths |",False
+03-design-documentation\04-database-design\SKILL.md,43,"| business_rules.md | `../project_context/business_rules.md` | Yes | Data relationships, validation constraints, business logic rules |",False
+03-design-documentation\04-database-design\SKILL.md,44,"| tech_stack.md | `../project_context/tech_stack.md` | Yes | Database platform (MySQL 8.x, PostgreSQL, etc.), version constraints |",False
+03-design-documentation\04-database-design\SKILL.md,50,| Database_Design.md | `../output/Database_Design.md` | Complete database design document with all sections |,False
+03-design-documentation\04-database-design\SKILL.md,51,| erd.mmd | `../output/erd.mmd` | Standalone Mermaid erDiagram file for the entity-relationship model |,False
+03-design-documentation\04-database-design\SKILL.md,59,"Read `SRS_Draft.md` and `HLD.md` from `../output/`, and `business_rules.md` and `tech_stack.md` from `../project_context/`. Log the absolute path of each file r",False
+03-design-documentation\04-database-design\SKILL.md,71,"Produce an Entity-Relationship Diagram using Mermaid erDiagram syntax. Include all entities with typed attributes, relationships with proper cardinality notatio",False
+03-design-documentation\04-database-design\SKILL.md,114,"If multi-tenancy is detected in SRS or HLD, define the tenant isolation strategy: shared database with `tenant_id` FK on every tenant-scoped table, or separate ",False
+03-design-documentation\04-database-design\SKILL.md,166,- [ ] `Database_Design.md` and `erd.mmd` exist in `../output/`.,False
+03-design-documentation\05-ux-specification\README.md,9,- After `HLD.md` exists in `../output/` and identifies user-facing components.,False
+03-design-documentation\05-ux-specification\README.md,18,| SRS_Draft.md | `../output/` | Preferred |,False
+03-design-documentation\05-ux-specification\README.md,19,| user_stories.md | `../project_context/` | Alternate (if no SRS) |,False
+03-design-documentation\05-ux-specification\README.md,20,| HLD.md | `../output/` | Yes |,False
+03-design-documentation\05-ux-specification\README.md,21,| vision.md | `../project_context/` | Yes |,False
+03-design-documentation\05-ux-specification\README.md,22,| features.md | `../project_context/` | Recommended |,False
+03-design-documentation\05-ux-specification\README.md,23,| stakeholder_register.md | `../project_context/` | Recommended |,False
+03-design-documentation\05-ux-specification\README.md,29,| UX_Specification.md | `../output/` |,False
+03-design-documentation\05-ux-specification\README.md,35,3. Review `../output/UX_Specification.md` for completeness against the verification checklist in `SKILL.md`.,False
+03-design-documentation\05-ux-specification\SKILL.md,23,- After `HLD.md` exists in `../output/` and identifies user-facing components.,False
+03-design-documentation\05-ux-specification\SKILL.md,25,- `vision.md` and `features.md` in `../project_context/` provide product scope and feature inventory.,False
+03-design-documentation\05-ux-specification\SKILL.md,26,- `stakeholder_register.md` in `../project_context/` identifies user personas and audience segments.,False
+03-design-documentation\05-ux-specification\SKILL.md,32,"| **Inputs**  | `../output/SRS_Draft.md` or `../project_context/user_stories.md`, `../output/HLD.md`, `../project_context/vision.md`, `../project_context/featur",False
+03-design-documentation\05-ux-specification\SKILL.md,33,| **Outputs** | `../output/UX_Specification.md` |,False
+03-design-documentation\05-ux-specification\SKILL.md,41,"| SRS_Draft.md | `../output/SRS_Draft.md` | Preferred | Functional requirements, user interaction flows, data objects |",False
+03-design-documentation\05-ux-specification\SKILL.md,42,| user_stories.md | `../project_context/user_stories.md` | Alternate | User stories when SRS is not yet available |,False
+03-design-documentation\05-ux-specification\SKILL.md,43,"| HLD.md | `../output/HLD.md` | Yes | Architectural context, component hierarchy, data flow paths |",False
+03-design-documentation\05-ux-specification\SKILL.md,44,"| vision.md | `../project_context/vision.md` | Yes | Product scope, target audience, business goals |",False
+03-design-documentation\05-ux-specification\SKILL.md,45,| features.md | `../project_context/features.md` | Recommended | Feature inventory for information architecture mapping |,False
+03-design-documentation\05-ux-specification\SKILL.md,46,"| stakeholder_register.md | `../project_context/stakeholder_register.md` | Recommended | User personas, audience segments, accessibility needs |",False
+03-design-documentation\05-ux-specification\SKILL.md,52,| UX_Specification.md | `../output/UX_Specification.md` | Complete UX specification with all sections |,False
+03-design-documentation\05-ux-specification\SKILL.md,76,"Read `SRS_Draft.md` and `HLD.md` from `../output/`. Read `vision.md`, `features.md`, `stakeholder_register.md`, and `user_stories.md` from `../project_context/`",False
+03-design-documentation\05-ux-specification\SKILL.md,291,- [ ] `UX_Specification.md` exists in `../output/`.,False
+03-design-documentation\06-infrastructure-design\README.md,24,"1. Verify `../output/HLD.md`, `../output/SRS_Draft.md`, and `../project_context/tech_stack.md` exist. Optionally check for `../project_context/quality_standards",False
+03-design-documentation\06-infrastructure-design\README.md,26,"3. If the gate passes, invoke the skill to generate all infrastructure sections and write `../output/Infrastructure_Design.md`.",False
+03-design-documentation\06-infrastructure-design\README.md,34,| HLD.md | `../output/HLD.md` | Yes |,False
+03-design-documentation\06-infrastructure-design\README.md,35,| SRS_Draft.md | `../output/SRS_Draft.md` | Yes |,False
+03-design-documentation\06-infrastructure-design\README.md,36,| tech_stack.md | `../project_context/tech_stack.md` | Yes |,False
+03-design-documentation\06-infrastructure-design\README.md,37,| quality_standards.md | `../project_context/quality_standards.md` | No |,False
+03-design-documentation\06-infrastructure-design\README.md,43,| Infrastructure_Design.md | `../output/Infrastructure_Design.md` |,False
+03-design-documentation\06-infrastructure-design\SKILL.md,23,- After `01-high-level-design` completes and `../output/HLD.md` exists.,False
+03-design-documentation\06-infrastructure-design\SKILL.md,24,"- When `../output/SRS_Draft.md` contains non-functional requirements with measurable availability, scalability, or performance targets.",False
+03-design-documentation\06-infrastructure-design\SKILL.md,25,- When `../project_context/tech_stack.md` specifies cloud or distributed deployment targets.,False
+03-design-documentation\06-infrastructure-design\SKILL.md,26,- Optionally when `../project_context/quality_standards.md` defines SLA or compliance constraints.,False
+03-design-documentation\06-infrastructure-design\SKILL.md,32,"| **Inputs**   | `../output/HLD.md`, `../output/SRS_Draft.md`, `../project_context/tech_stack.md`; optionally `../project_context/quality_standards.md` |",False
+03-design-documentation\06-infrastructure-design\SKILL.md,33,| **Output**   | `../output/Infrastructure_Design.md` |,False
+03-design-documentation\06-infrastructure-design\SKILL.md,42,"| HLD.md | `../output/HLD.md` | Yes | Architectural style, component boundaries, deployment topology |",False
+03-design-documentation\06-infrastructure-design\SKILL.md,43,"| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Non-functional requirements, constraints, performance targets |",False
+03-design-documentation\06-infrastructure-design\SKILL.md,44,"| tech_stack.md | `../project_context/tech_stack.md` | Yes | Infrastructure targets, cloud provider, runtime environment |",False
+03-design-documentation\06-infrastructure-design\SKILL.md,45,"| quality_standards.md | `../project_context/quality_standards.md` | No | SLA definitions, compliance constraints, uptime targets |",False
+03-design-documentation\06-infrastructure-design\SKILL.md,51,"| Infrastructure_Design.md | `../output/Infrastructure_Design.md` | Complete infrastructure design with scalability, reliability, caching, monitoring, and DR se",False
+03-design-documentation\06-infrastructure-design\SKILL.md,98,Read `HLD.md` and `SRS_Draft.md` from `../output/`. Read `tech_stack.md` from `../project_context/`. Optionally read `quality_standards.md` from `../project_con,False
+03-design-documentation\06-infrastructure-design\SKILL.md,277,- [ ] `Infrastructure_Design.md` exists in `../output/` with all sections populated (if gate passed).,False
+03-design-documentation\07-iot-system-design\SKILL.md,32,"| **Inputs** | `../output/HLD.md`, `../output/SRS_Draft.md`, `../project_context/tech_stack.md`, `../project_context/quality_standards.md` (recommended) |",False
+03-design-documentation\07-iot-system-design\SKILL.md,33,| **Output** | `../output/IoT_System_Design.md` |,False
+03-design-documentation\07-iot-system-design\SKILL.md,98,"Write `../output/IoT_System_Design.md` with architecture, connectivity, security, lifecycle, operational model, and traceability back to the source requirements",False
+04-development-artifacts\README.md,22,- **Upstream:** Phase 03 (Design Documentation) -- requires `LLD.md` and `HLD.md` in `../output/`,False
+04-development-artifacts\README.md,27,"All skills read from `../output/` (LLD.md, HLD.md, SRS_Draft.md) and `../project_context/tech_stack.md`.",False
+04-development-artifacts\README.md,31,All skills write to `../output/`.,False
+04-development-artifacts\01-technical-specification\README.md,9,"1. Verify `../output/LLD.md`, `../output/SRS_Draft.md`, and `../project_context/tech_stack.md` exist. Halt if any required file is missing.",False
+04-development-artifacts\01-technical-specification\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill extracts module contracts, defines data formats and integration specs, and writes `../output/Technical_",False
+04-development-artifacts\01-technical-specification\SKILL.md,23,- After Phase 03 completes and `LLD.md` exists in `../output/` with module decomposition and class diagrams.,False
+04-development-artifacts\01-technical-specification\SKILL.md,24,- When `SRS_Draft.md` is present in `../output/` for requirement traceability.,False
+04-development-artifacts\01-technical-specification\SKILL.md,25,- When `tech_stack.md` is present in `../project_context/` for technology-specific implementation details.,False
+04-development-artifacts\01-technical-specification\SKILL.md,31,"| **Inputs**  | `../output/LLD.md`, `../output/SRS_Draft.md`, `../project_context/tech_stack.md` |",False
+04-development-artifacts\01-technical-specification\SKILL.md,32,| **Output**  | `../output/Technical_Specification.md` |,False
+04-development-artifacts\01-technical-specification\SKILL.md,40,"| LLD.md | `../output/LLD.md` | Yes | Module decomposition, class diagrams, algorithms to formalize as contracts |",False
+04-development-artifacts\01-technical-specification\SKILL.md,41,| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Functional requirements for traceability and interface constraints |,False
+04-development-artifacts\01-technical-specification\SKILL.md,42,"| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, runtime versions, framework-specific implementation details |",False
+04-development-artifacts\01-technical-specification\SKILL.md,48,"| Technical_Specification.md | `../output/Technical_Specification.md` | Complete technical specification with module contracts, data formats, and integration sp",False
+04-development-artifacts\01-technical-specification\SKILL.md,56,Read `LLD.md` and `SRS_Draft.md` from `../output/` and `tech_stack.md` from `../project_context/`. Log the absolute path of each file read. If any required file,False
+04-development-artifacts\01-technical-specification\SKILL.md,104,Write the completed document to `../output/Technical_Specification.md`. Include a traceability table mapping every module contract to its LLD module and origina,False
+04-development-artifacts\01-technical-specification\SKILL.md,121,- [ ] `Technical_Specification.md` exists in `../output/` with all eight sections populated.,False
+04-development-artifacts\02-coding-guidelines\README.md,9,1. Verify `../project_context/tech_stack.md` exists. Optionally check for `../output/HLD.md` to align conventions with architectural decisions.,False
+04-development-artifacts\02-coding-guidelines\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill detects languages and frameworks, generates conventions for each, and writes `../output/Coding_Guidelin",False
+04-development-artifacts\02-coding-guidelines\SKILL.md,23,- After `tech_stack.md` exists in `../project_context/` with language and framework details.,False
+04-development-artifacts\02-coding-guidelines\SKILL.md,24,- Optionally after `HLD.md` exists in `../output/` to align coding patterns with architectural decisions.,False
+04-development-artifacts\02-coding-guidelines\SKILL.md,31,| **Inputs**  | `../project_context/tech_stack.md`; optionally `../output/HLD.md` |,False
+04-development-artifacts\02-coding-guidelines\SKILL.md,32,| **Output**  | `../output/Coding_Guidelines.md` |,False
+04-development-artifacts\02-coding-guidelines\SKILL.md,40,"| tech_stack.md | `../project_context/tech_stack.md` | Yes | Languages, frameworks, and tooling to derive conventions from |",False
+04-development-artifacts\02-coding-guidelines\SKILL.md,41,| HLD.md | `../output/HLD.md` | No | Architectural patterns to align coding conventions with |,False
+04-development-artifacts\02-coding-guidelines\SKILL.md,47,"| Coding_Guidelines.md | `../output/Coding_Guidelines.md` | Complete coding standards document with conventions, patterns, and quality metrics |",False
+04-development-artifacts\02-coding-guidelines\SKILL.md,55,Read `tech_stack.md` from `../project_context/`. Optionally read `HLD.md` from `../output/`. Log the absolute path of each file read. If `tech_stack.md` is miss,False
+04-development-artifacts\02-coding-guidelines\SKILL.md,100,Write the completed document to `../output/Coding_Guidelines.md`. The document shall include a Code Review Checklist section that summarizes all conventions as ,False
+04-development-artifacts\02-coding-guidelines\SKILL.md,117,- [ ] `Coding_Guidelines.md` exists in `../output/` with all eight sections populated.,False
+04-development-artifacts\02-coding-guidelines\SKILL.md,128,| Upstream | `../project_context/tech_stack.md` | Reads language and framework details |,False
+04-development-artifacts\03-dev-environment-setup\README.md,9,1. Verify `../project_context/tech_stack.md` exists. Optionally check for `../output/HLD.md` to derive infrastructure dependencies.,False
+04-development-artifacts\03-dev-environment-setup\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill reads toolchain details, generates platform-specific setup steps, and writes `../output/Dev_Environment",False
+04-development-artifacts\03-dev-environment-setup\SKILL.md,23,- After `tech_stack.md` exists in `../project_context/` with toolchain and runtime details.,False
+04-development-artifacts\03-dev-environment-setup\SKILL.md,24,"- Optionally after `HLD.md` exists in `../output/` to derive infrastructure dependencies (databases, caches, message queues).",False
+04-development-artifacts\03-dev-environment-setup\SKILL.md,31,| **Inputs**  | `../project_context/tech_stack.md`; optionally `../output/HLD.md` |,False
+04-development-artifacts\03-dev-environment-setup\SKILL.md,32,| **Output**  | `../output/Dev_Environment_Setup.md` |,False
+04-development-artifacts\03-dev-environment-setup\SKILL.md,40,"| tech_stack.md | `../project_context/tech_stack.md` | Yes | Runtimes, package managers, databases, and infrastructure tools |",False
+04-development-artifacts\03-dev-environment-setup\SKILL.md,41,| HLD.md | `../output/HLD.md` | No | Deployment topology to derive local infrastructure dependencies |,False
+04-development-artifacts\03-dev-environment-setup\SKILL.md,47,| Dev_Environment_Setup.md | `../output/Dev_Environment_Setup.md` | Complete environment setup guide with numbered steps and verification commands |,False
+04-development-artifacts\03-dev-environment-setup\SKILL.md,55,Read `tech_stack.md` from `../project_context/`. Optionally read `HLD.md` from `../output/` for infrastructure context. Log the absolute path of each file read.,False
+04-development-artifacts\03-dev-environment-setup\SKILL.md,100,Write the completed document to `../output/Dev_Environment_Setup.md`. Include a Verification Checklist section with commands that confirm each component is corr,False
+04-development-artifacts\03-dev-environment-setup\SKILL.md,117,- [ ] `Dev_Environment_Setup.md` exists in `../output/` with all seven sections populated.,False
+04-development-artifacts\03-dev-environment-setup\SKILL.md,129,| Upstream | `../project_context/tech_stack.md` | Reads toolchain and infrastructure details |,False
+04-development-artifacts\04-contribution-guide\README.md,9,1. Verify `../project_context/tech_stack.md` exists. Halt if it is missing.,False
+04-development-artifacts\04-contribution-guide\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill reads VCS and CI/CD details, generates workflow standards, and writes `../output/Contribution_Guide.md`",False
+04-development-artifacts\04-contribution-guide\SKILL.md,23,- After `tech_stack.md` exists in `../project_context/` with VCS and CI/CD tooling details.,False
+04-development-artifacts\04-contribution-guide\SKILL.md,30,| **Inputs**  | `../project_context/tech_stack.md` |,False
+04-development-artifacts\04-contribution-guide\SKILL.md,31,| **Output**  | `../output/Contribution_Guide.md` |,False
+04-development-artifacts\04-contribution-guide\SKILL.md,39,"| tech_stack.md | `../project_context/tech_stack.md` | Yes | VCS platform, CI/CD tooling, deployment targets |",False
+04-development-artifacts\04-contribution-guide\SKILL.md,45,"| Contribution_Guide.md | `../output/Contribution_Guide.md` | Complete contribution workflow guide with branching, commits, PRs, and review standards |",False
+04-development-artifacts\04-contribution-guide\SKILL.md,53,"Read `tech_stack.md` from `../project_context/`. Log the absolute path of each file read. If `tech_stack.md` is missing, halt execution and report the gap. Iden",False
+04-development-artifacts\04-contribution-guide\SKILL.md,99,Write the completed document to `../output/Contribution_Guide.md`. Include a Getting Started section that references `Dev_Environment_Setup.md` for initial setu,False
+04-development-artifacts\04-contribution-guide\SKILL.md,116,- [ ] `Contribution_Guide.md` exists in `../output/` with all seven sections populated.,False
+04-development-artifacts\04-contribution-guide\SKILL.md,130,| Upstream | `../project_context/tech_stack.md` | Reads VCS and CI/CD tooling details |,False
+05-testing-documentation\README.md,25,- **Upstream:** Phase 02 (Requirements Engineering) -- requires `SRS_Draft.md` in `../output/`. Phase 03 (Design Documentation) -- requires `HLD.md` in `../outp,False
+05-testing-documentation\README.md,30,"All skills read from `../output/` (SRS_Draft.md, HLD.md, Test_Strategy.md, Test_Plan.md) and `../project_context/quality_standards.md`.",False
+05-testing-documentation\README.md,34,All skills write to `../output/`.,False
+05-testing-documentation\01-test-strategy\README.md,9,"1. Verify `../output/SRS_Draft.md`, `../output/HLD.md`, and `../project_context/quality_standards.md` exist. Halt if any required file is missing.",False
+05-testing-documentation\01-test-strategy\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill defines test levels, types, tools, environments, criteria, defect management, and metrics, then writes ",False
+05-testing-documentation\01-test-strategy\SKILL.md,23,- After Phase 02 completes and `SRS_Draft.md` exists in `../output/` with functional and non-functional requirements.,False
+05-testing-documentation\01-test-strategy\SKILL.md,24,- After Phase 03 completes and `HLD.md` exists in `../output/` with system architecture and component boundaries.,False
+05-testing-documentation\01-test-strategy\SKILL.md,25,- When `quality_standards.md` exists in `../project_context/` with project-specific quality targets.,False
+05-testing-documentation\01-test-strategy\SKILL.md,31,"| **Inputs**  | `../output/SRS_Draft.md`, `../output/HLD.md`, `../project_context/quality_standards.md` |",False
+05-testing-documentation\01-test-strategy\SKILL.md,32,| **Output**  | `../output/Test_Strategy.md` |,False
+05-testing-documentation\01-test-strategy\SKILL.md,40,| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Functional and non-functional requirements driving test scope |,False
+05-testing-documentation\01-test-strategy\SKILL.md,41,| HLD.md | `../output/HLD.md` | Yes | System architecture defining component boundaries for integration testing |,False
+05-testing-documentation\01-test-strategy\SKILL.md,42,"| quality_standards.md | `../project_context/quality_standards.md` | Yes | Project-specific quality targets, compliance mandates, and coverage thresholds |",False
+05-testing-documentation\01-test-strategy\SKILL.md,63,"| Test_Strategy.md | `../output/Test_Strategy.md` | Complete test strategy with levels, types, tools, environments, and criteria |",False
+05-testing-documentation\01-test-strategy\SKILL.md,71,Read `SRS_Draft.md` and `HLD.md` from `../output/` and `quality_standards.md` from `../project_context/`. Log the absolute path of each file read. If any requir,False
+05-testing-documentation\01-test-strategy\SKILL.md,101,Write the completed document to `../output/Test_Strategy.md`. Include a traceability section mapping each test level and test type to the SRS sections and quali,False
+05-testing-documentation\01-test-strategy\SKILL.md,118,- [ ] `Test_Strategy.md` exists in `../output/` with all nine sections populated.,False
+05-testing-documentation\02-test-plan\README.md,9,1. Verify `../output/SRS_Draft.md` and `../output/Test_Strategy.md` exist. Optionally check for `../output/acceptance_criteria.md`. Halt if any required file is,False
+05-testing-documentation\02-test-plan\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill extracts testable requirements, generates test cases, defines test data, builds the schedule, and write",False
+05-testing-documentation\02-test-plan\SKILL.md,23,"- After 01-test-strategy completes and `Test_Strategy.md` exists in `../output/` with test levels, types, and criteria.",False
+05-testing-documentation\02-test-plan\SKILL.md,24,"- When `SRS_Draft.md` exists in `../output/` with functional requirements containing ""shall"" statements.",False
+05-testing-documentation\02-test-plan\SKILL.md,25,"- Optionally, when `acceptance_criteria.md` exists in `../output/` for agile projects requiring acceptance-test mapping.",False
+05-testing-documentation\02-test-plan\SKILL.md,31,"| **Inputs**  | `../output/SRS_Draft.md`, `../output/Test_Strategy.md`, `../output/acceptance_criteria.md` (optional) |",False
+05-testing-documentation\02-test-plan\SKILL.md,32,| **Output**  | `../output/Test_Plan.md` |,False
+05-testing-documentation\02-test-plan\SKILL.md,40,"| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Functional (Section 3.2) and non-functional (Sections 3.3, 3.5) requirements as test case sources |",False
+05-testing-documentation\02-test-plan\SKILL.md,41,"| Test_Strategy.md | `../output/Test_Strategy.md` | Yes | Test levels, types, tools, and criteria governing test case structure |",False
+05-testing-documentation\02-test-plan\SKILL.md,42,| acceptance_criteria.md | `../output/acceptance_criteria.md` | No | Agile acceptance criteria for mapping to UAT test cases |,False
+05-testing-documentation\02-test-plan\SKILL.md,48,"| Test_Plan.md | `../output/Test_Plan.md` | Complete test plan with test cases, traceability matrix, schedule, and resources |",False
+05-testing-documentation\02-test-plan\SKILL.md,56,Read `SRS_Draft.md` and `Test_Strategy.md` from `../output/`. Optionally read `acceptance_criteria.md` from `../output/` if it exists. Log the absolute path of ,False
+05-testing-documentation\02-test-plan\SKILL.md,90,"Generate a requirement-to-test traceability matrix mapping every REQ-ID to its TC-IDs, confirming full coverage. Flag any requirements without test cases as cov",False
+05-testing-documentation\02-test-plan\SKILL.md,125,- [ ] `Test_Plan.md` exists in `../output/` with all seven sections populated.,False
+05-testing-documentation\03-test-report\README.md,9,1. Verify `../output/Test_Plan.md` exists with test cases and traceability matrix. Halt if the file is missing.,False
+05-testing-documentation\03-test-report\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates the report template with executive summary, execution log, defect log, coverage metrics, anal",False
+05-testing-documentation\03-test-report\SKILL.md,23,- After 02-test-plan completes and `Test_Plan.md` exists in `../output/` with test cases and traceability matrix.,False
+05-testing-documentation\03-test-report\SKILL.md,30,| **Inputs**  | `../output/Test_Plan.md` |,False
+05-testing-documentation\03-test-report\SKILL.md,31,| **Output**  | `../output/Test_Report_Template.md` |,False
+05-testing-documentation\03-test-report\SKILL.md,39,"| Test_Plan.md | `../output/Test_Plan.md` | Yes | Test case inventory, traceability matrix, and schedule driving report structure |",False
+05-testing-documentation\03-test-report\SKILL.md,45,| Test_Report_Template.md | `../output/Test_Report_Template.md` | Reusable report template with placeholders for test execution results |,False
+05-testing-documentation\03-test-report\SKILL.md,53,"Read `Test_Plan.md` from `../output/`. Log the absolute path. If the file is missing, halt execution and report the gap. Extract the total test case count, test",False
+05-testing-documentation\03-test-report\SKILL.md,77,"Before writing output, confirm the deterministic gate in `../references/29119-deterministic-checks.md` is satisfied and that incident-report.md plus test-comple",False
+05-testing-documentation\03-test-report\SKILL.md,94,- [ ] `Test_Report_Template.md` exists in `../output/` with all seven sections populated.,False
+06-deployment-operations\README.md,37,Existing skill-local references to `../project_context/` and `../output/` are compatibility aliases into the active project workspace.,False
+06-deployment-operations\01-deployment-guide\README.md,9,1. Verify `../output/HLD.md` and `../project_context/tech_stack.md` exist. Optionally check for `../output/Database_Design.md`. Halt if any required file is mis,False
+06-deployment-operations\01-deployment-guide\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates pre-deployment checklists, deployment steps, rollback procedures, and post-deployment verific",False
+06-deployment-operations\01-deployment-guide\SKILL.md,23,- After Phase 03 completes and `HLD.md` exists in `../output/` with system architecture and component topology.,False
+06-deployment-operations\01-deployment-guide\SKILL.md,24,- When `tech_stack.md` is present in `../project_context/` with technology choices and runtime versions.,False
+06-deployment-operations\01-deployment-guide\SKILL.md,25,- Optionally when `Database_Design.md` exists in `../output/` for database migration steps.,False
+06-deployment-operations\01-deployment-guide\SKILL.md,31,"| **Inputs**  | `../output/HLD.md`, `../project_context/tech_stack.md`, `../output/Database_Design.md` (optional) |",False
+06-deployment-operations\01-deployment-guide\SKILL.md,32,| **Output**  | `../output/Deployment_Guide.md` |,False
+06-deployment-operations\01-deployment-guide\SKILL.md,40,"| HLD.md | `../output/HLD.md` | Yes | System architecture, component topology, deployment targets |",False
+06-deployment-operations\01-deployment-guide\SKILL.md,41,"| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, runtime versions, package managers |",False
+06-deployment-operations\01-deployment-guide\SKILL.md,42,| Database_Design.md | `../output/Database_Design.md` | No | Database schema for migration step generation |,False
+06-deployment-operations\01-deployment-guide\SKILL.md,48,"| Deployment_Guide.md | `../output/Deployment_Guide.md` | Complete deployment procedure with pre-checks, steps, rollback, and verification |",False
+06-deployment-operations\01-deployment-guide\SKILL.md,56,Read `HLD.md` from `../output/` and `tech_stack.md` from `../project_context/`. Optionally read `Database_Design.md` from `../output/`. Log the absolute path of,False
+06-deployment-operations\01-deployment-guide\SKILL.md,109,Produce an environment matrix summarizing resource differences across dev/staging/prod. Write the completed document to `../output/Deployment_Guide.md`. Log the,False
+06-deployment-operations\01-deployment-guide\SKILL.md,126,- [ ] `Deployment_Guide.md` exists in `../output/` with all seven sections populated.,False
+06-deployment-operations\02-runbook\README.md,9,1. Verify `../output/HLD.md` and `../project_context/tech_stack.md` exist. Halt if any required file is missing.,False
+06-deployment-operations\02-runbook\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates service overview, incident severity levels, alert playbooks, escalation matrix, troubleshooti",False
+06-deployment-operations\02-runbook\SKILL.md,23,- After 01-deployment-guide completes and `Deployment_Guide.md` exists in `../output/`.,False
+06-deployment-operations\02-runbook\SKILL.md,24,- When `HLD.md` exists in `../output/` with system architecture and component dependencies.,False
+06-deployment-operations\02-runbook\SKILL.md,25,- When `tech_stack.md` is present in `../project_context/` with technology choices and runtime details.,False
+06-deployment-operations\02-runbook\SKILL.md,31,"| **Inputs**  | `../output/HLD.md`, `../project_context/tech_stack.md` |",False
+06-deployment-operations\02-runbook\SKILL.md,32,| **Output**  | `../output/Runbook.md` |,False
+06-deployment-operations\02-runbook\SKILL.md,40,"| HLD.md | `../output/HLD.md` | Yes | System architecture, component dependencies, service boundaries |",False
+06-deployment-operations\02-runbook\SKILL.md,41,"| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, runtime details, infrastructure tooling |",False
+06-deployment-operations\02-runbook\SKILL.md,47,"| Runbook.md | `../output/Runbook.md` | Complete operational runbook with incident response, playbooks, and maintenance procedures |",False
+06-deployment-operations\02-runbook\SKILL.md,55,Read `HLD.md` from `../output/` and `tech_stack.md` from `../project_context/`. Log the absolute path of each file read. Halt if any required file is missing.,False
+06-deployment-operations\02-runbook\SKILL.md,116,"Write the completed document to `../output/Runbook.md`. Include a contact list appendix. Log the total count of playbooks, troubleshooting recipes, and maintena",False
+06-deployment-operations\02-runbook\SKILL.md,133,- [ ] `Runbook.md` exists in `../output/` with all eight sections populated.,False
+06-deployment-operations\03-monitoring-setup\README.md,9,1. Verify `../output/HLD.md` and `../project_context/quality_standards.md` exist. Halt if any required file is missing.,False
+06-deployment-operations\03-monitoring-setup\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates metrics catalog, alert definitions, dashboard specs, health checks, log aggregation, and noti",False
+06-deployment-operations\03-monitoring-setup\SKILL.md,24,- When `HLD.md` exists in `../output/` with component architecture for per-component metric definition.,False
+06-deployment-operations\03-monitoring-setup\SKILL.md,25,- When `quality_standards.md` is present in `../project_context/` with SLAs and quality targets.,False
+06-deployment-operations\03-monitoring-setup\SKILL.md,31,"| **Inputs**  | `../output/HLD.md`, `../project_context/quality_standards.md` |",False
+06-deployment-operations\03-monitoring-setup\SKILL.md,32,| **Output**  | `../output/Monitoring_Setup.md` |,False
+06-deployment-operations\03-monitoring-setup\SKILL.md,40,| HLD.md | `../output/HLD.md` | Yes | Component architecture for per-component metric definition |,False
+06-deployment-operations\03-monitoring-setup\SKILL.md,41,"| quality_standards.md | `../project_context/quality_standards.md` | Yes | SLAs, SLOs, and quality targets for alert threshold derivation |",False
+06-deployment-operations\03-monitoring-setup\SKILL.md,47,"| Monitoring_Setup.md | `../output/Monitoring_Setup.md` | Complete monitoring design with metrics, alerts, dashboards, and health checks |",False
+06-deployment-operations\03-monitoring-setup\SKILL.md,55,Read `HLD.md` from `../output/` and `quality_standards.md` from `../project_context/`. Log the absolute path of each file read. Halt if any required file is mis,False
+06-deployment-operations\03-monitoring-setup\SKILL.md,105,"Write the completed document to `../output/Monitoring_Setup.md`. Log the total count of metrics, alerts, and dashboard panels.",False
+06-deployment-operations\03-monitoring-setup\SKILL.md,122,- [ ] `Monitoring_Setup.md` exists in `../output/` with all six sections populated.,False
+06-deployment-operations\04-infrastructure-docs\README.md,9,1. Verify `../output/HLD.md` and `../project_context/tech_stack.md` exist. Halt if any required file is missing.,False
+06-deployment-operations\04-infrastructure-docs\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates infrastructure architecture diagram, compute resources, network topology, storage architectur",False
+06-deployment-operations\04-infrastructure-docs\SKILL.md,24,- When `HLD.md` exists in `../output/` with system architecture and component topology.,False
+06-deployment-operations\04-infrastructure-docs\SKILL.md,25,- When `tech_stack.md` is present in `../project_context/` with technology choices and infrastructure tooling.,False
+06-deployment-operations\04-infrastructure-docs\SKILL.md,31,"| **Inputs**  | `../output/HLD.md`, `../project_context/tech_stack.md` |",False
+06-deployment-operations\04-infrastructure-docs\SKILL.md,32,| **Output**  | `../output/Infrastructure_Docs.md` |,False
+06-deployment-operations\04-infrastructure-docs\SKILL.md,40,"| HLD.md | `../output/HLD.md` | Yes | System architecture, component topology, deployment targets |",False
+06-deployment-operations\04-infrastructure-docs\SKILL.md,41,"| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, infrastructure tooling, cloud provider details |",False
+06-deployment-operations\04-infrastructure-docs\SKILL.md,47,"| Infrastructure_Docs.md | `../output/Infrastructure_Docs.md` | Complete infrastructure documentation with diagrams, resources, network, storage, IaC, and DR |",False
+06-deployment-operations\04-infrastructure-docs\SKILL.md,55,Read `HLD.md` from `../output/` and `tech_stack.md` from `../project_context/`. Log the absolute path of each file read. Halt if any required file is missing.,False
+06-deployment-operations\04-infrastructure-docs\SKILL.md,105,Produce a cost estimate summary table per environment. Write the completed document to `../output/Infrastructure_Docs.md`. Log the total count of compute resour,False
+06-deployment-operations\04-infrastructure-docs\SKILL.md,122,- [ ] `Infrastructure_Docs.md` exists in `../output/` with all seven sections populated.,False
+06-deployment-operations\05-go-live-readiness\SKILL.md,32,"| **Inputs** | `../output/Deployment_Guide.md`, `../output/Runbook.md`, `../output/Monitoring_Setup.md`, `../output/Infrastructure_Docs.md` (recommended), relea",False
+06-deployment-operations\05-go-live-readiness\SKILL.md,33,| **Output** | `../output/Go_Live_Readiness.md` |,False
+06-deployment-operations\05-go-live-readiness\SKILL.md,89,"Write `../output/Go_Live_Readiness.md` with readiness assessment, blocker register, cutover plan, and recommendation.",False
+07-agile-artifacts\README.md,27,"All skills read from `../project_context/` (vision.md, features.md, quality_standards.md, tech_stack.md) and `../output/` (prioritized_backlog.md, user_stories.",False
+07-agile-artifacts\01-sprint-planning\README.md,9,1. Verify `../project_context/vision.md` and `../output/prioritized_backlog.md` exist. Optionally check for `../output/user_stories.md`. Halt if any required fi,False
+07-agile-artifacts\01-sprint-planning\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates sprint goal, capacity, backlog selection, task breakdown, and risk sections, then writes `../",False
+07-agile-artifacts\01-sprint-planning\SKILL.md,23,- After Phase 02 completes and `prioritized_backlog.md` exists in `../output/` with ranked work items.,False
+07-agile-artifacts\01-sprint-planning\SKILL.md,24,- When `user_stories.md` is present in `../output/` with acceptance criteria for candidate stories.,False
+07-agile-artifacts\01-sprint-planning\SKILL.md,25,- When `vision.md` is present in `../project_context/` with project goals to derive sprint goals from.,False
+07-agile-artifacts\01-sprint-planning\SKILL.md,32,"| **Inputs**  | `../project_context/vision.md`, `../output/prioritized_backlog.md`, `../output/user_stories.md` |",False
+07-agile-artifacts\01-sprint-planning\SKILL.md,33,| **Output**  | `../output/Sprint_Planning_Template.md` |,False
+07-agile-artifacts\01-sprint-planning\SKILL.md,41,| vision.md | `../project_context/vision.md` | Yes | Project goals and strategic objectives for sprint goal derivation |,False
+07-agile-artifacts\01-sprint-planning\SKILL.md,42,| prioritized_backlog.md | `../output/prioritized_backlog.md` | Yes | Ranked backlog items with priority and estimated effort |,False
+07-agile-artifacts\01-sprint-planning\SKILL.md,43,| user_stories.md | `../output/user_stories.md` | No | User stories with acceptance criteria for task breakdown |,False
+07-agile-artifacts\01-sprint-planning\SKILL.md,49,| Sprint_Planning_Template.md | `../output/Sprint_Planning_Template.md` | Complete sprint planning template with all ceremony sections |,False
+07-agile-artifacts\01-sprint-planning\SKILL.md,57,Read `vision.md` from `../project_context/` and `prioritized_backlog.md` from `../output/`. Optionally read `user_stories.md` from `../output/`. Log the absolut,False
+07-agile-artifacts\01-sprint-planning\SKILL.md,100,Assemble all sections into the final template. Include a Definition of Done reference section that points to `Definition_of_Done.md`. Include a Sprint Commitmen,False
+07-agile-artifacts\01-sprint-planning\SKILL.md,125,1. `Sprint_Planning_Template.md` exists in `../output/` with all eight sections populated.,False
+07-agile-artifacts\02-definition-of-done\README.md,9,1. Verify `../project_context/quality_standards.md` exists. Optionally check for `../project_context/tech_stack.md`. Halt if the required file is missing.,False
+07-agile-artifacts\02-definition-of-done\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates criteria across six categories and two aggregate levels, then writes `../output/Definition_of",False
+07-agile-artifacts\02-definition-of-done\SKILL.md,24,- After `quality_standards.md` is present in `../project_context/` with project-specific quality requirements.,False
+07-agile-artifacts\02-definition-of-done\SKILL.md,25,- When `tech_stack.md` is present in `../project_context/` to tailor criteria to the technology platform.,False
+07-agile-artifacts\02-definition-of-done\SKILL.md,32,"| **Inputs**  | `../project_context/quality_standards.md`, `../project_context/tech_stack.md` |",False
+07-agile-artifacts\02-definition-of-done\SKILL.md,33,| **Output**  | `../output/Definition_of_Done.md` |,False
+07-agile-artifacts\02-definition-of-done\SKILL.md,41,"| quality_standards.md | `../project_context/quality_standards.md` | Yes | Project quality requirements, coding standards, coverage targets |",False
+07-agile-artifacts\02-definition-of-done\SKILL.md,42,"| tech_stack.md | `../project_context/tech_stack.md` | No | Technology choices to tailor criteria (linters, test frameworks, CI/CD tools) |",False
+07-agile-artifacts\02-definition-of-done\SKILL.md,48,"| Definition_of_Done.md | `../output/Definition_of_Done.md` | Complete DoD checklist with item-level, increment-level, and release-level criteria |",False
+07-agile-artifacts\02-definition-of-done\SKILL.md,56,Read `quality_standards.md` from `../project_context/`. Optionally read `tech_stack.md` from `../project_context/`. Log the absolute path of each file read. Hal,False
+07-agile-artifacts\02-definition-of-done\SKILL.md,107,Assemble all criteria into the final checklist document. Write the completed document to `../output/Definition_of_Done.md`. Log completion and total count of ch,False
+07-agile-artifacts\02-definition-of-done\SKILL.md,132,1. `Definition_of_Done.md` exists in `../output/` with all eight sections populated.,False
+07-agile-artifacts\03-definition-of-ready\README.md,9,1. Verify `../project_context/vision.md` exists. Optionally check for `../project_context/features.md`. Halt if the required file is missing.,False
+07-agile-artifacts\03-definition-of-ready\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates readiness criteria across five categories plus a refinement process, then writes `../output/D",False
+07-agile-artifacts\03-definition-of-ready\SKILL.md,24,- After `vision.md` is present in `../project_context/` with project goals for context.,False
+07-agile-artifacts\03-definition-of-ready\SKILL.md,25,- When `features.md` is present in `../project_context/` with feature definitions to inform readiness criteria.,False
+07-agile-artifacts\03-definition-of-ready\SKILL.md,32,"| **Inputs**  | `../project_context/vision.md`, `../project_context/features.md` |",False
+07-agile-artifacts\03-definition-of-ready\SKILL.md,33,| **Output**  | `../output/Definition_of_Ready.md` |,False
+07-agile-artifacts\03-definition-of-ready\SKILL.md,41,| vision.md | `../project_context/vision.md` | Yes | Project goals and scope to ground readiness criteria |,False
+07-agile-artifacts\03-definition-of-ready\SKILL.md,42,| features.md | `../project_context/features.md` | No | Feature definitions to inform story completeness and design clarity criteria |,False
+07-agile-artifacts\03-definition-of-ready\SKILL.md,48,| Definition_of_Ready.md | `../output/Definition_of_Ready.md` | Complete DoR checklist with refinement criteria and process guidance |,False
+07-agile-artifacts\03-definition-of-ready\SKILL.md,56,Read `vision.md` from `../project_context/`. Optionally read `features.md` from `../project_context/`. Log the absolute path of each file read. Halt if the requ,False
+07-agile-artifacts\03-definition-of-ready\SKILL.md,105,Assemble all sections into the final document. Write to `../output/Definition_of_Ready.md`. Log completion.,False
+07-agile-artifacts\03-definition-of-ready\SKILL.md,129,1. `Definition_of_Ready.md` exists in `../output/` with all seven sections populated.,False
+07-agile-artifacts\04-retrospective-template\README.md,9,1. Verify `../project_context/vision.md` exists. Halt if the required file is missing.,False
+07-agile-artifacts\04-retrospective-template\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates sprint summary, observation sections, action tracking, facilitation formats, and metrics, the",False
+07-agile-artifacts\04-retrospective-template\SKILL.md,24,- After `vision.md` is present in `../project_context/` for project context.,False
+07-agile-artifacts\04-retrospective-template\SKILL.md,32,| **Inputs**  | `../project_context/vision.md` |,False
+07-agile-artifacts\04-retrospective-template\SKILL.md,33,| **Output**  | `../output/Retrospective_Template.md` |,False
+07-agile-artifacts\04-retrospective-template\SKILL.md,41,| vision.md | `../project_context/vision.md` | Yes | Project goals and context for grounding retrospective themes |,False
+07-agile-artifacts\04-retrospective-template\SKILL.md,47,"| Retrospective_Template.md | `../output/Retrospective_Template.md` | Complete retrospective template with facilitation formats, action tracking, and metrics |",False
+07-agile-artifacts\04-retrospective-template\SKILL.md,55,Read `vision.md` from `../project_context/`. Log the absolute path of each file read. Halt if the required file is missing.,False
+07-agile-artifacts\04-retrospective-template\SKILL.md,107,Assemble all sections into the final template. Write to `../output/Retrospective_Template.md`. Log completion.,False
+07-agile-artifacts\04-retrospective-template\SKILL.md,132,1. `Retrospective_Template.md` exists in `../output/` with all eight sections populated.,False
+08-end-user-documentation\README.md,27,"All skills read from `../output/` (SRS_Draft.md, Deployment_Guide.md, user_stories.md) and `../project_context/` (vision.md, features.md, tech_stack.md). All sk",False
+08-end-user-documentation\01-user-manual\README.md,9,1. Verify `../project_context/vision.md` and `../project_context/features.md` exist. Optionally check for `../output/SRS_Draft.md` and `../output/user_stories.m,False
+08-end-user-documentation\01-user-manual\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates getting started content, navigation overview, per-feature guides, role-based workflows, troub",False
+08-end-user-documentation\01-user-manual\SKILL.md,23,- After Phase 02 completes and `vision.md` and `features.md` exist in `../project_context/`.,False
+08-end-user-documentation\01-user-manual\SKILL.md,25,- Optionally after Phase 05 when `user_stories.md` exists in `../output/` for richer workflow context.,False
+08-end-user-documentation\01-user-manual\SKILL.md,26,- Optionally after Phase 02 when `SRS_Draft.md` exists in `../output/` for detailed functional reference.,False
+08-end-user-documentation\01-user-manual\SKILL.md,32,"| **Inputs**   | `../project_context/vision.md`, `../project_context/features.md`, `../output/SRS_Draft.md` (optional), `../output/user_stories.md` (optional) |",False
+08-end-user-documentation\01-user-manual\SKILL.md,33,| **Output**   | `../output/User_Manual.md` |,False
+08-end-user-documentation\01-user-manual\SKILL.md,42,"| vision.md | `../project_context/vision.md` | Yes | Product purpose, target audience, high-level goals |",False
+08-end-user-documentation\01-user-manual\SKILL.md,43,| features.md | `../project_context/features.md` | Yes | Feature list with descriptions for per-feature guide generation |,False
+08-end-user-documentation\01-user-manual\SKILL.md,44,| SRS_Draft.md | `../output/SRS_Draft.md` | No | Detailed functional requirements for precise procedure steps |,False
+08-end-user-documentation\01-user-manual\SKILL.md,45,| user_stories.md | `../output/user_stories.md` | No | User stories and personas for role-based workflow generation |,False
+08-end-user-documentation\01-user-manual\SKILL.md,51,"| User_Manual.md | `../output/User_Manual.md` | Complete user manual with getting started, feature guides, role-based workflows, troubleshooting, and glossary |",False
+08-end-user-documentation\01-user-manual\SKILL.md,59,Read `vision.md` and `features.md` from `../project_context/`. Optionally read `SRS_Draft.md` and `user_stories.md` from `../output/`. Log the absolute path of ,False
+08-end-user-documentation\01-user-manual\SKILL.md,110,Assemble all sections into the final document with a table of contents. Write the completed document to `../output/User_Manual.md`. Log the total count of featu,False
+08-end-user-documentation\01-user-manual\SKILL.md,154,1. `User_Manual.md` exists in `../output/` with all nine sections populated.,False
+08-end-user-documentation\02-installation-guide\README.md,9,1. Verify `../project_context/tech_stack.md` exists. Optionally check for `../output/Deployment_Guide.md`. Halt if the required file is missing.,False
+08-end-user-documentation\02-installation-guide\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates system requirements, prerequisites, installation steps, configuration, verification, and trou",False
+08-end-user-documentation\02-installation-guide\SKILL.md,23,"- After `tech_stack.md` exists in `../project_context/` with technology choices, runtime versions, and platform requirements.",False
+08-end-user-documentation\02-installation-guide\SKILL.md,25,- Optionally after Phase 06 when `Deployment_Guide.md` exists in `../output/` for infrastructure and deployment context.,False
+08-end-user-documentation\02-installation-guide\SKILL.md,31,"| **Inputs**   | `../project_context/tech_stack.md`, `../output/Deployment_Guide.md` (optional) |",False
+08-end-user-documentation\02-installation-guide\SKILL.md,32,| **Output**   | `../output/Installation_Guide.md` |,False
+08-end-user-documentation\02-installation-guide\SKILL.md,41,"| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, runtime versions, OS compatibility, dependencies |",False
+08-end-user-documentation\02-installation-guide\SKILL.md,42,"| Deployment_Guide.md | `../output/Deployment_Guide.md` | No | Infrastructure context, environment configuration, deployment procedures |",False
+08-end-user-documentation\02-installation-guide\SKILL.md,48,"| Installation_Guide.md | `../output/Installation_Guide.md` | Complete installation guide with system requirements, prerequisites, steps, configuration, verific",False
+08-end-user-documentation\02-installation-guide\SKILL.md,56,Read `tech_stack.md` from `../project_context/`. Optionally read `Deployment_Guide.md` from `../output/`. Log the absolute path of each file read. Halt if any r,False
+08-end-user-documentation\02-installation-guide\SKILL.md,114,- Write the completed document to `../output/Installation_Guide.md`. Log the total count of installation steps.,False
+08-end-user-documentation\02-installation-guide\SKILL.md,140,1. `Installation_Guide.md` exists in `../output/` with all nine sections populated.,False
+08-end-user-documentation\03-faq\README.md,9,1. Verify `../project_context/vision.md` and `../project_context/features.md` exist. Optionally check for `../output/User_Manual.md`. Halt if any required file ,False
+08-end-user-documentation\03-faq\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates categorized question-answer pairs covering general, installation, feature-specific, account, ",False
+08-end-user-documentation\03-faq\SKILL.md,23,- After `vision.md` and `features.md` exist in `../project_context/` to derive questions from product scope and feature set.,False
+08-end-user-documentation\03-faq\SKILL.md,24,- Optionally after `User_Manual.md` exists in `../output/` for cross-referencing detailed procedures.,False
+08-end-user-documentation\03-faq\SKILL.md,31,"| **Inputs**   | `../project_context/vision.md`, `../project_context/features.md`, `../output/User_Manual.md` (optional) |",False
+08-end-user-documentation\03-faq\SKILL.md,32,| **Output**   | `../output/FAQ.md` |,False
+08-end-user-documentation\03-faq\SKILL.md,41,"| vision.md | `../project_context/vision.md` | Yes | Product purpose, target audience, positioning for general questions |",False
+08-end-user-documentation\03-faq\SKILL.md,42,| features.md | `../project_context/features.md` | Yes | Feature list for feature-specific question generation |,False
+08-end-user-documentation\03-faq\SKILL.md,43,| User_Manual.md | `../output/User_Manual.md` | No | Detailed procedures for cross-reference links in answers |,False
+08-end-user-documentation\03-faq\SKILL.md,49,| FAQ.md | `../output/FAQ.md` | Structured FAQ organized by category with question-answer pairs and cross-references |,False
+08-end-user-documentation\03-faq\SKILL.md,57,Read `vision.md` and `features.md` from `../project_context/`. Optionally read `User_Manual.md` from `../output/`. Log the absolute path of each file read. Halt,False
+08-end-user-documentation\03-faq\SKILL.md,112,Assemble all categories into the final document with a table of contents and search-friendly anchor links. Every answer SHALL be concise (three to five sentence,False
+08-end-user-documentation\03-faq\SKILL.md,138,1. `FAQ.md` exists in `../output/` with all applicable categories populated.,False
+08-end-user-documentation\04-release-notes\README.md,9,1. Verify `../project_context/vision.md` exists. Optionally check for `../output/SRS_Draft.md`. Halt if the required file is missing.,False
+08-end-user-documentation\04-release-notes\README.md,10,"2. Invoke `logic.prompt` or trigger the skill. The skill generates a release notes template with all standard sections, authoring guidance, and a pre-publish ch",False
+08-end-user-documentation\04-release-notes\SKILL.md,23,- After `vision.md` exists in `../project_context/` to establish the product identity and versioning context.,False
+08-end-user-documentation\04-release-notes\SKILL.md,25,- Optionally after `SRS_Draft.md` exists in `../output/` for tracing features to requirements.,False
+08-end-user-documentation\04-release-notes\SKILL.md,31,"| **Inputs**   | `../project_context/vision.md`, `../output/SRS_Draft.md` (optional) |",False
+08-end-user-documentation\04-release-notes\SKILL.md,32,| **Output**   | `../output/Release_Notes_Template.md` |,False
+08-end-user-documentation\04-release-notes\SKILL.md,41,"| vision.md | `../project_context/vision.md` | Yes | Product name, versioning scheme, release cadence context |",False
+08-end-user-documentation\04-release-notes\SKILL.md,42,| SRS_Draft.md | `../output/SRS_Draft.md` | No | Functional requirements for tracing features to specifications |,False
+08-end-user-documentation\04-release-notes\SKILL.md,48,| Release_Notes_Template.md | `../output/Release_Notes_Template.md` | Reusable release notes template with all standard sections and placeholder guidance |,False
+08-end-user-documentation\04-release-notes\SKILL.md,56,Read `vision.md` from `../project_context/`. Optionally read `SRS_Draft.md` from `../output/`. Log the absolute path of each file read. Halt if the required fil,False
+08-end-user-documentation\04-release-notes\SKILL.md,104,Assemble all sections into the final template with authoring instructions embedded as comments. Include a checklist at the end for release managers to verify co,False
+08-end-user-documentation\04-release-notes\SKILL.md,131,1. `Release_Notes_Template.md` exists in `../output/` with all ten sections.,False
+09-governance-compliance\01-traceability-matrix\README.md,9,1. Populate `../project_context/` with `vision.md` containing business goals and stakeholder needs,False
+09-governance-compliance\01-traceability-matrix\README.md,10,2. Ensure `../output/SRS_Draft.md` exists with uniquely identified requirements,False
+09-governance-compliance\01-traceability-matrix\README.md,11,"3. Optionally provide `../output/HLD.md`, `../output/LLD.md`, and `../output/user_stories.md` for richer traceability",False
+09-governance-compliance\01-traceability-matrix\README.md,13,5. Review `../output/Traceability_Matrix.md` for completeness and accuracy,False
+09-governance-compliance\01-traceability-matrix\SKILL.md,43,| `../output/SRS_Draft.md` | Source of all functional and non-functional requirements | Yes |,False
+09-governance-compliance\01-traceability-matrix\SKILL.md,44,| `../project_context/vision.md` | Business goals and stakeholder needs for backward traceability | Yes |,False
+09-governance-compliance\01-traceability-matrix\SKILL.md,45,| `../output/HLD.md` | High-level design elements for design-to-requirement mapping | No |,False
+09-governance-compliance\01-traceability-matrix\SKILL.md,46,| `../output/LLD.md` | Low-level design elements for detailed traceability | No |,False
+09-governance-compliance\01-traceability-matrix\SKILL.md,47,| `../output/user_stories.md` | User stories for requirement-to-story mapping | No |,False
+09-governance-compliance\01-traceability-matrix\SKILL.md,53,| `../output/Traceability_Matrix.md` | Complete bidirectional traceability matrix with gap analysis |,False
+09-governance-compliance\01-traceability-matrix\SKILL.md,57,"1. The skill SHALL read `../output/SRS_Draft.md` and extract every requirement with its unique identifier (e.g., FR-001, NFR-001). If the file is missing, halt ",False
+09-governance-compliance\01-traceability-matrix\SKILL.md,59,"2. The skill SHALL read `../project_context/vision.md` and extract every business goal and stakeholder need, assigning identifiers if none exist (e.g., BG-001, ",False
+09-governance-compliance\02-audit-report\README.md,9,1. Ensure `../output/Traceability_Matrix.md` exists (run 01-traceability-matrix first),False
+09-governance-compliance\02-audit-report\README.md,10,2. Ensure `../output/SRS_Draft.md` exists with finalized requirements,False
+09-governance-compliance\02-audit-report\README.md,11,3. Optionally provide `../project_context/quality_standards.md` for quality benchmarks,False
+09-governance-compliance\02-audit-report\README.md,13,5. Review `../output/Audit_Report.md` for findings and recommendation,False
+09-governance-compliance\02-audit-report\SKILL.md,43,| `../output/Traceability_Matrix.md` | Traceability data and coverage metrics for audit assessment | Yes |,False
+09-governance-compliance\02-audit-report\SKILL.md,44,| `../output/SRS_Draft.md` | Primary document under audit for correctness and completeness | Yes |,False
+09-governance-compliance\02-audit-report\SKILL.md,45,| `../project_context/quality_standards.md` | Quality benchmarks and acceptance criteria for compliance assessment | No |,False
+09-governance-compliance\02-audit-report\SKILL.md,46,| `../output/HLD.md` | Design documentation for consistency cross-check | No |,False
+09-governance-compliance\02-audit-report\SKILL.md,47,| `../output/LLD.md` | Detailed design documentation for consistency cross-check | No |,False
+09-governance-compliance\02-audit-report\SKILL.md,53,| `../output/Audit_Report.md` | Complete V&V audit report with findings and recommendations |,False
+09-governance-compliance\02-audit-report\SKILL.md,57,"1. The skill SHALL read `../output/Traceability_Matrix.md` and `../output/SRS_Draft.md`. If either file is missing, halt execution and report the error.",False
+09-governance-compliance\03-compliance-documentation\README.md,9,"1. Populate `../project_context/vision.md` with project domain, data subjects, and geographic scope",False
+09-governance-compliance\03-compliance-documentation\README.md,10,2. Optionally provide `../project_context/quality_standards.md` with security requirements,False
+09-governance-compliance\03-compliance-documentation\README.md,11,3. Optionally ensure `../output/SRS_Draft.md` and `../output/HLD.md` exist for richer controls mapping,False
+09-governance-compliance\03-compliance-documentation\README.md,13,5. Review `../output/Compliance_Docs.md` for applicability determinations and gap analysis,False
+09-governance-compliance\03-compliance-documentation\SKILL.md,43,"| `../project_context/vision.md` | Project scope, domain, and data subjects to determine regulatory applicability | Yes |",False
+09-governance-compliance\03-compliance-documentation\SKILL.md,44,| `../project_context/quality_standards.md` | Security and compliance requirements specified by stakeholders | No |,False
+09-governance-compliance\03-compliance-documentation\SKILL.md,45,"| `../output/SRS_Draft.md` | Requirements referencing data handling, authentication, and access control | No |",False
+09-governance-compliance\03-compliance-documentation\SKILL.md,46,"| `../output/HLD.md` | Architecture decisions affecting data flow, storage, and transmission | No |",False
+09-governance-compliance\03-compliance-documentation\SKILL.md,52,| `../output/Compliance_Docs.md` | Complete compliance documentation with applicability assessment and gap analysis |,False
+09-governance-compliance\03-compliance-documentation\SKILL.md,56,"1. The skill SHALL read `../project_context/vision.md` to determine the project domain, target users, data subjects, and geographic scope. If the file is missin",False
+09-governance-compliance\04-risk-assessment\README.md,9,"1. Populate `../project_context/vision.md` with project objectives, constraints, and stakeholder context",False
+09-governance-compliance\04-risk-assessment\README.md,10,2. Optionally provide `../project_context/quality_standards.md` for risk tolerance thresholds,False
+09-governance-compliance\04-risk-assessment\README.md,13,5. Review `../output/Risk_Assessment.md` for completeness of risk identification and scoring accuracy,False
+09-governance-compliance\04-risk-assessment\SKILL.md,43,"| `../project_context/vision.md` | Project scope, objectives, and constraints for risk context establishment | Yes |",False
+09-governance-compliance\04-risk-assessment\SKILL.md,44,| `../project_context/quality_standards.md` | Quality thresholds and acceptance criteria for risk tolerance definition | No |,False
+09-governance-compliance\04-risk-assessment\SKILL.md,45,| `../output/SRS_Draft.md` | Requirements for technical risk identification and dependency analysis | No |,False
+09-governance-compliance\04-risk-assessment\SKILL.md,46,| `../output/HLD.md` | Architecture decisions for technical and operational risk identification | No |,False
+09-governance-compliance\04-risk-assessment\SKILL.md,47,| `../output/Audit_Report.md` | Audit findings that may indicate risk areas requiring formal assessment | No |,False
+09-governance-compliance\04-risk-assessment\SKILL.md,48,| `../output/Compliance_Docs.md` | Compliance gaps that translate directly into compliance risks | No |,False
+09-governance-compliance\04-risk-assessment\SKILL.md,54,"| `../output/Risk_Assessment.md` | Complete risk assessment with register, scoring matrix, and mitigation plans |",False
+09-governance-compliance\04-risk-assessment\SKILL.md,58,"1. The skill SHALL read `../project_context/vision.md` to establish the risk context including project objectives, stakeholders, constraints, and risk appetite.",False
