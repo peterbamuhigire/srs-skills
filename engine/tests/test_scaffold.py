@@ -1,0 +1,35 @@
+from pathlib import Path
+from click.testing import CliRunner
+from engine.cli import main
+
+
+def test_new_project_creates_canonical_workspace(tmp_path: Path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    rc = CliRunner().invoke(main, [
+        "new-project", "TestProject",
+        "--methodology", "hybrid",
+        "--domain", "uganda",
+        "--example", "uganda-public-sector",
+    ])
+    assert rc.exit_code == 0, rc.output
+    project = tmp_path / "projects" / "TestProject"
+    assert (project / "_context" / "vision.md").exists()
+    methodology_body = (project / "_context" / "methodology.md").read_text(encoding="utf-8").lower()
+    assert "methodology: hybrid" in methodology_body
+    assert (project / "_registry" / "controls.yaml").exists()
+    assert (project / "_registry" / "baseline-trace.yaml").exists()
+
+
+def test_new_project_without_example_seeds_minimum_context(tmp_path: Path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    rc = CliRunner().invoke(main, [
+        "new-project", "Minimal",
+        "--methodology", "agile",
+        "--domain", "retail",
+    ])
+    assert rc.exit_code == 0, rc.output
+    project = tmp_path / "projects" / "Minimal"
+    assert (project / "_context" / "vision.md").exists()
+    assert (project / "_context" / "methodology.md").exists()
+    # No example => no baseline-trace.yaml for agile
+    assert not (project / "_registry" / "baseline-trace.yaml").exists()

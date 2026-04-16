@@ -48,6 +48,18 @@ def doctor() -> None:
     sys.exit(run())
 
 
+@main.command("new-project")
+@click.argument("name")
+@click.option("--methodology", type=click.Choice(["waterfall", "agile", "hybrid"]), required=True)
+@click.option("--domain", required=True)
+@click.option("--example", default=None, help="Optional example name under examples/")
+def new_project(name: str, methodology: str, domain: str, example: str | None) -> None:
+    """Scaffold a new project workspace under projects/<name>/."""
+    from engine.scaffold import scaffold
+    scaffold(Path("projects") / name, methodology, domain, example)
+    click.echo(f"Scaffolded projects/{name}.")
+
+
 @main.command()
 @click.argument("project", type=click.Path(exists=True, file_okay=False))
 @click.option("--junit", type=click.Path(), default=None)

@@ -29,6 +29,7 @@ When the user says "start a new project" or equivalent:
 7. Copy `domains/<domain>/INDEX.md` into `_context/domain.md`
 8. Inject `[DOMAIN-DEFAULT]` blocks from `domains/<domain>/references/nfr-defaults.md` into section stubs
 9. Print scaffold summary showing pre-populated files and outstanding TODOs
+10. Run `python -m engine new-project <Name> --methodology <m> --domain <d> --example <e>` -- the kernel handles the mechanical scaffolding including copying the chosen golden-path example into `projects/<Name>/`.
 
 ## Hybrid Cross-Cutting Trigger
 
