@@ -1,3 +1,16 @@
+---
+gate: phase07
+checks:
+  - phase07.dor_references_baseline
+  - phase07.dod_references_compliance
+  - phase07.sprint_artifacts_have_ids
+  - phase07.retro_actions_assigned
+  - phase07.velocity_history_present
+clause_refs:
+  - standard: "PMBOK Guide 7th Edition"
+    clause: "2.6"
+---
+
 # Phase 07 Deterministic Gate
 
 Use this checklist before claiming Agile artifacts are sprint-ready.
