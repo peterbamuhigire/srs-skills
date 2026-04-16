@@ -1,3 +1,15 @@
+---
+gate: phase01
+checks:
+  - phase01.canonical_inputs_present
+  - phase01.feature_has_stakeholder
+  - phase01.no_context_gaps
+  - phase01.glossary_seeded
+clause_refs:
+  - standard: "IEEE Std 29148-2018"
+    clause: "5.2"
+---
+
 # Phase 01 Deterministic Gate
 
 Use this checklist before declaring strategic vision outputs complete. The purpose is to make Phase 01 reviewable against IEEE 29148 and business-governance expectations instead of relying on narrative quality alone.
