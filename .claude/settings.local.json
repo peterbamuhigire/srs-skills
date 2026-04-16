@@ -41,7 +41,9 @@
       "Bash(py -3 -c \"import docx; print\\(docx.__version__\\)\")",
       "Bash(python -c \"import docx; print\\(docx.__version__\\)\")",
       "Bash(python scripts/create-reference-docx.py)",
-      "Bash(bash:*)"
+      "Bash(bash:*)",
+      "Bash(mkdir -p \"C:/Users/BIRDC/.claude/skills/event-driven-architecture\" \"C:/Users/BIRDC/.claude/skills/graphql-patterns\")",
+      "Read(//c/Users/BIRDC/.claude/skills/**)"
     ]
   }
 }
