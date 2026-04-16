@@ -110,11 +110,26 @@ All 7 tasks done in 15 commits: `c15bd21` through `1e6b710`. 164 tests passing. 
 
 ## Plan 05 — Hybrid Synchronization
 
-**Status:** ⬜ **NOT STARTED**
+**Status:** ✅ **COMPLETE** (2026-04-16)
 
 File: [`05-hybrid-synchronization.md`](05-hybrid-synchronization.md)
 
-Depends on Plans 01 + 03. Deliverables: new `hybrid-synchronization` skill; `_context/methodology.md`; baseline-to-backlog trace files; DoR/DoD bound to baseline IDs; `engine.gates.hybrid`.
+All 6 tasks in 6 commits: `7859685`..`7fc9372`. 8 new tests (164 → 172). `ENGINE CONTRACT: PASS`.
+
+| Task | Commit | Summary |
+|------|--------|---------|
+| 1. hybrid-synchronization skill | `7859685` | Full skill tree under `02-requirements-engineering/hybrid/`: SKILL.md + 3 Jinja templates (methodology, baseline-trace, dor-dod) + water-scrum-fall-patterns reference + manifest. |
+| 2. Baseline trace schema | `94d1671` | `engine/registry/schemas/baseline-trace.schema.json` (plan-verbatim). |
+| 3. `HybridTracesCheck` | `a07fce0` | Emits `hybrid.traces.{missing,unknown_trace,orphan_baseline}`. 4 tests. |
+| 4. `HybridSyncGate` + prose | `39a1de1` | Gate activates only when `_context/methodology.md` has `methodology: hybrid` (checks both frontmatter AND body — plan's body-only check would fail because frontmatter is stripped). Wired in `validate` command directly (not `_default_registry`) because gate needs workspace.root. Emits `hybrid.dor_dod_{missing,decoupled}`. Prose gate doc + clause registry + `deterministic-governance.md` cross-reference. 4 tests. |
+| 5. New-project Hybrid branch | `102932a` | `00-meta-initialization/new-project/SKILL.md` extended with Hybrid scaffolding: seed `_registry/baseline-trace.yaml`, `_context/methodology.md`, `07-agile-artifacts/definitions/` dir. |
+| 6. CLAUDE.md trigger | `7fc9372` | New "Hybrid Cross-Cutting Trigger" subsection above "Build Document Protocol". |
+
+### Plan 05 follow-ups
+
+- **Schema not enforced at runtime** — `HybridTracesCheck` reads baseline-trace.yaml without jsonschema validation. Plan code is verbatim-correct but the schema exists in isolation. Future refinement: call `jsonschema.validate(data, _SCHEMA)` before integrity checks; emit `hybrid.traces.schema_violation` on failure.
+- **Plan's test 4 of `test_gate_hybrid.py` was malformed** (used `any()` with a bool). Rewrote as `("decoupled" in msgs_joined.lower() or "does not reference" in msgs_joined.lower())`. Same semantics.
+- **Body vs frontmatter detection.** The plan checks `"methodology: hybrid" in meth.body.lower()` but `ArtifactGraph` strips frontmatter into `artifact.frontmatter` dict. Implementation checks BOTH, so YAML-frontmatter and prose-embedded declarations both activate the gate.
 
 ---
 
