@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Project identifier registry",
+  "type": "object",
+  "required": ["identifiers"],
+  "properties": {
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "defined_in"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[A-Z]{2,5}-\\d{3,5}$"},
+          "kind": {"enum": ["BG", "FR", "NFR", "US", "TC", "CTRL", "RISK", "ADR", "WAIVE"]},
+          "defined_in": {"type": "string"},
+          "title": {"type": "string"},
+          "links": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
