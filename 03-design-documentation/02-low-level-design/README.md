@@ -6,8 +6,8 @@ This skill produces a Low-Level Design document that decomposes high-level archi
 
 ## Execution Steps
 
-1. Verify `../output/HLD.md`, `../output/SRS_Draft.md`, and `../project_context/business_rules.md` exist. Halt if any required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill decomposes HLD components, generates Mermaid diagrams, formalizes algorithms, and writes `../output/LLD.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, and `projects/<ProjectName>/_context/business_rules.md` exist. Halt if any required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill decomposes HLD components, generates Mermaid diagrams, formalizes algorithms, and writes `projects/<ProjectName>/<phase>/<document>/LLD.md`.
 3. Review class diagrams for typed attributes and parameterized methods, sequence diagrams for error-path coverage, and state machines for terminal-state completeness.
 4. Proceed to `03-api-specification` to define API contracts from module interfaces, or to `04-database-design` to derive schemas from entity models.
 

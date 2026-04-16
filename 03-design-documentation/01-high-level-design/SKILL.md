@@ -20,17 +20,17 @@ This is the first skill in Phase 03 (Design Documentation). It transforms the ve
 
 ## When to Use
 
-- After Phase 02 completes and `SRS_Draft.md` exists in `../output/` with Sections 1.0 through 3.5 or later.
-- When `tech_stack.md` is present in `../project_context/` to inform technology decisions.
-- Can also incorporate `PRD.md` from `../output/` for additional product context.
+- After Phase 02 completes and `SRS_Draft.md` exists in `projects/<ProjectName>/<phase>/<document>/` with Sections 1.0 through 3.5 or later.
+- When `tech_stack.md` is present in `projects/<ProjectName>/_context/` to inform technology decisions.
+- Can also incorporate `PRD.md` from `projects/<ProjectName>/<phase>/<document>/` for additional product context.
 - Suitable for both waterfall and Agile projects; Agile projects may also reference `user_stories.md`.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../output/SRS_Draft.md`, `../project_context/tech_stack.md`; optionally `../output/PRD.md` |
-| **Output**  | `../output/HLD.md` |
+| **Inputs**  | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/_context/tech_stack.md`; optionally `projects/<ProjectName>/<phase>/<document>/PRD.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/HLD.md` |
 | **Tone**    | Architectural, precise, diagram-heavy |
 | **Standard** | IEEE 1016-2009 Sec 5 |
 
@@ -38,15 +38,15 @@ This is the first skill in Phase 03 (Design Documentation). It transforms the ve
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Functional requirements, interfaces, constraints, user classes |
-| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, framework versions, infrastructure targets |
-| PRD.md | `../output/PRD.md` | No | Product context, feature priorities, success metrics |
+| SRS_Draft.md | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Yes | Functional requirements, interfaces, constraints, user classes |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes | Technology choices, framework versions, infrastructure targets |
+| PRD.md | `projects/<ProjectName>/<phase>/<document>/PRD.md` | No | Product context, feature priorities, success metrics |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| HLD.md | `../output/HLD.md` | Complete High-Level Design document with architecture diagrams, technology decisions, and traceability |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | Complete High-Level Design document with architecture diagrams, technology decisions, and traceability |
 
 ## Core Instructions
 
@@ -54,7 +54,7 @@ Follow these eleven steps in order. Halt and notify the user if a required input
 
 ### Step 1: Read Context Files
 
-Read `SRS_Draft.md` (all sections) from `../output/` and `tech_stack.md` from `../project_context/`. Optionally read `PRD.md` from `../output/`. Log the absolute path of each file read. If `SRS_Draft.md` or `tech_stack.md` is missing, halt execution and report the gap.
+Read `SRS_Draft.md` (all sections) from `projects/<ProjectName>/<phase>/<document>/` and `tech_stack.md` from `projects/<ProjectName>/_context/`. Optionally read `PRD.md` from `projects/<ProjectName>/<phase>/<document>/`. Log the absolute path of each file read. If `SRS_Draft.md` or `tech_stack.md` is missing, halt execution and report the gap.
 
 ### Step 2: Determine Architectural Style
 
@@ -170,7 +170,7 @@ graph TD
 
 ## Verification Checklist
 
-- [ ] `HLD.md` exists in `../output/` with all nine sections populated.
+- [ ] `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all nine sections populated.
 - [ ] Architectural style is stated with a rationale paragraph citing SRS constraints.
 - [ ] System context diagram includes all external actors and systems from SRS Sections 2.0 and 3.1.
 - [ ] Every component in the architecture diagram has a name, responsibility, and interface.
@@ -181,7 +181,7 @@ graph TD
 
 | Direction | Skill | Relationship |
 |-----------|-------|-------------|
-| Upstream | Phase 02 (Requirements Engineering) | Consumes `SRS_Draft.md` from `../output/` |
+| Upstream | Phase 02 (Requirements Engineering) | Consumes `SRS_Draft.md` from `projects/<ProjectName>/<phase>/<document>/` |
 | Downstream | 02-low-level-design | Decomposes HLD components into module-level specifications |
 | Downstream | 03-api-specification | Uses component interfaces to define API contracts |
 | Downstream | 04-database-design | Uses data flow and component architecture to define data models |

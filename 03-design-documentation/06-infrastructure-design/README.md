@@ -21,9 +21,9 @@ Not every project requires a dedicated infrastructure design document. The skill
 
 ## Execution Steps
 
-1. Verify `../output/HLD.md`, `../output/SRS_Draft.md`, and `../project_context/tech_stack.md` exist. Optionally check for `../project_context/quality_standards.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, and `projects/<ProjectName>/_context/tech_stack.md` exist. Optionally check for `projects/<ProjectName>/_context/quality_standards.md`.
 2. Run the decision gate evaluation. Present the scoring worksheet to the user for confirmation.
-3. If the gate passes, invoke the skill to generate all infrastructure sections and write `../output/Infrastructure_Design.md`.
+3. If the gate passes, invoke the skill to generate all infrastructure sections and write `projects/<ProjectName>/<phase>/<document>/Infrastructure_Design.md`.
 4. Review the Traceability Matrix to confirm every infrastructure component maps to an SRS requirement.
 5. Proceed to downstream skills in Phase 05 (Testing) or Phase 06 (Deployment & Operations).
 
@@ -31,16 +31,16 @@ Not every project requires a dedicated infrastructure design document. The skill
 
 | File | Location | Required |
 |------|----------|----------|
-| HLD.md | `../output/HLD.md` | Yes |
-| SRS_Draft.md | `../output/SRS_Draft.md` | Yes |
-| tech_stack.md | `../project_context/tech_stack.md` | Yes |
-| quality_standards.md | `../project_context/quality_standards.md` | No |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | Yes |
+| SRS_Draft.md | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Yes |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes |
+| quality_standards.md | `projects/<ProjectName>/_context/quality_standards.md` | No |
 
 ## Output
 
 | File | Location |
 |------|----------|
-| Infrastructure_Design.md | `../output/Infrastructure_Design.md` |
+| Infrastructure_Design.md | `projects/<ProjectName>/<phase>/<document>/Infrastructure_Design.md` |
 
 ## Standards
 

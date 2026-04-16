@@ -6,7 +6,7 @@ Generate a comprehensive UX specification document covering information architec
 
 ## When to Use
 
-- After `HLD.md` exists in `../output/` and identifies user-facing components.
+- After `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` and identifies user-facing components.
 - When SRS or user stories define user interactions and interface expectations.
 - When the project requires formal UX documentation for design-development handoff.
 - Before front-end development begins, to establish design tokens and component standards.
@@ -15,24 +15,24 @@ Generate a comprehensive UX specification document covering information architec
 
 | File | Location | Required |
 |------|----------|----------|
-| SRS_Draft.md | `../output/` | Preferred |
-| user_stories.md | `../project_context/` | Alternate (if no SRS) |
-| HLD.md | `../output/` | Yes |
-| vision.md | `../project_context/` | Yes |
-| features.md | `../project_context/` | Recommended |
-| stakeholder_register.md | `../project_context/` | Recommended |
+| SRS_Draft.md | `projects/<ProjectName>/<phase>/<document>/` | Preferred |
+| user_stories.md | `projects/<ProjectName>/_context/` | Alternate (if no SRS) |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/` | Yes |
+| vision.md | `projects/<ProjectName>/_context/` | Yes |
+| features.md | `projects/<ProjectName>/_context/` | Recommended |
+| stakeholder_register.md | `projects/<ProjectName>/_context/` | Recommended |
 
 ## Outputs
 
 | File | Location |
 |------|----------|
-| UX_Specification.md | `../output/` |
+| UX_Specification.md | `projects/<ProjectName>/<phase>/<document>/` |
 
 ## Quick Start
 
 1. Verify that `HLD.md` and `vision.md` exist.
 2. Invoke this skill: the system shall read context files, generate information architecture, define wireframe standards, produce design system tokens, specify interactions and accessibility requirements, create usability testing protocols, and generate the design handoff checklist.
-3. Review `../output/UX_Specification.md` for completeness against the verification checklist in `SKILL.md`.
+3. Review `projects/<ProjectName>/<phase>/<document>/UX_Specification.md` for completeness against the verification checklist in `SKILL.md`.
 
 ## Execution Steps
 

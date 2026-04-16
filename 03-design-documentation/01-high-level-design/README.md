@@ -6,8 +6,8 @@ This skill produces a High-Level Design document that translates verified SRS re
 
 ## Execution Steps
 
-1. Verify `../output/SRS_Draft.md` and `../project_context/tech_stack.md` exist. Optionally check for `../output/PRD.md` to enrich architectural context.
-2. Invoke `logic.prompt` or trigger the skill. The skill reads input files, generates all HLD sections with Mermaid diagrams, and writes `../output/HLD.md`.
+1. Verify `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` and `projects/<ProjectName>/_context/tech_stack.md` exist. Optionally check for `projects/<ProjectName>/<phase>/<document>/PRD.md` to enrich architectural context.
+2. Invoke `logic.prompt` or trigger the skill. The skill reads input files, generates all HLD sections with Mermaid diagrams, and writes `projects/<ProjectName>/<phase>/<document>/HLD.md`.
 3. Review the Traceability Matrix to confirm every HLD component maps to at least one SRS requirement ID.
 4. Proceed to `02-low-level-design` for module-level decomposition, or to `03-api-specification` and `04-database-design` once LLD is complete.
 

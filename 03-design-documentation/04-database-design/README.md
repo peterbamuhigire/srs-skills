@@ -9,7 +9,7 @@ Generate a comprehensive database design document with ERD, normalized table def
 1. **Read Inputs** -- Load `SRS_Draft.md`, `HLD.md`, `business_rules.md`, and `tech_stack.md`. Halt if any required file is missing.
 2. **Design Schema** -- Extract entities, generate ERD (Mermaid erDiagram), verify normalization (1NF/2NF/3NF), and define table structures with typed columns and constraints.
 3. **Define Relationships** -- Specify foreign keys with explicit cascade rules, indexing strategy, and referential integrity enforcement.
-4. **Produce Outputs** -- Write `Database_Design.md` and `erd.mmd` to `../output/`. Generate the data dictionary and migration strategy.
+4. **Produce Outputs** -- Write `Database_Design.md` and `erd.mmd` to `projects/<ProjectName>/<phase>/<document>/`. Generate the data dictionary and migration strategy.
 
 ## Quality Reminders
 

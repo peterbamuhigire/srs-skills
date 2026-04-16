@@ -20,17 +20,17 @@ Produces comprehensive database design documentation including a visual Entity-R
 
 ## When to Use
 
-- After `HLD.md` exists in `../output/` and identifies data storage components.
+- After `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` and identifies data storage components.
 - SRS Section 3.2 (Functional Requirements) provides entity candidates and business logic.
-- `business_rules.md` in `../project_context/` provides data relationships, validation rules, and constraints.
-- `tech_stack.md` in `../project_context/` specifies the database platform.
+- `business_rules.md` in `projects/<ProjectName>/_context/` provides data relationships, validation rules, and constraints.
+- `tech_stack.md` in `projects/<ProjectName>/_context/` specifies the database platform.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../output/SRS_Draft.md`, `../output/HLD.md`, `../project_context/business_rules.md`, `../project_context/tech_stack.md` |
-| **Outputs** | `../output/Database_Design.md`, `../output/erd.mmd` |
+| **Inputs**  | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/_context/business_rules.md`, `projects/<ProjectName>/_context/tech_stack.md` |
+| **Outputs** | `projects/<ProjectName>/<phase>/<document>/Database_Design.md`, `projects/<ProjectName>/<phase>/<document>/erd.mmd` |
 | **Tone**    | Schema-precise, normalized, constraint-heavy |
 | **Standard** | IEEE 1016-2009 Sec 6.7, ISO/IEC 25010 |
 
@@ -38,17 +38,17 @@ Produces comprehensive database design documentation including a visual Entity-R
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Entity candidates from Section 3.2, data objects from Section 2.0 |
-| HLD.md | `../output/HLD.md` | Yes | Data storage components, architectural context, data flow paths |
-| business_rules.md | `../project_context/business_rules.md` | Yes | Data relationships, validation constraints, business logic rules |
-| tech_stack.md | `../project_context/tech_stack.md` | Yes | Database platform (MySQL 8.x, PostgreSQL, etc.), version constraints |
+| SRS_Draft.md | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Yes | Entity candidates from Section 3.2, data objects from Section 2.0 |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | Yes | Data storage components, architectural context, data flow paths |
+| business_rules.md | `projects/<ProjectName>/_context/business_rules.md` | Yes | Data relationships, validation constraints, business logic rules |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes | Database platform (MySQL 8.x, PostgreSQL, etc.), version constraints |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Database_Design.md | `../output/Database_Design.md` | Complete database design document with all sections |
-| erd.mmd | `../output/erd.mmd` | Standalone Mermaid erDiagram file for the entity-relationship model |
+| Database_Design.md | `projects/<ProjectName>/<phase>/<document>/Database_Design.md` | Complete database design document with all sections |
+| erd.mmd | `projects/<ProjectName>/<phase>/<document>/erd.mmd` | Standalone Mermaid erDiagram file for the entity-relationship model |
 
 ## Core Instructions
 
@@ -56,7 +56,7 @@ Follow these eleven steps in order. Halt and notify the user if a required input
 
 ### Step 1: Read Context Files
 
-Read `SRS_Draft.md` and `HLD.md` from `../output/`, and `business_rules.md` and `tech_stack.md` from `../project_context/`. Log the absolute path of each file read. If any required file is missing, halt execution and report the gap.
+Read `SRS_Draft.md` and `HLD.md` from `projects/<ProjectName>/<phase>/<document>/`, and `business_rules.md` and `tech_stack.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. If any required file is missing, halt execution and report the gap.
 
 ### Step 2: Determine Database Platform
 
@@ -68,7 +68,7 @@ Extract entity candidates from SRS Section 3.2 (functional requirements) and Sec
 
 ### Step 4: Generate ERD
 
-Produce an Entity-Relationship Diagram using Mermaid erDiagram syntax. Include all entities with typed attributes, relationships with proper cardinality notation (`||--o{`, `||--|{`, `}o--o{`), and junction tables for every many-to-many relationship. Write the diagram to `../output/erd.mmd`.
+Produce an Entity-Relationship Diagram using Mermaid erDiagram syntax. Include all entities with typed attributes, relationships with proper cardinality notation (`||--o{`, `||--|{`, `}o--o{`), and junction tables for every many-to-many relationship. Write the diagram to `projects/<ProjectName>/<phase>/<document>/erd.mmd`.
 
 ### Step 5: Verify Normalization
 
@@ -111,7 +111,7 @@ Document the migration approach: versioned migrations (up/down scripts), seed da
 
 ### Step 11: Multi-Tenancy and Final Output
 
-If multi-tenancy is detected in SRS or HLD, define the tenant isolation strategy: shared database with `tenant_id` FK on every tenant-scoped table, or separate schemas. The `tenant_id` column SHALL have a foreign key constraint and be included in composite indexes for query performance. Write `Database_Design.md` and `erd.mmd` to `../output/`. Log total table count, column count, and relationship count.
+If multi-tenancy is detected in SRS or HLD, define the tenant isolation strategy: shared database with `tenant_id` FK on every tenant-scoped table, or separate schemas. The `tenant_id` column SHALL have a foreign key constraint and be included in composite indexes for query performance. Write `Database_Design.md` and `erd.mmd` to `projects/<ProjectName>/<phase>/<document>/`. Log total table count, column count, and relationship count.
 
 ## Output Format
 
@@ -163,7 +163,7 @@ erDiagram
 
 ## Verification Checklist
 
-- [ ] `Database_Design.md` and `erd.mmd` exist in `../output/`.
+- [ ] `Database_Design.md` and `erd.mmd` exist in `projects/<ProjectName>/<phase>/<document>/`.
 - [ ] ERD renders correctly in Mermaid erDiagram syntax.
 - [ ] All tables have primary keys defined.
 - [ ] Foreign keys have ON DELETE and ON UPDATE cascade rules defined.

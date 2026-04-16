@@ -20,7 +20,7 @@ This skill generates comprehensive API documentation and a machine-readable Open
 
 ## When to Use
 
-- After `01-high-level-design` has produced `HLD.md` in `../output/`, which identifies system components and integration points.
+- After `01-high-level-design` has produced `HLD.md` in `projects/<ProjectName>/<phase>/<document>/`, which identifies system components and integration points.
 - When `SRS_Draft.md` Section 3.2 provides the functional requirements that map to API endpoints.
 - When the team needs a formal API contract before backend development begins.
 
@@ -28,8 +28,8 @@ This skill generates comprehensive API documentation and a machine-readable Open
 
 | Attribute     | Value                                                                 |
 |---------------|-----------------------------------------------------------------------|
-| **Inputs**    | `../output/SRS_Draft.md`, `../output/HLD.md`, `../project_context/tech_stack.md` |
-| **Outputs**   | `../output/API_Specification.md`, `../output/openapi.yaml`           |
+| **Inputs**    | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/_context/tech_stack.md` |
+| **Outputs**   | `projects/<ProjectName>/<phase>/<document>/API_Specification.md`, `projects/<ProjectName>/<phase>/<document>/openapi.yaml`           |
 | **Tone**      | Technical, specification-grade, implementation-ready                  |
 | **Standards** | OpenAPI 3.0, IEEE 29148-2018, RFC 7231                               |
 
@@ -37,16 +37,16 @@ This skill generates comprehensive API documentation and a machine-readable Open
 
 | File           | Location                              | Required | Purpose                                         |
 |----------------|---------------------------------------|----------|-------------------------------------------------|
-| SRS_Draft.md   | `../output/SRS_Draft.md`              | Yes      | Functional requirements, security, performance  |
-| HLD.md         | `../output/HLD.md`                    | Yes      | System components, integration points, data flow|
-| tech_stack.md  | `../project_context/tech_stack.md`    | Yes      | Technology choices, framework conventions        |
+| SRS_Draft.md   | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`              | Yes      | Functional requirements, security, performance  |
+| HLD.md         | `projects/<ProjectName>/<phase>/<document>/HLD.md`                    | Yes      | System components, integration points, data flow|
+| tech_stack.md  | `projects/<ProjectName>/_context/tech_stack.md`    | Yes      | Technology choices, framework conventions        |
 
 ## Output Files
 
 | File                   | Location                              | Description                                      |
 |------------------------|---------------------------------------|--------------------------------------------------|
-| API_Specification.md   | `../output/API_Specification.md`      | Human-readable API reference with all sections   |
-| openapi.yaml           | `../output/openapi.yaml`              | Machine-readable OpenAPI 3.0 specification       |
+| API_Specification.md   | `projects/<ProjectName>/<phase>/<document>/API_Specification.md`      | Human-readable API reference with all sections   |
+| openapi.yaml           | `projects/<ProjectName>/<phase>/<document>/openapi.yaml`              | Machine-readable OpenAPI 3.0 specification       |
 
 ## Core Instructions
 
@@ -54,7 +54,7 @@ Follow these eleven steps in order. Halt and notify the user if a required input
 
 ### Step 1: Read Context Files
 
-Read `SRS_Draft.md` and `HLD.md` from `../output/`, and `tech_stack.md` from `../project_context/`. Log every file path read. If any required file is missing, halt execution and report the gap.
+Read `SRS_Draft.md` and `HLD.md` from `projects/<ProjectName>/<phase>/<document>/`, and `tech_stack.md` from `projects/<ProjectName>/_context/`. Log every file path read. If any required file is missing, halt execution and report the gap.
 
 ### Step 2: Extract API Resources
 
@@ -110,11 +110,11 @@ For APIs with operations beyond standard CRUD, apply patterns from `references/a
 
 ### Step 10: Generate API_Specification.md
 
-Write the human-readable specification to `../output/API_Specification.md` with all sections defined in the Output Format below.
+Write the human-readable specification to `projects/<ProjectName>/<phase>/<document>/API_Specification.md` with all sections defined in the Output Format below.
 
 ### Step 11: Generate openapi.yaml
 
-Generate a valid OpenAPI 3.0 document at `../output/openapi.yaml`. The document shall include: `openapi: "3.0.3"`, `info` block, `servers` block, `paths` with all endpoints, `components/schemas` with all request/response models, and `components/securitySchemes` with the authentication definition.
+Generate a valid OpenAPI 3.0 document at `projects/<ProjectName>/<phase>/<document>/openapi.yaml`. The document shall include: `openapi: "3.0.3"`, `info` block, `servers` block, `paths` with all endpoints, `components/schemas` with all request/response models, and `components/securitySchemes` with the authentication definition.
 
 ## Output Format
 

@@ -40,6 +40,8 @@ The canonical runtime workspace for this phase is `projects/<ProjectName>/`.
 - Requirements inputs: `projects/<ProjectName>/02-requirements-engineering/...`
 - Generated design artifacts: `projects/<ProjectName>/03-design-documentation/...`
 
+<!-- alias-block start -->
 Existing skill-local references to `../project_context/` and `../output/` are compatibility aliases into the active project workspace.
+<!-- alias-block end -->
 
 Common baseline inputs include `SRS_Draft.md`, `tech_stack.md`, `business_process_models.md`, `business_rules_catalog.md`, `solution_discovery_report.md`, and `quality_standards.md`.

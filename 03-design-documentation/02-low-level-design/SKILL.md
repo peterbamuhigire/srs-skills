@@ -20,15 +20,15 @@ This is the second skill in Phase 03 (Design Documentation). It decomposes the h
 
 ## When to Use
 
-- After the `01-high-level-design` skill has produced `HLD.md` in `../output/`.
-- Requires `business_rules.md` in `../project_context/` for algorithm formalization and calculation logic.
+- After the `01-high-level-design` skill has produced `HLD.md` in `projects/<ProjectName>/<phase>/<document>/`.
+- Requires `business_rules.md` in `projects/<ProjectName>/_context/` for algorithm formalization and calculation logic.
 
 ## Quick Reference
 
 | Attribute     | Value                                                                 |
 |---------------|-----------------------------------------------------------------------|
-| **Inputs**    | `../output/HLD.md`, `../output/SRS_Draft.md`, `../project_context/business_rules.md` |
-| **Output**    | `../output/LLD.md`                                                    |
+| **Inputs**    | `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/_context/business_rules.md` |
+| **Output**    | `projects/<ProjectName>/<phase>/<document>/LLD.md`                                                    |
 | **Tone**      | Implementation-precise, diagram-heavy, algorithm-focused              |
 | **Standards** | IEEE 1016-2009 Sec 6, ISO/IEC 25010, ISO/IEC 25062                   |
 
@@ -36,15 +36,15 @@ This is the second skill in Phase 03 (Design Documentation). It decomposes the h
 
 | File               | Location                                  | Required | Purpose                                          |
 |--------------------|-------------------------------------------|----------|--------------------------------------------------|
-| HLD.md             | `../output/HLD.md`                        | Yes      | Component architecture to decompose into modules |
-| SRS_Draft.md       | `../output/SRS_Draft.md`                  | Yes      | Stimulus-response pairs for sequence diagrams    |
-| business_rules.md  | `../project_context/business_rules.md`    | Yes      | Business logic and calculations to formalize     |
+| HLD.md             | `projects/<ProjectName>/<phase>/<document>/HLD.md`                        | Yes      | Component architecture to decompose into modules |
+| SRS_Draft.md       | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`                  | Yes      | Stimulus-response pairs for sequence diagrams    |
+| business_rules.md  | `projects/<ProjectName>/_context/business_rules.md`    | Yes      | Business logic and calculations to formalize     |
 
 ## Output Files
 
 | File    | Location             | Description                                              |
 |---------|----------------------|----------------------------------------------------------|
-| LLD.md  | `../output/LLD.md`   | Complete Low-Level Design with diagrams and algorithms   |
+| LLD.md  | `projects/<ProjectName>/<phase>/<document>/LLD.md`   | Complete Low-Level Design with diagrams and algorithms   |
 
 ## Core Instructions
 
@@ -52,7 +52,7 @@ Follow these nine steps in order. Halt and notify the user if a required input f
 
 ### Step 1: Read and Validate Inputs
 
-Read `HLD.md` and `SRS_Draft.md` from `../output/`, and `business_rules.md` from `../project_context/`. Log every file path read. If any required file is missing, halt execution and report the gap.
+Read `HLD.md` and `SRS_Draft.md` from `projects/<ProjectName>/<phase>/<document>/`, and `business_rules.md` from `projects/<ProjectName>/_context/`. Log every file path read. If any required file is missing, halt execution and report the gap.
 
 ### Step 2: Decompose Components into Modules
 
@@ -147,7 +147,7 @@ Produce a traceability table mapping every LLD module to its HLD component and o
 | OrderService         | Order Management   | FR-3.2.1, FR-3.2.3 |
 | PaymentGatewayAdapter| Payment Processing | FR-3.2.5, FR-3.2.6 |
 
-Write the completed document to `../output/LLD.md`. Log the total module count, diagram count, and algorithm count.
+Write the completed document to `projects/<ProjectName>/<phase>/<document>/LLD.md`. Log the total module count, diagram count, and algorithm count.
 
 ## Output Format
 

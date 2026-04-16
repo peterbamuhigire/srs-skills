@@ -20,17 +20,17 @@ Produces a complete UX specification document that bridges user research insight
 
 ## When to Use
 
-- After `HLD.md` exists in `../output/` and identifies user-facing components.
+- After `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` and identifies user-facing components.
 - SRS or user stories define user interactions and interface expectations.
-- `vision.md` and `features.md` in `../project_context/` provide product scope and feature inventory.
-- `stakeholder_register.md` in `../project_context/` identifies user personas and audience segments.
+- `vision.md` and `features.md` in `projects/<ProjectName>/_context/` provide product scope and feature inventory.
+- `stakeholder_register.md` in `projects/<ProjectName>/_context/` identifies user personas and audience segments.
 
 ## Quick Reference
 
 | Attribute   | Value |
 |-------------|-------|
-| **Inputs**  | `../output/SRS_Draft.md` or `../project_context/user_stories.md`, `../output/HLD.md`, `../project_context/vision.md`, `../project_context/features.md`, `../project_context/stakeholder_register.md` |
-| **Outputs** | `../output/UX_Specification.md` |
+| **Inputs**  | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` or `projects/<ProjectName>/_context/user_stories.md`, `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/_context/stakeholder_register.md` |
+| **Outputs** | `projects/<ProjectName>/<phase>/<document>/UX_Specification.md` |
 | **Tone**    | Precise, user-centred, standards-grounded |
 | **Standard** | ISO 9241-210:2019, ISO 25010:2011, WCAG 2.1 AA |
 
@@ -38,18 +38,18 @@ Produces a complete UX specification document that bridges user research insight
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| SRS_Draft.md | `../output/SRS_Draft.md` | Preferred | Functional requirements, user interaction flows, data objects |
-| user_stories.md | `../project_context/user_stories.md` | Alternate | User stories when SRS is not yet available |
-| HLD.md | `../output/HLD.md` | Yes | Architectural context, component hierarchy, data flow paths |
-| vision.md | `../project_context/vision.md` | Yes | Product scope, target audience, business goals |
-| features.md | `../project_context/features.md` | Recommended | Feature inventory for information architecture mapping |
-| stakeholder_register.md | `../project_context/stakeholder_register.md` | Recommended | User personas, audience segments, accessibility needs |
+| SRS_Draft.md | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Preferred | Functional requirements, user interaction flows, data objects |
+| user_stories.md | `projects/<ProjectName>/_context/user_stories.md` | Alternate | User stories when SRS is not yet available |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | Yes | Architectural context, component hierarchy, data flow paths |
+| vision.md | `projects/<ProjectName>/_context/vision.md` | Yes | Product scope, target audience, business goals |
+| features.md | `projects/<ProjectName>/_context/features.md` | Recommended | Feature inventory for information architecture mapping |
+| stakeholder_register.md | `projects/<ProjectName>/_context/stakeholder_register.md` | Recommended | User personas, audience segments, accessibility needs |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| UX_Specification.md | `../output/UX_Specification.md` | Complete UX specification with all sections |
+| UX_Specification.md | `projects/<ProjectName>/<phase>/<document>/UX_Specification.md` | Complete UX specification with all sections |
 
 ## Core Instructions
 
@@ -73,7 +73,7 @@ Capture the plugin's UI/UX recommendation and incorporate it into all subsequent
 
 ### Step 1: Read Context Files
 
-Read `SRS_Draft.md` and `HLD.md` from `../output/`. Read `vision.md`, `features.md`, `stakeholder_register.md`, and `user_stories.md` from `../project_context/`. Log the absolute path of each file read. If `SRS_Draft.md` is missing, fall back to `user_stories.md`. If both are missing, halt execution and report the gap. If `HLD.md` or `vision.md` is missing, halt execution and report the gap. If `features.md` or `stakeholder_register.md` is missing, log a warning and proceed with available data.
+Read `SRS_Draft.md` and `HLD.md` from `projects/<ProjectName>/<phase>/<document>/`. Read `vision.md`, `features.md`, `stakeholder_register.md`, and `user_stories.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. If `SRS_Draft.md` is missing, fall back to `user_stories.md`. If both are missing, halt execution and report the gap. If `HLD.md` or `vision.md` is missing, halt execution and report the gap. If `features.md` or `stakeholder_register.md` is missing, log a warning and proceed with available data.
 
 ### Step 2: Generate Information Architecture
 
@@ -288,7 +288,7 @@ For cognitive evaluation of designs (mental models, attention patterns, emotiona
 
 ## Verification Checklist
 
-- [ ] `UX_Specification.md` exists in `../output/`.
+- [ ] `UX_Specification.md` exists in `projects/<ProjectName>/<phase>/<document>/`.
 - [ ] Site map renders correctly in Mermaid flowchart syntax.
 - [ ] All three wireframe fidelity levels are defined with annotation requirements.
 - [ ] Design tokens cover color, typography, spacing, and elevation.

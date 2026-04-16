@@ -6,10 +6,10 @@ This skill produces a comprehensive API specification and a machine-readable Ope
 
 ## Execution Steps
 
-1. Verify `../output/SRS_Draft.md`, `../output/HLD.md`, and `../project_context/tech_stack.md` exist. Halt if any required file is missing.
+1. Verify `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/<phase>/<document>/HLD.md`, and `projects/<ProjectName>/_context/tech_stack.md` exist. Halt if any required file is missing.
 2. Invoke `logic.prompt` or trigger the skill. The skill extracts API resources from SRS Section 3.2, maps operations to REST endpoints, defines authentication, error handling, rate limiting, and pagination.
-3. Review the generated `../output/API_Specification.md` to confirm all SRS entities have corresponding endpoints with complete request/response schemas and status codes.
-4. Validate that `../output/openapi.yaml` is a structurally valid OpenAPI 3.0 document containing every endpoint defined in the specification.
+3. Review the generated `projects/<ProjectName>/<phase>/<document>/API_Specification.md` to confirm all SRS entities have corresponding endpoints with complete request/response schemas and status codes.
+4. Validate that `projects/<ProjectName>/<phase>/<document>/openapi.yaml` is a structurally valid OpenAPI 3.0 document containing every endpoint defined in the specification.
 
 ## Quality Reminder
 

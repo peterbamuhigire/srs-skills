@@ -20,17 +20,17 @@ This is the sixth skill in Phase 03 (Design Documentation). It produces an Infra
 
 ## When to Use
 
-- After `01-high-level-design` completes and `../output/HLD.md` exists.
-- When `../output/SRS_Draft.md` contains non-functional requirements with measurable availability, scalability, or performance targets.
-- When `../project_context/tech_stack.md` specifies cloud or distributed deployment targets.
-- Optionally when `../project_context/quality_standards.md` defines SLA or compliance constraints.
+- After `01-high-level-design` completes and `projects/<ProjectName>/<phase>/<document>/HLD.md` exists.
+- When `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` contains non-functional requirements with measurable availability, scalability, or performance targets.
+- When `projects/<ProjectName>/_context/tech_stack.md` specifies cloud or distributed deployment targets.
+- Optionally when `projects/<ProjectName>/_context/quality_standards.md` defines SLA or compliance constraints.
 
 ## Quick Reference
 
 | Attribute    | Value |
 |--------------|-------|
-| **Inputs**   | `../output/HLD.md`, `../output/SRS_Draft.md`, `../project_context/tech_stack.md`; optionally `../project_context/quality_standards.md` |
-| **Output**   | `../output/Infrastructure_Design.md` |
+| **Inputs**   | `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/_context/tech_stack.md`; optionally `projects/<ProjectName>/_context/quality_standards.md` |
+| **Output**   | `projects/<ProjectName>/<phase>/<document>/Infrastructure_Design.md` |
 | **Tone**     | Technical, precise, infrastructure-focused |
 | **Standards** | IEEE 1016-2009, ISO/IEC 25010, ISO/IEC 22237 |
 | **Sources**  | "System Design - The Big Archive" (ByteByteGo 2024) |
@@ -39,16 +39,16 @@ This is the sixth skill in Phase 03 (Design Documentation). It produces an Infra
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| HLD.md | `../output/HLD.md` | Yes | Architectural style, component boundaries, deployment topology |
-| SRS_Draft.md | `../output/SRS_Draft.md` | Yes | Non-functional requirements, constraints, performance targets |
-| tech_stack.md | `../project_context/tech_stack.md` | Yes | Infrastructure targets, cloud provider, runtime environment |
-| quality_standards.md | `../project_context/quality_standards.md` | No | SLA definitions, compliance constraints, uptime targets |
+| HLD.md | `projects/<ProjectName>/<phase>/<document>/HLD.md` | Yes | Architectural style, component boundaries, deployment topology |
+| SRS_Draft.md | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | Yes | Non-functional requirements, constraints, performance targets |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes | Infrastructure targets, cloud provider, runtime environment |
+| quality_standards.md | `projects/<ProjectName>/_context/quality_standards.md` | No | SLA definitions, compliance constraints, uptime targets |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Infrastructure_Design.md | `../output/Infrastructure_Design.md` | Complete infrastructure design with scalability, reliability, caching, monitoring, and DR sections |
+| Infrastructure_Design.md | `projects/<ProjectName>/<phase>/<document>/Infrastructure_Design.md` | Complete infrastructure design with scalability, reliability, caching, monitoring, and DR sections |
 
 ## Core Instructions
 
@@ -95,7 +95,7 @@ Tag all auto-assessed criteria with `[AUTO-ASSESSED]` and present to the user fo
 
 ### Step 1: Read Context Files
 
-Read `HLD.md` and `SRS_Draft.md` from `../output/`. Read `tech_stack.md` from `../project_context/`. Optionally read `quality_standards.md` from `../project_context/`. Log the absolute path of each file read. If any required file is missing, halt execution and report the gap.
+Read `HLD.md` and `SRS_Draft.md` from `projects/<ProjectName>/<phase>/<document>/`. Read `tech_stack.md` from `projects/<ProjectName>/_context/`. Optionally read `quality_standards.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. If any required file is missing, halt execution and report the gap.
 
 ### Step 2: Scalability Strategy
 
@@ -274,7 +274,7 @@ The generated `Infrastructure_Design.md` shall contain these sections in order:
 ## Verification Checklist
 
 - [ ] Decision gate evaluation is completed and documented with score.
-- [ ] `Infrastructure_Design.md` exists in `../output/` with all sections populated (if gate passed).
+- [ ] `Infrastructure_Design.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all sections populated (if gate passed).
 - [ ] Scalability strategy specifies measurable auto-scaling triggers and limits.
 - [ ] Caching architecture covers at least three layers with invalidation strategies.
 - [ ] Reliability patterns include circuit breaker state definitions and retry formulas.

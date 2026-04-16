@@ -29,8 +29,8 @@ This skill extends Phase 03 for systems that include connected devices, sensors,
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../output/HLD.md`, `../output/SRS_Draft.md`, `../project_context/tech_stack.md`, `../project_context/quality_standards.md` (recommended) |
-| **Output** | `../output/IoT_System_Design.md` |
+| **Inputs** | `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/_context/tech_stack.md`, `projects/<ProjectName>/_context/quality_standards.md` (recommended) |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/IoT_System_Design.md` |
 | **Tone** | Systems-oriented, lifecycle-aware, deployment-realistic |
 | **Standards** | IEEE 1016, IoT architecture and secure-device lifecycle practices |
 
@@ -95,7 +95,7 @@ Define:
 
 ### Step 7: Generate Output
 
-Write `../output/IoT_System_Design.md` with architecture, connectivity, security, lifecycle, operational model, and traceability back to the source requirements.
+Write `projects/<ProjectName>/<phase>/<document>/IoT_System_Design.md` with architecture, connectivity, security, lifecycle, operational model, and traceability back to the source requirements.
 
 ## Common Pitfalls
 
