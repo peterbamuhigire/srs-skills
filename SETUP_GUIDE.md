@@ -8,6 +8,24 @@
 | GitHub CLI (optional) | [cli.github.com](https://cli.github.com/) | `sudo apt install gh` / `brew install gh` |
 | Claude Code | [claude.ai/claude-code](https://claude.ai/claude-code) | Same |
 
+## Quick Start (Junior Operator Path)
+
+If you only need to stand up a new project workspace from a shipped
+example and validate it, run these five commands:
+
+```bash
+git clone --recurse-submodules https://github.com/peterbamuhigire/srs-skills.git
+cd srs-skills
+pip install -e ".[dev]"
+python -m engine doctor
+python -m engine new-project Acme --methodology waterfall --domain healthcare --example healthcare-saas
+python -m engine validate projects/Acme
+```
+
+The remaining sections below cover the full provisioning flow when you
+also need to create an empty GitHub repo, run the setup script, and
+wire the submodule from scratch.
+
 ## Step 1: Create an Empty Repo on GitHub
 
 Create a new repository on GitHub (empty, no README). Copy the clone URL.

@@ -173,6 +173,8 @@ The following client projects are maintained under `projects/` (gitignored — n
 
 This repository is architected as a **"Stateless Documentation Engine."** It provides the logic and templates, while your parent project provides the context.
 
+> **Junior operator quick path:** if you just need to stand up a workspace from a shipped example and validate it, the five-command path lives in [SETUP_GUIDE.md](SETUP_GUIDE.md#quick-start-junior-operator-path). It uses `python -m engine doctor`, `python -m engine new-project`, and `python -m engine validate` -- no manual scaffolding required.
+
 ### Starting a New Client Project
 
 Tell Claude: **"start a new project"**
