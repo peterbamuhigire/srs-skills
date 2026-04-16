@@ -1,3 +1,17 @@
+---
+gate: phase03
+checks:
+  - phase03.architecture_decisions_recorded
+  - phase03.interfaces_have_contracts
+  - phase03.data_model_has_keys
+  - phase03.nfrs_link_to_design_choices
+  - phase03.security_threat_model_present
+  - phase03.iot_signal_inventory_present
+clause_refs:
+  - standard: "ISO/IEC/IEEE 42010:2011"
+    clause: "5.3"
+---
+
 # Phase 03 Deterministic Gate
 
 Before finalizing design artifacts, confirm clause-level proof per IEEE 1016, ISO 42010, and applicable NFR standards.
