@@ -71,6 +71,7 @@ def validate_root_pathing(errors: list[str]) -> None:
 
 def validate_deterministic_gates(errors: list[str]) -> None:
     gate_files = {f"{n:02d}": f"docs/deterministic-gate-phase{n:02d}.md" for n in range(1, 10)}
+    gate_files["hybrid"] = "docs/deterministic-gate-hybrid.md"
     for rel_path in gate_files.values():
         must_exist(rel_path, errors)
     governance = must_exist("docs/deterministic-governance.md", errors)
@@ -135,6 +136,14 @@ def _collect_check_ids_from_source(errors: list[str]) -> set[str]:
     ids.add("phase02.id_registry.orphan_id")
     ids.add("phase02.glossary_registry.missing_term")
     ids.add("phase02.glossary_registry.orphan_term")
+    # Hybrid gate delegates to HybridTracesCheck (engine/checks/) and emits
+    # two direct gate-level findings. Register all five IDs explicitly so the
+    # clause-registry assertion covers them.
+    ids.add("hybrid.traces.missing")
+    ids.add("hybrid.traces.unknown_trace")
+    ids.add("hybrid.traces.orphan_baseline")
+    ids.add("hybrid.dor_dod_missing")
+    ids.add("hybrid.dor_dod_decoupled")
     return ids
 
 def validate_standards_clause_registry(errors: list[str]) -> None:

@@ -52,6 +52,8 @@ def validate(project: str, junit: str | None, sarif: str | None, md_path: str | 
     graph = ArtifactGraph.build(workspace)
     findings = FindingCollection()
     _default_registry().run_all(graph, findings)
+    from engine.gates.hybrid import HybridSyncGate
+    HybridSyncGate(workspace.root).evaluate(graph, findings)
     waivers = WaiverRegister.load(workspace.root / "_registry" / "waivers.yaml")
     waived, remaining_list = waivers.apply(findings, today=date.today())
     remaining = FindingCollection()

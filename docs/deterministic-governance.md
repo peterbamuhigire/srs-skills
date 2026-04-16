@@ -95,4 +95,13 @@ Use `docs/deterministic-gate-phase08.md` for the publication gate.
 
 Use `docs/deterministic-gate-phase09.md` as the audit-readiness gate.
 
+## Hybrid Synchronization (cross-cutting)
+
+1. **Baseline Trace Integrity**
+   - `_registry/baseline-trace.yaml` exists, stories trace to baseline IDs, and every baseline ID is implemented by at least one story.
+2. **DoR/DoD Bound to Baseline**
+   - `dor-dod.md` references baseline FR/NFR/CTRL identifiers verbatim so Agile execution cannot silently diverge from the Waterfall baseline.
+
+The gate is active only when `_context/methodology.md` declares `methodology: hybrid`. Use `docs/deterministic-gate-hybrid.md` as the cross-cutting worksheet.
+
 Use this checklist as the deterministic enforcement pattern across the full engine, not just selected phases.

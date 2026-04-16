@@ -94,6 +94,16 @@ This document is validated by `scripts/validate_engine.py`: every check ID that 
 | `phase09.glossary_registry.orphan_term` | ISO/IEC 27001:2022 | §9 | `engine/checks/glossary_registry.py` |
 | `phase09.nfr_threshold_dedup.contradiction` | IEEE Std 830-1998 | §4.3.2 | `engine/checks/nfr_threshold_dedup.py` |
 
+## Hybrid Synchronization (active only when methodology: hybrid)
+
+| Check ID | Standard | Clause | Engine module |
+|---|---|---|---|
+| `hybrid.traces.missing` | PMI Disciplined Agile (DAD) | Hybrid Lifecycle | `engine/checks/hybrid_traces.py` |
+| `hybrid.traces.unknown_trace` | PMI Disciplined Agile (DAD) | Hybrid Lifecycle | `engine/checks/hybrid_traces.py` |
+| `hybrid.traces.orphan_baseline` | PMI Disciplined Agile (DAD) | Hybrid Lifecycle | `engine/checks/hybrid_traces.py` |
+| `hybrid.dor_dod_missing` | PMI Disciplined Agile (DAD) | Hybrid Lifecycle | `engine/gates/hybrid.py` |
+| `hybrid.dor_dod_decoupled` | PMI Disciplined Agile (DAD) | Hybrid Lifecycle | `engine/gates/hybrid.py` |
+
 ## Deferred Checks (not yet emitted)
 
 These check IDs are listed in phase-gate frontmatter as deferred — their implementations depend on future plans. Once implemented, move their rows into the appropriate phase section above.
