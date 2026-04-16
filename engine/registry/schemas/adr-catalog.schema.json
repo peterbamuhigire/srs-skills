@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["adrs"],
+  "properties": {
+    "adrs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status", "decided_on", "deciders"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^ADR-\\d{4}$"},
+          "title": {"type": "string"},
+          "status": {"enum": ["proposed", "accepted", "deprecated", "superseded"]},
+          "superseded_by": {"type": "string", "pattern": "^ADR-\\d{4}$"},
+          "decided_on": {"type": "string", "format": "date"},
+          "deciders": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "affects": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}
