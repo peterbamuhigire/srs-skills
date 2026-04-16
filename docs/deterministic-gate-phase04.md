@@ -1,3 +1,15 @@
+---
+gate: phase04
+checks:
+  - phase04.coding_standards_referenced
+  - phase04.env_setup_reproducible
+  - phase04.tech_spec_links_to_fr
+  - phase04.contrib_guide_present
+clause_refs:
+  - standard: "ISO/IEC/IEEE 12207:2017"
+    clause: "6.4.5"
+---
+
 # Phase 04 Deterministic Gate
 
 Use this checklist before treating development artifacts as implementation-ready.
