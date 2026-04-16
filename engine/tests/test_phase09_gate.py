@@ -159,3 +159,93 @@ def test_flags_unlinked_risk(tmp_path):
     assert len(msgs) == 1
     assert "Risk R-002" in msgs[0]
     assert "not linked to any FR-, NFR-, or CTRL- identifier" in msgs[0]
+
+
+# -- waivers_have_expiry ---------------------------------------------------
+
+def test_skips_waivers_check_when_no_registry_file(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+    })
+    findings = FindingCollection()
+    Phase09Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase09.waivers_have_expiry") == []
+
+
+def test_passes_when_waivers_within_90_day_window(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "_registry/waivers.yaml": (
+            "waivers:\n"
+            "  - id: \"W-001\"\n"
+            "    gate: \"phase02.smart_nfr\"\n"
+            "    scope: \"*\"\n"
+            "    reason: \"Plan 03 pending\"\n"
+            "    approver: \"peter\"\n"
+            "    approved_on: 2026-04-01\n"
+            "    expires_on: 2026-05-01\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase09Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase09.waivers_have_expiry") == []
+
+
+def test_flags_waiver_beyond_90_days(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "_registry/waivers.yaml": (
+            "waivers:\n"
+            "  - id: \"W-002\"\n"
+            "    gate: \"phase02.smart_nfr\"\n"
+            "    scope: \"*\"\n"
+            "    reason: \"Long-running gap\"\n"
+            "    approver: \"peter\"\n"
+            "    approved_on: 2026-01-01\n"
+            "    expires_on: 2026-06-01\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase09Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase09.waivers_have_expiry"]
+    assert len(msgs) == 1
+    assert "W-002" in msgs[0]
+    assert "max allowed: 90" in msgs[0]
+
+
+def test_flags_waiver_with_expiry_before_approval(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "_registry/waivers.yaml": (
+            "waivers:\n"
+            "  - id: \"W-003\"\n"
+            "    gate: \"phase02.smart_nfr\"\n"
+            "    scope: \"*\"\n"
+            "    reason: \"Data error\"\n"
+            "    approver: \"peter\"\n"
+            "    approved_on: 2026-05-01\n"
+            "    expires_on: 2026-04-01\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase09Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase09.waivers_have_expiry"]
+    assert len(msgs) == 1
+    assert "W-003" in msgs[0]
+    assert "expiry before approval date" in msgs[0]
+
+
+# -- clause attachment ------------------------------------------------------
+
+def test_findings_carry_iso_27001_clause_label(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+    })
+    findings = FindingCollection()
+    Phase09Gate().evaluate(graph, findings)
+    assert len(findings) > 0
+    for f in findings:
+        assert "ISO/IEC 27001:2022" in f.message
+        assert "9" in f.message

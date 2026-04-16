@@ -1,11 +1,13 @@
 """Phase 09 - Governance & Compliance gate (ISO/IEC 27001:2022)."""
 from __future__ import annotations
 import re
+from pathlib import Path
 from engine.artifact_graph import Artifact, ArtifactGraph
 from engine.checks.traceability import TraceabilityCheck
 from engine.findings import Finding, FindingCollection, Severity
 from engine.gates.base import Gate
 from engine.gates._shared import ClauseRef, attach_clause
+from engine.waivers import WaiverRegister
 
 _CLAUSE = ClauseRef("ISO/IEC 27001:2022", "9")
 
@@ -56,6 +58,7 @@ class Phase09Gate(Gate):
         self._check_traceability(graph, findings)
         self._check_audit_report_present(graph, findings)
         self._check_risk_register_links_to_fr(graph, findings)
+        self._check_waivers_have_expiry(graph, findings)
 
     # -- Check 1: traceability (delegates to TraceabilityCheck) ----------
     def _check_traceability(
@@ -147,3 +150,39 @@ class Phase09Gate(Gate):
                 location=art.path,
                 line=None,
             ), _CLAUSE))
+
+    # -- Check 4: waivers have expiry within 90 days ---------------------
+    def _check_waivers_have_expiry(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        if graph.root is None:
+            return
+        waivers_path = graph.root / "_registry" / "waivers.yaml"
+        if not waivers_path.exists():
+            return
+        register = WaiverRegister.load(waivers_path)
+        for waiver in register:
+            delta = (waiver.expires_on - waiver.approved_on).days
+            if delta < 0:
+                findings.add(attach_clause(Finding(
+                    gate_id=f"{self.id}.waivers_have_expiry",
+                    severity=Severity.HIGH,
+                    message=(
+                        f"Waiver '{waiver.id}' has expiry before approval "
+                        f"date ({waiver.approved_on} \u2192 "
+                        f"{waiver.expires_on})"
+                    ),
+                    location=Path("_registry/waivers.yaml"),
+                    line=None,
+                ), _CLAUSE))
+            elif delta > 90:
+                findings.add(attach_clause(Finding(
+                    gate_id=f"{self.id}.waivers_have_expiry",
+                    severity=Severity.HIGH,
+                    message=(
+                        f"Waiver '{waiver.id}' has expiry {delta} days "
+                        f"after approval (max allowed: 90)"
+                    ),
+                    location=Path("_registry/waivers.yaml"),
+                    line=None,
+                ), _CLAUSE))
