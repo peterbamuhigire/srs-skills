@@ -26,24 +26,24 @@ Run this skill after `01-prd-generation` has produced a PRD. It can also be exec
 
 | Attribute   | Value                                                                                 |
 |-------------|---------------------------------------------------------------------------------------|
-| **Inputs**  | `../project_context/vision.md`, `../project_context/stakeholders.md`, optionally `../output/PRD.md`, `../output/Vision_Statement.md` |
-| **Output**  | `../output/Business_Case.md`                                                          |
+| **Inputs**  | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/stakeholders.md`, optionally `projects/<ProjectName>/<phase>/<document>/PRD.md`, `projects/<ProjectName>/<phase>/<document>/Vision_Statement.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/Business_Case.md`                                                          |
 | **Tone**    | Executive, quantitative, decision-focused                                             |
 
 ## Input Files
 
 | File                | Location                           | Required     | Purpose                                      |
 |---------------------|------------------------------------|--------------|----------------------------------------------|
-| `vision.md`         | `../project_context/vision.md`     | **Required** | Primary source for problem domain and goals   |
-| `stakeholders.md`   | `../project_context/stakeholders.md` | **Required** | Identifies decision-makers and beneficiaries |
-| `PRD.md`            | `../output/PRD.md`                 | Recommended  | Enriches solution description and timeline    |
-| `Vision_Statement.md` | `../output/Vision_Statement.md`  | Optional     | Provides strategic alignment language         |
+| `vision.md`         | `projects/<ProjectName>/_context/vision.md`     | **Required** | Primary source for problem domain and goals   |
+| `stakeholders.md`   | `projects/<ProjectName>/_context/stakeholders.md` | **Required** | Identifies decision-makers and beneficiaries |
+| `PRD.md`            | `projects/<ProjectName>/<phase>/<document>/PRD.md`                 | Recommended  | Enriches solution description and timeline    |
+| `Vision_Statement.md` | `projects/<ProjectName>/<phase>/<document>/Vision_Statement.md`  | Optional     | Provides strategic alignment language         |
 
 ## Output Files
 
 | File                | Location                       | Description                                    |
 |---------------------|--------------------------------|------------------------------------------------|
-| `Business_Case.md`  | `../output/Business_Case.md`   | Complete business case with financial analysis |
+| `Business_Case.md`  | `projects/<ProjectName>/<phase>/<document>/Business_Case.md`   | Complete business case with financial analysis |
 
 ## Core Instructions
 
@@ -173,7 +173,7 @@ Per Royce (1970) Step 3: "Do It Twice" — if this project is being developed fo
 
 ## Verification Checklist
 
-- [ ] `Business_Case.md` exists in `../output/`.
+- [ ] `Business_Case.md` exists in `projects/<ProjectName>/<phase>/<document>/`.
 - [ ] All financial figures are flagged with a data source or `[COST-TBD]`.
 - [ ] ROI and NPV formulas use LaTeX and are mathematically correct.
 - [ ] Risk matrix covers at least 5 risks, each with a mitigation strategy.

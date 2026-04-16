@@ -20,7 +20,7 @@ This is the first skill to run in Phase 01: Strategic Vision. It transforms raw 
 
 ## When to Use
 
-- After 00-meta-initialization has produced `methodology.md` in `../project_context/`.
+- After 00-meta-initialization has produced `methodology.md` in `projects/<ProjectName>/_context/`.
 - Before running 01-prd-generation or any requirements engineering skill.
 - Whenever the project vision needs to be formalized or updated from raw context files.
 
@@ -28,8 +28,8 @@ This is the first skill to run in Phase 01: Strategic Vision. It transforms raw 
 
 | Field | Value |
 |-------|-------|
-| **Inputs** | `../project_context/vision.md`, `../project_context/stakeholders.md`, `../project_context/glossary.md` |
-| **Output** | `../output/Vision_Statement.md` |
+| **Inputs** | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/stakeholders.md`, `projects/<ProjectName>/_context/glossary.md` |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/Vision_Statement.md` |
 | **Tone** | Strategic but precise; no marketing language; active voice |
 | **Standard** | IEEE 29148-2018 Sec 6.2 |
 
@@ -37,15 +37,15 @@ This is the first skill to run in Phase 01: Strategic Vision. It transforms raw 
 
 | File | Required | Purpose |
 |------|----------|---------|
-| `../project_context/vision.md` | Yes | Problem statement, target users, business goals, constraints |
-| `../project_context/stakeholders.md` | Yes | Stakeholder roles, segments, goals, technical proficiency |
-| `../project_context/glossary.md` | Recommended | Domain terminology per IEEE 610.12-1990 |
+| `projects/<ProjectName>/_context/vision.md` | Yes | Problem statement, target users, business goals, constraints |
+| `projects/<ProjectName>/_context/stakeholders.md` | Yes | Stakeholder roles, segments, goals, technical proficiency |
+| `projects/<ProjectName>/_context/glossary.md` | Recommended | Domain terminology per IEEE 610.12-1990 |
 
 ## Output Files
 
 | File | Description |
 |------|-------------|
-| `../output/Vision_Statement.md` | Formal vision document with elevator pitch, positioning, value propositions, success criteria, and scope boundaries |
+| `projects/<ProjectName>/<phase>/<document>/Vision_Statement.md` | Formal vision document with elevator pitch, positioning, value propositions, success criteria, and scope boundaries |
 
 ## Core Instructions
 
@@ -53,7 +53,7 @@ Follow these eight steps in order. Do not skip or reorder.
 
 ### Step 1: Read Context Files
 
-Read `vision.md`, `stakeholders.md`, and `glossary.md` from `../project_context/`. Log the absolute path of each file read. If `vision.md` is missing, halt execution and report the gap to the user.
+Read `vision.md`, `stakeholders.md`, and `glossary.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. If `vision.md` is missing, halt execution and report the gap to the user.
 
 ### Step 2: Extract Core Elements
 
@@ -164,7 +164,7 @@ This ensures `scripts/build-doc.sh` assembles sections in the intended order rat
 
 Before marking this skill as complete, confirm all of the following:
 
-- [ ] `Vision_Statement.md` exists in `../output/`
+- [ ] `Vision_Statement.md` exists in `projects/<ProjectName>/<phase>/<document>/`
 - [ ] Elevator pitch is 2-3 sentences with no superlatives
 - [ ] Every value proposition has a measurable outcome
 - [ ] All success criteria follow SMART format with Criterion, Metric, Baseline, Target, Timeline
@@ -175,7 +175,7 @@ Before marking this skill as complete, confirm all of the following:
 
 | Direction | Skill | Relationship |
 |-----------|-------|-------------|
-| Upstream | 00-meta-initialization | Requires `methodology.md` in `../project_context/` |
+| Upstream | 00-meta-initialization | Requires `methodology.md` in `projects/<ProjectName>/_context/` |
 | Downstream | 01-prd-generation | Consumes `Vision_Statement.md` to build PRD |
 | Downstream | 02-requirements-engineering | Uses vision and positioning to derive requirements |
 

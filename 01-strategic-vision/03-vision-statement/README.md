@@ -6,8 +6,8 @@ This skill transforms raw project context (vision.md, stakeholders.md) into a fo
 
 ## Execution Steps
 
-1. Verify `../project_context/vision.md` and `../project_context/stakeholders.md` exist and are populated. Halt if vision.md is missing.
-2. Invoke `logic.prompt` or trigger the skill through your runner. The skill reads context files, synthesizes strategic sections, and writes `../output/Vision_Statement.md`.
+1. Verify `projects/<ProjectName>/_context/vision.md` and `projects/<ProjectName>/_context/stakeholders.md` exist and are populated. Halt if vision.md is missing.
+2. Invoke `logic.prompt` or trigger the skill through your runner. The skill reads context files, synthesizes strategic sections, and writes `projects/<ProjectName>/<phase>/<document>/Vision_Statement.md`.
 3. Review the generated Vision_Statement.md to confirm elevator pitch uses active voice, value propositions have measurable outcomes, and success criteria follow SMART format.
 4. Proceed to `01-prd-generation` to build the Product Requirements Document from this vision.
 

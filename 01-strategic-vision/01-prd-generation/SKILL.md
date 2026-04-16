@@ -20,15 +20,15 @@ This is the second skill in Phase 01 (Strategic Vision). It builds on the Vision
 
 ## When to Use
 
-- After the `03-vision-statement` skill has produced `Vision_Statement.md` in `../output/`.
-- Directly after `00-meta-initialization` if the team is working without a formal vision document but has populated `vision.md` and `features.md` in `../project_context/`.
+- After the `03-vision-statement` skill has produced `Vision_Statement.md` in `projects/<ProjectName>/<phase>/<document>/`.
+- Directly after `00-meta-initialization` if the team is working without a formal vision document but has populated `vision.md` and `features.md` in `projects/<ProjectName>/_context/`.
 
 ## Quick Reference
 
 | Attribute   | Value                                                                 |
 |-------------|-----------------------------------------------------------------------|
-| **Inputs**  | `../project_context/vision.md`, `features.md`, `stakeholders.md`; optionally `../output/Vision_Statement.md` |
-| **Output**  | `../output/PRD.md`                                                    |
+| **Inputs**  | `projects/<ProjectName>/_context/vision.md`, `features.md`, `stakeholders.md`; optionally `projects/<ProjectName>/<phase>/<document>/Vision_Statement.md` |
+| **Output**  | `projects/<ProjectName>/<phase>/<document>/PRD.md`                                                    |
 | **Tone**    | Strategic-technical, data-driven, no marketing language               |
 | **Standards** | IEEE 29148-2018, IEEE 1233-1998                                    |
 
@@ -36,16 +36,16 @@ This is the second skill in Phase 01 (Strategic Vision). It builds on the Vision
 
 | File                  | Location                        | Required | Purpose                                      |
 |-----------------------|---------------------------------|----------|----------------------------------------------|
-| vision.md             | `../project_context/vision.md`  | Yes      | Business goals, problem statement, constraints|
-| features.md           | `../project_context/features.md`| Yes      | Feature list with descriptions                |
-| stakeholders.md       | `../project_context/stakeholders.md` | Yes | User roles, personas, stakeholder groups      |
-| Vision_Statement.md   | `../output/Vision_Statement.md` | No       | Enriches executive summary and market context |
+| vision.md             | `projects/<ProjectName>/_context/vision.md`  | Yes      | Business goals, problem statement, constraints|
+| features.md           | `projects/<ProjectName>/_context/features.md`| Yes      | Feature list with descriptions                |
+| stakeholders.md       | `projects/<ProjectName>/_context/stakeholders.md` | Yes | User roles, personas, stakeholder groups      |
+| Vision_Statement.md   | `projects/<ProjectName>/<phase>/<document>/Vision_Statement.md` | No       | Enriches executive summary and market context |
 
 ## Output Files
 
 | File    | Location             | Description                                           |
 |---------|----------------------|-------------------------------------------------------|
-| PRD.md  | `../output/PRD.md`   | Complete Product Requirements Document with all sections |
+| PRD.md  | `projects/<ProjectName>/<phase>/<document>/PRD.md`   | Complete Product Requirements Document with all sections |
 
 ## Core Instructions
 
@@ -53,7 +53,7 @@ Follow these nine steps in order. Halt and notify the user if a required input f
 
 ### Step 1: Read Context Files
 
-Read `vision.md`, `features.md`, and `stakeholders.md` from `../project_context/`. Optionally read `Vision_Statement.md` from `../output/`. Log every file path read. If `vision.md` or `features.md` is missing, halt execution and report the gap.
+Read `vision.md`, `features.md`, and `stakeholders.md` from `projects/<ProjectName>/_context/`. Optionally read `Vision_Statement.md` from `projects/<ProjectName>/<phase>/<document>/`. Log every file path read. If `vision.md` or `features.md` is missing, halt execution and report the gap.
 
 ### Step 2: Generate Document Header
 
@@ -123,7 +123,7 @@ Flag unknown baselines with `[BASELINE-TBD]`.
 - **Release Strategy**: Phased rollout plan mapping features to releases by priority tier.
 - **Standards Traceability Appendix**: Table mapping each PRD section to the corresponding IEEE 29148-2018 and IEEE 1233-1998 clause numbers.
 
-Write the completed document to `../output/PRD.md`. Log the total section count and feature count.
+Write the completed document to `projects/<ProjectName>/<phase>/<document>/PRD.md`. Log the total section count and feature count.
 
 ## Final Step: Write `manifest.md`
 

@@ -42,8 +42,8 @@ Score the project against these criteria. Each criterion adds the indicated poin
 
 | Attribute | Value |
 |-----------|-------|
-| **Inputs** | `../project_context/vision.md`, `../project_context/features.md`, `../project_context/stakeholders.md` (optional) |
-| **Output** | `../output/Lean_Canvas.md` |
+| **Inputs** | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/_context/stakeholders.md` (optional) |
+| **Output** | `projects/<ProjectName>/<phase>/<document>/Lean_Canvas.md` |
 | **Tone** | Strategic, concise, hypothesis-driven; no marketing language |
 | **Standards** | IEEE 29148-2018, Ash Maurya Lean Canvas, Gojko Adzic Impact Mapping |
 
@@ -51,15 +51,15 @@ Score the project against these criteria. Each criterion adds the indicated poin
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| `vision.md` | `../project_context/vision.md` | **Required** | Problem domain, target users, business goals, constraints |
-| `features.md` | `../project_context/features.md` | Recommended | Feature list for Solution and Deliverables blocks |
-| `stakeholders.md` | `../project_context/stakeholders.md` | Optional | Stakeholder roles for actor identification in Impact Map |
+| `vision.md` | `projects/<ProjectName>/_context/vision.md` | **Required** | Problem domain, target users, business goals, constraints |
+| `features.md` | `projects/<ProjectName>/_context/features.md` | Recommended | Feature list for Solution and Deliverables blocks |
+| `stakeholders.md` | `projects/<ProjectName>/_context/stakeholders.md` | Optional | Stakeholder roles for actor identification in Impact Map |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| `Lean_Canvas.md` | `../output/Lean_Canvas.md` | Complete Lean Canvas, Impact Map, and Hypothesis Board |
+| `Lean_Canvas.md` | `projects/<ProjectName>/<phase>/<document>/Lean_Canvas.md` | Complete Lean Canvas, Impact Map, and Hypothesis Board |
 
 ## Core Instructions
 
@@ -67,7 +67,7 @@ Follow these eight steps in order. Do not skip or reorder.
 
 ### Step 1: Read Context Files
 
-Read `vision.md` and `features.md` from `../project_context/`. Optionally read `stakeholders.md`. Log the absolute path of each file read. Halt execution if `vision.md` is missing.
+Read `vision.md` and `features.md` from `projects/<ProjectName>/_context/`. Optionally read `stakeholders.md`. Log the absolute path of each file read. Halt execution if `vision.md` is missing.
 
 ### Step 2: Execute Decision Gate
 
@@ -209,7 +209,7 @@ Define conditions that trigger a canvas revision:
 
 ### Step 8: Write Output
 
-Assemble the complete Lean Canvas document and write it to `../output/Lean_Canvas.md`.
+Assemble the complete Lean Canvas document and write it to `projects/<ProjectName>/<phase>/<document>/Lean_Canvas.md`.
 
 ## Output Format
 
@@ -265,7 +265,7 @@ The generated `Lean_Canvas.md` shall contain:
 
 ## Verification Checklist
 
-- [ ] `Lean_Canvas.md` exists in `../output/`
+- [ ] `Lean_Canvas.md` exists in `projects/<ProjectName>/<phase>/<document>/`
 - [ ] Decision gate scoring is documented with justification
 - [ ] All nine Lean Canvas blocks are populated
 - [ ] Problem block contains no solution-bias language
@@ -279,7 +279,7 @@ The generated `Lean_Canvas.md` shall contain:
 
 | Direction | Skill | Relationship |
 |-----------|-------|-------------|
-| Upstream | `00-meta-initialization` | Requires `methodology.md` in `../project_context/` |
+| Upstream | `00-meta-initialization` | Requires `methodology.md` in `projects/<ProjectName>/_context/` |
 | Alternative | `01-prd-generation` | Use PRD when decision gate score < 5 |
 | Downstream | `02-business-case` | Lean Canvas informs financial justification |
 | Downstream | `02-requirements-engineering` | Hypotheses and solutions feed requirements |

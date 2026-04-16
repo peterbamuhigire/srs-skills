@@ -25,21 +25,21 @@ Before executing this skill, score the project against five criteria (MVP status
 
 | File | Required | Source |
 |------|----------|--------|
-| `vision.md` | Yes | `../project_context/` |
-| `features.md` | Recommended | `../project_context/` |
-| `stakeholders.md` | Optional | `../project_context/` |
+| `vision.md` | Yes | `projects/<ProjectName>/_context/` |
+| `features.md` | Recommended | `projects/<ProjectName>/_context/` |
+| `stakeholders.md` | Optional | `projects/<ProjectName>/_context/` |
 
 ## Output
 
 | File | Location |
 |------|----------|
-| `Lean_Canvas.md` | `../output/Lean_Canvas.md` |
+| `Lean_Canvas.md` | `projects/<ProjectName>/<phase>/<document>/Lean_Canvas.md` |
 
 ## Execution Steps
 
-1. Verify `../project_context/vision.md` exists. Halt if missing.
+1. Verify `projects/<ProjectName>/_context/vision.md` exists. Halt if missing.
 2. Run the decision gate scoring. If score < 5, redirect to `01-prd-generation`.
-3. Invoke the skill through your runner. The skill reads context files, populates all nine canvas blocks, generates the Impact Map and Hypothesis Board, and writes `../output/Lean_Canvas.md`.
+3. Invoke the skill through your runner. The skill reads context files, populates all nine canvas blocks, generates the Impact Map and Hypothesis Board, and writes `projects/<ProjectName>/<phase>/<document>/Lean_Canvas.md`.
 4. Review the generated document to confirm: Problem block has no solution-bias language; Key Metrics use AARRR framework; Impact Map goal is SMART; hypotheses are ordered by risk.
 5. Proceed to `02-business-case` or directly to requirements engineering as appropriate.
 

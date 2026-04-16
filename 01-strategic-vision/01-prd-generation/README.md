@@ -6,8 +6,8 @@ This skill produces a Product Requirements Document that translates the project 
 
 ## Execution Steps
 
-1. Verify `../project_context/vision.md` and `../project_context/features.md` exist. Optionally check for `../output/Vision_Statement.md` to enrich the PRD.
-2. Invoke `logic.prompt` or trigger the skill. The skill reads context files, generates all PRD sections, and writes `../output/PRD.md`.
+1. Verify `projects/<ProjectName>/_context/vision.md` and `projects/<ProjectName>/_context/features.md` exist. Optionally check for `projects/<ProjectName>/<phase>/<document>/Vision_Statement.md` to enrich the PRD.
+2. Invoke `logic.prompt` or trigger the skill. The skill reads context files, generates all PRD sections, and writes `projects/<ProjectName>/<phase>/<document>/PRD.md`.
 3. Review the Feature Priority Matrix to confirm all features from `features.md` are represented with Priority, Effort, Value, and MoSCoW classifications.
 4. Proceed to `02-business-case` to generate the financial justification, or to `02-requirements-engineering` for SRS decomposition.
 

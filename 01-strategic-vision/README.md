@@ -28,4 +28,6 @@ The canonical runtime workspace for this phase is `projects/<ProjectName>/`.
 - Context source of truth: `projects/<ProjectName>/_context/`
 - Generated artifacts: `projects/<ProjectName>/01-strategic-vision/...`
 
+<!-- alias-block start -->
 Existing skill-local references to `../project_context/` and `../output/` are compatibility aliases into the active project workspace, not a second architecture.
+<!-- alias-block end -->
