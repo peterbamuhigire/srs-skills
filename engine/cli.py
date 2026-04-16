@@ -68,5 +68,22 @@ def validate(project: str, junit: str | None, sarif: str | None, md_path: str | 
         sys.exit(1)
     click.echo("ENGINE CONTRACT: PASS")
 
+@main.command()
+@click.argument("project", type=click.Path(exists=True, file_okay=False))
+def sync(project: str) -> None:
+    """Populate _registry/identifiers.yaml and _registry/glossary.yaml."""
+    from engine.sync import sync as do_sync
+    ws = Workspace.load(Path(project))
+    ids, gloss, errors = do_sync(ws)
+    if errors:
+        for e in errors:
+            click.echo(e)
+        sys.exit(1)
+    reg_dir = ws.root / "_registry"
+    reg_dir.mkdir(exist_ok=True)
+    ids.save(reg_dir / "identifiers.yaml")
+    gloss.save(reg_dir / "glossary.yaml")
+    click.echo(f"Wrote {len(ids)} identifiers and {len(gloss)} glossary terms.")
+
 if __name__ == "__main__":
     main()
