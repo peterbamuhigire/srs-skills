@@ -1,0 +1,49 @@
+# TODO: expand with additional controls — this is a minimum-viable starter library.
+# Contribute additions via PR; engine validates the schema at load time.
+domain: healthcare
+version: "1.0"
+source_framework: "HIPAA Security Rule + HIPAA Privacy Rule"
+controls:
+  - id: CTRL-HC-001
+    title: Unique user identification with session timeout
+    category: access_control
+    verification_kinds: [config_inspection, policy_inspection]
+    minimum_evidence:
+      - "Authentication design specifies unique user IDs and max session duration"
+      - "Test case verifies session auto-terminates after the configured idle threshold"
+    regulatory_anchor:
+      framework: "HIPAA Security Rule"
+      clause: "§164.312(a)"
+
+  - id: CTRL-HC-002
+    title: Encryption of PHI at rest
+    category: encryption
+    verification_kinds: [config_inspection, test]
+    minimum_evidence:
+      - "Database design specifies AES-256 encryption for all PHI fields"
+      - "Test case verifies PHI columns are encrypted on disk"
+    regulatory_anchor:
+      framework: "HIPAA Security Rule"
+      clause: "§164.312(a)(2)(iv)"
+
+  - id: CTRL-HC-003
+    title: Audit log of PHI access
+    category: audit_logging
+    verification_kinds: [audit_log_inspection, design_review]
+    minimum_evidence:
+      - "Logging design records actor, timestamp, and resource for every PHI read or write"
+      - "Audit-log inspection procedure defined in runbook"
+    regulatory_anchor:
+      framework: "HIPAA Security Rule"
+      clause: "§164.312(b)"
+
+  - id: CTRL-HC-004
+    title: Breach notification within 60 days
+    category: incident_response
+    verification_kinds: [policy_inspection, design_review]
+    minimum_evidence:
+      - "Runbook contains a breach notification SLA of 60 days or less"
+      - "Incident-response design includes the OCR contact channel"
+    regulatory_anchor:
+      framework: "HIPAA Breach Notification Rule"
+      clause: "§164.404"

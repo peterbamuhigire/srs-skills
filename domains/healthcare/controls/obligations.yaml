@@ -1,0 +1,20 @@
+obligations:
+  - obligation: "Restrict access to PHI via unique user IDs and session timeouts"
+    framework: "HIPAA Security Rule"
+    clause: "§164.312(a)"
+    satisfied_by: [CTRL-HC-001]
+
+  - obligation: "Encrypt PHI at rest"
+    framework: "HIPAA Security Rule"
+    clause: "§164.312(a)(2)(iv)"
+    satisfied_by: [CTRL-HC-002]
+
+  - obligation: "Record and retain audit logs of PHI access"
+    framework: "HIPAA Security Rule"
+    clause: "§164.312(b)"
+    satisfied_by: [CTRL-HC-003]
+
+  - obligation: "Notify affected individuals and HHS of a PHI breach within 60 days"
+    framework: "HIPAA Breach Notification Rule"
+    clause: "§164.404"
+    satisfied_by: [CTRL-HC-004]

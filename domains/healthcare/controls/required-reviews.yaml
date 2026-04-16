@@ -1,0 +1,10 @@
+required_reviews:
+  - control_category: encryption
+    reviewer_role: "Security Architect"
+    cadence: "per release"
+  - control_category: audit_logging
+    reviewer_role: "Privacy Officer"
+    cadence: "per quarter"
+  - control_category: incident_response
+    reviewer_role: "Compliance Officer"
+    cadence: "per quarter"
