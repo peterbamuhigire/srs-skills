@@ -30,6 +30,10 @@ When the user says "start a new project" or equivalent:
 8. Inject `[DOMAIN-DEFAULT]` blocks from `domains/<domain>/references/nfr-defaults.md` into section stubs
 9. Print scaffold summary showing pre-populated files and outstanding TODOs
 
+## Hybrid Cross-Cutting Trigger
+
+If `projects/<ProjectName>/_context/methodology.md` declares `methodology: hybrid`, the assistant MUST invoke the `hybrid-synchronization` skill after the Phase 02 Waterfall SRS is signed off and before any Phase 07 Agile artifact is generated. The kernel will block Phase 07 outputs until `python -m engine validate <project>` passes the `hybrid` gate.
+
 ## Build Document Protocol
 
 When the user says "build the [document]":
