@@ -28,7 +28,7 @@ Evidence: commits `890eda0` (bootstrap) through `d3f0a77` (pre-commit hook), all
 
 ## Plan 02 — Executable Phase Gates
 
-**Status:** 🟡 **IN PROGRESS** — 5 of 11 tasks complete
+**Status:** 🟡 **IN PROGRESS** — 6 of 11 tasks complete
 
 File: [`02-executable-phase-gates.md`](02-executable-phase-gates.md)
 
@@ -39,14 +39,16 @@ File: [`02-executable-phase-gates.md`](02-executable-phase-gates.md)
 | 3. Traceability check (`engine/checks/traceability.py`) | ✅ | `7f3dbbd` | Plan-verbatim. Verified by controller directly (35/35 pass). |
 | 4. Stimulus-response check (`engine/checks/stimulus_response.py`) | ✅ | `74cecc2` | Plan-verbatim. Verified by controller directly. |
 | 5. Phase 01 Strategic Vision gate (`engine/gates/phase01.py`) | ✅ | `1c3f2e5` | Plan-verbatim for API/logic; two narrow deviations accepted — (a) split the stakeholder-text collection and feature-check into two passes (plan's single-loop version is order-dependent and flaked on Windows filesystem ordering), (b) added `encoding="utf-8"` to test helper's `write_text` (plan omitted it; Windows cp1252 collided with `artifact_graph.py`'s utf-8 reader on the em-dash). 38/38 pass. Frontmatter lists 4 check IDs but Step 3 implementation only emits 2 (`no_context_gaps`, `glossary_seeded` absent); logged for Task 11. |
-| 6. Register Phase01Gate in CLI | ⬜ | — | Small: `engine/cli.py` `_default_registry()` addition + test. |
+| 6. Register Phase01Gate in CLI | ✅ | `cd652d9` | `_default_registry()` modified byte-for-byte per plan. Two existing CLI fixtures (`test_validate_passes_clean_project`, `test_validate_emits_junit_when_requested`) extended with the 4 canonical `_context/*.md` files plus explicit `encoding="utf-8"`. Features content uses `--` (double hyphen) not `—` so Phase01Gate's feature-matching regex skips those lines — behavior is fully tested in `test_phase01_gate.py` so CLI tests only need canonical_inputs_present to pass. 38/38 pass. |
 | 7. Phase 02 gate | ⬜ | — | 8 checks — composes `SmartNfrCheck` + `StimulusResponseCheck` from Tasks 2 & 4. |
 | 8. Phase 05 gate | ⬜ | — | 7 checks — reference implementation from prose. |
 | 9. Phases 03, 04, 06, 07, 08 gates | ⬜ | — | Template repeat — 5 gates. |
 | 10. Phase 09 gate | ⬜ | — | 8 checks — the verification gate. |
 | 11. Standards-clause registry doc + CI assertion | ⬜ | — | `docs/standards-clause-registry.md`; CI check every registered check ID appears there. Also address the Task 1 and Task 2 reviewer follow-ups here. |
 
-**Resume with Task 6.** Task 6 is small: register `Phase01Gate` in `engine/cli.py`'s `_default_registry()` and add a CLI test. Plan text lives in `02-executable-phase-gates.md` starting at line 485 — load that range and dispatch an implementer (the pragmatic deviation likely applies — it's a small plan-verbatim change).
+**Resume with Task 8 (not Task 7).** Task 7 (Phase 02 gate) composes `GlossaryCheck` which is produced by Task 8 AND `IdentifierRegistryCheck` from Plan 03 — both need to land first. Task 8 (Phase 05 gate + `GlossaryCheck`) is ~7 checks and self-contained per the plan prose. Plan text lives in `02-executable-phase-gates.md` — load from the Task 8 heading and dispatch an implementer.
+
+After Task 8, the next highest-leverage move is **Plan 03** (identifier & glossary registry, 491 lines) — it unblocks Plan 02 Task 7 AND Plans 05/06/07 simultaneously.
 
 ---
 
