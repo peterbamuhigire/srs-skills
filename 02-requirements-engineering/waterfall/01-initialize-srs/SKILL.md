@@ -72,3 +72,7 @@ Use this skill to bootstrap the parent project with industrial templates that ca
 - Re-running the skill without choosing Maintenance Mode can delete effort; prefer Clean only when templates must reset.
 - Skipping template population leaves downstream skills without verifiable inputs; ensure the vision, quality, and business rule files contain measurable targets before proceeding.
 - Omitting the role-specific acceptance criteria in `quality_standards.md` or glossary definitions undermines ISO/IEC alignment; keep those sections updated with traceable references.
+
+## Worked example
+
+See [`examples/representative/`](examples/representative/).
