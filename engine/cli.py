@@ -65,7 +65,10 @@ def new_project(name: str, methodology: str, domain: str, example: str | None) -
 @click.option("--junit", type=click.Path(), default=None)
 @click.option("--sarif", type=click.Path(), default=None)
 @click.option("--markdown", "md_path", type=click.Path(), default=None)
-def validate(project: str, junit: str | None, sarif: str | None, md_path: str | None) -> None:
+@click.option("--break-something", is_flag=True, hidden=True,
+              help="Inject synthetic findings (used by demo CI to prove gates can fail).")
+def validate(project: str, junit: str | None, sarif: str | None,
+             md_path: str | None, break_something: bool) -> None:
     """Validate a project workspace and exit non-zero on blocking findings."""
     workspace = Workspace.load(Path(project))
     graph = ArtifactGraph.build(workspace)
@@ -77,6 +80,19 @@ def validate(project: str, junit: str | None, sarif: str | None, md_path: str | 
     waived, remaining_list = waivers.apply(findings, today=date.today())
     remaining = FindingCollection()
     remaining.extend(remaining_list)
+    if break_something:
+        from engine.findings import Finding, Severity
+        for gate_id in (
+            "kernel.no_unresolved_fail_markers",
+            "phase02.smart_nfr",
+            "phase09.traceability",
+        ):
+            remaining.add(Finding(
+                gate_id=gate_id,
+                severity=Severity.HIGH,
+                message="synthetic finding (--break-something)",
+                location=None, line=None,
+            ))
     md = render_markdown(remaining, waived, project=workspace.root.name)
     if md_path:
         Path(md_path).write_text(md, encoding="utf-8")
