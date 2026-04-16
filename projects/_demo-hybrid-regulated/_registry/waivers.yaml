@@ -1,0 +1,8 @@
+waivers:
+  - id: WAIVE-001
+    gate: phase08.user_manual_has_screenshots
+    scope: "*"
+    reason: "Screenshots are placeholder PNGs pending final UI sign-off; tracked for replacement before v1.1."
+    approver: Peter Bamuhigire
+    approved_on: 2026-04-16
+    expires_on: 2026-07-15
