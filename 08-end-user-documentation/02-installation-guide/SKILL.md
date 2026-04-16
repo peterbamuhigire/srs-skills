@@ -20,16 +20,16 @@ This is the second skill in Phase 08 (End-User Documentation). It produces a com
 
 ## When to Use This Skill
 
-- After `tech_stack.md` exists in `../project_context/` with technology choices, runtime versions, and platform requirements.
+- After `tech_stack.md` exists in `projects/<ProjectName>/_context/` with technology choices, runtime versions, and platform requirements.
 - When end users or system administrators require clear installation instructions.
-- Optionally after Phase 06 when `Deployment_Guide.md` exists in `../output/` for infrastructure and deployment context.
+- Optionally after Phase 06 when `Deployment_Guide.md` exists in `projects/<ProjectName>/<phase>/<document>/` for infrastructure and deployment context.
 
 ## Quick Reference
 
 | Attribute    | Value |
 |--------------|-------|
-| **Inputs**   | `../project_context/tech_stack.md`, `../output/Deployment_Guide.md` (optional) |
-| **Output**   | `../output/Installation_Guide.md` |
+| **Inputs**   | `projects/<ProjectName>/_context/tech_stack.md`, `projects/<ProjectName>/<phase>/<document>/Deployment_Guide.md` (optional) |
+| **Output**   | `projects/<ProjectName>/<phase>/<document>/Installation_Guide.md` |
 | **Tone**     | Procedural, precise, user-facing |
 | **Standard** | ISO 26514 |
 | **Time**     | 10-20 minutes |
@@ -38,14 +38,14 @@ This is the second skill in Phase 08 (End-User Documentation). It produces a com
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| tech_stack.md | `../project_context/tech_stack.md` | Yes | Technology choices, runtime versions, OS compatibility, dependencies |
-| Deployment_Guide.md | `../output/Deployment_Guide.md` | No | Infrastructure context, environment configuration, deployment procedures |
+| tech_stack.md | `projects/<ProjectName>/_context/tech_stack.md` | Yes | Technology choices, runtime versions, OS compatibility, dependencies |
+| Deployment_Guide.md | `projects/<ProjectName>/<phase>/<document>/Deployment_Guide.md` | No | Infrastructure context, environment configuration, deployment procedures |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Installation_Guide.md | `../output/Installation_Guide.md` | Complete installation guide with system requirements, prerequisites, steps, configuration, verification, and troubleshooting |
+| Installation_Guide.md | `projects/<ProjectName>/<phase>/<document>/Installation_Guide.md` | Complete installation guide with system requirements, prerequisites, steps, configuration, verification, and troubleshooting |
 
 ## Core Instructions
 
@@ -53,7 +53,7 @@ Follow these eight steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `tech_stack.md` from `../project_context/`. Optionally read `Deployment_Guide.md` from `../output/`. Log the absolute path of each file read. Halt if any required file is missing.
+Read `tech_stack.md` from `projects/<ProjectName>/_context/`. Optionally read `Deployment_Guide.md` from `projects/<ProjectName>/<phase>/<document>/`. Log the absolute path of each file read. Halt if any required file is missing.
 
 ### Step 2: Define System Requirements
 
@@ -111,7 +111,7 @@ Document frequent installation problems and solutions:
 - Port conflicts and resolution (identifying and freeing ports)
 - Dependency version mismatches and resolution
 - Platform-specific known issues
-- Write the completed document to `../output/Installation_Guide.md`. Log the total count of installation steps.
+- Write the completed document to `projects/<ProjectName>/<phase>/<document>/Installation_Guide.md`. Log the total count of installation steps.
 
 ## Output Format Specification
 
@@ -137,7 +137,7 @@ The generated `Installation_Guide.md` SHALL contain these sections in order:
 
 ## Verification Checklist
 
-1. `Installation_Guide.md` exists in `../output/` with all nine sections populated.
+1. `Installation_Guide.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all nine sections populated.
 2. System requirements specify minimum OS, hardware, and network requirements.
 3. Prerequisites list every runtime, package manager, and external service with version numbers.
 4. Installation steps are numbered with exact commands and expected output.

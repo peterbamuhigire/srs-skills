@@ -20,16 +20,16 @@ This is the third skill in Phase 08 (End-User Documentation). It produces a stru
 
 ## When to Use This Skill
 
-- After `vision.md` and `features.md` exist in `../project_context/` to derive questions from product scope and feature set.
-- Optionally after `User_Manual.md` exists in `../output/` for cross-referencing detailed procedures.
+- After `vision.md` and `features.md` exist in `projects/<ProjectName>/_context/` to derive questions from product scope and feature set.
+- Optionally after `User_Manual.md` exists in `projects/<ProjectName>/<phase>/<document>/` for cross-referencing detailed procedures.
 - When the project requires a self-service knowledge base for end users.
 
 ## Quick Reference
 
 | Attribute    | Value |
 |--------------|-------|
-| **Inputs**   | `../project_context/vision.md`, `../project_context/features.md`, `../output/User_Manual.md` (optional) |
-| **Output**   | `../output/FAQ.md` |
+| **Inputs**   | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/<phase>/<document>/User_Manual.md` (optional) |
+| **Output**   | `projects/<ProjectName>/<phase>/<document>/FAQ.md` |
 | **Tone**     | Conversational yet precise, user-facing |
 | **Standard** | ISO 26514 |
 | **Time**     | 10-15 minutes |
@@ -38,15 +38,15 @@ This is the third skill in Phase 08 (End-User Documentation). It produces a stru
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| vision.md | `../project_context/vision.md` | Yes | Product purpose, target audience, positioning for general questions |
-| features.md | `../project_context/features.md` | Yes | Feature list for feature-specific question generation |
-| User_Manual.md | `../output/User_Manual.md` | No | Detailed procedures for cross-reference links in answers |
+| vision.md | `projects/<ProjectName>/_context/vision.md` | Yes | Product purpose, target audience, positioning for general questions |
+| features.md | `projects/<ProjectName>/_context/features.md` | Yes | Feature list for feature-specific question generation |
+| User_Manual.md | `projects/<ProjectName>/<phase>/<document>/User_Manual.md` | No | Detailed procedures for cross-reference links in answers |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| FAQ.md | `../output/FAQ.md` | Structured FAQ organized by category with question-answer pairs and cross-references |
+| FAQ.md | `projects/<ProjectName>/<phase>/<document>/FAQ.md` | Structured FAQ organized by category with question-answer pairs and cross-references |
 
 ## Core Instructions
 
@@ -54,7 +54,7 @@ Follow these eight steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `vision.md` and `features.md` from `../project_context/`. Optionally read `User_Manual.md` from `../output/`. Log the absolute path of each file read. Halt if any required file is missing.
+Read `vision.md` and `features.md` from `projects/<ProjectName>/_context/`. Optionally read `User_Manual.md` from `projects/<ProjectName>/<phase>/<document>/`. Log the absolute path of each file read. Halt if any required file is missing.
 
 ### Step 2: Generate General Questions
 
@@ -109,7 +109,7 @@ Produce questions about data handling and security:
 
 ### Step 8: Assemble and Write Output
 
-Assemble all categories into the final document with a table of contents and search-friendly anchor links. Every answer SHALL be concise (three to five sentences maximum) with a cross-reference link to detailed documentation where applicable. Write the completed document to `../output/FAQ.md`. Log the total count of question-answer pairs generated.
+Assemble all categories into the final document with a table of contents and search-friendly anchor links. Every answer SHALL be concise (three to five sentences maximum) with a cross-reference link to detailed documentation where applicable. Write the completed document to `projects/<ProjectName>/<phase>/<document>/FAQ.md`. Log the total count of question-answer pairs generated.
 
 ## Output Format Specification
 
@@ -135,7 +135,7 @@ The generated `FAQ.md` SHALL contain these sections in order:
 
 ## Verification Checklist
 
-1. `FAQ.md` exists in `../output/` with all applicable categories populated.
+1. `FAQ.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all applicable categories populated.
 2. General Questions section addresses product purpose, audience, and getting started.
 3. Every feature in `features.md` has at least two corresponding FAQ entries.
 4. Answers are concise (three to five sentences maximum) with cross-reference links.

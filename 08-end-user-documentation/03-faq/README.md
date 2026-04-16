@@ -6,8 +6,8 @@ This skill produces a structured Frequently Asked Questions document organized b
 
 ## Execution Steps
 
-1. Verify `../project_context/vision.md` and `../project_context/features.md` exist. Optionally check for `../output/User_Manual.md`. Halt if any required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates categorized question-answer pairs covering general, installation, feature-specific, account, troubleshooting, and security topics, then writes `../output/FAQ.md`.
+1. Verify `projects/<ProjectName>/_context/vision.md` and `projects/<ProjectName>/_context/features.md` exist. Optionally check for `projects/<ProjectName>/<phase>/<document>/User_Manual.md`. Halt if any required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates categorized question-answer pairs covering general, installation, feature-specific, account, troubleshooting, and security topics, then writes `projects/<ProjectName>/<phase>/<document>/FAQ.md`.
 3. Review the FAQ entries to confirm each answer is concise, actionable, and cross-references detailed documentation where applicable.
 4. Iterate if feature coverage is incomplete or answers lack specificity.
 

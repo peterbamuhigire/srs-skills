@@ -20,17 +20,17 @@ This is the first skill in Phase 08 (End-User Documentation). It produces a comp
 
 ## When to Use This Skill
 
-- After Phase 02 completes and `vision.md` and `features.md` exist in `../project_context/`.
+- After Phase 02 completes and `vision.md` and `features.md` exist in `projects/<ProjectName>/_context/`.
 - When end users require a structured guide to learn and operate the software product.
-- Optionally after Phase 05 when `user_stories.md` exists in `../output/` for richer workflow context.
-- Optionally after Phase 02 when `SRS_Draft.md` exists in `../output/` for detailed functional reference.
+- Optionally after Phase 05 when `user_stories.md` exists in `projects/<ProjectName>/<phase>/<document>/` for richer workflow context.
+- Optionally after Phase 02 when `SRS_Draft.md` exists in `projects/<ProjectName>/<phase>/<document>/` for detailed functional reference.
 
 ## Quick Reference
 
 | Attribute    | Value |
 |--------------|-------|
-| **Inputs**   | `../project_context/vision.md`, `../project_context/features.md`, `../output/SRS_Draft.md` (optional), `../output/user_stories.md` (optional) |
-| **Output**   | `../output/User_Manual.md` |
+| **Inputs**   | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` (optional), `projects/<ProjectName>/<phase>/<document>/user_stories.md` (optional) |
+| **Output**   | `projects/<ProjectName>/<phase>/<document>/User_Manual.md` |
 | **Tone**     | Instructional, user-facing, task-oriented |
 | **Standard** | ISO 26514 |
 | **Time**     | 15-25 minutes |
@@ -39,16 +39,16 @@ This is the first skill in Phase 08 (End-User Documentation). It produces a comp
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| vision.md | `../project_context/vision.md` | Yes | Product purpose, target audience, high-level goals |
-| features.md | `../project_context/features.md` | Yes | Feature list with descriptions for per-feature guide generation |
-| SRS_Draft.md | `../output/SRS_Draft.md` | No | Detailed functional requirements for precise procedure steps |
-| user_stories.md | `../output/user_stories.md` | No | User stories and personas for role-based workflow generation |
+| vision.md | `projects/<ProjectName>/_context/vision.md` | Yes | Product purpose, target audience, high-level goals |
+| features.md | `projects/<ProjectName>/_context/features.md` | Yes | Feature list with descriptions for per-feature guide generation |
+| SRS_Draft.md | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | No | Detailed functional requirements for precise procedure steps |
+| user_stories.md | `projects/<ProjectName>/<phase>/<document>/user_stories.md` | No | User stories and personas for role-based workflow generation |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| User_Manual.md | `../output/User_Manual.md` | Complete user manual with getting started, feature guides, role-based workflows, troubleshooting, and glossary |
+| User_Manual.md | `projects/<ProjectName>/<phase>/<document>/User_Manual.md` | Complete user manual with getting started, feature guides, role-based workflows, troubleshooting, and glossary |
 
 ## Core Instructions
 
@@ -56,7 +56,7 @@ Follow these eight steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `vision.md` and `features.md` from `../project_context/`. Optionally read `SRS_Draft.md` and `user_stories.md` from `../output/`. Log the absolute path of each file read. Halt if any required file is missing.
+Read `vision.md` and `features.md` from `projects/<ProjectName>/_context/`. Optionally read `SRS_Draft.md` and `user_stories.md` from `projects/<ProjectName>/<phase>/<document>/`. Log the absolute path of each file read. Halt if any required file is missing.
 
 ### Step 2: Define Getting Started Section
 
@@ -107,7 +107,7 @@ Compile a glossary of domain-specific and product-specific terms:
 
 ### Step 8: Assemble and Write Output
 
-Assemble all sections into the final document with a table of contents. Write the completed document to `../output/User_Manual.md`. Log the total count of feature guides and role-based workflows generated.
+Assemble all sections into the final document with a table of contents. Write the completed document to `projects/<ProjectName>/<phase>/<document>/User_Manual.md`. Log the total count of feature guides and role-based workflows generated.
 
 ## Output Format Specification
 
@@ -151,7 +151,7 @@ This ensures `scripts/build-doc.sh` assembles sections in the intended order rat
 
 ## Verification Checklist
 
-1. `User_Manual.md` exists in `../output/` with all nine sections populated.
+1. `User_Manual.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all nine sections populated.
 2. Getting Started section assumes zero prior knowledge and includes a quick-start task.
 3. Every feature in `features.md` has a corresponding feature guide section.
 4. Screenshot placeholders follow the `![Name - Step](screenshots/...)` format.

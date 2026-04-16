@@ -6,8 +6,8 @@ This skill produces a comprehensive installation guide that walks end users and 
 
 ## Execution Steps
 
-1. Verify `../project_context/tech_stack.md` exists. Optionally check for `../output/Deployment_Guide.md`. Halt if the required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates system requirements, prerequisites, installation steps, configuration, verification, and troubleshooting, then writes `../output/Installation_Guide.md`.
+1. Verify `projects/<ProjectName>/_context/tech_stack.md` exists. Optionally check for `projects/<ProjectName>/<phase>/<document>/Deployment_Guide.md`. Halt if the required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates system requirements, prerequisites, installation steps, configuration, verification, and troubleshooting, then writes `projects/<ProjectName>/<phase>/<document>/Installation_Guide.md`.
 3. Review the installation steps to confirm each step includes exact commands, expected output, and platform-specific variations.
 4. Proceed to other Phase 08 skills or downstream phases.
 

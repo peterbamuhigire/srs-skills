@@ -20,16 +20,16 @@ This is the fourth skill in Phase 08 (End-User Documentation). It produces a rel
 
 ## When to Use This Skill
 
-- After `vision.md` exists in `../project_context/` to establish the product identity and versioning context.
+- After `vision.md` exists in `projects/<ProjectName>/_context/` to establish the product identity and versioning context.
 - When the project requires a standardized format for communicating changes to end users.
-- Optionally after `SRS_Draft.md` exists in `../output/` for tracing features to requirements.
+- Optionally after `SRS_Draft.md` exists in `projects/<ProjectName>/<phase>/<document>/` for tracing features to requirements.
 
 ## Quick Reference
 
 | Attribute    | Value |
 |--------------|-------|
-| **Inputs**   | `../project_context/vision.md`, `../output/SRS_Draft.md` (optional) |
-| **Output**   | `../output/Release_Notes_Template.md` |
+| **Inputs**   | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` (optional) |
+| **Output**   | `projects/<ProjectName>/<phase>/<document>/Release_Notes_Template.md` |
 | **Tone**     | Professional, concise, user-facing |
 | **Standard** | IEEE 830 |
 | **Time**     | 10-15 minutes |
@@ -38,14 +38,14 @@ This is the fourth skill in Phase 08 (End-User Documentation). It produces a rel
 
 | File | Location | Required | Purpose |
 |------|----------|----------|---------|
-| vision.md | `../project_context/vision.md` | Yes | Product name, versioning scheme, release cadence context |
-| SRS_Draft.md | `../output/SRS_Draft.md` | No | Functional requirements for tracing features to specifications |
+| vision.md | `projects/<ProjectName>/_context/vision.md` | Yes | Product name, versioning scheme, release cadence context |
+| SRS_Draft.md | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` | No | Functional requirements for tracing features to specifications |
 
 ## Output Files
 
 | File | Location | Description |
 |------|----------|-------------|
-| Release_Notes_Template.md | `../output/Release_Notes_Template.md` | Reusable release notes template with all standard sections and placeholder guidance |
+| Release_Notes_Template.md | `projects/<ProjectName>/<phase>/<document>/Release_Notes_Template.md` | Reusable release notes template with all standard sections and placeholder guidance |
 
 ## Core Instructions
 
@@ -53,7 +53,7 @@ Follow these eight steps in order. Halt and notify the user if a required input 
 
 ### Step 1: Read Context Files
 
-Read `vision.md` from `../project_context/`. Optionally read `SRS_Draft.md` from `../output/`. Log the absolute path of each file read. Halt if the required file is missing.
+Read `vision.md` from `projects/<ProjectName>/_context/`. Optionally read `SRS_Draft.md` from `projects/<ProjectName>/<phase>/<document>/`. Log the absolute path of each file read. Halt if the required file is missing.
 
 ### Step 2: Define Version and Date Header
 
@@ -101,7 +101,7 @@ Define template sections for known issues and compatibility:
 
 ### Step 8: Assemble Template and Write Output
 
-Assemble all sections into the final template with authoring instructions embedded as comments. Include a checklist at the end for release managers to verify completeness before publishing. Write the completed template to `../output/Release_Notes_Template.md`. Log completion.
+Assemble all sections into the final template with authoring instructions embedded as comments. Include a checklist at the end for release managers to verify completeness before publishing. Write the completed template to `projects/<ProjectName>/<phase>/<document>/Release_Notes_Template.md`. Log completion.
 
 ## Output Format Specification
 
@@ -128,7 +128,7 @@ The generated `Release_Notes_Template.md` SHALL contain these sections in order:
 
 ## Verification Checklist
 
-1. `Release_Notes_Template.md` exists in `../output/` with all ten sections.
+1. `Release_Notes_Template.md` exists in `projects/<ProjectName>/<phase>/<document>/` with all ten sections.
 2. Version header includes semantic versioning guidance and release type classification.
 3. New Features section template includes user benefit and requirement traceability fields.
 4. Breaking Changes section template requires a migration action for each entry.

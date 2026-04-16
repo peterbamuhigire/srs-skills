@@ -6,8 +6,8 @@ This skill produces a comprehensive user manual that guides end users through ev
 
 ## Execution Steps
 
-1. Verify `../project_context/vision.md` and `../project_context/features.md` exist. Optionally check for `../output/SRS_Draft.md` and `../output/user_stories.md`. Halt if any required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates getting started content, navigation overview, per-feature guides, role-based workflows, troubleshooting, and glossary, then writes `../output/User_Manual.md`.
+1. Verify `projects/<ProjectName>/_context/vision.md` and `projects/<ProjectName>/_context/features.md` exist. Optionally check for `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` and `projects/<ProjectName>/<phase>/<document>/user_stories.md`. Halt if any required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates getting started content, navigation overview, per-feature guides, role-based workflows, troubleshooting, and glossary, then writes `projects/<ProjectName>/<phase>/<document>/User_Manual.md`.
 3. Review the feature guides to confirm each feature has numbered steps, screenshot placeholders, and expected results.
 4. Proceed to `03-faq` which can reference the user manual for cross-linking.
 

@@ -24,4 +24,4 @@ Skills 01-04 are independent. User manual and installation guide are typically g
 
 ## I/O
 
-All skills read from `../output/` (SRS_Draft.md, Deployment_Guide.md, user_stories.md) and `../project_context/` (vision.md, features.md, tech_stack.md). All skills write to `../output/`.
+All skills read from `projects/<ProjectName>/<phase>/<document>/` (SRS_Draft.md, Deployment_Guide.md, user_stories.md) and `projects/<ProjectName>/_context/` (vision.md, features.md, tech_stack.md). All skills write to `projects/<ProjectName>/<phase>/<document>/`.

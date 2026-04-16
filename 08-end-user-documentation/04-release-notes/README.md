@@ -6,8 +6,8 @@ This skill produces a reusable release notes template that standardizes how vers
 
 ## Execution Steps
 
-1. Verify `../project_context/vision.md` exists. Optionally check for `../output/SRS_Draft.md`. Halt if the required file is missing.
-2. Invoke `logic.prompt` or trigger the skill. The skill generates a release notes template with all standard sections, authoring guidance, and a pre-publish checklist, then writes `../output/Release_Notes_Template.md`.
+1. Verify `projects/<ProjectName>/_context/vision.md` exists. Optionally check for `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`. Halt if the required file is missing.
+2. Invoke `logic.prompt` or trigger the skill. The skill generates a release notes template with all standard sections, authoring guidance, and a pre-publish checklist, then writes `projects/<ProjectName>/<phase>/<document>/Release_Notes_Template.md`.
 3. Review the template to confirm each section includes entry format guidance and placeholder examples.
 4. Distribute the template to the development team for use in upcoming release cycles.
 
