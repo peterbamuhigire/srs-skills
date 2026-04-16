@@ -245,3 +245,63 @@ def test_flags_go_live_checklist_with_unchecked_items(tmp_path):
         "expected a go_live_readiness_checklist_complete finding"
     )
     assert "2 unchecked item(s)" in msgs[0]
+
+
+# -- change_window_documented ---------------------------------------------
+
+def test_passes_when_change_window_in_dedicated_file(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "06-deployment-operations/deployment-guide.md": (
+            "# Deployment Guide\nRollback via tag."
+        ),
+        "06-deployment-operations/change-window.md": (
+            "# Change Window\nDeployments occur in the 02:00-04:00 UTC window."
+        ),
+    })
+    findings = FindingCollection()
+    Phase06Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase06.change_window_documented") == []
+
+
+def test_passes_when_change_window_in_deployment_guide(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "06-deployment-operations/deployment-guide.md": (
+            "# Deployment Guide\n"
+            "Rollback via tag. All releases ship during the agreed "
+            "change window on Tuesday nights."
+        ),
+    })
+    findings = FindingCollection()
+    Phase06Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase06.change_window_documented") == []
+
+
+def test_flags_missing_change_window_everywhere(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "06-deployment-operations/deployment-guide.md": (
+            "# Deployment Guide\nRollback via tag; deploy any time."
+        ),
+    })
+    findings = FindingCollection()
+    Phase06Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase06.change_window_documented"]
+    assert msgs, "expected a change_window_documented finding"
+    assert "No change window documentation found" in msgs[0]
+
+
+# -- clause attachment ------------------------------------------------------
+
+def test_findings_carry_ieee_1062_clause_label(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+    })
+    findings = FindingCollection()
+    Phase06Gate().evaluate(graph, findings)
+    assert len(findings) > 0
+    for f in findings:
+        assert "IEEE Std 1062-2015" in f.message
+        assert "6.3" in f.message

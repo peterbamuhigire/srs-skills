@@ -21,6 +21,12 @@ _IR_DIAGRAM_RE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 _UNCHECKED_ITEM_RE = re.compile(r"^\s*-\s+\[\s\]", re.MULTILINE)
+_CHANGE_WINDOW_NAME_TOKENS = (
+    "change-window",
+    "maintenance-window",
+    "change_window",
+)
+_CHANGE_WINDOW_PHRASES = ("change window", "maintenance window")
 
 
 def _posix(path) -> str:
@@ -79,6 +85,16 @@ def _find_go_live_doc(graph: ArtifactGraph):
     return None
 
 
+def _find_change_window_doc(graph: ArtifactGraph):
+    for art in graph.artifacts:
+        if not _under_phase06(art):
+            continue
+        name = art.path.name.lower()
+        if any(tok in name for tok in _CHANGE_WINDOW_NAME_TOKENS):
+            return art
+    return None
+
+
 class Phase06Gate(Gate):
     id = "phase06"
     title = "Deployment & Operations phase gate"
@@ -90,6 +106,7 @@ class Phase06Gate(Gate):
         self._check_monitoring_has_slo(graph, findings)
         self._check_infra_has_ir_diagram(graph, findings)
         self._check_go_live_readiness_checklist_complete(graph, findings)
+        self._check_change_window_documented(graph, findings)
 
     # -- Check 1: deployment guide has rollback --------------------------
     def _check_deployment_guide_has_rollback(
@@ -242,5 +259,28 @@ class Phase06Gate(Gate):
                 f"{len(unchecked)} unchecked item(s)"
             ),
             location=doc.path,
+            line=None,
+        ), _CLAUSE))
+
+    # -- Check 6: change window documented -------------------------------
+    def _check_change_window_documented(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        if _find_change_window_doc(graph) is not None:
+            return
+        guide = _find_deployment_guide(graph)
+        if guide is not None:
+            lower = guide.body.lower()
+            if any(phrase in lower for phrase in _CHANGE_WINDOW_PHRASES):
+                return
+        findings.add(attach_clause(Finding(
+            gate_id=f"{self.id}.change_window_documented",
+            severity=Severity.HIGH,
+            message=(
+                "No change window documentation found (expected "
+                "dedicated 'change-window.md' or 'change window' "
+                "reference in deployment guide)"
+            ),
+            location=None,
             line=None,
         ), _CLAUSE))
