@@ -1,3 +1,14 @@
+---
+gate: phase08
+checks:
+  - phase08.user_manual_has_screenshots
+  - phase08.release_notes_link_to_fr
+  - phase08.faq_has_at_least_5_qa
+clause_refs:
+  - standard: "IEEE Std 26514-2022"
+    clause: "8"
+---
+
 # Phase 08 Deterministic Gate
 
 Use this checklist before end-user documentation is considered release-ready.
