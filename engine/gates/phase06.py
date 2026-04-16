@@ -15,6 +15,7 @@ _RUNBOOK_NAMES = ("runbook.md", "operations-runbook.md")
 
 _ROLLBACK_RE = re.compile(r"\b(rollback|roll\s+back)\b", re.IGNORECASE)
 _ESCALATION_RE = re.compile(r"\b(escalat(e|ion))\b", re.IGNORECASE)
+_SLO_RE = re.compile(r"\b(SLO|SLI|SLA)\b", re.IGNORECASE)
 
 
 def _posix(path) -> str:
@@ -43,6 +44,16 @@ def _find_runbook(graph: ArtifactGraph):
     return None
 
 
+def _find_monitoring_doc(graph: ArtifactGraph):
+    for art in graph.artifacts:
+        if not _under_phase06(art):
+            continue
+        name = art.path.name.lower()
+        if "monitor" in name or "observability" in name or "slo" in name:
+            return art
+    return None
+
+
 class Phase06Gate(Gate):
     id = "phase06"
     title = "Deployment & Operations phase gate"
@@ -51,6 +62,7 @@ class Phase06Gate(Gate):
     def evaluate(self, graph: ArtifactGraph, findings: FindingCollection) -> None:
         self._check_deployment_guide_has_rollback(graph, findings)
         self._check_runbook_has_escalation(graph, findings)
+        self._check_monitoring_has_slo(graph, findings)
 
     # -- Check 1: deployment guide has rollback --------------------------
     def _check_deployment_guide_has_rollback(
@@ -109,5 +121,36 @@ class Phase06Gate(Gate):
                 f"Runbook '{_posix(runbook.path)}' has no escalation path"
             ),
             location=runbook.path,
+            line=None,
+        ), _CLAUSE))
+
+    # -- Check 3: monitoring has SLO -------------------------------------
+    def _check_monitoring_has_slo(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        doc = _find_monitoring_doc(graph)
+        if doc is None:
+            findings.add(attach_clause(Finding(
+                gate_id=f"{self.id}.monitoring_has_slo",
+                severity=Severity.HIGH,
+                message=(
+                    "No monitoring document found under "
+                    "06-deployment-operations/ (expected filename "
+                    "containing 'monitor', 'observability', or 'slo')"
+                ),
+                location=None,
+                line=None,
+            ), _CLAUSE))
+            return
+        if _SLO_RE.search(doc.body):
+            return
+        findings.add(attach_clause(Finding(
+            gate_id=f"{self.id}.monitoring_has_slo",
+            severity=Severity.HIGH,
+            message=(
+                f"Monitoring document '{_posix(doc.path)}' has no "
+                f"SLO/SLI/SLA reference"
+            ),
+            location=doc.path,
             line=None,
         ), _CLAUSE))

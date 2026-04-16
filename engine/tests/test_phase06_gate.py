@@ -92,3 +92,44 @@ def test_flags_runbook_without_escalation(tmp_path):
             if f.gate_id == "phase06.runbook_has_escalation"]
     assert msgs, "expected a runbook_has_escalation finding"
     assert "no escalation path" in msgs[0]
+
+
+# -- monitoring_has_slo ----------------------------------------------------
+
+def test_passes_when_monitoring_doc_has_slo(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "06-deployment-operations/deployment-guide.md": (
+            "# Deployment Guide\nRollback via tag."
+        ),
+        "06-deployment-operations/runbook.md": (
+            "# Runbook\nEscalation: on-call SRE."
+        ),
+        "06-deployment-operations/monitoring.md": (
+            "# Monitoring\nWe track an SLO of 99.9% availability."
+        ),
+    })
+    findings = FindingCollection()
+    Phase06Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase06.monitoring_has_slo") == []
+
+
+def test_flags_monitoring_doc_without_slo(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "06-deployment-operations/deployment-guide.md": (
+            "# Deployment Guide\nRollback via tag."
+        ),
+        "06-deployment-operations/runbook.md": (
+            "# Runbook\nEscalation: on-call SRE."
+        ),
+        "06-deployment-operations/observability.md": (
+            "# Observability\nMetrics dashboards are in Grafana."
+        ),
+    })
+    findings = FindingCollection()
+    Phase06Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase06.monitoring_has_slo"]
+    assert msgs, "expected a monitoring_has_slo finding"
+    assert "no SLO/SLI/SLA reference" in msgs[0]
