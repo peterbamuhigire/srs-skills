@@ -519,6 +519,42 @@ For each document subdirectory created above, also create a `manifest.md` file w
 
 This file is empty by default. Claude will populate it with the correct section order when generating sections for this document.
 
+### 3c. Hybrid Branch (when methodology = hybrid)
+
+When the Q3 methodology answer is `Hybrid` (or the hybrid-detection heuristic in `CLAUDE.md` confirms a Water-Scrum-Fall pattern), perform these additional scaffold steps after the standard phase directories are created:
+
+1. **Create `projects/<ProjectName>/_registry/`** and seed `_registry/baseline-trace.yaml` with an empty but schema-valid skeleton:
+
+   ```yaml
+   # Populated by `python -m engine sync <project>` and the hybrid-synchronization skill.
+   baseline: []
+   stories: []
+   ```
+
+2. **Create `projects/<ProjectName>/_context/methodology.md`** with hybrid frontmatter and a change-control-body TODO:
+
+   ```markdown
+   ---
+   methodology: hybrid
+   change_control_body: <!-- TODO: name the body that approves baseline changes (e.g., Steering Committee) -->
+   sprint_length_weeks: <!-- TODO: sprint cadence in weeks, typically 2 -->
+   baseline_signed_off_on: <!-- TODO: YYYY-MM-DD -->
+   ---
+
+   # Methodology — Hybrid (Water-Scrum-Fall)
+
+   This project uses a Waterfall baseline executed through Agile sprints. The
+   baseline is locked under change control; sprint stories must trace to
+   baseline IDs recorded in `_registry/baseline-trace.yaml`.
+
+   <!-- TODO: document baseline lock, flexible features, and sprint cadence
+   once the hybrid-synchronization skill has run. -->
+   ```
+
+3. **Create `projects/<ProjectName>/07-agile-artifacts/definitions/`** as an empty directory. The `hybrid-synchronization` skill writes `dor-dod.md` into it after Phase 02 sign-off.
+
+After Phase 02 Waterfall SRS is signed off, invoke the `hybrid-synchronization` skill to populate the three hybrid artifacts and satisfy the kernel's `HybridSyncGate`.
+
 ### 4. Inject Domain Defaults
 
 If domain is not `other`:
