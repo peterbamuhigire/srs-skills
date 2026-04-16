@@ -1,0 +1,13 @@
+expectations:
+  consent:
+    must_appear_in:
+      - 02-requirements-engineering/srs/3.2*
+      - 03-design-documentation/05-ux-specification/*
+  access_control:
+    must_appear_in:
+      - 02-requirements-engineering/srs/3.2*
+      - 05-testing-documentation/test-plan/*
+  encryption:
+    must_appear_in:
+      - 03-design-documentation/04-database-design/*
+      - 05-testing-documentation/test-plan/*

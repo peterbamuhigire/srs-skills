@@ -1,0 +1,15 @@
+obligations:
+  - obligation: "Obtain verifiable parental consent before collecting personal information from children under 13"
+    framework: "COPPA"
+    clause: "16 CFR §312.5"
+    satisfied_by: [CTRL-EDU-001]
+
+  - obligation: "Allow parents and eligible students to opt out of directory-information disclosure"
+    framework: "FERPA"
+    clause: "34 CFR §99.37"
+    satisfied_by: [CTRL-EDU-002]
+
+  - obligation: "Provide eligible students access to their education records within 45 days"
+    framework: "FERPA"
+    clause: "34 CFR §99.10"
+    satisfied_by: [CTRL-EDU-003]

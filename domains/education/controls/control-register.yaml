@@ -1,0 +1,38 @@
+# TODO: expand with additional controls — this is a minimum-viable starter library.
+# Contribute additions via PR; engine validates the schema at load time.
+domain: education
+version: "1.0"
+source_framework: "FERPA + COPPA"
+controls:
+  - id: CTRL-EDU-001
+    title: Verifiable parental consent before collecting data from children under 13
+    category: consent
+    verification_kinds: [policy_inspection, design_review]
+    minimum_evidence:
+      - "Registration flow captures age and routes under-13 users to parental consent"
+      - "Functional requirement documents the verifiable-consent mechanism"
+    regulatory_anchor:
+      framework: "COPPA"
+      clause: "16 CFR §312.5"
+
+  - id: CTRL-EDU-002
+    title: Directory information opt-out
+    category: consent
+    verification_kinds: [design_review, policy_inspection]
+    minimum_evidence:
+      - "UI specification includes a directory-information opt-out toggle"
+      - "Annual notice procedure documented in runbook"
+    regulatory_anchor:
+      framework: "FERPA"
+      clause: "34 CFR §99.37"
+
+  - id: CTRL-EDU-003
+    title: Student record access for eligible students
+    category: access_control
+    verification_kinds: [test, design_review]
+    minimum_evidence:
+      - "Functional requirement for student record access with 45-day SLA"
+      - "Test case verifies eligible student can view their records"
+    regulatory_anchor:
+      framework: "FERPA"
+      clause: "34 CFR §99.10"

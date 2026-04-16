@@ -1,0 +1,7 @@
+required_reviews:
+  - control_category: consent
+    reviewer_role: "Legal"
+    cadence: "per release"
+  - control_category: access_control
+    reviewer_role: "Registrar"
+    cadence: "per term"
