@@ -60,13 +60,28 @@ File: [`02-executable-phase-gates.md`](02-executable-phase-gates.md)
 
 ## Plan 03 — Identifier and Glossary Registry
 
-**Status:** ⬜ **NOT STARTED**
+**Status:** ✅ **COMPLETE** (2026-04-16)
 
 File: [`03-identifier-and-glossary-registry.md`](03-identifier-and-glossary-registry.md)
 
-Depends on Plan 01. Can run in parallel with Plans 02 and 04.
+All 7 tasks done in 7 commits: `a8e09f7` through `eadf0d3`. 18 new tests (137 → 155). `ENGINE CONTRACT: PASS`.
 
-Deliverables: `_registry/identifiers.yaml`, `_registry/glossary.yaml` schemas; parsers that populate them from project artifacts; uniqueness + cross-reference checks.
+| Task | Commit | Summary |
+|------|--------|---------|
+| 1. `IdentifierRegistry` | `a8e09f7` | JSON Schema + `IdentifierRegistry` class + 3 tests (load, dup, invalid-ID format). Plan-verbatim code. |
+| 2. `GlossaryRegistry` | `5a2cf12` | Mirror of Task 1; case-insensitive keyed by `term.lower()`; shares `RegistryError` from Task 1. |
+| 3. `engine sync` CLI | `0b5b552` | `python -m engine sync <project>` extracts `**XX-###**` IDs and `**Term:**` glossary entries into `_registry/*.yaml`; aborts on collision. 2 tests. |
+| 4. `IdentifierRegistryCheck` | `dff7cd3` | Emits `phase09.id_registry.unknown_id` (artifact references ID not in registry) and `phase09.id_registry.orphan_id` (registry has ID no artifact mentions). Wired into `Phase09Gate`. Silent-skip when `_registry/identifiers.yaml` absent. |
+| 5. `GlossaryRegistryCheck` | `208789a` | Emits `phase09.glossary_registry.missing_term` and `phase09.glossary_registry.orphan_term`. Domain-term heuristic: `[A-Z][a-z]{3,}` appearing in ≥ 2 distinct files. Silent-skip when glossary registry absent. |
+| 6. `NfrThresholdDedupCheck` | `0c2c3b5` | Emits `phase09.nfr_threshold_dedup.contradiction` when ≥ 2 NFRs on the same metric (whitelist: response time, throughput, availability, error rate, memory, cpu, storage, concurrency, payload size) carry different `(comparator, canonical_value)` pairs. Unit normalization to ms / MB / KB / % as appropriate. |
+| 7. `CLAUDE.md` V&V SOP update | `eadf0d3` | Added "Project Registries" subsection documenting `engine sync` workflow and the 5 drift checks. |
+
+### Plan 03 follow-ups
+
+- **Phase 02 wiring deferred.** Tasks 4-6 wire into `Phase09Gate` only. `Phase02Gate` will land in Plan 02 Task 7 and re-delegates to the same check classes under a `phase02.*` namespace.
+- **Glossary term-candidate regex is noisy.** `[A-Z][a-z]{3,}` matches sentence-initial proper English words (`This`, `When`, `With`). The `≥ 2 distinct files` threshold limits the damage but a future refactor should add a short stopword list.
+- **NFR threshold metric whitelist is hand-maintained.** 14 phrases cover the common cases. New metric types (e.g., "rate limit", "queue depth") need entries added to `_METRIC_ALIASES`.
+- **Plan 03 Task 4 plan text contained an internal inconsistency** — the byte-for-byte code emits `"Registry contains {ident} but no artifact references it"` but the plan-provided test asserts the word "orphan" in the message. The implementer adjusted the message to `"Registry contains orphan identifier {ident} — no artifact references it"` to resolve the contradiction (chose the test as the contract).
 
 ---
 
