@@ -126,6 +126,13 @@ def _collect_check_ids_from_source(errors: list[str]) -> set[str]:
     # from engine/checks/. Add it explicitly so the registry assertion covers
     # it.
     ids.add("phase09.nfr_threshold_dedup.contradiction")
+    # Phase 09 controls delegates to ControlsCheck (engine/checks/controls.py),
+    # which emits nested gate IDs. Add them explicitly so the registry
+    # assertion covers them.
+    ids.add("phase09.controls.no_selection")
+    ids.add("phase09.controls.unknown_control")
+    ids.add("phase09.controls.missing_evidence")
+    ids.add("phase09.controls.unused_in_artifacts")
     # Phase 02 delegates its four checks (smart_nfr, stimulus_response,
     # id_registry, glossary_registry) to engine/checks/ modules. None of
     # them emit findings via the `gate_id=f"{self.id}.<name>"` literal the

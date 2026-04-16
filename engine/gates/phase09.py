@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 from engine.artifact_graph import Artifact, ArtifactGraph
+from engine.checks.controls import ControlsCheck
 from engine.checks.glossary_registry import GlossaryRegistryCheck
 from engine.checks.identifier_registry import IdentifierRegistryCheck
 from engine.checks.nfr_threshold_dedup import NfrThresholdDedupCheck
@@ -13,6 +14,29 @@ from engine.gates._shared import ClauseRef, attach_clause
 from engine.waivers import WaiverRegister
 
 _CLAUSE = ClauseRef("ISO/IEC 27001:2022", "9")
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_KNOWN_DOMAINS = (
+    "agriculture", "education", "finance", "government",
+    "healthcare", "logistics", "retail", "uganda",
+)
+_DOMAIN_LINE_RE = re.compile(r"domain\s*[:=]\s*([A-Za-z][A-Za-z0-9_\-]*)", re.IGNORECASE)
+
+
+def _detect_domain(project_root: Path) -> str | None:
+    domain_file = project_root / "_context" / "domain.md"
+    if not domain_file.exists():
+        return None
+    body = domain_file.read_text(encoding="utf-8")
+    for m in _DOMAIN_LINE_RE.finditer(body):
+        candidate = m.group(1).lower()
+        if candidate in _KNOWN_DOMAINS:
+            return candidate
+    lowered = body.lower()
+    for dom in _KNOWN_DOMAINS:
+        if dom in lowered:
+            return dom
+    return None
 
 _PHASE09_DIR_TOKEN = "09-governance-compliance/"
 _AUDIT_REPORT_SUFFIX = "09-governance-compliance/audit-report.md"
@@ -65,6 +89,7 @@ class Phase09Gate(Gate):
         self._check_identifier_registry(graph, findings)
         self._check_glossary_registry(graph, findings)
         self._check_nfr_threshold_dedup(graph, findings)
+        self._check_controls(graph, findings)
 
     # -- Check 1: traceability (delegates to TraceabilityCheck) ----------
     def _check_traceability(
@@ -232,6 +257,27 @@ class Phase09Gate(Gate):
         tmp = FindingCollection()
         NfrThresholdDedupCheck(
             f"{self.id}.nfr_threshold_dedup"
+        ).run(graph, tmp)
+        for f in tmp:
+            findings.add(attach_clause(f, _CLAUSE))
+
+    # -- Check 8: domain control selection (delegates to ControlsCheck) ------
+    def _check_controls(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        if graph.root is None:
+            return
+        domain = _detect_domain(graph.root)
+        if domain is None:
+            return
+        domain_register = (
+            _REPO_ROOT / "domains" / domain / "controls" / "control-register.yaml"
+        )
+        if not domain_register.exists():
+            return
+        tmp = FindingCollection()
+        ControlsCheck(
+            f"{self.id}.controls", graph.root, domain_register
         ).run(graph, tmp)
         for f in tmp:
             findings.add(attach_clause(f, _CLAUSE))

@@ -93,6 +93,10 @@ This document is validated by `scripts/validate_engine.py`: every check ID that 
 | `phase09.glossary_registry.missing_term` | ISO/IEC 27001:2022 | §9 | `engine/checks/glossary_registry.py` |
 | `phase09.glossary_registry.orphan_term` | ISO/IEC 27001:2022 | §9 | `engine/checks/glossary_registry.py` |
 | `phase09.nfr_threshold_dedup.contradiction` | IEEE Std 830-1998 | §4.3.2 | `engine/checks/nfr_threshold_dedup.py` |
+| `phase09.controls.no_selection` | ISO/IEC 27001:2022 | §9 | `engine/checks/controls.py` |
+| `phase09.controls.unknown_control` | ISO/IEC 27001:2022 | §9 | `engine/checks/controls.py` |
+| `phase09.controls.missing_evidence` | ISO/IEC 27001:2022 | §9 | `engine/checks/controls.py` |
+| `phase09.controls.unused_in_artifacts` | ISO/IEC 27001:2022 | §9 | `engine/checks/controls.py` |
 
 ## Hybrid Synchronization (active only when methodology: hybrid)
 

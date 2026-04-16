@@ -10,6 +10,10 @@ checks:
   - phase09.glossary_registry.missing_term
   - phase09.glossary_registry.orphan_term
   - phase09.nfr_threshold_dedup.contradiction
+  - phase09.controls.no_selection
+  - phase09.controls.unknown_control
+  - phase09.controls.missing_evidence
+  - phase09.controls.unused_in_artifacts
 deferred_checks:
   - phase09.compliance_controls_have_evidence  # blocked on Plan 06 ControlsCheck
   - phase09.evidence_pack_buildable            # blocked on Plan 07 `engine pack`
