@@ -209,3 +209,47 @@ def test_passes_nfr_check_when_no_nfrs_declared(tmp_path):
     findings = FindingCollection()
     Phase03Gate().evaluate(graph, findings)
     assert findings.for_gate("phase03.nfrs_link_to_design_choices") == []
+
+
+# -- security_threat_model_present ------------------------------------------
+
+def test_passes_when_threat_model_present(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/05-security/threat-model.md": (
+            "# Threat Model\nSTRIDE analysis..."
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.security_threat_model_present") == []
+
+
+def test_passes_when_threat_model_mentioned_in_design_body(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/01-high-level-design/HLD.md": (
+            "# HLD\nOur Threat Model analysis is below."
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.security_threat_model_present") == []
+
+
+def test_flags_missing_threat_model_when_design_artifacts_exist(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/01-high-level-design/HLD.md": (
+            "# HLD\nNo mention of that topic here."
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.security_threat_model_present"), (
+        "expected a security_threat_model_present finding when "
+        "no threat-model.md exists and body lacks 'threat model'"
+    )

@@ -48,6 +48,7 @@ class Phase03Gate(Gate):
         self._check_interfaces_have_contracts(graph, findings)
         self._check_data_model_has_keys(graph, findings)
         self._check_nfrs_link_to_design_choices(graph, findings)
+        self._check_security_threat_model_present(graph, findings)
 
     # -- Check 1: architecture decisions recorded ------------------------
     def _check_architecture_decisions_recorded(
@@ -144,3 +145,27 @@ class Phase03Gate(Gate):
                 location=None,
                 line=None,
             ), _CLAUSE))
+
+    # -- Check 5: security threat model present --------------------------
+    def _check_security_threat_model_present(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        for art in graph.artifacts:
+            posix = _posix(art.path)
+            if not posix.startswith(_PHASE03_ROOT):
+                continue
+            if posix.endswith(_THREAT_MODEL_SUFFIX):
+                return
+            if "threat model" in art.body.lower():
+                return
+        findings.add(attach_clause(Finding(
+            gate_id=f"{self.id}.security_threat_model_present",
+            severity=Severity.HIGH,
+            message=(
+                "No threat model found under 03-design-documentation/ "
+                "(expected 'threat-model.md' file or 'threat model' "
+                "reference in a design artifact)"
+            ),
+            location=None,
+            line=None,
+        ), _CLAUSE))
