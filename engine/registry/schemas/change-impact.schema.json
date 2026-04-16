@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["entries"],
+  "properties": {
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "raised_on", "affected_baseline_ids", "decision"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^CIA-\\d{3}$"},
+          "raised_on": {"type": "string", "format": "date"},
+          "affected_baseline_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "downstream_artifacts": {"type": "array", "items": {"type": "string"}},
+          "decision": {"enum": ["approved", "rejected", "deferred"]},
+          "decision_body": {"type": "string"},
+          "decision_date": {"type": "string", "format": "date"},
+          "rollback_plan": {"type": "string"}
+        }
+      }
+    }
+  }
+}
