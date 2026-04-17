@@ -45,3 +45,70 @@ controls:
     regulatory_anchor:
       framework: "Uganda DPPA 2019"
       clause: "§30"
+
+  - id: CTRL-UG-005
+    title: Cross-border transfer of pseudonymised personal data for AI processing
+    category: cross_border_transfer
+    verification_kinds: [policy_inspection, design_review, test]
+    minimum_evidence:
+      - "ADR documenting the decision to route AI calls through a PII scrubber"
+      - "Design artifact showing PII-scrubber on the hot path of every AI prompt"
+      - "Audit log column records whether scrubber ran (pii_scrubbed flag)"
+    regulatory_anchor:
+      framework: "Uganda DPPA Regulations 2021"
+      clause: "Regulation 20"
+
+  - id: CTRL-ISO-A9
+    title: Access control — role-based access, quarterly review
+    category: access_control
+    verification_kinds: [design_review, policy_inspection]
+    minimum_evidence:
+      - "RBAC permission matrix is authored and kept in stakeholder-analysis"
+      - "Policy requires quarterly RBAC re-review"
+    regulatory_anchor:
+      framework: "ISO/IEC 27001:2022"
+      clause: "Annex A.9"
+
+  - id: CTRL-ISO-A12
+    title: Operations security — change management, logging, backup
+    category: operations_security
+    verification_kinds: [policy_inspection, design_review]
+    minimum_evidence:
+      - "Change-window policy documented in deployment operations"
+      - "Logging, backup, and malware controls covered by runbook"
+    regulatory_anchor:
+      framework: "ISO/IEC 27001:2022"
+      clause: "Annex A.12"
+
+  - id: CTRL-PCI-T1
+    title: Tokenisation of card data — no PAN storage
+    category: encryption
+    verification_kinds: [design_review, config_inspection, test]
+    minimum_evidence:
+      - "Database design confirms no cardholder PAN column"
+      - "Payment gateway integration uses tokenised vault"
+    regulatory_anchor:
+      framework: "PCI DSS v4.0"
+      clause: "§3.2"
+
+  - id: CTRL-UNEB-001
+    title: UNEB candidate-file format conformance
+    category: regulatory_export
+    verification_kinds: [test, design_review]
+    minimum_evidence:
+      - "UNEB export module produces CSV matching the published column spec"
+      - "Test case verifies byte-for-byte conformance with a known-good sample"
+    regulatory_anchor:
+      framework: "UNEB Regulations"
+      clause: "PLE/UCE/UACE/Thematic registration circular"
+
+  - id: CTRL-EMIS-001
+    title: MoES EMIS annual return field completeness
+    category: regulatory_export
+    verification_kinds: [test, policy_inspection]
+    minimum_evidence:
+      - "EMIS export covers every required field in the annual return spec"
+      - "Test case verifies 0 missing fields against the data dictionary"
+    regulatory_anchor:
+      framework: "Uganda MoES EMIS Reporting Requirements"
+      clause: "Annual Statistical Abstract Schema"

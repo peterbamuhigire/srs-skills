@@ -8,6 +8,17 @@
 
 This document defines the criteria that every Product Backlog Item (PBI) SHALL satisfy before it is selected into a Sprint. A PBI that fails any criterion below is not Ready and SHALL NOT enter Sprint Planning.
 
+## 0 Baseline Traceability
+
+A story is NOT Ready unless it references at least one baselined identifier from the v1.0 baseline (`_registry/baselines.yaml`):
+
+- A functional requirement `FR-###` or module-prefixed form `FR-<MOD>-###` (`FR-ENR-001`, `FR-FEE-003`).
+- A non-functional requirement `NFR-<CATEGORY>-###` (`NFR-PERF-001`, `NFR-SEC-002`).
+- A business goal `BG-###` (`BG-001`).
+- A control `CTRL-<FRAMEWORK>-###` (`CTRL-UG-001`, `CTRL-ISO-A9`).
+
+Example story title: *"FR-ENR-003: validate NIN format on enrolment form"*. The reference must appear in the story description, the acceptance criteria, or the branch name (`feature/FR-<id>-short-name`). Hybrid-mode traces are recorded in `_registry/baseline-trace.yaml`.
+
 ## 1 Story Completeness Criteria
 
 - SC-01: The PBI SHALL have a unique identifier (e.g., `PBI-0042`) assigned in the backlog tracker.

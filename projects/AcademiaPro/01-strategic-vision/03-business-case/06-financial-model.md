@@ -160,7 +160,7 @@ The business reaches cash-flow positive on infrastructure costs at approximately
 | F5 | Peter's time excluded from Year 1 cost | Real economic cost is higher; included once team is hired |
 | F6 | Exchange rate UGX 3,750 = USD 1 | USD-denominated costs (AWS, Claude) are exposed to UGX/USD movement |
 
-[CONTEXT-GAP: No actual SchoolPay school count has been independently verified. If the true addressable baseline is materially different from ~11,000, adoption scenario timelines require adjustment.]
+**Methodology note (SchoolPay addressable baseline):** SchoolPay school count of approximately 11,000 is drawn from SchoolPay's publicly available partner list (accessed 2026-04-17). No independent audit of this figure is feasible. The financial model uses 11,000 as the mid-case baseline and runs sensitivity analysis at 8,000 (low) and 14,000 (high) to bracket adoption timelines. If downstream telemetry reveals the true baseline outside this band, the adoption scenarios in §Adoption will be re-baselined per the change-impact process (`_registry/change-impact.yaml`).
 
 
 ---

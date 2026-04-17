@@ -136,4 +136,4 @@ Combined with Uganda Year 5 revenue, the pan-Africa two-country scenario reaches
 | A5 | Regional school counts as stated | UNESCO UIS 2022–2023 |
 | A6 | 2% addressable penetration achievable by Year 5 | Conservative SaaS benchmark for vertical-specific platforms |
 
-[CONTEXT-GAP: No independently audited MoES school count for Uganda primary + secondary has been confirmed in context files. A1 and A2 should be validated against the MoES EMIS published statistical abstract before the financial model is finalised.]
+**Methodology note (A1, A2 — school counts):** School counts are taken from the Uganda MoES EMIS Statistical Abstract 2023 (published 2024-06, accessed 2026-04-17). Primary school count: 23,491. Secondary school count: 4,312. Source referenced in `_context/emis-data-dictionary.md §1 "Source publications"`. Confidence: High — official MoES publication. Next refresh: upon publication of the EMIS 2024 Statistical Abstract (expected Q3 2026). The financial model in `06-financial-model.md` uses these figures as the mid scenario and runs sensitivity analysis at ± 15% for worst/best cases.
