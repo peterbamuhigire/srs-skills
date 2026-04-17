@@ -1,6 +1,10 @@
 # Domain Profile: Education (Uganda-First / Pan-Africa)
 
+- domain: uganda
+- secondary_domain: education
+
 > Auto-populated from domains/education/INDEX.md at scaffold time — 2026-03-27.
+> **Primary domain is `uganda`** because the project's controlling regulatory framework is Uganda DPPA 2019 + MoES + UNEB. The education-domain profile below is retained as the secondary reference for pedagogical-pattern defaults only.
 > Domain deduced from project description (school management, students, UNEB exams, Uganda 3-term calendar).
 > **Uganda/Africa adaptation:** The US-centric standards below (FERPA, COPPA, Section 508) are noted for reference only. The primary regulatory framework for Academia Pro is Uganda law. Equivalent Uganda provisions are listed in the adaptation notes below each standard.
 

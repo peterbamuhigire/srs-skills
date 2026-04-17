@@ -1,0 +1,61 @@
+identifiers:
+- defined_in: 01-strategic-vision\03-business-case\07-risks.md
+  id: RISK-001
+  kind: RISK
+  links: []
+  title: '| **SchoolPay builds a competitive ERP.** SchoolPay deploys significant
+    engineering resources to close the feature gap —'
+- defined_in: 01-strategic-vision\03-business-case\07-risks.md
+  id: RISK-002
+  kind: RISK
+  links: []
+  title: '| **BoU payment licence not obtained in time for Phase 3.** The Bank of
+    Uganda Payment Systems Operator (PSO) licence pr'
+- defined_in: 01-strategic-vision\03-business-case\07-risks.md
+  id: RISK-003
+  kind: RISK
+  links: []
+  title: '| **Solo team capacity bottleneck.** The 12-phase build plan is substantial
+    for a 1–3-person team. A critical illness, a'
+- defined_in: 01-strategic-vision\03-business-case\07-risks.md
+  id: RISK-004
+  kind: RISK
+  links: []
+  title: '| **MoES changes the EMIS data format after Phase 1 build.** The Ministry
+    updates the EMIS XML/CSV schema, invalidating '
+- defined_in: 01-strategic-vision\03-business-case\07-risks.md
+  id: RISK-005
+  kind: RISK
+  links: []
+  title: '| **Data breach and PDPO liability.** A security incident exposes student
+    PII — names, NINs, LINs, health records — affe'
+- defined_in: 01-strategic-vision\03-business-case\07-risks.md
+  id: RISK-006
+  kind: RISK
+  links: []
+  title: '| **School churn — low retention.** Schools subscribe, enter their data,
+    then cancel after Term 1 because the product do'
+- defined_in: 01-strategic-vision\03-business-case\07-risks.md
+  id: RISK-007
+  kind: RISK
+  links: []
+  title: '| **Pan-Africa localisation complexity — currency, curriculum, and regulation
+    diverge significantly.** The country-profi'
+- defined_in: 01-strategic-vision\03-business-case\07-risks.md
+  id: RISK-008
+  kind: RISK
+  links: []
+  title: '| **UNEB changes grading rules without adequate notice.** UNEB modifies
+    PLE, UCE, or UACE grading rules mid-development,'
+- defined_in: 01-strategic-vision\03-business-case\07-risks.md
+  id: RISK-009
+  kind: RISK
+  links: []
+  title: '| **SchoolPay API changes or removes a critical endpoint.** SchoolPay changes
+    its API contract (endpoint URLs, authentic'
+- defined_in: 01-strategic-vision\03-business-case\07-risks.md
+  id: RISK-010
+  kind: RISK
+  links: []
+  title: '| **Android app rejected from Google Play Store.** Google Play Store review
+    rejects one or more of the 6 Android apps fo'

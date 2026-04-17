@@ -1,0 +1,492 @@
+terms:
+- {definition: 'Handwritten class registers. Teachers record daily attendance in physical
+    exercise books. Monthly attendance summaries are compiled by hand, consuming 3–5
+    hours of administrative time per class per term. No automated parent alert system
+    exists.', first_introduced_in: 
+    01-strategic-vision\03-business-case\02-problem-statement.md, source: '', 
+    term: Attendance}
+- {definition: 50–200 pupils — covers standard modules, first_introduced_in: 
+    01-strategic-vision\03-business-case\03-market-opportunity.md, source: '', 
+    term: Starter}
+- {definition: 201–500 pupils — standard modules + optional add-ons, 
+    first_introduced_in: 
+    01-strategic-vision\03-business-case\03-market-opportunity.md, source: '', 
+    term: Growth}
+- {definition: '501+ pupils — all modules, priority support, custom branding', 
+    first_introduced_in: 
+    01-strategic-vision\03-business-case\03-market-opportunity.md, source: '', 
+    term: Pro}
+- {definition: NECTA curriculum and Airtel/Tigo payment rails. Similar 
+    structural profile to Uganda. Phase 11 entry alongside Kenya., 
+    first_introduced_in: 
+    01-strategic-vision\03-business-case\03-market-opportunity.md, source: '', 
+    term: Tanzania}
+- {definition: Required (React 18 SPA), first_introduced_in: 
+    02-requirements-engineering\01-srs\02-overall-description.md, source: '', 
+    term: JavaScript}
+- {definition: Must function on 3G (≥ 1 Mbps); offline PWA for attendance and 
+    mark entry on service worker, first_introduced_in: 
+    02-requirements-engineering\01-srs\02-overall-description.md, source: '', 
+    term: Network}
+- {definition: MVVM + Repository pattern, first_introduced_in: 
+    02-requirements-engineering\01-srs\02-overall-description.md, source: '', 
+    term: Architecture}
+- {definition: Room database + WorkManager background sync, first_introduced_in: 
+    02-requirements-engineering\01-srs\02-overall-description.md, source: '', 
+    term: Offline}
+- {definition: '"Record Payment" primary button.', first_introduced_in: 
+    03-design-documentation\05-ux-spec\01-ux-specification.md, source: '', term: 
+    Submit}
+- {definition: '15mm top, 15mm bottom, 20mm left, 20mm right.', 
+    first_introduced_in: 
+    03-design-documentation\05-ux-spec\01-ux-specification.md, source: '', term: 
+    Margins}
+- {definition: 'School logo (left), school name and address (centre), "TERMLY REPORT
+    CARD" (right). Term and year below.', first_introduced_in: 
+    03-design-documentation\05-ux-spec\01-ux-specification.md, source: '', term: 
+    Header}
+- {definition: 'School stamp placeholder, date generated.', first_introduced_in: 
+    03-design-documentation\05-ux-spec\01-ux-specification.md, source: '', term: 
+    Footer}
+- {definition: Half A4 (A5 landscape)., first_introduced_in: 
+    03-design-documentation\05-ux-spec\01-ux-specification.md, source: '', term: 
+    Size}
+- {definition: 'School name, receipt number, student name, class, amount paid (UGX,
+    formatted with thousand separators), payment method, date, recorded by.', 
+    first_introduced_in: 
+    03-design-documentation\05-ux-spec\01-ux-specification.md, source: '', term: 
+    Content}
+- {definition: FR-AUTH-001 | **Priority:** Critical, first_introduced_in: 
+    05-testing-documentation\02-test-plan\01-test-plan.md, source: '', term: REQ}
+- {definition: User account `status = active` with valid password hash., 
+    first_introduced_in: 05-testing-documentation\02-test-plan\01-test-plan.md, 
+    source: '', term: Pre}
+- {definition: '(1) `POST /api/auth/login` with valid credentials. (2) Assert HTTP
+    200. (3) Assert `access_token` and `refresh_token` in body. (4) Assert JWT payload
+    contains `tenant_id`, `user_id`.', first_introduced_in: 
+    05-testing-documentation\02-test-plan\01-test-plan.md, source: '', term: 
+    Steps}
+- {definition: JWT pair returned with correct claims., first_introduced_in: 
+    05-testing-documentation\02-test-plan\01-test-plan.md, source: '', term: 
+    Pass}
+- {definition: 'A red badge on the bell icon shows unread notifications. Press the
+    bell to see alerts such as absent students, payment confirmations, or system messages.',
+  first_introduced_in: 
+    08-end-user-documentation\01-user-manual\01-user-manual.md, source: '', term: 
+    Notifications}
+- {definition: 'Attendance alerts (3 consecutive absences), fee reminders (7 days
+    before term, 1 day before term, 7 days into term if unpaid), and critical school
+    announcements.', first_introduced_in: 
+    08-end-user-documentation\01-user-manual\01-user-manual.md, source: '', term: 
+    SMS}
+- {definition: 'If you registered an email address, you also receive notifications
+    there.', first_introduced_in: 
+    08-end-user-documentation\01-user-manual\01-user-manual.md, source: '', term: 
+    Email}
+- {definition: The AI has strong data to support its conclusion. You can act on 
+    this with reasonable confidence., first_introduced_in: 
+    08-end-user-documentation\01-user-manual\01-user-manual.md, source: '', term: 
+    High}
+- {definition: The AI's conclusion is reasonable but you should verify with the 
+    underlying data before taking a significant decision., first_introduced_in: 
+    08-end-user-documentation\01-user-manual\01-user-manual.md, source: '', term: 
+    Medium}
+- {definition: The AI has limited data or the pattern is unclear. Review 
+    carefully. Do not rely on this alone., first_introduced_in: 
+    08-end-user-documentation\01-user-manual\01-user-manual.md, source: '', term: 
+    Low}
+- {definition: The comment is saved as written., first_introduced_in: 
+    08-end-user-documentation\01-user-manual\01-user-manual.md, source: '', term: 
+    Accept}
+- {definition: Change any part of the comment before saving., 
+    first_introduced_in: 
+    08-end-user-documentation\01-user-manual\01-user-manual.md, source: '', term: 
+    Edit}
+- {definition: The comment is not used. Write your own instead., 
+    first_introduced_in: 
+    08-end-user-documentation\01-user-manual\01-user-manual.md, source: '', term: 
+    Reject}
+- {definition: 'Any modern browser (Chrome, Firefox, Edge, Safari) with an internet
+    connection', first_introduced_in: 08-end-user-documentation\03-faq\01-faq.md,
+  source: '', term: Web}
+- {definition: A stable connection is required for initial data sync; the 
+    Android app supports offline attendance and mark entry with automatic 
+    background sync, first_introduced_in: 
+    08-end-user-documentation\03-faq\01-faq.md, source: '', term: Internet}
+- {definition: FR-EXM-008 — UNEB candidate registration export, 
+    first_introduced_in: 
+    09-governance-compliance\02-audit-report\01-audit-report.md, source: '', 
+    term: Requirement}
+- {definition: Downgraded from Major to Minor — core fields are sufficient for 
+    initial implementation; full format closure is a pre-Sprint 3 task., 
+    first_introduced_in: 
+    09-governance-compliance\02-audit-report\01-audit-report.md, source: '', 
+    term: Severity}
+- {definition: 'TC-EMIS-001, TC-EMIS-002, TC-EMIS-003, and UG-NFR-002 acceptance testing
+    can now proceed. BG-004 functional coverage increased from 2 FRs to 4 FRs.', 
+    first_introduced_in: 
+    09-governance-compliance\02-audit-report\01-audit-report.md, source: '', 
+    term: Impact}
+- {definition: '`_context/gap-analysis.md` HIGH-002', first_introduced_in: 
+    09-governance-compliance\02-audit-report\01-audit-report.md, source: '', 
+    term: Reference}
+- {definition: 'The gap analysis entry for the ERD (HIGH-002) is marked "Not started,"
+    yet the ERD is listed as a completed Phase 03 document. This status field should
+    be updated to reflect actual completion.', first_introduced_in: 
+    09-governance-compliance\02-audit-report\01-audit-report.md, source: '', 
+    term: Observation}
+- {definition: '`[V&V-FAIL: gap-analysis.md HIGH-002 status field not updated after
+    ERD completion]`', first_introduced_in: 
+    09-governance-compliance\02-audit-report\01-audit-report.md, source: '', 
+    term: Tag}
+- {definition: Tenant isolation breach — a query or API response leaks data 
+    belonging to Tenant A to Tenant B due to a missing `tenant_id` filter in a 
+    Repository method or raw SQL query., first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-T01}
+- {definition: 'UNEB grading engine inaccuracy — the automated grade computation for
+    PLE, UCE, or UACE produces a result that differs from the official UNEB manual
+    computation for 1 or more candidates.', first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-T02}
+- {definition: 'Database performance degradation at scale — query response time exceeds
+    the 500 ms P95 threshold when the system serves 500 concurrent tenants with 200,000+
+    student records.', first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-T03}
+- {definition: 'Offline sync conflict — a teacher submits attendance or marks offline,
+    and a conflicting record was entered online by the head teacher during the same
+    period, resulting in data loss or incorrect records.', first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-T04}
+- {definition: "Payment double-processing — the same fee payment is recorded twice
+    (via manual entry race condition or SchoolPay webhook replay), inflating the school's
+    revenue and generating a duplicate receipt.", first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-T05}
+- {definition: 'Meilisearch index sync lag — search results for recently enrolled
+    students or updated fee records are stale for more than 30 seconds, causing bursars
+    to record payments against outdated balances.', first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-T06}
+- {definition: 'Solo developer bus factor — Peter is the sole developer, architect,
+    and system administrator. Illness, unavailability, or departure for more than
+    2 weeks halts all development, support, and incident response.', 
+    first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-O01}
+- {definition: 'Single-VPS infrastructure failure — the production environment runs
+    on a single AWS VPS. Hardware failure, region outage, or misconfigured deployment
+    causes total service unavailability exceeding the 4-hour RTO.', 
+    first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-O02}
+- {definition: "SchoolPay API downtime — SchoolPay's payment gateway becomes unavailable
+    during peak fee collection periods (Term 1 opening week), blocking all electronic
+    fee payments for an indeterminate period.", first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-O03}
+- {definition: "Africa's Talking SMS delivery failure — SMS notifications (fee reminders,
+    attendance alerts, OTPs) fail to deliver due to Africa's Talking API downtime
+    or telco gateway congestion, with delivery rates dropping below 90%.", 
+    first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-O04}
+- {definition: 'AWS region unavailability — the chosen AWS region (af-south-1, Cape
+    Town) experiences an outage lasting more than 4 hours, exceeding the RTO target.',
+  first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-O05}
+- {definition: 'PDPO 2019 violation — Chwezi Core Systems processes personal data
+    of minors (students under 18) without completing Data Controller registration
+    with the Personal Data Protection Office, or fails to execute Data Processing
+    Agreements with subscribing schools.', first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-C01}
+- {definition: "UNEB registration export format non-compliance — the UNEB export function
+    produces output that does not match the official UNEB registration file format,
+    causing rejection by UNEB's system. *Note: core registration fields (name, date
+    of birth, gender, NIN/LIN, nationality, district, school centre number) are now
+    documented from the MoES EMIS Secondary School Manual. The exact UNEB electronic
+    registration file format still requires direct UNEB ICT department liaison to
+    confirm column order, encoding, and submission protocol.*", 
+    first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-C02}
+- {definition: 'EMIS export rejection — the MoES EMIS export function generates data
+    that fails validation against the MoES EMIS data dictionary, causing schools to
+    miss statutory reporting deadlines. *Note: a complete EMIS data dictionary has
+    been created from 5 official MoES documents (2023 Learner Registration Form, 2024
+    Staff Registration Form, International Learner Form, Primary School Manual, Secondary
+    School Manual). This significantly reduces the probability of field-level validation
+    failures.*', first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-C03}
+- {definition: 'BoU Payment Systems Operator licence delay — direct mobile money integration
+    (MTN MoMo, Airtel Money) in Phase 3 requires a BoU PSO licence. Licence approval
+    delay exceeds 6 months, blocking the Phase 3 payment module.', 
+    first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-C04}
+- {definition: 'Scope creep across 12 phases — feature requests from pilot schools
+    or market pressure cause Phase 1 scope to expand beyond the 49 specified functional
+    requirements, delaying launch by more than 3 months.', first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-P01}
+- {definition: 'School adoption slower than target — fewer than 50 schools subscribe
+    within the first 12 months (10% of the 500-school, 24-month target), creating
+    a revenue gap that threatens operational sustainability.', 
+    first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-P02}
+- {definition: 'Competing products — an established competitor (e.g., QuickSchools,
+    Zeraki, or a well-funded local entrant) launches a Uganda-localised product with
+    UNEB grading and MoMo integration before Academia Pro reaches Phase 8.', 
+    first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-P03}
+- {definition: "Funding and revenue gap — subscription revenue from early adopters
+    is insufficient to cover AWS hosting, SchoolPay transaction fees, Africa's Talking
+    SMS costs, and Peter's living expenses during the 12-month pre-revenue period.",
+  first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-P04}
+- {definition: 'Pilot school data quality — the first pilot school provides incomplete
+    or inconsistent student data during migration (Excel import), causing data integrity
+    errors that undermine confidence in the platform.', first_introduced_in: 
+    09-governance-compliance\04-risk-assessment\01-risk-assessment.md, source: '',
+  term: RISK-P05}
+- {definition: Bank of Uganda — the central bank and financial regulator of 
+    Uganda. Issues Payment Systems Operator licences required for direct mobile 
+    money processing., first_introduced_in: _context\glossary.md, source: '', 
+    term: BoU}
+- {definition: 'The school staff member responsible for fee collection, payment recording,
+    and financial reporting.', first_introduced_in: _context\glossary.md, source: '',
+  term: Bursar}
+- {definition: Children's Online Privacy Protection Act (U.S.) — noted as a 
+    US-specific regulation; the Uganda equivalent is the Data Protection and 
+    Privacy Act 2019 (PDPO)., first_introduced_in: _context\glossary.md, source: '',
+  term: COPPA}
+- {definition: 'Education Management Information System — the Uganda Ministry of Education
+    and Sports (MoES) data platform for school statistics, student headcounts, and
+    teacher records.', first_introduced_in: _context\glossary.md, source: '', 
+    term: EMIS}
+- {definition: 'The formal registration of a student at a specific school for a specific
+    academic year, represented by a record in the `school_enrollments` table linking
+    a `student_uid` to a `tenant_id`.', first_introduced_in: 
+    _context\glossary.md, source: '', term: Enrollment}
+- {definition: Firebase Cloud Messaging — the push notification service used for
+    Android and iOS app alerts., first_introduced_in: _context\glossary.md, 
+    source: '', term: FCM}
+- {definition: Family Educational Rights and Privacy Act (U.S.) — noted as a 
+    US-specific regulation; the Uganda equivalent for student record privacy is 
+    the PDPO 2019., first_introduced_in: _context\glossary.md, source: '', term: 
+    FERPA}
+- {definition: Functional Requirement — a statement of system behaviour in 
+    stimulus-response format following the IEEE 830 "The system shall..." 
+    convention., first_introduced_in: _context\glossary.md, source: '', term: FR}
+- {definition: The performance descriptor assigned to a student for a subject in
+    an exam. Grading scales vary by curriculum level — see BR-UNEB-001 through 
+    BR-UNEB-004., first_introduced_in: _context\glossary.md, source: '', term: 
+    Grade}
+- {definition: JSON Web Token — the authentication token format used by Laravel 
+    Sanctum. Every JWT payload includes `tenant_id` and `user_id` claims., 
+    first_introduced_in: _context\glossary.md, source: '', term: JWT}
+- {definition: 'A Ugandan micro-payment model (researched in the master document)
+    enabling partial fee payments with no minimum floor, community payment agents,
+    and pre-term instalment plans.', first_introduced_in: _context\glossary.md, 
+    source: '', term: KUPAA}
+- {definition: PHP web application framework (version 11) used for the Academia 
+    Pro backend., first_introduced_in: _context\glossary.md, source: '', term: 
+    Laravel}
+- {definition: Learner Identification Number — a unique identifier assigned to 
+    students by the Uganda MoES NEMIS system. Used for cross-school global 
+    identity lookup., first_introduced_in: _context\glossary.md, source: '', 
+    term: LIN}
+- {definition: 'Ministry of Education and Sports (Uganda) — the government body responsible
+    for education regulation, EMIS reporting, and UNEB oversight.', 
+    first_introduced_in: _context\glossary.md, source: '', term: MoES}
+- {definition: "National Education Management Information System (Uganda/Kenya). In
+    Uganda context: MoES's student registration database. Used as source for LIN assignment.",
+  first_introduced_in: _context\glossary.md, source: '', term: NEMIS}
+- {definition: 'Non-Functional Requirement — a quality constraint on system behaviour
+    (performance, security, availability, etc.), expressed with measurable metrics
+    per IEEE 830.', first_introduced_in: _context\glossary.md, source: '', term: 
+    NFR}
+- {definition: National Identification Number — the biometric identity number 
+    issued by the Uganda National Identification and Registration Authority 
+    (NIRA) to citizens aged 16 and above., first_introduced_in: 
+    _context\glossary.md, source: '', term: NIN}
+- {definition: 'Uganda Personal Data Protection and Privacy Act 2019 — the primary
+    data privacy law in Uganda governing collection, processing, storage, and transfer
+    of personal data. See BR-DP-001 through BR-DP-004 and `_context/gap-analysis.md`
+    HIGH-008.', first_introduced_in: _context\glossary.md, source: '', term: 
+    PDPO}
+- {definition: Project Input Folder — the `_context/` directory; the living 
+    repository of project-specific context that feeds every skill execution., 
+    first_introduced_in: _context\glossary.md, source: '', term: PIF}
+- {definition: "Primary Leaving Examinations — Uganda's national examinations for
+    P7 (Primary 7) students, administered by UNEB. Grading defined in BR-UNEB-001.",
+  first_introduced_in: _context\glossary.md, source: '', term: PLE}
+- {definition: 'A role-scoped web interface for a specific stakeholder group (Super
+    Admin, Owner/Director, Teacher, Student, Parent).', first_introduced_in: 
+    _context\glossary.md, source: '', term: Portal}
+- {definition: 'A system-generated document confirming a fee payment, numbered sequentially
+    per school, linked to a student, term, and payment channel. Receipts are immutable
+    after generation.', first_introduced_in: _context\glossary.md, source: '', 
+    term: Receipt}
+- {definition: 'Role-Based Access Control — the permission model where users are assigned
+    roles, and roles are granted permissions to perform specific actions on specific
+    resources.', first_introduced_in: _context\glossary.md, source: '', term: 
+    RBAC}
+- {definition: "Uganda's dominant school fee payment platform (15,000+ schools; BoU
+    licensed). Academia Pro integrates via their open API as a payment partner in
+    Phase 1–2.", first_introduced_in: _context\glossary.md, source: '', term: 
+    SchoolPay}
+- {definition: 'Software Requirements Specification — a document that describes the
+    complete behaviour of a software system, following IEEE 830 conventions.', 
+    first_introduced_in: _context\glossary.md, source: '', term: SRS}
+- {definition: An individual school organisation subscribed to Academia Pro. 
+    Identified by a unique `tenant_id` integer in the database., 
+    first_introduced_in: _context\glossary.md, source: '', term: Tenant}
+- {definition: 'One of three instructional periods in the Uganda academic year (Term
+    1, Term 2, Term 3). The primary billing and reporting unit.', 
+    first_introduced_in: _context\glossary.md, source: '', term: Term}
+- {definition: 'Uganda Advanced Certificate of Education — A-Level examinations for
+    Senior 6 (S6) students, administered by UNEB. Grading defined in BR-UNEB-003.',
+  first_introduced_in: _context\glossary.md, source: '', term: UACE}
+- {definition: 'Uganda Certificate of Education — O-Level examinations for Senior
+    4 (S4) students, administered by UNEB. Grading defined in BR-UNEB-002.', 
+    first_introduced_in: _context\glossary.md, source: '', term: UCE}
+- {definition: 'Uganda National Examinations Board — the government body that administers
+    PLE, UCE, and UACE national examinations and publishes official grading rules.',
+  first_introduced_in: _context\glossary.md, source: '', term: UNEB}
+- {definition: 'Uganda Registration Services Bureau — the government body for intellectual
+    property registration, including software copyright under the Uganda Copyright
+    Act 2006.', first_introduced_in: _context\glossary.md, source: '', term: 
+    URSB}
+- {definition: 'Unstructured Supplementary Service Data — a GSM protocol used for
+    feature-phone-accessible services (e.g., fee balance inquiry via short code).
+    Planned for Phase 11.', first_introduced_in: _context\glossary.md, source: '',
+  term: USSD}
+- {definition: Uganda Shilling — the official currency of Uganda. All fee 
+    amounts in Academia Pro are stored and displayed in UGX unless the tenant is
+    a foreign-currency school (Phase 11+)., first_introduced_in: 
+    _context\glossary.md, source: '', term: UGX}
+- {definition: A hybrid software development methodology combining formal 
+    upfront requirements phases (Waterfall) with iterative delivery sprints 
+    (Scrum) and formal phase gate sign-offs. Confirmed methodology for Academia 
+    Pro., first_introduced_in: _context\glossary.md, source: '', term: 
+    Water-Scrum-Fall}
+- {definition: National Identification and Registration Authority — the 
+    government body that manages NIN issuance and verification in Uganda., 
+    first_introduced_in: _context\glossary.md, source: '', term: NIRA}
+- {definition: Integrated Personnel and Payroll System — the government system 
+    for managing civil servant payroll; teachers on the government payroll are 
+    identified by their IPPS Number., first_introduced_in: _context\glossary.md, 
+    source: '', term: IPPS}
+- {definition: Teacher Management Information System — an MoES system for 
+    tracking teacher records; teachers are identified by their TMIS Number., 
+    first_introduced_in: _context\glossary.md, source: '', term: TMIS}
+- {definition: School Management Committee — the governance body for primary 
+    schools in Uganda., first_introduced_in: _context\glossary.md, source: '', 
+    term: SMC}
+- {definition: Universal Secondary Education — a Uganda government programme 
+    providing free secondary education., first_introduced_in: 
+    _context\glossary.md, source: '', term: USE}
+- {definition: Universal Post O-Level Education and Training — a Uganda 
+    government programme for post-O-Level education., first_introduced_in: 
+    _context\glossary.md, source: '', term: UPOLET}
+- {definition: 'A curriculum-aligned digital content and AI tutoring platform that
+    integrates with Academia Pro via API. BrightSoma handles multi-school content
+    distribution and AI tutoring; Academia Pro handles in-school assignment management
+    and resource organisation. The two are complementary, not interchangeable.', 
+    first_introduced_in: _context\glossary.md, source: '', term: BrightSoma}
+- {definition: "Continuous Assessment Test — a scheduled in-class assessment contributing
+    to a student's term marks. Distinct from homework, projects, and terminal examinations.
+    Maps to a specific column in the school's marks register.", 
+    first_introduced_in: _context\glossary.md, source: '', term: CAT}
+- {definition: Content Delivery Network — a geographically distributed network 
+    of servers that caches and delivers files from edge nodes closer to the end 
+    user. Used in Academia Pro to reduce file download latency for students on 
+    slow connections in Uganda., first_introduced_in: _context\glossary.md, 
+    source: '', term: CDN}
+- {definition: 'The digital marks register that aggregates all assessment scores —
+    homework, CATs, projects, practicals, and exams — into a term-level record per
+    student per subject. Assignment marks auto-post to the gradebook when the teacher
+    publishes them.', first_introduced_in: _context\glossary.md, source: '', 
+    term: Gradebook}
+- {definition: HTTP Live Streaming — an adaptive video streaming protocol used 
+    to deliver uploaded MP4 video files via CDN. Allows students to watch 
+    school-uploaded videos on slower connections without buffering the entire 
+    file., first_introduced_in: _context\glossary.md, source: '', term: HLS}
+- {definition: Not Submitted — the gradebook status assigned to a student who 
+    did not submit an assignment by the deadline (or resubmission window if 
+    applicable). Distinct from a zero mark; visible to the teacher and parent 
+    and does not automatically count as zero in weighted average calculations., 
+    first_introduced_in: _context\glossary.md, source: '', term: NSubmit}
+- {definition: 'A marking scheme composed of named criteria, each with a maximum mark
+    allocation. When a teacher attaches a rubric to an assignment, students see the
+    criteria before submitting and teachers score per criterion when marking — the
+    total auto-calculates.', first_introduced_in: _context\glossary.md, source: '',
+  term: Rubric}
+- {definition: 'A cloud object storage provider compatible with the AWS S3 API. Recommended
+    for Academia Pro file storage due to cost efficiency ($6/TB/month, no egress fees)
+    versus AWS S3 — significant saving for an Africa-market SaaS with high PDF and
+    audio file volumes.', first_introduced_in: _context\glossary.md, source: '', 
+    term: Wasabi}
+- {definition: MTN Mobile Money Uganda (MoMo Pay / Merchant API), 
+    first_introduced_in: _context\payment-landscape.md, source: '', term: 
+    Product}
+- {definition: MTN MoMo Open API (Sandbox available at momodeveloper.mtn.com), 
+    first_introduced_in: _context\payment-landscape.md, source: '', term: API}
+- {definition: Parent-initiated payment to Academia Pro merchant number → 
+    callback to Academia Pro → auto-reconcile to student account, 
+    first_introduced_in: _context\payment-landscape.md, source: '', term: Flow}
+- {definition: Same BoU requirement as MTN, first_introduced_in: 
+    _context\payment-landscape.md, source: '', term: Licence}
+- {definition: 'Flutterwave (supports Visa/Mastercard card-not-present, M-Pesa, MTN,
+    Airtel across Africa)', first_introduced_in: _context\payment-landscape.md, 
+    source: '', term: Provider}
+- {definition: USD/GBP/EUR received; converted to UGX and credited to school 
+    account, first_introduced_in: _context\payment-landscape.md, source: '', 
+    term: Currency}
+- {definition: 1) Fee balance → 2) Last payment → 3) Report card term summary, 
+    first_introduced_in: _context\payment-landscape.md, source: '', term: Menu}
+- {definition: Record all fee payments accurately; print receipts on demand; 
+    know which students owe fees before term begins; send SMS reminders without 
+    typing each parent's number., first_introduced_in: _context\personas.md, 
+    source: '', term: Goals}
+- {definition: PHP 8.2+, first_introduced_in: _context\tech_stack.md, source: '',
+  term: Language}
+- {definition: Laravel 11 (Service/Repository pattern; no Eloquent ORM in 
+    business logic — use Repository interfaces), first_introduced_in: 
+    _context\tech_stack.md, source: '', term: Framework}
+- {definition: MySQL 8.x InnoDB (strict mode enabled; utf8mb4 charset), 
+    first_introduced_in: _context\tech_stack.md, source: '', term: Database}
+- {definition: Laravel Scout + Meilisearch (for student/staff search), 
+    first_introduced_in: _context\tech_stack.md, source: '', term: Search}
+- {definition: Laravel Sanctum (JWT-style tokens); every JWT payload includes 
+    `tenant_id` claim, first_introduced_in: _context\tech_stack.md, source: '', 
+    term: Authentication}
+- {definition: Jetpack Compose, first_introduced_in: _context\tech_stack.md, 
+    source: '', term: UI}
+- {definition: Meta Business Cloud API, first_introduced_in: 
+    _context\tech_stack.md, source: '', term: WhatsApp}
+- {definition: Anthropic Claude API (claude-sonnet-4-6), first_introduced_in: 
+    _context\tech_stack.md, source: '', term: Model}
+- {definition: Ubuntu 22.04 LTS VPS (initial); AWS EC2 Auto Scaling (Phase 8+), 
+    first_introduced_in: _context\tech_stack.md, source: '', term: Hosting}
+- {definition: Cloudflare, first_introduced_in: _context\tech_stack.md, source: '',
+  term: DNS}
+- {definition: Docker + Docker Compose (local dev); ECS Fargate (production 
+    Phase 8+), first_introduced_in: _context\tech_stack.md, source: '', term: 
+    Containerisation}
+- {definition: MoES EMIS portal — bulk student data export in MoES-specified 
+    format (XML/CSV), first_introduced_in: _context\tech_stack.md, source: '', 
+    term: Uganda}
+- {definition: Windows 11 / WSL2 (development); Ubuntu 22.04 (production), 
+    first_introduced_in: _context\tech_stack.md, source: '', term: OS}
+- {definition: 'PHPUnit (backend), Pest (preferred), Vitest (frontend), Playwright
+    (E2E)', first_introduced_in: _context\tech_stack.md, source: '', term: 
+    Testing}

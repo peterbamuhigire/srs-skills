@@ -47,14 +47,14 @@ The following criteria must all be met before Phase 1 development begins. This i
 
 | # | Criterion | Status | Owner |
 |---|---|---|---|
-| 1 | **HIGH-001** Security architecture document written and reviewed | Not started | Peter |
-| 2 | **HIGH-002** Consolidated ERD drawn (Phase 1 entities minimum) | Not started | Peter |
-| 3 | **HIGH-003** OpenAPI 3.1 spec written for all Phase 1 endpoints | Not started | Peter |
-| 4 | **HIGH-004** Academic year lifecycle management spec completed | Not started | Peter |
-| 5 | **HIGH-005** Full RBAC permission matrix produced | Not started | Peter |
-| 6 | **HIGH-006** Double-payment prevention rules fully specified | Not started | Peter |
-| 7 | **HIGH-007** Data migration specification written | Not started | Peter |
-| 8 | **HIGH-008** Uganda PDPO 2019 compliance document written; PDPO registration initiated | Not started | Peter |
+| 1 | `HIGH-001` Security architecture document written and reviewed | Not started | Peter |
+| 2 | `HIGH-002` Consolidated ERD drawn (Phase 1 entities minimum) | Not started | Peter |
+| 3 | `HIGH-003` OpenAPI 3.1 spec written for all Phase 1 endpoints | Not started | Peter |
+| 4 | `HIGH-004` Academic year lifecycle management spec completed | Not started | Peter |
+| 5 | `HIGH-005` Full RBAC permission matrix produced | Not started | Peter |
+| 6 | `HIGH-006` Double-payment prevention rules fully specified | Not started | Peter |
+| 7 | `HIGH-007` Data migration specification written | Not started | Peter |
+| 8 | `HIGH-008` Uganda PDPO 2019 compliance document written; PDPO registration initiated | Not started | Peter |
 
 All 8 gates are documented in `_context/gap-analysis.md`. Development of Phase 1 is **blocked** until all 8 are marked complete and reviewed.
 
