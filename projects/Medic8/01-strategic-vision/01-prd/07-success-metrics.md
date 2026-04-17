@@ -1,6 +1,6 @@
 # 7 Success Metrics and Key Performance Indicators
 
-This section defines the measurable KPIs that govern Medic8's progress across business growth, clinical safety, operational performance, and user adoption. Each KPI specifies a baseline, target, measurement method, and timeline. KPIs are evaluated at phase gates per the Water-Scrum-Fall methodology (see Section 8 Constraints and Assumptions).
+This section defines the measurable KPIs that govern Medic8's progress across business growth, clinical safety, operational performance, user adoption, AI Intelligence performance, and internationalisation quality. Each KPI specifies a baseline, target, measurement method, and timeline. KPIs are evaluated at phase gates per the Water-Scrum-Fall methodology (see Section 8 Constraints and Assumptions).
 
 All targets are binding unless marked `[ASPIRATIONAL]`. Unknown baselines are flagged with `[BASELINE-TBD]` and must be established during Phase 1 pilot data collection.
 
@@ -36,7 +36,7 @@ All targets are binding unless marked `[ASPIRATIONAL]`. Unknown baselines are fl
 
 | KPI | Category | Baseline | Target | Measurement Method | Timeline |
 |---|---|---|---|---|---|
-| System uptime | Availability | N/A (new system) | 99.9% (≤ 8.76 hours downtime/year) | Infrastructure monitoring (e.g., UptimeRobot or equivalent); $Availability = \frac{MTTF}{MTTF + MTTR} \times 100\%$ | Monthly from production launch |
+| System uptime | Availability | N/A (new system) | 99.9% (≤ 8.76 hours downtime/year) | Infrastructure monitoring; $Availability = \frac{MTTF}{MTTF + MTTR} \times 100\%$ | Monthly from production launch |
 | API response time (P95) | Performance | N/A | < 500 ms under normal load (≤ 50 concurrent users per facility) | Application Performance Monitoring (APM) at API gateway | Continuous from Phase 1 |
 | Page load time | Performance | N/A | < 2 seconds on 1 Mbps connection | Synthetic monitoring from Kampala-based test endpoint | Continuous from Phase 1 |
 | Offline sync queue size | Resilience | N/A | Queue processes within 5 minutes of connectivity restoration for up to 500 queued transactions | Sync engine metrics: queue depth, oldest item age, drain time | Phase 1 (offline-first modules) |
@@ -61,7 +61,70 @@ All targets are binding unless marked `[ASPIRATIONAL]`. Unknown baselines are fl
 | 30/60/90-day retention rate | Retention | `[BASELINE-TBD]` | ≥ 90% of pilot facilities still active at 90 days | Facilities with at least 1 login in trailing 7 days at each checkpoint | Phase 1 pilot |
 | Mobile app adoption rate | Platform | `[BASELINE-TBD]` | ≥ 40% of clinical staff using mobile app by Phase 2 | Mobile app unique users / total clinical users per facility | Phase 2+ |
 
-## 7.5 KPI Review Cadence
+## 7.5 AI Intelligence Success Metrics
+
+These metrics apply to tenants that have activated the AI Intelligence module. Measurement begins at module activation, not at Phase 1 launch.
+
+| Metric | Target | Measurement Window | Baseline |
+|---|---|---|---|
+| ICD coding suggestion acceptance rate | ≥ 70% of AI suggestions accepted without modification | 90 days after AI module activation | 0% (no AI coding prior to activation) |
+| AI claim scrubbing rejection rate reduction | ≥ 20% reduction in first-submission rejection rate | 6 months after AI module activation | Facility-specific pre-activation rejection rate |
+| AI clinical note draft acceptance rate (unedited) | ≥ 40% of drafts approved without clinician edits | 90 days after AI module activation | 0% |
+| AI outbreak early warning false positive rate | ≤ 15% false positives over rolling 90-day period | Rolling 90-day window | Measured from first alert generated |
+
+The AI Intelligence admin panel displays all 4 metrics in real time, updated daily, accessible to the AI Administrator role.
+
+## 7.6 Internationalisation (i18n) Quality Metric
+
+- Zero `[I18N-GAP]` tags shall remain unresolved in any production release. An `[I18N-GAP]` tag in the `release` branch build log is a release blocker.
+- The CI pipeline fails the build in the `release` branch when any `[I18N-GAP]` tag is present. The gap is assigned to the translation queue with the label `i18n-gap` and resolved by a native-speaker reviewer before the build is retried.
+- Measurement method: automated build log scan for `[I18N-GAP]` pattern in `release` branch.
+
+## 7.7 Phase Gate Criteria
+
+### Phase 1 Gate
+
+All criteria must be satisfied before Phase 2 begins:
+
+1. All 7 HIGH gaps resolved and documented.
+2. Core clinical workflow tested end-to-end (registration → consultation → prescription → dispensing → billing → receipt).
+3. Medication safety validation complete (drug interactions, allergy conflicts, paediatric dosing guards).
+4. Zero patient safety incidents attributable to system error during pilot.
+5. At least 3 pilot clinics live and processing real patients.
+6. Cash billing reconciliation rate ≥ 95%.
+7. 100% test pass rate for all Phase 1 modules.
+8. Facility onboarding demonstrated within 2-4 hours.
+9. French and Kiswahili string files 100% complete with zero `[I18N-GAP]` tags across all Phase 1 modules.
+
+### Phase 2 Gate
+
+1. Phase 1 in production with 10+ paying facilities.
+2. Zero patient safety incidents reported across all Phase 1 facilities.
+3. Insurance claim submission and reconciliation functional with at least 3 Uganda insurers.
+4. HMIS monthly report export validated by MoH field officer (≥ 99% accuracy).
+5. At least 1 government facility (HC IV) onboarded.
+6. At least 1 mission hospital onboarded.
+7. AI Intelligence module available and tested with at least 1 pilot facility.
+
+### Phase 3 Gate
+
+1. FHIR R4 conformance tested against ONC certification test suite for 14 resource types.
+2. PEPFAR MER indicators (TX_CURR, TX_NEW, TX_PVLS) validated against manual calculation with < 1% variance.
+3. First OpenMRS/UgandaEMR data migration completed successfully.
+4. At least 1 PEPFAR-funded facility onboarded.
+5. At least 1 cross-border deployment (Kenya or Tanzania) operational.
+
+### Phase 4 Gate
+
+1. 50+ active facilities across all tiers.
+2. Director Platform validated with at least 1 multi-facility network.
+3. Multi-facility patient record sharing demonstrated across at least 2 sites with sub-second lookup.
+4. Insurance claims processing validated with 3+ insurers.
+5. Enterprise SLA defined and tested.
+6. PACS integration tested with at least 1 radiology department.
+7. Consolidated Director dashboard operational.
+
+## 7.8 KPI Review Cadence
 
 | Review Level | Frequency | Participants | Action |
 |---|---|---|---|
@@ -69,3 +132,4 @@ All targets are binding unless marked `[ASPIRATIONAL]`. Unknown baselines are fl
 | KPI review | Monthly | Peter | Evaluate all KPI categories, identify trends, adjust priorities |
 | Phase gate review | Per phase boundary | Peter + pilot facility stakeholders | Evaluate gate criteria pass/fail; decision to proceed or remediate |
 | Clinical safety review | Monthly | Peter + consulting clinician (gap HIGH-004 resolution) | Review CDS override rates, incident reports, medication errors |
+| AI Intelligence review | Monthly | Peter + AI Administrator at each active tenant | Review AI success metrics, false positive rates, credit consumption trends |
