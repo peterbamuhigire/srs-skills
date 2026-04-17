@@ -672,3 +672,79 @@ All environment-specific configuration is stored in `.env` and never committed t
 ```
 
 Any failed check returns `"status": "unhealthy"` with HTTP 503.
+
+---
+
+## AI Intelligence Module — Implementation Guide
+
+### Implementing `AIProviderInterface`
+
+The interface contract all adapters must satisfy:
+
+```php
+interface AIProviderInterface
+{
+    public function complete(string $prompt, CompletionOptions $options): CompletionResponse;
+    public function chat(array $messages, ChatOptions $options): ChatResponse;
+    public function embed(string $text): EmbeddingVector;
+}
+```
+
+Steps to add a new adapter:
+
+1. Create a class `MyProviderAdapter` in `app/AI/Adapters/` that implements `AIProviderInterface`.
+2. Implement all three methods. Throw `AIProviderException` for any non-recoverable error; throw `AIProviderTimeoutException` for timeout (caught by the failover handler).
+3. Register the adapter in `config/ai.php` under the `adapters` key with the provider slug (e.g., `'myprovider' => MyProviderAdapter::class`).
+4. Add the provider slug to the `primary_provider` ENUM validation rule in `TenantAIConfigRequest`.
+5. No other code changes are required. The failover handler and token metering are adapter-agnostic.
+
+### Provider Failover Implementation
+
+`AICapabilityService` wraps every adapter call in a try-catch. Flow:
+
+1. Call primary adapter. If `AIProviderTimeoutException` is thrown or response time exceeds 10 s, catch and log.
+2. Instantiate the failover adapter from `tenant_ai_config.failover_provider`.
+3. Call failover adapter. If it also fails within 10 s, throw `AIUnavailableException`.
+4. Catch `AIUnavailableException` at the controller layer. Return HTTP 503 with body `{ "error": "ai_unavailable", "message": "AI service temporarily unavailable. Please complete this step manually." }`.
+5. Log the failover event to `ai_usage_log` with `was_failover = true`.
+
+### Token Metering Implementation
+
+After every successful adapter call:
+
+1. Extract `input_tokens` and `output_tokens` from the adapter response.
+2. Call `TokenMeteringService::meter(tenantId, capability, provider, model, inputTokens, outputTokens, latencyMs)`.
+3. `meter()` inserts a row into `ai_usage_log` and calls `decrementBalance()` on the `tenant_ai_config` record (credit pack model only).
+4. If `credit_balance` would go negative, `decrementBalance()` throws `CreditExhaustedException`. Catch at the capability service level and return HTTP 402.
+
+---
+
+## i18n — Implementation Guide
+
+### String Key Naming Convention
+
+All localisation keys follow the pattern `module.context.label`. Keys are lowercase and underscore-delimited. Examples:
+
+- `opd.triage.blood_pressure_label`
+- `billing.payment.mobile_money_button`
+- `pharmacy.alert.drug_interaction_fatal`
+
+### Adding a New String
+
+1. Define the string in `lang/en/<module>.php` first (English is mandatory).
+2. Add the same key to `lang/fr/<module>.php` with a contextual French translation (not word-for-word).
+3. Add the same key to `lang/sw/<module>.php` with a contextual Kiswahili translation.
+4. If the Kiswahili or French translation is not yet available, add the key with value `null`. The build system will emit `[I18N-GAP: <key>]` and the CI pipeline will fail on the `release` branch.
+5. In PHP, use `__('module.context.label')`. In Blade, use `{{ __('module.context.label') }}`.
+
+### Running the i18n Audit
+
+- Run `php artisan i18n:audit` to list all keys present in `lang/en/` but missing or null in `lang/fr/` or `lang/sw/`.
+- The audit output maps directly to `[I18N-GAP]` tags.
+- All gaps must be resolved before a module ships to production.
+
+Build command:
+
+```bash
+php artisan i18n:audit
+```

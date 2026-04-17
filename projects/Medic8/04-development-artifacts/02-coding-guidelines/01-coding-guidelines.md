@@ -594,7 +594,7 @@ Never log PHI (Section 5.1). Never log raw SQL queries in production. Never log 
 
 ## 9. Code Review Checklist
 
-Every pull request is reviewed against the following checklist:
+Every pull request is reviewed against the following checklist, including the AI and i18n rules defined in Section 10:
 
 1. **Tenant isolation:** Does every query go through the repository layer? Is `facility_id` scoped?
 2. **Type safety:** Are all parameters and return types declared? Is `strict_types` present?
@@ -606,3 +606,63 @@ Every pull request is reviewed against the following checklist:
 8. **Security:** Are file uploads validated? Are queries parameterised? Is output escaped?
 9. **Events:** Are state changes on clinical data emitting domain events?
 10. **Documentation:** Do public methods have PHPDoc? Are non-obvious algorithms commented?
+
+---
+
+## 10. AI Intelligence Coding Rules
+
+### No Auto-Save of AI Output
+
+Any code path that writes AI-generated clinical content (SOAP notes, discharge summaries, differential diagnoses) to the patient record MUST first check for an explicit approval flag. The approval flag is set only by a clinician action (clicking **Approve Draft** in the UI).
+
+Pull request rejection criterion: any PR where an AI capability endpoint writes to the patient record without reading `approved = true` from the request payload or session state.
+
+Implementation pattern:
+
+```php
+if (! $request->boolean('approved')) {
+    return response()->json(['draft' => $draft], 200);
+}
+$patientRecord->clinicalNotes()->create(['content' => $draft->content]);
+```
+
+### No PII in AI Prompts
+
+Prompts sent to AI provider APIs MUST NOT contain:
+
+- Patient full legal name
+- National Identification Number (NIN)
+- Date of birth
+- Physical address
+
+Permitted in prompts: ICD codes, vitals (numeric values only), medication names, procedure codes, encounter ID.
+
+Pull request rejection criterion: any PR where a string interpolated into an AI prompt includes a field from the `patients` table that is classified as PII (`name`, `nin`, `dob`, `address`).
+
+### No Hardcoded UI Strings
+
+All user-visible text in any UI layer (PHP Blade templates, Android Kotlin/Compose, iOS Swift/SwiftUI) MUST be retrieved via the localisation helper. Hardcoded English strings in UI files are a pull request rejection criterion.
+
+Correct:
+
+```php
+// PHP
+__('opd.triage.blood_pressure_label')
+```
+
+```kotlin
+// Android
+stringResource(R.string.opd_triage_blood_pressure_label)
+```
+
+```swift
+// iOS
+NSLocalizedString("opd.triage.blood_pressure_label", comment: "")
+```
+
+Incorrect (rejected):
+
+```php
+// WRONG — hardcoded string
+echo "Blood Pressure";
+```
