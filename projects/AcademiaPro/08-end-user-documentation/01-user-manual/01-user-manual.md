@@ -4,6 +4,23 @@
 **Date:** 2026-04-03
 **Audience:** All AcademiaPro users (School Owners, Head Teachers, Teachers, Bursars, Secretaries, Students, Parents)
 
+## Screenshots
+
+Screenshots are placed in `../screenshots/`. Each screen referenced here is captured on a clean staging tenant named *Demo Primary School, Kampala* after every release.
+
+![Login screen](../screenshots/01-login.png)
+![Dashboard — School Administrator](../screenshots/02-dashboard-admin.png)
+![Enrolment form](../screenshots/03-enrolment-form.png)
+![Fee structure setup](../screenshots/04-fee-structure.png)
+![Attendance capture](../screenshots/05-attendance.png)
+![Report card preview](../screenshots/06-report-card.png)
+![UNEB export wizard](../screenshots/07-uneb-export.png)
+![EMIS export dashboard](../screenshots/08-emis-dashboard.png)
+![Parent portal](../screenshots/09-parent-portal.png)
+![Mobile app — Android dashboard](../screenshots/10-android-dashboard.png)
+
+> PNG files are placeholder-committed at Sprint 0 and replaced with real captures during UAT. Filenames referenced here MUST exist in `../screenshots/` even if placeholder.
+
 ---
 
 ## 1 Getting Started

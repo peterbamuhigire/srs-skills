@@ -97,12 +97,12 @@ def test_runs_glossary_registry_when_yaml_present(tmp_path):
         "02-requirements-engineering/nfr.md": (
             "# NFR\n"
             "\n"
-            "Claimant data is retained. Claimant records are archived.\n"
+            "FNOL data is retained. IntakeForm records are archived.\n"
         ),
         "02-requirements-engineering/fr.md": (
             "# FR\n"
             "\n"
-            "Claimant identities are validated at intake.\n"
+            "FNOL identities are validated at intake. IntakeForm drives flow.\n"
         ),
         "_registry/glossary.yaml": (
             "terms:\n"
@@ -114,8 +114,9 @@ def test_runs_glossary_registry_when_yaml_present(tmp_path):
     Phase02Gate().evaluate(graph, findings)
     missing = [f for f in findings
                if f.gate_id == "phase02.glossary_registry.missing_term"]
-    assert missing, "expected a missing_term finding for 'Claimant'"
-    assert any("Claimant" in f.message for f in missing)
+    assert missing, "expected missing_term findings for domain-signal tokens"
+    assert any("FNOL" in f.message for f in missing)
+    assert any("IntakeForm" in f.message for f in missing)
 
 
 # -- clause attachment --------------------------------------------------------

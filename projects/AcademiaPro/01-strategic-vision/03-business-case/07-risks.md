@@ -43,9 +43,9 @@ B  L   | R10 |     | R05 |
 ```
 
 **Critical risks (score ≥ 6):**
-- **RISK-003** (Solo team capacity, score 9) — highest priority; mitigated by phase gating and scope management
-- **RISK-001** (SchoolPay ERP competition, score 6) — mitigated by speed to Phase 8 and moat depth
-- **RISK-006** (School churn, score 6) — mitigated by Design Covenant and Phase 9 pilot validation
+- `RISK-003` (Solo team capacity, score 9) — highest priority; mitigated by phase gating and scope management
+- `RISK-001` (SchoolPay ERP competition, score 6) — mitigated by speed to Phase 8 and moat depth
+- `RISK-006` (School churn, score 6) — mitigated by Design Covenant and Phase 9 pilot validation
 
 ---
 

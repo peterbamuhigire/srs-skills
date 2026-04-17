@@ -61,11 +61,11 @@
 
 **Sprint Zero Exit Criteria:**
 
-- Laravel project boots and serves HTTP 200
-- MySQL strict mode confirmed
-- CI pipeline green on push to `main`
-- Frontend dev server renders the Tabler dashboard shell
-- Super Admin can log in to a blank dashboard (no module functionality yet)
+- **SP-001** Laravel project boots and serves HTTP 200
+- **SP-002** MySQL strict mode confirmed
+- **SP-003** CI pipeline green on push to `main`
+- **SP-004** Frontend dev server renders the Tabler dashboard shell
+- **SP-005** Super Admin can log in to a blank dashboard (no module functionality yet)
 
 ---
 
@@ -91,22 +91,22 @@
 
 **Key Deliverables:**
 
-- Login page (web) with lockout behaviour
-- JWT endpoint for mobile/API clients
-- Token refresh and revocation
-- MFA challenge for Super Admin panel
-- Tenant CRUD in Super Admin panel
-- Welcome email on tenant creation
-- Tenant status transitions: pending, active, suspended
+- **SP-006** Login page (web) with lockout behaviour
+- **SP-007** JWT endpoint for mobile/API clients
+- **SP-008** Token refresh and revocation
+- **SP-009** MFA challenge for Super Admin panel
+- **SP-010** Tenant CRUD in Super Admin panel
+- **SP-011** Welcome email on tenant creation
+- **SP-012** Tenant status transitions: pending, active, suspended
 
 **Sprint 1 Exit Criteria:**
 
-- All 6 FR-AUTH acceptance criteria pass (Playwright + PHPUnit)
-- All 3 FR-TNT acceptance criteria pass
-- JWT tokens decode with correct `tenant_id` claim
-- Account lockout triggers after 5 failed attempts
-- Super Admin MFA blocks dashboard access until TOTP verified
-- CI pipeline green
+- **SP-013** All 6 FR-AUTH acceptance criteria pass (Playwright + PHPUnit)
+- **SP-014** All 3 FR-TNT acceptance criteria pass
+- **SP-015** JWT tokens decode with correct `tenant_id` claim
+- **SP-016** Account lockout triggers after 5 failed attempts
+- **SP-017** Super Admin MFA blocks dashboard access until TOTP verified
+- **SP-018** CI pipeline green
 
 ---
 
@@ -128,21 +128,21 @@
 
 **Key Deliverables:**
 
-- Student admission form (40+ fields with validation)
-- `global_students` and `school_enrollments` table separation
-- NIN/LIN cross-school lookup (no duplicate UIDs)
-- Meilisearch-powered student search
-- Transfer-out workflow with departure reason codes
-- Student record immutability after departure
+- **SP-019** Student admission form (40+ fields with validation)
+- **SP-020** `global_students` and `school_enrollments` table separation
+- **SP-021** NIN/LIN cross-school lookup (no duplicate UIDs)
+- **SP-022** Meilisearch-powered student search
+- **SP-023** Transfer-out workflow with departure reason codes
+- **SP-024** Student record immutability after departure
 
 **Sprint 2 Exit Criteria:**
 
-- Student admission creates both `global_students` and `school_enrollments` records
-- NIN/LIN lookup returns existing global student without duplication (BR-STU-001)
-- Single-school active enrollment enforced (BR-STU-004)
-- Departed student records are read-only (BR-DEPART-004)
-- Meilisearch index returns results within 200 ms (P99)
-- CI pipeline green
+- **SP-025** Student admission creates both `global_students` and `school_enrollments` records
+- **SP-026** NIN/LIN lookup returns existing global student without duplication (BR-STU-001)
+- **SP-027** Single-school active enrollment enforced (BR-STU-004)
+- **SP-028** Departed student records are read-only (BR-DEPART-004)
+- **SP-029** Meilisearch index returns results within 200 ms (P99)
+- **SP-030** CI pipeline green
 
 ---
 
@@ -163,20 +163,20 @@
 
 **Key Deliverables:**
 
-- Academic year CRUD with term dates (3-term Uganda calendar)
-- Year-Start Promotion Wizard (BR-PROM-001 through BR-PROM-007)
-- Class/stream CRUD with "Promotes To" configuration
-- Curriculum type selector per class level
-- Timetable grid builder (days x periods)
+- **SP-031** Academic year CRUD with term dates (3-term Uganda calendar)
+- **SP-032** Year-Start Promotion Wizard (BR-PROM-001 through BR-PROM-007)
+- **SP-033** Class/stream CRUD with "Promotes To" configuration
+- **SP-034** Curriculum type selector per class level
+- **SP-035** Timetable grid builder (days x periods)
 
 **Sprint 3 Exit Criteria:**
 
-- Academic year creates 3 terms automatically (BR-CAL-001)
-- Promotion wizard blocks Term 1 opening until all classes processed (BR-PROM-001)
-- Final-year classes (P7, S.4, S.6) have `promotes_to = null` (BR-PROM-002)
-- Curriculum type determines available grading scales
-- Timetable renders correctly for a class with 8 periods per day
-- CI pipeline green
+- **SP-036** Academic year creates 3 terms automatically (BR-CAL-001)
+- **SP-037** Promotion wizard blocks Term 1 opening until all classes processed (BR-PROM-001)
+- **SP-038** Final-year classes (P7, S.4, S.6) have `promotes_to = null` (BR-PROM-002)
+- **SP-039** Curriculum type determines available grading scales
+- **SP-040** Timetable renders correctly for a class with 8 periods per day
+- **SP-041** CI pipeline green
 
 ---
 
@@ -213,15 +213,15 @@
 
 **Sprint 4 Exit Criteria:**
 
-- Fee structure created for a class/term in UGX
-- Partial payment accepted with zero minimum floor (BR-FEE-002)
-- Receipt auto-generated with sequential number (BR-FEE-004)
-- Duplicate payment within 5-minute window rejected (BR-FEE-005)
-- Refund requires owner approval (BR-FEE-007)
-- Fee reminders fire at D-7, D-1, D+7 (configurable, BR-FEE-006)
-- SchoolPay webhook processes a test payment notification
-- Financial reports generate correctly for a test dataset
-- CI pipeline green
+- **SP-042** Fee structure created for a class/term in UGX
+- **SP-043** Partial payment accepted with zero minimum floor (BR-FEE-002)
+- **SP-044** Receipt auto-generated with sequential number (BR-FEE-004)
+- **SP-045** Duplicate payment within 5-minute window rejected (BR-FEE-005)
+- **SP-046** Refund requires owner approval (BR-FEE-007)
+- **SP-047** Fee reminders fire at D-7, D-1, D+7 (configurable, BR-FEE-006)
+- **SP-048** SchoolPay webhook processes a test payment notification
+- **SP-049** Financial reports generate correctly for a test dataset
+- **SP-050** CI pipeline green
 
 ---
 
@@ -245,22 +245,22 @@
 
 **Key Deliverables:**
 
-- Attendance entry grid (class view, one-click per student)
-- Auto-SMS to parent after 3 consecutive absences (Africa's Talking)
-- Attendance amendment audit trail
-- Monthly attendance summary report
-- Exam configuration CRUD
-- Mark entry sheet with real-time validation (reject marks > max)
-- Mark-unlock request/approval workflow
+- **SP-051** Attendance entry grid (class view, one-click per student)
+- **SP-052** Auto-SMS to parent after 3 consecutive absences (Africa's Talking)
+- **SP-053** Attendance amendment audit trail
+- **SP-054** Monthly attendance summary report
+- **SP-055** Exam configuration CRUD
+- **SP-056** Mark entry sheet with real-time validation (reject marks > max)
+- **SP-057** Mark-unlock request/approval workflow
 
 **Sprint 5 Exit Criteria:**
 
-- Attendance recorded for a class of 50 students within 2 minutes
-- 3 consecutive absences trigger SMS to parent/guardian (BR-ATT-002)
-- Amendment after 48 hours requires Head Teacher role (BR-ATT-003)
-- Marks exceeding configured maximum are rejected at API layer (BR-UNEB-005)
-- Mark-unlock requires Head Teacher approval
-- CI pipeline green
+- **SP-058** Attendance recorded for a class of 50 students within 2 minutes
+- **SP-059** 3 consecutive absences trigger SMS to parent/guardian (BR-ATT-002)
+- **SP-060** Amendment after 48 hours requires Head Teacher role (BR-ATT-003)
+- **SP-061** Marks exceeding configured maximum are rejected at API layer (BR-UNEB-005)
+- **SP-062** Mark-unlock requires Head Teacher approval
+- **SP-063** CI pipeline green
 
 ---
 
@@ -286,25 +286,25 @@
 
 **Key Deliverables:**
 
-- UNEB grading engine: PLE, UCE, UACE, Thematic (4 algorithms)
-- Grade computation unit tests with 100% coverage against UNEB rules
-- UNEB export file generation
-- Single student report card (PDF) with grades, comments, school logo
-- Bulk report card generation (200 students within 120 seconds per quality target)
-- School performance summary dashboard
-- Head Teacher comment entry per student
+- **SP-064** UNEB grading engine: PLE, UCE, UACE, Thematic (4 algorithms)
+- **SP-065** Grade computation unit tests with 100% coverage against UNEB rules
+- **SP-066** UNEB export file generation
+- **SP-067** Single student report card (PDF) with grades, comments, school logo
+- **SP-068** Bulk report card generation (200 students within 120 seconds per quality target)
+- **SP-069** School performance summary dashboard
+- **SP-070** Head Teacher comment entry per student
 
 **Sprint 6 Exit Criteria:**
 
-- PLE aggregate computation matches BR-UNEB-001 division boundaries exactly
-- UCE aggregate computation matches BR-UNEB-002 division boundaries exactly
-- UACE points computation matches BR-UNEB-003 rules exactly
-- Thematic grading returns HC/C/NYC descriptors only (BR-UNEB-004)
-- 100% unit test coverage on all 4 grading algorithms
-- Single report card generates within 3,000 ms (quality target)
-- Bulk generation of 200 report cards completes within 120 seconds
-- UNEB export file validates against expected format
-- CI pipeline green
+- **SP-071** PLE aggregate computation matches BR-UNEB-001 division boundaries exactly
+- **SP-072** UCE aggregate computation matches BR-UNEB-002 division boundaries exactly
+- **SP-073** UACE points computation matches BR-UNEB-003 rules exactly
+- **SP-074** Thematic grading returns HC/C/NYC descriptors only (BR-UNEB-004)
+- **SP-075** 100% unit test coverage on all 4 grading algorithms
+- **SP-076** Single report card generates within 3,000 ms (quality target)
+- **SP-077** Bulk generation of 200 report cards completes within 120 seconds
+- **SP-078** UNEB export file validates against expected format
+- **SP-079** CI pipeline green
 
 ---
 
@@ -328,24 +328,24 @@
 
 **Key Deliverables:**
 
-- Permission resolution: 60+ permissions x 8 standard roles (per RBAC matrix)
-- Custom role creation per school
-- User invitation email with role pre-assignment
-- Role-scoped session timeout rules
-- Super Admin cross-tenant read logging (BR-MT-003)
-- EMIS bulk export in MoES-specified format (XML/CSV)
-- Immutable audit log: user_id, tenant_id, timestamp, before/after values on all student, fee, and health records
+- **SP-080** Permission resolution: 60+ permissions x 8 standard roles (per RBAC matrix)
+- **SP-081** Custom role creation per school
+- **SP-082** User invitation email with role pre-assignment
+- **SP-083** Role-scoped session timeout rules
+- **SP-084** Super Admin cross-tenant read logging (BR-MT-003)
+- **SP-085** EMIS bulk export in MoES-specified format (XML/CSV)
+- **SP-086** Immutable audit log: user_id, tenant_id, timestamp, before/after values on all student, fee, and health records
 
 **Sprint 7 Exit Criteria:**
 
-- Permission resolution returns correct allow/deny for all 60+ permissions per role
-- No user can assign a role with higher privilege than their own (BR-RBAC-002)
-- Invited user receives email and can register with pre-assigned role
-- Super Admin cross-tenant reads are logged with access reason (BR-MT-003)
-- EMIS export generates valid file for a school with 500 students
-- Audit log captures before/after values for all create/update/delete operations
-- Audit log records are append-only (no update/delete permitted on `tbl_audit_log`)
-- CI pipeline green
+- **SP-087** Permission resolution returns correct allow/deny for all 60+ permissions per role
+- **SP-088** No user can assign a role with higher privilege than their own (BR-RBAC-002)
+- **SP-089** Invited user receives email and can register with pre-assigned role
+- **SP-090** Super Admin cross-tenant reads are logged with access reason (BR-MT-003)
+- **SP-091** EMIS export generates valid file for a school with 500 students
+- **SP-092** Audit log captures before/after values for all create/update/delete operations
+- **SP-093** Audit log records are append-only (no update/delete permitted on `tbl_audit_log`)
+- **SP-094** CI pipeline green
 
 ---
 
@@ -370,16 +370,16 @@
 
 **Sprint 8 Exit Criteria:**
 
-- All 49 FRs have passing automated tests (PHPUnit + Playwright)
-- Backend test coverage ≥ 80% line coverage
-- UNEB grading engine test coverage = 100%
-- Fee calculation logic test coverage = 100%
-- API P95 response time ≤ 500 ms (k6 report)
-- Bulk report card generation ≤ 120 seconds for 200 students
-- Zero critical or high OWASP findings
-- Zero P1/P2 open bugs
-- Staging environment deployed and accessible
-- CI pipeline green
+- **SP-095** All 49 FRs have passing automated tests (PHPUnit + Playwright)
+- **SP-096** Backend test coverage ≥ 80% line coverage
+- **SP-097** UNEB grading engine test coverage = 100%
+- **SP-098** Fee calculation logic test coverage = 100%
+- **SP-099** API P95 response time ≤ 500 ms (k6 report)
+- **SP-100** Bulk report card generation ≤ 120 seconds for 200 students
+- **SP-101** Zero critical or high OWASP findings
+- **SP-102** Zero P1/P2 open bugs
+- **SP-103** Staging environment deployed and accessible
+- **SP-104** CI pipeline green
 
 ---
 
@@ -397,11 +397,11 @@
 
 **UAT Exit Criteria:**
 
-- At least 1 pilot school is live on production (Phase 1 gate requirement)
-- All P1/P2 bugs from UAT resolved
-- UNEB grading accuracy confirmed against sample mark sheets
-- SchoolPay test transaction confirmed (if SchoolPay merchant onboarding is complete)
-- Phase 1 gate criteria in `_context/metrics.md` all met
+- **SP-105** At least 1 pilot school is live on production (Phase 1 gate requirement)
+- **SP-106** All P1/P2 bugs from UAT resolved
+- **SP-107** UNEB grading accuracy confirmed against sample mark sheets
+- **SP-108** SchoolPay test transaction confirmed (if SchoolPay merchant onboarding is complete)
+- **SP-109** Phase 1 gate criteria in `_context/metrics.md` all met
 
 ---
 

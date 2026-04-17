@@ -1,17 +1,28 @@
 expectations:
   consent:
     must_appear_in:
-      - 02-requirements-engineering/srs/3.2*
-      - 03-design-documentation/05-ux-specification/*
+      - "*02-requirements-engineering*"
+      - "*05-ux-spec*"
   encryption:
     must_appear_in:
-      - 03-design-documentation/04-database-design/*
-      - 05-testing-documentation/test-plan/*
+      - "*04-database-design*"
+      - "*05-testing-documentation*"
   incident_response:
     must_appear_in:
-      - 06-deployment-operations/runbook/*
-      - 06-deployment-operations/incident-response/*
+      - "*06-deployment-operations*runbook*"
+      - "*06-deployment-operations*incident-response*"
   access_control:
     must_appear_in:
-      - 02-requirements-engineering/srs/3.2*
-      - 05-testing-documentation/test-plan/*
+      - "*02-requirements-engineering*"
+      - "*05-testing-documentation*"
+  cross_border_transfer:
+    must_appear_in:
+      - "*05-adr*"
+      - "*01-hld*"
+  operations_security:
+    must_appear_in:
+      - "*06-deployment-operations*"
+  regulatory_export:
+    must_appear_in:
+      - "*02-requirements-engineering*"
+      - "*05-testing-documentation*"

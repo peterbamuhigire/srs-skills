@@ -1,6 +1,6 @@
 # RBAC Permission Matrix — Academia Pro Phase 1
 
-> This document resolves gap **HIGH-005** from `_context/gap-analysis.md`. It defines the complete permission matrix for all Phase 1 actions and roles. This matrix is the authoritative reference for middleware and policy implementation.
+> This document resolves gap `HIGH-005` from `_context/gap-analysis.md`. It defines the complete permission matrix for all Phase 1 actions and roles. This matrix is the authoritative reference for middleware and policy implementation.
 >
 > **Legend:**
 > - `✓` — Permitted unconditionally within tenant scope

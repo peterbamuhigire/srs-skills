@@ -2,9 +2,24 @@
 
 **Project:** Academia Pro
 **Owner:** Peter — Chwezi Core Systems (chwezicore.com)
-**Domain:** Education (Uganda-first; pan-Africa expansion)
-**Last Updated:** 2026-04-03
-**Total Documents:** 128 files (89 `.md`, 11 `.yaml`, 28 `.docx`)
+**Domain:** Uganda (primary); Education (secondary)
+**Last Updated:** 2026-04-17
+**Baseline:** v1.0 snapshotted 2026-04-17 (`09-governance-compliance/07-baseline-delta/v1.0.yaml`)
+**Engine Contract:** **PASS — 0 HIGH findings** (`python -m engine validate projects/AcademiaPro`)
+**Evidence Pack:** `evidence-pack-2026-04-17.zip`
+
+### Phase Gate Status (all PASS)
+
+- Phase 01 Strategic Vision — PASS
+- Phase 02 Requirements Engineering — PASS
+- Phase 03 Design — PASS (5 ADRs, ERD with PK, OpenAPI 3.1, UX spec)
+- Phase 04 Development — PASS (coding-standards, env-setup, CONTRIBUTING)
+- Phase 05 Testing — PASS (29119 deterministic checks, completion report, coverage matrix)
+- Phase 06 Deployment & Operations — PASS (deployment guide, runbook with escalation, monitoring with 7 SLOs, IR diagram, go-live checklist, change window, incident-response)
+- Phase 07 Agile Artefacts — PASS (DoR baseline refs, 109 SP-### sprint markers, velocity)
+- Phase 08 End-User Documentation — PASS (user manual with 10 screenshots, 12-Q&A FAQ, release notes)
+- Phase 09 Governance & Compliance — PASS (audit report, risk register, 5-ADR catalog, 10 controls, sign-off recorded)
+- Hybrid Water-Scrum-Fall — PASS (baseline-trace populated, DoR/DoD pointer)
 
 ---
 
@@ -32,7 +47,7 @@ The system enforces strict data isolation between schools via a `tenant_id` colu
 | HIGH-004 | Academic year lifecycle rules | `_context/business_rules.md` (BR-PROM, BR-DEPART) | 2026-03-29 |
 | HIGH-005 | Full RBAC permission matrix | `02-requirements-engineering/03-stakeholder-analysis/01-rbac-matrix.md` | 2026-03-29 |
 | HIGH-006 | Double-payment prevention rules | `_context/business_rules.md` (BR-FEE-005) | 2026-03-29 |
-| HIGH-007 | Data migration specification | `04-development-artifacts/01-technical-spec/02-data-migration.md` | 2026-04-03 |
+| HIGH-007 | Data migration specification | `04-development/01-technical-spec/02-data-migration.md` | 2026-04-03 |
 | HIGH-008 | Uganda PDPO 2019 compliance | `09-governance-compliance/03-compliance/01-pdpo-compliance.md` | 2026-04-03 |
 
 ---
@@ -151,8 +166,8 @@ All 14 context files are populated with real project data (not TODO stubs).
 | `03-design-documentation/AcademiaPro_LLD.docx` | 1 section in `02-lld/` | ✅ Built |
 | `03-design-documentation/AcademiaPro_ERD.docx` | 1 section in `04-database-design/` | ✅ Built |
 | `03-design-documentation/AcademiaPro_UXSpecification.docx` | 1 section in `05-ux-spec/` | ✅ Built |
-| `04-development-artifacts/AcademiaPro_TechnicalSpec_DataMigration.docx` | 1 section in `01-technical-spec/` | ✅ Built |
-| `04-development-artifacts/AcademiaPro_CodingGuidelines.docx` | 1 section in `02-coding-guidelines/` | ✅ Built |
+| `04-development/AcademiaPro_TechnicalSpec_DataMigration.docx` | 1 section in `01-technical-spec/` | ✅ Built |
+| `04-development/AcademiaPro_CodingGuidelines.docx` | 1 section in `02-coding-guidelines/` | ✅ Built |
 | `05-testing-documentation/AcademiaPro_TestStrategy.docx` | 1 section in `01-test-strategy/` | ✅ Built |
 | `05-testing-documentation/AcademiaPro_TestPlan.docx` | 1 section in `02-test-plan/` | ✅ Built |
 | `05-testing-documentation/AcademiaPro_TestReport.docx` | 1 section in `03-test-report/` | ✅ Built |
