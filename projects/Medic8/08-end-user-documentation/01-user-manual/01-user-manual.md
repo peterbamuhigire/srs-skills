@@ -829,3 +829,78 @@ Common causes and how to fix them:
 - **Unmatched mobile money payment:** A payment came in via MTN MoMo or Airtel Money but was not matched to a patient. Open the **Unmatched Payments** report, find the payment, and match it to the correct patient.
 - **Double entry:** Check if the same payment was recorded twice. If so, void one of the entries (supervisor approval required).
 - If the discrepancy is less than UGX 5,000, the system accepts the reconciliation. If it exceeds UGX 5,000, the system flags it for supervisor review and you must provide an explanation before the reconciliation is accepted.
+
+---
+
+## 12 Changing Your Language
+
+The Medic8 interface is available in English, French (Français), and Kiswahili. To change your language:
+
+1. Click your name or avatar in the top-right corner of the screen.
+2. Select Profile Settings from the dropdown menu.
+3. Under Language, select your preferred language from the list: English, Français, or Kiswahili.
+4. Click **Save**. The page re-renders immediately in your selected language — no page reload required.
+
+Your language preference is saved to your profile. It applies to all future sessions until you change it again.
+
+Note: clinical alert messages (severity indicators such as "Fatal", "Serious", "Warning", "Info") always display in your active UI language, regardless of who generated the alert.
+
+---
+
+## 13 AI Intelligence Features
+
+The AI Intelligence module adds AI-powered assistance to clinical and billing workflows. All AI features are optional and can be enabled or disabled by your facility administrator.
+
+#### AI Clinical Documentation
+
+When you complete an encounter, you can request an AI-drafted SOAP note, discharge summary, or referral letter. The draft appears in a side-by-side view alongside the encounter data. Review the draft carefully. Click **Approve Draft** to save it to the patient record, or **Discard** to close without saving. The system never saves an AI draft automatically — your approval is always required.
+
+#### AI ICD Coding Assist
+
+When you enter a free-text clinical note, the system suggests ICD-10 or ICD-11 codes with a confidence score for each suggestion. Select the code(s) that apply, or dismiss all suggestions and type your own search query. You are not required to use any suggestion.
+
+#### AI Differential Diagnosis
+
+A ranked list of possible diagnoses appears in a collapsible panel below the presenting complaint field. Each entry shows the condition name, its ICD-11 code, and the top contributing factors from the patient's data. The panel is labelled: "AI Differential — for clinician review only. Not a diagnosis." Selecting a condition from this list does not add it to the patient record automatically; you must confirm it as an active diagnosis separately.
+
+#### AI Patient Plain-Language Summary
+
+After you approve a discharge summary, the patient portal automatically generates a plain-language version in the patient's preferred language (English, Français, or Kiswahili). The plain-language summary is for the patient only — the clinical discharge note is never replaced.
+
+#### AI Claim Scrubbing
+
+Before you submit an insurance claim, a risk panel shows each line item colour-coded: green (low risk), amber (moderate risk), or red (high risk of rejection). Red items show the top 2 reasons historically associated with rejection for that procedure and insurer. You may correct flagged fields before submitting. You can still submit a red-flagged claim — enter an override reason when prompted.
+
+#### AI Credit Balance
+
+If your facility uses a credit pack for AI features, the AI credit balance is shown in the admin panel. When credits run out, AI features pause automatically. Your clinical workflows are not affected. Contact your AI Administrator to arrange a top-up.
+
+---
+
+## 14 AI Administrator Guide
+
+This chapter is for the AI Administrator role — the person responsible for configuring AI providers, managing credit packs, and monitoring usage.
+
+#### Configuring an AI Provider
+
+1. Navigate to Admin Panel → AI Settings.
+2. Select the primary provider (`openai`, `anthropic`, `deepseek`, or `gemini`).
+3. Enter the API key. The key is encrypted immediately and never displayed again after saving.
+4. Select a failover provider and enter its API key.
+5. Click **Save**.
+
+#### Enabling or Disabling AI Capabilities
+
+In Admin Panel → AI Settings → Capabilities, use the toggle switches to enable or disable individual capabilities: Clinical Documentation, ICD Coding, Differential Diagnosis, Patient Summary, Claim Scrubbing, and Outbreak Alert.
+
+#### Managing Credit Balance (Credit Pack model)
+
+The current balance, top-up history, and projected depletion date are shown in Admin Panel → AI Settings → Credits. Click **Top Up** to purchase additional credits through the Medic8 billing system.
+
+#### Monitoring Token Usage
+
+In Admin Panel → AI Settings → Usage, view a graph of token consumption by capability and by day for the past 30 days. Export as CSV for billing reconciliation.
+
+#### Low Balance Notifications
+
+You will receive an email and in-app notification when the credit balance falls below your configured threshold (default: 10% of the last top-up amount). To change the threshold, go to Admin Panel → AI Settings → Notifications.

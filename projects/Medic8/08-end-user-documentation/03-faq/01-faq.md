@@ -98,7 +98,19 @@ Yes. Go to `https://medic8.com` and click **Start Free Trial**. You get full acc
 
 ### 1.12 Which languages does Medic8 support?
 
-The system interface is in English. The patient mobile app supports Luganda in addition to English, with more local languages planned for future releases.
+The Medic8 interface is available in English, French (Français), and Kiswahili. Go to Profile Settings → Language to select your preferred language. The patient plain-language discharge summary is also generated in the patient's preferred language.
+
+### 1.13 Can I use the system if AI features are unavailable?
+
+Yes. All AI features are additive — they assist workflows but do not block them. If an AI service is unavailable, you complete the step manually as normal.
+
+### 1.14 Does the system save AI-generated notes automatically?
+
+No. You must click **Approve Draft** to save any AI-generated text. If you close the draft without approving, nothing is saved.
+
+### 1.15 Can I switch between English, French, and Kiswahili?
+
+Yes. Go to Profile Settings → Language to change your preferred language at any time.
 
 ---
 
