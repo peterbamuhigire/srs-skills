@@ -32,7 +32,7 @@ The system enforces strict data isolation between schools via a `tenant_id` colu
 | HIGH-004 | Academic year lifecycle rules | `_context/business_rules.md` (BR-PROM, BR-DEPART) | 2026-03-29 |
 | HIGH-005 | Full RBAC permission matrix | `02-requirements-engineering/03-stakeholder-analysis/01-rbac-matrix.md` | 2026-03-29 |
 | HIGH-006 | Double-payment prevention rules | `_context/business_rules.md` (BR-FEE-005) | 2026-03-29 |
-| HIGH-007 | Data migration specification | `04-development-artifacts/01-technical-spec/02-data-migration.md` | 2026-04-03 |
+| HIGH-007 | Data migration specification | `04-development/01-technical-spec/02-data-migration.md` | 2026-04-03 |
 | HIGH-008 | Uganda PDPO 2019 compliance | `09-governance-compliance/03-compliance/01-pdpo-compliance.md` | 2026-04-03 |
 
 ---
@@ -151,8 +151,8 @@ All 14 context files are populated with real project data (not TODO stubs).
 | `03-design-documentation/AcademiaPro_LLD.docx` | 1 section in `02-lld/` | ✅ Built |
 | `03-design-documentation/AcademiaPro_ERD.docx` | 1 section in `04-database-design/` | ✅ Built |
 | `03-design-documentation/AcademiaPro_UXSpecification.docx` | 1 section in `05-ux-spec/` | ✅ Built |
-| `04-development-artifacts/AcademiaPro_TechnicalSpec_DataMigration.docx` | 1 section in `01-technical-spec/` | ✅ Built |
-| `04-development-artifacts/AcademiaPro_CodingGuidelines.docx` | 1 section in `02-coding-guidelines/` | ✅ Built |
+| `04-development/AcademiaPro_TechnicalSpec_DataMigration.docx` | 1 section in `01-technical-spec/` | ✅ Built |
+| `04-development/AcademiaPro_CodingGuidelines.docx` | 1 section in `02-coding-guidelines/` | ✅ Built |
 | `05-testing-documentation/AcademiaPro_TestStrategy.docx` | 1 section in `01-test-strategy/` | ✅ Built |
 | `05-testing-documentation/AcademiaPro_TestPlan.docx` | 1 section in `02-test-plan/` | ✅ Built |
 | `05-testing-documentation/AcademiaPro_TestReport.docx` | 1 section in `03-test-report/` | ✅ Built |
