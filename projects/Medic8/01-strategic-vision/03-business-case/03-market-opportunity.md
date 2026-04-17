@@ -14,7 +14,7 @@ Uganda has over 6,000 registered health facilities. The TAM assumes every facili
 | Multi-facility networks | 20 | 2,000,000 (Enterprise, estimated) | 480,000,000 | 128,000 |
 | National referral hospitals | 6 | 5,000,000 (Enterprise, estimated) | 360,000,000 | 96,000 |
 | PEPFAR implementing partners (facility count) | 200 | 700,000 (Pro) | 1,680,000,000 | 448,000 |
-| **TOTAL TAM (Uganda)** | **~7,176** | | **22,740,000,000** | **~6,064,000** |
+| TOTAL TAM (Uganda) | ~7,176 | | 22,740,000,000 | ~6,064,000 |
 
 Uganda TAM: approximately UGX 22.7 billion (USD 6.1 million) per year. The private clinic segment alone (4,000 facilities) represents UGX 7.2 billion (USD 1.9 million) per year — with ClinicMaster's installed base of 200+ facilities representing less than 5% penetration.
 
@@ -29,7 +29,7 @@ SAM filters the TAM to segments Medic8 can realistically serve within 3 years, g
 | Mission / NGO hospitals | 100 | 840,000,000 | 224,000 |
 | PEPFAR implementing partners | 100 | 840,000,000 | 224,000 |
 | Multi-facility networks | 10 | 240,000,000 | 64,000 |
-| **TOTAL SAM (Uganda)** | **~2,010** | **5,880,000,000** | **~1,568,000** |
+| TOTAL SAM (Uganda) | ~2,010 | 5,880,000,000 | ~1,568,000 |
 
 Uganda SAM: approximately UGX 5.9 billion (USD 1.6 million) per year.
 
@@ -110,6 +110,6 @@ The TCO comparison against OpenMRS is the primary migration pitch for PEPFAR-fun
 | Insurance management | $5,000-$25,000 | Included | $5,000-$25,000 saved |
 | Training/support | $6,000-$30,000 | Included | $6,000-$30,000 saved |
 | AI Intelligence module | Custom build $5,000-$20,000 | Credit pack add-on | $5,000-$20,000 saved |
-| **TOTAL** | **$35,000-$130,000** | **$9,450-$71,100** | **$25,550-$58,900 saved** |
+| TOTAL | $35,000-$130,000 | $9,450-$71,100 | $25,550-$58,900 saved |
 
 Medic8 saves the average facility USD 25,550-58,900 over 3 years compared to OpenMRS, while delivering billing, insurance, HR, payroll, mobile money, a patient app, AI Intelligence capabilities, and local Uganda-based support. The migration pitch: "OpenMRS is free to download and costs $35,000-$130,000 to run. Medic8 costs $9,450-$71,100 and includes everything OpenMRS requires you to build separately."

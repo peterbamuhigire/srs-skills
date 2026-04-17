@@ -109,7 +109,7 @@ OpenMRS is deployed in 8,000+ facilities across 70+ countries. It is the EMR of 
 | Insurance management (external) | $5,000-$25,000 | Included |
 | Training/support | $6,000-$30,000 | Included |
 | AI Intelligence module | Custom build $5,000-$20,000 | Credit pack add-on |
-| **TOTAL** | **$35,000-$130,000** | **$9,450-$71,100** |
+| TOTAL | $35,000-$130,000 | $9,450-$71,100 |
 
 Medic8 saves the average facility USD 25,550-58,900 over 3 years compared to OpenMRS. Migration pitch: "OpenMRS is free to download and costs $35,000-$130,000 to run. Medic8 costs $9,450-$71,100 and includes billing, insurance, HR, payroll, mobile money, a patient app, AI Intelligence, and a local Uganda support team."
 
@@ -147,7 +147,7 @@ The updated TCO table includes the AI Intelligence module as a cost line — mak
 | Insurance management | $5,000-$25,000 | Included | $5,000-$25,000 saved |
 | Training/support | $6,000-$30,000 | Included | $6,000-$30,000 saved |
 | AI Intelligence module | Custom build $5,000-$20,000 (NLP/ML developer + training data + API integration) | Credit pack add-on (estimated $1,200-$3,600/year at current AI API pricing) | $2,000-$17,000+ saved |
-| **TOTAL** | **$40,000-$150,000** | **$9,450-$71,100** | **$30,550-$78,900 saved** |
+| TOTAL | $40,000-$150,000 | $9,450-$71,100 | $30,550-$78,900 saved |
 
 When AI Intelligence is included in the comparison, Medic8's TCO advantage widens to USD 30,550-78,900 over 3 years. Building a custom AI layer on OpenMRS requires NLP/ML developer time, AI API integration, a training data strategy, and ongoing model maintenance — a cost that compounds with every capability added.
 

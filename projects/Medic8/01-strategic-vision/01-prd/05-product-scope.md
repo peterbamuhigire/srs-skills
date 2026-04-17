@@ -51,11 +51,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 1. Patient Registration and Master Index
 
-**Category:** Core Clinical | **Tier:** All | **Phase:** 1
+Category: Core Clinical | Tier: All | Phase: 1
 
-**Scope Statement:** The Patient Registration and Master Index module provides a single, authoritative source of patient identity across all facilities on the Medic8 platform. It captures demographics, biometric data, and multiple national identifiers, and exposes a global patient identity layer for cross-facility lookup.
+#### Scope Statement
 
-**Key Capabilities:**
+The Patient Registration and Master Index module provides a single, authoritative source of patient identity across all facilities on the Medic8 platform. It captures demographics, biometric data, and multiple national identifiers, and exposes a global patient identity layer for cross-facility lookup.
+
+#### Key Capabilities
 
 - Register new patients with demographics, contact details, next-of-kin, and photo capture.
 - Support biometric registration via fingerprint or facial recognition hardware.
@@ -66,14 +68,14 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Link guardian and next-of-kin records to paediatric patients.
 - Merge duplicate patient records with a full audit trail.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - UNHCR Refugee ID as a first-class identifier for refugee-serving facilities.
 - NIN integration with Uganda's National Identification and Registration Authority (NIRA).
 - Mobile money (MoMo) phone number as a patient lookup field, reflecting the dominant payment and identity channel in East Africa.
 - Multilingual registration form available in English, French, and Kiswahili.
 
-**Interfaces:**
+#### Interfaces
 
 - Outpatient Department (OPD) — patient record feeds consultation workflow.
 - Inpatient Department (IPD) — admission references the master patient index.
@@ -83,7 +85,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Patient Portal and Mobile App — patient identity anchors the personal health record.
 - Uganda HMIS Reporting — patient demographics feed HMIS form population.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Clinical decision support (handled by OPD and Pharmacy modules).
 - Insurance eligibility verification (handled by Insurance Management).
@@ -94,11 +96,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 2. Outpatient Department (OPD)
 
-**Category:** Core Clinical | **Tier:** All | **Phase:** 1
+Category: Core Clinical | Tier: All | Phase: 1
 
-**Scope Statement:** The OPD module manages the end-to-end outpatient clinical workflow from triage through consultation, investigation ordering, prescribing, and referral. It is the primary daily workflow for most facilities, auto-captures data required for HMIS 105 reporting, and hosts the AI Clinical Documentation and AI Differential Diagnosis capabilities where enabled.
+#### Scope Statement
 
-**Key Capabilities:**
+The OPD module manages the end-to-end outpatient clinical workflow from triage through consultation, investigation ordering, prescribing, and referral. It is the primary daily workflow for most facilities, auto-captures data required for HMIS 105 reporting, and hosts the AI Clinical Documentation and AI Differential Diagnosis capabilities where enabled.
+
+#### Key Capabilities
 
 - Capture triage vital signs: blood pressure, temperature, pulse, SpO2, weight, height, BMI, and MUAC.
 - Maintain a real-time doctor's queue per doctor/room with triage priority and wait time.
@@ -109,7 +113,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Display pharmacy stock availability before the clinician saves the prescription (stock-aware prescribing).
 - Check drug interactions with a 4-tier alert system: Info, Warning, Serious, Fatal.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - HMIS 105 data fields auto-captured during consultation without additional data entry.
 - Malaria mRDT result field embedded in the consultation screen for high-endemicity settings.
@@ -117,7 +121,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - MUAC screening integrated into triage for malnutrition detection.
 - MOH 5 (Health Unit Outpatient Monthly Report) format compliance.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — receives patient identity and demographics.
 - Laboratory Information System (LIS) — sends investigation requests, receives results.
@@ -130,14 +134,14 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Uganda HMIS Reporting — feeds HMIS 105 aggregation.
 - AI Intelligence — consumes AI Clinical Documentation (SOAP notes, referral letters) and AI Differential Diagnosis where the AI Intelligence module is enabled.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Inpatient clinical documentation (handled by IPD).
 - Pharmacy stock management and dispensing workflow (handled by Pharmacy and Dispensary).
 - Laboratory sample processing and result entry (handled by LIS).
 - Surgical procedures requiring theatre booking (handled by Theatre and Surgical Management).
 
-**Localisation Flags:**
+#### Localisation Flags
 
 - `opd.triage.chief_complaint_label` — Kiswahili value: *malalamiko makuu* (contextually accurate). Literal translation *malalamiko ya kwanza* is clinically ambiguous and is prohibited.
 
@@ -145,11 +149,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 3. Laboratory Information System (LIS)
 
-**Category:** Core Clinical | **Tier:** All | **Phase:** 1
+Category: Core Clinical | Tier: All | Phase: 1
 
-**Scope Statement:** The LIS module manages the laboratory workflow from test request through sample collection, processing, result entry, validation, and reporting. It interfaces with auto-analysers via HL7 and supports external lab referrals. LIS result data feeds the AI Outbreak Early Warning capability.
+#### Scope Statement
 
-**Key Capabilities:**
+The LIS module manages the laboratory workflow from test request through sample collection, processing, result entry, validation, and reporting. It interfaces with auto-analysers via HL7 and supports external lab referrals. LIS result data feeds the AI Outbreak Early Warning capability.
+
+#### Key Capabilities
 
 - Receive lab requests from OPD, IPD, and Emergency.
 - Generate barcode and QR labels for sample collection.
@@ -160,14 +166,14 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Record quality control data and generate Levey-Jennings charts.
 - Interface with auto-analysers (Cobas, Mindray, Sysmex) via HL7.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - HMIS 105 Section 2 (Laboratory) data auto-populated from test results.
 - Pre-configured test panels for malaria, HIV, syphilis, and pregnancy tests reflecting the highest-volume tests in the region.
 - CD4 count tracking for HIV programme monitoring.
 - GeneXpert TB result integration for tuberculosis diagnosis.
 
-**Interfaces:**
+#### Interfaces
 
 - Outpatient Department (OPD) — receives test requests, returns results to the consultation screen.
 - Inpatient Department (IPD) — receives inpatient test requests, returns results.
@@ -178,7 +184,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Uganda HMIS Reporting — feeds HMIS 105 Section 2 data.
 - AI Intelligence — LIS diagnosis result aggregation feeds the AI Outbreak Early Warning anomaly detection model.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Radiology and imaging workflows (handled by Radiology and Imaging).
 - Blood bank cross-matching and transfusion (handled by Blood Bank and Transfusion).
@@ -188,11 +194,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 4. Pharmacy and Dispensary
 
-**Category:** Core Clinical | **Tier:** All | **Phase:** 1
+Category: Core Clinical | Tier: All | Phase: 1
 
-**Scope Statement:** The Pharmacy and Dispensary module manages the medication dispensing workflow, drug stock management, and formulary maintenance. It connects to the clinical prescribing workflow to ensure stock-aware dispensing and tracks controlled substances in a dedicated register.
+#### Scope Statement
 
-**Key Capabilities:**
+The Pharmacy and Dispensary module manages the medication dispensing workflow, drug stock management, and formulary maintenance. It connects to the clinical prescribing workflow to ensure stock-aware dispensing and tracks controlled substances in a dedicated register.
+
+#### Key Capabilities
 
 - Receive prescriptions from OPD, IPD, and Emergency into a dispensing queue.
 - Dispense medications with automatic stock deduction.
@@ -204,7 +212,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Alert on minimum stock levels.
 - Maintain a drug formulary and a narcotic/controlled drug register.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - NMS (National Medical Stores) drug codes mapped to the formulary for government supply chain compatibility.
 - LMIS (Logistics Management Information System) export for NMS ordering and reporting.
@@ -212,7 +220,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - ARV dispensing workflow integrated with the HIV/AIDS Programme Management module.
 - PEPFAR commodity tracking for donor-funded drug supplies.
 
-**Interfaces:**
+#### Interfaces
 
 - Outpatient Department (OPD) — receives prescriptions, provides stock availability data.
 - Inpatient Department (IPD) — receives inpatient prescriptions and drug round orders.
@@ -222,7 +230,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - HIV/AIDS Programme Management — feeds ARV dispensing and adherence data.
 - Uganda HMIS Reporting — feeds pharmacy data to HMIS 105.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Clinical prescribing decision support (handled by OPD drug interaction checks).
 - Procurement and supplier management beyond NMS ordering (handled by Inventory and Stores Management).
@@ -232,11 +240,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 5. Inpatient Department (IPD) and Ward Management
 
-**Category:** Core Clinical | **Tier:** All | **Phase:** 2
+Category: Core Clinical | Tier: All | Phase: 2
 
-**Scope Statement:** The IPD module manages patient admission, bed allocation, nursing and medical documentation, medication administration, and discharge. It provides real-time bed visibility and charge accumulation throughout the admission. AI Clinical Documentation generates discharge summaries for clinician review and approval.
+#### Scope Statement
 
-**Key Capabilities:**
+The IPD module manages patient admission, bed allocation, nursing and medical documentation, medication administration, and discharge. It provides real-time bed visibility and charge accumulation throughout the admission. AI Clinical Documentation generates discharge summaries for clinician review and approval.
+
+#### Key Capabilities
 
 - Admit patients from OPD, Emergency, or direct admission.
 - Display a visual bed map per ward for bed management.
@@ -247,13 +257,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Maintain a fluid balance chart (intake and output).
 - Generate discharge summaries and letters, record DAMA (Discharge Against Medical Advice).
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - HMIS 108 (Inpatient Monthly Report) auto-populated from admission and discharge data.
 - DRG (Diagnosis-Related Group) mapping for facilities implementing case-based financing.
 - Paediatric weight-based dosing calculations integrated into the drug round workflow.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — references the master patient index at admission.
 - Outpatient Department (OPD) — receives admission transfers from OPD.
@@ -268,7 +278,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Uganda HMIS Reporting — feeds HMIS 108 data.
 - AI Intelligence — AI Clinical Documentation generates discharge summary drafts for clinician review and explicit approval.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Theatre scheduling and operation notes (handled by Theatre and Surgical Management).
 - Neonatal intensive care unit (NICU) specialised workflows (future scope).
@@ -278,11 +288,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 6. Emergency Department (A&E)
 
-**Category:** Core Clinical | **Tier:** All | **Phase:** 2
+Category: Core Clinical | Tier: All | Phase: 2
 
-**Scope Statement:** The Emergency Department module provides a rapid-registration, time-tracked workflow for acute and emergency patients. It supports mass casualty triage and operates with minimal required fields to avoid delays in life-threatening situations.
+#### Scope Statement
 
-**Key Capabilities:**
+The Emergency Department module provides a rapid-registration, time-tracked workflow for acute and emergency patients. It supports mass casualty triage and operates with minimal required fields to avoid delays in life-threatening situations.
+
+#### Key Capabilities
 
 - Perform rapid triage using AVPU and Glasgow Coma Scale (GCS).
 - Register emergency patients with minimal required fields (name and sex sufficient).
@@ -291,13 +303,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Track time points: arrival, triage, clinician seen, and disposition.
 - Activate mass casualty mode with START (Simple Triage and Rapid Treatment) triage protocol.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - Road Traffic Accident (RTA) coding for facilities near major highways.
 - Police notification flag for medico-legal cases.
 - Generator and power failure mode enabling continued operation during power outages.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — creates minimal patient records for unknown patients.
 - Outpatient Department (OPD) — discharges stable patients to OPD follow-up.
@@ -307,7 +319,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Billing and Revenue Management — auto-posts emergency charges.
 - Maternity, ANC and Reproductive Health — handles obstetric emergencies.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Pre-hospital ambulance care documentation (handled by Ambulance Management).
 - Disaster management coordination beyond the facility's own mass casualty protocol.
@@ -317,11 +329,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 7. Maternity, ANC and Reproductive Health
 
-**Category:** Core Clinical | **Tier:** All | **Phase:** 2
+Category: Core Clinical | Tier: All | Phase: 2
 
-**Scope Statement:** The Maternity module manages the continuum of reproductive health from antenatal care through labour, delivery, postnatal care, and family planning. It links mother and newborn records and tracks emergency obstetric and neonatal care (EmONC) indicators.
+#### Scope Statement
 
-**Key Capabilities:**
+The Maternity module manages the continuum of reproductive health from antenatal care through labour, delivery, postnatal care, and family planning. It links mother and newborn records and tracks emergency obstetric and neonatal care (EmONC) indicators.
+
+#### Key Capabilities
 
 - Register ANC clients with gestational age and expected date of delivery (EDD).
 - Record ANC visits (ANC1 through ANC8+) with structured visit data.
@@ -332,14 +346,14 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Record postnatal visits (PNC1 through PNC3).
 - Manage family planning services and counselling.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - HMIS 105 Section 4 (Maternal Health) data auto-populated from ANC and delivery records.
 - EmONC (Emergency Obstetric and Neonatal Care) signal function tracking.
 - PMTCT (Prevention of Mother-to-Child Transmission) workflow for HIV-positive mothers.
 - Mother-Baby Pair linkage for programmes tracking maternal and infant outcomes together.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — creates both mother and newborn records.
 - Inpatient Department (IPD) — handles maternity ward admissions.
@@ -351,13 +365,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Billing and Revenue Management — auto-posts maternity charges.
 - Uganda HMIS Reporting — feeds HMIS 105 Section 4 data.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Gynaecological surgery (handled by Theatre and Surgical Management).
 - Neonatal intensive care beyond initial newborn assessment (future scope).
 - Assisted reproduction services (not in the Medic8 scope).
 
-**Localisation Flags:**
+#### Localisation Flags
 
 - `maternity.registration.birth_attendant_label` — French: *accoucheuse*; Kiswahili: *mkunga*. These represent different professional categories per country context. Do not use generic "attendant."
 
@@ -365,11 +379,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 8. Immunisation and Vaccination
 
-**Category:** Core Clinical | **Tier:** All | **Phase:** 2
+Category: Core Clinical | Tier: All | Phase: 2
 
-**Scope Statement:** The Immunisation module manages vaccine administration, schedule adherence, cold chain documentation, and adverse event reporting. It pre-loads the Uganda Expanded Programme on Immunisation (EPI) schedule and supports campaign-based vaccination.
+#### Scope Statement
 
-**Key Capabilities:**
+The Immunisation module manages vaccine administration, schedule adherence, cold chain documentation, and adverse event reporting. It pre-loads the Uganda Expanded Programme on Immunisation (EPI) schedule and supports campaign-based vaccination.
+
+#### Key Capabilities
 
 - Pre-load the Uganda EPI schedule with all routine childhood vaccines.
 - Record vaccine administration: date, vaccine name, batch number, dose number, site.
@@ -379,14 +395,14 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Trace defaulters who miss scheduled doses.
 - Report Adverse Events Following Immunisation (AEFI).
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - Uganda EPI schedule as the default immunisation calendar.
 - COVID-19 vaccination tracking.
 - HPV campaign vaccination support.
 - DHIS2 Tracker upload for national immunisation data.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — references the patient (child) and guardian records.
 - Maternity, ANC and Reproductive Health — receives newborn records for birth-dose immunisation.
@@ -394,7 +410,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Uganda HMIS Reporting — feeds immunisation data to HMIS 105.
 - Patient Portal and Mobile App — displays immunisation schedule and sends reminders.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Vaccine procurement and cold chain logistics beyond facility-level recording (national supply chain is external).
 - Travel vaccination advisory services.
@@ -404,24 +420,26 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 9. Radiology and Imaging
 
-**Category:** Core Clinical | **Tier:** All | **Phase:** 2
+Category: Core Clinical | Tier: All | Phase: 2
 
-**Scope Statement:** The Radiology module manages imaging requests, radiographer worklists, structured report entry, and PACS integration. It supports modality-specific report templates and prioritises ultrasound workflows given its prevalence in African healthcare settings.
+#### Scope Statement
 
-**Key Capabilities:**
+The Radiology module manages imaging requests, radiographer worklists, structured report entry, and PACS integration. It supports modality-specific report templates and prioritises ultrasound workflows given its prevalence in African healthcare settings.
+
+#### Key Capabilities
 
 - Receive radiology requests from clinical screens (OPD, IPD, Emergency).
 - Manage a radiographer worklist with request prioritisation.
 - Enter radiology reports using structured templates per modality (X-ray, ultrasound, CT, MRI).
 - Integrate with Picture Archiving and Communication Systems (PACS) for DICOM image storage and retrieval.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - Ultrasound-first workflow design reflecting the most common imaging modality in East African facilities.
 - HMIS 105 Section 3 (Radiology) data auto-populated from completed reports.
 - Portable ultrasound device integration for facilities without fixed imaging suites.
 
-**Interfaces:**
+#### Interfaces
 
 - Outpatient Department (OPD) — receives imaging requests, returns reports.
 - Inpatient Department (IPD) — receives inpatient imaging requests, returns reports.
@@ -429,7 +447,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Billing and Revenue Management — auto-posts imaging charges.
 - Uganda HMIS Reporting — feeds HMIS 105 Section 3 data.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Advanced imaging modalities (PET, nuclear medicine) — not present in the target market.
 - Teleradiology with external radiologists (future scope).
@@ -441,11 +459,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 10. HIV/AIDS Programme Management
 
-**Category:** Specialty and Programme | **Tier:** All | **Phase:** 3
+Category: Specialty and Programme | Tier: All | Phase: 3
 
-**Scope Statement:** The HIV/AIDS module manages the complete HIV care cascade from testing and counselling through ART initiation, adherence monitoring, viral load tracking, and PMTCT. It generates PEPFAR MER indicators and integrates with UgandaEMR+ for sites transitioning from legacy systems.
+#### Scope Statement
 
-**Key Capabilities:**
+The HIV/AIDS module manages the complete HIV care cascade from testing and counselling through ART initiation, adherence monitoring, viral load tracking, and PMTCT. It generates PEPFAR MER indicators and integrates with UgandaEMR+ for sites transitioning from legacy systems.
+
+#### Key Capabilities
 
 - Record HIV testing and counselling (HTC) results.
 - Enrol patients into the HIV care programme.
@@ -455,14 +475,14 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Manage PMTCT for HIV-positive pregnant and breastfeeding women.
 - Track missed appointments with defaulter tracing alerts.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - Uganda Ministry of Health ART card format for clinical documentation.
 - PEPFAR MER indicators: TX_CURR (currently on treatment), TX_NEW (newly initiated), TX_PVLS (viral load suppression).
 - HMIS 105 Section 5 (HIV/AIDS) data auto-populated.
 - UgandaEMR+ integration for data exchange with PEPFAR-supported sites.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — identifies HIV-enrolled patients.
 - Outpatient Department (OPD) — HIV status field in the consultation screen.
@@ -472,7 +492,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Uganda HMIS Reporting — feeds HMIS 105 Section 5 and PEPFAR MER indicators.
 - Community Health Integration — receives community-level HTC and adherence data.
 
-**Out of Scope:**
+#### Out of Scope
 
 - HIV research and clinical trial management.
 - Pre-Exposure Prophylaxis (PrEP) programme management (future scope).
@@ -482,11 +502,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 11. TB Programme Management
 
-**Category:** Specialty and Programme | **Tier:** All | **Phase:** 3
+Category: Specialty and Programme | Tier: All | Phase: 3
 
-**Scope Statement:** The TB module manages tuberculosis case registration, treatment regimens, directly observed therapy (DOT), and treatment outcomes. It supports contact tracing and generates the National Tuberculosis and Leprosy Programme (NTLP) quarterly report.
+#### Scope Statement
 
-**Key Capabilities:**
+The TB module manages tuberculosis case registration, treatment regimens, directly observed therapy (DOT), and treatment outcomes. It supports contact tracing and generates the National Tuberculosis and Leprosy Programme (NTLP) quarterly report.
+
+#### Key Capabilities
 
 - Register TB cases with classification (pulmonary, extra-pulmonary, new, relapse).
 - Record treatment regimen with drug combinations and duration.
@@ -495,12 +517,12 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Document treatment outcomes (cured, completed, failed, died, lost to follow-up).
 - Trace contacts of confirmed TB cases.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - NTLP quarterly report auto-generated from case data.
 - MDR-TB (Multi-Drug Resistant TB) management workflow with second-line regimen tracking.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — identifies TB-enrolled patients.
 - Laboratory Information System (LIS) — receives GeneXpert, sputum smear, and culture results.
@@ -509,7 +531,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Uganda HMIS Reporting — feeds TB data to HMIS forms.
 - Community Health Integration — receives community-level contact tracing data.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Drug-susceptibility testing laboratory workflow (handled by LIS).
 - TB vaccine research.
@@ -519,11 +541,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 12. Dental Services
 
-**Category:** Specialty and Programme | **Tier:** All | **Phase:** 2
+Category: Specialty and Programme | Tier: All | Phase: 2
 
-**Scope Statement:** The Dental Services module provides a graphical tooth-charting interface, treatment planning with cost estimates, and procedure recording linked to the billing system. It supports the standard 32-tooth adult and paediatric dental charting.
+#### Scope Statement
 
-**Key Capabilities:**
+The Dental Services module provides a graphical tooth-charting interface, treatment planning with cost estimates, and procedure recording linked to the billing system. It supports the standard 32-tooth adult and paediatric dental charting.
+
+#### Key Capabilities
 
 - Display a 32-tooth graphical chart with per-tooth condition recording.
 - Record periodontal charting data.
@@ -531,11 +555,11 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Record dental procedures with automatic billing linkage.
 - Maintain a dental visit history per patient.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - HMIS 105 Section 7 (Dental) data auto-populated from procedure records.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — references the patient record.
 - Billing and Revenue Management — auto-posts dental procedure charges.
@@ -543,7 +567,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Appointments and Scheduling — books dental follow-up appointments.
 - Uganda HMIS Reporting — feeds HMIS 105 Section 7 data.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Orthodontic treatment planning and appliance tracking.
 - Maxillofacial surgery (handled by Theatre and Surgical Management).
@@ -553,11 +577,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 13. Eye Care and Optical
 
-**Category:** Specialty and Programme | **Tier:** All | **Phase:** 2
+Category: Specialty and Programme | Tier: All | Phase: 2
 
-**Scope Statement:** The Eye Care module manages ophthalmic assessments (visual acuity, refraction, slit lamp, fundoscopy, intraocular pressure), optical prescription generation, and optical dispensing linked to inventory.
+#### Scope Statement
 
-**Key Capabilities:**
+The Eye Care module manages ophthalmic assessments (visual acuity, refraction, slit lamp, fundoscopy, intraocular pressure), optical prescription generation, and optical dispensing linked to inventory.
+
+#### Key Capabilities
 
 - Record visual acuity measurements (Snellen/LogMAR).
 - Perform refraction and generate optical prescriptions.
@@ -566,11 +592,11 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Measure and record intraocular pressure (IOP).
 - Dispense optical items (spectacles, contact lenses) linked to inventory.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - HMIS 105 Section 8 (Eye Care) data auto-populated from ophthalmic records.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — references the patient record.
 - Billing and Revenue Management — auto-posts eye care charges and optical sales.
@@ -578,7 +604,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Appointments and Scheduling — books follow-up eye care appointments.
 - Uganda HMIS Reporting — feeds HMIS 105 Section 8 data.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Ophthalmic surgery (cataract, glaucoma) — theatre workflow handled by Theatre and Surgical Management.
 - Low-vision rehabilitation services.
@@ -588,11 +614,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 14. Theatre and Surgical Management
 
-**Category:** Specialty and Programme | **Tier:** Pro+ | **Phase:** 4
+Category: Specialty and Programme | Tier: Pro+ | Phase: 4
 
-**Scope Statement:** The Theatre module manages the surgical workflow from theatre booking and scheduling through pre-operative checklists, operation notes, anaesthesia records, and surgical counts. It is restricted to Pro+ tiers given the infrastructure requirements.
+#### Scope Statement
 
-**Key Capabilities:**
+The Theatre module manages the surgical workflow from theatre booking and scheduling through pre-operative checklists, operation notes, anaesthesia records, and surgical counts. It is restricted to Pro+ tiers given the infrastructure requirements.
+
+#### Key Capabilities
 
 - Book and schedule theatre sessions with surgeon, anaesthetist, and support staff.
 - Complete pre-operative checklists (WHO Surgical Safety Checklist compliant).
@@ -601,12 +629,12 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Perform surgical counts: swabs, instruments, and needles (pre- and post-procedure).
 - Generate theatre-specific billing.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - HMIS 108 surgical section data auto-populated from operation records.
 - EmONC caesarean section tracking for maternal health signal function reporting.
 
-**Interfaces:**
+#### Interfaces
 
 - Inpatient Department (IPD) — receives surgical patients, returns post-operative notes.
 - Laboratory Information System (LIS) — receives pre-operative investigation results.
@@ -616,7 +644,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Maternity, ANC and Reproductive Health — handles caesarean section deliveries.
 - Uganda HMIS Reporting — feeds HMIS 108 surgical data.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Day surgery unit as a separate administrative entity (managed within the general theatre schedule).
 - Surgical instrument sterilisation tracking (future scope).
@@ -626,11 +654,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 15. Blood Bank and Transfusion
 
-**Category:** Specialty and Programme | **Tier:** Pro+ | **Phase:** 4
+Category: Specialty and Programme | Tier: Pro+ | Phase: 4
 
-**Scope Statement:** The Blood Bank module manages blood product requests, cross-matching, issuing, transfusion administration, and adverse reaction recording. It maintains a blood stock register and integrates with Uganda Blood Transfusion Service (UBTS).
+#### Scope Statement
 
-**Key Capabilities:**
+The Blood Bank module manages blood product requests, cross-matching, issuing, transfusion administration, and adverse reaction recording. It maintains a blood stock register and integrates with Uganda Blood Transfusion Service (UBTS).
+
+#### Key Capabilities
 
 - Receive blood product requests from clinical modules.
 - Record cross-match results.
@@ -639,12 +669,12 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Document transfusion reactions with severity classification.
 - Manage blood stock by product type, blood group, and expiry date.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - UBTS (Uganda Blood Transfusion Service) integration for blood product ordering and supply tracking.
 - Haemovigilance reporting for transfusion adverse events.
 
-**Interfaces:**
+#### Interfaces
 
 - Inpatient Department (IPD) — receives transfusion requests from the ward.
 - Theatre and Surgical Management — receives pre-operative blood requests.
@@ -652,7 +682,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Laboratory Information System (LIS) — receives blood group and cross-match results.
 - Billing and Revenue Management — auto-posts blood product charges.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Blood donation and donor recruitment management.
 - Blood component separation and processing.
@@ -662,11 +692,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 16. Mortuary Management
 
-**Category:** Specialty and Programme | **Tier:** All | **Phase:** 2
+Category: Specialty and Programme | Tier: All | Phase: 2
 
-**Scope Statement:** The Mortuary module manages the workflow from death notification through body storage, cause-of-death certification, autopsy recording, and regulatory notifications. It generates documentation required by NIRA and supports maternal and perinatal death surveillance.
+#### Scope Statement
 
-**Key Capabilities:**
+The Mortuary module manages the workflow from death notification through body storage, cause-of-death certification, autopsy recording, and regulatory notifications. It generates documentation required by NIRA and supports maternal and perinatal death surveillance.
+
+#### Key Capabilities
 
 - Record death notification with date, time, and circumstances.
 - Assign cause of death using ICD-10 coding.
@@ -675,13 +707,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Record autopsy findings when performed.
 - Notify relevant authorities.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - MPDSR (Maternal and Perinatal Death Surveillance and Response) workflow for maternal and perinatal deaths.
 - NIRA (National Identification and Registration Authority) death notification for civil registration.
 - HMIS 108 deaths section data auto-populated.
 
-**Interfaces:**
+#### Interfaces
 
 - Inpatient Department (IPD) — receives death notifications from the ward.
 - Emergency Department (A&E) — receives death notifications from A&E.
@@ -689,7 +721,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Billing and Revenue Management — generates final account and mortuary storage charges.
 - Uganda HMIS Reporting — feeds HMIS 108 death data.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Forensic pathology investigations beyond basic autopsy recording.
 - Funeral arrangement services.
@@ -699,11 +731,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 17. Nutrition and Dietetics
 
-**Category:** Specialty and Programme | **Tier:** Pro+ | **Phase:** 3
+Category: Specialty and Programme | Tier: Pro+ | Phase: 3
 
-**Scope Statement:** The Nutrition module manages nutritional assessment, classification of acute malnutrition, enrolment into Community-based Management of Acute Malnutrition (CMAM) programmes, and therapeutic food dispensing. It targets the high burden of childhood malnutrition in the region.
+#### Scope Statement
 
-**Key Capabilities:**
+The Nutrition module manages nutritional assessment, classification of acute malnutrition, enrolment into Community-based Management of Acute Malnutrition (CMAM) programmes, and therapeutic food dispensing. It targets the high burden of childhood malnutrition in the region.
+
+#### Key Capabilities
 
 - Perform nutritional assessment using MUAC (Mid-Upper Arm Circumference) and WHZ (Weight-for-Height Z-score).
 - Classify patients as SAM (Severe Acute Malnutrition) or MAM (Moderate Acute Malnutrition).
@@ -711,12 +745,12 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Dispense RUTF (Ready-to-Use Therapeutic Food) with quantity tracking.
 - Record nutrition counselling sessions.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - HMIS nutrition section data auto-populated from assessment records.
 - RUTF stock tracking for donor-funded nutrition programmes.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — references the patient (typically paediatric) record.
 - Outpatient Department (OPD) — receives referrals from MUAC screening at triage.
@@ -725,7 +759,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Community Health Integration — receives community-level MUAC screening data.
 - Uganda HMIS Reporting — feeds nutrition data to HMIS forms.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Hospital kitchen and meal planning management.
 - Adult obesity management programmes.
@@ -735,11 +769,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 18. Physiotherapy and Rehabilitation
 
-**Category:** Specialty and Programme | **Tier:** Pro+ | **Phase:** 4
+Category: Specialty and Programme | Tier: Pro+ | Phase: 4
 
-**Scope Statement:** The Physiotherapy module manages rehabilitation referrals, patient assessments, treatment plans, and session-by-session progress notes. It supports programme-based tracking for patients with multi-session treatment courses.
+#### Scope Statement
 
-**Key Capabilities:**
+The Physiotherapy module manages rehabilitation referrals, patient assessments, treatment plans, and session-by-session progress notes. It supports programme-based tracking for patients with multi-session treatment courses.
+
+#### Key Capabilities
 
 - Receive physiotherapy referrals from clinical modules.
 - Perform initial assessment with functional evaluation.
@@ -747,11 +783,11 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Record session notes with interventions performed.
 - Track programme progress against treatment goals.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - WHO Rehabilitation Health Information System (RHIS) indicator generation.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — references the patient record.
 - Outpatient Department (OPD) — receives referrals from the OPD consultation.
@@ -759,7 +795,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Billing and Revenue Management — auto-posts physiotherapy session charges.
 - Appointments and Scheduling — schedules follow-up physiotherapy sessions.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Occupational therapy as a separate discipline.
 - Prosthetics and orthotics fitting and supply chain.
@@ -771,11 +807,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 19. Appointments and Scheduling
 
-**Category:** Administrative | **Tier:** All | **Phase:** 1
+Category: Administrative | Tier: All | Phase: 1
 
-**Scope Statement:** The Appointments module manages patient appointment booking, clinician availability calendars, queue management, and automated reminders. It supports walk-in integration and self-service booking through multiple channels.
+#### Scope Statement
 
-**Key Capabilities:**
+The Appointments module manages patient appointment booking, clinician availability calendars, queue management, and automated reminders. It supports walk-in integration and self-service booking through multiple channels.
+
+#### Key Capabilities
 
 - Book patient appointments with date, time, clinician, and service type.
 - Send SMS and WhatsApp appointment reminders.
@@ -784,14 +822,14 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Integrate walk-in patients into the appointment queue.
 - Support online self-service booking.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - WhatsApp booking for patients who prefer messaging over phone calls.
 - USSD booking for patients without smartphones or internet access.
 - Africa's Talking SMS gateway integration for bulk reminders.
 - Appointment confirmation SMS sent in patient's preferred language (English, French, or Kiswahili).
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — references the patient record for booking.
 - Outpatient Department (OPD) — feeds the doctor's queue from booked appointments.
@@ -801,7 +839,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Physiotherapy and Rehabilitation — schedules rehabilitation sessions.
 - Patient Portal and Mobile App — exposes booking functionality to patients.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Resource scheduling for rooms, equipment, or vehicles (handled by individual modules).
 - Theatre scheduling (handled by Theatre and Surgical Management).
@@ -811,29 +849,31 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 20. Referral Management
 
-**Category:** Administrative | **Tier:** All | **Phase:** 2
+Category: Administrative | Tier: All | Phase: 2
 
-**Scope Statement:** The Referral Management module manages internal and external patient referrals with electronic referral letters, tracks referral outcomes, and maintains a referral register aligned with Uganda's health facility referral hierarchy.
+#### Scope Statement
 
-**Key Capabilities:**
+The Referral Management module manages internal and external patient referrals with electronic referral letters, tracks referral outcomes, and maintains a referral register aligned with Uganda's health facility referral hierarchy.
+
+#### Key Capabilities
 
 - Create internal referrals between departments within the same facility.
 - Create external referrals to other facilities with electronic referral letters.
 - Maintain a referral register with referral status tracking.
 - Track referral outcomes (accepted, seen, counter-referred, lost to follow-up).
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - Uganda health system referral hierarchy support: HC II to HC III to HC IV to General Hospital to Regional Referral to National Referral.
 
-**Interfaces:**
+#### Interfaces
 
 - Outpatient Department (OPD) — generates referral letters from the consultation screen.
 - Emergency Department (A&E) — generates emergency referrals.
 - Patient Registration and Master Index — identifies referring and receiving facilities.
 - Uganda HMIS Reporting — feeds referral data to HMIS reports.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Telemedicine consultations (future add-on).
 - Health facility directory management (referral targets are configured, not dynamically discovered).
@@ -843,11 +883,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 21. Human Resource and Payroll
 
-**Category:** Administrative | **Tier:** All | **Phase:** 2
+Category: Administrative | Tier: All | Phase: 2
 
-**Scope Statement:** The HR and Payroll module manages staff records, professional licence tracking, attendance, leave, payroll processing with Uganda statutory deductions, and duty rosters. It provides staff productivity reporting for facility management.
+#### Scope Statement
 
-**Key Capabilities:**
+The HR and Payroll module manages staff records, professional licence tracking, attendance, leave, payroll processing with Uganda statutory deductions, and duty rosters. It provides staff productivity reporting for facility management.
+
+#### Key Capabilities
 
 - Maintain a staff directory with personal details, qualifications, and employment history.
 - Record and track professional licence expiry dates with alerts.
@@ -856,20 +898,20 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Create and manage duty rosters.
 - Report staff productivity metrics.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - UMDPC (Uganda Medical and Dental Practitioners Council) licence tracking.
 - UNMC (Uganda Nurses and Midwives Council) licence tracking.
 - PHLB (Pharmacy and Herbal Licence Board) licence tracking.
 - Uganda PAYE tax tables and NSSF contribution rates pre-configured.
 
-**Interfaces:**
+#### Interfaces
 
 - Billing and Revenue Management — staff salary data feeds financial reports.
 - Financial Accounting (Dual Mode) — payroll journal entries post to accounting.
 - All clinical modules — staff identity used for audit trails and user access control.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Recruitment and applicant tracking.
 - Performance appraisal management.
@@ -879,23 +921,25 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 22. Medical Records and Health Information
 
-**Category:** Administrative | **Tier:** All | **Phase:** 2
+Category: Administrative | Tier: All | Phase: 2
 
-**Scope Statement:** The Medical Records module manages the physical file tracking workflow for facilities that maintain paper records alongside the electronic system. It tracks file movements, generates missing file reports, and archives discharge summaries. AI ICD Coding Assist reduces manual coding burden during discharge summary archival.
+#### Scope Statement
 
-**Key Capabilities:**
+The Medical Records module manages the physical file tracking workflow for facilities that maintain paper records alongside the electronic system. It tracks file movements, generates missing file reports, and archives discharge summaries. AI ICD Coding Assist reduces manual coding burden during discharge summary archival.
+
+#### Key Capabilities
 
 - Track paper file location with movement logs (issued to, returned from, date/time).
 - Generate missing file reports for files not returned to the records room.
 - Archive discharge summaries in the electronic system.
 - Generate medical certificates (sick notes, fitness certificates).
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - HMIS form inventory management (tracking which paper HMIS forms are in stock).
 - NIRA birth notification generation for newborns delivered at the facility.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — maps physical file numbers to electronic patient records.
 - Inpatient Department (IPD) — receives discharge summaries for archiving.
@@ -903,7 +947,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Uganda HMIS Reporting — tracks HMIS form inventory.
 - AI Intelligence — AI ICD Coding Assist surfaces suggested ICD-10/11 codes during discharge summary archival, reducing manual coding time.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Document scanning and digitisation workflow.
 - Health information exchange (HIE) with external systems (future scope via FHIR).
@@ -913,11 +957,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 23. Ambulance Management
 
-**Category:** Administrative | **Tier:** Pro+ | **Phase:** 4
+Category: Administrative | Tier: Pro+ | Phase: 4
 
-**Scope Statement:** The Ambulance Management module manages the ambulance fleet register, trip logs, pre-hospital care documentation, and patient handover to the emergency department. It supports GPS tracking for fleet visibility.
+#### Scope Statement
 
-**Key Capabilities:**
+The Ambulance Management module manages the ambulance fleet register, trip logs, pre-hospital care documentation, and patient handover to the emergency department. It supports GPS tracking for fleet visibility.
+
+#### Key Capabilities
 
 - Maintain a fleet register with vehicle details, maintenance schedules, and insurance.
 - Log ambulance trips with origin, destination, crew, and patient details.
@@ -925,18 +971,18 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Document patient handover to the receiving facility's emergency department.
 - Track ambulance location via GPS integration.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - KCCA (Kampala Capital City Authority) ambulance service integration.
 - USSD-based ambulance request for callers without smartphones.
 
-**Interfaces:**
+#### Interfaces
 
 - Emergency Department (A&E) — delivers patients and handover documentation.
 - Patient Registration and Master Index — creates or links patient records at handover.
 - Billing and Revenue Management — posts ambulance service charges.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Emergency dispatch coordination across multiple facilities.
 - Air ambulance operations.
@@ -948,11 +994,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 24. Billing and Revenue Management
 
-**Category:** Financial | **Tier:** All | **Phase:** 1
+Category: Financial | Tier: All | Phase: 1
 
-**Scope Statement:** The Billing module manages patient accounts, charge accumulation from clinical encounters, payment processing, and daily cashier reconciliation. It supports cash, mobile money, and split billing across payers, and provides the revenue backbone for all clinical modules.
+#### Scope Statement
 
-**Key Capabilities:**
+The Billing module manages patient accounts, charge accumulation from clinical encounters, payment processing, and daily cashier reconciliation. It supports cash, mobile money, and split billing across payers, and provides the revenue backbone for all clinical modules.
+
+#### Key Capabilities
 
 - Maintain a patient account with real-time charge accumulation from all clinical modules.
 - Support a configurable price list with patient category-specific pricing.
@@ -963,13 +1011,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Handle credit management for corporate and insurance accounts.
 - Perform daily cashier reconciliation with shift-end cash-up.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - MTN Mobile Money (MoMo) API integration for patient payments.
 - Airtel Money API integration for patient payments.
 - Micro-payment support for facilities that accept partial payments on outstanding balances.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — links charges to the patient account via MRN.
 - Outpatient Department (OPD) — receives consultation and procedure charges.
@@ -985,13 +1033,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Financial Accounting (Dual Mode) — posts revenue journal entries.
 - Patient Portal and Mobile App — exposes balance and payment functionality.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Insurance claim submission and reconciliation (handled by Insurance Management).
 - General ledger and financial statements (handled by Financial Accounting).
 - Procurement and supplier payments (handled by Inventory and Stores Management).
 
-**Localisation Flags:**
+#### Localisation Flags
 
 - Number formatting: French locale uses a space thousands separator (1 500 000 UGX); English and Kiswahili locales use a comma separator (1,500,000 UGX).
 
@@ -999,11 +1047,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 25. Insurance Management
 
-**Category:** Financial | **Tier:** All | **Phase:** 2
+Category: Financial | Tier: All | Phase: 2
 
-**Scope Statement:** The Insurance Management module manages insurance scheme registration, member eligibility verification, benefit schedule enforcement, pre-authorisation, claim generation, and claim reconciliation. It supports the diverse insurance landscape in Uganda including the forthcoming National Health Insurance Scheme (NHIS). The AI Claim Scrubbing capability is surfaced within this module at the claim review step.
+#### Scope Statement
 
-**Key Capabilities:**
+The Insurance Management module manages insurance scheme registration, member eligibility verification, benefit schedule enforcement, pre-authorisation, claim generation, and claim reconciliation. It supports the diverse insurance landscape in Uganda including the forthcoming National Health Insurance Scheme (NHIS). The AI Claim Scrubbing capability is surfaced within this module at the claim review step.
+
+#### Key Capabilities
 
 - Register insurance schemes with benefit schedules and price agreements (AAR, Jubilee, Prudential, and others).
 - Verify member eligibility and benefit limits at the point of care.
@@ -1013,13 +1063,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Track claim rejections and manage re-submission.
 - Reconcile insurance credit balances with payments received.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - NHIS Uganda readiness for the forthcoming national scheme.
 - Corporate medical cover schemes common in Ugandan private sector.
 - Mission hospital insurance arrangements with faith-based organisations.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — verifies patient insurance membership.
 - Billing and Revenue Management — receives insurance-eligible charges.
@@ -1027,7 +1077,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - All clinical modules — enforces benefit schedule limits during ordering.
 - AI Intelligence — AI Claim Scrubbing panel displayed at the claim review step, before the **Submit Claim** action, where the AI Intelligence module is enabled.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Insurance underwriting and policy management.
 - Direct insurer system integration via API (claims are generated for export; real-time API integration is future scope).
@@ -1037,11 +1087,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 26. Financial Accounting (Dual Mode)
 
-**Category:** Financial | **Tier:** All | **Phase:** 2
+Category: Financial | Tier: All | Phase: 2
 
-**Scope Statement:** The Financial Accounting module operates in 2 modes. Simple Mode provides money-in, money-out, and outstanding claims tracking suitable for small clinics. Advanced Mode provides a full double-entry accounting system with chart of accounts, trial balance, income statement, and balance sheet for facilities that require formal financial reporting.
+#### Scope Statement
 
-**Key Capabilities:**
+The Financial Accounting module operates in 2 modes. Simple Mode provides money-in, money-out, and outstanding claims tracking suitable for small clinics. Advanced Mode provides a full double-entry accounting system with chart of accounts, trial balance, income statement, and balance sheet for facilities that require formal financial reporting.
+
+#### Key Capabilities
 
 - Simple Mode: record money received, money spent, outstanding insurance claims, and daily summary.
 - Advanced Mode: maintain a chart of accounts, record double-entry journal entries, generate trial balance, income statement, and balance sheet.
@@ -1050,20 +1102,20 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Apply auto-posting rules to convert clinical transactions into journal entries.
 - Track donor funds in ring-fenced cost centres with restricted spending rules.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - Capitation grant tracking for government-aided facilities receiving PHC (Primary Health Care) grants.
 - NSSF and PAYE remittance tracking and reporting.
 - Donor fund ring-fencing for PEPFAR, Global Fund, and NGO-funded facilities.
 
-**Interfaces:**
+#### Interfaces
 
 - Billing and Revenue Management — receives revenue transactions for posting.
 - Insurance Management — receives insurance receivable transactions.
 - Human Resource and Payroll — receives payroll journal entries.
 - Inventory and Stores Management — receives procurement and stock valuation entries.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Tax filing and URA (Uganda Revenue Authority) return generation.
 - External audit management.
@@ -1073,11 +1125,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 27. Inventory and Stores Management
 
-**Category:** Financial | **Tier:** All | **Phase:** 2
+Category: Financial | Tier: All | Phase: 2
 
-**Scope Statement:** The Inventory module manages multi-store stock across the facility (main store, pharmacy, theatre, ward, dental), handles goods receipt, inter-store transfers, expiry management, and procurement workflows. It integrates with the NMS ordering system for government-supplied commodities.
+#### Scope Statement
 
-**Key Capabilities:**
+The Inventory module manages multi-store stock across the facility (main store, pharmacy, theatre, ward, dental), handles goods receipt, inter-store transfers, expiry management, and procurement workflows. It integrates with the NMS ordering system for government-supplied commodities.
+
+#### Key Capabilities
 
 - Manage multiple stores: main store, pharmacy, theatre, ward, and dental.
 - Process goods received notes (GRN) with supplier details and batch tracking.
@@ -1088,14 +1142,14 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Generate NMS orders based on stock levels and consumption data.
 - Manage the procurement workflow: requisition, approval, purchase order, receipt.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - NMS (National Medical Stores) commodity codes for seamless government supply chain integration.
 - PEPFAR commodity tracking for donor-funded drug and supply programmes.
 - LMIS (Logistics Management Information System) export for national supply chain reporting.
 - Essential Medicines List compliance checking.
 
-**Interfaces:**
+#### Interfaces
 
 - Pharmacy and Dispensary — shares pharmacy stock data, receives dispensing deductions.
 - Theatre and Surgical Management — manages theatre consumable stock.
@@ -1103,7 +1157,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Financial Accounting (Dual Mode) — posts procurement and stock valuation entries.
 - Billing and Revenue Management — provides cost data for pricing.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Supplier relationship management and tendering.
 - Warehouse management for distribution centres.
@@ -1115,11 +1169,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 28. Uganda HMIS Reporting
 
-**Category:** HMIS and Public Health | **Tier:** All | **Phase:** 2
+Category: HMIS and Public Health | Tier: All | Phase: 2
 
-**Scope Statement:** The HMIS Reporting module aggregates clinical, laboratory, pharmacy, maternity, and programme data from all modules to auto-populate Uganda Ministry of Health HMIS forms. It supports validation, DHIS2 upload, and a reporting calendar to ensure timely submission.
+#### Scope Statement
 
-**Key Capabilities:**
+The HMIS Reporting module aggregates clinical, laboratory, pharmacy, maternity, and programme data from all modules to auto-populate Uganda Ministry of Health HMIS forms. It supports validation, DHIS2 upload, and a reporting calendar to ensure timely submission.
+
+#### Key Capabilities
 
 - Auto-populate HMIS 105 (Outpatient Monthly Report) from clinical module data.
 - Auto-populate HMIS 108 (Inpatient Monthly Report) from IPD and mortality data.
@@ -1129,20 +1185,20 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Maintain a reporting calendar with submission deadlines and status tracking.
 - Provide a DHO (District Health Officer) portal view for supervisory oversight.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - All Uganda HMIS forms pre-configured as the default reporting framework.
 - PEPFAR MER (Monitoring, Evaluation, and Reporting) indicator generation.
 - IDSR (Integrated Disease Surveillance and Response) weekly report generation.
 
-**Interfaces:**
+#### Interfaces
 
 - All clinical modules — aggregates data from OPD, IPD, LIS, Pharmacy, Maternity, Immunisation, Radiology, and programme modules.
 - HIV/AIDS Programme Management — feeds PEPFAR MER indicators.
 - TB Programme Management — feeds NTLP reporting data.
 - Disease Surveillance and Outbreak Detection — feeds IDSR data.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Custom report builder for ad hoc queries (future scope).
 - Non-Uganda HMIS frameworks (country-specific configurations are future expansion).
@@ -1152,31 +1208,33 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 29. Disease Surveillance and Outbreak Detection
 
-**Category:** HMIS and Public Health | **Tier:** All | **Phase:** 2
+Category: HMIS and Public Health | Tier: All | Phase: 2
 
-**Scope Statement:** The Disease Surveillance module monitors priority diseases with configurable threshold alerts, flags potential outbreaks, and generates weekly surveillance data for the Integrated Disease Surveillance and Response (IDSR) system. It sends notifiable disease alerts to the District Health Officer. The AI Outbreak Early Warning capability (Module 32) provides facility-level anomaly detection before IDSR national thresholds are crossed, and is complementary to — not a replacement for — the IDSR reporting workflow.
+#### Scope Statement
 
-**Key Capabilities:**
+The Disease Surveillance module monitors priority diseases with configurable threshold alerts, flags potential outbreaks, and generates weekly surveillance data for the Integrated Disease Surveillance and Response (IDSR) system. It sends notifiable disease alerts to the District Health Officer. The AI Outbreak Early Warning capability (Module 32) provides facility-level anomaly detection before IDSR national thresholds are crossed, and is complementary to — not a replacement for — the IDSR reporting workflow.
+
+#### Key Capabilities
 
 - Track priority diseases against configurable threshold values.
 - Flag threshold breaches as potential outbreaks.
 - Generate weekly surveillance data summaries.
 - Send notifiable disease alerts to designated public health authorities.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - Uganda IDSR 57 priority diseases pre-configured.
 - One Health surveillance approach for zoonotic diseases.
 - DRRT (District Rapid Response Team) notification workflow.
 
-**Interfaces:**
+#### Interfaces
 
 - Outpatient Department (OPD) — receives diagnosis data for surveillance.
 - Inpatient Department (IPD) — receives admission diagnosis data.
 - Laboratory Information System (LIS) — receives confirmed laboratory results for priority diseases.
 - Uganda HMIS Reporting — feeds HMIS 033b and IDSR weekly report data.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Epidemiological modelling and forecasting.
 - Environmental health surveillance (water quality, sanitation).
@@ -1186,11 +1244,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 30. Community Health Integration
 
-**Category:** HMIS and Public Health | **Tier:** Pro+ | **Phase:** 3
+Category: HMIS and Public Health | Tier: Pro+ | Phase: 3
 
-**Scope Statement:** The Community Health Integration module extends the platform to Village Health Teams (VHTs) and Community Health Workers (CHWs) through a dedicated Android application. It captures community-level referrals, home visits, and health event data for integration with the facility-based clinical record.
+#### Scope Statement
 
-**Key Capabilities:**
+The Community Health Integration module extends the platform to Village Health Teams (VHTs) and Community Health Workers (CHWs) through a dedicated Android application. It captures community-level referrals, home visits, and health event data for integration with the facility-based clinical record.
+
+#### Key Capabilities
 
 - Maintain VHT (Village Health Team) member records with assigned catchment areas.
 - Track community-to-facility referrals and their outcomes.
@@ -1198,12 +1258,12 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Log home visit records with assessment findings.
 - Provide a CHW Android application for offline data capture.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - Uganda VHT programme structure and reporting requirements pre-configured.
 - DHIS2 Tracker upload for community health worker data.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — links community-identified patients to facility records.
 - HIV/AIDS Programme Management — receives community-level HTC and adherence data.
@@ -1212,7 +1272,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Immunisation and Vaccination — receives defaulter tracing and outreach vaccination data.
 - Uganda HMIS Reporting — feeds community health data to HMIS aggregation.
 
-**Out of Scope:**
+#### Out of Scope
 
 - CHW training and certification management.
 - Community-based health insurance enrolment.
@@ -1224,11 +1284,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 31. Patient Portal and Mobile App
 
-**Category:** Patient Portal and Mobile | **Tier:** All | **Phase:** 3
+Category: Patient Portal and Mobile | Tier: All | Phase: 3
 
-**Scope Statement:** The Patient Portal provides patients with access to their personal health records, investigation results, appointment management, billing information, and health education through a mobile application. It surfaces AI Patient Plain-Language Summaries in the patient's preferred language (English, French, or Kiswahili) after clinician approval.
+#### Scope Statement
 
-**Key Capabilities:**
+The Patient Portal provides patients with access to their personal health records, investigation results, appointment management, billing information, and health education through a mobile application. It surfaces AI Patient Plain-Language Summaries in the patient's preferred language (English, French, or Kiswahili) after clinician approval.
+
+#### Key Capabilities
 
 - Display a personal health record: visit history, diagnoses, treatments, and investigation results.
 - Show laboratory and radiology results with historical trends.
@@ -1241,7 +1303,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Provide offline access to cached health records.
 - Display AI Patient Plain-Language Summary in the patient's preferred locale after clinician approval.
 
-**Africa-First Enhancements:**
+#### Africa-First Enhancements
 
 - Android-first design given the dominant mobile platform in the region.
 - Data-lite mode that minimises bandwidth consumption on 2G/3G connections.
@@ -1249,7 +1311,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Low-specification device support (Android 8.0+, 1 GB RAM minimum).
 - Full French and Kiswahili interface including all navigation labels, error messages, and clinical summaries.
 
-**Interfaces:**
+#### Interfaces
 
 - Patient Registration and Master Index — authenticates the patient and retrieves the health record.
 - Outpatient Department (OPD) — displays visit history and clinical notes.
@@ -1261,14 +1323,14 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Billing and Revenue Management — displays balance and accepts payments.
 - AI Intelligence — AI Patient Plain-Language Summary displayed in the patient's preferred locale after the clinician approves the discharge summary.
 
-**Out of Scope:**
+#### Out of Scope
 
 - Telemedicine video consultations (future add-on).
 - Prescription refill requests from the app.
 - Integration with wearable health devices.
 - Health record portability and export to other systems (future FHIR-based scope).
 
-**Localisation Flags:**
+#### Localisation Flags
 
 - AI Patient Plain-Language Summary: Kiswahili summaries target a lower Flesch-Kincaid reading level than French or English equivalents, reflecting health literacy distribution in the primary Kiswahili-speaking patient population.
 
@@ -1278,11 +1340,13 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 
 ### 32. AI Intelligence
 
-**Category:** AI Add-On | **Tier:** All (credit pack or flat fee, independent of clinical tier) | **Phase:** 2
+Category: AI Add-On | Tier: All (credit pack or flat fee, independent of clinical tier) | Phase: 2
 
-**Scope Statement:** The AI Intelligence module provides 6 tenant-configurable AI capabilities powered by a provider-agnostic adapter layer. It is billed independently of the clinical subscription and can be activated or deactivated per tenant from the admin panel. Individual capabilities are toggled independently.
+#### Scope Statement
 
-**Key Capabilities:**
+The AI Intelligence module provides 6 tenant-configurable AI capabilities powered by a provider-agnostic adapter layer. It is billed independently of the clinical subscription and can be activated or deactivated per tenant from the admin panel. Individual capabilities are toggled independently.
+
+#### Key Capabilities
 
 - AI Clinical Documentation: draft SOAP notes, discharge summaries, and referral letters from structured encounter data; clinician reviews and clicks **Approve Draft** before any text is saved to the patient record.
 - AI ICD Coding Assist: suggest top 3-5 ICD-10/11 codes from free-text clinical notes with confidence scores; clinician selects or dismisses each suggestion.
@@ -1291,25 +1355,25 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - AI Claim Scrubbing: predict rejection probability per claim line item using the facility's historical rejection data before submission; flag red-risk items for billing clerk correction.
 - AI Outbreak Early Warning: detect anomalous clustering of diagnosis codes before IDSR national thresholds are crossed; alert the Medical Officer daily with disease code, patient volume, and percentage deviation from the 90-day baseline.
 
-**Provider Architecture:**
+#### Provider Architecture
 
 - A single `AIProviderInterface` is implemented by 4 concrete adapter classes: `OpenAIAdapter` (GPT-4o, GPT-4o-mini), `AnthropicAdapter` (Claude Sonnet, Claude Haiku), `DeepSeekAdapter` (DeepSeek-V3, DeepSeek-R1), and `GeminiAdapter` (Gemini 1.5 Pro, Gemini 1.5 Flash).
 - Per-tenant configuration selects the primary provider and an optional failover provider; switching providers requires no code change — only a tenant configuration update in the admin panel.
 - If the primary provider does not respond within 10 seconds, the system retries via the failover provider; if the failover also fails, the AI capability returns a graceful degradation message and all clinical workflows proceed manually without interruption.
 
-**Billing Model:**
+#### Billing Model
 
 - Credit pack model: credits are token-denominated; AI features pause automatically when the credit balance reaches zero; clinical features are unaffected.
 - Flat fee model: fixed monthly add-on charged alongside the clinical subscription; all 6 capabilities available within a defined fair-use ceiling; available on Pro and Enterprise tiers only.
 - Token consumption is metered per request, per capability, per tenant, and logged in `ai_usage_log` for billing reconciliation.
 
-**Safety Guardrails:**
+#### Safety Guardrails
 
 - AI Clinical Documentation drafts are never auto-saved; the clinician must click **Approve Draft** before any text is written to the patient record.
 - AI Differential Diagnosis suggestions are never written to the patient record unless the clinician explicitly selects the condition as an active diagnosis.
 - No patient personally identifiable information (NIN, full legal name, NIRA number) is included in prompts sent to AI providers; encounter data is referenced by anonymised encounter ID.
 
-**Interfaces:**
+#### Interfaces
 
 - Outpatient Department (OPD) — consumes AI Clinical Documentation (SOAP notes, referral letters) and AI Differential Diagnosis at the point of consultation.
 - Inpatient Department (IPD) — consumes AI Clinical Documentation for discharge summary drafts.
@@ -1318,7 +1382,7 @@ Total: 32 modules across 7 categories, 4 build phases, and 3 tier levels.
 - Insurance Management — consumes AI Claim Scrubbing at the claim review step before submission.
 - Patient Portal and Mobile App — displays AI Patient Plain-Language Summary in the patient's preferred locale.
 
-**Out of Scope:**
+#### Out of Scope
 
 - AI training on patient data.
 - Autonomous clinical decisions without clinician review.

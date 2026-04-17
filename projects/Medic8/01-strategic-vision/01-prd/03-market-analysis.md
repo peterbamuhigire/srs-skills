@@ -42,7 +42,7 @@ The total cost of ownership (TCO) over 3 years ranges from USD 35,000 to USD 130
 | HR and payroll (external) | $2,000-$8,000 |
 | Insurance management (external) | $5,000-$25,000 |
 | Training and support | $6,000-$30,000 |
-| **Total** | **$35,000-$130,000** |
+| Total | $35,000-$130,000 |
 
 OpenMRS lacks integrated billing, insurance management, HR/payroll, mobile money, a patient mobile app, financial accounting, and inventory management beyond basic pharmacy. Each missing capability requires a separate system (OpenHMIS, Odoo, custom builds), compounding integration complexity and support burden. Java developers with OpenMRS expertise are scarce in Uganda, with customisation rates of USD 80-120 per hour. Community translations for Kiswahili and French are incomplete and untested in clinical settings — making multilingual expansion structurally difficult.
 
@@ -235,7 +235,7 @@ OpenMRS is deployed in 8,000+ facilities across 70+ countries. It is the EMR of 
 | Insurance management (external) | $5,000-$25,000 | Included |
 | Training and support | $6,000-$30,000 | Included |
 | AI Intelligence module | Custom build $5,000-$20,000 | Credit pack add-on |
-| **Total** | **$35,000-$130,000** | **$9,450-$71,100** |
+| Total | $35,000-$130,000 | $9,450-$71,100 |
 
 Medic8 delivers 45%-73% lower TCO than OpenMRS while including billing, insurance, HR, payroll, mobile money, a patient app, and a local Uganda support team as standard components of the subscription. The AI Intelligence module is available as a credit pack add-on that no OpenMRS deployment can offer without a custom build.
 
