@@ -2101,6 +2101,158 @@ FHIR endpoints serve standardised clinical resources for interoperability with e
 
 ---
 
+## AI Intelligence API
+
+All AI Intelligence endpoints require authentication (S/J). All requests may include an `Accept-Language: en|fr|sw` header to set the locale for AI-generated text output. All responses include a `Content-Language: <locale>` header reflecting the locale used.
+
+Errors common to all AI endpoints:
+
+| Code | Condition |
+|------|-----------|
+| 402 | Credit balance exhausted (`CREDIT_EXHAUSTED`) |
+| 503 | AI provider unavailable — both primary and failover failed |
+
+---
+
+### POST /api/v1/ai/clinical-note
+
+Generate a draft clinical note from structured encounter data.
+
+Request body:
+
+| Field | Type | Required | Constraints |
+|-------|------|----------|-------------|
+| `encounter_id` | integer | Yes | Must belong to the authenticated tenant |
+| `output_type` | string | Yes | `soap`, `discharge`, or `referral` |
+| `locale` | string | No | `en`, `fr`, or `sw` — defaults to user's `locale_preference` |
+
+Response (200):
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `draft_id` | string | UUID identifying the generated draft |
+| `content` | string | Draft text in the requested locale |
+| `provider` | string | Adapter used for generation |
+| `tokens_used` | integer | Total tokens consumed |
+
+Status codes: 200, 402, 503.
+
+---
+
+### POST /api/v1/ai/icd-suggest
+
+Suggest ICD codes from free-text clinical notes.
+
+Request body:
+
+| Field | Type | Required | Constraints |
+|-------|------|----------|-------------|
+| `clinical_text` | string | Yes | Free-text clinical narrative |
+| `coding_system` | string | Yes | `ICD-10` or `ICD-11` |
+
+Response (200):
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `suggestions` | array | Array of suggestion objects |
+| `suggestions[].code` | string | ICD code |
+| `suggestions[].description` | string | Code description |
+| `suggestions[].confidence` | float | Confidence score 0.0–1.0 |
+
+Status codes: 200, 402, 503.
+
+---
+
+### POST /api/v1/ai/differential
+
+Generate a ranked differential diagnosis list from the encounter. The system fetches symptoms, vitals, and lab results from the encounter record; the caller does not supply clinical data directly.
+
+Request body:
+
+| Field | Type | Required | Constraints |
+|-------|------|----------|-------------|
+| `encounter_id` | integer | Yes | Must belong to the authenticated tenant |
+
+Response (200):
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `differentials` | array | Ranked list of differential conditions |
+| `differentials[].rank` | integer | 1 = most likely |
+| `differentials[].condition` | string | Condition name |
+| `differentials[].icd11_code` | string | ICD-11 code |
+| `differentials[].contributing_factors` | array | Top factors from patient data |
+
+Status codes: 200, 402, 503.
+
+---
+
+### POST /api/v1/ai/patient-summary
+
+Generate a plain-language discharge summary for the patient portal.
+
+Request body:
+
+| Field | Type | Required | Constraints |
+|-------|------|----------|-------------|
+| `discharge_note_id` | integer | Yes | Must be an approved discharge note |
+| `locale` | string | No | `en`, `fr`, or `sw` — defaults to patient's `locale_preference` |
+
+Response (200):
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `summary` | string | Plain-language summary text |
+| `locale` | string | Locale of the generated summary |
+| `reading_level` | string | Flesch–Kincaid reading level label |
+
+Status codes: 200, 402, 503.
+
+---
+
+### POST /api/v1/ai/claim-scrub
+
+Predict rejection probability for each line item in an insurance claim before submission.
+
+Request body:
+
+| Field | Type | Required | Constraints |
+|-------|------|----------|-------------|
+| `claim_id` | integer | Yes | Must be a draft claim belonging to the tenant |
+
+Response (200):
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `line_items` | array | Per-line-item scrub results |
+| `line_items[].item_id` | integer | Claim line item identifier |
+| `line_items[].rejection_probability` | float | Predicted rejection probability 0.0–1.0 |
+| `line_items[].risk_level` | string | `green` (< 0.10), `amber` (0.10–0.30), `red` (> 0.30) |
+| `line_items[].top_reasons` | array | Up to 2 top rejection reason strings for red items |
+
+Status codes: 200, 402, 503.
+
+---
+
+### GET /api/v1/ai/usage
+
+Retrieve AI token usage and credit balance for the authenticated tenant.
+
+Response (200):
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `tenant_id` | integer | Tenant identifier |
+| `period_start` | date | Start of the current billing period |
+| `period_end` | date | End of the current billing period |
+| `total_tokens` | integer | Tokens consumed in the period |
+| `credit_balance` | integer | Remaining credit balance |
+| `by_capability` | object | Token breakdown keyed by capability name |
+
+Status codes: 200.
+
+---
+
 ## 3. Error Response Format
 
 ### 3.1 Standard HTTP Error Codes

@@ -1262,4 +1262,74 @@ All destructive actions (delete, void, cancel, discharge) require a SweetAlert2 
 
 ---
 
+## 12. Language Switcher
+
+The language switcher is accessible from the user profile dropdown on every screen in the staff web portal and the patient portal.
+
+- Three options are presented: English, Français, Kiswahili.
+- Changing language immediately re-renders the current page in the new locale without a full page reload (client-side locale switch via JavaScript; the server locale is updated asynchronously via `PATCH /api/v1/users/{id}/locale`).
+- The selected language persists server-side in the user's `locale_preference` column.
+- Clinical alert severity labels — `Fatal`, `Serious`, `Warning`, `Info` — always display in the clinician's active UI language. These labels are never auto-translated mid-workflow (BR-AI-003).
+
+---
+
+## 13. AI Capability UX Patterns
+
+All AI-generated output is rendered in a distinct visual container that makes its AI origin unambiguous on the same screen (Safety Guardrail 3 from the AI Intelligence context).
+
+### AI Output Container
+
+The AI output container uses a light blue left border (3px, `--info` colour token), a header bar showing "AI-Generated — Clinician Review Required", and two action buttons:
+
+- **Approve** — saves the AI content to the patient record. This is the only mechanism by which AI text enters the clinical record (BR-AI-005, Safety Guardrail 1).
+- **Discard** — closes the container without saving. No text is written to the patient record.
+
+Clicking **Approve** records the clinician's identity, timestamp, token count, and provider to the audit log.
+
+### AI Differential Diagnosis Panel
+
+The differential diagnosis list is displayed as a collapsible panel below the presenting complaint field in the OPD consultation screen. The panel is collapsed by default.
+
+- The panel header reads: "AI Differential — for clinician review only. Not a diagnosis."
+- Each entry shows: rank (1 = most likely), condition name, ICD-11 code, and the top 3 contributing factors from the patient data.
+- The clinician may dismiss individual suggestions. Dismissed suggestions are removed from the current consultation view.
+- No differential suggestion is written to the patient record unless the clinician selects it as an active diagnosis (Safety Guardrail 2).
+
+### AI Claim Scrubbing
+
+Claim scrubbing is displayed as a mandatory pre-submission review step before the **Submit Claim** action in the Insurance module.
+
+- Each line item shows a colour-coded chip: green (rejection probability < 10%), amber (10–30%), red (> 30%).
+- Red items display the top 2 rejection reasons on hover.
+- The billing clerk may correct flagged fields before submission.
+- Claim scrubbing does not block submission. The clerk may submit a red-flagged claim with a documented override reason.
+
+### AI Credit Balance Indicator
+
+The AI credit balance indicator is displayed in the AI Intelligence section of the admin panel:
+
+- A horizontal progress bar showing remaining credits as a proportion of the last top-up amount.
+- A numerical token count beside the bar (e.g., "42,500 tokens remaining").
+- A **Top Up** button that routes to the billing module's credit top-up flow.
+
+---
+
+## 14. Patient Portal Language Selection
+
+### First-Run Locale Picker
+
+On first login to the patient portal, a language picker is shown before the patient reaches the portal home screen. The picker is not skippable on the first login. It presents three options: English, Français, Kiswahili. The selection is saved to the patient's account profile.
+
+### Subsequent Visits
+
+On subsequent visits, the active locale is shown in the portal settings menu and is changeable at any time. The selected locale applies immediately.
+
+### AI Plain-Language Summary Locale Handling
+
+The AI Patient Plain-Language Summary is displayed in the patient's active locale. If summary generation in the patient's locale fails (for example, the AI provider returned an error for the `sw` locale), the summary is shown in `en` with a visible note: "Summary available in English only."
+
+The `[I18N-GAP]` tag is not shown to the patient. Only the English fallback text and the plain-language note are presented. This fallback is also logged in the build and operations log for translation queue follow-up.
+
+---
+
 *End of UX Specification*

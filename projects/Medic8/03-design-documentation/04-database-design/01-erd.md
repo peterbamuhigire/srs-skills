@@ -1226,6 +1226,103 @@ Recurring weekly availability schedule per doctor.
 
 ---
 
+## 10. AI Intelligence and Patient-Account Tables
+
+### 10.1 `tenant_ai_config`
+
+Per-tenant AI provider configuration. One row per tenant. API keys are encrypted at rest using AES-256-GCM (Security Architecture, Section 8.5).
+
+| Column | Type | Constraints | Description |
+|--------|------|-------------|-------------|
+| `id` | BIGINT UNSIGNED | PK, AUTO_INCREMENT | Surrogate row key |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK → `facility.id`, UNIQUE | One config row per tenant |
+| `primary_provider` | VARCHAR(20) | NOT NULL | Active adapter: `openai`, `anthropic`, `deepseek`, `gemini` |
+| `primary_api_key` | TEXT | NOT NULL | AES-256-GCM encrypted API key for the primary provider |
+| `failover_provider` | VARCHAR(20) | NULL | Fallback adapter if primary times out |
+| `failover_api_key` | TEXT | NULL | AES-256-GCM encrypted API key for the failover provider |
+| `billing_model` | VARCHAR(20) | NOT NULL, DEFAULT `credit_pack` | `credit_pack` or `flat_fee` |
+| `credit_balance` | BIGINT UNSIGNED | NOT NULL, DEFAULT 0 | Token credit balance — decremented per request under `credit_pack` |
+| `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Record creation timestamp |
+| `updated_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last modification timestamp |
+
+### 10.2 `ai_capability_toggles`
+
+Per-capability on/off switches per tenant. Six rows per tenant (one per capability), seeded at AI module activation.
+
+| Column | Type | Constraints | Description |
+|--------|------|-------------|-------------|
+| `id` | BIGINT UNSIGNED | PK, AUTO_INCREMENT | Surrogate row key |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK → `facility.id` | Tenant isolation |
+| `capability_key` | VARCHAR(50) | NOT NULL | One of: `clinical_docs`, `icd_coding`, `differential`, `plain_language`, `claim_scrub`, `outbreak_alert` |
+| `enabled` | TINYINT(1) | NOT NULL, DEFAULT 1 | 1 = capability active; 0 = capability disabled |
+| `updated_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last toggle timestamp |
+
+**Composite unique constraint:** `UNIQUE(tenant_id, capability_key)`.
+
+### 10.3 `ai_usage_log`
+
+Append-only token metering log. One row per AI request. Used for billing reconciliation and the admin usage dashboard.
+
+| Column | Type | Constraints | Description |
+|--------|------|-------------|-------------|
+| `id` | BIGINT UNSIGNED | PK, AUTO_INCREMENT | Surrogate log entry identifier |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK → `facility.id` | Tenant context |
+| `capability` | VARCHAR(50) | NOT NULL | Capability key (e.g., `clinical_docs`, `icd_coding`) |
+| `provider` | VARCHAR(20) | NOT NULL | Adapter used for the request (e.g., `openai`, `anthropic`) |
+| `model` | VARCHAR(50) | NOT NULL | Model variant used (e.g., `gpt-4o-mini`, `claude-haiku`) |
+| `input_tokens` | INT UNSIGNED | NOT NULL | Token count for the input prompt |
+| `output_tokens` | INT UNSIGNED | NOT NULL | Token count for the completion |
+| `total_tokens` | INT UNSIGNED | NOT NULL | Computed: `input_tokens + output_tokens` |
+| `request_timestamp` | TIMESTAMP | NOT NULL | UTC timestamp of the request dispatch |
+| `response_latency_ms` | INT UNSIGNED | NOT NULL | End-to-end response time in milliseconds |
+| `was_failover` | TINYINT(1) | NOT NULL, DEFAULT 0 | 1 = failover provider was used for this request |
+
+**Index:** `INDEX(tenant_id, capability, request_timestamp)` for usage dashboard queries.
+
+### 10.4 `billing_accounts`
+
+Billing account entity. Decoupled from `patients`. One account may cover multiple patients (family, corporate, insurance group). A default account of type `individual` is auto-created by an application event on every new `patients` insert (RULE-ACCT-001).
+
+| Column | Type | Constraints | Description |
+|--------|------|-------------|-------------|
+| `id` | BIGINT UNSIGNED | PK, AUTO_INCREMENT | Surrogate billing account identifier |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK → `facility.id` | Tenant isolation |
+| `account_name` | VARCHAR(255) | NOT NULL | Payer name — person, school, insurer, or company |
+| `account_type` | VARCHAR(30) | NOT NULL, DEFAULT `individual` | `individual`, `family`, `corporate`, `insurance_group`, `institutional` |
+| `payer_contact` | VARCHAR(255) | NULL | Primary billing contact (phone or email) |
+| `insurance_policy_id` | BIGINT UNSIGNED | NULL, FK → `insurance_policies.id` | Linked insurance policy; all linked patients are covered (RULE-ACCT-007) |
+| `is_archived` | TINYINT(1) | NOT NULL, DEFAULT 0 | 1 = account archived; read-only (RULE-ACCT-009) |
+| `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Account creation timestamp |
+| `updated_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last modification timestamp |
+
+**Note:** The `patients` table no longer carries billing fields directly. All charge references are linked via `patient_account_links` to a `billing_accounts` row.
+
+### 10.5 `patient_account_links`
+
+Junction table linking patients to billing accounts. A patient may be linked to one active billing account. Many patients may share one account (RULE-ACCT-002).
+
+| Column | Type | Constraints | Description |
+|--------|------|-------------|-------------|
+| `id` | BIGINT UNSIGNED | PK, AUTO_INCREMENT | Surrogate row key |
+| `patient_id` | BIGINT UNSIGNED | NOT NULL, FK → `patients.id`, ON DELETE RESTRICT | Patient being linked |
+| `billing_account_id` | BIGINT UNSIGNED | NOT NULL, FK → `billing_accounts.id`, ON DELETE RESTRICT | Target billing account |
+| `linked_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Timestamp when the link was created |
+| `linked_by` | BIGINT UNSIGNED | NOT NULL, FK → `users.id` | Billing administrator who created the link |
+
+**Composite unique constraint:** `UNIQUE(patient_id)` — each patient has exactly one active billing account link at a time.
+
+### 10.6 `users` Table Update
+
+The `users` table receives one additional column to support internationalisation:
+
+| Column | Type | Constraints | Description |
+|--------|------|-------------|-------------|
+| `locale_preference` | CHAR(2) | NOT NULL, DEFAULT `en` | User's preferred UI language: `en`, `fr`, or `sw` |
+
+This column is read by `LocaleResolver` at the start of every authenticated request to set the active application locale.
+
+---
+
 ## 11. Phase 2 Tables (Key Columns Only)
 
 The following tables are listed with their key columns to establish the data model direction. Full column definitions will be specified at the start of Phase 2 development.

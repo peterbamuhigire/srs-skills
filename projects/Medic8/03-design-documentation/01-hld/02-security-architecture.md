@@ -381,7 +381,15 @@ The system provides a breach impact analysis function that, given a compromised 
 - If the cache expires and the device is offline, the app operates in **read-only mode** — no data mutations are permitted until permissions are refreshed
 - On reconnection, the app re-fetches permissions before allowing write operations
 
-### 8.5 App-Level Security Controls
+### 8.5 AI Provider Key Security
+
+AI provider API keys are stored encrypted using AES-256-GCM in the `primary_api_key` and `failover_api_key` columns of the `tenant_ai_config` table. Keys are never stored in plaintext, never logged, and never included in any API response.
+
+No patient personally identifiable information (name, National Identification Number, date of birth) is included in prompts sent to AI providers. Encounter data is referenced by anonymised encounter ID only. The AI provider receives clinical facts (diagnoses, vitals, lab results) without the patient's identity fields.
+
+Only the AI Administrator role may read or modify AI provider credentials in the admin panel. All changes to `tenant_ai_config` are recorded in the audit trail.
+
+### 8.6 App-Level Security Controls
 
 - **Screen capture prevention:** Disabled on clinical screens (Android: `FLAG_SECURE`; iOS: `UITextField` overlay technique)
 - **Clipboard restriction:** Clinical data fields prevent copy-to-clipboard on Android and iOS

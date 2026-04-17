@@ -2905,3 +2905,93 @@ All exceptions return a consistent JSON envelope:
   }
 }
 ```
+
+---
+
+## Module 32 — AI Intelligence
+
+### Class Diagram
+
+```
+AIProviderInterface
+  + complete(prompt: string, options: CompletionOptions): CompletionResponse
+  + chat(messages: Message[], options: ChatOptions): ChatResponse
+  + embed(text: string): EmbeddingVector
+
+OpenAIAdapter implements AIProviderInterface
+AnthropicAdapter implements AIProviderInterface
+DeepSeekAdapter implements AIProviderInterface
+GeminiAdapter implements AIProviderInterface
+
+AICapabilityService
+  - provider: AIProviderInterface
+  - tenantConfig: TenantAIConfig
+  + generateClinicalNote(encounterId: int): DraftNote
+  + suggestICDCodes(freeText: string): ICDSuggestion[]
+  + getDifferentialDiagnosis(symptoms, vitals, labs): DifferentialList
+  + generatePatientSummary(dischargeNoteId: int, locale: string): PatientSummary
+  + scrubClaim(claimId: int): ClaimScrubResult
+  + detectOutbreakAnomaly(tenantId: int): OutbreakAlert[]
+
+TokenMeteringService
+  - usageLog: AIUsageLog
+  + meter(tenantId, capability, provider, inputTokens, outputTokens): void
+  + getBalance(tenantId): int
+  + decrementBalance(tenantId, tokens): void
+```
+
+### AICapabilityService
+
+`AICapabilityService` is the single entry point for all AI capability calls within a tenant context. On construction it resolves the active `AIProviderInterface` adapter from the tenant's `tenant_ai_config` row, checks that the requested capability is enabled in `ai_capability_toggles`, and verifies that the credit balance is sufficient before dispatching any prompt. The service passes anonymised encounter IDs to the adapter; no patient name, NIN, or date of birth is included in the prompt payload (BR-AI-005, Safety Guardrail 5).
+
+On every call the service invokes `TokenMeteringService::meter()` after the adapter returns a response. If the primary adapter does not respond within 10 seconds the service retries on the failover adapter (BR-AI-004). If the failover also fails the service returns a graceful degradation response and logs the failover event. No clinical workflow is blocked.
+
+### TokenMeteringService
+
+`TokenMeteringService` is responsible for:
+
+1. Inserting a row into `ai_usage_log` for every completed AI request, recording `tenant_id`, `capability`, `provider`, `model`, `input_tokens`, `output_tokens`, `total_tokens`, `request_timestamp`, `response_latency_ms`, and `was_failover`.
+2. Decrementing the `credit_balance` column in `tenant_ai_config` by `total_tokens` when the tenant billing model is `credit_pack`.
+3. Enforcing the credit exhaustion guard: `getBalance()` is called before every AI request; if balance is 0, the service returns `CREDIT_EXHAUSTED` without dispatching to the adapter (BR-AI-001, BR-AI-002).
+
+### Adapter Responsibilities
+
+Each adapter maps the three `AIProviderInterface` method signatures to the provider SDK:
+
+| Adapter | SDK | Models |
+|---------|-----|--------|
+| `OpenAIAdapter` | OpenAI PHP SDK | GPT-4o, GPT-4o-mini |
+| `AnthropicAdapter` | Anthropic PHP SDK | Claude Sonnet, Claude Haiku |
+| `DeepSeekAdapter` | DeepSeek API (HTTP) | DeepSeek-V3, DeepSeek-R1 |
+| `GeminiAdapter` | Google AI PHP SDK | Gemini 1.5 Pro, Gemini 1.5 Flash |
+
+The active model within each adapter is read from the `tenant_ai_config` model field. Switching models requires only a config update; no code change is needed.
+
+---
+
+## i18n Service Layer
+
+### LocaleResolver
+
+`LocaleResolver` resolves the active locale for a request using the following priority order:
+
+1. The authenticated user's `locale_preference` field from the `users` table.
+2. The `Accept-Language` request header (first token, normalised to `en`, `fr`, or `sw`).
+3. `en` fallback if neither source yields a supported locale.
+
+The resolved locale is bound to the Laravel application locale via `App::setLocale()` on every authenticated request. On mobile (Android and iOS), the locale is applied from the user's `locale_preference` stored in the JWT claims and set via `AppCompatDelegate.setApplicationLocales()` (Android) or `Bundle` subclassing (iOS).
+
+### TranslationService
+
+`TranslationService` wraps Laravel's `__()` helper with the following additional behaviour:
+
+- Performs a key lookup in the resolved locale bundle first.
+- If the key is missing in the resolved locale, falls through to the `en` bundle.
+- If the key is missing in `en`, renders the raw key string (e.g., `opd.triage.blood_pressure_label`) and emits `[I18N-GAP: <key>]` to the Laravel log channel at `warning` level.
+- The CI pipeline parses the build log for `[I18N-GAP]` entries. In the `release` branch, any `[I18N-GAP]` entry fails the build.
+
+The fallback chain is: `sw → en`, `fr → en`. Machine translation is never applied.
+
+### String Cache
+
+Locale string bundles are loaded once per request lifecycle and held in an in-memory array for the duration of the request. On deployment, the OPcache is flushed, which invalidates all in-memory bundle state and forces a fresh load from the `lang/` directory on the next request. No explicit TTL-based cache invalidation is required for locale bundles because deployments are atomic.

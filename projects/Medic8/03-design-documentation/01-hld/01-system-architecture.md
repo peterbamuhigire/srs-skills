@@ -469,6 +469,83 @@ Medic8 exposes 14 FHIR R4 resource types:
 
 ---
 
+## AI Intelligence Layer
+
+The AI Intelligence layer (Module 32) is a tenant-toggleable add-on that sits as a cross-cutting service above the Business Logic Layer. It has no dependency on clinical subscription tier; any facility on any tier may activate it independently.
+
+### AIProviderInterface
+
+`AIProviderInterface` is a PHP interface that all AI adapters must implement. It exposes three methods with identical signatures across all providers:
+
+- `complete(prompt: string, options: CompletionOptions): CompletionResponse` — single-turn text generation
+- `chat(messages: Message[], options: ChatOptions): ChatResponse` — multi-turn conversation
+- `embed(text: string): EmbeddingVector` — text embedding for semantic search and similarity
+
+### Adapter Hierarchy
+
+```
+AIProviderInterface
+  ├── OpenAIAdapter       (GPT-4o, GPT-4o-mini)
+  ├── AnthropicAdapter    (Claude Sonnet, Claude Haiku)
+  ├── DeepSeekAdapter     (DeepSeek-V3, DeepSeek-R1)
+  └── GeminiAdapter       (Gemini 1.5 Pro, Gemini 1.5 Flash)
+```
+
+Each adapter translates the common interface method signatures into the target provider's SDK calls. Switching providers requires no code change — only a tenant configuration update in the admin panel.
+
+### Failover Behaviour
+
+1. The system dispatches the request to the primary provider.
+2. If the primary provider returns an error or does not respond within 10 seconds, the system automatically retries the same request using the configured failover provider.
+3. If the failover provider also fails within 10 seconds, the AI capability returns a graceful degradation response and the underlying clinical workflow continues without AI assistance. No clinical workflow is blocked by an AI provider failure.
+4. All failover events are logged with timestamp, primary provider error code, and failover outcome.
+
+### Token Metering
+
+Every AI request is logged to the `ai_usage_log` table. The log captures `tenant_id`, `capability`, `provider`, `model`, `input_tokens`, `output_tokens`, `total_tokens`, `request_timestamp`, `response_latency_ms`, and `was_failover`. Under the credit pack billing model, the credit balance in `tenant_ai_config` is decremented per request by the total token count.
+
+### Per-Tenant Configuration
+
+Each tenant's AI configuration is stored in the `tenant_ai_config` table. Fields include the primary provider, AES-256-GCM-encrypted primary API key, failover provider, AES-256-GCM-encrypted failover API key, billing model (`credit_pack` or `flat_fee`), and current credit balance. Per-capability toggles are stored in the `ai_capability_toggles` table, allowing a facility to enable AI ICD Coding Assist while leaving AI Differential Diagnosis disabled.
+
+---
+
+## Internationalisation (i18n) Architecture
+
+Medic8 supports 3 languages at launch: English (`en`, primary), French (`fr`), and Kiswahili (`sw`).
+
+### Locale Fallback Chain
+
+String keys are resolved in the following order:
+
+1. The user's selected locale (`sw` or `fr`).
+2. If the key does not exist in the selected locale, fall back to `en`.
+3. If the key does not exist in `en`, render the key name and emit `[I18N-GAP: <key>]` to the build log.
+
+The fallback sequence is: `sw → en`, `fr → en`. Machine translation is never used as a fallback. An unresolved `[I18N-GAP]` tag is a release blocker.
+
+### String Key Convention
+
+All localisation keys follow the pattern `module.context.label`. Keys are lowercase, underscore-delimited, and never contain spaces or special characters. Example: `opd.triage.blood_pressure_label`.
+
+### Platform Bundles
+
+| Platform | Locale Files |
+|----------|-------------|
+| Laravel (PHP) | `lang/en/`, `lang/fr/`, `lang/sw/` — named by module (e.g., `lang/en/opd.php`) |
+| Android | `res/values/strings.xml` (English default), `res/values-fr/strings.xml`, `res/values-sw/strings.xml` |
+| iOS | `en.lproj/Localizable.strings`, `fr.lproj/Localizable.strings`, `sw.lproj/Localizable.strings` |
+
+### Locale Resolution
+
+The active locale is resolved in this order: user profile `locale_preference` field → device locale header → `en` fallback. The resolved locale is set via `App::setLocale()` at the start of every request (Laravel) or `AppCompatDelegate.setApplicationLocales()` (Android) or `Bundle` subclassing (iOS).
+
+### Gap Management
+
+Missing strings emit `[I18N-GAP: <key>]` at build time. The CI pipeline treats this as a warning on development branches and a build failure on the `release` branch. Zero `[I18N-GAP]` tags are required before any module ships.
+
+---
+
 ## 9. Module Dependency Map
 
 The following table shows inter-module dependencies. A module in the "Depends On" column must be active for the module in the first column to function. A module in the "Depended On By" column consumes data or events from the first-column module.
