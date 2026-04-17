@@ -2,7 +2,7 @@
 
 This section defines the legal, regulatory, technology, performance, and design constraints that bound the Medic8 system architecture. All constraints are binding unless explicitly marked as advisory.
 
-**Standards:** IEEE 830-1998 Section 3.4, IEEE 29148-2018 Section 6.5.
+Standards: IEEE 830-1998 Section 3.4, IEEE 29148-2018 Section 6.5.
 
 ---
 
@@ -12,19 +12,19 @@ This section defines the legal, regulatory, technology, performance, and design 
 
 The system shall comply with the Uganda Data Protection and Privacy Act 2019 in all aspects of patient data handling.
 
-- **Consent:** The system shall obtain and record patient consent before collecting, processing, or sharing personal health data (PDPA Section 6). The consent record shall include the data categories consented to, the date, and the method of consent.
-- **Data Retention:** The system shall retain patient health records for a minimum of 10 years from the date of the last clinical encounter, in accordance with Uganda Ministry of Health (MoH) policy.
-- **Breach Notification:** The system shall support identification and reporting of all affected patient records within 72 hours of a confirmed data breach (PDPA Section 31). The system shall generate a breach impact report listing affected records, data categories exposed, and breach timeline.
-- **Cross-Border Transfer:** The system shall not transfer patient health data outside Uganda unless the destination country provides adequate data protection as determined by the Personal Data Protection Office (PDPO), or the patient has given explicit consent for the transfer. The system shall enforce this restriction at the FHIR API and DHIS2 export layers.
-- **Right of Access:** The system shall enable patients to request and receive a copy of their health records in a readable format within 30 days of the request.
+- Consent: The system shall obtain and record patient consent before collecting, processing, or sharing personal health data (PDPA Section 6). The consent record shall include the data categories consented to, the date, and the method of consent.
+- Data Retention: The system shall retain patient health records for a minimum of 10 years from the date of the last clinical encounter, in accordance with Uganda Ministry of Health (MoH) policy.
+- Breach Notification: The system shall support identification and reporting of all affected patient records within 72 hours of a confirmed data breach (PDPA Section 31). The system shall generate a breach impact report listing affected records, data categories exposed, and breach timeline.
+- Cross-Border Transfer: The system shall not transfer patient health data outside Uganda unless the destination country provides adequate data protection as determined by the Personal Data Protection Office (PDPO), or the patient has given explicit consent for the transfer. The system shall enforce this restriction at the FHIR API and DHIS2 export layers.
+- Right of Access: The system shall enable patients to request and receive a copy of their health records in a readable format within 30 days of the request.
 
 ### 5.1.2 Uganda HMIS Compliance
 
 The system shall auto-populate the following Uganda MoH Health Management Information System forms from clinical data without manual re-entry:
 
-- **HMIS 105** — Outpatient Monthly Report (8 sections: diagnoses by age/sex, laboratory, radiology, maternity, HIV/AIDS, immunisation, dental, eye services)
-- **HMIS 108** — Inpatient Monthly Report (admissions, discharges, deaths by diagnosis/age/sex, bed occupancy, surgical operations)
-- **HMIS 033b** — Weekly Epidemiological Surveillance Report (27 priority diseases from IDSR disease codes)
+- HMIS 105 — Outpatient Monthly Report (8 sections: diagnoses by age/sex, laboratory, radiology, maternity, HIV/AIDS, immunisation, dental, eye services)
+- HMIS 108 — Inpatient Monthly Report (admissions, discharges, deaths by diagnosis/age/sex, bed occupancy, surgical operations)
+- HMIS 033b — Weekly Epidemiological Surveillance Report (27 priority diseases from IDSR disease codes)
 
 The system shall support DHIS2 API submission to the Uganda eHMIS instance (`hmis2.health.go.ug`). HMIS form mappings shall be version-controlled in configuration tables and updated within 30 days of MoH publication of a new form version (gap HIGH-007).
 
@@ -79,8 +79,8 @@ Each deployment shall activate the applicable regulatory profile at tenant confi
 
 ### 5.2.3 Mobile Application Constraints
 
-- **Android:** The app shall support Android 7.0+ (API level 24) on devices with 1 GB RAM minimum. The app shall be built in Kotlin with Jetpack Compose UI and MVVM architecture.
-- **iOS:** The app shall support iOS 15.0+. The app shall be built in Swift with SwiftUI and MVVM architecture.
+- Android: The app shall support Android 7.0+ (API level 24) on devices with 1 GB RAM minimum. The app shall be built in Kotlin with Jetpack Compose UI and MVVM architecture.
+- iOS: The app shall support iOS 15.0+. The app shall be built in Swift with SwiftUI and MVVM architecture.
 - The base installation shall consume no more than 50 MB of device storage.
 
 ### 5.2.4 Bandwidth Constraints
@@ -94,13 +94,13 @@ Each deployment shall activate the applicable regulatory profile at tenant confi
 
 ### 5.2.5 Healthcare Interoperability Standards
 
-- **HL7 FHIR R4:** The system shall expose 14 FHIR R4 resource types via a RESTful API: Patient, Encounter, Observation, Condition, MedicationRequest, MedicationDispense, DiagnosticReport, ServiceRequest, Immunization, AllergyIntolerance, Procedure, Location, Practitioner, Organization. Every FHIR response shall include a human-readable HTML narrative element.
-- **SMART on FHIR:** The system shall support SMART on FHIR for third-party app integration.
-- **HL7 v2:** The system shall support HL7 v2 messaging (ORM/ORU) for laboratory analyser interfaces.
-- **ASTM E1394:** The system shall support ASTM E1394 protocol for interfacing with older laboratory analysers.
-- **CDA R2:** The system shall generate CDA R2 clinical documents for discharge summaries and referral letters.
-- **DICOM:** The system shall support DICOM for radiology image management via a DICOM gateway.
-- **DHIS2:** The system shall support DHIS2 API integration for HMIS aggregate reporting (ADX/JSON export).
+- HL7 FHIR R4: The system shall expose 14 FHIR R4 resource types via a RESTful API: Patient, Encounter, Observation, Condition, MedicationRequest, MedicationDispense, DiagnosticReport, ServiceRequest, Immunization, AllergyIntolerance, Procedure, Location, Practitioner, Organization. Every FHIR response shall include a human-readable HTML narrative element.
+- SMART on FHIR: The system shall support SMART on FHIR for third-party app integration.
+- HL7 v2: The system shall support HL7 v2 messaging (ORM/ORU) for laboratory analyser interfaces.
+- ASTM E1394: The system shall support ASTM E1394 protocol for interfacing with older laboratory analysers.
+- CDA R2: The system shall generate CDA R2 clinical documents for discharge summaries and referral letters.
+- DICOM: The system shall support DICOM for radiology image management via a DICOM gateway.
+- DHIS2: The system shall support DHIS2 API integration for HMIS aggregate reporting (ADX/JSON export).
 
 ---
 
@@ -142,8 +142,8 @@ The Android app shall launch and display the home screen within 3 seconds (cold 
 
 The system shall implement openEHR two-level modelling:
 
-- **Level 1 (Reference Model):** A stable database schema that does not change per country or facility.
-- **Level 2 (Archetypes and Templates):** Configurable clinical archetypes and templates loaded per tenant configuration for country-specific forms, validation rules, and clinical workflows.
+- Level 1 (Reference Model): A stable database schema that does not change per country or facility.
+- Level 2 (Archetypes and Templates): Configurable clinical archetypes and templates loaded per tenant configuration for country-specific forms, validation rules, and clinical workflows.
 
 This architecture enables a single codebase to serve multiple countries without codebase forking.
 
@@ -162,8 +162,8 @@ The system shall support a country configuration layer that adapts regulatory, c
 
 The system shall implement ABAC layered on RBAC:
 
-- **RBAC** grants base access permissions per role (19 built-in roles: clinician, pharmacist, lab technician, records officer, administrator, AI Administrator, and others as defined in the stakeholder registry).
-- **ABAC** enforces fine-grained attribute-based policies for sensitive data categories (HIV status, mental health, substance abuse, reproductive health).
+- RBAC grants base access permissions per role (19 built-in roles: clinician, pharmacist, lab technician, records officer, administrator, AI Administrator, and others as defined in the stakeholder registry).
+- ABAC enforces fine-grained attribute-based policies for sensitive data categories (HIV status, mental health, substance abuse, reproductive health).
 
 ### 5.4.4 Configurable Consent Engine
 
@@ -180,11 +180,11 @@ The active consent model shall be configurable at the tenant level to match juri
 
 The system shall implement a single Terminology Service gateway providing access to:
 
-- **ICD-10 / ICD-11** — diagnosis coding (mandatory for all facilities)
-- **SNOMED CT** — internal clinical concept storage
-- **LOINC** — laboratory observations and results
-- **RxNorm / ATC** — medication coding, mapped per country
-- **CPT/HCPCS** — procedure coding (only for markets requiring it)
+- ICD-10 / ICD-11 — diagnosis coding (mandatory for all facilities)
+- SNOMED CT — internal clinical concept storage
+- LOINC — laboratory observations and results
+- RxNorm / ATC — medication coding, mapped per country
+- CPT/HCPCS — procedure coding (only for markets requiring it)
 
 Clinical data shall be stored internally using SNOMED CT concept identifiers and mapped to ICD-10 at the reporting and billing boundary.
 

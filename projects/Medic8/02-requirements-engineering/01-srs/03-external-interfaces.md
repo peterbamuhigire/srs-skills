@@ -81,32 +81,32 @@ The following table defines all external software systems with which Medic8 exch
 
 ### Software Interface Detail — DHIS2
 
-- **Authentication:** OAuth2 or Basic Auth per DHIS2 instance configuration.
-- **Data Format:** ADX (Aggregate Data Exchange) XML or JSON payload.
-- **Frequency:** Monthly batch submission aligned with HMIS reporting calendar; on-demand re-submission for corrections.
-- **Error Handling:** The system shall log submission failures, retry 3 times with exponential backoff, and alert the Records Officer if submission fails after all retries.
+- Authentication: OAuth2 or Basic Auth per DHIS2 instance configuration.
+- Data Format: ADX (Aggregate Data Exchange) XML or JSON payload.
+- Frequency: Monthly batch submission aligned with HMIS reporting calendar; on-demand re-submission for corrections.
+- Error Handling: The system shall log submission failures, retry 3 times with exponential backoff, and alert the Records Officer if submission fails after all retries.
 
 ### Software Interface Detail — Mobile Money (MTN MoMo, Airtel Money)
 
-- **Authentication:** API key + OAuth2 bearer token.
-- **Transaction Flow:** Medic8 initiates a payment request with amount, payer phone number, and reference ID. The provider sends a callback on payment success or failure. Medic8 reconciles the callback against the pending transaction.
-- **Idempotency:** Each payment request carries a unique reference ID to prevent duplicate charges.
-- **Timeout:** If no callback is received within 120 seconds, the transaction is marked as pending and the cashier is prompted to verify manually.
+- Authentication: API key + OAuth2 bearer token.
+- Transaction Flow: Medic8 initiates a payment request with amount, payer phone number, and reference ID. The provider sends a callback on payment success or failure. Medic8 reconciles the callback against the pending transaction.
+- Idempotency: Each payment request carries a unique reference ID to prevent duplicate charges.
+- Timeout: If no callback is received within 120 seconds, the transaction is marked as pending and the cashier is prompted to verify manually.
 
 ### Software Interface Detail — HL7 FHIR R4
 
-- **Base URL:** `https://{tenant-domain}/fhir/r4/`
-- **Authentication:** OAuth2 (SMART on FHIR launch) or API key for server-to-server integration.
-- **Supported Operations:** READ, SEARCH, CREATE, UPDATE on all 14 resource types. DELETE is not supported for clinical resources (soft-delete with status change only).
-- **Narrative:** Every FHIR response shall include an HTML narrative (`text.div`) rendering the resource in human-readable format per FHIR R4 narrative requirements.
-- **Versioning:** Resource versioning via `meta.versionId`. History operation supported per resource.
+- Base URL: `https://{tenant-domain}/fhir/r4/`
+- Authentication: OAuth2 (SMART on FHIR launch) or API key for server-to-server integration.
+- Supported Operations: READ, SEARCH, CREATE, UPDATE on all 14 resource types. DELETE is not supported for clinical resources (soft-delete with status change only).
+- Narrative: Every FHIR response shall include an HTML narrative (`text.div`) rendering the resource in human-readable format per FHIR R4 narrative requirements.
+- Versioning: Resource versioning via `meta.versionId`. History operation supported per resource.
 
 ### Software Interface Detail — HL7 v2 (Laboratory)
 
-- **Transport:** MLLP (Minimum Lower Layer Protocol) over TCP. Default port configurable per analyser (typically 2575).
-- **Message Types:** ORM^O01 (outbound order), ORU^R01 (inbound result).
-- **Character Encoding:** UTF-8.
-- **Acknowledgment:** ACK message returned for every received ORU. Negative ACK triggers retry with configurable retry count (default 3).
+- Transport: MLLP (Minimum Lower Layer Protocol) over TCP. Default port configurable per analyser (typically 2575).
+- Message Types: ORM^O01 (outbound order), ORU^R01 (inbound result).
+- Character Encoding: UTF-8.
+- Acknowledgment: ACK message returned for every received ORU. Negative ACK triggers retry with configurable retry count (default 3).
 
 ### Software Interface Detail — AI Provider APIs
 
@@ -114,23 +114,23 @@ The AI Intelligence module integrates with up to 2 AI provider APIs per tenant: 
 
 Interface specification for each provider:
 
-- **Protocol:** HTTPS REST.
-- **Authentication:** Bearer token (API key stored encrypted using AES-256-GCM in the tenant settings table; key never appears in logs, error messages, or API responses).
-- **Request timeout:** 10 s; failover to the secondary provider triggers automatically on timeout or HTTP 5xx response.
-- **Supported providers:**
+- Protocol: HTTPS REST.
+- Authentication: Bearer token (API key stored encrypted using AES-256-GCM in the tenant settings table; key never appears in logs, error messages, or API responses).
+- Request timeout: 10 s; failover to the secondary provider triggers automatically on timeout or HTTP 5xx response.
+- Supported providers:
   - OpenAI — `api.openai.com`
   - Anthropic — `api.anthropic.com`
   - DeepSeek — `api.deepseek.com`
   - Google Gemini — `generativelanguage.googleapis.com`
-- **Data minimisation constraint:** Prompts shall not contain patient NIN, full legal name, or NIRA registration number. Anonymised encounter IDs are used in place of patient identifiers (see **CONSTRAINT-AI-002**).
+- Data minimisation constraint: Prompts shall not contain patient NIN, full legal name, or NIRA registration number. Anonymised encounter IDs are used in place of patient identifiers (see **CONSTRAINT-AI-002**).
 
 ### Software Interface Detail — Africa's Talking (SMS Gateway)
 
-- **Protocol:** HTTPS REST API.
-- **Authentication:** API key per tenant, stored in tenant settings.
-- **Capabilities:** SMS delivery (appointment reminders, medication alerts, missed appointment follow-ups, low-credit alerts); USSD session management (patient lookup, appointment booking on feature phones).
-- **SMS content:** No patient health information (PHI) shall appear in SMS body text. Messages direct the patient to the portal or facility for clinical details.
-- **Internationalisation:** SMS messages are sent in the patient's configured locale (en, fr, sw).
+- Protocol: HTTPS REST API.
+- Authentication: API key per tenant, stored in tenant settings.
+- Capabilities: SMS delivery (appointment reminders, medication alerts, missed appointment follow-ups, low-credit alerts); USSD session management (patient lookup, appointment booking on feature phones).
+- SMS content: No patient health information (PHI) shall appear in SMS body text. Messages direct the patient to the portal or facility for clinical details.
+- Internationalisation: SMS messages are sent in the patient's configured locale (en, fr, sw).
 
 ---
 
