@@ -434,9 +434,7 @@ For any incident:
 
 ---
 
-## AI Intelligence Incidents
-
-### AI Provider Outage
+### 2.8 AI Provider Outage
 
 Severity: Critical
 Response Time: Acknowledge within 15 minutes
@@ -452,7 +450,7 @@ Symptoms: AI capability endpoints return HTTP 503; clinicians see "AI service te
 
 ---
 
-### AI Credit Exhaustion
+### 2.9 AI Credit Exhaustion
 
 Severity: Warning
 Response Time: Acknowledge within 1 hour
@@ -468,7 +466,7 @@ Symptoms: AI capability endpoints return HTTP 402; clinicians see credit exhaust
 
 ---
 
-### UI Rendering English in Non-English Locale
+### 2.10 UI Rendering English in Non-English Locale
 
 Severity: Warning
 Response Time: Acknowledge within 1 hour
