@@ -1,0 +1,397 @@
+openapi: "3.1.0"
+info:
+  title: Academia Pro — Reports API
+  version: "1.0.0"
+  description: >
+    Report card and school performance report endpoints.
+    Covers FR-RPT-001 through FR-RPT-004.
+    Report cards are generated from finalised marks and attendance data for a
+    given term. PDFs are stored in S3 and returned as pre-signed download URLs.
+    All endpoints are tenant-scoped via AuthenticateTenant middleware (BR-MT-001).
+
+paths:
+
+  /report-cards/{studentId}:
+    get:
+      operationId: generateStudentReportCard
+      summary: Generate or retrieve a single student report card (FR-RPT-001)
+      description: >
+        Generates the termly report card for one student and returns a pre-signed
+        S3 download URL. If a report has already been generated for this
+        student/year/term and marks have not changed, the cached PDF URL is
+        returned. If marks have changed since the last generation, a new PDF is
+        produced and the URL updated.
+      tags: [Reports]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: School enrollment record ID.
+        - name: academic_year_id
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: term
+          in: query
+          required: true
+          schema:
+            type: integer
+            enum: [1, 2, 3]
+      responses:
+        "200":
+          description: Report card URL.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/ReportCardMeta"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          description: Marks or attendance not finalised for this term.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+              example:
+                success: false
+                error:
+                  code: MARKS_NOT_FINALISED
+                  message: Mark entry is incomplete for this student's class.
+
+  /report-cards/bulk:
+    post:
+      operationId: bulkGenerateReportCards
+      summary: Bulk-generate report cards for a class (FR-RPT-002)
+      description: >
+        Queues PDF generation for all students in a class for the specified
+        year/term. Returns a job_id that can be polled for completion status.
+        When complete, a ZIP archive URL is returned. Individual PDF URLs are
+        also available via GET /report-cards/{studentId}.
+      tags: [Reports]
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [class_id, academic_year_id, term]
+              properties:
+                class_id:
+                  type: integer
+                academic_year_id:
+                  type: integer
+                term:
+                  type: integer
+                  enum: [1, 2, 3]
+      responses:
+        "202":
+          description: Bulk generation job queued.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      job_id:
+                        type: string
+                        format: uuid
+                      student_count:
+                        type: integer
+                      status:
+                        type: string
+                        example: queued
+        "409":
+          description: Marks not finalised for one or more students in this class.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+
+  /report-cards/bulk/{jobId}:
+    get:
+      operationId: getBulkReportCardJobStatus
+      summary: Poll bulk report card generation status (FR-RPT-002)
+      tags: [Reports]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Job status and download URL when complete.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/BulkReportJob"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /report-cards/{studentId}/comment:
+    put:
+      operationId: saveReportComment
+      summary: Save Head Teacher comment on a report card (FR-RPT-004)
+      description: >
+        Saves the class teacher's remark and/or Head Teacher's comment for the
+        specified student/term. Comments are stored independently of the PDF —
+        the PDF must be regenerated after comment changes for the new content to
+        appear.
+      tags: [Reports]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: academic_year_id
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: term
+          in: query
+          required: true
+          schema:
+            type: integer
+            enum: [1, 2, 3]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                class_teacher_comment:
+                  type: string
+                  maxLength: 500
+                  nullable: true
+                head_teacher_comment:
+                  type: string
+                  maxLength: 500
+                  nullable: true
+      responses:
+        "200":
+          description: Comments saved.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+
+  /school-performance:
+    get:
+      operationId: getSchoolPerformanceReport
+      summary: School-level performance summary (FR-RPT-003)
+      description: >
+        Returns aggregate pass rates, grade distributions, and class-level
+        performance summaries for a given term. Suitable for the Director/Owner
+        dashboard and end-of-term reporting.
+      tags: [Reports]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: academic_year_id
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: term
+          in: query
+          required: true
+          schema:
+            type: integer
+            enum: [1, 2, 3]
+      responses:
+        "200":
+          description: School performance report.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/SchoolPerformanceReport"
+
+components:
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: SanctumToken
+
+  schemas:
+
+    ReportCardMeta:
+      type: object
+      properties:
+        student_enrollment_id:
+          type: integer
+        student_name:
+          type: string
+        academic_year_id:
+          type: integer
+        term:
+          type: integer
+        generated_at:
+          type: string
+          format: date-time
+        download_url:
+          type: string
+          format: uri
+          description: Pre-signed S3 URL, valid for 60 minutes.
+        url_expires_at:
+          type: string
+          format: date-time
+
+    BulkReportJob:
+      type: object
+      properties:
+        job_id:
+          type: string
+          format: uuid
+        class_id:
+          type: integer
+        academic_year_id:
+          type: integer
+        term:
+          type: integer
+        status:
+          type: string
+          enum: [queued, processing, complete, failed]
+        student_count:
+          type: integer
+        completed_count:
+          type: integer
+        failed_count:
+          type: integer
+        zip_download_url:
+          type: string
+          format: uri
+          nullable: true
+          description: Pre-signed S3 URL for the ZIP archive. Available when status=complete.
+        zip_url_expires_at:
+          type: string
+          format: date-time
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+
+    SchoolPerformanceReport:
+      type: object
+      properties:
+        academic_year_id:
+          type: integer
+        term:
+          type: integer
+        total_students:
+          type: integer
+        overall_pass_rate_percent:
+          type: number
+          format: float
+          example: 84.2
+        by_class:
+          type: array
+          items:
+            type: object
+            properties:
+              class_id:
+                type: integer
+              class_name:
+                type: string
+              curriculum_type:
+                type: string
+              student_count:
+                type: integer
+              pass_rate_percent:
+                type: number
+                format: float
+              average_score_percent:
+                type: number
+                format: float
+                nullable: true
+              division_breakdown:
+                type: object
+                nullable: true
+                description: >
+                  Present for PLE, UCE, and UACE classes only.
+                  Keys are division labels (e.g., "Division I").
+                additionalProperties:
+                  type: integer
+                example:
+                  Division I: 12
+                  Division II: 18
+                  Division III: 6
+                  Division IV: 2
+                  Ungraded: 0
+
+    ErrorEnvelope:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+
+  responses:
+    ValidationError:
+      description: Validation failed.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"

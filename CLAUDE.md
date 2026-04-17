@@ -130,8 +130,11 @@ These rules apply to all generated output — SRS sections, design documents, te
 
 ## Prohibited Actions
 
-- Do not commit project-specific data (from `projects/<ProjectName>/_context`) into this submodule repository.
 - Do not use subjective adjectives like "fast," "intuitive," or "reliable" without defining the specific IEEE-982.1 metric (see Principle 7 above).
+
+## Git Commit Protocol for Projects
+
+Project workspaces (`projects/<ProjectName>/`) are committed to the repository. Commit and push after every document batch (context files, then each phase document). Never commit the Word binary template (`templates/reference.docx`). Follow the batch commit pattern: context files first, then document phases in order, with a descriptive commit message per batch.
 
 ## Verification & Validation (V&V) Standard Operating Procedure
 

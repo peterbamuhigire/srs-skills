@@ -1,0 +1,308 @@
+openapi: "3.1.0"
+info:
+  title: Academia Pro — Authentication API
+  version: "1.0.0"
+  description: >
+    Authentication endpoints covering FR-AUTH-001 through FR-AUTH-006.
+    Web session login (FR-AUTH-001) is handled server-side (form POST, not JSON API).
+    This spec covers the JSON API surface used by mobile and SPA clients.
+
+servers:
+  - url: https://app.academiapro.com/api/v1
+    description: Production
+  - url: https://staging.academiapro.chwezi.com/api/v1
+    description: Staging
+  - url: http://localhost:8000/api/v1
+    description: Development
+
+paths:
+
+  /auth/login:
+    post:
+      operationId: apiLogin
+      summary: API / Mobile JWT Login (FR-AUTH-002)
+      description: >
+        Authenticates a user and returns an access token (15 min) and refresh token (30 days).
+        Identical credential validation to web login; no CSRF required for API consumers.
+      tags: [Authentication]
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, password, device_id]
+              properties:
+                username:
+                  type: string
+                  minLength: 3
+                  maxLength: 100
+                  example: bursar@stmarys.ac.ug
+                password:
+                  type: string
+                  minLength: 8
+                  maxLength: 255
+                  format: password
+                device_id:
+                  type: string
+                  maxLength: 255
+                  description: Unique device identifier for token revocation targeting.
+                  example: android-uuid-abc123
+      responses:
+        "200":
+          description: Login successful.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      access_token:
+                        type: string
+                      refresh_token:
+                        type: string
+                      expires_in:
+                        type: integer
+                        example: 900
+                        description: Access token TTL in seconds.
+                      token_type:
+                        type: string
+                        example: Bearer
+        "401":
+          $ref: "#/components/responses/InvalidCredentials"
+        "403":
+          $ref: "#/components/responses/AccountLocked"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+
+  /auth/refresh:
+    post:
+      operationId: refreshToken
+      summary: Refresh Access Token (FR-AUTH-003)
+      description: >
+        Exchanges a valid, non-revoked refresh token for a new access token and
+        refresh token. The submitted refresh token is immediately revoked (rotation).
+        Replaying a rotated token returns TOKEN_REVOKED.
+      tags: [Authentication]
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refresh_token]
+              properties:
+                refresh_token:
+                  type: string
+      responses:
+        "200":
+          description: Token refreshed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TokenPair"
+        "401":
+          description: Token invalid, expired, or revoked.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+              examples:
+                expired:
+                  value:
+                    success: false
+                    error: {code: TOKEN_EXPIRED, message: Token has expired.}
+                revoked:
+                  value:
+                    success: false
+                    error: {code: TOKEN_REVOKED, message: Token has been revoked.}
+
+  /auth/logout:
+    post:
+      operationId: apiLogout
+      summary: API Logout (FR-AUTH-004)
+      description: >
+        Revokes all refresh tokens associated with the authenticated device_id.
+        The access token is short-lived (15 min) and is not blocklisted; the client
+        must discard it immediately.
+      tags: [Authentication]
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Logout successful.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        "401":
+          $ref: "#/components/responses/Unauthenticated"
+
+  /auth/me:
+    get:
+      operationId: getAuthenticatedUser
+      summary: Get authenticated user profile
+      description: Returns the authenticated user's profile and role for the current tenant.
+      tags: [Authentication]
+      security:
+        - BearerAuth: []
+      responses:
+        "200":
+          description: Authenticated user profile.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/AuthUser"
+        "401":
+          $ref: "#/components/responses/Unauthenticated"
+
+components:
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: SanctumToken
+      description: >
+        Laravel Sanctum token. Claims stored in personal_access_tokens.abilities:
+        tenant_id (int), user_id (int), role (string).
+
+  schemas:
+    TokenPair:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            access_token:
+              type: string
+            refresh_token:
+              type: string
+            expires_in:
+              type: integer
+              example: 900
+            token_type:
+              type: string
+              example: Bearer
+
+    AuthUser:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        full_name:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          example: bursar
+        tenant_id:
+          type: integer
+          description: Omitted from API responses by StripInternalFieldsMiddleware.
+          writeOnly: true
+
+    ErrorEnvelope:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+
+  responses:
+    Unauthenticated:
+      description: No valid authentication token provided.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            success: false
+            error: {code: UNAUTHENTICATED, message: Unauthenticated.}
+    InvalidCredentials:
+      description: Invalid username or password.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            success: false
+            error: {code: INVALID_CREDENTIALS, message: Invalid credentials.}
+    AccountLocked:
+      description: Account locked after 5 failed attempts.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            success: false
+            error:
+              code: ACCOUNT_LOCKED
+              message: Account locked after 5 failed attempts. Contact your administrator.
+    ValidationError:
+      description: Request body failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            success: false
+            error:
+              code: VALIDATION_ERROR
+              message: The given data was invalid.
+              details:
+                device_id: ["The device id field is required."]
+    Forbidden:
+      description: Authenticated but insufficient permission.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            success: false
+            error: {code: FORBIDDEN, message: You do not have permission to perform this action.}
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+          example:
+            success: false
+            error: {code: NOT_FOUND, message: Resource not found.}

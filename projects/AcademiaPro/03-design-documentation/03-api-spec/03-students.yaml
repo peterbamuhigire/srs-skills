@@ -1,0 +1,518 @@
+openapi: "3.1.0"
+info:
+  title: Academia Pro — Student Information System API
+  version: "1.0.0"
+  description: >
+    Student management endpoints. Covers FR-SIS-001 through FR-SIS-005.
+    All endpoints are tenant-scoped via AuthenticateTenant middleware (BR-MT-001).
+
+paths:
+
+  /students:
+    get:
+      operationId: listStudents
+      summary: List students (FR-SIS-003)
+      description: >
+        Returns a paginated, searchable list of students enrolled in the authenticated tenant.
+        Supports search by name, admission number, NIN, or LIN.
+      tags: [Students]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: Search query — matches name, admission_number, NIN, LIN.
+        - name: class_id
+          in: query
+          schema:
+            type: integer
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, inactive, transferred, graduated]
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+            default: 25
+            maximum: 100
+      responses:
+        "200":
+          description: Paginated student list.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/StudentSummary"
+                  meta:
+                    $ref: "#/components/schemas/PaginationMeta"
+
+    post:
+      operationId: admitStudent
+      summary: Admit a new student (FR-SIS-001)
+      description: >
+        Admits a new student. The system checks the global_students table via NIN/LIN
+        (FR-SIS-002). If a matching global record exists, the student is linked;
+        otherwise a new global record is created (BR-STU-001, BR-STU-002).
+        Enforces single-school active enrollment (BR-STU-004).
+      tags: [Students]
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdmitStudentRequest"
+      responses:
+        "201":
+          description: Student admitted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/Student"
+        "409":
+          description: Student already has an active enrollment at another school (BR-STU-004).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+              example:
+                success: false
+                error:
+                  code: STUDENT_ALREADY_ENROLLED
+                  message: This student has an active enrollment at another school.
+        "422":
+          $ref: "#/components/responses/ValidationError"
+
+  /students/lookup:
+    get:
+      operationId: lookupStudentByIdentifier
+      summary: Cross-school student lookup by NIN or LIN (FR-SIS-002)
+      description: >
+        Searches the global_students table by NIN or LIN. Used during admission to
+        retrieve an existing student's global identity before creating a school enrollment.
+        Any authenticated tenant may read global identity fields (BR-MT-002).
+      tags: [Students]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: nin
+          in: query
+          schema:
+            type: string
+          description: Uganda National Identification Number.
+        - name: lin
+          in: query
+          schema:
+            type: string
+          description: MoES Learner Identification Number.
+      responses:
+        "200":
+          description: Global student record found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/GlobalStudent"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /students/{id}:
+    get:
+      operationId: getStudent
+      summary: Get full student record
+      tags: [Students]
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/StudentIdPath"
+      responses:
+        "200":
+          description: Student details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: "#/components/schemas/Student"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    put:
+      operationId: updateStudent
+      summary: Update tenant-scoped student fields
+      description: >
+        Updates only the fields that belong to the current tenant's enrollment record
+        (class, status, local admission number, guardian contacts).
+        Global identity fields (name, DOB, gender) may only be updated by the owning
+        school (BR-STU-003).
+      tags: [Students]
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/StudentIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateStudentRequest"
+      responses:
+        "200":
+          description: Student updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: "#/components/schemas/Student"
+        "403":
+          description: Attempted to update global identity fields owned by another school.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+
+  /students/{id}/transfer-out:
+    post:
+      operationId: transferStudentOut
+      summary: Transfer student out of current school (FR-SIS-004)
+      description: >
+        Marks the student's enrollment at this school as transferred.
+        Frees the student for enrollment at another school (BR-STU-004).
+        Retains all historical records (marks, attendance, fees) at the transferring school.
+        Immutable — a transfer out cannot be reversed once confirmed.
+      tags: [Students]
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/StudentIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [transfer_date, reason]
+              properties:
+                transfer_date:
+                  type: string
+                  format: date
+                  example: "2026-04-30"
+                reason:
+                  type: string
+                  maxLength: 500
+                destination_school:
+                  type: string
+                  maxLength: 150
+      responses:
+        "200":
+          description: Transfer recorded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      student_uid:
+                        type: string
+                        format: uuid
+                      transfer_date:
+                        type: string
+                        format: date
+                      status:
+                        type: string
+                        example: transferred
+        "409":
+          description: Student already inactive or transferred.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+
+  /students/{id}/retention-lock:
+    post:
+      operationId: setRetentionLock
+      summary: Lock student record pending retention decision (FR-SIS-005)
+      description: >
+        Prevents a student record from being auto-promoted or transferred at year-end
+        until a Head Teacher explicitly reviews and resolves the lock.
+      tags: [Students]
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/StudentIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [reason]
+              properties:
+                reason:
+                  type: string
+                  maxLength: 500
+                  example: Pending repetition approval by Head Teacher.
+      responses:
+        "200":
+          description: Retention lock applied.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+
+components:
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: SanctumToken
+
+  parameters:
+    StudentIdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: School enrollment record ID (tenant-scoped).
+
+  schemas:
+
+    AdmitStudentRequest:
+      type: object
+      required: [first_name, last_name, date_of_birth, gender, class_id, admission_date]
+      properties:
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        middle_name:
+          type: string
+          maxLength: 100
+        date_of_birth:
+          type: string
+          format: date
+          example: "2010-03-15"
+        gender:
+          type: string
+          enum: [male, female]
+        class_id:
+          type: integer
+          description: ID of the class the student is being admitted into.
+        admission_date:
+          type: string
+          format: date
+        local_admission_number:
+          type: string
+          maxLength: 50
+          description: School-assigned admission number. Auto-generated if omitted.
+        nin:
+          type: string
+          maxLength: 20
+          description: National Identification Number (age 16+).
+        lin:
+          type: string
+          maxLength: 20
+          description: MoES Learner Identification Number.
+        guardian_name:
+          type: string
+          maxLength: 150
+        guardian_phone:
+          type: string
+          description: E.164 format. Used for SMS alerts.
+          example: "+256701234567"
+        guardian_relationship:
+          type: string
+          enum: [father, mother, guardian, other]
+
+    UpdateStudentRequest:
+      type: object
+      properties:
+        class_id:
+          type: integer
+        guardian_name:
+          type: string
+          maxLength: 150
+        guardian_phone:
+          type: string
+        guardian_relationship:
+          type: string
+          enum: [father, mother, guardian, other]
+        status:
+          type: string
+          enum: [active, inactive]
+        local_admission_number:
+          type: string
+          maxLength: 50
+
+    StudentSummary:
+      type: object
+      properties:
+        id:
+          type: integer
+        student_uid:
+          type: string
+          format: uuid
+        full_name:
+          type: string
+        local_admission_number:
+          type: string
+        class_name:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive, transferred, graduated]
+
+    Student:
+      allOf:
+        - $ref: "#/components/schemas/StudentSummary"
+        - type: object
+          properties:
+            first_name:
+              type: string
+            last_name:
+              type: string
+            middle_name:
+              type: string
+            date_of_birth:
+              type: string
+              format: date
+            gender:
+              type: string
+            nin:
+              type: string
+              nullable: true
+            lin:
+              type: string
+              nullable: true
+            guardian_name:
+              type: string
+            guardian_phone:
+              type: string
+            guardian_relationship:
+              type: string
+            admission_date:
+              type: string
+              format: date
+            created_at:
+              type: string
+              format: date-time
+
+    GlobalStudent:
+      type: object
+      properties:
+        student_uid:
+          type: string
+          format: uuid
+        first_name:
+          type: string
+        last_name:
+          type: string
+        date_of_birth:
+          type: string
+          format: date
+        gender:
+          type: string
+        nin:
+          type: string
+          nullable: true
+        lin:
+          type: string
+          nullable: true
+        active_enrollment:
+          type: object
+          nullable: true
+          properties:
+            school_name:
+              type: string
+            status:
+              type: string
+
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        per_page:
+          type: integer
+        last_page:
+          type: integer
+
+    ErrorEnvelope:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+
+  responses:
+    ValidationError:
+      description: Validation failed.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"

@@ -1,0 +1,10 @@
+00-cover.md
+01-getting-started.md
+02-finance-manager.md
+03-inventory-officer.md
+04-sales-representative.md
+05-hr-payroll-officer.md
+06-purchasing-officer.md
+07-pos-cashier.md
+08-field-agent.md
+09-system-administrator.md

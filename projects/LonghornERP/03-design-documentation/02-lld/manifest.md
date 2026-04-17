@@ -1,0 +1,10 @@
+00-cover.md
+01-introduction.md
+02-platform-services.md
+03-accounting-service.md
+04-inventory-service.md
+05-sales-procurement-service.md
+06-hr-pos-service.md
+07-addon-services.md
+08-integration-services.md
+09-database-interaction.md

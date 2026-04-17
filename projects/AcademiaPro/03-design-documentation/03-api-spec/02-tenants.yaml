@@ -1,0 +1,317 @@
+openapi: "3.1.0"
+info:
+  title: Academia Pro — Tenant Management API (Super Admin)
+  version: "1.0.0"
+  description: >
+    Super Admin endpoints for tenant lifecycle management.
+    Covers FR-TNT-001 through FR-TNT-003.
+    Base path: /adminpanel/api/v1
+
+servers:
+  - url: https://app.academiapro.com/adminpanel/api/v1
+    description: Production (Super Admin panel)
+  - url: http://localhost:8000/adminpanel/api/v1
+    description: Development
+
+paths:
+
+  /tenants:
+    get:
+      operationId: listTenants
+      summary: List all tenants
+      description: Returns a paginated list of all school tenants. Super Admin only.
+      tags: [Tenants]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [pending, active, suspended]
+        - name: country
+          in: query
+          schema:
+            type: string
+            example: UG
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+            default: 25
+            maximum: 100
+      responses:
+        "200":
+          description: Paginated tenant list.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/TenantSummary"
+                  meta:
+                    $ref: "#/components/schemas/PaginationMeta"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+    post:
+      operationId: createTenant
+      summary: Provision a new tenant school (FR-TNT-001)
+      description: >
+        Creates a new tenant and its School Owner user account.
+        Sends a welcome email with login URL and temporary password.
+        Logs the provisioning action to audit_logs (BR-MT-003).
+      tags: [Tenants]
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTenantRequest"
+      responses:
+        "201":
+          description: Tenant provisioned successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/Tenant"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+  /tenants/{id}:
+    get:
+      operationId: getTenant
+      summary: Get tenant details
+      tags: [Tenants]
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/TenantIdPath"
+      responses:
+        "200":
+          description: Tenant details.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: "#/components/schemas/Tenant"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+    patch:
+      operationId: updateTenantStatus
+      summary: Activate or suspend a tenant (FR-TNT-002, FR-TNT-003)
+      description: >
+        FR-TNT-002: Set status to active.
+        FR-TNT-003: Set status to suspended. Invalidates all active sessions for that tenant.
+        All status changes are logged to audit_logs (BR-MT-003).
+      tags: [Tenants]
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/TenantIdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status:
+                  type: string
+                  enum: [active, suspended]
+                reason:
+                  type: string
+                  maxLength: 500
+                  description: Required when status is suspended.
+      responses:
+        "200":
+          description: Tenant status updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/Tenant"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+components:
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: SanctumToken
+
+  parameters:
+    TenantIdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: Tenant primary key.
+
+  schemas:
+
+    CreateTenantRequest:
+      type: object
+      required: [name, country, plan, owner_name, owner_email]
+      properties:
+        name:
+          type: string
+          minLength: 2
+          maxLength: 150
+          example: St. Mary's College Kisubi
+        country:
+          type: string
+          default: UG
+          description: ISO 3166-1 alpha-2 country code.
+          example: UG
+        plan:
+          type: string
+          enum: [starter, standard, premium]
+          example: standard
+        owner_name:
+          type: string
+          minLength: 2
+          maxLength: 100
+          example: John Mugisha
+        owner_email:
+          type: string
+          format: email
+          example: director@smck.ac.ug
+        owner_phone:
+          type: string
+          description: E.164 format.
+          example: "+256701234567"
+
+    Tenant:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        country:
+          type: string
+        plan:
+          type: string
+        status:
+          type: string
+          enum: [pending, active, suspended]
+        owner_email:
+          type: string
+          format: email
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    TenantSummary:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        country:
+          type: string
+        plan:
+          type: string
+        status:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    PaginationMeta:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        per_page:
+          type: integer
+        last_page:
+          type: integer
+
+    ErrorEnvelope:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+
+  responses:
+    ValidationError:
+      description: Request body failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+    Forbidden:
+      description: Insufficient permissions.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"

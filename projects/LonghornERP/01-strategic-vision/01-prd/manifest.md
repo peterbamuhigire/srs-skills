@@ -1,0 +1,11 @@
+00-cover.md
+01-executive-summary.md
+02-problem-statement.md
+03-vision-golden-rule.md
+04-target-market.md
+05-module-overview.md
+06-competitive-positioning.md
+07-revenue-model.md
+08-success-metrics.md
+09-open-questions.md
+10-ai-intelligence.md
