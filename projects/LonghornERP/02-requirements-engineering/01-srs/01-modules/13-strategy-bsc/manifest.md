@@ -1,0 +1,10 @@
+00-cover.md
+01-introduction.md
+02-strategic-framework.md
+03-objectives-kpis.md
+04-data-collection.md
+05-scoring-dashboard.md
+06-initiatives-reporting.md
+07-okr-logframe-ndpiii.md
+08-nfrs.md
+09-traceability.md

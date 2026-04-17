@@ -1,0 +1,13 @@
+00-cover.md
+01-introduction.md
+02-employee-master.md
+03-leave-management.md
+04-attendance.md
+05-payroll-config.md
+06-payroll-run.md
+07-payslips-disbursement.md
+08-loans-advances.md
+09-exit-management.md
+10-self-service.md
+11-nfrs.md
+12-traceability.md

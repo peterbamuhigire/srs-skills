@@ -1,0 +1,11 @@
+00-cover.md
+01-overview.md
+02-core-infrastructure-tables.md
+03-accounting-tables.md
+04-inventory-tables.md
+05-sales-procurement-tables.md
+06-hr-payroll-tables.md
+07-stored-procedures.md
+08-views.md
+09-migrations-strategy.md
+10-indexing-strategy.md

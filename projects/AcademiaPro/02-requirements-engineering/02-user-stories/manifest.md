@@ -1,0 +1,4 @@
+# Document Manifest
+# List section files in assembly order, one per line.
+# Lines starting with # are comments and are excluded from the build.
+01-user-stories.md
