@@ -11,7 +11,7 @@
         "required": ["id", "kind", "defined_in"],
         "properties": {
           "id": {"type": "string", "pattern": "^[A-Z]{2,5}-\\d{3,5}$"},
-          "kind": {"enum": ["BG", "FR", "NFR", "US", "TC", "CTRL", "RISK", "ADR", "WAIVE"]},
+          "kind": {"enum": ["BG", "FR", "NFR", "US", "TC", "CTRL", "RISK", "ADR", "WAIVE", "SP", "CIA", "PBI", "BR"]},
           "defined_in": {"type": "string"},
           "title": {"type": "string"},
           "links": {"type": "array", "items": {"type": "string"}}
