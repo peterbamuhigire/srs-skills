@@ -188,3 +188,39 @@ This document defines 6 representative personas spanning the Medic8 target marke
 **Key Modules:** All modules, PACS, HL7 v2, FHIR API, Director Platform
 
 **Target Tier:** Enterprise (Phase 4 target)
+
+---
+
+## 7. Amina Hassan
+
+| Attribute | Detail |
+|---|---|
+| Role | Patient |
+| Facility | Kampala International Hospital (referral) |
+| Nationality | Congolese (DRC) |
+| Location | Kampala, Uganda |
+| Primary Language | French |
+| Device | Low-end Android smartphone (Android 8.0, 1 GB RAM) |
+| Connectivity | 3G mobile data (intermittent) |
+
+**Background:**
+
+Amina is a French-speaking Congolese patient who relocated to Kampala from Kinshasa. She attended a referral hospital for post-partum follow-up. She has low health literacy in both French and English. She receives her discharge documentation in French via the Medic8 patient portal app.
+
+**Pain Points:**
+
+- Discharge notes written in medical English are incomprehensible; she cannot follow her post-discharge care instructions
+- The patient portal app is too slow on her 3G connection when loading large documents
+- She cannot book follow-up appointments because the app interface is in English and she cannot navigate it
+- She cannot confirm whether her newborn's immunisation schedule has been correctly entered
+
+**What She Needs from Medic8:**
+
+- Patient portal app rendered in French, including all navigation labels, error messages, and clinical summaries
+- AI plain-language discharge summary in French at a low reading level — written for a patient, not a clinician
+- Offline-accessible last-synced records so she can view her discharge summary without internet connectivity
+- Appointment booking flow in French with SMS confirmation in French
+
+**Key Modules:** Patient Portal (AI Plain-Language Summary, Appointments, Records)
+
+**Target Tier:** Accessed via her facility's Pro subscription (no direct subscription)

@@ -188,6 +188,24 @@ This register defines the 18 built-in roles for the Medic8 platform. Each role s
 
 ---
 
+---
+
+## AI Intelligence
+
+### 19. AI Administrator
+
+| Attribute | Detail |
+|---|---|
+| Role Name | AI Administrator |
+| Access Scope | AI Intelligence module configuration for a single tenant |
+| Can Access | AI provider configuration (primary and failover provider selection, encrypted API key management), credit pack top-up workflow, token usage dashboard, per-capability toggles, AI model accuracy metrics |
+| Cannot Access | Clinical records (patient-level), billing, HR/payroll, system configuration outside the AI Intelligence module |
+| Key Workflows | Configure AI provider, enter and rotate API keys, monitor token usage, process credit top-ups, enable or disable individual AI capabilities |
+
+The AI Administrator role may be held by the Clinic IT Officer or delegated to Chwezi Core Systems support staff at the facility's request. When delegated to Chwezi Core Systems, the support staff member operates under a Data Processing Agreement and cannot read clinical records, billing data, or HR/payroll data.
+
+---
+
 ## External
 
 ### 17. Patient / Client

@@ -8,7 +8,27 @@ Healthcare and project terminology defined per IEEE 610.12-1990 format. All term
 
 **ABAC** -- Attribute-Based Access Control. Access control model where permissions are granted based on attributes of the user, resource, and environment, supplementing RBAC for fine-grained clinical data access. *(NIST SP 800-162)*
 
+**AI Administrator** -- A facility-level role in Medic8 that manages the AI Intelligence module: configures per-tenant AI provider selection, stores encrypted API keys, monitors token usage, and processes credit pack top-ups via the admin panel. The AI Administrator cannot access clinical records, billing, or HR/payroll.
+
+**AI Claim Scrubbing** -- An AI Intelligence module capability that predicts the rejection probability for each line item of an insurance claim before submission, using a model trained on the facility's historical claim-rejection data. The billing clerk reviews flagged items and may correct them before submitting the claim.
+
+**AI Clinical Documentation** -- An AI Intelligence module capability that drafts SOAP notes, discharge summaries, and referral letters from structured encounter data. The clinician reviews and must explicitly approve the draft before it is saved to the patient record. Auto-save of AI-generated text is prohibited.
+
+**AI Differential Diagnosis** -- An AI Intelligence module capability that surfaces a ranked differential diagnosis list from the patient's symptoms, vitals, and recent lab results at the point of care. Presented as a clinical prompt; clinician can dismiss individual suggestions. No suggestion is written to the patient record without explicit clinician selection.
+
+**AI ICD Coding Assist** -- An AI Intelligence module capability that suggests ICD-10 or ICD-11 codes from free-text clinical notes using natural language understanding, reducing the need for dedicated coding staff at smaller facilities.
+
+**AI Intelligence Module** -- Module 32 of Medic8. A tenant-toggleable, tier-independent add-on comprising six AI capabilities: AI Clinical Documentation, AI ICD Coding Assist, AI Differential Diagnosis, AI Patient Plain-Language Summary, AI Claim Scrubbing, and AI Outbreak Early Warning. Available on a credit-pack or flat-fee basis.
+
+**AI Outbreak Early Warning** -- An AI Intelligence module capability that detects anomalous clustering of diagnosis codes at the facility level before the IDSR national threshold is crossed, and alerts the medical officer with the implicated disease codes and patient volume.
+
+**AI Patient Plain-Language Summary** -- An AI Intelligence module capability that translates a clinician-approved clinical discharge note into a plain-language summary in the patient's preferred locale (`en`, `fr`, or `sw`) for display in the patient portal app.
+
+**AIProviderInterface** -- The internal PHP interface contract implemented by all AI provider adapter classes in Medic8. Exposes three methods — `complete()`, `chat()`, `embed()` — with identical signatures across all adapters. Per-tenant provider selection requires no code change.
+
 **ANC** -- Antenatal Care. Routine health care provided to pregnant women from conception to the onset of labour.
+
+**AnthropicAdapter** -- A concrete implementation of `AIProviderInterface` that routes AI requests to the Anthropic API. Supports Claude Sonnet and Claude Haiku model variants.
 
 **APGAR** -- Appearance, Pulse, Grimace, Activity, Respiration. Scoring system to assess newborn health at 1 and 5 minutes after birth. Range 0-10.
 
@@ -28,6 +48,8 @@ Healthcare and project terminology defined per IEEE 610.12-1990 format. All term
 
 **C-HOBIC** -- Canadian Health Outcomes for Better Information and Care. Standardised minimum nursing dataset. *(Canadian Nurses Association)*
 
+**Credit Pack** -- A billing model for the Medic8 AI Intelligence module in which a facility purchases a token-denominated bundle. AI features consume tokens per request and pause automatically when the balance reaches zero. Clinical features are unaffected by credit exhaustion.
+
 **CDA** -- Clinical Document Architecture. HL7 standard for clinical document exchange using XML. *(HL7 International)*
 
 **CDS** -- Clinical Decision Support. Computer-based system providing clinicians with patient-specific assessments or recommendations.
@@ -43,6 +65,8 @@ Healthcare and project terminology defined per IEEE 610.12-1990 format. All term
 ## D
 
 **DAMA** -- Discharge Against Medical Advice. Patient leaves hospital against medical recommendation.
+
+**DeepSeekAdapter** -- A concrete implementation of `AIProviderInterface` that routes AI requests to the DeepSeek API. Supports DeepSeek-V3 and DeepSeek-R1 model variants.
 
 **DHIS2** -- District Health Information Software 2. Web-based open-source health management platform used by Uganda MoH. *(University of Oslo / HISP)*
 
@@ -72,6 +96,8 @@ Healthcare and project terminology defined per IEEE 610.12-1990 format. All term
 
 ## G
 
+**GeminiAdapter** -- A concrete implementation of `AIProviderInterface` that routes AI requests to the Google Gemini API. Supports Gemini 1.5 Pro and Gemini 1.5 Flash model variants.
+
 **GRN** -- Goods Received Note. Document recording receipt of goods into inventory.
 
 ## H
@@ -82,15 +108,25 @@ Healthcare and project terminology defined per IEEE 610.12-1990 format. All term
 
 ## I
 
+**I18N-GAP** -- A build-log flag emitted when a localisation key exists in the primary language (`en`) but is absent from one or more required locales (`fr`, `sw`). An unresolved `[I18N-GAP]` tag is a release blocker for the `release` branch.
+
+**i18n** -- Internationalisation. The architectural practice of designing software so that all user-facing strings are externalised into locale-specific resource files, enabling the UI to render in multiple languages without code changes. Derived from the word "internationalisation" (18 letters between the first "i" and the last "n").
+
 **ICD-10** -- International Classification of Diseases, 10th Revision. WHO standard for coding diagnoses. *(WHO)*
 
 **ICD-11** -- International Classification of Diseases, 11th Revision. Latest WHO classification system. *(WHO)*
 
 **IDSR** -- Integrated Disease Surveillance and Response. WHO/Africa strategy for disease surveillance. *(WHO AFRO)*
 
+## K
+
+**Kiswahili** -- A Bantu language spoken by approximately 200 million people across East and Central Africa, with official status in Kenya, Tanzania, Uganda, and DRC. Designated as a launch language for the Medic8 platform (`sw` locale code). Clinical terminology translation requires review by a native-speaker clinician.
+
 ## L
 
 **LASA** -- Look-Alike/Sound-Alike. Drugs with similar names that risk confusion during prescribing or dispensing. *(WHO/ISMP)*
+
+**Locale Fallback Chain** -- The ordered sequence in which the Medic8 i18n system resolves a missing localisation string. For Kiswahili: `sw → en`. For French: `fr → en`. A missing string never falls through to machine translation.
 
 **LMIS** -- Logistics Management Information System. System for managing supply chain data for health commodities.
 
@@ -132,9 +168,15 @@ Healthcare and project terminology defined per IEEE 610.12-1990 format. All term
 
 **NTLP** -- National TB and Leprosy Programme. Uganda MoH programme for TB management. *(Uganda Ministry of Health)*
 
+## O
+
+**OpenAIAdapter** -- A concrete implementation of `AIProviderInterface` that routes AI requests to the OpenAI API. Supports GPT-4o and GPT-4o-mini model variants.
+
 ## P
 
 **PDPA** -- Data Protection and Privacy Act 2019. Uganda's primary data protection legislation. *(Government of Uganda)*
+
+**Plain-Language Summary** -- A patient-facing document generated by the AI Patient Plain-Language Summary capability that translates a clinician-approved clinical discharge note into a plain-language version in the patient's preferred locale (`en`, `fr`, or `sw`), calibrated to a reading level appropriate for the target language community.
 
 **PEPFAR** -- President's Emergency Plan for AIDS Relief. US government programme funding HIV/AIDS responses globally. *(US Government)*
 
@@ -167,6 +209,8 @@ Healthcare and project terminology defined per IEEE 610.12-1990 format. All term
 **SNOMED CT** -- Systematised Nomenclature of Medicine Clinical Terms. Comprehensive clinical terminology system. *(SNOMED International)*
 
 **SOAP** -- Subjective, Objective, Assessment, Plan. Standard format for clinical progress notes.
+
+**sw** -- The ISO 639-1 locale code for Kiswahili. Used in Medic8 as the key for Kiswahili localisation resources across Laravel (`lang/sw/`), Android (`values-sw/`), and iOS (`sw.lproj/`). Falls back to `en` when a string key is absent.
 
 ## U
 

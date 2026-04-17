@@ -21,6 +21,8 @@ Hospitals and clinics across Uganda and Africa operate on fragmented, paper-heav
 - Progressive disclosure: advanced clinical, insurance, and reporting settings exist but do not clutter the daily workflow
 - Single-receptionist survivability: if the IT officer leaves, the receptionist and clinic manager can continue operating the system
 - Clinical safety: drug interaction warnings, allergy flags, and dosage alerts are non-negotiable defaults that cannot be silently disabled
+- Multi-language by default: English, French, and Kiswahili ship as launch languages. No string is hardcoded in any UI layer.
+- AI as a utility, not a tier: the AI Intelligence module is available to any facility as a credit-pack or flat-fee add-on, independent of the clinical subscription tier.
 
 ## Positioning
 
@@ -48,6 +50,8 @@ Africa-first, globally configurable. Uganda is the launch market. The country co
 - FHIR R4 native API from day 1
 - Offline-first for all clinical workflows
 - Global patient identity layer (shared architectural pattern with Academia Pro's global student identity)
+- Provider-agnostic AI layer: `AIProviderInterface` with adapters for OpenAI, Anthropic, DeepSeek, and Gemini. Per-tenant provider selection from the admin panel.
+- i18n architecture: Laravel localisation (`lang/en/`, `lang/fr/`, `lang/sw/`), Android string resources per locale, iOS `.strings` files per locale. Locale fallback chain: `sw → en`, `fr → en`.
 
 ## Goals (4-Phase Build Sequence)
 

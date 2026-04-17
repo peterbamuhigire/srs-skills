@@ -60,6 +60,14 @@
 - BR-RX-002: Stock-aware prescribing displays current pharmacy stock levels on the prescription screen for each drug. If stock for a prescribed drug is zero, the system warns the prescriber at the point of prescribing and suggests available therapeutic alternatives from the same drug class.
 - BR-RX-003: Tall Man Lettering is applied to look-alike/sound-alike (LASA) drug names in all drug selection interfaces. Differentiating letters are displayed in uppercase (e.g., hydrOXYzine vs hydrALAZINE) to reduce selection errors. The LASA drug list is maintainable by the pharmacy lead.
 
+## BR-AI: AI Intelligence Module Rules
+
+- BR-AI-001: AI credit pack billing. Credits are metered per token. Each AI capability has a published token cost estimate displayed in the admin panel. The admin panel shows the remaining credit balance in real time. When the balance reaches zero, all AI capabilities pause automatically without affecting any clinical feature.
+- BR-AI-002: Credit exhaustion behaviour. When a tenant's AI credit balance reaches zero, the system disables all AI capability UI elements and displays: "AI features paused — credit balance exhausted. Top up to resume." All clinical workflows, billing, and reporting continue unaffected.
+- BR-AI-003: Locale selection. Each user selects a preferred language from their profile settings (`en`, `fr`, or `sw`). Clinical alert severity labels (`Fatal`, `Serious`, `Warning`, `Info`) are always rendered in the clinician's active UI language. Severity labels are never auto-translated mid-workflow.
+- BR-AI-004: Provider failover. If the primary AI provider does not respond within 10 seconds, the system retries the request using the configured failover provider automatically. If the failover provider also fails within 10 seconds, the AI capability returns a graceful degradation message. No clinical workflow is blocked by an AI provider failure.
+- BR-AI-005: AI output approval. AI-generated outputs (clinical documentation drafts, differential diagnosis suggestions) are never auto-saved to the patient record. The clinician must explicitly approve each output (by clicking **Approve Draft** or selecting a diagnosis) before it is written to the patient record. No role-level configuration may bypass this rule.
+
 ## BR-HOPE: Hope Missionary Hospital Rules
 
 - BR-HOPE-001: Multi-site management treats Tororo and Kasanje as separate tenants with independent clinical, billing, and pharmacy data. The Medical Director accesses a consolidated Director Platform for cross-site reporting and oversight. A patient registered at Tororo can be looked up at Kasanje for identity purposes only (name, age, sex, identifiers); clinical records are not shared without consent or emergency access (BR-DATA-002).

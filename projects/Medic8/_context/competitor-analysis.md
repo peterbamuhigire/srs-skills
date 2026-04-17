@@ -23,7 +23,7 @@ Kampala-based, operating since 2013. Deployed in 200+ facilities across Uganda, 
 13. **Diagnostic device interfaces** -- Medic8 adds HL7/FHIR APIs, DHIS2 push, PACS integration, bidirectional analyser communication
 14. **Fingerprint verification** -- Medic8 adds facial recognition and QR code scanning
 
-### ClinicMaster Critical Gaps -- Medic8 Decisive Advantages (15)
+### ClinicMaster Critical Gaps -- Medic8 Decisive Advantages (20)
 
 1. **Not SaaS** -- on-premise deployment; each facility manages its own server. Medic8: true cloud SaaS, operational in 2 hours.
 2. **No transparent pricing** -- "contact us" model only. Medic8: transparent monthly pricing in UGX published on the website.
@@ -40,6 +40,11 @@ Kampala-based, operating since 2013. Deployed in 200+ facilities across Uganda, 
 13. **No donor fund accounting.** Medic8: PEPFAR/Global Fund/UNICEF ring-fenced cost centres.
 14. **Limited to East/Southern Africa.** Medic8: globally configurable country configuration layer.
 15. **No maternity specialisation.** Medic8: dedicated maternity module with partograph, PMTCT, and EmONC tracking.
+16. **No generative AI at point of care.** Medic8: AI-drafted SOAP notes, discharge summaries, and referral letters; clinician reviews and approves before saving. No competitor in East Africa offers clinician-facing generative AI at the point of care.
+17. **No AI claim scrubbing.** Medic8: rejection probability prediction per line item before submission, reducing re-submission cycles and revenue leakage.
+18. **No facility-level outbreak early warning.** Medic8: anomalous diagnosis clustering detected before the IDSR national threshold is crossed; medical officer alerted with disease codes and patient volume.
+19. **English-only interface.** Medic8: English, French, and Kiswahili from day one; targets French-speaking DRC and Francophone Africa expansion markets.
+20. **Single AI vendor lock-in risk.** Medic8: provider-agnostic AI adapter; facilities switch between OpenAI, Anthropic, DeepSeek, and Gemini from the admin panel without a code change.
 
 ---
 
@@ -62,7 +67,7 @@ Deployed in 8,000+ facilities across 70+ countries. EMR of choice for PEPFAR and
 - Role-based access control
 - Offline capability (some distributions)
 
-### OpenMRS Gaps -- Medic8 Advantages (12)
+### OpenMRS Gaps -- Medic8 Advantages (14)
 
 1. **No integrated billing** -- requires separate OpenHMIS or Odoo integration
 2. **No insurance management** -- custom build required per deployment
@@ -76,6 +81,8 @@ Deployed in 8,000+ facilities across 70+ countries. EMR of choice for PEPFAR and
 10. **Complex configuration** -- requires DHIS2/OpenMRS/server expertise to deploy and maintain
 11. **No inventory management beyond basic pharmacy**
 12. **No ambulance management**
+13. **No AI capabilities** -- no generative AI for clinical documentation, no AI claim scrubbing, no outbreak early warning.
+14. **English-dominant** -- Kiswahili and French community translations are incomplete and untested in clinical settings.
 
 ### Total Cost of Ownership Comparison (3-Year)
 
@@ -89,6 +96,7 @@ Deployed in 8,000+ facilities across 70+ countries. EMR of choice for PEPFAR and
 | HR/Payroll | $2,000-$8,000 | Included |
 | Insurance management | $5,000-$25,000 | Included |
 | Training/support | $6,000-$30,000 | Included |
+| AI Intelligence module | Custom build $5,000-$20,000 | Credit pack add-on (included in TCO) |
 | **TOTAL** | **$35,000-$130,000** | **$9,450-$71,100** |
 
 **Migration pitch:** "OpenMRS is free to download and costs $35,000-$130,000 to run. Medic8 costs $9,450-$71,100 and includes billing, insurance, HR, payroll, mobile money, a patient app, and a local Uganda support team."

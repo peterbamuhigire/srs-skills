@@ -54,3 +54,15 @@ This document defines the measurable quality, performance, security, and complia
 - Facility onboarding target: 2-4 hours from account creation to first patient registration
 - Per-module activation: modules can be enabled independently
 - Training materials: video-based, not text-only
+
+## 8 Internationalisation (i18n) Quality Gate
+
+- Before any document build in the `release` branch, confirm zero `[I18N-GAP]` tags remain unresolved in the module being built.
+- An `[I18N-GAP]` tag in any module's language files is a release blocker for that module.
+- All clinical string translations must be reviewed and approved by a native-speaker clinician before merge.
+
+## 9 AI Output Review Gate
+
+- AI-generated content in any SRS section (functional requirements, capability descriptions, module specifications) must be reviewed against `_context/ai-intelligence.md` before inclusion.
+- Deviations from the specifications in `_context/ai-intelligence.md` are flagged `[V&V-FAIL: AI spec mismatch]`.
+- AI Clinical Documentation and AI Differential Diagnosis capability descriptions must explicitly state the approval requirement. Any SRS requirement that implies auto-save of AI output without clinician approval fails as `[V&V-FAIL: AI safety guardrail violated]`.

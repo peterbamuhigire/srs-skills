@@ -83,3 +83,25 @@
 - **HMIS Form Definitions:** Uganda 105/108, Kenya MOH 105, India HMIS
 - **Immunisation Schedules:** EPI Uganda, UIP India, NIP Australia
 - **Drug Formularies:** NDA Uganda, PPB Kenya, CDSCO India, TGA Australia
+
+## AI Intelligence Layer
+
+- **Interface Contract:** `AIProviderInterface` — all adapters implement `complete()`, `chat()`, and `embed()` methods with identical signatures
+- **Adapters:**
+  - `OpenAIAdapter` — supports GPT-4o and GPT-4o-mini
+  - `AnthropicAdapter` — supports Claude Sonnet and Claude Haiku
+  - `DeepSeekAdapter` — supports DeepSeek-V3 and DeepSeek-R1
+  - `GeminiAdapter` — supports Gemini 1.5 Pro and Gemini 1.5 Flash
+- **Per-Tenant Configuration:** Provider selection, API keys (encrypted at rest with AES-256-GCM), failover provider, per-capability toggles — all stored in `tenant_ai_config`
+- **Failover:** If the primary provider does not respond within 10 seconds, the system automatically retries using the configured failover provider. Clinical workflows are never blocked by an AI provider failure.
+- **Token Metering:** Every AI request is logged per tenant, per capability, and per request in `ai_usage_log` for billing reconciliation
+- **Six Capabilities:** AI Clinical Documentation, AI ICD Coding Assist, AI Differential Diagnosis, AI Patient Plain-Language Summary, AI Claim Scrubbing, AI Outbreak Early Warning
+
+## Internationalisation (i18n)
+
+- **Supported Languages:** `en` (English — primary), `fr` (French — launch), `sw` (Kiswahili — launch)
+- **PHP / Laravel:** `lang/en/`, `lang/fr/`, `lang/sw/` — key convention: `module.context.label` (e.g., `opd.triage.blood_pressure_label`)
+- **Android:** `res/values/strings.xml` (default English), `res/values-fr/strings.xml`, `res/values-sw/strings.xml`
+- **iOS:** `en.lproj/Localizable.strings`, `fr.lproj/Localizable.strings`, `sw.lproj/Localizable.strings`
+- **Fallback Chain:** `sw → en`, `fr → en`. A missing string never falls through to machine translation — it falls through to English and is flagged `[I18N-GAP: <key>]` in the build log.
+- **Translation Principle:** Contextual, not word-for-word. Clinical severity labels (`Fatal`, `Serious`, `Warning`, `Info`) are rendered in the clinician's active UI language at all times.

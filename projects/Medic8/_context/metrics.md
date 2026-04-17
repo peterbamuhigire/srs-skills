@@ -62,3 +62,18 @@ This document defines the subscription pricing model, add-on pricing, revenue ta
 - **Facility onboarding target:** 2-4 hours from account creation to first patient registration
 - **Training delivery:** Video-based, module-specific training; mandatory completion before module activation
 - **Post-onboarding check-ins:** 30-day, 60-day, and 90-day structured check-ins bundled into the subscription at no additional cost
+
+---
+
+## AI Intelligence Success Metrics
+
+| Metric | Target | Measurement Window | Baseline |
+|--------|--------|--------------------|----------|
+| ICD coding suggestion acceptance rate | ≥ 70% of AI suggestions accepted without modification | 90 days after AI module activation | 0% (no AI coding prior to activation) |
+| AI claim scrubbing rejection rate reduction | ≥ 20% reduction in first-submission rejection rate | 6 months after AI module activation | Facility-specific pre-activation rejection rate |
+| AI clinical note draft acceptance rate (unedited) | ≥ 40% of drafts approved without clinician edits | 90 days after AI module activation | 0% |
+| AI outbreak early warning false positive rate | ≤ 15% false positives over rolling 90-day period | Rolling 90-day window | Measured from first alert generated |
+
+## i18n Quality Metric
+
+- Zero `[I18N-GAP]` tags shall remain unresolved in any production release. An `[I18N-GAP]` tag in the `release` branch build log is a release blocker.
