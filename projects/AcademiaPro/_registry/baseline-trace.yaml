@@ -1,1 +1,31 @@
-traces: []
+traces:
+  - waterfall_id: FR-AUTH-001
+    agile_story: "SP-001: login with Sanctum"
+    sprint: 1
+  - waterfall_id: FR-AUTH-002
+    agile_story: "SP-002: MFA with TOTP"
+    sprint: 1
+  - waterfall_id: FR-ENR-001
+    agile_story: "SP-003: enrolment form"
+    sprint: 1
+  - waterfall_id: FR-FEE-001
+    agile_story: "SP-004: fee structure seed"
+    sprint: 2
+  - waterfall_id: FR-FEE-005
+    agile_story: "SP-005: duplicate-payment detection"
+    sprint: 2
+  - waterfall_id: FR-ATT-001
+    agile_story: "SP-006: attendance capture"
+    sprint: 2
+  - waterfall_id: FR-EXM-001
+    agile_story: "SP-007: internal test creation"
+    sprint: 3
+  - waterfall_id: FR-EXM-008
+    agile_story: "SP-008: UNEB candidate export"
+    sprint: 3
+  - waterfall_id: FR-EMIS-001
+    agile_story: "SP-009: EMIS annual return"
+    sprint: 4
+  - waterfall_id: FR-AI-001
+    agile_story: "SP-010: AI feature under scrubber"
+    sprint: 5

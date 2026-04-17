@@ -2,9 +2,24 @@
 
 **Project:** Academia Pro
 **Owner:** Peter — Chwezi Core Systems (chwezicore.com)
-**Domain:** Education (Uganda-first; pan-Africa expansion)
-**Last Updated:** 2026-04-03
-**Total Documents:** 128 files (89 `.md`, 11 `.yaml`, 28 `.docx`)
+**Domain:** Uganda (primary); Education (secondary)
+**Last Updated:** 2026-04-17
+**Baseline:** v1.0 snapshotted 2026-04-17 (`09-governance-compliance/07-baseline-delta/v1.0.yaml`)
+**Engine Contract:** **PASS — 0 HIGH findings** (`python -m engine validate projects/AcademiaPro`)
+**Evidence Pack:** `evidence-pack-2026-04-17.zip`
+
+### Phase Gate Status (all PASS)
+
+- Phase 01 Strategic Vision — PASS
+- Phase 02 Requirements Engineering — PASS
+- Phase 03 Design — PASS (5 ADRs, ERD with PK, OpenAPI 3.1, UX spec)
+- Phase 04 Development — PASS (coding-standards, env-setup, CONTRIBUTING)
+- Phase 05 Testing — PASS (29119 deterministic checks, completion report, coverage matrix)
+- Phase 06 Deployment & Operations — PASS (deployment guide, runbook with escalation, monitoring with 7 SLOs, IR diagram, go-live checklist, change window, incident-response)
+- Phase 07 Agile Artefacts — PASS (DoR baseline refs, 109 SP-### sprint markers, velocity)
+- Phase 08 End-User Documentation — PASS (user manual with 10 screenshots, 12-Q&A FAQ, release notes)
+- Phase 09 Governance & Compliance — PASS (audit report, risk register, 5-ADR catalog, 10 controls, sign-off recorded)
+- Hybrid Water-Scrum-Fall — PASS (baseline-trace populated, DoR/DoD pointer)
 
 ---
 

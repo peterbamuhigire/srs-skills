@@ -1,1 +1,8 @@
-sign_offs: []
+sign_offs:
+- gate: phase09
+  signer: Peter Bamuhigire
+  role: CTO / Sponsor
+  signed_on: '2026-04-17'
+  artifact_set:
+  - 09-governance-compliance/audit-report.md
+  - 09-governance-compliance/risk-assessment.md
