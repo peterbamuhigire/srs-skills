@@ -106,13 +106,6 @@ terms:
     first_introduced_in: 
     08-end-user-documentation\01-user-manual\01-user-manual.md, source: '', term: 
     Reject}
-- {definition: 'Any modern browser (Chrome, Firefox, Edge, Safari) with an internet
-    connection', first_introduced_in: 08-end-user-documentation\03-faq\01-faq.md,
-  source: '', term: Web}
-- {definition: A stable connection is required for initial data sync; the 
-    Android app supports offline attendance and mark entry with automatic 
-    background sync, first_introduced_in: 
-    08-end-user-documentation\03-faq\01-faq.md, source: '', term: Internet}
 - {definition: FR-EXM-008 — UNEB candidate registration export, 
     first_introduced_in: 
     09-governance-compliance\02-audit-report\01-audit-report.md, source: '', 
@@ -766,6 +759,62 @@ terms:
 - {definition: Eloquent global scope applied to every tenant-scoped model; 
     injects the current tenant filter onto every query., first_introduced_in: 
     _context\glossary.md, source: '', term: TenantScope}
+- {definition: Acknowledgement; used in runbook SLAs as the time within which an
+    on-call must claim an incident., first_introduced_in: _context\glossary.md, 
+    source: '', term: ACK}
+- {definition: AWS Availability Zone., first_introduced_in: _context\glossary.md,
+  source: '', term: AZ}
+- {definition: Prometheus alert that fires if any cross-tenant query is observed
+    in the audit log., first_introduced_in: _context\glossary.md, source: '', 
+    term: AcademiaProTenantLeak}
+- {definition: Business Rule identifier prefix used in requirements documents 
+    (for example BR-FEE-005)., first_introduced_in: _context\glossary.md, source: '',
+  term: BR}
+- {definition: British Standard (publisher prefix for BS ISO/IEC/IEEE 
+    29119-3:2013)., first_introduced_in: _context\glossary.md, source: '', term: 
+    BS}
+- {definition: SQL keyword referenced in migration examples., 
+    first_introduced_in: _context\glossary.md, source: '', term: COLUMN}
+- {definition: Chief Technology Officer., first_introduced_in: 
+    _context\glossary.md, source: '', term: CTO}
+- {definition: 'Control identifier prefix in the controls catalogue (CTRL-UG-001,
+    CTRL-ISO-A9).', first_introduced_in: _context\glossary.md, source: '', term: 
+    CTRL}
+- {definition: AWS deployment orchestration service; rolls back on health alarm.,
+  first_introduced_in: _context\glossary.md, source: '', term: CodeDeploy}
+- {definition: Disaster Recovery., first_introduced_in: _context\glossary.md, 
+    source: '', term: DR}
+- {definition: Infrastructure Reference diagram; maintained in docs/infra/., 
+    first_introduced_in: _context\glossary.md, source: '', term: IR}
+- {definition: Low-Level Design document., first_introduced_in: 
+    _context\glossary.md, source: '', term: LLD}
+- {definition: Out Of Memory (kernel OOM-kill event)., first_introduced_in: 
+    _context\glossary.md, source: '', term: OOM}
+- {definition: Primary Key., first_introduced_in: _context\glossary.md, source: '',
+  term: PK}
+- {definition: The on-call paging and incident-management tool used by 
+    AcademiaPro., first_introduced_in: _context\glossary.md, source: '', term: 
+    PagerDuty}
+- {definition: Service Level Objective., first_introduced_in: 
+    _context\glossary.md, source: '', term: SLO}
+- {definition: 'Specific, Measurable, Achievable, Relevant, Time-bound (requirements
+    quality attribute).', first_introduced_in: _context\glossary.md, source: '', 
+    term: SMART}
+- {definition: Sprint-backlog identifier prefix (SP-001..SP-109)., 
+    first_introduced_in: _context\glossary.md, source: '', term: SP}
+- {definition: Single-Page Application (the React web client)., 
+    first_introduced_in: _context\glossary.md, source: '', term: SPA}
+- {definition: Swift code linter run in iOS CI., first_introduced_in: 
+    _context\glossary.md, source: '', term: SwiftLint}
+- {definition: Full-duplex communication protocol used by Laravel Reverb for 
+    real-time notifications., first_introduced_in: _context\glossary.md, source: '',
+  term: WebSocket}
+- {definition: Used in requirements as the DEFAULT state for newly-added feature
+    flags (feature flag defaults OFF)., first_introduced_in: 
+    _context\glossary.md, source: '', term: OFF}
+- {definition: Primary Account Number (card-issuer terminology); PCI DSS v4.0 
+    prohibits PAN storage by Academia Pro. Tokenised vault only., 
+    first_introduced_in: _context\glossary.md, source: '', term: PAN}
 - {definition: MTN Mobile Money Uganda (MoMo Pay / Merchant API), 
     first_introduced_in: _context\payment-landscape.md, source: '', term: 
     Product}

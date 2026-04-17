@@ -288,3 +288,30 @@ All terms follow IEEE Std 610.12-1990 definition format. Every domain-specific t
 - **NestJS:** Node.js framework evaluated as an alternative to Laravel during the backend choice (see ADR-0001).
 - **PostgreSQL:** Relational database evaluated as an alternative to MySQL during the DB choice (see ADR-0002).
 - **TenantScope:** Eloquent global scope applied to every tenant-scoped model; injects the current tenant filter onto every query.
+
+
+## Operations and Governance Terms
+
+- **ACK:** Acknowledgement; used in runbook SLAs as the time within which an on-call must claim an incident.
+- **AZ:** AWS Availability Zone.
+- **AcademiaProTenantLeak:** Prometheus alert that fires if any cross-tenant query is observed in the audit log.
+- **BR:** Business Rule identifier prefix used in requirements documents (for example BR-FEE-005).
+- **BS:** British Standard (publisher prefix for BS ISO/IEC/IEEE 29119-3:2013).
+- **COLUMN:** SQL keyword referenced in migration examples.
+- **CTO:** Chief Technology Officer.
+- **CTRL:** Control identifier prefix in the controls catalogue (CTRL-UG-001, CTRL-ISO-A9).
+- **CodeDeploy:** AWS deployment orchestration service; rolls back on health alarm.
+- **DR:** Disaster Recovery.
+- **IR:** Infrastructure Reference diagram; maintained in docs/infra/.
+- **LLD:** Low-Level Design document.
+- **OOM:** Out Of Memory (kernel OOM-kill event).
+- **PK:** Primary Key.
+- **PagerDuty:** The on-call paging and incident-management tool used by AcademiaPro.
+- **SLO:** Service Level Objective.
+- **SMART:** Specific, Measurable, Achievable, Relevant, Time-bound (requirements quality attribute).
+- **SP:** Sprint-backlog identifier prefix (SP-001..SP-109).
+- **SPA:** Single-Page Application (the React web client).
+- **SwiftLint:** Swift code linter run in iOS CI.
+- **WebSocket:** Full-duplex communication protocol used by Laravel Reverb for real-time notifications.
+- **OFF:** Used in requirements as the DEFAULT state for newly-added feature flags (feature flag defaults OFF).
+- **PAN:** Primary Account Number (card-issuer terminology); PCI DSS v4.0 prohibits PAN storage by Academia Pro. Tokenised vault only.
