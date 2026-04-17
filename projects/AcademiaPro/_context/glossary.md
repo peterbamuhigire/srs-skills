@@ -282,3 +282,9 @@ All terms follow IEEE Std 610.12-1990 definition format. Every domain-specific t
 - **YouTube:** Video hosting referenced for in-app help video links.
 - **ZAP:** OWASP Zed Attack Proxy; CI security scanner.
 - **ZIP:** Archive format used for evidence-pack bundles.
+
+- **ADR:** Architecture Decision Record; a short, versioned document capturing one significant technical decision, its context, consequences, and affected requirements.
+- **ALB:** AWS Application Load Balancer.
+- **NestJS:** Node.js framework evaluated as an alternative to Laravel during the backend choice (see ADR-0001).
+- **PostgreSQL:** Relational database evaluated as an alternative to MySQL during the DB choice (see ADR-0002).
+- **TenantScope:** Eloquent global scope applied to every tenant-scoped model; injects the current tenant filter onto every query.

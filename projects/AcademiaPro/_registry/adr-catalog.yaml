@@ -1,1 +1,26 @@
-adrs: []
+adrs:
+  - id: ADR-0001
+    title: Laravel 11 over Node/NestJS for backend
+    status: accepted
+    date: 2026-04-17
+    path: 09-governance-compliance/05-adr/ADR-0001-laravel-over-node.md
+  - id: ADR-0002
+    title: MySQL 8 over PostgreSQL 15
+    status: accepted
+    date: 2026-04-17
+    path: 09-governance-compliance/05-adr/ADR-0002-mysql-over-postgres.md
+  - id: ADR-0003
+    title: Multi-tenancy via tenant_id and Eloquent TenantScope
+    status: accepted
+    date: 2026-04-17
+    path: 09-governance-compliance/05-adr/ADR-0003-multi-tenant-via-tenant-id.md
+  - id: ADR-0004
+    title: Global identity architecture for cross-school student portability
+    status: accepted
+    date: 2026-04-17
+    path: 09-governance-compliance/05-adr/ADR-0004-global-identity-architecture.md
+  - id: ADR-0005
+    title: Mandatory PII scrubbing before every AI prompt
+    status: accepted
+    date: 2026-04-17
+    path: 09-governance-compliance/05-adr/ADR-0005-pii-scrubber-before-ai.md

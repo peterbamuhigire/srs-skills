@@ -752,6 +752,20 @@ terms:
     _context\glossary.md, source: '', term: ZAP}
 - {definition: Archive format used for evidence-pack bundles., 
     first_introduced_in: _context\glossary.md, source: '', term: ZIP}
+- {definition: 'Architecture Decision Record; a short, versioned document capturing
+    one significant technical decision, its context, consequences, and affected requirements.',
+  first_introduced_in: _context\glossary.md, source: '', term: ADR}
+- {definition: AWS Application Load Balancer., first_introduced_in: 
+    _context\glossary.md, source: '', term: ALB}
+- {definition: Node.js framework evaluated as an alternative to Laravel during 
+    the backend choice (see ADR-0001)., first_introduced_in: 
+    _context\glossary.md, source: '', term: NestJS}
+- {definition: Relational database evaluated as an alternative to MySQL during 
+    the DB choice (see ADR-0002)., first_introduced_in: _context\glossary.md, 
+    source: '', term: PostgreSQL}
+- {definition: Eloquent global scope applied to every tenant-scoped model; 
+    injects the current tenant filter onto every query., first_introduced_in: 
+    _context\glossary.md, source: '', term: TenantScope}
 - {definition: MTN Mobile Money Uganda (MoMo Pay / Merchant API), 
     first_introduced_in: _context\payment-landscape.md, source: '', term: 
     Product}
