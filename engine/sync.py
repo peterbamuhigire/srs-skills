@@ -10,7 +10,7 @@ from engine.registry.identifiers import IdentifierEntry, IdentifierRegistry, Reg
 from engine.registry.glossary import GlossaryRegistry, GlossaryEntry
 
 _ID = re.compile(r"\*\*([A-Z]{2,5}-\d{3,5})\*\*\s*(.*)")
-_TERM = re.compile(r"-\s+\*\*([A-Z][A-Za-z0-9_-]{1,40}):\*\*\s+(.+)")
+_TERM = re.compile(r"-\s+\*\*([A-Za-z][A-Za-z0-9_-]{1,40}):\*\*\s+(.+)")
 _KIND_PREFIXES = {"BG": "BG", "FR": "FR", "NFR": "NFR", "US": "US", "TC": "TC",
                   "CTRL": "CTRL", "RISK": "RISK", "ADR": "ADR", "WAIVE": "WAIVE"}
 

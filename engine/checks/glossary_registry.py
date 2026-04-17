@@ -74,8 +74,31 @@ _ACRONYM_STOPLIST = frozenset({
     # Common 2-3 char false positives (generic abbreviations)
     "BG", "BU", "HT", "HC", "HR", "IM", "IT", "PM", "QA", "OK",
     "IGNORE", "FAIL", "FAILED", "PASS", "PASSED", "WARN", "INFO",
-    "ENGINE", "CHANGELOG",
+    "ENGINE", "CHANGELOG", "UNAUTHENTICATED", "AUTHENTICATED",
+    # More SQL / DB / shell keywords
+    "LIKE", "SHOW", "SIGNAL", "STATUS", "RESTRICT", "PONG", "PING",
+    "VARIABLES", "SQLSTATE",
+    # Two-letter / three-letter state codes and generic noise
+    "PA", "SA", "RC", "ST", "OW", "NYC", "UG", "US", "UK", "EU",
+    # Additional SQL/shell/programming keywords discovered on real-project scan
+    "SET", "TABLE", "VALUES", "INTO", "USING", "VIEW", "LOCK",
+    # Sample IDs and file extensions that are not glossary candidates
+    "MP4", "MP3", "WAV", "AAC", "WEBM", "TC",
+    # Hash/crypto algorithm tokens that appear incidentally in prose
+    "SHA", "SHA1", "SHA256", "SHA512", "AES", "RSA",
 })
+
+# Sample / placeholder identifiers from code blocks that leak into prose.
+# Any token matching these regexes is treated as a sample ID, not a glossary
+# candidate.
+_SAMPLE_ID_PATTERNS = (
+    re.compile(r"^[A-Z]{2}\d{3,}$"),   # ST1234567, RM1 (short), AB12345
+    re.compile(r"^[A-Z]{2,3}\d+$"),    # RM1
+)
+
+
+def _is_sample_id(token: str) -> bool:
+    return any(p.match(token) for p in _SAMPLE_ID_PATTERNS)
 
 
 class GlossaryRegistryCheck:
@@ -96,7 +119,7 @@ class GlossaryRegistryCheck:
                 stripped = _IDENTIFIER.sub(" ", line)
                 for m in _ACRONYM.finditer(stripped):
                     tok = m.group(1)
-                    if tok in _ACRONYM_STOPLIST:
+                    if tok in _ACRONYM_STOPLIST or _is_sample_id(tok):
                         continue
                     usage[tok].add(path_key)
                 for m in _CAMEL_CASE.finditer(stripped):

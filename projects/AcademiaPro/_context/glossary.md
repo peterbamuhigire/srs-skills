@@ -143,3 +143,142 @@ All terms follow IEEE Std 610.12-1990 definition format. Every domain-specific t
 - **Study Material:** Any resource (PDF, video link, uploaded MP4, audio file, PPTX, image, external link, or typed rich-text note) uploaded or linked by a teacher to a class library for student access.
 
 - **Wasabi:** A cloud object storage provider compatible with the AWS S3 API. Recommended for Academia Pro file storage due to cost efficiency ($6/TB/month, no egress fees) versus AWS S3 — significant saving for an Africa-market SaaS with high PDF and audio file volumes.
+
+
+---
+
+## Architectural and Technical Terms
+
+- **AcademiaPro:** The commercial product name of the multi-tenant SaaS school management platform authored by Chwezi Core Systems.
+- **AI:** Artificial Intelligence. In Academia Pro, refers specifically to LLM-backed features gated behind the AI Module and the PII scrubber per ADR-0005.
+- **ApplicationModule:** Laravel service provider that bootstraps the applicant enrolment domain (FR-APPLY-*).
+- **ARPU:** Average Revenue Per User; core SaaS business metric.
+- **AtRiskSchema:** Database schema fragment capturing tenants at risk of churn; populated nightly for retention dashboards.
+- **AttendanceService:** Domain service orchestrating daily attendance capture and rolled-up reporting (FR-ATT-*).
+- **AuditLog:** Append-only table recording sensitive actions; retention is 7 years per DPPA compliance.
+- **AuthModule:** Laravel module handling Sanctum authentication, MFA, and session management (FR-AUTH-*).
+- **AWS:** Amazon Web Services; the primary cloud hosting provider for Academia Pro production and staging.
+- **BudgetGuard:** Runtime middleware that blocks AI calls when the per-tenant token ledger exceeds the configured monthly cap.
+- **CloudFront:** AWS Content Delivery Network used to serve static assets and signed-URL document downloads.
+- **CloudWatch:** AWS observability service integrated with PagerDuty for on-call paging.
+- **CMS:** Content Management System.
+- **CoveragePercent:** Aggregated percentage metric displayed on coverage-matrix dashboards.
+- **CRDB:** Consolidated reference database used during data migration.
+- **DevOps:** Cross-functional discipline integrating development and operations; Academia Pro uses a DevOps-light model with on-call rotation.
+- **DOB:** Date of Birth; an S-tier personally identifiable field encrypted at rest.
+- **DoD:** Definition of Done; the agile checklist required before a story is accepted.
+- **DoR:** Definition of Ready; the agile checklist required before a story may enter a sprint.
+- **DPA:** Data Processing Agreement; contractual terms between Academia Pro (processor) and each school tenant (controller).
+- **DPIA:** Data Protection Impact Assessment; mandatory under Uganda DPPA Regulation 12 for high-risk processing.
+- **DPO:** Data Protection Officer.
+- **DPPA:** Uganda Data Protection and Privacy Act 2019; the controlling privacy regulation.
+- **EAT:** East Africa Time (UTC+3).
+- **EC2:** AWS Elastic Compute Cloud.
+- **ECS:** AWS Elastic Container Service; runs Academia Pro Dockerised application on Fargate.
+- **ElastiCache:** AWS-managed Redis used for session storage and Horizon queues.
+- **EmisExportService:** Service producing the MoES EMIS annual return export file.
+- **ERD:** Entity-Relationship Diagram.
+- **ERP:** Enterprise Resource Planning.
+- **ExamModule:** Laravel module handling internal tests and UNEB-aligned grading (FR-EXM-*).
+- **FAQ:** Frequently Asked Questions; end-user help artefact.
+- **FeeReminderService:** Queued job dispatching fee-balance reminders via SMS and email.
+- **FeesModule:** Laravel module handling fee structures, invoices, and reconciliation (FR-FEE-*).
+- **GitHub:** Source-control host for the Academia Pro repository.
+- **GPS:** Global Positioning System; used for optional location tagging of offline attendance capture.
+- **HistoryModule:** Module capturing append-only historical snapshots of student records for audit trails.
+- **HLD:** High-Level Design document.
+- **HSTS:** HTTP Strict Transport Security.
+- **IAM:** Identity and Access Management.
+- **ICT:** Information and Communication Technology.
+- **IEC:** International Electrotechnical Commission.
+- **IEEE:** Institute of Electrical and Electronics Engineers.
+- **ImportStudentsJob:** Queued job consuming a CSV of legacy students and writing records with tenant scoping.
+- **includeSubDomains:** HSTS directive so subdomains inherit the HSTS policy.
+- **InnoDB:** The default MySQL storage engine used by Academia Pro; chosen for row-level locking and referential integrity.
+- **InteractsWithQueue:** Laravel trait included on queued job classes exposing release, delete, and retry controls.
+- **IP:** Internet Protocol.
+- **ISO:** International Organization for Standardization.
+- **KCPE:** Kenya Certificate of Primary Education.
+- **KCSE:** Kenya Certificate of Secondary Education.
+- **KES:** Kenyan Shilling.
+- **KMS:** Key Management Service (AWS).
+- **KPI:** Key Performance Indicator.
+- **LLM:** Large Language Model; refers to the provider used by the AI Module per ADR-0005.
+- **LMS:** Learning Management System.
+- **LTS:** Long-Term Support release channel.
+- **MacBook:** Laptop reference platform used for iOS development builds.
+- **MBA:** Master of Business Administration.
+- **MCQ:** Multiple-Choice Question.
+- **MD5:** Message-Digest Algorithm 5; referenced for legacy compatibility only; never used for security-sensitive hashing.
+- **MFA:** Multi-Factor Authentication.
+- **MobileMoney:** Domain aggregate covering MTN MoMo and Airtel Money payment channels.
+- **MockAIProvider:** Test double implementing the AI provider interface used in CI and local dev.
+- **MoMo:** MTN Mobile Money.
+- **MTN:** MTN Uganda; mobile-network operator for MoMo.
+- **MTTF:** Mean Time To Failure.
+- **MTTR:** Mean Time To Recovery.
+- **MVVM:** Model-View-ViewModel UI architecture pattern; applied on Android and iOS clients.
+- **MySQL:** The relational database management system chosen per ADR-0002.
+- **NECTA:** Tanzania National Examinations Council.
+- **NLP:** Natural Language Processing.
+- **NPS:** Net Promoter Score.
+- **OpenAI:** LLM provider option evaluated during AI Module provider selection.
+- **OpenAPI:** API specification standard; see 03-design-documentation/03-api-spec/.
+- **OTP:** One-Time Password.
+- **OWASP:** Open Web Application Security Project; the OWASP Top 10 is the minimum security checklist for every release.
+- **PBI:** Product Backlog Item.
+- **PHP:** The programming language of the Laravel backend (PHP 8.2+).
+- **PhpSpreadsheet:** PHP library used to produce Excel exports of fees, marks, and attendance.
+- **PII:** Personally Identifiable Information.
+- **PPTX:** Microsoft PowerPoint file format supported as an uploadable study material.
+- **PR:** Pull Request.
+- **PRD:** Product Requirements Document.
+- **PSO:** Payment Systems Operator (BoU-licensed entity).
+- **PurgeExpiredDataJob:** Scheduled job deleting records past retention per DPPA §30 fulfilment.
+- **PWA:** Progressive Web App.
+- **QR:** Quick Response code.
+- **RDS:** AWS Relational Database Service (MySQL managed).
+- **RPO:** Recovery Point Objective; target is 15 minutes.
+- **RTM:** Requirements Traceability Matrix.
+- **RTO:** Recovery Time Objective; target is 4 hours.
+- **SaaS:** Software as a Service.
+- **SchoolRangeTransactions:** Database partition-range used by the payment reconciliation job.
+- **SendFeeReminderJob:** Queued job that assembles and dispatches a batched fee reminder.
+- **SerializesModels:** Laravel trait serialising Eloquent models when a queued job is persisted.
+- **SharingModule:** Module handling share-outs and announcement distribution.
+- **ShouldQueue:** Laravel interface marking a class as queueable.
+- **ShuleKeeper:** Named Uganda competitor product evaluated in the market analysis.
+- **SIS:** Student Information System.
+- **SLA:** Service Level Agreement.
+- **SQL:** Structured Query Language.
+- **StudentRepository:** Repository-layer class asserting tenant scope before returning student rows.
+- **studentPaymentCode:** Generated short code printed on fee invoices so parents can reference a payment against a specific student.
+- **SwiftUI:** Apple declarative UI framework used on iOS clients.
+- **SyncSchoolTransactions:** Job reconciling MoMo and Airtel payment records into the fees ledger.
+- **TenantAwareJob:** Base class for queued jobs that must re-hydrate the tenant context before running.
+- **TenantModule:** Module defining tenancy lifecycle, provisioning, and off-boarding.
+- **TOTP:** Time-based One-Time Password.
+- **TTL:** Time To Live.
+- **TypeScript:** The typed superset of JavaScript used for the React web client.
+- **UAT:** User Acceptance Testing.
+- **UCC:** Uganda Communications Commission.
+- **UID:** Unique Identifier.
+- **ULRC:** Uganda Law Reform Commission.
+- **UPSIA:** Uganda Private Schools Association.
+- **UptimeRobot:** Third-party synthetic monitoring service used as a second-source availability check.
+- **USD:** United States Dollar.
+- **UTC:** Coordinated Universal Time.
+- **UUID:** Universally Unique Identifier.
+- **ValidationException:** Laravel exception raised when inbound request validation fails; converted to a standard error envelope.
+- **VPS:** Virtual Private Server.
+- **WAEC:** West African Examinations Council.
+- **WAF:** Web Application Firewall (Cloudflare).
+- **WAMP64:** Windows-based local development stack used for Windows dev machines.
+- **WCAG:** Web Content Accessibility Guidelines; target level AA.
+- **withoutTenantScope:** Eloquent scope escape-hatch used only by platform-level jobs that must cross tenant boundaries.
+- **withStudentSelfScope:** Query scope restricting a row set to rows owned by the calling student identity.
+- **WorkManager:** Android Jetpack background-job scheduler used for offline-sync.
+- **WSL2:** Windows Subsystem for Linux v2; supported local-dev path for Windows engineers.
+- **YouTube:** Video hosting referenced for in-app help video links.
+- **ZAP:** OWASP Zed Attack Proxy; CI security scanner.
+- **ZIP:** Archive format used for evidence-pack bundles.

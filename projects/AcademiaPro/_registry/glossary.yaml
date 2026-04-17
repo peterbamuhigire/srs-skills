@@ -435,6 +435,323 @@ terms:
     versus AWS S3 — significant saving for an Africa-market SaaS with high PDF and
     audio file volumes.', first_introduced_in: _context\glossary.md, source: '', 
     term: Wasabi}
+- {definition: The commercial product name of the multi-tenant SaaS school 
+    management platform authored by Chwezi Core Systems., first_introduced_in: 
+    _context\glossary.md, source: '', term: AcademiaPro}
+- {definition: 'Artificial Intelligence. In Academia Pro, refers specifically to LLM-backed
+    features gated behind the AI Module and the PII scrubber per ADR-0005.', 
+    first_introduced_in: _context\glossary.md, source: '', term: AI}
+- {definition: Laravel service provider that bootstraps the applicant enrolment 
+    domain (FR-APPLY-*)., first_introduced_in: _context\glossary.md, source: '', 
+    term: ApplicationModule}
+- {definition: Average Revenue Per User; core SaaS business metric., 
+    first_introduced_in: _context\glossary.md, source: '', term: ARPU}
+- {definition: Database schema fragment capturing tenants at risk of churn; 
+    populated nightly for retention dashboards., first_introduced_in: 
+    _context\glossary.md, source: '', term: AtRiskSchema}
+- {definition: Domain service orchestrating daily attendance capture and 
+    rolled-up reporting (FR-ATT-*)., first_introduced_in: _context\glossary.md, 
+    source: '', term: AttendanceService}
+- {definition: Append-only table recording sensitive actions; retention is 7 
+    years per DPPA compliance., first_introduced_in: _context\glossary.md, 
+    source: '', term: AuditLog}
+- {definition: 'Laravel module handling Sanctum authentication, MFA, and session management
+    (FR-AUTH-*).', first_introduced_in: _context\glossary.md, source: '', term: 
+    AuthModule}
+- {definition: Amazon Web Services; the primary cloud hosting provider for 
+    Academia Pro production and staging., first_introduced_in: 
+    _context\glossary.md, source: '', term: AWS}
+- {definition: Runtime middleware that blocks AI calls when the per-tenant token
+    ledger exceeds the configured monthly cap., first_introduced_in: 
+    _context\glossary.md, source: '', term: BudgetGuard}
+- {definition: AWS Content Delivery Network used to serve static assets and 
+    signed-URL document downloads., first_introduced_in: _context\glossary.md, 
+    source: '', term: CloudFront}
+- {definition: AWS observability service integrated with PagerDuty for on-call 
+    paging., first_introduced_in: _context\glossary.md, source: '', term: 
+    CloudWatch}
+- {definition: Content Management System., first_introduced_in: 
+    _context\glossary.md, source: '', term: CMS}
+- {definition: Aggregated percentage metric displayed on coverage-matrix 
+    dashboards., first_introduced_in: _context\glossary.md, source: '', term: 
+    CoveragePercent}
+- {definition: Consolidated reference database used during data migration., 
+    first_introduced_in: _context\glossary.md, source: '', term: CRDB}
+- {definition: Cross-functional discipline integrating development and 
+    operations; Academia Pro uses a DevOps-light model with on-call rotation., 
+    first_introduced_in: _context\glossary.md, source: '', term: DevOps}
+- {definition: Date of Birth; an S-tier personally identifiable field encrypted 
+    at rest., first_introduced_in: _context\glossary.md, source: '', term: DOB}
+- {definition: Definition of Done; the agile checklist required before a story 
+    is accepted., first_introduced_in: _context\glossary.md, source: '', term: 
+    DoD}
+- {definition: Definition of Ready; the agile checklist required before a story 
+    may enter a sprint., first_introduced_in: _context\glossary.md, source: '', 
+    term: DoR}
+- {definition: Data Processing Agreement; contractual terms between Academia Pro
+    (processor) and each school tenant (controller)., first_introduced_in: 
+    _context\glossary.md, source: '', term: DPA}
+- {definition: Data Protection Impact Assessment; mandatory under Uganda DPPA 
+    Regulation 12 for high-risk processing., first_introduced_in: 
+    _context\glossary.md, source: '', term: DPIA}
+- {definition: Data Protection Officer., first_introduced_in: 
+    _context\glossary.md, source: '', term: DPO}
+- {definition: Uganda Data Protection and Privacy Act 2019; the controlling 
+    privacy regulation., first_introduced_in: _context\glossary.md, source: '', 
+    term: DPPA}
+- {definition: East Africa Time (UTC+3)., first_introduced_in: 
+    _context\glossary.md, source: '', term: EAT}
+- {definition: AWS Elastic Compute Cloud., first_introduced_in: 
+    _context\glossary.md, source: '', term: EC2}
+- {definition: AWS Elastic Container Service; runs Academia Pro Dockerised 
+    application on Fargate., first_introduced_in: _context\glossary.md, source: '',
+  term: ECS}
+- {definition: AWS-managed Redis used for session storage and Horizon queues., 
+    first_introduced_in: _context\glossary.md, source: '', term: ElastiCache}
+- {definition: Service producing the MoES EMIS annual return export file., 
+    first_introduced_in: _context\glossary.md, source: '', term: 
+    EmisExportService}
+- {definition: Entity-Relationship Diagram., first_introduced_in: 
+    _context\glossary.md, source: '', term: ERD}
+- {definition: Enterprise Resource Planning., first_introduced_in: 
+    _context\glossary.md, source: '', term: ERP}
+- {definition: Laravel module handling internal tests and UNEB-aligned grading 
+    (FR-EXM-*)., first_introduced_in: _context\glossary.md, source: '', term: 
+    ExamModule}
+- {definition: Frequently Asked Questions; end-user help artefact., 
+    first_introduced_in: _context\glossary.md, source: '', term: FAQ}
+- {definition: Queued job dispatching fee-balance reminders via SMS and email., 
+    first_introduced_in: _context\glossary.md, source: '', term: 
+    FeeReminderService}
+- {definition: 'Laravel module handling fee structures, invoices, and reconciliation
+    (FR-FEE-*).', first_introduced_in: _context\glossary.md, source: '', term: 
+    FeesModule}
+- {definition: Source-control host for the Academia Pro repository., 
+    first_introduced_in: _context\glossary.md, source: '', term: GitHub}
+- {definition: Global Positioning System; used for optional location tagging of 
+    offline attendance capture., first_introduced_in: _context\glossary.md, 
+    source: '', term: GPS}
+- {definition: Module capturing append-only historical snapshots of student 
+    records for audit trails., first_introduced_in: _context\glossary.md, source: '',
+  term: HistoryModule}
+- {definition: High-Level Design document., first_introduced_in: 
+    _context\glossary.md, source: '', term: HLD}
+- {definition: HTTP Strict Transport Security., first_introduced_in: 
+    _context\glossary.md, source: '', term: HSTS}
+- {definition: Identity and Access Management., first_introduced_in: 
+    _context\glossary.md, source: '', term: IAM}
+- {definition: Information and Communication Technology., first_introduced_in: 
+    _context\glossary.md, source: '', term: ICT}
+- {definition: International Electrotechnical Commission., first_introduced_in: 
+    _context\glossary.md, source: '', term: IEC}
+- {definition: Institute of Electrical and Electronics Engineers., 
+    first_introduced_in: _context\glossary.md, source: '', term: IEEE}
+- {definition: Queued job consuming a CSV of legacy students and writing records
+    with tenant scoping., first_introduced_in: _context\glossary.md, source: '', 
+    term: ImportStudentsJob}
+- {definition: HSTS directive so subdomains inherit the HSTS policy., 
+    first_introduced_in: _context\glossary.md, source: '', term: 
+    includeSubDomains}
+- {definition: The default MySQL storage engine used by Academia Pro; chosen for
+    row-level locking and referential integrity., first_introduced_in: 
+    _context\glossary.md, source: '', term: InnoDB}
+- {definition: 'Laravel trait included on queued job classes exposing release, delete,
+    and retry controls.', first_introduced_in: _context\glossary.md, source: '', 
+    term: InteractsWithQueue}
+- {definition: Internet Protocol., first_introduced_in: _context\glossary.md, 
+    source: '', term: IP}
+- {definition: International Organization for Standardization., 
+    first_introduced_in: _context\glossary.md, source: '', term: ISO}
+- {definition: Kenya Certificate of Primary Education., first_introduced_in: 
+    _context\glossary.md, source: '', term: KCPE}
+- {definition: Kenya Certificate of Secondary Education., first_introduced_in: 
+    _context\glossary.md, source: '', term: KCSE}
+- {definition: Kenyan Shilling., first_introduced_in: _context\glossary.md, 
+    source: '', term: KES}
+- {definition: Key Management Service (AWS)., first_introduced_in: 
+    _context\glossary.md, source: '', term: KMS}
+- {definition: Key Performance Indicator., first_introduced_in: 
+    _context\glossary.md, source: '', term: KPI}
+- {definition: Large Language Model; refers to the provider used by the AI 
+    Module per ADR-0005., first_introduced_in: _context\glossary.md, source: '', 
+    term: LLM}
+- {definition: Learning Management System., first_introduced_in: 
+    _context\glossary.md, source: '', term: LMS}
+- {definition: Long-Term Support release channel., first_introduced_in: 
+    _context\glossary.md, source: '', term: LTS}
+- {definition: Laptop reference platform used for iOS development builds., 
+    first_introduced_in: _context\glossary.md, source: '', term: MacBook}
+- {definition: Master of Business Administration., first_introduced_in: 
+    _context\glossary.md, source: '', term: MBA}
+- {definition: Multiple-Choice Question., first_introduced_in: 
+    _context\glossary.md, source: '', term: MCQ}
+- {definition: Message-Digest Algorithm 5; referenced for legacy compatibility 
+    only; never used for security-sensitive hashing., first_introduced_in: 
+    _context\glossary.md, source: '', term: MD5}
+- {definition: Multi-Factor Authentication., first_introduced_in: 
+    _context\glossary.md, source: '', term: MFA}
+- {definition: Domain aggregate covering MTN MoMo and Airtel Money payment 
+    channels., first_introduced_in: _context\glossary.md, source: '', term: 
+    MobileMoney}
+- {definition: Test double implementing the AI provider interface used in CI and
+    local dev., first_introduced_in: _context\glossary.md, source: '', term: 
+    MockAIProvider}
+- {definition: MTN Mobile Money., first_introduced_in: _context\glossary.md, 
+    source: '', term: MoMo}
+- {definition: MTN Uganda; mobile-network operator for MoMo., 
+    first_introduced_in: _context\glossary.md, source: '', term: MTN}
+- {definition: Mean Time To Failure., first_introduced_in: _context\glossary.md, 
+    source: '', term: MTTF}
+- {definition: Mean Time To Recovery., first_introduced_in: _context\glossary.md,
+  source: '', term: MTTR}
+- {definition: Model-View-ViewModel UI architecture pattern; applied on Android 
+    and iOS clients., first_introduced_in: _context\glossary.md, source: '', 
+    term: MVVM}
+- {definition: The relational database management system chosen per ADR-0002., 
+    first_introduced_in: _context\glossary.md, source: '', term: MySQL}
+- {definition: Tanzania National Examinations Council., first_introduced_in: 
+    _context\glossary.md, source: '', term: NECTA}
+- {definition: Natural Language Processing., first_introduced_in: 
+    _context\glossary.md, source: '', term: NLP}
+- {definition: Net Promoter Score., first_introduced_in: _context\glossary.md, 
+    source: '', term: NPS}
+- {definition: LLM provider option evaluated during AI Module provider 
+    selection., first_introduced_in: _context\glossary.md, source: '', term: 
+    OpenAI}
+- {definition: API specification standard; see 
+    03-design-documentation/03-api-spec/., first_introduced_in: 
+    _context\glossary.md, source: '', term: OpenAPI}
+- {definition: One-Time Password., first_introduced_in: _context\glossary.md, 
+    source: '', term: OTP}
+- {definition: Open Web Application Security Project; the OWASP Top 10 is the 
+    minimum security checklist for every release., first_introduced_in: 
+    _context\glossary.md, source: '', term: OWASP}
+- {definition: Product Backlog Item., first_introduced_in: _context\glossary.md, 
+    source: '', term: PBI}
+- {definition: The programming language of the Laravel backend (PHP 8.2+)., 
+    first_introduced_in: _context\glossary.md, source: '', term: PHP}
+- {definition: 'PHP library used to produce Excel exports of fees, marks, and attendance.',
+  first_introduced_in: _context\glossary.md, source: '', term: PhpSpreadsheet}
+- {definition: Personally Identifiable Information., first_introduced_in: 
+    _context\glossary.md, source: '', term: PII}
+- {definition: Microsoft PowerPoint file format supported as an uploadable study
+    material., first_introduced_in: _context\glossary.md, source: '', term: PPTX}
+- {definition: Pull Request., first_introduced_in: _context\glossary.md, source: '',
+  term: PR}
+- {definition: Product Requirements Document., first_introduced_in: 
+    _context\glossary.md, source: '', term: PRD}
+- {definition: Payment Systems Operator (BoU-licensed entity)., 
+    first_introduced_in: _context\glossary.md, source: '', term: PSO}
+- {definition: Scheduled job deleting records past retention per DPPA §30 
+    fulfilment., first_introduced_in: _context\glossary.md, source: '', term: 
+    PurgeExpiredDataJob}
+- {definition: Progressive Web App., first_introduced_in: _context\glossary.md, 
+    source: '', term: PWA}
+- {definition: Quick Response code., first_introduced_in: _context\glossary.md, 
+    source: '', term: QR}
+- {definition: AWS Relational Database Service (MySQL managed)., 
+    first_introduced_in: _context\glossary.md, source: '', term: RDS}
+- {definition: Recovery Point Objective; target is 15 minutes., 
+    first_introduced_in: _context\glossary.md, source: '', term: RPO}
+- {definition: Requirements Traceability Matrix., first_introduced_in: 
+    _context\glossary.md, source: '', term: RTM}
+- {definition: Recovery Time Objective; target is 4 hours., first_introduced_in: 
+    _context\glossary.md, source: '', term: RTO}
+- {definition: Software as a Service., first_introduced_in: _context\glossary.md,
+  source: '', term: SaaS}
+- {definition: Database partition-range used by the payment reconciliation job., 
+    first_introduced_in: _context\glossary.md, source: '', term: 
+    SchoolRangeTransactions}
+- {definition: Queued job that assembles and dispatches a batched fee reminder., 
+    first_introduced_in: _context\glossary.md, source: '', term: 
+    SendFeeReminderJob}
+- {definition: Laravel trait serialising Eloquent models when a queued job is 
+    persisted., first_introduced_in: _context\glossary.md, source: '', term: 
+    SerializesModels}
+- {definition: Module handling share-outs and announcement distribution., 
+    first_introduced_in: _context\glossary.md, source: '', term: SharingModule}
+- {definition: Laravel interface marking a class as queueable., 
+    first_introduced_in: _context\glossary.md, source: '', term: ShouldQueue}
+- {definition: Named Uganda competitor product evaluated in the market analysis.,
+  first_introduced_in: _context\glossary.md, source: '', term: ShuleKeeper}
+- {definition: Student Information System., first_introduced_in: 
+    _context\glossary.md, source: '', term: SIS}
+- {definition: Service Level Agreement., first_introduced_in: 
+    _context\glossary.md, source: '', term: SLA}
+- {definition: Structured Query Language., first_introduced_in: 
+    _context\glossary.md, source: '', term: SQL}
+- {definition: Repository-layer class asserting tenant scope before returning 
+    student rows., first_introduced_in: _context\glossary.md, source: '', term: 
+    StudentRepository}
+- {definition: Generated short code printed on fee invoices so parents can 
+    reference a payment against a specific student., first_introduced_in: 
+    _context\glossary.md, source: '', term: studentPaymentCode}
+- {definition: Apple declarative UI framework used on iOS clients., 
+    first_introduced_in: _context\glossary.md, source: '', term: SwiftUI}
+- {definition: Job reconciling MoMo and Airtel payment records into the fees 
+    ledger., first_introduced_in: _context\glossary.md, source: '', term: 
+    SyncSchoolTransactions}
+- {definition: Base class for queued jobs that must re-hydrate the tenant 
+    context before running., first_introduced_in: _context\glossary.md, source: '',
+  term: TenantAwareJob}
+- {definition: 'Module defining tenancy lifecycle, provisioning, and off-boarding.',
+  first_introduced_in: _context\glossary.md, source: '', term: TenantModule}
+- {definition: Time-based One-Time Password., first_introduced_in: 
+    _context\glossary.md, source: '', term: TOTP}
+- {definition: Time To Live., first_introduced_in: _context\glossary.md, source: '',
+  term: TTL}
+- {definition: The typed superset of JavaScript used for the React web client., 
+    first_introduced_in: _context\glossary.md, source: '', term: TypeScript}
+- {definition: User Acceptance Testing., first_introduced_in: 
+    _context\glossary.md, source: '', term: UAT}
+- {definition: Uganda Communications Commission., first_introduced_in: 
+    _context\glossary.md, source: '', term: UCC}
+- {definition: Unique Identifier., first_introduced_in: _context\glossary.md, 
+    source: '', term: UID}
+- {definition: Uganda Law Reform Commission., first_introduced_in: 
+    _context\glossary.md, source: '', term: ULRC}
+- {definition: Uganda Private Schools Association., first_introduced_in: 
+    _context\glossary.md, source: '', term: UPSIA}
+- {definition: Third-party synthetic monitoring service used as a second-source 
+    availability check., first_introduced_in: _context\glossary.md, source: '', 
+    term: UptimeRobot}
+- {definition: United States Dollar., first_introduced_in: _context\glossary.md, 
+    source: '', term: USD}
+- {definition: Coordinated Universal Time., first_introduced_in: 
+    _context\glossary.md, source: '', term: UTC}
+- {definition: Universally Unique Identifier., first_introduced_in: 
+    _context\glossary.md, source: '', term: UUID}
+- {definition: Laravel exception raised when inbound request validation fails; 
+    converted to a standard error envelope., first_introduced_in: 
+    _context\glossary.md, source: '', term: ValidationException}
+- {definition: Virtual Private Server., first_introduced_in: 
+    _context\glossary.md, source: '', term: VPS}
+- {definition: West African Examinations Council., first_introduced_in: 
+    _context\glossary.md, source: '', term: WAEC}
+- {definition: Web Application Firewall (Cloudflare)., first_introduced_in: 
+    _context\glossary.md, source: '', term: WAF}
+- {definition: Windows-based local development stack used for Windows dev 
+    machines., first_introduced_in: _context\glossary.md, source: '', term: 
+    WAMP64}
+- {definition: Web Content Accessibility Guidelines; target level AA., 
+    first_introduced_in: _context\glossary.md, source: '', term: WCAG}
+- {definition: Eloquent scope escape-hatch used only by platform-level jobs that
+    must cross tenant boundaries., first_introduced_in: _context\glossary.md, 
+    source: '', term: withoutTenantScope}
+- {definition: Query scope restricting a row set to rows owned by the calling 
+    student identity., first_introduced_in: _context\glossary.md, source: '', 
+    term: withStudentSelfScope}
+- {definition: Android Jetpack background-job scheduler used for offline-sync., 
+    first_introduced_in: _context\glossary.md, source: '', term: WorkManager}
+- {definition: Windows Subsystem for Linux v2; supported local-dev path for 
+    Windows engineers., first_introduced_in: _context\glossary.md, source: '', 
+    term: WSL2}
+- {definition: Video hosting referenced for in-app help video links., 
+    first_introduced_in: _context\glossary.md, source: '', term: YouTube}
+- {definition: OWASP Zed Attack Proxy; CI security scanner., first_introduced_in: 
+    _context\glossary.md, source: '', term: ZAP}
+- {definition: Archive format used for evidence-pack bundles., 
+    first_introduced_in: _context\glossary.md, source: '', term: ZIP}
 - {definition: MTN Mobile Money Uganda (MoMo Pay / Merchant API), 
     first_introduced_in: _context\payment-landscape.md, source: '', term: 
     Product}

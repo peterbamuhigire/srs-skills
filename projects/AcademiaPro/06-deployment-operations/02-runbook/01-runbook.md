@@ -450,12 +450,12 @@ php artisan cache:clear
 
 | Role | Name | Primary Contact | Backup Contact |
 |------|------|----------------|----------------|
-| CTO / Project Owner | Peter Bamuhigire | [CONTEXT-GAP: phone number] | WhatsApp |
-| On-call Engineer | [CONTEXT-GAP: name] | [CONTEXT-GAP: phone number] | WhatsApp |
-| Team Lead | [CONTEXT-GAP: name] | [CONTEXT-GAP: phone number] | WhatsApp |
+| CTO / Project Owner | Peter Bamuhigire | `peter.bamuhigire@gmail.com`; phone in `_context/private/contacts.md` (not versioned) | WhatsApp |
+| On-call Engineer | Assigned at Sprint 1 kick-off — see `09-governance-compliance/06-change-impact/CIA-002` | `_context/private/contacts.md` | WhatsApp |
+| Team Lead | Assigned at Sprint 1 kick-off — see `09-governance-compliance/06-change-impact/CIA-002` | `_context/private/contacts.md` | WhatsApp |
 | AWS Support | — | AWS Support Console | — |
 | Africa's Talking Support | — | `support@africastalking.com` | Dashboard tickets |
-| SchoolPay Support | — | [CONTEXT-GAP: contact] | — |
+| SchoolPay Support | — | `support@schoolpay.co.ug` | — |
 | Cloudflare Support | — | Cloudflare Dashboard | — |
 | Meta WhatsApp Business | — | Meta Business Help Centre | — |
 
