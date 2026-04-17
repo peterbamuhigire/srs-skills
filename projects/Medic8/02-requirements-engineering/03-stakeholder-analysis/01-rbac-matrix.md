@@ -36,6 +36,7 @@
 | 16 | `AU` | Auditor | Read-only audit and compliance access. All financial records, audit trail, compliance reports, transaction logs. No data modification. | None | Limited (read-only) |  1-2 |
 | 17 | `PT` | Patient / Client | Patient portal access. Own records, appointment booking, test results, invoices, payment history, medication reminders. | None (own records only) | None (own records only) | Unlimited |
 | 18 | `CHW` | Community Health Worker (VHT/CHW) | CHW mobile app access for assigned community area. Patient registration, referral submission, home visit documentation. | None | None | 5-50 |
+| 19 | `AIADM` | AI Administrator | AI Intelligence module configuration for a single tenant. Manages AI provider keys, monitors token usage, and controls per-capability toggles. No access to patient data, clinical records, billing, payroll, or HR. | None | None | 1 |
 
 ---
 
@@ -289,13 +290,34 @@
 
 ### Section O: Platform Administration
 
-| Permission | SA | FA | DR | CO | NU | PH | LT | RG | RE | CA | IC | AC | SK | RO | DI | AU | PT | CHW |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Provision tenant | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
-| Configure subscription tier | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
-| Manage global settings | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
-| View cross-tenant analytics | R | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
-| Manage country configuration | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| Permission | SA | FA | DR | CO | NU | PH | LT | RG | RE | CA | IC | AC | SK | RO | DI | AU | PT | CHW | AIADM |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Provision tenant | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| Configure subscription tier | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| Manage global settings | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| View cross-tenant analytics | R | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+| Manage country configuration | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
+
+---
+
+### Section P: AI Intelligence Module
+
+| Permission | SA | FA | DR | CO | NU | PH | LT | RG | RE | CA | IC | AC | SK | RO | DI | AU | PT | CHW | AIADM |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Configure AI provider (primary + failover) | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | CRUD |
+| Enter / rotate AI provider API key | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | CRUD |
+| View AI token usage log (`ai_usage_log`) | R | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | R |
+| Toggle AI capabilities per tenant | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | CRUD |
+| Read facility settings (context only) | R | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | R ²⁰ |
+| View AI admin dashboard | R | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | R |
+| Test AI provider connection | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | CRU |
+| Top up AI credits | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | CRU |
+
+**Footnotes:**
+
+20. AI Administrator read access to facility settings is scoped to fields required for AI configuration context (facility name, tenant ID, active module list). No access to patient demographics, clinical data, financial records, billing configuration, or staff HR data.
+
+**Important data access note:** The AI Administrator role has no access to patient data. The `ai_usage_log` table contains only anonymised encounter IDs, AI capability names, token counts, and timestamps. No clinical content, diagnosis text, patient names, or patient identifiers are stored in the `ai_usage_log` table.
 
 ---
 
@@ -363,7 +385,7 @@ For the purpose of role assignment, permission escalation review, and approval w
 | 5 | Director / Owner (`DI`) | Aggregate reporting, approval workflows, financial oversight |
 | 4 | Doctor (`DR`), Clinical Officer (`CO`) | Full clinical scope within assigned facility |
 | 3 | Nurse/Midwife (`NU`), Pharmacist (`PH`), Lab Technician (`LT`), Radiographer (`RG`) | Domain-specific clinical scope |
-| 2 | Receptionist (`RE`), Cashier (`CA`), Insurance Clerk (`IC`), Accountant (`AC`), Store Keeper (`SK`), Records Officer (`RO`), Auditor (`AU`) | Administrative and financial scope |
+| 2 | Receptionist (`RE`), Cashier (`CA`), Insurance Clerk (`IC`), Accountant (`AC`), Store Keeper (`SK`), Records Officer (`RO`), Auditor (`AU`), AI Administrator (`AIADM`) | Administrative and AI module scope; no patient data access |
 | 1 (lowest) | Patient (`PT`), Community Health Worker (`CHW`) | Own records or assigned community only |
 
 A user may only assign roles at levels strictly below their own level. A Facility Admin (level 6) may assign levels 1-5 but not level 6 or 7. The Super Admin is the only role that can create Facility Admin accounts.

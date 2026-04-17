@@ -1,4 +1,4 @@
-# 5. System Constraints
+# 5 System Constraints
 
 This section defines the legal, regulatory, technology, performance, and design constraints that bound the Medic8 system architecture. All constraints are binding unless explicitly marked as advisory.
 
@@ -26,7 +26,7 @@ The system shall auto-populate the following Uganda MoH Health Management Inform
 - **HMIS 108** — Inpatient Monthly Report (admissions, discharges, deaths by diagnosis/age/sex, bed occupancy, surgical operations)
 - **HMIS 033b** — Weekly Epidemiological Surveillance Report (27 priority diseases from IDSR disease codes)
 
-The system shall support DHIS2 API submission to the Uganda eHMIS instance (hmis2.health.go.ug). HMIS form mappings shall be version-controlled in configuration tables and updated within 30 days of MoH publication of a new form version (gap HIGH-007).
+The system shall support DHIS2 API submission to the Uganda eHMIS instance (`hmis2.health.go.ug`). HMIS form mappings shall be version-controlled in configuration tables and updated within 30 days of MoH publication of a new form version (gap HIGH-007).
 
 ### 5.1.3 Uganda National Drug Authority (NDA)
 
@@ -48,14 +48,14 @@ The system shall support a configurable compliance engine that enforces the data
 
 | Country | Data Protection Law | Health Sector Standards | Drug Regulatory Body |
 |---|---|---|---|
-| **Uganda** | Data Protection and Privacy Act 2019 (PDPA) | MoH HMIS 105/108/033b, DHIS2 | National Drug Authority (NDA) |
-| **Kenya** | Data Protection Act 2019 | Kenya Health Information System (KHIS) | Pharmacy and Poisons Board (PPB) |
-| **Tanzania** | Electronic and Postal Communications Act (EPOCA) | TMDA health data regulations | Tanzania Medicines and Medical Devices Authority (TMDA) |
-| **Rwanda** | Law No. 058/2021 on Protection of Personal Data and Privacy | Rwanda Biomedical Centre (RBC) standards | Rwanda FDA |
-| **Nigeria** | Nigeria Data Protection Act 2023 (NDPA) | FMOH National Health ICT Strategic Framework | NAFDAC |
-| **India** | Digital Information Security in Healthcare Act (DISHA, draft) | Ayushman Bharat Digital Mission (ABDM), ABHA health ID | Central Drugs Standard Control Organisation (CDSCO) |
-| **Australia** | Privacy Act 1988 (Australian Privacy Principles), My Health Records Act 2012 | Therapeutic Goods Act 1989 | Therapeutic Goods Administration (TGA) |
-| **USA (PEPFAR)** | HIPAA Privacy Rule and Security Rule | PEPFAR MER indicator compliance | FDA |
+| Uganda | Data Protection and Privacy Act 2019 (PDPA) | MoH HMIS 105/108/033b, DHIS2 | National Drug Authority (NDA) |
+| Kenya | Data Protection Act 2019 | Kenya Health Information System (KHIS) | Pharmacy and Poisons Board (PPB) |
+| Tanzania | Electronic and Postal Communications Act (EPOCA) | TMDA health data regulations | Tanzania Medicines and Medical Devices Authority (TMDA) |
+| Rwanda | Law No. 058/2021 on Protection of Personal Data and Privacy | Rwanda Biomedical Centre (RBC) standards | Rwanda FDA |
+| Nigeria | Nigeria Data Protection Act 2023 (NDPA) | FMOH National Health ICT Strategic Framework | NAFDAC |
+| India | Digital Information Security in Healthcare Act (DISHA, draft) | Ayushman Bharat Digital Mission (ABDM), ABHA health ID | Central Drugs Standard Control Organisation (CDSCO) |
+| Australia | Privacy Act 1988 (Australian Privacy Principles), My Health Records Act 2012 | Therapeutic Goods Act 1989 | Therapeutic Goods Administration (TGA) |
+| USA (PEPFAR) | HIPAA Privacy Rule and Security Rule | PEPFAR MER indicator compliance | FDA |
 
 Each deployment shall activate the applicable regulatory profile at tenant configuration time. The system shall not permit clinical operation without an assigned regulatory profile.
 
@@ -162,7 +162,7 @@ The system shall support a country configuration layer that adapts regulatory, c
 
 The system shall implement ABAC layered on RBAC:
 
-- **RBAC** grants base access permissions per role (18 built-in roles: clinician, pharmacist, lab technician, records officer, administrator, and others as defined in the stakeholder registry).
+- **RBAC** grants base access permissions per role (19 built-in roles: clinician, pharmacist, lab technician, records officer, administrator, AI Administrator, and others as defined in the stakeholder registry).
 - **ABAC** enforces fine-grained attribute-based policies for sensitive data categories (HIV status, mental health, substance abuse, reproductive health).
 
 ### 5.4.4 Configurable Consent Engine
@@ -203,3 +203,41 @@ The system shall maintain a global patient identity at the platform level, indep
 ### 5.4.9 Clinical Decision Support Constraint
 
 The system shall implement clinical decision support (CDS) as data-driven configuration (database-stored rules), not hardcoded logic. All CDS rules, alert thresholds, and override behaviours shall be maintainable by the pharmacy lead or clinical administrator without code deployment. The system's Terms of Service shall explicitly state that Medic8 is decision support, not a decision maker — clinical liability remains with the prescribing clinician (gap HIGH-004).
+
+---
+
+## 5.5 AI Intelligence Module Constraints
+
+### CONSTRAINT-AI-001: No Auto-Save of AI-Generated Clinical Content
+
+The AI Intelligence module shall never auto-save AI-generated content (clinical notes, differential diagnoses, ICD code selections) to the patient record without explicit clinician approval. This constraint cannot be overridden by any role-level configuration. Every AI-generated draft presented to a clinician shall require an affirmative **Approve** action before the content is written to the patient record. Clicking **Discard** shall remove the draft without any write operation.
+
+### CONSTRAINT-AI-002: Patient Data Minimisation for AI Prompts
+
+Patient data sent to external AI provider APIs shall be minimised per the DPPA 2019 data minimisation principle. Prompts shall not include patient NIN, full legal name, or NIRA registration number. Anonymised encounter IDs shall be used in place of direct patient identifiers. This constraint is enforced at the `AIProviderInterface` layer before any prompt is dispatched to an external provider and applies to all 4 supported providers (OpenAI, Anthropic, DeepSeek, Google Gemini).
+
+### CONSTRAINT-AI-003: Graceful Degradation on AI Provider Failure
+
+When the primary AI provider API returns an error or fails to respond within 10 s, the system shall automatically attempt the request with the secondary configured provider. If the secondary provider also fails, the system shall degrade gracefully: AI capability UI elements are hidden and a non-blocking notification is displayed to the user. No clinical workflow shall be blocked by AI provider unavailability. Patient registration, OPD consultation, prescribing, dispensing, lab result entry, and all billing operations shall continue without interruption.
+
+---
+
+## 5.6 Internationalisation Constraints
+
+### CONSTRAINT-I18N-001: Externalised User-Visible Strings
+
+All user-visible strings in the web portal, Android application, and iOS application shall be externalised into locale-specific resource files:
+
+- PHP (Laravel): `lang/<locale>/` (e.g., `lang/en/`, `lang/fr/`, `lang/sw/`)
+- Android: `values-<locale>/strings.xml` (e.g., `values-fr/strings.xml`, `values-sw/strings.xml`)
+- iOS: `<locale>.lproj/Localizable.strings` (e.g., `fr.lproj/Localizable.strings`, `sw.lproj/Localizable.strings`)
+
+No user-visible string shall be hardcoded in application logic or templates.
+
+### CONSTRAINT-I18N-002: Supported Locales and Fallback Chain
+
+The supported locales at launch are `en` (English, primary), `fr` (French), and `sw` (Kiswahili). The locale fallback chain is `sw` → `en` and `fr` → `en`. A missing translation shall fall through to English and shall be flagged `[I18N-GAP: <key>]` in the build log. No production release shall contain any unresolved `[I18N-GAP]` tags.
+
+### CONSTRAINT-I18N-003: Clinical Alert Severity Labels
+
+Clinical alert severity labels (Fatal, Serious, Warning, Info) shall always render in the clinician's configured UI language. These labels shall not be auto-translated mid-workflow. The translations for these 4 labels in all 3 supported locales are mandatory strings; a build shall fail if any of these 12 strings is absent from any locale resource file.

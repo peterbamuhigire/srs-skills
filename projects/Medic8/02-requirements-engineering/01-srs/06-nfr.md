@@ -1,6 +1,6 @@
-# 6. Non-Functional Requirements
+# 6 Non-Functional Requirements
 
-This section defines the non-functional requirements (NFRs) for the Medic8 system. Each requirement follows the "The system shall..." format per IEEE 830-1998 and IEEE 29148-2018. Every NFR includes a **Verifiability** section containing a deterministic test case with a clear pass/fail criterion.
+This section defines the non-functional requirements (NFRs) for the Medic8 system. Each requirement follows the "The system shall..." format per IEEE 830-1998 and IEEE 29148-2018. Every NFR includes a Verifiability section containing a deterministic test case with a clear pass/fail criterion.
 
 **Standards:** IEEE 830-1998 Section 3.3, IEEE 29148-2018 Section 6.4.
 
@@ -13,56 +13,67 @@ The following 9 requirements are adapted from the healthcare domain baseline (`d
 ---
 
 <!-- [DOMAIN-DEFAULT: healthcare] Source: domains/healthcare/references/nfr-defaults.md (adapted for Uganda) -->
+
 ### NFR-HC-001: Patient Data Audit Trail
 
 The system shall maintain a complete, tamper-proof audit log of all create, read, update, and delete operations on patient health records in compliance with the Uganda Data Protection and Privacy Act 2019 Section 24. Every audit log entry shall record: `user_id`, `timestamp` (UTC), `action` (create/read/update/delete), `resource_type`, `resource_id`, `facility_id`, `ip_address`, and `outcome` (success/failure). Audit logs shall be append-only; no user role, including Super Admin, shall have the ability to modify or delete audit log entries.
 
 **Verifiability:** Execute a read operation on a patient record while authenticated as a clinical user. Query the audit log table and verify that an immutable log entry exists containing all 8 required fields with correct values. Attempt to execute an UPDATE or DELETE statement against the audit log table using a Super Admin database connection; the system shall reject the operation and return an error.
+
 <!-- [END DOMAIN-DEFAULT] -->
 
 ---
 
 <!-- [DOMAIN-DEFAULT: healthcare] Source: domains/healthcare/references/nfr-defaults.md (adapted for Uganda) -->
+
 ### NFR-HC-002: Data Encryption at Rest
 
 The system shall encrypt all patient health data stored in the database using AES-256-GCM. Unencrypted patient health data shall not exist on any persistent storage medium, including database files, backup files, and temporary files. Encryption key management shall follow NIST SP 800-57 guidelines. The encryption implementation shall function on low-specification hardware common in Ugandan health facilities (Intel Celeron / ARM Cortex-A53 equivalent processors).
 
 **Verifiability:** Inspect the raw MySQL data directory files on disk; patient health data fields (name, diagnosis, prescription, lab result) shall be unreadable without the encryption key. Execute a SELECT query on an encrypted column without the application decryption layer; the returned value shall be ciphertext. Measure query performance with encryption enabled on a Celeron-class processor; verify P95 query time remains under 200 ms for single-record retrieval.
+
 <!-- [END DOMAIN-DEFAULT] -->
 
 ---
 
 <!-- [DOMAIN-DEFAULT: healthcare] Source: domains/healthcare/references/nfr-defaults.md (adapted for Uganda) -->
+
 ### NFR-HC-003: Data Encryption in Transit
 
 All transmission of patient data shall use TLS 1.2 or higher. TLS 1.0 and TLS 1.1 shall be disabled on all endpoints, including the web application, API, FHIR server, and DHIS2 integration endpoints. Certificate pinning shall be enforced on the Android and iOS mobile applications.
 
 **Verifiability:** Run `nmap --script ssl-enum-ciphers` against all application endpoints; verify that TLS 1.0 and TLS 1.1 return no supported ciphers. Attempt a connection using TLS 1.1; the system shall refuse the connection. Inspect mobile app network traffic using a proxy; verify that connections fail when the server certificate does not match the pinned certificate.
+
 <!-- [END DOMAIN-DEFAULT] -->
 
 ---
 
 <!-- [DOMAIN-DEFAULT: healthcare] Source: domains/healthcare/references/nfr-defaults.md (adapted for Uganda) -->
+
 ### NFR-HC-004: Session Timeout
 
 The system shall automatically terminate inactive clinical user sessions after 15 minutes of inactivity, requiring re-authentication to resume. The system shall display a warning prompt at 13 minutes of inactivity, giving the user 2 minutes to extend the session. Auto-saved form data shall be preserved across session timeouts and restored upon re-authentication.
 
 **Verifiability:** Authenticate as a clinical user; partially complete an OPD consultation form; remain idle for 13 minutes; verify that a session extension prompt appears. Dismiss the prompt and wait 2 additional minutes; verify redirection to the login screen. Re-authenticate; verify that the partially completed form data is restored from auto-save.
+
 <!-- [END DOMAIN-DEFAULT] -->
 
 ---
 
 <!-- [DOMAIN-DEFAULT: healthcare] Source: domains/healthcare/references/nfr-defaults.md (adapted for Uganda) -->
+
 ### NFR-HC-005: Multi-Factor Authentication
 
-The system shall require Multi-Factor Authentication (MFA) for the following roles: Super Admin, Facility Admin, Accountant, and Auditor. MFA shall be optional for clinical staff (Doctor, Clinical Officer, Nurse, Pharmacist, Lab Technician). Supported MFA methods shall include: TOTP (authenticator app), SMS OTP (via Africa's Talking), and email OTP. The system shall support fallback from SMS to email OTP when SMS delivery fails.
+The system shall require Multi-Factor Authentication (MFA) for the following roles: Super Admin, Facility Admin, Accountant, and Auditor. MFA shall be optional for clinical staff (Doctor, Clinical Officer, Nurse, Pharmacist, Lab Technician). Supported MFA methods shall include: TOTP (authenticator app), SMS OTP (via Africa's Talking), and email OTP. The system shall support fallback from SMS to email OTP when SMS delivery fails within 30 seconds.
 
 **Verifiability:** Attempt login as Facility Admin with correct username and password only; the system shall not grant access and shall prompt for a second factor. Enter a valid TOTP code; verify access is granted. Attempt login as a Doctor without MFA configured; verify access is granted with password only. Simulate SMS delivery failure during MFA for an Accountant; verify the system falls back to email OTP delivery within 30 seconds.
+
 <!-- [END DOMAIN-DEFAULT] -->
 
 ---
 
 <!-- [DOMAIN-DEFAULT: healthcare] Source: domains/healthcare/references/nfr-defaults.md (adapted for Uganda) -->
+
 ### NFR-HC-006: Availability and Offline Resilience
 
 The system shall maintain 99.9% uptime for all cloud-hosted clinical modules, measured monthly (maximum 8.76 hours downtime per year).
@@ -72,36 +83,43 @@ $$Availability = \frac{MTTF}{MTTF + MTTR} \times 100\%$$
 Core clinical modules (patient registration, OPD consultation, prescribing, dispensing, lab result entry) shall function at full capacity with 0% internet connectivity. The system shall detect power restoration and immediately initiate synchronisation of the offline queue. Planned maintenance windows shall be scheduled between 00:00 and 04:00 East Africa Time (EAT) and communicated to facility administrators 48 hours in advance.
 
 **Verifiability:** Monitor cloud uptime over 30 consecutive days using an external monitoring service (e.g., UptimeRobot); calculate availability percentage; verify it meets or exceeds 99.9%. Disconnect internet on a workstation; register a patient, create an OPD visit, write a prescription, and dispense a drug; verify all operations complete without error. Reconnect internet; verify all records appear in the server database within 5 minutes.
+
 <!-- [END DOMAIN-DEFAULT] -->
 
 ---
 
 <!-- [DOMAIN-DEFAULT: healthcare] Source: domains/healthcare/references/nfr-defaults.md (adapted for Uganda) -->
+
 ### NFR-HC-007: Data Retention
 
 The system shall retain patient health records and associated audit logs for a minimum of 10 years from the date of the last clinical encounter, in accordance with Uganda MoH policy. The system shall not permit deletion of patient records that fall within the retention period. After the retention period expires, records shall be archived (not deleted) and accessible to authorised users upon request.
 
 **Verifiability:** Attempt to delete a patient record where the last encounter occurred less than 10 years ago; the system shall reject the deletion and display a message citing the retention policy. Attempt to delete a patient record where the last encounter occurred more than 10 years ago; the system shall archive the record and confirm the archive action.
+
 <!-- [END DOMAIN-DEFAULT] -->
 
 ---
 
 <!-- [DOMAIN-DEFAULT: healthcare] Source: domains/healthcare/references/nfr-defaults.md (adapted for Uganda) -->
+
 ### NFR-HC-008: Breach Notification
 
 The system shall provide tooling to identify and report all patient records affected by a security breach within 72 hours of breach confirmation, in compliance with Uganda PDPA 2019 Section 31. The system shall generate a breach impact report listing: affected patient count, data categories exposed (demographics, clinical, financial), breach timeline, and affected facility identifiers. The system shall support immediate notification to the Personal Data Protection Office (PDPO) and affected patients via SMS.
 
 **Verifiability:** Simulate a breach event by flagging a user account as compromised. Execute the breach impact report for that account; verify the report is generated within 4 hours of query execution. Verify the report contains all required fields: affected patient count, data categories, timeline, and facility identifiers. Verify the system generates SMS notification drafts for affected patients.
+
 <!-- [END DOMAIN-DEFAULT] -->
 
 ---
 
 <!-- [DOMAIN-DEFAULT: healthcare] Source: domains/healthcare/references/nfr-defaults.md (adapted for Uganda) -->
+
 ### NFR-HC-009: HMIS Compliance
 
-The system shall auto-populate HMIS 105 (Outpatient Monthly), HMIS 108 (Inpatient Monthly), and HMIS 033b (Weekly Epidemiological Surveillance) from clinical data without manual re-entry. HMIS form mappings shall be stored in configuration tables, version-controlled, and updatable without code deployment. The system shall support direct API submission to the Uganda DHIS2 platform (hmis2.health.go.ug) when internet connectivity is available. The system shall track which reporting periods have been submitted and which are pending.
+The system shall auto-populate HMIS 105 (Outpatient Monthly), HMIS 108 (Inpatient Monthly), and HMIS 033b (Weekly Epidemiological Surveillance) from clinical data without manual re-entry. HMIS form mappings shall be stored in configuration tables, version-controlled, and updatable without code deployment. The system shall support direct API submission to the Uganda DHIS2 platform (`hmis2.health.go.ug`) when internet connectivity is available. The system shall track which reporting periods have been submitted and which are pending.
 
 **Verifiability:** Record 10 OPD visits with ICD-10 coded diagnoses across 2 age groups and both sexes during a calendar month. Generate the HMIS 105 report for that month; verify that Section 1 tallies match the recorded visits by age group and sex without any manual data entry. Submit the report via DHIS2 API to a test instance; verify successful submission and that the reporting period is marked as "submitted" in the tracking log.
+
 <!-- [END DOMAIN-DEFAULT] -->
 
 ---
@@ -134,10 +152,10 @@ The system shall calculate drug doses based on patient weight (mg/kg) for all pa
 
 The system shall display drug interaction alerts at 4 severity tiers:
 
-1. **Info** — passive display in the prescription sidebar; no clinician action required
-2. **Warning** — prominent amber banner display; clinician may proceed without override
-3. **Serious** — modal alert blocking the workflow; clinician must provide a documented override reason to proceed
-4. **Fatal** — hard stop that cannot be overridden by the prescriber; a pharmacist must intervene and resolve the interaction before the prescription is accepted
+1. Info — passive display in the prescription sidebar; no clinician action required
+2. Warning — prominent amber banner display; clinician may proceed without override
+3. Serious — modal alert blocking the workflow; clinician must provide a documented override reason to proceed
+4. Fatal — hard stop that cannot be overridden by the prescriber; a pharmacist must intervene and resolve the interaction before the prescription is accepted
 
 The system shall log all alert presentations and all override actions with: `clinician_id`, `patient_id`, `alert_id`, `drug_pair`, `severity_tier`, `timestamp`, `action_taken` (acknowledged/overridden/escalated), and `override_reason` (for Tier 3). The system shall track override rates per facility for quality monitoring.
 
@@ -257,11 +275,11 @@ The system shall perform automated daily backups with a Recovery Point Objective
 
 ---
 
-### NFR-HC-021: Localisation
+### NFR-HC-021: Localisation — String Coverage
 
-The system shall support the following languages at minimum: English, Luganda, Kiswahili, and French. All user-facing labels, error messages, menu items, and system notifications shall be translatable without code changes via a language resource file. Date, currency, and number formatting shall be configurable per locale. Clinical terminology (drug names, ICD-10 descriptions) shall remain in English across all locales to prevent clinical errors from translation.
+The system shall support English (`en`), French (`fr`), and Kiswahili (`sw`) as launch locales. All user-facing labels, error messages, menu items, and system notifications shall be translatable without code changes via locale resource files (`lang/<locale>/` for PHP, `values-<locale>/strings.xml` for Android, `<locale>.lproj/Localizable.strings` for iOS). Date, currency, and number formatting shall be configurable per locale. Clinical terminology (drug names, ICD-10 descriptions) shall remain in English across all locales to prevent clinical errors from translation.
 
-**Verifiability:** Switch the system language to Luganda; verify that all menu items, button labels, and system messages display in Luganda. Verify that drug names and ICD-10 descriptions remain in English. Enter a monetary amount; verify it displays in the correct currency format for the configured locale (e.g., UGX 50,000 for Uganda, KES 5,000 for Kenya).
+**Verifiability:** Switch the system language to Kiswahili; verify that all menu items, button labels, and system messages display in Kiswahili. Verify that drug names and ICD-10 descriptions remain in English. Enter a monetary amount; verify it displays in the correct currency format for the configured locale (e.g., UGX 50,000 for Uganda). Switch to French; verify all UI strings render in French with no English fallback visible for strings that have approved French translations.
 
 ---
 
@@ -286,3 +304,79 @@ The system shall persist the clinician's session state (current form, entered da
 The system shall enforce role-based prescribing authority per the Uganda Medical and Dental Practitioners Act. Doctors may prescribe all medications on the facility formulary. Clinical Officers may prescribe within their gazetted scope of practice. Nurses shall not prescribe; they may administer prescribed medications only. Prescribing authority rules shall be configurable per country via the country configuration layer.
 
 **Verifiability:** Log in as a Nurse; attempt to create a new prescription; verify the system blocks the action with a message stating that the Nurse role does not have prescribing authority. Log in as a Clinical Officer; attempt to prescribe a medication outside the gazetted scope; verify the system blocks the prescription. Log in as a Doctor; prescribe any medication on the formulary; verify the prescription is accepted.
+
+---
+
+## 6.5 AI Intelligence Module Non-Functional Requirements
+
+---
+
+### NFR-PERF-AI-001: AI Capability Response Time
+
+The system shall return AI capability responses (clinical note draft, differential diagnosis, ICD code suggestions, patient plain-language summary, claim scrub, outbreak alert) within 8 s at P95 under normal load, defined as 1 concurrent AI request per 10 active clinicians on the same tenant.
+
+**Verifiability:** Simulate normal load (1 concurrent AI request per 10 active test clinicians on a single tenant). Issue 100 AI clinical note draft requests; measure response time for each. Verify that the 95th percentile response time is ≤ 8 s. Repeat for each of the 6 AI capabilities. The test fails if any capability exceeds 8 s at P95 under the defined normal load condition.
+
+---
+
+### NFR-PERF-AI-002: AI Provider Failover Latency
+
+The system shall complete AI provider failover within 12 s of primary provider timeout. The failover transition shall be transparent to the end user except for a non-blocking "Switching AI provider..." notification.
+
+**Verifiability:** Configure a primary AI provider with a simulated 10 s timeout (e.g., mock endpoint that never responds). Issue an AI capability request. Measure elapsed time from request initiation to response delivery from the secondary provider. Verify elapsed time is ≤ 12 s. Verify the "Switching AI provider..." notification is visible in the UI during the transition. Verify no modal dialog, blocking spinner, or workflow interruption occurs.
+
+---
+
+### NFR-AVAIL-AI-001: AI Intelligence Module Availability
+
+The AI Intelligence module shall maintain ≥ 99.0% availability, measured as the percentage of AI capability requests that return a valid response or a graceful degradation notification within 15 s, calculated monthly.
+
+**Verifiability:** Monitor AI capability requests over 30 consecutive days using the platform's `ai_usage_log` table. Count requests where the response time exceeds 15 s or where no response (valid or degradation notification) is delivered. Calculate: $Availability = \frac{valid\ responses + graceful\ degradation\ responses}{total\ requests} \times 100\%$. Verify the result is ≥ 99.0%.
+
+---
+
+### NFR-AVAIL-AI-002: AI Unavailability Isolation
+
+AI Intelligence module unavailability shall not affect the availability of any clinical, administrative, or financial module. Clinical module availability shall remain ≥ 99.9% regardless of AI provider status.
+
+**Verifiability:** Disable both AI providers for a configured tenant (set both API keys to invalid values). Verify that: (1) the patient registration module accepts new registrations; (2) the OPD consultation module accepts consultations and diagnosis entries; (3) the prescribing module accepts prescriptions; (4) the billing module accepts payments. Measure clinical module availability over a 24-hour window with AI disabled; verify it remains ≥ 99.9%. Verify that AI capability UI elements are hidden or replaced with a "AI unavailable" indicator and no error modal blocks any clinical action.
+
+---
+
+### NFR-I18N-001: Translation Coverage at Ship
+
+100% of user-visible strings in the web portal, Android application, and iOS application shall have approved translations in `en`, `fr`, and `sw` before any module ships to production. Zero `[I18N-GAP]` tags are permitted in a production build.
+
+**Verifiability:** Execute the build pipeline for the web portal, Android app, and iOS app targeting the production environment. Parse the build log for any `[I18N-GAP: <key>]` entries. The build shall fail if any `[I18N-GAP]` tag is present. Count total string keys in `lang/en/`; verify matching counts exist in `lang/fr/` and `lang/sw/`. Repeat for Android `values-fr/strings.xml`, `values-sw/strings.xml` and iOS `fr.lproj/Localizable.strings`, `sw.lproj/Localizable.strings`.
+
+---
+
+### NFR-I18N-002: Locale Switch Latency
+
+The locale switching operation (user changes their preferred language from the profile screen) shall complete within 500 ms at P95, measured from the user's confirmation action to the re-rendered screen fully displaying in the new locale.
+
+**Verifiability:** Authenticate as a user with locale set to `en`. Navigate to the profile screen. Switch locale to `fr`. Measure time from confirmation click to complete screen render in French using browser developer tools (page render complete event). Repeat 20 times; calculate P95. Verify P95 ≤ 500 ms. Repeat the test switching from `fr` to `sw`. Verify no full page reload occurs; the locale switch shall complete via a JavaScript re-render without a browser navigation event.
+
+---
+
+### NFR-I18N-003: Clinical Alert Locale Rendering
+
+Clinical severity alert labels (Fatal, Serious, Warning, Info) shall render in the clinician's configured UI language within the same response time as the clinical alert itself. No additional latency shall be introduced by locale resolution for alert rendering.
+
+**Verifiability:** Configure a clinician's locale to `sw`. Trigger a Warning-level drug interaction alert. Verify the alert banner displays the Kiswahili label for "Warning" within the same render cycle as the alert content. Measure alert render time with locale `en` and with locale `sw`; verify the difference is ≤ 10 ms at P95 across 50 alert triggers. Verify no English label is visible for any severity level when the clinician's locale is `sw` or `fr`.
+
+---
+
+### NFR-SEC-AI-001: AI Provider API Key Security
+
+AI provider API keys shall be stored encrypted at rest using AES-256-GCM. Keys shall never appear in application logs, error messages, or API responses.
+
+**Verifiability:** Enter an AI provider API key via the AI admin panel. Query the `tenant_settings` table directly in MySQL; verify the stored value is ciphertext, not the plaintext key. Trigger an intentional API error with the key configured (e.g., invalid request body); inspect the error log; verify the API key does not appear in any log entry. Make a GET request to any Medic8 API endpoint as an authenticated user; verify no API key value appears in any response body or response header.
+
+---
+
+### NFR-SEC-AI-002: AI Usage Log Access Control
+
+Token usage logs (`ai_usage_log` table) shall be accessible only to the tenant's AI Administrator role and to Chwezi Core Systems operations staff. No clinical user role shall have read access to the `ai_usage_log` table.
+
+**Verifiability:** Authenticate as each of the following roles: Doctor, Clinical Officer, Nurse, Pharmacist, Lab Technician, Receptionist, Cashier, Insurance Clerk. Attempt to access the AI usage dashboard (web portal) and issue a direct API request to the AI usage log endpoint for each role. Verify all 8 requests return HTTP 403 Forbidden. Authenticate as AI Administrator; verify the AI usage dashboard loads and displays token usage data. Authenticate as Super Admin (Chwezi Core Systems operations); verify read access is granted.
