@@ -15,3 +15,14 @@ expectations:
     must_appear_in:
       - 02-requirements-engineering/srs/3.2*
       - 05-testing-documentation/test-plan/*
+  cross_border_transfer:
+    must_appear_in:
+      - 09-governance-compliance/05-adr/*
+      - 03-design-documentation/01-hld/*
+  operations_security:
+    must_appear_in:
+      - 06-deployment-operations/*
+  regulatory_export:
+    must_appear_in:
+      - 02-requirements-engineering/srs/*
+      - 05-testing-documentation/test-plan/*
