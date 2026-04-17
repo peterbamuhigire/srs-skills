@@ -434,6 +434,56 @@ For any incident:
 
 ---
 
+## AI Intelligence Incidents
+
+### AI Provider Outage
+
+Severity: Critical
+Response Time: Acknowledge within 15 minutes
+
+Symptoms: AI capability endpoints return HTTP 503; clinicians see "AI service temporarily unavailable" messages.
+
+1. Check `ai_usage_log` for error codes on recent requests from the affected tenant.
+2. Confirm the primary provider status page (external) shows an active incident.
+3. In the tenant admin panel → AI Settings, switch `primary_provider` to a working provider.
+4. Alternatively, confirm the failover provider is configured and functioning (the system attempts this automatically within 10 s of primary failure).
+5. Notify affected tenant AI Administrator by email: "AI features are temporarily using [failover provider] due to a [primary provider] outage. Clinical features are unaffected."
+6. Monitor `ai_usage_log.was_failover` count. Return to primary provider once the outage resolves.
+
+---
+
+### AI Credit Exhaustion
+
+Severity: Warning
+Response Time: Acknowledge within 1 hour
+
+Symptoms: AI capability endpoints return HTTP 402; clinicians see credit exhaustion messages.
+
+1. The system automatically pauses all AI capabilities when `credit_balance` reaches 0. Clinical features are unaffected — confirm this.
+2. Check `tenant_ai_config.credit_balance` in the database to confirm it is 0.
+3. The tenant AI Administrator receives an automatic email notification when balance falls below the configured threshold (default 10% of last top-up).
+4. If the AI Administrator has not responded, escalate to the facility billing contact.
+5. Credit top-up is processed via the Medic8 admin panel → Billing → AI Credit Top-Up.
+6. Once the top-up is processed, AI capabilities resume automatically — no restart required.
+
+---
+
+### UI Rendering English in Non-English Locale
+
+Severity: Warning
+Response Time: Acknowledge within 1 hour
+
+Symptoms: A clinician or patient reports that the UI is displaying English text when they are set to French or Kiswahili.
+
+1. Identify the affected string by opening the browser developer tools console. Look for `[I18N-GAP: <key>]` log entries.
+2. Note the key (e.g., `opd.triage.blood_pressure_label`).
+3. Confirm the key exists in `lang/en/<module>.php` but is missing or null in `lang/fr/<module>.php` or `lang/sw/<module>.php`.
+4. Add the missing translation (contextual, not word-for-word) to the appropriate locale file.
+5. Deploy as a hotfix. No database migration required.
+6. Verify the fix by switching locale in a test session and confirming the string now renders in the target language.
+
+---
+
 ## 3. Maintenance Procedures
 
 ### 3.1 Database Maintenance

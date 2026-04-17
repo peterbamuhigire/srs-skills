@@ -678,3 +678,29 @@ Sync behaviour:
 - The local MySQL database is the authoritative source for the facility's data while offline.
 - Once synced, the cloud database becomes authoritative.
 - If the local server's sync queue exceeds 72 hours, the system alerts the System Owner for intervention (see Runbook Section 2.7).
+
+---
+
+## AI Intelligence Deployment Checklist
+
+1. In the tenant admin panel, navigate to AI Settings.
+2. Select the primary AI provider (`openai`, `anthropic`, `deepseek`, or `gemini`).
+3. Enter the primary API key (stored AES-256-GCM encrypted; never stored in plaintext).
+4. Select a failover provider and enter its API key.
+5. Select billing model: `credit_pack` or `flat_fee`.
+6. If `credit_pack`: set the initial credit balance in the admin panel.
+7. Enable or disable individual AI capabilities from the capability toggles panel.
+8. Run a health check: `GET /api/v1/ai/usage` — assert HTTP 200 and `credit_balance` ≥ 0.
+9. Confirm the AI Administrator role is assigned to at least 1 user at the facility.
+10. Verify `was_failover` monitoring is configured in the observability stack.
+
+---
+
+## i18n Deployment Checklist
+
+1. Run `php artisan i18n:audit` — assert zero `[I18N-GAP]` entries. If any gaps are present, the deployment is blocked.
+2. Confirm `lang/fr/` and `lang/sw/` directories are present in the deployment artifact with the same file list as `lang/en/`.
+3. Confirm Android build includes `values-fr/strings.xml` and `values-sw/strings.xml`.
+4. Confirm iOS build includes `fr.lproj/Localizable.strings` and `sw.lproj/Localizable.strings`.
+5. Smoke test: log in as a test user; switch locale to `sw`; confirm all strings on the OPD triage screen render in Kiswahili.
+6. Smoke test: switch locale to `fr`; confirm the same screen renders in French.
