@@ -315,3 +315,4 @@ All terms follow IEEE Std 610.12-1990 definition format. Every domain-specific t
 - **WebSocket:** Full-duplex communication protocol used by Laravel Reverb for real-time notifications.
 - **OFF:** Used in requirements as the DEFAULT state for newly-added feature flags (feature flag defaults OFF).
 - **PAN:** Primary Account Number (card-issuer terminology); PCI DSS v4.0 prohibits PAN storage by Academia Pro. Tokenised vault only.
+- **CONTRIBUTING:** The canonical contributor guide at the project root (CONTRIBUTING.md); referenced by phase04.contrib_guide_present.

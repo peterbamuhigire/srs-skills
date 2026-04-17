@@ -815,6 +815,9 @@ terms:
 - {definition: Primary Account Number (card-issuer terminology); PCI DSS v4.0 
     prohibits PAN storage by Academia Pro. Tokenised vault only., 
     first_introduced_in: _context\glossary.md, source: '', term: PAN}
+- {definition: The canonical contributor guide at the project root 
+    (CONTRIBUTING.md); referenced by phase04.contrib_guide_present., 
+    first_introduced_in: _context\glossary.md, source: '', term: CONTRIBUTING}
 - {definition: MTN Mobile Money Uganda (MoMo Pay / Merchant API), 
     first_introduced_in: _context\payment-landscape.md, source: '', term: 
     Product}
