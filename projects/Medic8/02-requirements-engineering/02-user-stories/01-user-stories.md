@@ -1234,6 +1234,63 @@ Phase: 1
 
 ---
 
+### US-BIL-009: Auto-Create Billing Account on Patient Registration
+
+As a Front-Desk Clerk
+I want a billing account to be created automatically when I register a new patient
+So that I do not have to perform a separate account setup step for routine registrations
+
+Acceptance Criteria:
+
+- [ ] Given a new patient is registered, when the registration is saved, then the system creates a billing account linked to that patient with account type `individual`
+- [ ] Given the account is created automatically, when I view the patient record, then I see the linked account name without navigating away from the patient view
+- [ ] Given the account type is `individual`, when no billing administrator has changed it, then all charges for this patient post to the auto-created account
+
+Story Points: 2
+Priority: High
+Epic: Billing
+Phase: 1
+
+---
+
+### US-BIL-010: Link Multiple Patients to One Billing Account
+
+As a Billing Administrator
+I want to link additional patients to an existing billing account
+So that a family, school, or employer can receive a consolidated invoice for all covered patients
+
+Acceptance Criteria:
+
+- [ ] Given I am viewing an existing billing account, when I select **Add Patient**, then I can search by patient name or ID and link them to this account
+- [ ] Given a patient is linked to a shared account, when a charge is posted for that patient, then the charge appears on the shared account's invoice, not on the patient's former individual account
+- [ ] Given an account is of type `individual`, when a second patient is linked to it, then the system automatically upgrades the account type to the appropriate group type (`family`, `institutional`, `corporate`, or `insurance_group`) and prompts the administrator to confirm the type
+
+Story Points: 3
+Priority: High
+Epic: Billing
+Phase: 2
+
+---
+
+### US-BIL-011: Patient Portal Shows Own Charges Only
+
+As a Patient (via patient portal)
+I want to see only my own charges in the patient portal
+So that my billing information remains private even if I share a billing account with family members
+
+Acceptance Criteria:
+
+- [ ] Given I am logged into the patient portal, when I view the Billing section, then I see only charges attributed to my patient ID, not to other patients on the same account
+- [ ] Given my family's billing account has charges for multiple patients, when I view my statement, then only my line items are shown and the total reflects my charges only
+- [ ] Given a family member's charges exist on the shared account, when I access the portal, then I have no way to view, access, or download their charges
+
+Story Points: 2
+Priority: High
+Epic: Billing
+Phase: 2
+
+---
+
 ## Epic: Appointments (US-APT)
 
 ### US-APT-001: Book Appointment

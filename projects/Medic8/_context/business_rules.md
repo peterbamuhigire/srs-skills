@@ -12,6 +12,19 @@
 - BR-CLIN-008: Five Rights enforcement is embedded in the Computerised Physician Order Entry (CPOE) system. Every prescription submission validates: right patient (patient ID confirmed at point of entry), right drug (selected from the facility formulary), right dose (within the therapeutic range for the drug and patient weight), right route (valid administration route for the selected drug), and right time (frequency schedule is clinically appropriate). Failure of any right blocks prescription submission with a specific error message identifying the failed check.
 - BR-CLIN-009: Discharge documentation completeness is enforced by the system. Discharge cannot be finalised until all of the following are recorded: diagnosis (ICD-10 coded), discharge summary (completed by the attending doctor), medication reconciliation at discharge (BR-CLIN-005), follow-up plan (documented with date and responsible clinician), and billing settlement (balance paid or credit arrangement approved by Facility Admin).
 
+## Patient-Account Billing Model
+
+- **RULE-ACCT-001:** Every patient registration triggers automatic creation of a billing account. The account ID is derived from the patient ID as the default payer. No user action is required.
+- **RULE-ACCT-002:** A billing account may be linked to one or more patient records. All charges accrued by linked patients are consolidated to the single account.
+- **RULE-ACCT-003:** Changing a patient's billing account does not alter any clinical record. Patient ID and Account ID are separate identifiers.
+- **RULE-ACCT-004:** A patient may be reassigned to a different billing account at any time by an authorised billing administrator. The reassignment is effective for all future charges; historical invoices are not retroactively reassigned.
+- **RULE-ACCT-005:** Account types: `individual` (default, one patient), `family` (manual grouping of related patients), `corporate` (employer-sponsored), `insurance_group` (insurer-managed), `institutional` (school, NGO, or other organisation).
+- **RULE-ACCT-006:** The billing clerk UI displays the account name and payer contact, not the list of linked patients, when processing payment. The link back to individual patients is accessible via the account detail view.
+- **RULE-ACCT-007:** If an insurance policy is linked to a billing account, all patients on that account are automatically covered under the policy for claim submission.
+- **RULE-ACCT-008:** Credit pack top-ups and outstanding balances belong to the billing account, not to individual patients.
+- **RULE-ACCT-009:** A billing account with a zero balance and no outstanding invoices may be archived. Archived accounts are read-only.
+- **RULE-ACCT-010:** The patient portal app shows the patient their own charges only, regardless of which billing account those charges are posted to.
+
 ## BR-FIN: Financial Rules
 
 - BR-FIN-001: Auto-billing posts charges to the patient account for every clinical action that has a corresponding price list entry. Lab request generates a lab charge. Drug dispensed generates a drug charge. Bed day generates a bed day charge. Procedure performed generates a procedure charge. No manual charge entry is required for standard services listed in the facility price list.

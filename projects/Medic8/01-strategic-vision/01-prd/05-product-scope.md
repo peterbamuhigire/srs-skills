@@ -998,11 +998,12 @@ Category: Financial | Tier: All | Phase: 1
 
 #### Scope Statement
 
-The Billing module manages patient accounts, charge accumulation from clinical encounters, payment processing, and daily cashier reconciliation. It supports cash, mobile money, and split billing across payers, and provides the revenue backbone for all clinical modules.
+The Billing module manages patient accounts, charge accumulation from clinical encounters, payment processing, and daily cashier reconciliation. It supports cash, mobile money, and split billing across payers, and provides the revenue backbone for all clinical modules. The module separates patient identity from billing accounts, allowing multiple patients to share a single billing account for family, institutional, insurance-group, and corporate billing scenarios.
 
 #### Key Capabilities
 
 - Maintain a patient account with real-time charge accumulation from all clinical modules.
+- Patient-account separation: auto-creates a linked account per patient by default; supports many-patients-to-one-account for family, school, corporate, and insurance-group billing.
 - Support a configurable price list with patient category-specific pricing.
 - Auto-bill from clinical screens (consultation, lab, pharmacy, radiology, procedures).
 - Generate receipts for cash payments.
