@@ -50,10 +50,10 @@ This document defines the subscription pricing model, add-on pricing, revenue ta
 
 ## Phase Gate Criteria
 
-- **Phase 1 gate:** All 7 HIGH gaps resolved, core clinical workflow tested end-to-end, medication safety validation complete
-- **Phase 2 gate:** Phase 1 in production with 10+ paying facilities, zero patient safety incidents reported
-- **Phase 3 gate:** FHIR R4 conformance tested against ONC criteria, PEPFAR MER indicators (TX_CURR, TX_NEW, TX_PVLS) validated against manual calculation with less than 1% variance
-- **Phase 4 gate:** 50+ active facilities, insurance claims processing validated with 3+ insurers, enterprise SLA defined and tested
+- Phase 1 gate: All 7 HIGH gaps resolved, core clinical workflow tested end-to-end, medication safety validation complete
+- Phase 2 gate: Phase 1 in production with 10+ paying facilities, zero patient safety incidents reported
+- Phase 3 gate: FHIR R4 conformance tested against ONC criteria, PEPFAR MER indicators (TX_CURR, TX_NEW, TX_PVLS) validated against manual calculation with less than 1% variance
+- Phase 4 gate: 50+ active facilities, insurance claims processing validated with 3+ insurers, enterprise SLA defined and tested
 
 ---
 

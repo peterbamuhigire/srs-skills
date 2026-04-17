@@ -10,7 +10,7 @@ Hospitals and clinics across Uganda and Africa operate on fragmented, paper-heav
 
 ## Design Covenant (Binding Constraint)
 
-> Automate every clinical and administrative process as much as possible, yet remain simple enough for a single receptionist to operate — provided each user has completed the onboarding for their assigned modules. Clinically safe and globally configurable; fast and intuitive in daily use.
+> Automate every clinical and administrative process as much as possible, yet remain simple enough for a single receptionist to operate — provided each user has completed the onboarding for their assigned modules. Clinically safe and globally configurable; response time ≤ 2 s at P95 under normal load, and task completion rate ≥ 95% by a trained user on first attempt after module onboarding.
 
 **Derived hard requirements:**
 
