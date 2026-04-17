@@ -9,6 +9,7 @@
 **Total Calendar Duration:** 19 weeks
 **Team Size:** 1 (solo developer)
 **Standards:** IEEE 29148-2018, Scrum Guide 2020
+**Product Scope:** 32 modules (Phase 1 core modules plus Module 32: AI Intelligence)
 
 ---
 
@@ -433,6 +434,14 @@ Sprint 1: Auth + Tenant Isolation
 | HL7 analyser integration requires physical equipment | Medium | Medium | Use HL7 simulator for development and testing; defer physical analyser testing to UAT |
 | EMPI accuracy for African naming patterns | Medium | High | Build representative test dataset with compound surnames, clan names, and spelling variations |
 | Performance target miss at 50 concurrent users | Low | High | Run load tests from Sprint 5 onward; optimise database queries and add caching incrementally |
+
+---
+
+## Module 32: AI Intelligence
+
+Module 32 (AI Intelligence) is provider-agnostic and supports OpenAI, Anthropic, DeepSeek, and Gemini via a shared `AIProviderInterface`. It exposes 6 capabilities: Clinical Documentation, ICD Coding Assist, Differential Diagnosis, Patient Plain-Language Summary, Claim Scrubbing, and Outbreak Alert. Billing is either `credit_pack` or `flat_fee` per tenant configuration.
+
+AI Intelligence stories require sandbox API keys for the target provider to be configured in `.env.testing` before sprint planning can accept those stories as ready. Stories that arrive at Sprint Planning without confirmed sandbox access cannot be committed to the sprint.
 
 ---
 

@@ -64,6 +64,13 @@ Every user story must meet all of the following criteria before it is accepted i
 
 ---
 
+### 1.8 AI Intelligence and i18n Story Requirements
+
+- [ ] AI Intelligence stories: acceptance criteria must specify the AI provider under test, the locale of the response, and include an assertion on the approval gate behaviour (approved vs. not approved).
+- [ ] i18n stories: acceptance criteria must specify which locale is under test, must include the string key(s) to be verified, and must note whether native speaker review is required for the strings in scope.
+
+---
+
 ## 2 Clinical Story Definition of Ready
 
 These criteria apply in addition to the Story Level DoR for any story that touches clinical workflows, prescribing, CDS rules, laboratory, or patient safety logic.

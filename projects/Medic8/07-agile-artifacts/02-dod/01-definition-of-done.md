@@ -60,6 +60,14 @@ Every user story must meet all of the following criteria before it is accepted i
 
 ---
 
+### 1.7 Internationalisation and AI
+
+- [ ] All user-visible strings added in this story exist in `lang/en/`, `lang/fr/`, and `lang/sw/` with zero `[I18N-GAP]` tags in the build log.
+- [ ] If the story implements an AI capability: an automated test confirms that no AI-generated content is written to the patient record without `approved = true` in the request payload.
+- [ ] If the story implements an AI capability: the AI capability test suite (TC-AI-001 through TC-AI-019) passes with zero failures against sandbox provider API keys before the PR is merged.
+
+---
+
 ## 2 Clinical Safety Definition of Done
 
 These criteria apply in addition to the Story Level DoD for any story that touches clinical workflows, prescribing, CDS rules, or patient safety logic.
