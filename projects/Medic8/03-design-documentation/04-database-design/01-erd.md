@@ -367,7 +367,7 @@ Platform-level. Stores all government-issued and facility-issued identifiers per
 | `verified` | TINYINT(1) | NOT NULL, DEFAULT 0 | 1 = verified against NIRA/external system; 0 = self-declared |
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Record creation timestamp (UTC) |
 
-**Composite unique constraint:** `UNIQUE(identifier_type, identifier_value)` — prevents two patients sharing the same NIN, passport, or UNHCR ID.
+Composite unique constraint: `UNIQUE(identifier_type, identifier_value)` — prevents two patients sharing the same NIN, passport, or UNHCR ID.
 
 ### 3.4 `country_configuration`
 
@@ -430,7 +430,7 @@ Roles govern permission sets. `facility_id = NULL` designates platform-built-in 
 | `description` | VARCHAR(255) | NULL | Human-readable description of the role's responsibilities |
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Record creation timestamp (UTC) |
 
-**Composite unique constraint:** `UNIQUE(facility_id, slug)` — prevents duplicate role slugs within a facility.
+Composite unique constraint: `UNIQUE(facility_id, slug)` — prevents duplicate role slugs within a facility.
 
 ### 4.3 `permission`
 
@@ -444,7 +444,7 @@ Flat permission catalogue. Each row represents one action on one resource within
 | `resource` | VARCHAR(100) | NOT NULL | Specific resource within the module (e.g., `patient_record`, `prescription`, `lab_result`) |
 | `description` | VARCHAR(255) | NULL | Human-readable explanation of what this permission grants |
 
-**Composite unique constraint:** `UNIQUE(module, action, resource)` — prevents duplicate permission definitions.
+Composite unique constraint: `UNIQUE(module, action, resource)` — prevents duplicate permission definitions.
 
 ### 4.4 `role_permission`
 
@@ -517,7 +517,7 @@ Append-only audit trail for all data-changing actions. No UPDATE or DELETE permi
 | `user_agent` | VARCHAR(500) | NULL | Client user agent string |
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Audit entry timestamp (UTC) |
 
-**Index:** `INDEX(facility_id, resource_type, created_at)` for efficient audit trail queries.
+Index: `INDEX(facility_id, resource_type, created_at)` for efficient audit trail queries.
 
 ### 4.9 `emergency_access_log`
 
@@ -580,9 +580,9 @@ Tenant-scoped patient record. Links to `global_patient` for cross-facility ident
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Record creation timestamp (UTC) |
 | `updated_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last modification timestamp (UTC) |
 
-**Composite unique constraint:** `UNIQUE(facility_id, mrn)` — MRN is unique within a facility.
+Composite unique constraint: `UNIQUE(facility_id, mrn)` — MRN is unique within a facility.
 
-**Index:** `FULLTEXT(first_name, last_name, other_names)` for fuzzy patient search (FR-REG-003).
+Index: `FULLTEXT(first_name, last_name, other_names)` for fuzzy patient search (FR-REG-003).
 
 ### 5.2 `patient_allergy`
 
@@ -667,7 +667,7 @@ Clinical visit record. Covers OPD, IPD, and Emergency encounter types. All clini
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Record creation timestamp |
 | `updated_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last modification timestamp |
 
-**Index:** `INDEX(facility_id, patient_id)`, `INDEX(facility_id, doctor_id, status)`, `INDEX(facility_id, created_at)`.
+Index: `INDEX(facility_id, patient_id)`, `INDEX(facility_id, doctor_id, status)`, `INDEX(facility_id, created_at)`.
 
 ### 6.2 `clinical_note`
 
@@ -808,7 +808,7 @@ Facility formulary. Each facility maintains its own drug catalogue with generic 
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Record creation timestamp |
 | `updated_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last modification timestamp |
 
-**Index:** `INDEX(facility_id, generic_name)`, `INDEX(facility_id, atc_code)`.
+Index: `INDEX(facility_id, generic_name)`, `INDEX(facility_id, atc_code)`.
 
 ### 7.4 `store`
 
@@ -862,7 +862,7 @@ Batch-level stock tracking per drug per store. Supports FIFO and weighted averag
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Record creation timestamp |
 | `updated_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last modification timestamp |
 
-**Index:** `INDEX(facility_id, drug_id, expiry_date)` for FIFO dispensing queries.
+Index: `INDEX(facility_id, drug_id, expiry_date)` for FIFO dispensing queries.
 
 ### 7.7 `dispensing_record`
 
@@ -975,7 +975,7 @@ Laboratory investigation request from a clinical encounter.
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Request timestamp |
 | `updated_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last modification timestamp |
 
-**Index:** `INDEX(facility_id, patient_id)`, `INDEX(facility_id, status)`.
+Index: `INDEX(facility_id, patient_id)`, `INDEX(facility_id, status)`.
 
 ### 8.3 `lab_request_item`
 
@@ -1009,7 +1009,7 @@ Specimen tracking from collection to receipt in the laboratory.
 | `rejection_reason` | VARCHAR(255) | NULL | Reason for specimen rejection |
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Record creation timestamp |
 
-**Composite unique constraint:** `UNIQUE(facility_id, barcode)`.
+Composite unique constraint: `UNIQUE(facility_id, barcode)`.
 
 ### 8.5 `lab_result`
 
@@ -1129,7 +1129,7 @@ Printed receipt linked to a payment. Immutable once generated.
 | `reprint_count` | TINYINT UNSIGNED | NOT NULL, DEFAULT 0 | Number of times the receipt has been reprinted |
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Receipt generation timestamp |
 
-**Composite unique constraint:** `UNIQUE(facility_id, receipt_number)`.
+Composite unique constraint: `UNIQUE(facility_id, receipt_number)`.
 
 ### 9.5 `cashier_session`
 
@@ -1174,7 +1174,7 @@ Configurable pricing per service type, supporting patient category-based pricing
 | `is_active` | TINYINT(1) | NOT NULL, DEFAULT 1 | 0 = price superseded |
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Record creation timestamp |
 
-**Index:** `INDEX(facility_id, service_type, category, is_active)`.
+Index: `INDEX(facility_id, service_type, category, is_active)`.
 
 ---
 
@@ -1203,7 +1203,7 @@ Patient appointment booking with SMS/WhatsApp reminders.
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Record creation timestamp |
 | `updated_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last modification timestamp |
 
-**Index:** `INDEX(facility_id, doctor_id, appointment_date)`, `INDEX(facility_id, patient_id)`.
+Index: `INDEX(facility_id, doctor_id, appointment_date)`, `INDEX(facility_id, patient_id)`.
 
 ### 10.2 `doctor_availability`
 
@@ -1222,7 +1222,7 @@ Recurring weekly availability schedule per doctor.
 | `is_active` | TINYINT(1) | NOT NULL, DEFAULT 1 | 0 = availability suspended |
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Record creation timestamp |
 
-**Composite unique constraint:** `UNIQUE(facility_id, doctor_id, day_of_week)`.
+Composite unique constraint: `UNIQUE(facility_id, doctor_id, day_of_week)`.
 
 ---
 
@@ -1257,7 +1257,7 @@ Per-capability on/off switches per tenant. Six rows per tenant (one per capabili
 | `enabled` | TINYINT(1) | NOT NULL, DEFAULT 1 | 1 = capability active; 0 = capability disabled |
 | `updated_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last toggle timestamp |
 
-**Composite unique constraint:** `UNIQUE(tenant_id, capability_key)`.
+Composite unique constraint: `UNIQUE(tenant_id, capability_key)`.
 
 ### 10.3 `ai_usage_log`
 
@@ -1277,7 +1277,7 @@ Append-only token metering log. One row per AI request. Used for billing reconci
 | `response_latency_ms` | INT UNSIGNED | NOT NULL | End-to-end response time in milliseconds |
 | `was_failover` | TINYINT(1) | NOT NULL, DEFAULT 0 | 1 = failover provider was used for this request |
 
-**Index:** `INDEX(tenant_id, capability, request_timestamp)` for usage dashboard queries.
+Index: `INDEX(tenant_id, capability, request_timestamp)` for usage dashboard queries.
 
 ### 10.4 `billing_accounts`
 
@@ -1295,7 +1295,7 @@ Billing account entity. Decoupled from `patients`. One account may cover multipl
 | `created_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Account creation timestamp |
 | `updated_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP | Last modification timestamp |
 
-**Note:** The `patients` table no longer carries billing fields directly. All charge references are linked via `patient_account_links` to a `billing_accounts` row.
+Note: The `patients` table no longer carries billing fields directly. All charge references are linked via `patient_account_links` to a `billing_accounts` row.
 
 ### 10.5 `patient_account_links`
 
@@ -1309,7 +1309,7 @@ Junction table linking patients to billing accounts. A patient may be linked to 
 | `linked_at` | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Timestamp when the link was created |
 | `linked_by` | BIGINT UNSIGNED | NOT NULL, FK → `users.id` | Billing administrator who created the link |
 
-**Composite unique constraint:** `UNIQUE(patient_id)` — each patient has exactly one active billing account link at a time.
+Composite unique constraint: `UNIQUE(patient_id)` — each patient has exactly one active billing account link at a time.
 
 ### 10.6 `users` Table Update
 
@@ -1407,28 +1407,28 @@ The following tables are identified for future phases. Column definitions will b
 
 ### 12.1 Phase 3 — Programmes and Patient Engagement
 
-**HIV/AIDS Programme:**
+#### HIV/AIDS Programme
 - `art_enrolment` — ART programme enrolment with WHO staging, CD4, and initial regimen
 - `art_dispensing` — ARV dispensing record with adherence tracking and next appointment
 - `viral_load` — Viral load test tracking with suppression status classification
 
-**TB Programme:**
+#### TB Programme
 - `tb_case` — TB case registration with classification (pulmonary/extrapulmonary, bacteriologically confirmed/clinically diagnosed)
 - `tb_treatment` — Treatment regimen assignment and duration tracking
 - `dot_record` — Directly Observed Therapy daily record with observer and adherence status
 
-**Patient Portal:**
+#### Patient Portal
 - `patient_app_user` — Patient mobile app registration linked to `global_patient`
 - `app_session` — Patient app session tracking with device and platform metadata
 
 ### 12.2 Phase 4 — Advanced Specialty
 
-**Theatre and Surgical Management:**
+#### Theatre and Surgical Management
 - `theatre_booking` — Theatre schedule with pre-op checklist status and anaesthesia type
 - `operation_note` — Structured operation note with procedure, findings, and complications
 - `anaesthesia_record` — Anaesthesia induction, maintenance, and recovery documentation
 
-**Blood Bank and Transfusion:**
+#### Blood Bank and Transfusion
 - `blood_unit` — Blood product inventory with ABO/Rh typing, collection, and expiry
 - `cross_match` — Cross-match request and result linked to patient and blood unit
 - `transfusion` — Transfusion administration record with reaction monitoring
