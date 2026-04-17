@@ -274,7 +274,64 @@ For each clinical safety defect, the following additional fields are required:
 
 ---
 
-## 7 Approvals
+## 7 AI Intelligence Test Suite
+
+| Test Case ID | Description | Result | Notes |
+|---|---|---|---|
+| TC-AI-001 | Draft note generated — no write to patient record | | |
+| TC-AI-002 | Draft approved and saved to patient record | | |
+| TC-AI-003 | Draft discarded — no write after session expiry | | |
+| TC-AI-004 | Provider unavailable — HTTP 503; clinical workflow unaffected | | |
+| TC-AI-005 | Fever and cough — J22 or J06 in top 3 suggestions | | |
+| TC-AI-006 | Confidence scores returned in range [0.0, 1.0] | | |
+| TC-AI-007 | Credit exhausted — HTTP 402; no API call made | | |
+| TC-AI-008 | Ranked differential list — Meningitis in top 3 | | |
+| TC-AI-009 | Differential not written to record without clinician selection | | |
+| TC-AI-010 | AI disclosure label visible on differential list screen | | |
+| TC-AI-011 | Kiswahili patient plain-language summary | | |
+| TC-AI-012 | French patient plain-language summary | | |
+| TC-AI-013 | English fallback when Kiswahili generation fails | | |
+| TC-AI-014 | Red flag detected — top 2 rejection reasons returned | | |
+| TC-AI-015 | Green flag — no rejection history | | |
+| TC-AI-016 | Submit red-flagged claim with override reason logged | | |
+| TC-AI-017 | Outbreak anomaly detected — alert sent to both roles | | |
+| TC-AI-018 | No alert below anomaly threshold | | |
+| TC-AI-019 | Alert content contains all 5 required fields | | |
+
+AI Safety Gate: **TC-AI-001** and **TC-AI-002** MUST both PASS before any AI capability PR can be merged.
+
+---
+
+## 8 i18n Coverage Report
+
+### 8.1 i18n Audit Output
+
+`php artisan i18n:audit` result (paste output here at test execution time):
+
+```
+[paste audit output]
+```
+
+### 8.2 Native Speaker Review Sign-Off
+
+| Language | Reviewer Name | Sign-Off Date |
+|---|---|---|
+| Kiswahili | | |
+| French | | |
+
+### 8.3 String Gap Resolution
+
+| Metric | Value |
+|---|---|
+| Total `[I18N-GAP]` entries identified | |
+| `[I18N-GAP]` entries resolved | |
+| `[I18N-GAP]` entries remaining | |
+
+String gap count remaining MUST be 0 before any module ships to production.
+
+---
+
+## 9 Approvals
 
 | Role | Name | Signature | Date |
 |---|---|---|---|

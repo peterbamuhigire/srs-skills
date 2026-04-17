@@ -224,3 +224,64 @@ Peter is the sole developer, test author, and test executor. The following mitig
 | Performance test report | k6 / Lighthouse output + summary | Peter | After performance testing |
 | Security test report | Penetration test output + summary | Peter / external assessor | After security testing |
 | Release decision report | Markdown | Peter | Before release |
+
+---
+
+## 8 AI Intelligence Test Cases
+
+### Group: AI Clinical Documentation (TC-AI-001 through TC-AI-004)
+
+| Test Case | Input | Expected Result | Pass Criterion |
+|---|---|---|---|
+| **TC-AI-001**: Draft note generated | Structured encounter with ICD code J22, vitals, medications | HTTP 200; `draft_id` and `content` returned; no write to patient record | Draft content non-empty; `patient_clinical_notes` count unchanged |
+| **TC-AI-002**: Draft approved and saved | Same encounter; request includes `approved = true` | HTTP 200; draft written to `patient_clinical_notes` | Row count in `patient_clinical_notes` increases by 1 |
+| **TC-AI-003**: Draft discarded | Draft generated; no approve action | No write to patient record after session expires | `patient_clinical_notes` count unchanged |
+| **TC-AI-004**: Provider unavailable | Primary and failover adapters both timeout | HTTP 503; body contains `"error": "ai_unavailable"` | Clinical workflow (encounter save) remains unaffected |
+
+### Group: AI ICD Coding Assist (TC-AI-005 through TC-AI-007)
+
+| Test Case | Input | Expected Result | Pass Criterion |
+|---|---|---|---|
+| **TC-AI-005**: Fever and cough | Free text: "patient presented with fever and cough for 3 days" | ICD-10 J22 or J06 in top 3 suggestions | At least one of J22, J06 appears in `suggestions` array |
+| **TC-AI-006**: Confidence scores returned | Any clinical text | Each suggestion includes a `confidence` float 0.0–1.0 | All `confidence` values are in range [0.0, 1.0] |
+| **TC-AI-007**: Credit exhausted | Credit balance = 0 | HTTP 402; no API call made to AI provider | `ai_usage_log` count unchanged after request |
+
+### Group: AI Differential Diagnosis (TC-AI-008 through TC-AI-010)
+
+| Test Case | Input | Expected Result | Pass Criterion |
+|---|---|---|---|
+| **TC-AI-008**: Ranked list returned | Encounter with symptoms: headache, fever, neck stiffness | Ranked differential list with at least 3 entries; Meningitis appears in top 3 | `differentials` array length ≥ 3; rank 1, 2, or 3 entry contains "Meningitis" |
+| **TC-AI-009**: Differential not written to record | Differential list returned | No diagnosis written to patient record unless clinician selects it | `patient_diagnoses` count unchanged |
+| **TC-AI-010**: AI disclosure label | Differential list shown in UI | Label "AI Differential — for clinician review only. Not a diagnosis." visible on the same screen | Label text present in rendered HTML/view |
+
+### Group: AI Patient Plain-Language Summary (TC-AI-011 through TC-AI-013)
+
+| Test Case | Input | Expected Result | Pass Criterion |
+|---|---|---|---|
+| **TC-AI-011**: Kiswahili summary | Patient locale = `sw`; discharge note approved | Summary returned in Kiswahili | Response `locale` field = `sw`; summary text passes language detection as Kiswahili |
+| **TC-AI-012**: French summary | Patient locale = `fr` | Summary returned in French | Response `locale` field = `fr` |
+| **TC-AI-013**: English fallback | Patient locale = `sw`; Kiswahili generation fails | Summary returned in English; patient portal shows "Summary available in English only" | Response `locale` field = `en`; portal note displayed |
+
+### Group: AI Claim Scrubbing (TC-AI-014 through TC-AI-016)
+
+| Test Case | Input | Expected Result | Pass Criterion |
+|---|---|---|---|
+| **TC-AI-014**: Red flag detected | Claim with known rejection-trigger field (procedure code + insurer combination with > 30% historical rejection) | Line item flagged `red`; top 2 rejection reasons returned | `risk_level` = `red`; `top_reasons` array length = 2 |
+| **TC-AI-015**: Green flag | Claim with no known rejection history | All line items flagged `green` | All `risk_level` values = `green` |
+| **TC-AI-016**: Submit with red flag override | Claim with red flag; clerk enters override reason and submits | Claim submitted; override reason logged | Claim status = `submitted`; override reason recorded in `claim_audit_log` |
+
+### Group: AI Outbreak Early Warning (TC-AI-017 through TC-AI-019)
+
+| Test Case | Input | Expected Result | Pass Criterion |
+|---|---|---|---|
+| **TC-AI-017**: Anomaly detected | 15 malaria (ICD A09) diagnoses recorded within 24 hours (threshold: 7-day count > 2 SD above 90-day baseline) | Alert generated for Facility Admin and Medical Officer on duty | Alert record created in `ai_outbreak_alerts`; notification sent to both roles |
+| **TC-AI-018**: No anomaly below threshold | 3 malaria diagnoses in 7 days (within normal range) | No alert generated | `ai_outbreak_alerts` count unchanged |
+| **TC-AI-019**: Alert content accuracy | Alert generated | Alert contains: disease code, 7-day count, 90-day baseline average, % deviation, link to patient list | All 5 fields present in alert record |
+
+### Group: i18n (TC-I18N-001 through TC-I18N-003)
+
+| Test Case | Input | Expected Result | Pass Criterion |
+|---|---|---|---|
+| **TC-I18N-001**: Locale switch to Kiswahili | User switches locale to `sw` in profile | All visible UI strings on OPD triage screen render in Kiswahili | No English string visible in non-alert UI elements on that screen |
+| **TC-I18N-002**: Locale fallback | String `opd.triage.blood_pressure_label` missing in `lang/sw/` | English string rendered; `[I18N-GAP]` logged | English "Blood Pressure" visible; build log contains `[I18N-GAP: opd.triage.blood_pressure_label]` |
+| **TC-I18N-003**: Provider failover latency | Primary provider timeout injected | Failover adapter called; total response time ≤ 12 s from first request | Response received within 12 s; `was_failover = true` in log |

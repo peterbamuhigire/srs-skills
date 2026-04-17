@@ -500,3 +500,55 @@ All defects classified as Critical (S1) shall follow an enhanced resolution proc
 - Code coverage report generated via Xdebug/PCOV and published alongside test results
 - Failing tests block PR merge
 - Flaky test policy: a test that fails intermittently is treated as a defect and fixed within 48 hours; no test is permanently skipped
+
+---
+
+## 8 AI Intelligence Test Strategy
+
+### 8.1 Unit Testing
+
+- Unit tests for all AI capabilities mock the `AIProviderInterface` using a test double that returns a fixed response.
+- The mock response matches the schema expected by the capability service.
+- Unit tests MUST NOT call any live AI provider API.
+- Test: `AICapabilityService::suggestICDCodes()` with mocked adapter returns `ICDSuggestion[]` with at least one entry.
+
+### 8.2 Integration Testing
+
+- Integration tests use a sandbox API key for each configured provider (OpenAI, Anthropic, DeepSeek, Gemini) — never production keys.
+- Sandbox keys are stored in `.env.testing`, never committed to version control.
+- Integration tests are tagged `@integration` and excluded from the default `phpunit` run; they are run separately in CI on a dedicated test stage.
+- Integration test: call `POST /api/v1/ai/icd-suggest` with real API key against sandbox; assert HTTP 200 and at least one ICD code suggestion returned.
+
+### 8.3 Failover Testing
+
+- Simulate primary provider timeout by injecting a mock adapter that sleeps > 10 s.
+- Assert that the secondary (failover) adapter is called within 12 s.
+- Assert HTTP 503 is returned if both adapters are injected as timeout mocks.
+- Assert `was_failover = true` in `ai_usage_log` when failover is triggered.
+
+### 8.4 AI Safety Tests (non-negotiable)
+
+- Test: call any AI clinical documentation endpoint WITHOUT the `approved = true` flag; assert the response is a draft (HTTP 200 with draft content) and NO database write occurs to the patient record.
+- Test: call the same endpoint WITH `approved = true`; assert the draft IS written to the patient record.
+- These two tests are gating: they MUST pass in CI before any AI capability code is merged.
+
+---
+
+## 9 i18n Test Strategy
+
+### 9.1 Automated String Coverage
+
+- Before any module build, run `php artisan i18n:audit` and assert the output lists zero `[I18N-GAP]` entries.
+- Failure of this audit is a CI build failure; the build MUST NOT continue.
+
+### 9.2 Manual Native-Speaker Review
+
+- Before any module ships to production, a native Kiswahili speaker and a native French speaker must review all strings in the module and confirm clinical accuracy.
+- Sign-off is recorded in `_context/quality-log.md` under "i18n Native Speaker Review".
+- Strings cannot be approved by machine translation alone.
+
+### 9.3 Locale Switching Test
+
+- Switch the UI locale to `sw`; assert all visible strings on the tested screen are in Kiswahili.
+- Switch to `fr`; assert all visible strings on the tested screen are in French.
+- Assert no English fallback strings are visible in non-alert UI elements when locale is `sw` or `fr`.
