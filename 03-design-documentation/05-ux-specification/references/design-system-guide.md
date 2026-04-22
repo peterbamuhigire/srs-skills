@@ -4,6 +4,9 @@
 
 Design tokens are the atomic values of a design system. The system shall organize tokens in three layers: Primitive, Semantic, and Component.
 
+The design system shall be treated as a living product with an explicit source of truth.
+The specification shall identify where canonical component definitions live and how documentation stays aligned with implementation.
+
 ### Color Tokens
 
 **Layer 1 -- Primitives (Palette):**
@@ -110,6 +113,8 @@ For each component in the design system, the system shall produce documentation 
 
 **Description:** One-sentence purpose statement.
 
+**Anatomy:** Named sub-parts of the component (container, label, helper text, icon, action area, etc.).
+
 **Variants:**
 
 | Variant | Visual Appearance | Use Case |
@@ -118,6 +123,39 @@ For each component in the design system, the system shall produce documentation 
 | Secondary | Outlined, medium contrast | Secondary actions (Cancel, Back) |
 | Ghost | Text-only, no background | Tertiary actions, inline links |
 | Destructive | Red-toned, warning emphasis | Irreversible actions (Delete, Remove) |
+
+**Required State Coverage:**
+
+- default
+- hover
+- focus
+- active
+- disabled
+- loading
+- error
+- success where applicable
+
+**Usage Guidelines:**
+
+- when to use
+- when not to use
+- whether a new request should extend this component or justify a new one
+
+**Ownership And Governance:**
+
+- owner
+- contribution path
+- deprecation note if replacing an older pattern
+
+## Governance Expectations
+
+The specification should define one of these team models explicitly:
+
+- centralized ownership
+- federated contribution with central review
+- hybrid model
+
+Unstated ownership creates drift.
 
 **States:**
 

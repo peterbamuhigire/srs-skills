@@ -54,6 +54,9 @@ For every interactive component, the system shall annotate all applicable states
 | Loading | Spinner/skeleton placement, width preservation rule, aria-live announcement |
 | Error | Border color token (`color-feedback-error`), error message placement, icon |
 
+The handoff shall make it clear whether the documented state behavior is the canonical source or whether implementation tokens/components own the final truth.
+If implementation is canonical, the handoff shall reference that source directly.
+
 ### Responsive Behavior Annotations
 
 For each screen or component, the system shall document layout changes at each breakpoint:
@@ -115,6 +118,12 @@ logo-monochrome-white.svg
 ## Developer Acceptance Criteria Template
 
 For each screen or component delivered in the handoff, the system shall define acceptance criteria:
+
+### Source Of Truth Parity
+
+- The delivered screen uses documented tokens rather than ad hoc raw values.
+- Shared components match the current design-system documentation.
+- Any intentional deviation is listed explicitly with approval owner and remediation plan.
 
 ### Visual Fidelity
 
