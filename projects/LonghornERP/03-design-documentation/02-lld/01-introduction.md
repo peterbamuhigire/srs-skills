@@ -1,4 +1,4 @@
-# Introduction
+﻿# Introduction
 
 ## Purpose
 
@@ -9,7 +9,7 @@ This Low-Level Design (LLD) document specifies the internal structure of every s
 Coverage includes all modules listed in the High-Level Design (HLD):
 
 - **Core modules:** ACCOUNTING, INVENTORY, SALES, PROCUREMENT, USER_MGMT, AUDIT
-- **Add-on modules:** ADV_INVENTORY, MANUFACTURING, HR_PAYROLL, POS, SALES_CRM, SALES_AGENTS, COOPERATIVE, PROJECTS, STRATEGY_BSC, ASSETS
+- **Add-on modules:** ADV_INVENTORY, MANUFACTURING, HR_PAYROLL, POS, SALES_CRM, SALES_AGENTS, COOPERATIVE, PROJECTS, STRATEGY_BSC, ASSETS, AI_INTELLIGENCE, PLM, TRANSPORTATION
 - **Platform services:** LOCALISATION, MOBILE_API, INTEGRATIONS, BILLING
 
 The LLD covers the PHP 8.3 server-side service layer, the MySQL 9.1 database interaction patterns, and the integration adapters. Frontend JavaScript, Blade/HTML templates, and mobile UI code are outside this document's scope; the Mobile API contracts are specified in the separate API Specification document.
@@ -17,6 +17,14 @@ The LLD covers the PHP 8.3 server-side service layer, the MySQL 9.1 database int
 ## Relationship to the HLD
 
 The HLD (see `projects/LonghornERP/03-design-documentation/01-hld/`) defines the system's deployment topology, module boundaries, panel architecture, and middleware chain. This LLD refines each HLD component to the class and method level. Where the HLD states that a service exists, this document specifies what it does, what it accepts, what it returns, and which database objects it touches.
+
+For the industrial operating model, three boundaries are especially important:
+
+- `PLM` owns engineering truth and release control.
+- `MANUFACTURING` owns production execution and costing.
+- `TRANSPORTATION` owns shipment and fleet operations.
+
+This document shall preserve those boundaries when service-layer classes are specified. Shared references are allowed; shared ownership is not.
 
 ## Conventions Used in This Document
 
@@ -28,6 +36,6 @@ The HLD (see `projects/LonghornERP/03-design-documentation/01-hld/`) defines the
 
 ## Applicable Standards
 
-- IEEE Std 830-1998 — Software Requirements Specifications
-- IEEE Std 1233-1998 — Guide for Developing System Requirements Specifications
-- IEEE Std 610.12-1990 — Glossary of Software Engineering Terminology
+- IEEE Std 830-1998 - Software Requirements Specifications
+- IEEE Std 1233-1998 - Guide for Developing System Requirements Specifications
+- IEEE Std 610.12-1990 - Glossary of Software Engineering Terminology

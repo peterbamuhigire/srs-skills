@@ -4,6 +4,8 @@
 
 Uganda's Income Tax Act (Third Schedule) specifies depreciation rates for tax purposes that differ from the IFRS-compliant rates used for book reporting. This section specifies requirements for maintaining dual depreciation schedules per asset, computing the resulting deferred tax liability, and managing the Vehicle Fleet sub-ledger — which adds mileage, fuel, and service record tracking to standard asset management.
 
+Within Longhorn ERP, the Vehicle Fleet sub-ledger in Asset Management exists to preserve vehicle capital-asset records, depreciation, maintenance history, insurance and regulatory compliance history, and other auditable ownership data. The Transportation module is the source of truth for dispatch, trips, routes, driver movement control, consignment movement, and live fleet operations. Where operational events are reflected here, they are retained only as supporting records for asset stewardship, maintenance planning, compliance evidence, and financial auditability.
+
 ## 7.2 Book vs. Tax Depreciation
 
 ### 7.2.1 Background
@@ -33,6 +35,8 @@ and post a GL journal for the period-end deferred tax movement: debit or credit 
 **FR-ASSET-062:** When the URA tax depreciation rate for a category is updated, the system shall apply the new rate prospectively from the next depreciation run; historical tax depreciation records shall not be recalculated.
 
 ## 7.3 Vehicle Fleet Management
+
+The requirements in this subsection apply to the asset-history and maintenance/compliance view of fleet vehicles. They do not transfer ownership of dispatching or live operational fleet control into Asset Management. If the Transportation module records operational trips, routes, telematics, or dispatch events, Asset Management may consume the resulting odometer, fuel, utilisation, or compliance evidence through integration while Transportation remains the authoritative operational system.
 
 **FR-ASSET-063:** When an asset category is flagged as *Vehicle Fleet*, the system shall activate additional fleet data fields on the asset master record: vehicle registration number, make, model, year of manufacture, engine capacity (cc), fuel type (Petrol, Diesel, Electric, Hybrid), odometer reading at acquisition (km), and assigned driver.
 

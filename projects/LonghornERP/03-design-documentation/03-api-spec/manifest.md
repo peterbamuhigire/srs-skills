@@ -1,4 +1,4 @@
-00-cover.md
+﻿00-cover.md
 01-introduction.md
 02-auth-endpoints.md
 03-accounting-endpoints.md
@@ -7,3 +7,4 @@
 06-hr-payroll-endpoints.md
 07-pos-mobile-endpoints.md
 08-superadmin-endpoints.md
+09-industrial-endpoints.md

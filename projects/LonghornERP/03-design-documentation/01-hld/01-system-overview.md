@@ -4,6 +4,8 @@
 
 Longhorn ERP is a multi-tenant, service-oriented, cloud-hosted Enterprise Resource Planning (ERP) platform built for small-to-medium enterprises (SMEs) and cooperative organisations across Uganda and East Africa. The platform delivers a unified suite of business management modules — accounting, inventory, sales, procurement, human resources, manufacturing, cooperative procurement, and more — through a single shared codebase that serves every tenant simultaneously.
 
+For industrial and logistics-intensive tenants, the high-level architecture treats Product Lifecycle Management (PLM), MES-grade Manufacturing, and Transportation & Fleet Operations as first-class bounded capabilities within the same platform. These capabilities are designed as peer domains alongside finance, inventory, procurement, and HR so that engineering control, production execution, and transport execution can evolve independently while still sharing the same tenancy, security, integration, audit, and master-data foundations.
+
 The architecture is designed around five non-negotiable qualities:
 
 - **Multi-tenancy:** Every tenant operates in a logically isolated workspace within a shared infrastructure. Row-level tenant isolation ensures no cross-tenant data leakage.
@@ -28,7 +30,7 @@ The architecture is designed around five non-negotiable qualities:
   ┌──────────────┐      │  ┌──────▼──────┐  ┌───────────────────────┐   │
   │  End Users   │─────▶│  │  End-User   │  │  Service Layer        │   │
   │  Employees / │      │  │  Portal     │  │  src/Services/        │   │
-  │  Customers / │◀─────│  │  /public/   │  │  [Domain]/            │   │
+  │  Customers / │◀─────│  │  /public/   │  │  PLM / Manufacturing  │   │
   │  Agents /    │      │  │  portal/    │  └───────────┬───────────┘   │
   │  Farmers     │      │  └─────────────┘              │               │
   └──────────────┘      │                               │               │
@@ -46,6 +48,16 @@ The architecture is designed around five non-negotiable qualities:
                         │  └───────────────────────────────────────┘   │
                         └─────────────────────────────────────────────────┘
 ```
+
+## 1.2.1 First-Class Bounded Capabilities
+
+Within the service layer, Longhorn ERP organises its industrial workflows into explicit bounded capabilities so that high-change operational domains remain cohesive and independently evolvable:
+
+- **PLM:** Owns product definitions, product structures, revisions, engineering change control, specifications, and controlled release of approved product master data into downstream operational modules.
+- **Manufacturing (MES-grade):** Owns production planning and execution, including bills of materials, routings, work centres, dispatching, work-order execution, in-process quality, traceability, downtime capture, and production performance monitoring.
+- **Transportation & Fleet Operations:** Owns transport planning, dispatch, route and trip execution, load assignment, proof of delivery, vehicle and driver utilisation, fleet telemetry integration, and transport-operational visibility.
+
+These bounded capabilities integrate with Inventory, Procurement, Sales, Assets, Finance, CRM, and mobile channels through the shared service layer and tenant-aware data platform shown above. This preserves the existing service-oriented SaaS architecture while making industrial lifecycle management and logistics execution explicit in the high-level design.
 
 ## 1.3 Key Technology Decisions
 

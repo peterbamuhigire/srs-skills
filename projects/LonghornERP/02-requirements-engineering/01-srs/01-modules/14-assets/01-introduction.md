@@ -8,6 +8,8 @@ This Software Requirements Specification (SRS) defines the functional and non-fu
 
 The Asset Management module provides the fixed-asset lifecycle management backbone of Longhorn ERP. It covers asset registration, categorisation, depreciation computation, revaluation, disposal, inter-branch transfer, maintenance scheduling, insurance tracking, physical verification, book versus tax depreciation with deferred tax computation, and vehicle fleet management. The module posts all financial consequences — depreciation charges, disposal gains and losses, revaluation adjustments, and transfer entries — to the General Ledger (GL) module automatically. Asset acquisitions originate from the Procurement module when a purchase order receipt is classified as a capital item; the Procurement module carries requirements for that origination flow. Role-Based Access Control (RBAC) is enforced on every Asset Management endpoint; access control definitions are owned by the User Management and RBAC module and referenced here only at the integration boundary.
 
+For vehicle assets, Asset Management remains the system of record for capital-asset accounting, depreciation, maintenance history, insurance and statutory compliance history, transfers, revaluation, and disposal. The Transportation module owns dispatch, trip execution, route planning, driver run assignment, shipment movement, and live fleet operations; any vehicle-operational data retained in Asset Management exists only to support asset history, maintenance planning, compliance evidence, and financial control.
+
 ## 1.3 Definitions, Acronyms, and Abbreviations
 
 The following terms are used throughout this document per IEEE Std 610.12-1990 definitions unless otherwise noted.
@@ -76,6 +78,7 @@ The following business goals govern requirement priority and traceability throug
 |---|---|---|
 | General Ledger | Depreciation expense, accumulated depreciation, disposal gain/loss, revaluation reserve, deferred tax, transfer entries | Asset → GL |
 | Procurement | Capital asset creation from confirmed purchase order receipt | Procurement → Asset |
+| Transportation | Odometer, utilisation, and compliance events needed for maintenance planning, asset history, or audit support; dispatch, trips, routes, and live fleet control remain owned by Transportation | Transportation → Asset |
 | User Management & RBAC | Role and permission checks on all asset endpoints | RBAC → Asset |
 | Audit Log | Immutable record of all create, update, approve, and dispose actions | Asset → Audit Log |
 | Notifications | Renewal alerts for insurance policies expiring within 30 days | Asset → Notification |

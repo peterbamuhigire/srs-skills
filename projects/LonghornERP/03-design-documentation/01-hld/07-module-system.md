@@ -1,4 +1,4 @@
-# Module System
+﻿# Module System
 
 ## 7.1 Module Registry
 
@@ -47,7 +47,7 @@ Core module status (`is_core = 1`) is enforced by the `requireModuleAccess()` fu
 
 ## 7.3 Add-On Modules
 
-The following 10 add-on modules are available for per-tenant activation based on the tenant's subscription plan:
+The following 13 add-on modules are available for per-tenant activation based on the tenant's subscription plan:
 
 | Module Name | Code |
 |---|---|
@@ -61,6 +61,9 @@ The following 10 add-on modules are available for per-tenant activation based on
 | Project Management | `PROJECTS` |
 | Strategy & Balanced Scorecard | `STRATEGY_BSC` |
 | Asset Management | `ASSETS` |
+| AI Intelligence | `AI_INTELLIGENCE` |
+| Product Lifecycle Management | `PLM` |
+| Transportation & Fleet Operations | `TRANSPORTATION` |
 
 ## 7.4 Module Activation Gate
 
@@ -72,7 +75,7 @@ requireModuleAccess('MODULE_CODE');
 
 The `requireModuleAccess()` function performs two checks in sequence:
 
-1. Calls `TenantContext::isModuleActive($moduleCode)` — checks the `tenant_modules` table for an active record.
+1. Calls `TenantContext::isModuleActive($moduleCode)` - checks the `tenant_modules` table for an active record.
 2. If no active record exists, redirects the user to the module upgrade page (`/public/billing/upgrade.php?module=MODULE_CODE`) and terminates execution.
 
 The function shall be implemented as a standalone helper in `src/Platform/ModuleGate.php` and shall be available throughout the tenant workspace without additional imports.
@@ -84,9 +87,11 @@ Certain add-on modules depend on other modules being active before they can be a
 | Module | Dependency |
 |---|---|
 | `MANUFACTURING` | Requires `ADV_INVENTORY` to be active. |
-| `COOPERATIVE` | Requires `INVENTORY` to be active (core — always satisfied). |
+| `COOPERATIVE` | Requires `INVENTORY` to be active (core - always satisfied). |
+| `PLM` | No hard activation dependency; downstream publication targets depend on whichever operational modules the tenant has enabled. |
+| `TRANSPORTATION` | Requires `SALES` and `INVENTORY` to be active (both core - always satisfied). Internal-fleet mode additionally requires `ASSETS` for vehicle reference data. |
 
-*Note:* [CONTEXT-GAP: GAP-005] — A formal dependency map covering all 10 add-on modules has not yet been defined. The two rules above represent the confirmed dependencies. The Super Admin Panel shall enforce dependency checks before activating any module and display a clear error message listing unmet dependencies if activation is blocked.
+*Note:* A formal dependency map covering all add-on modules shall still be maintained in the Super Admin Panel configuration. The rules above represent the confirmed dependencies that must be enforced at activation time.
 
 ## 7.6 Starter Plan Module Lock
 

@@ -1,4 +1,4 @@
-00-cover.md
+﻿00-cover.md
 01-system-overview.md
 02-three-tier-panels.md
 03-middleware-stack.md
@@ -10,3 +10,4 @@
 09-localisation-engine.md
 10-mobile-architecture.md
 11-architecture-decision-records.md
+12-industrial-architecture.md

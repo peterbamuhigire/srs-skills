@@ -9,3 +9,4 @@
 08-success-metrics.md
 09-open-questions.md
 10-ai-intelligence.md
+11-industrial-lifecycle-and-logistics.md
