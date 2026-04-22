@@ -8,7 +8,7 @@ All modules are universal. Localisation behaviour - country-specific tax rules, 
 
 | Code | Module | Description |
 |---|---|---|
-| `ACCOUNTING` | Accounting & General Ledger | Double-entry General Ledger (GL), IFRS-compliant financial statements, AP, AR, bank reconciliation, multi-currency, VAT/WHT, budgets |
+| `ACCOUNTING` | Accounting & General Ledger | Double-entry General Ledger (GL), IFRS-compliant financial statements, AP, AR, bank reconciliation, multi-currency, VAT/WHT, budgets, record-to-report discipline, close orchestration, consolidation-ready group structures, finance controls/workflow/approvals, and reporting foundations for management, statutory, and investor-grade analytics |
 | `INVENTORY` | Inventory Management | Item catalogue, UOM conversion, FIFO/weighted-average costing, Goods Received Note (GRN), stock adjustments, reorder levels, physical count, stock transfers |
 | `SALES` | Sales | Customer master, price lists, quotations, sales orders, delivery notes, invoices, credit notes, receipts, returns |
 | `PROCUREMENT` | Procurement | Supplier master, purchase requisitions, RFQ, LPO, three-way matching, supplier payments, WHT |
@@ -62,3 +62,17 @@ Longhorn ERP is intended to compete credibly for both small and large African or
 - `TRANSPORTATION` owns shipment planning, dispatch, route execution, transport visibility, and live fleet operations.
 
 These boundaries are deliberate. They prevent engineering control, shop-floor execution, and transport operations from collapsing into one oversized module with weak governance.
+
+## Finance Excellence Note
+
+Longhorn ERP treats `ACCOUNTING` as the financial system of record, not a basic bookkeeping add-on. The module is positioned to support both growing SMEs and larger multi-entity organisations that need disciplined finance operations without buying a separate finance stack.
+
+World-class finance capability in Longhorn ERP means:
+
+- record-to-report discipline with controlled journal entry, subledger reconciliation, accounting periods, and audit-ready close evidence
+- close orchestration with checklists, task ownership, dependency tracking, review steps, and exception visibility
+- consolidation foundations with legal-entity structures, intercompany readiness, elimination support, and group reporting preparation
+- finance controls, workflow, and approvals with maker-checker patterns, approval thresholds, segregation of duties, and policy-enforced posting controls
+- reporting foundations with trusted dimensional reporting, management packs, statutory statements, board reporting, and analytics-ready finance data
+
+This positioning is deliberate. `ACCOUNTING` remains the core module, while advanced finance excellence is delivered as depth within the same bounded capability so Longhorn ERP can scale from small African businesses to regional enterprise groups without fragmenting the finance operating model.

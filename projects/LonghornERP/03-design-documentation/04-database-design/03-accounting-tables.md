@@ -1,6 +1,6 @@
 # Accounting Module Tables
 
-The Accounting and General Ledger (ACCOUNTING) module is a core module active for all tenants. The tables below support double-entry bookkeeping, multi-currency operations, tax compliance (Value Added Tax and Withholding Tax), budget management, and bank reconciliation.
+The Accounting and General Ledger (ACCOUNTING) module is a core module active for all tenants. The tables below support double-entry bookkeeping, multi-currency operations, tax compliance (Value Added Tax and Withholding Tax), budget management, bank reconciliation, period close governance, recurring journals, consolidation foundations, approval workflow metadata, and finance control evidence.
 
 ## `chart_of_accounts`
 
@@ -176,3 +176,263 @@ Stores monthly budget amounts per account per cost centre. Used by the budget-vs
 | `amount` | DECIMAL(18,4) | NOT NULL | Budgeted amount in the tenant's base currency. |
 
 **Indexes:** PRIMARY (`id`), UNIQUE (`tenant_id`, `account_id`, `cost_centre_id`, `period_year`, `period_month`), (`tenant_id`, `period_year`, `period_month`).
+
+---
+
+## `accounting_periods`
+
+Defines the accounting calendar used for period opening, soft close, hard close, and reopening controls. This table is the anchor for period-close orchestration and for preventing postings into locked periods.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `entity_code` | VARCHAR(50) | NOT NULL | Reporting entity or legal-entity code within the tenant's finance structure. |
+| `period_code` | VARCHAR(20) | NOT NULL | Human-readable period code (e.g., `2026-04`). |
+| `fiscal_year` | SMALLINT UNSIGNED | NOT NULL | Fiscal year of the period. |
+| `fiscal_period` | TINYINT UNSIGNED | NOT NULL | Fiscal period number within the year. |
+| `start_date` | DATE | NOT NULL | Inclusive period start date. |
+| `end_date` | DATE | NOT NULL | Inclusive period end date. |
+| `status` | ENUM('open','soft_closed','hard_closed','reopened') | NOT NULL, DEFAULT 'open' | Period control status. |
+| `closed_by` | BIGINT UNSIGNED | NULL, FK -> `users.id` | User who last changed the period into a closed state. |
+| `closed_at` | DATETIME | NULL | Timestamp of the latest close action. |
+
+**Indexes:** PRIMARY (`id`), UNIQUE (`tenant_id`, `entity_code`, `fiscal_year`, `fiscal_period`), (`tenant_id`, `status`, `end_date`).
+
+---
+
+## `finance_close_checklists`
+
+Represents a named close checklist for a specific accounting period and entity. A checklist groups all close tasks needed before a period may be declared complete.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `accounting_period_id` | BIGINT UNSIGNED | NOT NULL, FK -> `accounting_periods.id` | Period governed by this checklist. |
+| `checklist_code` | VARCHAR(30) | NOT NULL | System or template-derived checklist reference. |
+| `name` | VARCHAR(255) | NOT NULL | Checklist name (e.g., `April 2026 Month-End Close`). |
+| `status` | ENUM('draft','in_progress','blocked','completed','approved') | NOT NULL, DEFAULT 'draft' | Current close-governance status. |
+| `owner_user_id` | BIGINT UNSIGNED | NULL, FK -> `users.id` | Finance lead responsible for the checklist. |
+| `started_at` | DATETIME | NULL | Timestamp when close execution began. |
+| `completed_at` | DATETIME | NULL | Timestamp when all required tasks were completed. |
+| `approved_at` | DATETIME | NULL | Timestamp when the close was formally approved. |
+
+**Indexes:** PRIMARY (`id`), UNIQUE (`tenant_id`, `accounting_period_id`, `checklist_code`), (`tenant_id`, `status`, `owner_user_id`).
+
+---
+
+## `finance_close_tasks`
+
+Stores individual tasks within a close checklist, including dependencies, assignments, review state, and evidence requirements. This supports a disciplined, auditable period-close process.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `checklist_id` | BIGINT UNSIGNED | NOT NULL, FK -> `finance_close_checklists.id` | Parent close checklist. |
+| `task_code` | VARCHAR(30) | NOT NULL | Task reference within the checklist. |
+| `title` | VARCHAR(255) | NOT NULL | Short task title. |
+| `description` | TEXT | NULL | Detailed close instruction or expected output. |
+| `depends_on_task_id` | BIGINT UNSIGNED | NULL, FK -> `finance_close_tasks.id` | Optional predecessor task. |
+| `assigned_user_id` | BIGINT UNSIGNED | NULL, FK -> `users.id` | User assigned to perform the task. |
+| `reviewer_user_id` | BIGINT UNSIGNED | NULL, FK -> `users.id` | User assigned to review or sign off the task. |
+| `status` | ENUM('not_started','in_progress','completed','approved','waived') | NOT NULL, DEFAULT 'not_started' | Task execution status. |
+| `due_at` | DATETIME | NULL | Expected completion deadline. |
+| `completed_at` | DATETIME | NULL | Timestamp when the task performer marked it complete. |
+| `approved_at` | DATETIME | NULL | Timestamp when reviewer approval was recorded. |
+| `evidence_required` | TINYINT(1) | NOT NULL, DEFAULT 0 | 1 = supporting control evidence is mandatory before task approval. |
+
+**Indexes:** PRIMARY (`id`), UNIQUE (`tenant_id`, `checklist_id`, `task_code`), (`tenant_id`, `assigned_user_id`, `status`), (`tenant_id`, `reviewer_user_id`, `status`), (`tenant_id`, `depends_on_task_id`).
+
+---
+
+## `recurring_journal_templates`
+
+Defines reusable journal-entry templates for accruals, amortisation, allocations, lease schedules, and other repeatable postings. Each template governs generation frequency and approval requirements.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `template_code` | VARCHAR(30) | NOT NULL | Unique recurring-journal code (e.g., `RJ-ACCRUAL-RENT`). |
+| `name` | VARCHAR(255) | NOT NULL | Template name. |
+| `entity_code` | VARCHAR(50) | NOT NULL | Reporting entity to which the template applies. |
+| `frequency` | ENUM('daily','weekly','monthly','quarterly','yearly') | NOT NULL | Recurrence cadence. |
+| `start_date` | DATE | NOT NULL | First eligible generation date. |
+| `end_date` | DATE | NULL | Optional generation end date. |
+| `next_run_date` | DATE | NOT NULL | Next scheduled generation date. |
+| `auto_generate_mode` | ENUM('draft_only','submit_for_approval','disabled') | NOT NULL, DEFAULT 'draft_only' | Generation behaviour when the schedule runs. |
+| `approval_policy_code` | VARCHAR(50) | NULL | Approval-policy reference applied to journals generated from this template. |
+| `is_active` | TINYINT(1) | NOT NULL, DEFAULT 1 | 1 = template may continue generating journals. |
+| `created_by` | BIGINT UNSIGNED | NOT NULL, FK -> `users.id` | User who created the template. |
+
+**Indexes:** PRIMARY (`id`), UNIQUE (`tenant_id`, `template_code`), (`tenant_id`, `entity_code`, `is_active`), (`tenant_id`, `next_run_date`, `is_active`).
+
+---
+
+## `recurring_journal_template_lines`
+
+Stores the debit and credit line patterns belonging to a recurring journal template. Amounts may be fixed or formula-driven according to application logic.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `template_id` | BIGINT UNSIGNED | NOT NULL, FK -> `recurring_journal_templates.id` | Parent recurring journal template. |
+| `line_no` | INT UNSIGNED | NOT NULL | Display and processing order of the line. |
+| `account_id` | BIGINT UNSIGNED | NOT NULL, FK -> `chart_of_accounts.id` | Account to debit or credit. |
+| `entry_side` | ENUM('debit','credit') | NOT NULL | Posting side for this template line. |
+| `amount_type` | ENUM('fixed','formula','percentage') | NOT NULL, DEFAULT 'fixed' | How the posting amount is derived. |
+| `amount_value` | DECIMAL(18,4) | NULL | Fixed amount or parameter value, depending on `amount_type`. |
+| `formula_expression` | VARCHAR(500) | NULL | Optional expression interpreted by application logic for generated journals. |
+| `cost_centre_id` | BIGINT UNSIGNED | NULL | Optional cost centre default. |
+| `description_template` | VARCHAR(255) | NULL | Optional line narration template. |
+
+**Indexes:** PRIMARY (`id`), UNIQUE (`tenant_id`, `template_id`, `line_no`), (`tenant_id`, `account_id`).
+
+---
+
+## `journal_approval_requests`
+
+Tracks submission of journal entries into approval workflow. This table stores workflow metadata without forcing the core journal tables to carry engine-specific approval state.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `journal_entry_id` | BIGINT UNSIGNED | NOT NULL, FK -> `gl_journal_entries.id` | Journal entry under approval. |
+| `approval_policy_code` | VARCHAR(50) | NOT NULL | Policy used to determine approver path and thresholds. |
+| `submission_status` | ENUM('draft','submitted','approved','rejected','cancelled') | NOT NULL, DEFAULT 'draft' | Approval-request state. |
+| `submitted_by` | BIGINT UNSIGNED | NULL, FK -> `users.id` | User who submitted the journal. |
+| `submitted_at` | DATETIME | NULL | Submission timestamp. |
+| `final_decision_by` | BIGINT UNSIGNED | NULL, FK -> `users.id` | User who made the terminal decision. |
+| `final_decision_at` | DATETIME | NULL | Timestamp of final approval or rejection. |
+| `current_step_no` | INT UNSIGNED | NULL | Active step number awaiting action. |
+
+**Indexes:** PRIMARY (`id`), UNIQUE (`tenant_id`, `journal_entry_id`), (`tenant_id`, `submission_status`, `submitted_at`), (`tenant_id`, `approval_policy_code`, `submission_status`).
+
+---
+
+## `journal_approval_steps`
+
+Stores the step-by-step approval history and routing metadata for each journal approval request, supporting multi-level approvals and audit review.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `approval_request_id` | BIGINT UNSIGNED | NOT NULL, FK -> `journal_approval_requests.id` | Parent approval request. |
+| `step_no` | INT UNSIGNED | NOT NULL | Workflow step sequence number. |
+| `approver_user_id` | BIGINT UNSIGNED | NULL, FK -> `users.id` | User assigned to this approval step. |
+| `approval_role_code` | VARCHAR(50) | NULL | Role-based approval route when approver is determined dynamically. |
+| `decision_status` | ENUM('pending','approved','rejected','skipped') | NOT NULL, DEFAULT 'pending' | Outcome of the approval step. |
+| `decision_note` | TEXT | NULL | Reviewer note or rejection reason. |
+| `acted_at` | DATETIME | NULL | Timestamp of decision. |
+
+**Indexes:** PRIMARY (`id`), UNIQUE (`tenant_id`, `approval_request_id`, `step_no`), (`tenant_id`, `approver_user_id`, `decision_status`), (`tenant_id`, `approval_role_code`, `decision_status`).
+
+---
+
+## `consolidation_entities`
+
+Defines the entities participating in group reporting within a tenant. This table provides the structural basis for consolidation, including ownership percentages and base currency metadata.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `entity_code` | VARCHAR(50) | NOT NULL | Unique code for the reporting entity. |
+| `entity_name` | VARCHAR(255) | NOT NULL | Legal or management-reporting entity name. |
+| `parent_entity_id` | BIGINT UNSIGNED | NULL, FK -> `consolidation_entities.id` | Parent group entity; NULL for the top-level entity. |
+| `base_currency_code` | CHAR(3) | NOT NULL, FK -> `currencies.code` | Functional currency of the entity. |
+| `ownership_percent` | DECIMAL(7,4) | NOT NULL, DEFAULT 100.0000 | Ownership share held by the parent or group. |
+| `consolidation_method` | ENUM('full','equity','proportionate') | NOT NULL, DEFAULT 'full' | Reporting method used when consolidating this entity. |
+| `is_active` | TINYINT(1) | NOT NULL, DEFAULT 1 | 1 = entity participates in current reporting structures. |
+
+**Indexes:** PRIMARY (`id`), UNIQUE (`tenant_id`, `entity_code`), (`tenant_id`, `parent_entity_id`), (`tenant_id`, `is_active`, `consolidation_method`).
+
+---
+
+## `consolidation_periods`
+
+Represents the finance team’s group-reporting period for consolidation processing. A consolidation period may aggregate multiple accounting periods from child entities after local close is complete.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `group_entity_id` | BIGINT UNSIGNED | NOT NULL, FK -> `consolidation_entities.id` | Top-level or subgroup entity being consolidated. |
+| `period_code` | VARCHAR(20) | NOT NULL | Consolidation reporting period code. |
+| `fiscal_year` | SMALLINT UNSIGNED | NOT NULL | Fiscal year of the consolidation period. |
+| `fiscal_period` | TINYINT UNSIGNED | NOT NULL | Fiscal period number. |
+| `status` | ENUM('draft','collecting','eliminating','consolidated','locked') | NOT NULL, DEFAULT 'draft' | Consolidation lifecycle state. |
+| `started_at` | DATETIME | NULL | Timestamp when consolidation processing started. |
+| `completed_at` | DATETIME | NULL | Timestamp when the consolidation result was finalised. |
+
+**Indexes:** PRIMARY (`id`), UNIQUE (`tenant_id`, `group_entity_id`, `fiscal_year`, `fiscal_period`), (`tenant_id`, `status`, `fiscal_year`, `fiscal_period`).
+
+---
+
+## `consolidation_adjustments`
+
+Stores elimination and top-side adjustments recorded during consolidation. These entries do not replace local ledgers; they exist as group-reporting adjustments applied during consolidated reporting.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `consolidation_period_id` | BIGINT UNSIGNED | NOT NULL, FK -> `consolidation_periods.id` | Consolidation period to which the adjustment belongs. |
+| `adjustment_number` | VARCHAR(30) | NOT NULL | Unique adjustment reference. |
+| `adjustment_type` | ENUM('elimination','topside','fx_translation','minority_interest') | NOT NULL | Adjustment category. |
+| `description` | TEXT | NULL | Narrative explaining the adjustment purpose. |
+| `status` | ENUM('draft','approved','posted','reversed') | NOT NULL, DEFAULT 'draft' | Lifecycle state of the consolidation adjustment. |
+| `created_by` | BIGINT UNSIGNED | NOT NULL, FK -> `users.id` | User who prepared the adjustment. |
+| `approved_by` | BIGINT UNSIGNED | NULL, FK -> `users.id` | User who approved the adjustment. |
+| `approved_at` | DATETIME | NULL | Approval timestamp. |
+
+**Indexes:** PRIMARY (`id`), UNIQUE (`tenant_id`, `adjustment_number`), (`tenant_id`, `consolidation_period_id`, `adjustment_type`), (`tenant_id`, `status`, `approved_at`).
+
+---
+
+## `consolidation_adjustment_lines`
+
+Stores the debit and credit lines for each consolidation adjustment, including optional counterparty entity references for intercompany elimination support.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `adjustment_id` | BIGINT UNSIGNED | NOT NULL, FK -> `consolidation_adjustments.id` | Parent consolidation adjustment. |
+| `account_id` | BIGINT UNSIGNED | NOT NULL, FK -> `chart_of_accounts.id` | Group-reporting account affected by the adjustment. |
+| `entity_id` | BIGINT UNSIGNED | NOT NULL, FK -> `consolidation_entities.id` | Entity whose balances are being adjusted. |
+| `counterparty_entity_id` | BIGINT UNSIGNED | NULL, FK -> `consolidation_entities.id` | Counterparty entity for intercompany elimination context. |
+| `debit` | DECIMAL(18,4) | NOT NULL, DEFAULT 0 | Debit amount in group-reporting currency. |
+| `credit` | DECIMAL(18,4) | NOT NULL, DEFAULT 0 | Credit amount in group-reporting currency. |
+| `description` | VARCHAR(255) | NULL | Optional line-level narration. |
+
+**Indexes:** PRIMARY (`id`), (`tenant_id`, `adjustment_id`), (`tenant_id`, `entity_id`, `counterparty_entity_id`), (`tenant_id`, `account_id`).
+
+---
+
+## `finance_control_evidence`
+
+Stores references to supporting evidence used for finance controls such as account reconciliations, close tasks, journal approvals, consolidation adjustments, and external audit support. Binary files remain in document storage; this table stores metadata and linkage.
+
+| Column | Type | Constraints | Description |
+|---|---|---|---|
+| `id` | BIGINT UNSIGNED | PRIMARY KEY, AUTO_INCREMENT | Surrogate primary key. |
+| `tenant_id` | BIGINT UNSIGNED | NOT NULL, FK -> `tenants.id` | Tenant scope. |
+| `evidence_type` | ENUM('close_task','reconciliation','journal_approval','consolidation_adjustment','audit_request') | NOT NULL | Finance-control evidence category. |
+| `reference_table` | VARCHAR(100) | NOT NULL | Table name of the governed record. |
+| `reference_id` | BIGINT UNSIGNED | NOT NULL | Identifier of the governed record in `reference_table`. |
+| `document_id` | BIGINT UNSIGNED | NULL | Optional FK to a future or existing document-management table. |
+| `file_name` | VARCHAR(255) | NOT NULL | Original or display file name. |
+| `storage_uri` | VARCHAR(500) | NOT NULL | File location in object storage or document repository. |
+| `uploaded_by` | BIGINT UNSIGNED | NOT NULL, FK -> `users.id` | User who attached the evidence. |
+| `uploaded_at` | DATETIME | NOT NULL | Timestamp of evidence upload. |
+| `attested_by` | BIGINT UNSIGNED | NULL, FK -> `users.id` | User who formally attested or reviewed the evidence. |
+| `attested_at` | DATETIME | NULL | Timestamp of attestation or reviewer sign-off. |
+| `integrity_hash` | CHAR(64) | NULL | Optional SHA-256 hash for evidential integrity checks. |
+
+**Indexes:** PRIMARY (`id`), (`tenant_id`, `evidence_type`, `reference_table`, `reference_id`), (`tenant_id`, `uploaded_by`, `uploaded_at`), (`tenant_id`, `attested_by`, `attested_at`).

@@ -8,3 +8,4 @@
 07-pos-mobile-endpoints.md
 08-superadmin-endpoints.md
 09-industrial-endpoints.md
+10-finance-operations-endpoints.md

@@ -6,5 +6,6 @@
 05-transfers-maintenance.md
 06-insurance-verification.md
 07-book-vs-tax-fleet.md
+08-finance-integration.md
 08-nfrs.md
 09-traceability.md

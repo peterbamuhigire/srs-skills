@@ -10,3 +10,4 @@
 09-migrations-strategy.md
 10-indexing-strategy.md
 11-industrial-tables.md
+12-finance-operations-tables.md

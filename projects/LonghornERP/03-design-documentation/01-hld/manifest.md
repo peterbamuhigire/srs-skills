@@ -11,3 +11,4 @@
 10-mobile-architecture.md
 11-architecture-decision-records.md
 12-industrial-architecture.md
+13-finance-operations-and-group-architecture.md

@@ -9,3 +9,4 @@
 08-integration-services.md
 09-database-interaction.md
 10-industrial-services.md
+11-finance-operations-services.md

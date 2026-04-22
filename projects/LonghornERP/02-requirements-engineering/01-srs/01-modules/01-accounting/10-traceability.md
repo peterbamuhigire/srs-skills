@@ -12,6 +12,8 @@ This matrix maps every functional requirement in this SRS to at least 1 business
 | BG-002 | Management reporting (financial statements, budgets, comparative analysis) |
 | BG-003 | Operational efficiency (auto-journals, bank reconciliation, CoA templates) |
 | BG-004 | Audit readiness (journal immutability, complete audit trails, role-based access) |
+| BG-005 | Faster, controlled period close through orchestration, standard tasking, and exception management |
+| BG-006 | Multi-entity, intercompany, and elimination-ready finance structures for scalable consolidation and disciplined reporting |
 
 ## 10.3 Traceability Matrix
 
@@ -139,3 +141,54 @@ This matrix maps every functional requirement in this SRS to at least 1 business
 | FR-ACCT-120 | 8.5 | Prevent year-end close with non-hard-closed periods | BG-004 | Initiate year-end close with 1 Open period; verify block and list of non-closed periods. |
 | FR-ACCT-121 | 8.6 | Super Admin re-opens closed period with reason | BG-004 | Re-open closed period as Super Admin with reason; verify status reverts to Open. |
 | FR-ACCT-122 | 8.6 | Audit event and notification on period re-open | BG-004 | Re-open period; verify audit event created and Finance Manager notification triggered. |
+
+| FR-ACCT-123 | 8.7 | Define close templates by entity and close type | BG-005, BG-006 | Create month-end template with tasks, dependencies, and owner roles; verify template saves with all metadata. |
+| FR-ACCT-124 | 8.7 | Instantiate close run from template | BG-005 | Launch close run for entity and period; verify task instances created in Not Started status. |
+| FR-ACCT-125 | 8.7 | Support controlled close task statuses | BG-004, BG-005 | Set task to Blocked without comment; verify rejection. Repeat with comment; verify success. |
+| FR-ACCT-126 | 8.7 | Assign or reassign close task ownership | BG-005 | Reassign task to another authorised owner; verify assignment changes and audit history preserved. |
+| FR-ACCT-127 | 8.7 | Require evidence for evidence-required close tasks | BG-004, BG-005 | Attempt to complete evidence-required task without attachment, URL, or commentary; verify rejection. |
+| FR-ACCT-128 | 8.7 | Block hard close until mandatory tasks resolved | BG-004, BG-005 | Attempt Hard Close with mandatory task still In Progress; verify block. |
+| FR-ACCT-129 | 8.7 | Provide Close Cockpit dashboard | BG-005 | Open dashboard; verify completion %, overdue, blocked, and owner-level views are displayed. |
+| FR-ACCT-130 | 8.7 | Notify on assignments, overdue tasks, blockers, and rejection | BG-005 | Mark task Blocked; verify owner and Finance Manager receive in-app notifications. |
+| FR-ACCT-131 | 8.8 | Create recurring journal templates | BG-003, BG-005 | Save recurring journal template with monthly frequency and lines; verify template is stored and reusable. |
+| FR-ACCT-132 | 8.8 | Generate draft journals from recurring templates | BG-003, BG-005 | Open new period with active templates; verify draft recurring journals are generated with template reference. |
+| FR-ACCT-133 | 8.8 | Auto-reverse flagged close journals in next open period | BG-004, BG-005 | Post accrual with auto-reverse flag; verify reversal journal appears on first day of next open period. |
+| FR-ACCT-134 | 8.8 | Enforce preparer-approver segregation for close journals and templates | BG-004 | Attempt self-approval on submitted close journal; verify approval is blocked. |
+| FR-ACCT-135 | 8.8 | Require approval for high-value close journals | BG-004, BG-005 | Submit close journal above threshold; verify status requires approval before posting. |
+| FR-ACCT-136 | 8.8 | Maintain mandatory close journal source classification | BG-004, BG-006 | Create close journal without source classification; verify validation fails. |
+| FR-ACCT-137 | 8.8 | Provide Close Journal Register report | BG-002, BG-004 | Filter register by entity, source classification, and approver; verify results match stored journals. |
+| FR-ACCT-138 | 8.9 | Track close readiness by entity and reporting basis | BG-005, BG-006 | Hard-close entity A and keep entity B Open for same period; verify both states persist independently. |
+| FR-ACCT-139 | 8.9 | Require counterparty attribution on intercompany journals | BG-004, BG-006 | Attempt intercompany journal without counterparty entity; verify rejection. |
+| FR-ACCT-140 | 8.9 | Provide Intercompany Mismatch report | BG-002, BG-006 | Create unmatched intercompany balances; verify report lists entity, counterparty, account, currency, and period. |
+| FR-ACCT-141 | 8.9 | Preserve separate journal layers for local and group reporting | BG-004, BG-006 | Post journals across LocalStatutory and Elimination layers; verify reports can filter by layer without changing local journals. |
+| FR-ACCT-142 | 8.9 | Restrict elimination journals to group-finance permission | BG-004, BG-006 | Attempt elimination journal as user without permission; verify rejection. |
+| FR-ACCT-143 | 8.9 | Generate Consolidation Input Trial Balance | BG-002, BG-006 | Generate consolidation input TB for group period; verify balances are grouped by entity, currency, account, and layer. |
+| FR-ACCT-144 | 8.9 | Preserve source linkage for topside and elimination journals | BG-004, BG-006 | Open elimination journal detail; verify source references to contributing balances or intercompany pair are visible. |
+| FR-ACCT-145 | 8.10 | Maintain Close Pack register for required outputs | BG-002, BG-005 | Open close pack for period; verify required reports and statuses are listed. |
+| FR-ACCT-146 | 8.10 | Stamp generated finance reports with metadata | BG-002, BG-004 | Generate report; verify entity, period, basis, user, timestamp, and parameters are embedded. |
+| FR-ACCT-147 | 8.10 | Freeze reproducible final report snapshots | BG-002, BG-004, BG-005 | Mark report Final, then regenerate with same parameters; verify values match until period is reopened. |
+| FR-ACCT-148 | 8.10 | Require Finance Manager sign-off for final Close Pack | BG-004, BG-005 | Attempt to mark Close Pack Final without Finance Manager sign-off; verify rejection. |
+| FR-ACCT-149 | 11.2 | Maintain governed bank-account master data | BG-003, BG-004 | Create bank account without account purpose or approver role; verify validation rejects the save. |
+| FR-ACCT-150 | 11.2 | Segregate payment initiation, approval, and bank-file release roles | BG-004 | Attempt to approve and release a payment batch as the same user where SoD is enforced; verify release is blocked. |
+| FR-ACCT-151 | 11.2 | Forecast cash position from approved obligations and expected receipts | BG-002, BG-003 | Generate 13-week cash forecast; verify balances reflect approved AP, payroll, and AR due buckets. |
+| FR-ACCT-152 | 11.2 | Preserve liquidity tagging for bank accounts and cash movements | BG-002, BG-004 | Post movement tagged OperatingCash; verify cash report filters by liquidity bucket without altering the journal. |
+| FR-ACCT-153 | 11.3 | Build governed payment batches from approved source obligations | BG-003, BG-004 | Create payment batch including unapproved invoice; verify inclusion is rejected. |
+| FR-ACCT-154 | 11.3 | Generate bank files with immutable batch-to-file traceability | BG-004 | Generate bank file for approved batch; verify file hash, generator, timestamp, and source batch references are stored. |
+| FR-ACCT-155 | 11.3 | Prevent duplicate bank-file release for the same payment instruction set | BG-004 | Attempt second file generation for already released batch without recall; verify rejection. |
+| FR-ACCT-156 | 11.3 | Reconcile bank-file outcomes to payment instructions and journals | BG-003, BG-004 | Import bank response with one rejected payment; verify batch line is marked failed and linked journal remains unresolved. |
+| FR-ACCT-157 | 11.3 | Maintain positive-pay or payment confirmation evidence | BG-004 | Attach bank confirmation to released batch; verify evidence is viewable from batch and audit history. |
+| FR-ACCT-158 | 11.4 | Enforce daily or configured reconciliation cadence per bank account | BG-003, BG-005 | Leave daily-reconciled account unreconciled past cadence; verify exception appears on finance cockpit. |
+| FR-ACCT-159 | 11.4 | Age unreconciled bank and GL items | BG-002, BG-005 | Open reconciliation workspace; verify unreconciled items show age buckets by statement or posting date. |
+| FR-ACCT-160 | 11.4 | Escalate stale reconciling items for review | BG-004, BG-005 | Leave reconciling item unresolved beyond threshold; verify escalation notification to Finance Manager. |
+| FR-ACCT-161 | 11.4 | Certify reconciliation completion by authorised reviewer | BG-004 | Attempt certification by preparer where reviewer is required; verify certification is blocked. |
+| FR-ACCT-162 | 11.5 | Capitalise fixed assets from approved acquisition events | BG-001, BG-003, BG-004 | Confirm asset acquisition with capitalization flag; verify asset record and capitalization journal are created. |
+| FR-ACCT-163 | 11.5 | Maintain asset accounting books and depreciation methods | BG-001, BG-002 | Configure straight-line depreciation for accounting book; verify schedule is generated for useful life and salvage value. |
+| FR-ACCT-164 | 11.5 | Post periodic depreciation automatically or by controlled run | BG-002, BG-003, BG-004 | Execute depreciation run for open period; verify expense and accumulated depreciation journals are posted once only. |
+| FR-ACCT-165 | 11.5 | Support impairment, reclassification, and transfer journals with audit trail | BG-001, BG-004 | Post impairment adjustment; verify carrying amount updates and reason, approver, and evidence are preserved. |
+| FR-ACCT-166 | 11.5 | Support asset retirement and disposal accounting | BG-001, BG-002, BG-004 | Retire asset with disposal proceeds; verify cost, accumulated depreciation, gain/loss, and cash entries are recognised correctly. |
+| FR-ACCT-167 | 11.5 | Reconcile asset subledger to general ledger by period | BG-002, BG-004, BG-005 | Run asset-to-GL reconciliation; verify difference report identifies book, account, and asset contributors. |
+| FR-ACCT-168 | 11.6 | Maintain ownership hierarchy for group reporting entities | BG-002, BG-006 | Save parent-child ownership structure with effective dates; verify group tree renders correctly for the selected period. |
+| FR-ACCT-169 | 11.6 | Preserve FX translation inputs and translated balances by reporting basis | BG-001, BG-002, BG-006 | Run translation for group period; verify closing-rate and average-rate inputs are stored with translated trial balance. |
+| FR-ACCT-170 | 11.6 | Govern intercompany settlement lifecycle | BG-003, BG-004, BG-006 | Match intercompany payable and receivable for settlement; verify unresolved differences remain open and reported. |
+| FR-ACCT-171 | 11.6 | Govern elimination and top-side adjustment journals separately from local books | BG-004, BG-006 | Post top-side adjustment without group-finance approval; verify posting is blocked. |
+| FR-ACCT-172 | 11.6 | Produce certified group close pack with entity submissions, eliminations, and sign-offs | BG-002, BG-004, BG-005, BG-006 | Mark group close pack final; verify required entity submissions, elimination journals, approvals, and certification evidence exist. |

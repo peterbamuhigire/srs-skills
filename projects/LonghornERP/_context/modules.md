@@ -6,7 +6,7 @@ All modules are universal. Localisation behaviour is governed by the Localisatio
 
 | # | Module | Code | Description |
 |---|---|---|---|
-| 1 | Accounting & General Ledger | ACCOUNTING | Double-entry GL, IFRS-compliant financial statements, AP, AR, bank reconciliation, multi-currency, VAT/WHT, budgets |
+| 1 | Accounting & General Ledger | ACCOUNTING | Double-entry GL, AP, AR, bank reconciliation, tax, budgeting, financial statements, recurring and reversing journals, close orchestration, consolidation-ready finance model, approvals and audit trail, multi-currency, and management reporting foundations |
 | 2 | Inventory Management | INVENTORY | Item catalogue, UOM conversion, FIFO/weighted-average, GRN, stock adjustments, reorder levels, physical count, stock transfers |
 | 3 | Sales | SALES | Customer master, price lists, quotations, sales orders, delivery notes, invoices, credit notes, receipts, returns |
 | 4 | Procurement | PROCUREMENT | Supplier master, purchase requisitions, RFQ, LPO, three-way matching, supplier payments, WHT |
