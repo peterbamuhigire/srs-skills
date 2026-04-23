@@ -10,3 +10,4 @@
 09-database-interaction.md
 10-industrial-services.md
 11-finance-operations-services.md
+12-workforce-planning-and-asset-services.md

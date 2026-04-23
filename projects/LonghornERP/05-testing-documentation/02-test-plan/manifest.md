@@ -4,3 +4,4 @@
 03-inventory-sales-tests.md
 04-hr-payroll-tests.md
 05-module-tests.md
+06-workforce-planning-and-asset-tests.md

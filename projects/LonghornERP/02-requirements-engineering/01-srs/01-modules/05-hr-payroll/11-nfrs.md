@@ -31,3 +31,13 @@
 ## 11.5 Compliance
 
 **NFR-HR-011** — The system shall surface a compliance dashboard showing: PAYE e-return status (submitted/pending) per period, NSSF schedule status per period, and any outstanding statutory obligations; overdue items shall be flagged with a visual alert.
+
+## 11.6 Governance and Operability
+
+**NFR-HR-012** — For a payroll run covering <= 500 active employees, the payroll validation pack defined in FR-HR-078 shall generate within 30 seconds at P95 under normal database load.
+
+**NFR-HR-013** — The manager self-service dashboard defined in FR-HR-084 shall render within 2 seconds at P95 for a manager with <= 100 scoped employees.
+
+**NFR-HR-014** — A payroll run executed in shadow mode per FR-HR-080 shall not create live GL postings, disbursement files, statutory submission payloads, or employee-visible payslip artifacts under any execution path, including retries and failed runs.
+
+**NFR-HR-015** — Every employee-data export containing any field classified as sensitive shall generate an immutable export-log record within 1 second of export completion, including acting user, UTC timestamp, field set, row count, and stated business reason.

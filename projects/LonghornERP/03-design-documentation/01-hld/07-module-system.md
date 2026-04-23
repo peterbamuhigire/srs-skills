@@ -47,7 +47,7 @@ Core module status (`is_core = 1`) is enforced by the `requireModuleAccess()` fu
 
 ## 7.3 Add-On Modules
 
-The following 13 add-on modules are available for per-tenant activation based on the tenant's subscription plan:
+The following 14 add-on modules are available for per-tenant activation based on the tenant's subscription plan:
 
 | Module Name | Code |
 |---|---|
@@ -64,6 +64,7 @@ The following 13 add-on modules are available for per-tenant activation based on
 | AI Intelligence | `AI_INTELLIGENCE` |
 | Product Lifecycle Management | `PLM` |
 | Transportation & Fleet Operations | `TRANSPORTATION` |
+| Supply Chain Planning | `SUPPLY_CHAIN_PLANNING` |
 
 ## 7.4 Module Activation Gate
 
@@ -90,6 +91,7 @@ Certain add-on modules depend on other modules being active before they can be a
 | `COOPERATIVE` | Requires `INVENTORY` to be active (core - always satisfied). |
 | `PLM` | No hard activation dependency; downstream publication targets depend on whichever operational modules the tenant has enabled. |
 | `TRANSPORTATION` | Requires `SALES` and `INVENTORY` to be active (both core - always satisfied). Internal-fleet mode additionally requires `ASSETS` for vehicle reference data. |
+| `SUPPLY_CHAIN_PLANNING` | Requires `INVENTORY` and `PROCUREMENT` to be active (both core - always satisfied). `ADV_INVENTORY`, `MANUFACTURING`, and `TRANSPORTATION` enrich planning fidelity where enabled but are not hard activation prerequisites. |
 
 *Note:* A formal dependency map covering all add-on modules shall still be maintained in the Super Admin Panel configuration. The rules above represent the confirmed dependencies that must be enforced at activation time.
 

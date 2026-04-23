@@ -13,3 +13,4 @@
 12-industrial-architecture.md
 13-finance-operations-and-group-architecture.md
 14-customer-revenue-and-service-architecture.md
+15-workforce-planning-and-asset-operations-architecture.md

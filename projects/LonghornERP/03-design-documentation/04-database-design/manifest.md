@@ -12,3 +12,4 @@
 11-industrial-tables.md
 12-finance-operations-tables.md
 13-crm-service-tables.md
+14-workforce-planning-and-asset-tables.md

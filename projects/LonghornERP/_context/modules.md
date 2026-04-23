@@ -19,17 +19,18 @@ All modules are universal. Localisation behaviour is governed by the Localisatio
 |---|---|---|---|
 | 7 | Advanced Inventory | ADV_INVENTORY | Multi-location warehousing, batch/serial tracking, FEFO, expiry management, inter-branch stock-in-transit, landed cost, stock reservation, recall management |
 | 8 | Manufacturing | MANUFACTURING | BOM with versions, routings, work centres, production orders, raw material issue, WIP, operation tracking, genealogy, in-process QC, rework, downtime capture, OEE, yield/variance, by-products, scrap, overhead absorption, production costing |
-| 9 | HR & Payroll | HR_PAYROLL | Employee master, contracts, org structure, grade/salary scales, leave, attendance (biometric/mobile), payroll processing, bank payment files, mobile money salary, statutory compliance |
+| 9 | HR & Payroll | HR_PAYROLL | Employee master, contracts, org structure, job and position governance, grade/salary scales, leave, attendance (biometric/mobile), payroll processing, payroll calendars and validation controls, bank payment files, mobile money salary, manager and employee self-service, operational people analytics, and statutory compliance |
 | 10 | Point of Sale | POS | Touch-optimised terminal, barcode scanning, multi-payment modes, mobile money push, thermal receipt, shift management, restaurant/bar table mode, offline mode, real-time GL posting |
 | 11 | Sales & CRM | SALES_CRM | Leads pipeline, opportunities, Kanban view, activity logging, contact management, quotation tracking, sales forecasting, territory management, WhatsApp logging |
 | 12 | Sales Agents & Commissions | SALES_AGENTS | Agent register, target setting, commission rules (flat/tiered/product), commission runs, approval, mobile money bulk payment, agent self-service portal |
 | 13 | Cooperative Procurement | COOPERATIVE | Commodity configuration, farmer/outgrower registration, group/society hierarchy, seasonal intake, weighbridge integration, input loan deductions, mobile money farmer payment, farmer statements |
 | 14 | Project Management | PROJECTS | Project register, budget, milestones, tasks/WBS, timesheets, resource allocation, project costs, project billing (T&M + milestone), subcontractors, project P&L, Gantt, portfolio |
 | 15 | Strategy & Balanced Scorecard | STRATEGY_BSC | Strategic framework, BSC perspectives, objectives, KPIs, actuals, traffic-light scoring, scorecard dashboard, initiative tracking, executive report, OKR mode, NGO logframe |
-| 16 | Asset Management | ASSETS | Asset register, depreciation (SL/RB), revaluation, disposal with gain/loss, transfer, maintenance scheduling, insurance, QR/barcode tagging, physical verification, and vehicle capital-asset control. Transport dispatch, trips, and live fleet operations are owned by the Transportation module |
+| 16 | Asset Management | ASSETS | Asset register, functional locations, criticality, depreciation (SL/RB), revaluation, disposal with gain/loss, transfer, work requests, work orders, maintenance scheduling, reliability history, insurance, QR/barcode tagging, physical verification, condition-based triggers, and vehicle capital-asset control. Transport dispatch, trips, and live fleet operations are owned by the Transportation module |
 | 17 | AI Intelligence | AI_INTELLIGENCE | Cash flow forecasting, GL anomaly detection, demand forecasting, debtor risk scoring, and narrative financial reports - paid add-on available on Professional plans and above; off by default |
 | 18 | Product Lifecycle Management | PLM | Engineering item master, revision control, EBOM/MBOM governance, engineering change workflow, effectivity control, NPI stage gates, document control, compliance evidence, and digital-thread release to downstream modules |
 | 19 | Transportation & Fleet Operations | TRANSPORTATION | Shipment planning, route and load planning, dispatch, carrier or internal-fleet assignment, ETA and milestone visibility, proof of delivery, exception management, freight audit, transport analytics, driver assignment, and telematics-ready fleet operations |
+| 20 | Supply Chain Planning | SUPPLY_CHAIN_PLANNING | Demand planning, consensus forecast governance, supply and replenishment planning, inventory policy optimization, capacity and shortage exceptions, S&OP/IBP cycle management, scenario planning, and financial translation of supply plans into decision-ready views |
 
 > **AI Intelligence Module:** Available on Professional, Business, and Enterprise plans only. Off by default. Account owners activate individual AI features from **Settings -> AI Intelligence**. Requires at least 90 days of transaction history for meaningful forecasting outputs.
 
@@ -72,6 +73,7 @@ All modules are universal. Localisation behaviour is governed by the Localisatio
 | Asset Management | 100,000 | ~$27 |
 | Product Lifecycle Management | TBD | TBD |
 | Transportation & Fleet Operations | TBD | TBD |
+| Supply Chain Planning | TBD | TBD |
 
 ## Pricing Rationale
 
@@ -96,6 +98,6 @@ All modules are universal. Localisation behaviour is governed by the Localisatio
 | Category | Count |
 |---|---|
 | Core modules (always active) | 6 |
-| Add-on modules (per-tenant activation) | 13 |
+| Add-on modules (per-tenant activation) | 14 |
 | Platform services (infrastructure, always active) | 4 |
-| **Total** | **23** |
+| **Total** | **24** |

@@ -4,7 +4,9 @@
 03-depreciation.md
 04-revaluation-disposal.md
 05-transfers-maintenance.md
+05a-enterprise-work-management.md
 06-insurance-verification.md
+06a-reliability-materials-and-condition-management.md
 07-book-vs-tax-fleet.md
 08-finance-integration.md
 08-nfrs.md
