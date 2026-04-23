@@ -11,3 +11,4 @@
 10-indexing-strategy.md
 11-industrial-tables.md
 12-finance-operations-tables.md
+13-crm-service-tables.md

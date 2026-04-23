@@ -1,4 +1,4 @@
-00-cover.md
+﻿00-cover.md
 01-introduction.md
 02-leads.md
 03-opportunities.md
@@ -6,3 +6,6 @@
 05-contacts.md
 06-forecasting-territory.md
 07-lost-deals-nps.md
+08-revenue-service-and-account-management.md
+09-nfrs.md
+10-traceability.md

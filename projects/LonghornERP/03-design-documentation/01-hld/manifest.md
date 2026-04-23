@@ -12,3 +12,4 @@
 11-architecture-decision-records.md
 12-industrial-architecture.md
 13-finance-operations-and-group-architecture.md
+14-customer-revenue-and-service-architecture.md

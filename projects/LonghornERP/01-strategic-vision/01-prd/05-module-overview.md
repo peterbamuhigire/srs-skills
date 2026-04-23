@@ -23,7 +23,7 @@ All modules are universal. Localisation behaviour - country-specific tax rules, 
 | `MANUFACTURING` | Manufacturing | Bill of Materials (BOM) with versions, routings, work centres, production orders, raw material issue, Work in Progress (WIP), operation tracking, genealogy, in-process quality, rework, downtime capture, Overall Equipment Effectiveness (OEE), yield/variance, by-products, scrap, overhead absorption, production costing |
 | `HR_PAYROLL` | HR & Payroll | Employee master, contracts, org structure, grade/salary scales, leave, attendance (biometric/mobile), payroll processing, bank payment files, mobile money salary, statutory compliance |
 | `POS` | Point of Sale | Touch-optimised terminal, barcode scanning, multi-payment modes, mobile money push, thermal receipt, shift management, restaurant/bar table mode, offline mode, real-time GL posting |
-| `SALES_CRM` | Sales & CRM | Leads pipeline, opportunities, Kanban view, activity logging, contact management, quotation tracking, sales forecasting, territory management, WhatsApp logging |
+| `SALES_CRM` | Sales & CRM | Customer and prospect system of record plus engagement workspace for accounts, contacts, leads, opportunities, cases, activities, account planning, segmentation, prioritisation, forecasting, channel and partner coordination, quote-to-cash orchestration, retention workflows, SLA visibility, and customer-facing collaboration |
 | `SALES_AGENTS` | Sales Agents & Commissions | Agent register, target setting, commission rules (flat/tiered/product), commission runs, approval, mobile money bulk payment, agent self-service portal |
 | `COOPERATIVE` | Cooperative Procurement | Commodity configuration, farmer/outgrower registration, group/society hierarchy, seasonal intake, weighbridge integration, input loan deductions, mobile money farmer payment, farmer statements |
 | `PROJECTS` | Project Management | Project register, budget, milestones, tasks/Work Breakdown Structure (WBS), timesheets, resource allocation, project costs, project billing (T&M and milestone), subcontractors, project P&L, Gantt, portfolio |
@@ -76,3 +76,17 @@ World-class finance capability in Longhorn ERP means:
 - reporting foundations with trusted dimensional reporting, management packs, statutory statements, board reporting, and analytics-ready finance data
 
 This positioning is deliberate. `ACCOUNTING` remains the core module, while advanced finance excellence is delivered as depth within the same bounded capability so Longhorn ERP can scale from small African businesses to regional enterprise groups without fragmenting the finance operating model.
+
+## Customer Revenue and Service Excellence Note
+
+Longhorn ERP treats `SALES_CRM` as more than a basic pipeline tracker. It is positioned as the customer-facing relationship system of record and day-to-day engagement workspace for revenue teams, account teams, service teams, and partner-facing operations.
+
+World-class CRM capability in Longhorn ERP means:
+
+- a governed customer object model covering accounts, contacts, leads, opportunities, cases, and activities so relationship context is durable and shared across the organisation
+- relationship-intent ownership in CRM, where prospecting, qualification, account planning, next-best-action workflows, and customer engagement coordination are managed before and around transactional execution
+- clear execution boundaries, where CRM owns customer-facing workflow and intent while core ERP modules own order execution, fulfilment, invoicing, inventory movement, and financial truth
+- revenue excellence through stronger conversion discipline, forecast predictability, quote-to-cash coordination, segmentation, prioritisation, and channel or partner readiness
+- service excellence through case management, SLA visibility, activity traceability, retention signals, and a consistent record of customer commitments and follow-up actions
+
+This positioning is deliberate. `SALES_CRM` remains additive to the core ERP architecture rather than competing with it. The module strengthens front-office execution while keeping Longhorn ERP's operational and financial system boundaries explicit and coherent.

@@ -9,3 +9,4 @@
 08-superadmin-endpoints.md
 09-industrial-endpoints.md
 10-finance-operations-endpoints.md
+11-crm-service-endpoints.md
