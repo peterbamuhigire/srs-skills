@@ -2,7 +2,9 @@
 
 ## 2.1 Product Perspective
 
-Kulima is a vertical application built on the Chwezi Core platform — a custom PHP 8.2/MySQL 8.x multi-tenant SaaS framework that provides shared infrastructure for authentication, RBAC, billing, notifications, audit logging, and the director platform. Kulima shares this foundation with two sibling products: Academia Pro (school management) and Medic8 (healthcare management). Each vertical extends Chwezi Core with domain-specific modules while inheriting common capabilities.
+Kulima is a vertical application built on the Chwezi Core platform - a custom PHP 8.2/MySQL 8.x multi-tenant SaaS framework that provides shared infrastructure for authentication, RBAC, billing, notifications, audit logging, and the director platform. Kulima shares this foundation with two sibling products: Academia Pro (school management) and Medic8 (healthcare management). Each vertical extends Chwezi Core with domain-specific modules while inheriting common capabilities.
+
+Kulima is positioned as a farm operating system. Its primary job is to connect planning, execution, control, and analysis for real farm management. Optional intelligence and hardware integrations remain part of the roadmap, but they should strengthen a useful management core rather than substitute for it.
 
 **System context:**
 
@@ -35,40 +37,43 @@ Kulima operates as a three-tier architecture:
 
 Kulima provides the following high-level modules, grouped by deployment phase:
 
-**Phase 1 — MVP (Core Modules):**
+**Phase 1 - MVP (Management Core):**
 
+- **Whole-Farm Planning and Performance Management:** Annual and seasonal farm plans, enterprise mix, target yields, labour plans, enterprise budgets, and management KPI tracking
 - **Farm and Plot Management:** Register farms with GPS coordinates, subdivide into plots/paddocks (25+ types), record soil data, irrigation, and land tenure. Uganda administrative hierarchy (District, Sub-County, Parish, Village)
 - **Crop Management:** 200+ crop library with local names, variety tracking, season planning, planting records, 20+ activity types, input tracking, crop health monitoring with photo upload, harvest records, yield analysis, crop rotation planner
 - **Livestock Management:** Individual animal tracking for 12+ species, breed-specific benchmarks, health events (vaccination, treatment, deworming), reproduction, production records (milk, eggs, honey), feeding, movement, sales, mortality, herd/flock dashboards
 - **Financial Records (Simple Mode):** Income/expense recording, activity-expense linking, budgets, enterprise profitability, cash flow, market prices, loan tracking, receipt upload, PDF/Excel export, invoice generation, mobile money payment tracking
-- **Task and Worker Management:** Task CRUD with plot and worker assignment, mobile task completion, daily work log, worker profiles, payroll calculation, calendar view, recurring tasks, Kanban board
+- **Procurement and Supplier Controls:** Supplier register, purchase requests, approvals, purchase orders, receipt capture, and purchase-flow visibility
+- **Task, Labour, and SOP Management:** Task CRUD with plot and worker assignment, mobile task completion, daily work log, worker profiles, payroll calculation, calendar view, recurring tasks, Kanban board, labour planning, and SOP checklist support
+- **Sales, Post-Harvest, and Customer Management:** Harvest allocation, customer records, invoices, delivery scheduling, contract tracking, receivables visibility, and basic dispatch readiness
 - **Weather and Advisory:** Farm-specific forecasts, real-time weather, weather alerts, historical data, climate-smart advisory, frost alerts, irrigation scheduling
 - **Authentication and Tenancy:** Dual auth (session + JWT), RBAC (Owner, Manager, Worker), multi-tenant isolation, subscription tier enforcement
 - **Offline-First Android App:** Room database, queue-based sync, conflict resolution, compressed photo sync, pre-loaded reference data
 - **Web Dashboard:** Full CRUD for all modules, farm overview dashboard
 - **Notifications:** SMS (Africa's Talking), push (FCM), in-app alerts
 
-**Phase 2 — Growth:**
+**Phase 2 - Growth:**
 
 - **GPS Polygon Mapping:** Farm/plot boundary mapping via Google Maps SDK with GeoJSON storage
 - **NDVI Satellite Analysis:** Sentinel-2 crop health imagery with colour-coded overlays
-- **Inventory Management:** Input/equipment/produce inventory, stock receipts, automatic deduction, expiry and low-stock alerts, maintenance scheduling, post-harvest loss tracking
-- **Supply Chain Traceability:** Batch creation, chain of custody, QR codes, GeoJSON export, EUDR DDS generation, buyer portal, certification tracking
-- **Marketplace:** Produce/livestock listings, buyer search, market price database, directories, order management
+- **Advanced Inventory, Packhouse, and Asset Operations:** Input/equipment/produce inventory, stock receipts, automatic deduction, expiry and low-stock alerts, maintenance scheduling, lot controls, withholding windows, produce storage, and post-harvest loss tracking
+- **Supply Chain Traceability and Compliance:** Batch creation, chain of custody, QR codes, GeoJSON export, EUDR DDS generation, buyer portal, certification tracking, and dispatch compliance gating
+- **Marketplace and Commercial Execution:** Produce/livestock listings, buyer search, market price database, directories, order management, sales contracts, delivery schedules, and customer account management
 - **Cooperative Module:** Member registration, farm mapping, input distribution, collection centres, quality grading, bulk mobile money payment, aggregate reports, field agent app
-- **Advanced Financial Records (Dual-Mode):** Double-entry accounting, chart of accounts, financial statements, bank reconciliation, tax computation
+- **Advanced Financial Records (Dual-Mode):** Double-entry accounting, chart of accounts, financial statements, bank reconciliation, tax computation, scenario planning, and capital investment evaluation
 - **iOS App:** SwiftUI with same offline-first architecture
 - **Additional Languages:** French, Portuguese, Kinyarwanda
 
-**Phase 3 — IoT and Surveillance (Add-on Modules):**
+**Phase 3 - IoT and Surveillance (Add-on Modules):**
 
+- **AI Farm Advisor:** Natural language Q&A, photo diagnosis (Claude Vision), personalised recommendations, seasonal planning, market timing, offline fallback
 - **Jaguza IoT Integration:** Device management, 10-minute polling, webhook alerts, animal health dashboard, heat detection, disease early warning
 - **GPS Animal Tracking:** Tracker registration, live map, geofence creation, breach alerts (2-minute SLA), historical playback, speed/theft detection
 - **Camera Surveillance:** Camera registration (Hikvision/Dahua/Reolink/ONVIF), RTSP-to-HLS proxy, live viewing, multi-camera grid, PTZ control, motion alerts
-- **AI Farm Advisor:** Natural language Q&A, photo diagnosis (Claude Vision), personalised recommendations, seasonal planning, market timing, offline fallback
 - **Sensor Integration:** Soil moisture/temperature sensors, on-farm weather stations, drone imagery
 
-**Phase 4 — Enterprise:**
+**Phase 4 - Enterprise:**
 
 - **Director Platform:** Consolidated multi-farm view, financial summary, health dashboard, harvest forecast, approval workflows, inter-farm transfers
 - **Multi-Country Expansion:** Kenya, Tanzania, Rwanda configuration
@@ -82,13 +87,13 @@ Kulima provides the following high-level modules, grouped by deployment phase:
 
 | User Type | Education Level | Technical Experience | Domain Expertise | Primary Device | Language Preference |
 |---|---|---|---|---|---|
-| Smallholder Farmer | Primary (P.7) to Secondary (S.4) | Low — comfortable with MoMo and WhatsApp only | High — lifelong farming experience | Low-spec Android (Tecno Spark, 2GB RAM) | Luganda, Swahili, or local language |
-| Commercial Farmer | University-educated | High — uses laptop, smartphone, Excel | High — professional agriculture | iPhone or high-end Android, laptop | English |
-| Farm Worker | Secondary (S.4) or below | Low-Medium — basic smartphone use | Medium — task-specific farming skills | Entry-level Android (Itel A18, Android Go) | Luganda, Swahili, or English |
-| Cooperative Manager | Diploma or university | Medium — smartphone, basic office apps | High — programme management, agribusiness | Mid-range Android (Samsung A14) | English, local language |
-| Farm Director / Investor | University-educated | Medium — prefers dashboards, not detailed screens | Medium — business management, not hands-on farming | iPhone, laptop | English |
-| Buyer / Off-taker | University-educated | High — web browser, PDF tools | High — commodity trading, compliance | Laptop, smartphone | English, European languages |
-| Field Agent | Secondary or diploma | Medium — uses mobile apps daily | Medium — trained in data collection | Mid-range Android | English, local language |
+| Smallholder Farmer | Primary (P.7) to Secondary (S.4) | Low - comfortable with MoMo and WhatsApp only | High - lifelong farming experience | Low-spec Android (Tecno Spark, 2GB RAM) | Luganda, Swahili, or local language |
+| Commercial Farmer | University-educated | High - uses laptop, smartphone, Excel | High - professional agriculture | iPhone or high-end Android, laptop | English |
+| Farm Worker | Secondary (S.4) or below | Low-Medium - basic smartphone use | Medium - task-specific farming skills | Entry-level Android (Itel A18, Android Go) | Luganda, Swahili, or English |
+| Cooperative Manager | Diploma or university | Medium - smartphone, basic office apps | High - programme management, agribusiness | Mid-range Android (Samsung A14) | English, local language |
+| Farm Director / Investor | University-educated | Medium - prefers dashboards, not detailed screens | Medium - business management, not hands-on farming | iPhone, laptop | English |
+| Buyer / Off-taker | University-educated | High - web browser, PDF tools | High - commodity trading, compliance | Laptop, smartphone | English, European languages |
+| Field Agent | Secondary or diploma | Medium - uses mobile apps daily | Medium - trained in data collection | Mid-range Android | English, local language |
 
 ## 2.4 Constraints
 
