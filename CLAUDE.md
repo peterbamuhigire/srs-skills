@@ -134,7 +134,7 @@ These rules apply to all generated output — SRS sections, design documents, te
 
 ## Git Commit Protocol for Projects
 
-Project workspaces (`projects/<ProjectName>/`) are committed to the repository. Commit and push after every document batch (context files, then each phase document). Never commit the Word binary template (`templates/reference.docx`). Follow the batch commit pattern: context files first, then document phases in order, with a descriptive commit message per batch.
+Project workspaces (`projects/<ProjectName>/`) are **local only** and gitignored — this repository is public and publishes only skills, engine code, and domain packs, not client work. Never `git add -f` a project path. Never commit the Word binary template (`templates/reference.docx`). Commits to this repo contain skill logic, engine code, domains, templates, and documentation only.
 
 ## Verification & Validation (V&V) Standard Operating Procedure
 

@@ -1,9 +1,0 @@
-selected:
-  - id: CTRL-UG-001
-    applies_because: "Clinics collect patient PII at enrolment; DPPA §7 requires lawful basis."
-  - id: CTRL-UG-002
-    applies_because: "Clinical and billing data include S-tier fields (NIN, diagnoses) requiring encryption at rest per DPPA §19."
-  - id: CTRL-UG-003
-    applies_because: "Breach of S-tier data must be reported to PDPO without delay per DPPA §23."
-  - id: CTRL-UG-004
-    applies_because: "Patients exercise DSAR and erasure rights under DPPA §30; RBAC and audit logs are the gating mechanism."

@@ -1,5 +1,0 @@
-# Executive Summary
-
-Longhorn ERP is a multi-tenant, modular *Software as a Service* (SaaS) *Enterprise Resource Planning* (ERP) platform designed to be simpler to configure, easier to use, and more affordable than any comparable ERP available in East Africa. The platform targets mid-sized and growing organisations across manufacturing, trading, distribution, agriculture, services, retail, hospitality, NGOs, government, and education sectors. Its pricing is denominated in Ugandan Shillings (UGX) and covers the entire organisation — not per seat — beginning at UGX 250,000 per month.
-
-Longhorn ERP is the flagship product of Chwezi Core Systems and the primary commercial vehicle for the company. It is built to close a gap that no international vendor has addressed: enterprise-grade ERP functionality delivered at a price and complexity level that Ugandan and East African organisations can adopt without an implementation project, a consulting engagement, or a training programme. The platform ships 6 core and 10 add-on modules alongside 4 platform services in Phase 1, covering the full operational surface of a mid-sized organisation.

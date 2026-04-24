@@ -1,9 +1,0 @@
-00-cover.md
-01-introduction.md
-02-terminal-management.md
-03-sales-transactions.md
-04-payment-handling.md
-05-till-management.md
-06-offline-mode.md
-07-nfrs.md
-08-traceability.md

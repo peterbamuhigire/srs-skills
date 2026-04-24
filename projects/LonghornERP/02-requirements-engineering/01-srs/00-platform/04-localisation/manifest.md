@@ -1,9 +1,0 @@
-00-cover.md
-01-introduction.md
-02-profile-management.md
-03-currency-language.md
-04-tax-statutory.md
-05-coa-invoice.md
-06-payment-gateways.md
-07-nfrs.md
-08-traceability.md

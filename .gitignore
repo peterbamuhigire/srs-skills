@@ -1,6 +1,9 @@
 # Word template — binary, org-specific, stays local
 templates/reference.docx
 
+# Client project workspaces — local only, this repo is public
+projects/
+
 # Python build artifacts
 __pycache__/
 *.py[cod]
