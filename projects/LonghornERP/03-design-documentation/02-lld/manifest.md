@@ -1,4 +1,4 @@
-00-cover.md
+﻿00-cover.md
 01-introduction.md
 02-platform-services.md
 03-accounting-service.md
@@ -8,3 +8,6 @@
 07-addon-services.md
 08-integration-services.md
 09-database-interaction.md
+10-industrial-services.md
+11-finance-operations-services.md
+12-workforce-planning-and-asset-services.md

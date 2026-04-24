@@ -13,6 +13,8 @@ This matrix maps every functional requirement in this SRS to at least 1 business
 | BG-ASSET-003 | URA tax depreciation compliance and accurate deferred tax liability reporting |
 | BG-ASSET-004 | Reduce asset loss through physical verification, QR tagging, and custodian assignment |
 | BG-ASSET-005 | Improve vehicle fleet utilisation and maintenance reliability |
+| BG-ASSET-006 | Improve maintenance planning discipline, schedule compliance, and uptime for critical assets |
+| BG-ASSET-007 | Improve reliability and repair-versus-replace decisions using structured evidence |
 
 ## 9.3 Traceability Matrix
 
@@ -86,6 +88,21 @@ This matrix maps every functional requirement in this SRS to at least 1 business
 | FR-ASSET-066 | 7.3 | Record vehicle service record linked to maintenance history | BG-ASSET-005 | Record service; verify service record appears in asset maintenance history log. |
 | FR-ASSET-067 | 7.3 | Trigger work order and notification near service threshold | BG-ASSET-005 | Set service interval at 5,000 km; current odometer 4,600 km (400 km to threshold); verify work order and notification triggered. |
 | FR-ASSET-068 | 7.3 | Fleet Utilisation Report | BG-ASSET-005 | Generate report for 3 vehicles over 90 days; verify km, fuel, cost, and efficiency columns; verify Excel and PDF export. |
+| FR-ASSET-069 | 5A | Define functional locations and hierarchy | BG-ASSET-001, BG-ASSET-006 | Create multi-level location tree and assign asset; verify hierarchy persisted and asset resolves to 1 active functional location. |
+| FR-ASSET-070 | 5A | Asset criticality classification drives priority rules | BG-ASSET-006, BG-ASSET-007 | Set asset to *Critical*; submit breakdown request; verify recommended priority and response window reflect criticality rule. |
+| FR-ASSET-071 | 5A | Work-request intake with duplicate screening | BG-ASSET-006 | Submit 2 similar requests for same asset; verify second request is flagged as possible duplicate. |
+| FR-ASSET-072 | 5A | Screen request to reject, merge, or convert | BG-ASSET-006 | Screen request and convert to work order; verify request status updated and work-order link stored. |
+| FR-ASSET-073 | 5A | Planning package on work order | BG-ASSET-006 | Plan work order with labour, materials, and permit steps; verify planning package fields saved and rendered. |
+| FR-ASSET-074 | 5A | Weekly scheduling board with over-allocation guard | BG-ASSET-006 | Overbook a crew; verify conflict shown and override reason required. |
+| FR-ASSET-075 | 5A | Planned/unplanned classification and backlog age | BG-ASSET-006, BG-ASSET-007 | Complete corrective job after 12 days; verify `unplanned` classification and backlog age = 12 days. |
+| FR-ASSET-076 | 5A | Shutdown/turnaround package | BG-ASSET-006 | Group 4 work orders into outage package; verify shared window, coordinator, and readiness summary. |
+| FR-ASSET-077 | 6A | Reserve MRO materials for work order | BG-ASSET-006 | Reserve 3 stock items against work order; verify reservations exist and unavailable quantity is flagged. |
+| FR-ASSET-078 | 6A | Material shortage exception and linked supply request | BG-ASSET-006 | Reserve unavailable part; verify shortage exception created and linked procurement or transfer request available. |
+| FR-ASSET-079 | 6A | Condition-event threshold evaluation | BG-ASSET-006, BG-ASSET-007 | Submit meter reading above threshold; verify inspection or corrective action recommendation is generated. |
+| FR-ASSET-080 | 6A | Structured closeout with failure coding | BG-ASSET-007 | Attempt to close corrective work order without failure code; verify rejection. |
+| FR-ASSET-081 | 6A | Reliability dashboard metrics | BG-ASSET-006, BG-ASSET-007 | Open dashboard for date range; verify PM compliance, MTBF, MTTR, and backlog metrics are present. |
+| FR-ASSET-082 | 6A | Bad-actor detection and root-cause workflow | BG-ASSET-007 | Trigger repeat-failure threshold; verify bad-actor flag and root-cause workflow action available. |
+| FR-ASSET-083 | 6A | Mobile offline work execution | BG-ASSET-006 | Complete checklist and parts usage offline; reconnect; verify records sync and timestamps preserved. |
 
 ## 9.4 Context Gaps Identified
 
@@ -96,6 +113,11 @@ The following gaps were identified during requirements authoring. Each must be r
 - `[CONTEXT-GAP: insurance notification channels]` — Section 6.2 specifies in-app and email notifications. Confirm whether SMS via Africa's Talking should also be sent for insurance expiry alerts, and which tenant subscription plans include SMS notifications.
 
 ## 9.5 LaTeX Formula Verification Notes
+
+Additional context gaps introduced by Sections 5A and 6A:
+
+- `[CONTEXT-GAP: asset criticality model]` â€” Confirm the default criticality scale, scoring method, and whether LonghornERP will support categorical criticality only or probability-versus-consequence scoring at tenant level.
+- `[CONTEXT-GAP: condition-event source scope]` â€” Confirm which external sources are in scope for first release: manual inspections only, mobile meter capture, or direct telemetry ingestion through the integration layer.
 
 The following formulas appear in the body of this SRS. Integrity verification is performed against IAS 16 and IAS 12 source standards.
 

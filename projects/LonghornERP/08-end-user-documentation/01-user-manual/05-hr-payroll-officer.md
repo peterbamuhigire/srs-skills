@@ -108,3 +108,33 @@ To record attendance for multiple employees on the same day, click **Bulk Entry*
 4. Click **Generate Payslip**.
 5. The payslip preview appears on screen.
 6. Click **Download PDF** to save the payslip, or click **Email to Employee** to send it directly to the employee's registered email address.
+
+---
+
+## Running a Payroll Validation Pack
+
+1. Open **HR > Payroll > Payroll Runs**.
+2. Click the draft payroll run you want to review.
+3. Click **Generate Validation Pack**.
+4. Review the findings tabs:
+   - **Missing Payment Details**
+   - **Missing Statutory IDs**
+   - **Attendance Exceptions**
+   - **Negative Net Pay**
+   - **Large Variances**
+5. Resolve or waive each finding according to policy.
+6. Click **Mark Validation Reviewed** only after all mandatory findings are cleared.
+
+---
+
+## Running a Shadow Payroll
+
+1. Open **HR > Payroll > Shadow Runs**.
+2. Click **New Shadow Run**.
+3. Select the **Payroll Period** and the **Pay Group**.
+4. Choose the comparison basis:
+   - **Current Live Data**
+   - **Imported Legacy Results**
+5. Click **Compute Shadow Run**.
+6. Review the variance report. Confirm that the shadow run has **not** posted to the GL and has **not** generated employee payslips or payment files.
+7. Export the variance report if Finance or management needs sign-off before the live run is approved.

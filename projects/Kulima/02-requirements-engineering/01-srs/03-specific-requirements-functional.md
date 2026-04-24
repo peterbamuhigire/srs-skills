@@ -204,6 +204,32 @@ All functional requirements follow the stimulus-response pattern per IEEE Std 83
 
 ---
 
+#### FR-FARM-016: Whole-Farm Annual Plan
+
+**Phase:** 1
+
+**Stimulus:** The user creates or revises a whole-farm plan by entering the planning period, strategic goals, selected enterprises, target area or headcount per enterprise, target output, target gross margin, and planning assumptions.
+**Response:** The system shall create a versioned whole-farm plan record linked to the farm. The plan shall be available to budget, task, dashboard, and reporting modules as the baseline plan for the period.
+**Pre-conditions:** The user has Farm Owner or Farm Manager role for the farm.
+**Post-conditions:** The whole-farm plan is stored with version number, effective period, and status.
+
+**Verifiability:** Create a 2026 whole-farm plan for "Mbarara Estate" with coffee, dairy, and poultry enterprises. Verify the plan stores enterprise targets, assumptions, and version metadata. Publish a revised version - verify the previous version remains archived and the new version becomes the active plan.
+
+---
+
+#### FR-FARM-017: Resource Inventory and Enterprise Allocation
+
+**Phase:** 1
+
+**Stimulus:** The user records the farm's available planning resources (land blocks, irrigation capacity, storage space, key equipment, and labour capacity) and allocates them across planned enterprises.
+**Response:** The system shall store the resource inventory and allocation model. If planned enterprise demand exceeds a recorded resource capacity, the system shall display a planning warning identifying the constrained resource.
+**Pre-conditions:** A farm record exists. The user has Farm Owner or Farm Manager role.
+**Post-conditions:** Resource inventory and enterprise allocation records are stored for the planning period.
+
+**Verifiability:** Record storage capacity of 200 bags and allocate projected output of 260 bags across enterprises. Verify the system stores the allocation and displays a warning that planned output exceeds storage capacity by 60 bags.
+
+---
+
 ## 3.2 Crop Management
 
 #### FR-CROP-001: Browse Crop Library
@@ -943,6 +969,45 @@ All functional requirements follow the stimulus-response pattern per IEEE Std 83
 
 ---
 
+#### FR-FIN-016: Enterprise Budget Template
+
+**Phase:** 1
+
+**Stimulus:** The user creates a budget for a crop or livestock enterprise using a budget template.
+**Response:** The system shall pre-populate the budget with standard revenue and cost lines for the selected enterprise and allow the user to adjust quantities, unit costs, and expected selling price. The system shall calculate planned revenue, planned operating cost, and planned gross margin.
+**Pre-conditions:** The enterprise type exists and the user has Farm Owner or Farm Manager role.
+**Post-conditions:** The enterprise budget is stored and linked to the planning period.
+
+**Verifiability:** Create a coffee enterprise budget for 20 acres. Verify the template includes labour, inputs, transport, and expected sales lines. Change the expected price per kg - verify planned revenue and planned gross margin recalculate immediately.
+
+---
+
+#### FR-FIN-017: Scenario Forecast
+
+**Phase:** 2
+
+**Stimulus:** The user runs a what-if forecast by changing one or more assumptions such as yield, selling price, labour cost, input cost, or exchange rate.
+**Response:** The system shall generate a scenario forecast showing projected revenue, projected operating cost, projected gross margin, and the delta versus the approved baseline plan.
+**Pre-conditions:** A whole-farm plan or enterprise budget exists.
+**Post-conditions:** The scenario result is stored or exportable for later comparison.
+
+**Verifiability:** Starting from an approved maize budget, reduce expected yield by 15% and increase fertiliser cost by 10%. Verify the scenario report shows revised revenue, revised cost, revised gross margin, and delta from baseline.
+
+---
+
+#### FR-FIN-018: Capital Investment Evaluation
+
+**Phase:** 2
+
+**Stimulus:** The user evaluates a proposed capital purchase by entering purchase cost, useful life, expected annual savings or revenue uplift, maintenance cost, and discount rate.
+**Response:** The system shall calculate payback period, annual net benefit, and net present value (NPV) for the proposal and store the result with the investment record.
+**Pre-conditions:** The user has Farm Owner, Director, or Finance Manager privileges.
+**Post-conditions:** The capital investment evaluation is stored and available in the management reporting module.
+
+**Verifiability:** Evaluate a cold room purchase costing UGX 18,000,000 with expected annual loss reduction of UGX 6,000,000 and annual maintenance cost of UGX 500,000. Verify the system calculates annual net benefit, payback period, and NPV using the selected discount rate.
+
+---
+
 ## 3.5 Inventory Management
 
 #### FR-INV-001: Input Inventory Registration
@@ -1076,6 +1141,58 @@ All functional requirements follow the stimulus-response pattern per IEEE Std 83
 **Post-conditions:** Produce inventory decreases; the loss record is stored.
 
 **Verifiability:** Record a loss of 5 bags of maize due to "Weevil damage" at "Main Store". Verify the inventory decreases by 5 bags and the loss record appears in the loss history.
+
+---
+
+#### FR-INV-011: Supplier Register
+
+**Phase:** 1
+
+**Stimulus:** The user registers a supplier by entering supplier name, contact person, phone number, location, supplied item categories, payment terms, and typical lead time.
+**Response:** The system shall create a supplier master record available to procurement, stock receipt, and expense workflows.
+**Pre-conditions:** The user has Farm Owner, Farm Manager, or Finance role.
+**Post-conditions:** The supplier record is stored and selectable in purchasing workflows.
+
+**Verifiability:** Register supplier "Balton Uganda" with category "Crop protection", payment terms "30 days", and lead time "3 days". Verify the supplier appears in the supplier list and can be selected on a stock receipt or purchase request.
+
+---
+
+#### FR-INV-012: Purchase Requisition and Purchase Order
+
+**Phase:** 1
+
+**Stimulus:** A user raises a purchase requisition containing one or more requested items, quantities, required date, and intended enterprise or activity.
+**Response:** The system shall route the requisition for approval when the request exceeds the user's approval authority. Once approved, the system shall convert the requisition into a purchase order and track requested, ordered, received, invoiced, and paid quantities separately.
+**Pre-conditions:** Supplier master data exists or the request is marked supplier-TBD. Approval thresholds are configured.
+**Post-conditions:** A requisition and, when approved, a purchase order record are stored with status history.
+
+**Verifiability:** Raise a requisition for 20 bags of fertiliser costing UGX 4,000,000 with an approval threshold of UGX 2,000,000. Verify the requisition is routed for approval. Approve it - verify a purchase order is created and that received quantity can be updated independently of ordered quantity.
+
+---
+
+#### FR-INV-013: Chemical Lot and Withdrawal Period Control
+
+**Phase:** 2
+
+**Stimulus:** The user records use of an agrochemical or veterinary medicine by selecting the lot number, application date, and withholding or withdrawal period in days.
+**Response:** The system shall calculate the earliest compliant harvest, sale, or dispatch date for the affected crop lot or animal product lot and store a compliance hold until that date passes.
+**Pre-conditions:** The chemical or medicine item exists with lot detail. The related crop, animal, or batch exists.
+**Post-conditions:** A withholding control record is stored and exposed to harvest, sale, and dispatch workflows.
+
+**Verifiability:** Record application of a pesticide with a 14-day withholding period on 1 June. Verify the system computes 15 June as the earliest compliant harvest or dispatch date and blocks dispatch attempts before that date.
+
+---
+
+#### FR-INV-014: Equipment Utilisation and Fuel Log
+
+**Phase:** 2
+
+**Stimulus:** The user records use of a machine or vehicle by entering date, operator, enterprise, hours used, area covered or output achieved, and fuel consumed.
+**Response:** The system shall store the utilisation record, update cumulative hours for the equipment item, and calculate fuel usage rate and cost-per-hour analytics.
+**Pre-conditions:** The equipment item exists and is active.
+**Post-conditions:** Equipment utilisation and fuel records are stored and reflected in asset analytics.
+
+**Verifiability:** Record 6 hours of tractor use with 30 litres of diesel on a maize enterprise. Verify cumulative machine hours increase by 6 and the system displays a fuel-use rate of 5 litres per hour.
 
 ---
 
@@ -1238,6 +1355,45 @@ All functional requirements follow the stimulus-response pattern per IEEE Std 83
 **Post-conditions:** The task status is "In Progress"; the start time is recorded.
 
 **Verifiability:** Worker opens task "Spray North Field" and taps "Start". Verify status changes to "In Progress" and the start time is logged.
+
+---
+
+#### FR-TASK-013: Labour Planning Board
+
+**Phase:** 1
+
+**Stimulus:** The user opens the weekly labour planning board for a farm.
+**Response:** The system shall display planned labour demand by day, enterprise, and task type against available workers or crews. Shortfalls and overloads shall be highlighted for supervisor action.
+**Pre-conditions:** Planned tasks and worker availability records exist for the selected period.
+**Post-conditions:** No data modification occurs.
+
+**Verifiability:** Create 5 harvesting tasks requiring 60 total labour-hours on a day where only 40 labour-hours are available. Verify the planning board highlights a 20-hour shortfall and identifies the affected enterprise.
+
+---
+
+#### FR-TASK-014: SOP Checklist Execution
+
+**Phase:** 1
+
+**Stimulus:** A worker starts or completes a task marked as SOP-controlled (for example spraying, vaccination, chemical mixing, or packhouse grading).
+**Response:** The system shall require completion of the configured SOP checklist before the task can be marked complete. Checklist completion shall record the acting user, timestamp, pass/fail responses, and optional photo evidence.
+**Pre-conditions:** The task is linked to an SOP template. The user is assigned to the task or is a supervisor.
+**Post-conditions:** Checklist execution evidence is stored with the task.
+
+**Verifiability:** Start a spraying task with an SOP that includes PPE confirmation and chemical-rate verification. Verify the worker cannot close the task until the checklist is completed and the responses are stored with timestamps.
+
+---
+
+#### FR-TASK-015: Worker Skill Matrix and Training Record
+
+**Phase:** 1
+
+**Stimulus:** The manager records a worker's skill, training completion, certification, or expiry date.
+**Response:** The system shall store the worker skill record and use it to filter or warn on assignments that require specific qualifications.
+**Pre-conditions:** The worker profile exists.
+**Post-conditions:** Skill and training records are stored and available in assignment workflows.
+
+**Verifiability:** Mark worker "Ocan David" as trained for "Knapsack spraying" until 31 December 2026. Attempt to assign an untrained worker to a spraying task - verify the system warns that the worker lacks the required training.
 
 ---
 
@@ -1704,6 +1860,32 @@ All functional requirements follow the stimulus-response pattern per IEEE Std 83
 
 ---
 
+#### FR-TRACE-011: Packhouse Lot Consolidation
+
+**Phase:** 2
+
+**Stimulus:** The user consolidates one or more harvest lots into a packhouse lot for grading, packing, or dispatch.
+**Response:** The system shall create a packhouse lot record that preserves parent-child traceability to all source lots, stores grade-out quantities, and records waste or shrinkage generated during consolidation.
+**Pre-conditions:** Source harvest or storage lots exist and have available quantity.
+**Post-conditions:** The packhouse lot is created and linked to its source lots with quantity balances updated.
+
+**Verifiability:** Consolidate 3 coffee harvest lots into one export-prep lot. Verify the new lot retains links to all 3 source lots and that grade-out, waste, and remaining balances are recorded correctly.
+
+---
+
+#### FR-TRACE-012: Dispatch Readiness Compliance Gate
+
+**Phase:** 2
+
+**Stimulus:** The user attempts to dispatch, export, or close out a lot for sale.
+**Response:** The system shall validate dispatch readiness checks including quantity availability, required chain-of-custody records, certification validity, withholding-period status, and market-specific compliance documents. If any mandatory check fails, the system shall block dispatch and display the failed conditions.
+**Pre-conditions:** A batch or packhouse lot exists for dispatch.
+**Post-conditions:** The dispatch is either approved with an audit record or blocked with a recorded exception reason.
+
+**Verifiability:** Attempt to dispatch a coffee lot whose certification has expired and whose chain of custody is incomplete. Verify the system blocks dispatch and lists both failed checks. Correct the issues - verify dispatch can then proceed.
+
+---
+
 ## 3.11 Marketplace
 
 #### FR-MKT-001: Create Produce Listing
@@ -1807,6 +1989,32 @@ All functional requirements follow the stimulus-response pattern per IEEE Std 83
 **Post-conditions:** The review is stored and displayed on the seller's profile.
 
 **Verifiability:** Complete an order and submit a 4-star review. Verify the review displays on the seller's marketplace profile. Attempt to submit a review without a completed order — verify the system rejects it.
+
+---
+
+#### FR-MKT-009: Sales Contract and Delivery Schedule
+
+**Phase:** 2
+
+**Stimulus:** The user creates a sales contract by entering buyer, product, committed quantity, price or pricing formula, delivery schedule, payment terms, and contract status.
+**Response:** The system shall create a contract record, reserve the committed quantity against available stock or forecasted production, and generate scheduled delivery milestones.
+**Pre-conditions:** The buyer exists and the user has Farm Owner, Sales, or Farm Manager permissions.
+**Post-conditions:** The contract is stored with quantity commitment and delivery schedule.
+
+**Verifiability:** Create a contract for 100 bags of maize with 2 deliveries over 30 days. Verify the contract record stores the buyer, quantities, delivery milestones, and reserved stock or forecast linkage.
+
+---
+
+#### FR-MKT-010: Customer Account and Collections
+
+**Phase:** 2
+
+**Stimulus:** The user opens a customer's commercial account view.
+**Response:** The system shall display that customer's invoices, payments received, outstanding balance, ageing buckets, next due amount, and collection notes. The user shall be able to record a follow-up action or payment promise.
+**Pre-conditions:** The customer exists and has at least one invoice or payment record.
+**Post-conditions:** Collection notes or payment promises, when recorded, are stored against the customer account.
+
+**Verifiability:** View customer "ABC Trading Ltd" with 3 invoices, 2 partial payments, and 1 overdue balance. Verify the account view shows total outstanding, ageing by bucket, and allows entry of a collection note dated today.
 
 ---
 

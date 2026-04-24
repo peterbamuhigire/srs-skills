@@ -8,6 +8,10 @@ This Software Requirements Specification (SRS) defines the functional and non-fu
 
 The Asset Management module provides the fixed-asset lifecycle management backbone of Longhorn ERP. It covers asset registration, categorisation, depreciation computation, revaluation, disposal, inter-branch transfer, maintenance scheduling, insurance tracking, physical verification, book versus tax depreciation with deferred tax computation, and vehicle fleet management. The module posts all financial consequences — depreciation charges, disposal gains and losses, revaluation adjustments, and transfer entries — to the General Ledger (GL) module automatically. Asset acquisitions originate from the Procurement module when a purchase order receipt is classified as a capital item; the Procurement module carries requirements for that origination flow. Role-Based Access Control (RBAC) is enforced on every Asset Management endpoint; access control definitions are owned by the User Management and RBAC module and referenced here only at the integration boundary.
 
+For vehicle assets, Asset Management remains the system of record for capital-asset accounting, depreciation, maintenance history, insurance and statutory compliance history, transfers, revaluation, and disposal. The Transportation module owns dispatch, trip execution, route planning, driver run assignment, shipment movement, and live fleet operations; any vehicle-operational data retained in Asset Management exists only to support asset history, maintenance planning, compliance evidence, and financial control.
+
+For non-vehicle physical assets, the module also acts as the enterprise asset-management control point for functional locations, asset criticality, work requests, work-order planning, reliability evidence, condition events, and maintenance-side MRO coordination. Inventory remains the stock authority, Procurement remains the purchasing authority, and Accounting remains the formal financial book of record.
+
 ## 1.3 Definitions, Acronyms, and Abbreviations
 
 The following terms are used throughout this document per IEEE Std 610.12-1990 definitions unless otherwise noted.
@@ -60,6 +64,8 @@ The requirements in this document are grounded in the following standards and le
 
 Section 2 specifies the Asset Register requirements, including asset master data, categories, and QR/barcode tagging. Section 3 covers Depreciation (straight-line, reducing balance, GL posting, period lock). Section 4 defines Revaluation and Disposal requirements. Section 5 addresses Asset Transfers and Maintenance. Section 6 specifies Insurance Tracking and Physical Verification. Section 7 covers Book versus Tax Depreciation, deferred tax computation, and Vehicle Fleet Management. Section 8 lists Non-Functional Requirements. Section 9 presents the Traceability Matrix mapping every FR to a business goal.
 
+This revision additionally introduces Section 5A for enterprise work management and Section 6A for reliability, materials, and condition-management controls.
+
 ## 1.6 Business Goals
 
 The following business goals govern requirement priority and traceability throughout this SRS.
@@ -69,6 +75,8 @@ The following business goals govern requirement priority and traceability throug
 - **BG-ASSET-003:** Satisfy Uganda Revenue Authority (URA) requirements for tax depreciation, enabling accurate computation and reporting of deferred tax liabilities.
 - **BG-ASSET-004:** Reduce asset loss and misappropriation through physical verification, QR/barcode tagging, and custodian assignment.
 - **BG-ASSET-005:** Improve vehicle fleet utilisation and maintenance reliability through scheduled maintenance calendars, mileage tracking, and fuel consumption logs.
+- **BG-ASSET-006:** Improve maintenance planning discipline, schedule compliance, and uptime for critical physical assets.
+- **BG-ASSET-007:** Improve repair-versus-replace and reliability decisions through structured failure history, condition evidence, and maintenance analytics.
 
 ## 1.7 Integrations
 
@@ -76,6 +84,7 @@ The following business goals govern requirement priority and traceability throug
 |---|---|---|
 | General Ledger | Depreciation expense, accumulated depreciation, disposal gain/loss, revaluation reserve, deferred tax, transfer entries | Asset → GL |
 | Procurement | Capital asset creation from confirmed purchase order receipt | Procurement → Asset |
+| Transportation | Odometer, utilisation, and compliance events needed for maintenance planning, asset history, or audit support; dispatch, trips, routes, and live fleet control remain owned by Transportation | Transportation → Asset |
 | User Management & RBAC | Role and permission checks on all asset endpoints | RBAC → Asset |
 | Audit Log | Immutable record of all create, update, approve, and dispose actions | Asset → Audit Log |
 | Notifications | Renewal alerts for insurance policies expiring within 30 days | Asset → Notification |

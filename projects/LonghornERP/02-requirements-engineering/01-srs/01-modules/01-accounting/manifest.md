@@ -8,4 +8,5 @@
 07-budgeting.md
 08-period-close.md
 09-nfrs.md
+11-treasury-capital-and-group-finance.md
 10-traceability.md

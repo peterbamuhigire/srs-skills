@@ -1,125 +1,87 @@
 # Feature List
 
-## Phase 1 — MVP (Core Modules)
+## Phase 1 - Management Core
+
+### Whole-Farm Planning and Performance Management
+Commercial farms need more than record entry. Kulima should start with a planning workspace that defines farm goals, enterprise mix, land and infrastructure use, annual and seasonal operating plans, enterprise budgets, target yields, labour plans, and management KPIs. This is the "whole-farm management" layer that connects strategy to daily execution.
 
 ### Farm and Plot Management
-Foundation module. Farmer registers farm(s), maps land, subdivides into plots/paddocks. Supports 25+ plot types (cropland, pasture, greenhouse, poultry house, fish pond, apiary, etc.). Uganda administrative hierarchy (District, Sub-County, Parish, Village). Land tenure type recording (customary, freehold, leasehold, mailo). Acre as primary unit with hectare/sq.m conversion.
+Farmer registers farm(s), maps land at a basic level, subdivides into plots/paddocks, records soil and irrigation details, and manages Uganda administrative hierarchy and land tenure. The model must support mixed farms, multiple production units, and farm-specific cost centres.
 
 ### Crop Management
-Full crop lifecycle from planning through harvest. Pre-loaded 200+ crop library with local names (Luganda, Swahili, Kinyarwanda). Variety/cultivar tracking with maturity periods and expected yields. Season planning, planting records, activity logging (20+ activity types), input tracking per activity, crop health monitoring with photo upload, harvest records with quality grading, yield analysis (actual vs planned), crop rotation planner. Uganda-specific: MAAIF crop calendar, key cash crops pre-configured (coffee, tea, vanilla, cocoa), matooke enterprise tracking, common pest/disease alerts (Fall Armyworm, Cassava Mosaic, BXW, Coffee Wilt).
+Full crop lifecycle from planning through harvest, including variety tracking, season plans, activity logs, input usage, crop health records, harvest records, and yield analysis. The crop journal must behave as an operational and financial record, not just an agronomic diary.
 
 ### Livestock Management
-Individual animal tracking and herd/flock management for any species (cattle, goats, sheep, pigs, chickens, ducks, turkeys, rabbits, donkeys, horses, bees, fish). Breed tracking with breed-specific benchmarks (Ankole vs Friesian). Individual records (tag, RFID, name, sex, DOB, pedigree). Health events (vaccination, treatment, deworming, dipping). Reproductive events (mating, pregnancy check, birth, weaning). Production records (milk, eggs, honey, wool, manure). Feeding records. Movement log. Sales and mortality records. Herd summary dashboard. Flock management for poultry. Uganda-specific: Ankole Longhorn metrics, kienyeji chicken benchmarks, NLIS/UIA tag format, East African disease library.
+Individual and flock/herd management for mixed farms, including health, reproduction, feeding, production, movement, mortality, and sales records. Livestock data must feed enterprise profitability and planning dashboards.
 
-### Basic Financial Records
-Farm income and expense recording with categories. Linking expenses to farm activities. Budget planning (season/year). Budget vs actuals comparison. Profitability per enterprise (crop season/livestock type). Cash flow summary with bar chart. Market price recording and history. Loan tracking (SACCO, MFI, mobile money). Input cost per unit auto-calculation. Receipt photo upload. PDF/Excel export for bank loan presentation. Invoice generation. Uganda-specific: mobile money payment tracking (MTN MoMo, Airtel Money), SACCO loan formats, credit for farming inputs, UGX primary currency with KES/TZS/RWF/NGN/GHS/ZMW support, bank loan credibility report.
+### Financial Records and Enterprise Management
+Income and expense recording, budget vs actuals, enterprise profitability, cash flow summaries, receivables/payables tracking, loan records, and bank-ready reports. Phase 1 should support the principle "farm for profit, not production" by making margin visibility routine.
 
-### Task and Worker Management
-Task creation with plot assignment, worker assignment, due dates, estimated hours. Task completion by workers on mobile. Daily work log. Worker profiles (name, phone, rate, NIN, bank/mobile money details). Payroll calculation and export. Calendar view. Recurring tasks. Kanban board (To Do / In Progress / Done). Activity planner with reminders. Uganda-specific: casual worker mobile money payment, NSSF and PAYE for permanent staff.
+### Procurement and Supplier Controls
+Supplier register, purchase requests, approvals, purchase orders, expense category discipline, receipt capture, and reconciliation of requested vs received vs paid items. This closes the "paper flow" gap that causes farm leakage.
 
-### Weather, Climate, and Advisory
-Farm-specific weather forecast (3-day for free tier, 8-day for paid). Real-time weather for each farm GPS location. Weather alerts (SMS/push for extreme events). Historical weather data. Climate-smart advisory ("Ideal day to spray", "Delay planting"). Frost alerts for highland farms. Irrigation scheduling recommendations. Uganda-specific: Uganda Met Authority integration, agro-ecological zone awareness, El Nino/La Nina alerts.
+### Task, Labour, and SOP Management
+Task planning, crew assignment, daily work logs, payroll, recurring work, task status tracking, labour plans, SOP checklists for sensitive work, and worker training/skill tracking. Commercial usefulness depends on labour accountability, not just task creation.
 
-### User Roles and Authentication
-Dual-auth (session + JWT). RBAC: Farm Owner, Farm Manager, Worker. Multi-tenant isolation. Subscription tier enforcement at API level.
+### Sales, Post-Harvest, and Customer Management
+Harvest allocation, produce inventory baseline, customer records, invoices, delivery scheduling, contract tracking, and basic dispatch readiness. Phase 1 should let farms see what is available to sell, what has been promised, and what cash is still outstanding.
 
-### Notifications
-SMS via Africa's Talking. Push via Firebase Cloud Messaging. Notification types: weather alerts, task reminders, low stock alerts, expiry alerts, payment confirmations.
+### Weather and Advisory
+Farm-specific weather, alerts, and decision support tied to planned activities, planting windows, and risk reduction.
 
-### Offline-First Android App
-Room database mirroring all farm data. Queue-based background sync. Conflict resolution (last-write-wins + conflict log). Compressed photo sync. Pre-loaded reference data (crop library, disease library, species, admin hierarchy). Low bandwidth auto-detection.
+### User Roles, Offline Mobile, Web Dashboard, Notifications, and Mobile Money
+RBAC, multi-tenancy, offline-first Android, web operations dashboard, SMS/push notifications, and mobile-money subscription/payment flows remain foundational platform capabilities.
 
-### Web Dashboard
-Bootstrap 5/Tabler admin panel. Full CRUD for all modules. Dashboard with farm overview, crop status, livestock summary, financial summary, task calendar.
+## Phase 2 - Commercial Growth
 
-### Mobile Money Subscription Payment
-MTN MoMo and Airtel Money for subscription payments from within the app. Annual discount (pay 10, get 12).
+### GPS Polygon Mapping and Spatial Operations
+Precise farm/plot boundaries, labelled geo-polygons, and map-based operational views.
 
-### Multi-lingual (Phase 1 subset)
-English, Luganda, Swahili.
+### Advanced Inventory, Packhouse, and Asset Operations
+Stock receipts, lot traceability, expiry tracking, chemical withholding windows, produce/store management, packhouse consolidation, equipment maintenance, fuel logs, and asset utilisation analytics.
 
-## Phase 2 — Growth
+### Advanced Financial Management
+Dual-mode accounting, chart of accounts, financial statements, bank reconciliation, scenario planning, capital investment evaluation, and management benchmarking across enterprises and farms.
 
-### GPS Polygon Farm/Plot Boundary Mapping
-Google Maps SDK for drawing boundaries by walking perimeter or drawing on satellite imagery. GeoJSON storage in MySQL JSON columns. Plot subdivision with labelled geo-polygons. Farm overview map with colour-coded plots.
+### Supply Chain Traceability and Compliance
+Batch traceability, chain of custody, certifications, buyer portal, EUDR evidence, dispatch compliance gates, and audit-ready records.
 
-### NDVI Satellite Crop Health Analysis
-Sentinel-2 free satellite imagery via Google Earth Engine API. Crop health colour-coding on farm map.
+### Cooperative and Outgrower Management
+Member registration, field agent workflows, input distribution, collection centres, quality grading, payment distribution, aggregate supply planning, and compliance monitoring.
 
-### Inventory and Input Management
-Input inventory (seeds, fertilisers, pesticides, feed, medicine). Stock receipts with supplier, batch number, expiry date. Automatic stock deduction on activity logging. Low stock and expiry alerts. Equipment and tools inventory with maintenance scheduling and fuel log. Harvest produce inventory per storage location. Post-harvest loss tracking. Uganda-specific: NAADS input voucher tracking, agro-dealer directory.
+### Marketplace and Commercial Execution
+Listings, buyer search, market price database, sales contracts, delivery schedules, customer account management, and collections support.
 
-### Supply Chain Traceability
-Batch creation from harvest with origin plot(s) and quality grade. Chain of custody (farm → collection → processor → exporter). QR code generation per batch. GPS polygon export as GeoJSON for EUDR compliance. Farmer profile for export buyers. Input traceability per batch. Certification tracking (organic, RainForest Alliance, UTZ, GlobalGAP, FairTrade). Deforestation-free verification against Global Forest Watch baseline. EUDR Due Diligence Statement generation. Buyer portal (read-only, no auth). Uganda-specific: coffee EUDR compliance, UEPB requirements, NAADS/OWC traceability.
+### NDVI and Remote Crop Health
+Satellite-based crop health overlays that support scouting and management decisions rather than vanity visualisation.
 
-### Marketplace and Market Linkage
-Produce and livestock listings. Buyer search by crop type and location. Market price database (all major Uganda markets). Price alerts. Agro-dealer directory. Vet and extension officer directory. Transport matching. Order management. Verified reviews. Uganda-specific: district-level market prices, WhatsApp direct link, cooperative bulk sales aggregation.
+### iOS App and Additional Languages
+SwiftUI mobile app and the remaining launch languages.
 
-### Cooperative Module
-Cooperative managed as a single franchise (tenant) with multiple member farms. Member farmer registration. Member farm mapping (GPS boundaries via field agent mobile app). Bulk input distribution tracking. Collection centre management (weigh, record, grade). Quality grading at collection. Member payment calculation (quantity x grade) with mobile money bulk disbursement. Aggregate supply reports. Compliance monitoring. Field agent app (simplified). Farmer performance ranking. Uganda-specific: primary society → apex body hierarchy, NAADS/OWC structure, MTN/Airtel bulk payment APIs.
+## Phase 3 - Intelligence and Instrumentation Add-Ons
 
-### Advanced Financial Records (Dual-Mode)
-Simple Mode: "Money in", "Money out", "What I owe", "What's owed to me" — default for all users. Advanced Mode: chart of accounts, double-entry journal, trial balance, income statement, balance sheet, cash flow. Farm-specific chart of accounts pre-loaded. Bank reconciliation. Investor/director reporting. Tax computation. PAYE/NSSF for permanent farm workers.
+### AI Farm Advisor
+Natural language Q&A, photo diagnosis, personalised recommendations, seasonal planning, and market timing advice. AI should be grounded in the farm's own records and should help users make better management decisions.
 
-### iOS App
-SwiftUI, SwiftData, same offline-first architecture as Android.
+### IoT, GPS Animal Tracking, and Sensor Integrations
+Jaguza integration, geofencing, tracker alerts, soil sensors, and on-farm weather stations.
 
-### Remaining Languages
-French, Portuguese, Kinyarwanda added to complete the 6-language launch set.
+### Camera Surveillance
+Live viewing, grid monitoring, PTZ, and motion alerts for farms that need remote security controls.
 
-## Phase 3 — IoT and Surveillance
+### Drone Imagery
+Optional aerial data for crop monitoring, livestock headcount, and inspection workflows.
 
-### Jaguza IoT Integration (Add-on)
-OAuth integration with Jaguza API. Device management (register, assign to animal, battery status). 10-minute polling + real-time webhook alerts. Animal detail page with Jaguza tab (activity graph, temperature trend, fertility index). Herd health dashboard (green/amber/red). Heat/fertility detection alerts. Disease early warning. Fertility calendar. Milk yield correlation overlay. Drone mission link.
-
-### GPS Animal Tracking (Add-on)
-Standalone GPS tracker registration (IMEI + SIM). Live map with moving animal icons. Geofence creation and breach alerts (SMS + push + WhatsApp). Overnight monitoring. Historical playback (7/14/30 days). Herd clustering detection. Speed tracking for theft detection. Multi-protocol support (MQTT, HTTP, TCP). Vehicle tracking. Theft investigation report for police/insurance. Uganda-specific: cattle rustling context (Karamoja, Teso), 2-minute alert SLA, Uganda Police report format.
-
-### Live Farm Camera Surveillance (Add-on)
-Camera registration (Hikvision/Dahua/Reolink/Generic RTSP/ONVIF). RTSP proxy server (mediamtx/ffmpeg) converting to HLS. Single camera and multi-camera grid views. PTZ control. Night mode. Stream quality selector (Auto/High/Medium/Low). Zone-based motion detection alerts (push + SMS + WhatsApp with snapshot). Alert scheduling (night-only). False alarm reduction. Two-way audio. Share access (time-limited). Uganda-specific: Hikvision/Dahua dominant brands, low-bandwidth 360p mode, solar-powered camera support, WhatsApp motion alert.
-
-### AI Farm Advisor (Add-on)
-Natural language farm Q&A using farm's own data context. Photo-based pest/disease diagnosis (Claude Vision API). Personalised recommendations based on activity records and yield analysis. Seasonal planning advisor. Market timing advice. Financial coaching. Offline fallback (pre-loaded guides). Extension officer escalation on low confidence. Multi-lingual responses (all 6 launch languages).
-
-### Drone Imagery Integration
-Connect drone survey results to Kulima farm map. Aerial crop health monitoring, livestock headcount, fence inspection.
-
-### Soil Sensor Integration
-Soil moisture and temperature sensors reporting to Kulima. Data displayed on plot detail screen. Informs irrigation decisions.
-
-### On-Farm Weather Station Integration
-Local weather station data (rainfall, temperature, wind) overrides API weather with actual local readings.
-
-## Phase 4 — Enterprise
+## Phase 4 - Portfolio and Expansion
 
 ### Director Platform
-Consolidated farm overview across all owned/managed farms. Financial summary (income vs expenses across farms). Livestock health dashboard (all IoT alerts from all farms). Crop status map with NDVI overlay. Harvest forecast. Staff productivity reports. Approval workflow (large purchase requests). Inter-farm transfer (equipment, animals). Director mobile app (same architecture as Academia Pro/Medic8).
+Multi-farm and multi-company oversight with consolidated KPIs, benchmarking, approvals, and transfer workflows.
 
 ### Multi-Country Expansion
-Kenya, Tanzania, Rwanda configuration. Country-specific: currency, crop library, administrative hierarchy, regulatory context, language defaults.
+Country packs for currencies, crops, administrative hierarchies, regulatory context, and language defaults.
 
-### EUDR DDS Automation
-Automated submission of Due Diligence Statement to EU TRACES system.
+### Bank and Insurance Integrations
+Direct interfaces for lending and risk products once Kulima data quality is trusted.
 
-### White-Label
-Agribusinesses can white-label Kulima with their own branding.
-
-### Bank and Insurance API Integrations
-Farm financial data as direct input to bank loan applications (Centenary, Equity). Insurance eligibility check and premium calculation (UAP, Jubilee).
-
-### USSD/SMS Fallback
-USSD short code for basic transaction recording on feature phones. SMS commands to dedicated number.
-
-### WhatsApp Business API
-Motion alerts, marketplace communication, notification delivery via WhatsApp.
-
-## AI Farm Advisor (Phase 3 Add-On)
-
-**Tier:** Growth and Enterprise | **Phase:** 3 (add-on, off by default)
-
-- AI-powered natural language Q&A in English, Luganda, and Swahili
-- Photo-based pest and disease diagnosis (camera capture → instant identification)
-- Personalised agronomic recommendations based on farm profile, crop, soil, and weather
-- Seasonal planting calendar advisory adjusted for GPS-zone rainfall patterns
-- Market timing advice (optimal sell window based on historical price patterns)
-- Offline fallback: pre-loaded diagnostic guides when connectivity is unavailable
+### EUDR DDS Automation, White-Label, USSD/SMS Fallback, and WhatsApp
+Enterprise extensions that increase reach and channel flexibility after the core platform is proven.

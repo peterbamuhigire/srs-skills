@@ -1,4 +1,4 @@
-# Service Layer Architecture
+﻿# Service Layer Architecture
 
 ## 4.1 Principle
 
@@ -27,6 +27,10 @@ src/
     │   └── ...
     ├── Manufacturing/
     │   └── ...
+    ├── PLM/
+    │   └── ...
+    ├── Transportation/
+    │   └── ...
     ├── Cooperative/
     │   └── ...
     ├── Auth/
@@ -39,6 +43,13 @@ src/
 
 Each domain directory maps directly to the corresponding module code. Services within a domain directory may call other services within the same domain. Cross-domain calls (e.g., `InvoiceService` calling `GeneralLedgerService` to post a receivable) are explicitly modelled as inter-service dependencies registered in the container.
 
+For the industrial operating model, the service layer shall preserve these ownership boundaries:
+
+- `PLM` owns engineering items, revisions, changes, document control, and downstream release publication.
+- `Manufacturing` owns routings, production execution, work-centre operations, genealogy, quality execution, and costing.
+- `Transportation` owns shipment planning, dispatch, trip execution, proof capture, transport exceptions, and freight settlement.
+- `Assets` may expose vehicle-reference data to `Transportation`, but it does not own trip state or dispatch logic.
+
 ## 4.3 Dependency Injection Container
 
 All services are registered in `bootstrap/container.php` using PHP-DI 7.0. The container is the single authorised mechanism for resolving service instances. Direct `new ServiceClass()` instantiation outside the container is prohibited.
@@ -46,7 +57,7 @@ All services are registered in `bootstrap/container.php` using PHP-DI 7.0. The c
 Registration follows the constructor injection pattern:
 
 ```php
-// bootstrap/container.php (illustrative — prospective)
+// bootstrap/container.php (illustrative - prospective)
 $container->set(InvoiceService::class, function (Container $c) {
     return new InvoiceService(
         $c->get(TenantContext::class),
@@ -58,12 +69,12 @@ $container->set(InvoiceService::class, function (Container $c) {
 
 Services are injected into:
 
-1. API endpoint files under `public/api/[domain]/endpoint.php` — resolved from the container at the top of each file.
-2. Page handler files under `public/[domain]/page.php` — resolved from the container at the top of each file.
+1. API endpoint files under `public/api/[domain]/endpoint.php` - resolved from the container at the top of each file.
+2. Page handler files under `public/[domain]/page.php` - resolved from the container at the top of each file.
 
 ## 4.4 TenantContext Injection into Services
 
-Every service that accesses operational data shall receive `TenantContext` as the first constructor parameter. The service uses `$this->tenantContext->getTenantId()` as the value for the `tenant_id` clause on every SQL query. No service shall accept a `tenant_id` parameter from a caller — the tenant identity is always derived from the injected context.
+Every service that accesses operational data shall receive `TenantContext` as the first constructor parameter. The service uses `$this->tenantContext->getTenantId()` as the value for the `tenant_id` clause on every SQL query. No service shall accept a `tenant_id` parameter from a caller - the tenant identity is always derived from the injected context.
 
 ```php
 // Illustrative service constructor (prospective)
@@ -87,8 +98,8 @@ All REST API endpoints shall return responses using the `ApiResponse` class. The
 
 `ApiResponse` provides the following static factory methods:
 
-- `ApiResponse::success(mixed $data, int $httpCode = 200)` — returns a success envelope.
-- `ApiResponse::error(string $message, string $code, int $httpCode)` — returns an error envelope.
+- `ApiResponse::success(mixed $data, int $httpCode = 200)` - returns a success envelope.
+- `ApiResponse::error(string $message, string $code, int $httpCode)` - returns an error envelope.
 
 No endpoint shall write raw `echo json_encode(...)` output. All output is routed through `ApiResponse`.
 

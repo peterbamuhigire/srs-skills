@@ -2,11 +2,11 @@
 
 ## 1.1 Purpose
 
-This Software Requirements Specification (SRS) defines all functional and non-functional requirements for the Human Resources (HR) and Payroll module of Longhorn ERP. The document targets software engineers, QA analysts, and system architects responsible for implementing and verifying this module. All requirements are prospective and use the prescriptive form "The system shall...".
+This Software Requirements Specification (SRS) defines all functional and non-functional requirements for the Human Resources (HR) and Payroll module of Longhorn ERP. The document targets software engineers, QA analysts, system architects, and business stakeholders responsible for implementing and verifying this module. All requirements are prospective and use the prescriptive form "The system shall...".
 
 ## 1.2 Scope
 
-The HR and Payroll module governs the full employee lifecycle within Longhorn ERP: employee master data, organisational structure, leave management, attendance, payroll computation, statutory deductions, payslip generation, and bank/mobile-money salary disbursement.
+The HR and Payroll module governs the full employee lifecycle within Longhorn ERP: employee master data, organisational structure, job and position governance, leave management, attendance, payroll computation, payroll-governance controls, statutory deductions, payslip generation, manager and employee self-service, operational people analytics, and bank/mobile-money salary disbursement.
 
 The module integrates with:
 
@@ -14,8 +14,9 @@ The module integrates with:
 - **RBAC** — role-based access controls govern who may view payslips, run payroll, and approve leave.
 - **Audit Log** — every payroll run, approval, and employee data change is recorded immutably.
 - **Mobile API** — employee self-service features (leave requests, payslip download) are exposed via the JWT REST API.
+- **Localisation Engine** — jurisdiction-specific payroll statutory settings and filing routes are applied per tenant profile.
 
-The module does not cover sales commissions (Sales Agents module), procurement, or financial accounting beyond payroll GL posting.
+The module does not cover sales commissions (Sales Agents module), procurement, or financial accounting beyond payroll GL posting. Full recruiting, learning, succession, and broad talent-suite capabilities remain outside the current `HR_PAYROLL` scope unless explicitly added in a future module set.
 
 ## 1.3 Business Goals
 
@@ -25,6 +26,8 @@ The module does not cover sales commissions (Sales Agents module), procurement, 
 | BG-002 | Statutory compliance with Uganda (PAYE, NSSF, NITA), Kenya (PAYE, NHIF, NSSF), Tanzania (PAYE, PSSSF), and Rwanda (PAYE, RSSB). |
 | BG-003 | Employee self-service for payslips, leave, and attendance to reduce HR administrative load. |
 | BG-004 | Audit-ready payroll records retained per jurisdictional statutory requirements. |
+| BG-005 | Governed workforce structures, job and position controls, and accountable manager participation in workforce transactions. |
+| BG-006 | Reduced payroll-operating risk through controlled calendars, validation, variance review, and release governance. |
 
 ## 1.4 Applicable Standards and Regulations
 
@@ -70,5 +73,8 @@ The module does not cover sales commissions (Sales Agents module), procurement, 
 | 8 | Loans and Advances |
 | 9 | Exit Management |
 | 10 | Employee Self-Service |
+| 2A | Position and Workforce Governance |
+| 6A | Payroll Governance and Controls |
+| 10A | Manager Self-Service and Workforce Analytics |
 | 11 | Non-Functional Requirements |
 | 12 | Traceability Matrix |

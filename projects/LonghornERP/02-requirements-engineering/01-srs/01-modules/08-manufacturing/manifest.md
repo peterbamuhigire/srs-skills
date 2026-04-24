@@ -1,4 +1,4 @@
-00-cover.md
+﻿00-cover.md
 01-introduction.md
 02-bom.md
 03-production-orders.md
@@ -7,3 +7,5 @@
 06-finished-goods-byproducts.md
 07-costing-overhead.md
 08-scrap-nfrs.md
+09-mes-execution.md
+10-traceability.md

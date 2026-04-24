@@ -9,7 +9,7 @@ Longhorn ERP is a **cross-domain platform**. It does not belong to a single indu
 | Finance | Accounting & GL, Procurement, HR & Payroll, Asset Management | `domains/finance/INDEX.md` |
 | Retail | Sales, POS, Advanced Inventory, Sales Agents | `domains/retail/INDEX.md` |
 | Agriculture | Cooperative Procurement, Advanced Inventory (batch/serial for agro-processing) | `domains/agriculture/INDEX.md` |
-| Logistics | Advanced Inventory (inter-branch transfers, landed cost), Procurement | `domains/logistics/INDEX.md` |
+| Logistics | Advanced Inventory (inter-branch transfers, landed cost), Procurement, Supply Chain Planning, Transportation | `domains/logistics/INDEX.md` |
 | Government | Procurement (PPDA compliance), Audit Log (Uganda Companies Act), Governance | `domains/government/INDEX.md` |
 
 ## ERP-Specific Standards (No Domain File — Apply Directly)

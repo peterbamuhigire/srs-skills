@@ -1,0 +1,25 @@
+﻿# Module 17: Transportation and Fleet Operations - Functional Requirements
+
+## 2.1 FR-TMS-001: Shipment Demand Consolidation
+
+**FR-TMS-001:** When a sales order, purchase order, transfer order, or authorised manual transport request reaches a tenant-configurable state that requires physical movement, the system shall generate a shipment-order record containing source document reference, origin location, destination location, requested ship date, requested delivery date, weight, volume, handling constraints, and service priority. The system shall allow multiple shipment orders to remain unplanned until assigned to a load or route. The shipment-planning workbench shall display all unplanned shipment orders, filterable by branch, date, destination, and priority, within 2,000 ms at P95 for up to 10,000 open shipment orders per tenant.
+
+## 2.2 FR-TMS-002: Load, Route, and Stop Planning
+
+**FR-TMS-002:** When an authorised planner creates or edits a transport plan, the system shall allow the planner to group 1 or more shipment orders into a load and assign that load to a route containing 1 or more ordered stops. The route-planning function shall enforce configured vehicle or carrier capacity rules for weight, volume, and maximum stop count. If the planner attempts to assign shipment orders whose total required capacity exceeds the selected vehicle or carrier profile, the system shall block the save and display the blocking capacity dimension. Each planned route shall store planned departure time, planned arrival time per stop, route distance, assigned resource, and estimated trip cost.
+
+## 2.3 FR-TMS-003: Dispatch, Resource Assignment, and Availability Control
+
+**FR-TMS-003:** When a dispatcher releases a planned route for execution, the system shall require assignment of exactly 1 execution resource model: (a) internal vehicle and driver, or (b) external carrier and carrier contact. If an internal vehicle is selected, the system shall validate that the vehicle is not marked unavailable due to maintenance hold, expired insurance, or overlapping active trip assignment. If a driver is selected, the system shall validate that the driver is not already assigned to another active trip in the overlapping time window. Upon successful validation, the route shall transition from `planned` to `dispatched`, generate a trip record, and notify the assigned driver or carrier contact through the mobile or notification subsystem.
+
+## 2.4 FR-TMS-004: Milestone Visibility, ETA, and Exception Management
+
+**FR-TMS-004:** When a trip is active, the system shall track milestone events at minimum for `dispatched`, `departed_origin`, `arrived_stop`, `completed_stop`, and `closed`. The system shall compute and refresh ETA per remaining stop whenever a new milestone, location ping, or planner update is received. If the projected arrival time for any stop exceeds the planned arrival time by more than the tenant-configurable threshold (default: 30 minutes), the system shall create an exception-queue record with severity, route, stop, owner, reason code, and due-response timestamp. Severity shall be assigned at minimum as `low`, `medium`, or `high` based on service priority and delay magnitude. High-severity exceptions shall appear on the dispatcher dashboard within 5 seconds of trigger.
+
+## 2.5 FR-TMS-005: Proof Capture, Trip Closure, and Operational Costing
+
+**FR-TMS-005:** When a stop is completed, the system shall support proof capture by one or more of the following methods: customer signature, stamped document image, delivery photo, barcode or QR confirmation, or dispatcher override with mandatory reason. Upon trip closure, the system shall require capture of actual departure time, actual arrival time, delivered quantity variance if any, fuel cost if internally operated, tolls and route charges if any, and closing odometer reading for internal-fleet trips. The system shall compute actual trip cost as the sum of configured fixed trip cost, fuel cost, tolls, driver allowance, and any manually approved additional charge. A trip shall not transition to `closed` until every mandatory stop has status `completed`, `failed_delivery`, or `cancelled_with_reason`.
+
+## 2.6 FR-TMS-006: Freight Audit, Settlement, and Transport Analytics
+
+**FR-TMS-006:** When an external carrier invoice or internal trip settlement is submitted for a completed transport movement, the system shall compare the actual charge lines against the planned or contracted cost basis for that route, lane, carrier, or rate card. Any variance above the tenant-configurable tolerance (default: 5%) shall route the settlement into `audit_hold` and require finance or transport-manager approval with a mandatory reason before payment posting. For approved settlements, the system shall post the payable or internal cost allocation to Accounting and update transport analytics for lane, carrier, vehicle, branch, customer, and route profitability. Monthly transport-performance dashboards for up to 24 months of history shall load within 5 seconds at P95.

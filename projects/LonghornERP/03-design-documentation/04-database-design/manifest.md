@@ -1,4 +1,4 @@
-00-cover.md
+﻿00-cover.md
 01-overview.md
 02-core-infrastructure-tables.md
 03-accounting-tables.md
@@ -9,3 +9,7 @@
 08-views.md
 09-migrations-strategy.md
 10-indexing-strategy.md
+11-industrial-tables.md
+12-finance-operations-tables.md
+13-crm-service-tables.md
+14-workforce-planning-and-asset-tables.md

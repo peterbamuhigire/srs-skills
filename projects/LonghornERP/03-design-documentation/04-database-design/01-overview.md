@@ -1,4 +1,4 @@
-# Database Platform Overview
+﻿# Database Platform Overview
 
 ## Platform and Engine
 
@@ -14,7 +14,7 @@ This pattern is chosen over separate-database-per-tenant because it:
 - Allows a single migration run to upgrade all tenants simultaneously.
 - Enables cross-tenant analytics at the super-admin level without schema federation.
 
-The trade-off — that a misconfigured query could expose cross-tenant data — is mitigated by the following controls:
+The trade-off - that a misconfigured query could expose cross-tenant data - is mitigated by the following controls:
 
 - All data-access queries will be executed through a `QueryBuilder` base class that automatically appends `WHERE tenant_id = :tenant_id` to every query.
 - PHPStan static analysis rules will flag any SQL string that contains `FROM <table>` without a corresponding `tenant_id` binding.
@@ -32,4 +32,15 @@ Character set and collation will be enforced at the connection level with `SET N
 
 ## Transaction Boundaries
 
-All multi-table write operations — including General Ledger (GL) journal posting, payroll runs, stock movements, and invoice generation — will be wrapped in explicit database transactions. Any exception within the transaction boundary will trigger a full rollback, leaving no partial state in the database.
+All multi-table write operations - including General Ledger (GL) journal posting, payroll runs, stock movements, invoice generation, engineering release publication, production execution, and freight settlement - will be wrapped in explicit database transactions. Any exception within the transaction boundary will trigger a full rollback, leaving no partial state in the database.
+
+## Bounded Context Implications
+
+The database shall preserve the separation between engineering truth, execution truth, transport execution, and accounting truth.
+
+- `PLM` tables shall own engineering items, revisions, engineering BOMs, effectivity, controlled technical documents, ECR/ECO workflow state, and release publication history.
+- `MANUFACTURING` tables shall own production orders, routings, work centres, operation events, WIP state, genealogy links, quality execution events, downtime events, and production costing facts.
+- `TRANSPORTATION` tables shall own shipment orders, loads, routes, stops, dispatch records, trip events, transport exceptions, proof-of-delivery records, and freight-settlement records.
+- `ASSETS` tables shall continue to own the vehicle as a capital asset, including depreciation, maintenance history, insurance records, and tax treatment.
+
+Where the same physical object appears in multiple contexts, the schema shall use reference links rather than shared ownership. For example, a transport trip may reference a vehicle asset record, but trip status, dispatch state, and route execution history shall not be stored in the asset tables.

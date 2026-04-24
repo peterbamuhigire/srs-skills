@@ -13,13 +13,13 @@
 
 ## 1 Executive Summary
 
-Kulima is a multi-tenant Software-as-a-Service (SaaS) Farm Management Information System (FMIS) designed to replace paper-based and spreadsheet-based farm record-keeping for Ugandan farmers across the smallholder-to-commercial spectrum. The platform provides web and mobile applications (Android and iOS) covering crop management, livestock management, financial records, task and worker management, weather advisory, Internet of Things (IoT) sensor integration, live closed-circuit television (CCTV) surveillance, Global Positioning System (GPS) animal tracking, supply chain traceability, and an Artificial Intelligence (AI)-powered farm advisor. Built on the Chwezi Core framework (PHP 8.2 / MySQL 8.x), Kulima operates offline-first on low-specification Android devices, integrates mobile money payments natively, and targets a 4-phase rollout beginning with a Uganda-focused Minimum Viable Product (MVP) and expanding to East Africa, West Africa, and global markets.
+Kulima is a multi-tenant Software-as-a-Service (SaaS) farm operating system designed to replace fragmented paper, spreadsheet, and WhatsApp-based management for Ugandan farms across the smallholder-to-commercial spectrum. The product focus is management usefulness first: whole-farm planning, crop and livestock operations, labour control, procurement, inventory, post-harvest handling, finance, sales, and compliance. Advanced intelligence and hardware integrations remain part of the roadmap, but they are positioned as add-ons that strengthen a management core rather than define it. Built on the Chwezi Core framework (PHP 8.2 / MySQL 8.x), Kulima operates offline-first on low-specification Android devices, integrates mobile money natively, and targets a 4-phase rollout beginning with a Uganda-focused MVP and expanding to East Africa, West Africa, and global markets.
 
 ## 2 Market Context
 
 ### 2.1 Problem Space
 
-Ugandan farmers lack an affordable, offline-capable, mobile-money-integrated farm management system that handles both crops and livestock in a single application. Record-keeping remains predominantly paper-based, resulting in data loss, inability to calculate enterprise profitability, missed veterinary schedules, and exclusion from formal credit markets due to absent financial documentation. Commercial farms rely on fragmented spreadsheets managed by periodic accountant visits, preventing real-time operational visibility.
+Ugandan farmers, especially commercial and growth-stage farms, lack an affordable, offline-capable, mobile-money-integrated system that connects planning, execution, control, and analysis in one application. Record-keeping remains predominantly paper-based or spreadsheet-based, which results in data loss, poor procurement control, weak labour accountability, limited stock visibility, delayed financial reporting, and exclusion from formal credit and premium buyer channels. Commercial farms often rely on fragmented spreadsheets managed by periodic accountant visits, preventing real-time operational visibility and making it difficult to manage the full loop from enterprise plan to harvest to sale.
 
 ### 2.2 Target Market Segments
 
@@ -42,7 +42,7 @@ Ugandan farmers lack an affordable, offline-capable, mobile-money-integrated far
 | iKnowFarm | [COST-TBD] | Advisory focus | Narrow scope, no integrated farm management |
 | FarmTrace | [COST-TBD] | Supply chain traceability | Traceability-only, no operational farm management |
 
-Kulima differentiates by combining crop management, livestock management, IoT integration, CCTV surveillance, GPS tracking, supply chain traceability, financial records, and AI advisory in one platform at price points starting from free tier to UGX 40,000/month, with offline-first architecture and native mobile money integration.
+Kulima differentiates by combining whole-farm planning, crop and livestock operations, labour control, procurement, finance, commercial execution, traceability, and optional intelligence in one platform at price points starting from a free tier to UGX 40,000/month, with offline-first architecture and native mobile money integration.
 
 ## 3 Product Objectives
 
@@ -50,11 +50,12 @@ Each objective derives from a business goal stated in the project vision and fol
 
 | ID | Objective | Metric | Target | Timeline |
 |---|---|---|---|---|
-| OBJ-01 | Replace paper-based record-keeping for Ugandan smallholder farmers with a digital system that functions at full capacity with zero internet connectivity | Number of paying farmers on the platform | 100 paying farmers | Within 6 months of development start |
-| OBJ-02 | Provide commercial farms and cooperatives with enterprise-grade financial reporting that meets bank loan evaluation criteria | Bank-ready reports generated and accepted by at least 1 lending institution | [METRIC-TBD] acceptance rate | Phase 2 completion |
-| OBJ-03 | Integrate IoT sensor data (Jaguza ear tags), live CCTV surveillance, and GPS animal tracking into a single farm dashboard | Number of IoT-connected farms | [METRIC-TBD] | Phase 3 completion |
-| OBJ-04 | Enable AI-powered pest/disease identification with photo-based diagnosis and personalised farm advisory | Diagnosis accuracy rate vs. extension officer confirmation | [METRIC-TBD] accuracy threshold | Phase 3 completion |
-| OBJ-05 | Achieve UGX 4M Monthly Recurring Revenue (MRR) in Phase 1, scaling to UGX 150M MRR by Phase 4 | MRR in UGX | Phase 1: UGX 4M, Phase 2: UGX 20M, Phase 3: UGX 60M, Phase 4: UGX 150M | Phase 1: Month 6, Phase 4: [METRIC-TBD] end date |
+| OBJ-01 | Replace fragmented paper, spreadsheet, and WhatsApp-based farm records with a digital system that functions offline on low-spec mobile devices | Number of paying farmers on the platform | 100 paying farmers | Within 6 months of development start |
+| OBJ-02 | Give commercial farms and cooperatives a usable whole-farm planning and enterprise budget workflow | Percentage of pilot commercial tenants maintaining monthly budget vs actuals | 70% of pilot commercial tenants | Within 3 months of pilot onboarding |
+| OBJ-03 | Provide commercial farms and cooperatives with bank-ready and buyer-ready reporting generated from live farm records | Reports accepted by at least 2 lending or buyer stakeholders | [METRIC-TBD] acceptance rate | Phase 2 completion |
+| OBJ-04 | Reduce commercial leakage through procurement, stock, and post-harvest controls | Unexplained stock variance on pilot commercial farms | < 5% variance | Phase 2 completion |
+| OBJ-05 | Enable AI-powered pest/disease identification and personalised farm advisory as optional add-ons to a proven management core | Number of active AI-enabled tenants and diagnosis accuracy | [METRIC-TBD] | Phase 3 completion |
+| OBJ-06 | Achieve UGX 4M Monthly Recurring Revenue (MRR) in Phase 1, scaling to UGX 150M MRR by Phase 4 | MRR in UGX | Phase 1: UGX 4M, Phase 2: UGX 20M, Phase 3: UGX 60M, Phase 4: UGX 150M | Phase 1: Month 6, Phase 4: [METRIC-TBD] end date |
 
 ## 4 Target Users and Personas
 
@@ -119,11 +120,14 @@ Each objective derives from a business goal stated in the project vision and fol
 
 | Feature | Description | Priority | Effort | Value | MoSCoW | Rationale |
 |---|---|---|---|---|---|---|
+| Whole-Farm Planning and Performance Management | Annual and seasonal farm plans, enterprise selection, target yields, resource allocation, enterprise budgets, KPI tracking, and management review workspace | Critical | M | High | Must | Commercial farms need a planning and control layer before advanced add-ons become useful |
 | Farm and Plot Management | Farm registration, land mapping, plot subdivision, 25+ plot types, Uganda administrative hierarchy, land tenure recording, acre/hectare conversion | Critical | L | High | Must | Foundation module; all other modules depend on farm and plot entities |
 | Crop Management | Full crop lifecycle (plan-plant-activity-harvest), 200+ crop library with local names, variety tracking, season planning, activity logging (20+ types), input tracking, health monitoring with photo upload, harvest records with quality grading, yield analysis, crop rotation planner, MAAIF crop calendar, Uganda cash crop pre-configuration, pest/disease alerts | Critical | XL | High | Must | Core value proposition for crop farmers; largest user segment |
 | Livestock Management | Individual animal tracking and herd/flock management for 12+ species, breed tracking with benchmarks, health events (vaccination, treatment, deworming), reproductive events, production records (milk, eggs, honey), feeding records, movement log, sales/mortality, herd summary dashboard, Uganda-specific breed metrics and disease library | Critical | XL | High | Must | Core value proposition for livestock farmers; combined crop+livestock differentiates from competitors |
 | Basic Financial Records | Income/expense recording with categories, expense-to-activity linking, budget planning, budget vs actuals, profitability per enterprise, cash flow summary, market price recording, loan tracking, input cost auto-calculation, receipt photo upload, PDF/Excel export, invoice generation, mobile money payment tracking, SACCO loan formats, multi-currency support, bank loan credibility report | Critical | L | High | Must | Enables loan applications; direct revenue impact for farmers |
+| Procurement and Supplier Controls | Supplier register, purchase requests, approvals, purchase orders, receipt capture, category discipline, and requested vs received vs paid visibility | Critical | M | High | Must | Commercial usefulness depends on controlling leakage and purchase flow, not only recording expenses after the fact |
 | Task and Worker Management | Task creation with plot/worker assignment, mobile task completion, daily work log, worker profiles with payment details, payroll calculation/export, calendar view, recurring tasks, Kanban board, activity planner with reminders, casual worker mobile money payment, NSSF/PAYE for permanent staff | Critical | L | High | Must | Addresses verified worker hours pain point; operational efficiency |
+| Sales, Post-Harvest, and Customer Management | Produce allocation, customer records, invoices, delivery scheduling, contract tracking, basic receivables, and dispatch readiness from available stock | Critical | M | High | Must | Commercial farms need visibility from harvest to cash collection, not only production records |
 | Weather, Climate, and Advisory | Farm-specific weather forecast (3-day free, 8-day paid), real-time weather per farm GPS, weather alerts (SMS/push), historical data, climate-smart advisory, frost alerts, irrigation scheduling, Uganda Met Authority integration, agro-ecological zone awareness, El Nino/La Nina alerts | High | M | High | Must | Low-effort, high-value feature; differentiator for smallholders |
 | User Roles and Authentication | Dual-auth (session + JWT), RBAC (Farm Owner, Farm Manager, Worker), multi-tenant isolation, subscription tier enforcement at API level | Critical | M | High | Must | Security and multi-tenancy foundation; required for all user types |
 | Notifications | SMS via Africa's Talking, push via Firebase Cloud Messaging; types: weather alerts, task reminders, low stock alerts, expiry alerts, payment confirmations | High | M | Medium | Must | Engagement driver; critical for time-sensitive alerts (weather, tasks) |
@@ -138,11 +142,11 @@ Each objective derives from a business goal stated in the project vision and fol
 |---|---|---|---|---|---|---|
 | GPS Polygon Farm/Plot Boundary Mapping | Google Maps SDK boundary drawing by walking perimeter or satellite imagery, GeoJSON storage, plot subdivision with labelled geo-polygons, farm overview map with colour-coded plots | High | L | High | Should | Required for EUDR compliance and cooperative member mapping |
 | NDVI Satellite Crop Health Analysis | Sentinel-2 free satellite imagery via Google Earth Engine API, crop health colour-coding on farm map | High | M | Medium | Should | Proactive crop health monitoring; uses free data source |
-| Inventory and Input Management | Input inventory (seeds, fertilisers, pesticides, feed, medicine), stock receipts with supplier/batch/expiry, automatic stock deduction on activity logging, low stock and expiry alerts, equipment/tools inventory with maintenance and fuel log, harvest produce inventory per storage, post-harvest loss tracking, NAADS input voucher tracking, agro-dealer directory | High | L | High | Should | Reduces input waste; enables traceability; supports cooperative input distribution |
-| Supply Chain Traceability | Batch creation from harvest with origin plot(s) and quality grade, chain of custody (farm-collection-processor-exporter), QR code generation, GPS polygon export as GeoJSON for EUDR, farmer profile for buyers, input traceability per batch, certification tracking (organic, RainForest Alliance, UTZ, GlobalGAP, FairTrade), deforestation-free verification against Global Forest Watch baseline, EUDR DDS generation, buyer portal (read-only), coffee EUDR compliance, UEPB requirements | High | XL | High | Should | Directly addresses Van der Berg persona; regulatory compliance driver |
-| Marketplace and Market Linkage | Produce and livestock listings, buyer search by crop/location, market price database (all major Uganda markets), price alerts, agro-dealer directory, vet/extension directory, transport matching, order management, verified reviews, district-level prices, WhatsApp direct link, cooperative bulk sales aggregation | High | XL | Medium | Should | Revenue diversification; farmer income optimisation through price transparency |
+| Advanced Inventory, Packhouse, and Asset Operations | Stock receipts with lot control, automatic deduction, low stock and expiry alerts, chemical withholding windows, produce inventory by store, equipment maintenance, fuel log, asset utilisation, and post-harvest loss tracking | High | L | High | Should | Extends Phase 1 controls into full commercial operations and auditability |
+| Supply Chain Traceability and Compliance | Batch creation, chain of custody, QR codes, GeoJSON export, buyer portal, certification tracking, deforestation checks, dispatch compliance gates, and EUDR DDS generation | High | XL | High | Should | Directly addresses export-market requirements and premium buyer trust |
+| Marketplace and Commercial Execution | Produce and livestock listings, buyer search, market price database, price alerts, order management, sales contracts, delivery scheduling, customer account management, and cooperative bulk sales support | High | XL | Medium | Should | Extends production visibility into repeatable market execution and cash collection |
 | Cooperative Module | Cooperative as single franchise tenant with multiple member farms, member registration, GPS farm mapping via field agent app, bulk input distribution tracking, collection centre management (weigh, record, grade), quality grading, member payment calculation with mobile money bulk disbursement, aggregate supply reports, compliance monitoring, field agent app, farmer performance ranking, primary society to apex body hierarchy, NAADS/OWC structure, MTN/Airtel bulk payment APIs | High | XL | High | Should | High-value segment; single cooperative = hundreds of paying member accounts |
-| Advanced Financial Records (Dual-Mode) | Simple Mode ("Money in/out/owe/owed") default for all users; Advanced Mode: chart of accounts, double-entry journal, trial balance, income statement, balance sheet, cash flow, farm-specific chart of accounts, bank reconciliation, investor/director reporting, tax computation, PAYE/NSSF | High | XL | High | Should | Serves both smallholder simplicity and commercial farm accounting requirements |
+| Advanced Financial Records and Scenario Planning | Simple Mode ("Money in/out/owe/owed") default for all users; Advanced Mode: chart of accounts, double-entry journal, trial balance, income statement, balance sheet, cash flow, bank reconciliation, scenario planning, and capital investment evaluation | High | XL | High | Should | Serves both smallholder simplicity and commercial-farm management analysis requirements |
 | iOS App | SwiftUI, SwiftData, same offline-first architecture as Android | High | XL | Medium | Should | Serves Mugisha Robert and Katumba James personas (iPhone users) |
 | Remaining Languages | French, Portuguese, Kinyarwanda added to complete 6-language launch set | Medium | M | Medium | Should | Required for Kenya, Tanzania, Rwanda, DRC expansion |
 
@@ -176,10 +180,13 @@ Each objective derives from a business goal stated in the project vision and fol
 |---|---|---|---|---|
 | Monthly Recurring Revenue (MRR) | UGX 0 | Phase 1: UGX 4M, Phase 2: UGX 20M, Phase 3: UGX 60M, Phase 4: UGX 150M | Subscription payment records in billing system | Phase 1: Month 6, Phase 2: Month 12, Phase 3: Month 18, Phase 4: Month 24 [METRIC-TBD: confirm phase end dates] |
 | Paying farmer count | 0 | Phase 1: 100, Phase 2: 500, Phase 3: 1,500, Phase 4: 5,000 [METRIC-TBD: confirm Phase 2-4 targets] | Active subscription count in tenant database | Aligned with MRR timeline |
+| Commercial pilot budget adoption | 0 | 70% of pilot commercial farms maintain monthly budget vs actuals for 3 consecutive months | Budget records and month-end close activity logs | Phase 1 Month 3 onward |
+| Enterprise gross margin coverage | 0 | 90% of active pilot enterprises have monthly gross margin reports | Enterprise profitability report generation log | Phase 1 Month 3 onward |
+| Unexplained stock variance | [BASELINE-TBD] | < 5% on pilot commercial farms | Cycle count variance reports by item and location | Phase 2 completion |
+| On-time critical task completion | [BASELINE-TBD] | >= 90% | Task due date vs completion timestamp analysis | Phase 1 launch onward |
 | Offline sync success rate | [BASELINE-TBD] | 99.5% of queued records sync within 30 seconds of connectivity | Sync completion logs with timestamp delta analysis | Phase 1 launch onward |
-| Cooperative member onboarding rate | 0 cooperatives | 5 cooperatives with 500+ total member farmers | Cooperative tenant count and member registration records | Phase 2 completion |
-| EUDR compliance reports generated | 0 | 50 EUDR DDS reports generated for export batches | Report generation audit log | Phase 2 completion |
 | API response time (P95) | [BASELINE-TBD] | < 500ms for CRUD operations under 1,000 concurrent users | Server-side request duration logging at P95 percentile | Phase 1 launch onward |
+| EUDR compliance reports generated | 0 | 50 EUDR DDS reports generated for export batches | Report generation audit log | Phase 2 completion |
 | User retention (30-day) | [BASELINE-TBD] | 70% of registered farmers return within 30 days of first use [METRIC-TBD: confirm target] | Login event analysis: distinct users with activity in days 2-30 after registration | Phase 1 Month 3 onward |
 
 ## 7 Constraints and Dependencies
@@ -327,21 +334,21 @@ Each objective derives from a business goal stated in the project vision and fol
 
 ### 8.1 Phase 1 -- MVP (Core Modules)
 
-- **Scope:** Farm and plot management, crop management, livestock management, basic financial records, task and worker management, weather and advisory, user roles and authentication, notifications, offline-first Android app, web dashboard, mobile money subscription payment, 3 languages (English, Luganda, Swahili)
+- **Scope:** Whole-farm planning and performance management, farm and plot management, crop management, livestock management, basic financial records, procurement and supplier controls, task and worker management, sales/post-harvest/customer basics, weather and advisory, user roles and authentication, notifications, offline-first Android app, web dashboard, mobile money subscription payment, 3 languages (English, Luganda, Swahili)
 - **Target:** 100 paying farmers, UGX 4M/month MRR
 - **Market:** Uganda
 - **Timeline:** 6 months from development start [METRIC-TBD: confirm start date]
 
 ### 8.2 Phase 2 -- Growth
 
-- **Scope:** GPS polygon mapping, NDVI satellite analysis, inventory and input management, supply chain traceability (EUDR), marketplace and market linkage, cooperative module, advanced financial records (dual-mode), iOS app, remaining 3 languages (French, Portuguese, Kinyarwanda)
+- **Scope:** GPS polygon mapping, advanced inventory/packhouse/asset operations, supply chain traceability (EUDR), marketplace and commercial execution, cooperative module, advanced financial records and scenario planning, NDVI satellite analysis, iOS app, remaining 3 languages (French, Portuguese, Kinyarwanda)
 - **Target:** UGX 20M/month MRR, 5 cooperatives onboarded
 - **Market:** Uganda + Kenya, Tanzania, Rwanda (configuration only)
 - **Timeline:** Months 7-12 [METRIC-TBD: confirm timeline]
 
 ### 8.3 Phase 3 -- IoT and Surveillance
 
-- **Scope:** Jaguza IoT integration (add-on), GPS animal tracking (add-on), live farm camera surveillance (add-on), AI farm advisor (add-on), drone imagery integration, soil sensor integration, on-farm weather station integration
+- **Scope:** AI farm advisor (add-on), Jaguza IoT integration (add-on), GPS animal tracking (add-on), live farm camera surveillance (add-on), drone imagery integration, soil sensor integration, on-farm weather station integration
 - **Target:** UGX 60M/month MRR
 - **Market:** Uganda, Kenya, Tanzania, Rwanda
 - **Timeline:** Months 13-18 [METRIC-TBD: confirm timeline]

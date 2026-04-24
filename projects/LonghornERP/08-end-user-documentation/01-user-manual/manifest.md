@@ -8,3 +8,5 @@
 07-pos-cashier.md
 08-field-agent.md
 09-system-administrator.md
+10-supply-chain-planner.md
+11-asset-manager.md
