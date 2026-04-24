@@ -18,6 +18,8 @@ metadata:
 
 Produces a complete UX specification document that bridges user research insights and engineering implementation. The output includes information architecture diagrams (Mermaid flowcharts), wireframing standards across three fidelity levels, design system token definitions, usability testing protocols with quantitative metrics, and developer-ready design handoff specifications. This skill draws on ISO 9241-210 (Human-centred design for interactive systems), ISO 25010 (Systems and software quality models), and principles from "The Effective Product Designer" and "Design for How People Think" (John Whalen).
 
+The UX specification must treat the design system as a maintained product, not a style appendix. Token layers, component contracts, source-of-truth expectations, and governance responsibilities are part of the specification.
+
 ## When to Use
 
 - After `HLD.md` exists in `projects/<ProjectName>/<phase>/<document>/` and identifies user-facing components.
@@ -74,6 +76,8 @@ Capture the plugin's UI/UX recommendation and incorporate it into all subsequent
 ### Step 1: Read Context Files
 
 Read `SRS_Draft.md` and `HLD.md` from `projects/<ProjectName>/<phase>/<document>/`. Read `vision.md`, `features.md`, `stakeholder_register.md`, and `user_stories.md` from `projects/<ProjectName>/_context/`. Log the absolute path of each file read. If `SRS_Draft.md` is missing, fall back to `user_stories.md`. If both are missing, halt execution and report the gap. If `HLD.md` or `vision.md` is missing, halt execution and report the gap. If `features.md` or `stakeholder_register.md` is missing, log a warning and proceed with available data.
+
+If an existing product or prior UI exists, document a lightweight UI audit before defining the new system: duplicated components, inconsistent states, token drift, and known design debt.
 
 ### Step 2: Generate Information Architecture
 
@@ -143,6 +147,8 @@ For each UI component, document:
 | Props | Configurable properties with types and defaults |
 | Usage Guidelines | When to use and when not to use |
 | Accessibility | ARIA roles, keyboard behavior, screen reader announcements |
+| Ownership | Which team or role approves changes |
+| Source of Truth | Where the canonical implementation/documentation lives |
 
 **4.3 Pattern Library**
 
@@ -150,6 +156,16 @@ For each UI component, document:
 - **Form Patterns:** Single-page form, multi-step wizard, inline editing, search with filters.
 - **Navigation Patterns:** Sidebar, top bar, tab bar, breadcrumb, mega menu.
 - **Data Display Patterns:** Data table, card grid, timeline, tree view, chart dashboard.
+
+**4.4 Governance And Source Of Truth**
+
+The specification shall define:
+
+- where the canonical design-system truth lives
+- how design files, code, and documentation stay aligned
+- who can add or change a component
+- the review path for new variants or states
+- how deprecated components are retired
 
 See `references/design-system-guide.md` for token taxonomy and documentation templates.
 
