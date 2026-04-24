@@ -2,11 +2,18 @@
 from __future__ import annotations
 import re
 from engine.artifact_graph import Artifact, ArtifactGraph
+from engine.checks.design_sufficiency import DesignSufficiencyCheck
 from engine.findings import Finding, FindingCollection, Severity
 from engine.gates.base import Gate
 from engine.gates._shared import ClauseRef, attach_clause
 
-_CLAUSE = ClauseRef("ISO/IEC/IEEE 42010:2011", "5.3")
+_CLAUSE_ADR = ClauseRef("ISO/IEC/IEEE 42010:2011", "5.3")
+_CLAUSE_INTERFACES = ClauseRef("ISO/IEC/IEEE 42010:2011", "5.4")
+_CLAUSE_DATA = ClauseRef("ISO/IEC/IEEE 42010:2011", "5.5")
+_CLAUSE_NFR_LINKS = ClauseRef("ISO/IEC/IEEE 42010:2011", "5.3.1")
+_CLAUSE_SUFFICIENCY = ClauseRef("ISO/IEC/IEEE 42010:2011", "5.3.1")
+_CLAUSE_THREAT = ClauseRef("ISO/IEC/IEEE 42010:2011", "5.3.2")
+_CLAUSE_IOT = ClauseRef("ISO/IEC/IEEE 42010:2011", "5.5")
 
 _ADR_DIR_TOKEN = "/adr/"
 _ADR_ID_PREFIX = "ADR-"
@@ -48,6 +55,7 @@ class Phase03Gate(Gate):
         self._check_interfaces_have_contracts(graph, findings)
         self._check_data_model_has_keys(graph, findings)
         self._check_nfrs_link_to_design_choices(graph, findings)
+        self._check_requirements_have_design_evidence(graph, findings)
         self._check_security_threat_model_present(graph, findings)
         self._check_iot_signal_inventory_present(graph, findings)
 
@@ -70,7 +78,7 @@ class Phase03Gate(Gate):
             ),
             location=None,
             line=None,
-        ), _CLAUSE))
+        ), _CLAUSE_ADR))
 
     # -- Check 2: interfaces have contracts ------------------------------
     def _check_interfaces_have_contracts(
@@ -95,7 +103,7 @@ class Phase03Gate(Gate):
                     ),
                     location=art.path,
                     line=None,
-                ), _CLAUSE))
+                ), _CLAUSE_INTERFACES))
 
     # -- Check 3: data model has keys ------------------------------------
     def _check_data_model_has_keys(
@@ -117,7 +125,7 @@ class Phase03Gate(Gate):
                 ),
                 location=art.path,
                 line=None,
-            ), _CLAUSE))
+            ), _CLAUSE_DATA))
 
     # -- Check 4: NFRs link to design choices ----------------------------
     def _check_nfrs_link_to_design_choices(
@@ -145,9 +153,20 @@ class Phase03Gate(Gate):
                 ),
                 location=None,
                 line=None,
-            ), _CLAUSE))
+            ), _CLAUSE_NFR_LINKS))
 
-    # -- Check 5: security threat model present --------------------------
+    # -- Check 5: FRs have concrete design evidence ----------------------
+    def _check_requirements_have_design_evidence(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        tmp = FindingCollection()
+        DesignSufficiencyCheck(
+            f"{self.id}.requirements_have_design_evidence"
+        ).run(graph, tmp)
+        for f in tmp:
+            findings.add(attach_clause(f, _CLAUSE_SUFFICIENCY))
+
+    # -- Check 6: security threat model present --------------------------
     def _check_security_threat_model_present(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
@@ -169,9 +188,9 @@ class Phase03Gate(Gate):
             ),
             location=None,
             line=None,
-        ), _CLAUSE))
+        ), _CLAUSE_THREAT))
 
-    # -- Check 6: IoT signal inventory present ---------------------------
+    # -- Check 7: IoT signal inventory present ---------------------------
     def _check_iot_signal_inventory_present(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
@@ -203,4 +222,4 @@ class Phase03Gate(Gate):
             ),
             location=None,
             line=None,
-        ), _CLAUSE))
+        ), _CLAUSE_IOT))

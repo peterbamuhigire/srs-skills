@@ -2,275 +2,132 @@
 
 ## System-Level Priorities
 
-### 1. Build a Canonical Artifact Graph
+### 1. Deepen the Existing Validation Kernel
 
-Create a project-wide metadata model that tracks:
+The repository no longer needs a first validation kernel. It has one. The next step is to deepen it.
 
-- artifact type
-- artifact ID
-- source inputs
-- downstream dependencies
-- version/baseline
-- methodology applicability
-- review status
-- trace links
+Priority areas:
 
-This should become the engine’s control plane. Every generated artifact should register into this graph.
+- semantic requirement-quality checks
+- requirement-to-design sufficiency checks
+- requirement-to-test-result linkage
+- release/runtime evidence ingestion
+- stronger clause-level standards proofs
 
 Why this matters:
 
-- enables deterministic traceability
-- supports change impact analysis
-- allows gate enforcement across phases
-- makes Hybrid execution real instead of conceptual
+- the current engine is strong at structure and governance
+- the next maturity step is substantive assurance
 
-### 2. Replace Advisory Quality Gates with Enforced Gates
+### 2. Extend the Artifact Graph into a Richer Assurance Graph
 
-Current gates are mostly prose. Convert them into executable checks:
+The current artifact graph is a real foundation. Expand it to track:
 
-- required section validation
-- placeholder/TBD detection
-- glossary consistency checks
-- identifier uniqueness checks
-- trace coverage thresholds
-- NFR measurability checks
-- threshold conflict detection
-- missing dependency detection
+- artifact class and subtype
+- review state and approver state
+- baseline lineage
+- trace categories
+- evidence attachments
+- implementation/runtime references
 
-Gate outputs should be machine-readable and block downstream progression unless explicitly waived.
+This should become the basis for deeper impact analysis and evidence reasoning.
 
-### 3. Unify the Pathing Model
+### 3. Finish Pathing and Skill-Layer Normalization
 
-Pick one canonical runtime model and continue refactoring skill-local assets toward it.
+The canonical pathing model is much clearer now. Keep migrating skill-local assets and helper prompts so the whole repository behaves consistently under the current workspace/runtime model.
 
-Recommended model:
+### 4. Add First-Class Validation Outputs
 
-- `projects/<ProjectName>/_context/`
-- `projects/<ProjectName>/<phase>/<document>/`
-- `projects/<ProjectName>/artifacts/metadata/`
-- `projects/<ProjectName>/build/`
-
-Current status:
-
-- root docs and repository protocols now treat this as the canonical model
-- legacy `../project_context/` and `../output/` references are now explicitly documented as compatibility aliases
-
-Next update targets:
-
-- all SKILL files
-- scripts
-- helper prompts and templates that still imply the legacy model
-
-This remains foundational. The ambiguity is reduced, but full automation and trust still require skill-level cleanup and stronger runtime abstraction.
-
-### 4. Create a Single Validation Kernel
-
-Consolidate assurance logic currently scattered across:
-
-- semantic auditing
-- requirements validation
-- traceability engineering
-- requirements metrics
-- phase 09 governance
-
-into a shared validation engine with pluggable rules per artifact type.
-
-Recommended outputs:
+The engine already emits machine-actionable pass/fail behaviour. Make the validation outputs richer and more reusable:
 
 - `validation-report.json`
 - `validation-report.md`
 - `gate-status.json`
-- `waivers.md`
+- `evidence-index.json`
+
+That will improve CI use, review-pack generation, and downstream integrations.
 
 ## Skill-Level Improvements
 
 ### 1. Strengthen Requirements Generation
 
-For Waterfall and Agile alike:
-
-- require stable identifiers at first creation
-- add explicit source references for every requirement
-- require inline acceptance/test oracle stubs
-- require rationale for priority and scope classification
-- detect compound requirements automatically
+- require stable IDs at first creation
+- require explicit source/rationale fields
+- require acceptance or verification intent on creation
+- detect compound and weak requirements more aggressively
 
 ### 2. Strengthen Design Generation
 
-Update HLD and LLD to require:
-
-- architecture decision records
-- rejected alternatives
-- design rationale blocks
-- interface responsibility mapping
-- testability and operability considerations per design component
+- require ADR use for significant design choices
+- require rejected alternatives where trade-offs matter
+- require operability and testability notes per major component
 
 ### 3. Strengthen Testing Documentation
 
-Phase 05 now follows ISO/IEC/IEEE 29119-3 with deterministic gate checklists, incident logs, and completion reports, but the rest of the engine needs similar clause-level proof. Build on the existing improvements by:
-
-- formalizing technique selection and tracing it to the deterministic checklist
-- documenting regression, UAT, and Test Data Management sections per 29119-3
-- embedding incident reporting and test completion reporting templates inside every project workspace
-- codifying explicit environment/automation fidelity controls linked to the strategy
+- bind tests more tightly to requirement IDs and result evidence
+- add stronger environment fidelity controls
+- ingest actual result artifacts where possible
 
 ### 4. Strengthen Compliance Documentation
 
-Compliance docs should map:
-
-- obligation
-- control
-- requirement
-- design element
-- verification/test evidence
-- operational evidence owner
-
-Without this, compliance output remains mostly narrative.
+- extend obligation-to-control-to-requirement-to-test-to-evidence chains
+- deepen domain control libraries and review obligations
 
 ### 5. Strengthen End-User Documentation
 
-Add stronger operating rules for:
+- add task-verification workflows
+- add release-note consistency checks
+- add audience and usability validation metadata
 
-- information architecture
-- persona-specific onboarding
-- task-first organization
-- procedure verification walk-throughs
-- release-to-user-doc consistency checks
+## New Capabilities to Add
 
-## New Skills to Add
-
-### 1. ADR Tracking
+### 1. Requirements-to-Code Traceability
 
 Purpose:
 
-- record architecture decisions, alternatives, trade-offs, approval state, and impacted artifacts
+- connect requirement IDs to modules, APIs, schema objects, tests, and releases
 
 Why:
 
-- essential for enterprise architecture and regulated design review
+- this is now the clearest missing segment in the assurance chain
 
-### 2. Change Impact Analysis
+### 2. Runtime Evidence Integration
 
 Purpose:
 
-- evaluate the downstream impact of requirement, design, or compliance changes
+- connect monitoring, release markers, incident reports, and operational checks back to documented controls and requirements
 
 Why:
 
-- critical for maintenance, governance, and audit defensibility
+- world-class status requires proof beyond static documents
 
-### 3. Requirements-to-Code Traceability
+### 3. Richer Standards Proof Packs
 
 Purpose:
 
-- map requirement IDs to implementation modules, APIs, schema objects, tests, and deployment controls
+- generate clause-oriented evidence views for standards and regulatory reviews
 
 Why:
 
-- closes the biggest current enterprise traceability gap
+- this is the most direct path from strong governance tooling to audit-grade defensibility
 
-### 4. Documentation Consistency Engine
+### 4. Semantic Consistency and Sufficiency Checks
 
 Purpose:
 
-- scan the entire artifact set for terminology drift, conflicting thresholds, duplicate requirements, broken links, and missing references
+- detect contradictions, weak coverage, shallow verification, and likely false completeness across the artifact estate
 
 Why:
 
-- this is required for repeatable enterprise quality
-
-### 5. Compliance Control Library
-
-Purpose:
-
-- provide reusable, domain-specific control catalogs and evidence expectations
-
-Suggested domains:
-
-- healthcare
-- finance
-- government/public sector
-- privacy/data protection
-
-### 6. Formal Review Pack Generator
-
-Purpose:
-
-- assemble PSR/CSR/release-review evidence packs including findings, waivers, signatures, open risks, and trace summaries
-
-Why:
-
-- directly supports regulated and enterprise governance workflows
-
-### 7. Baseline and Delta Comparator
-
-Purpose:
-
-- compare document versions, show semantic changes, update impacted trace links, and preserve approved history
-
-Why:
-
-- world-class documentation systems are iterative, not one-shot
-
-## System Redesign Recommendations
-
-### 1. Move from Prompt-Centric to Model-Centric Generation
-
-Introduce structured intermediate representations for:
-
-- requirements
-- interfaces
-- controls
-- tests
-- risks
-
-Generate final documents from these models rather than composing everything directly from prose prompts.
-
-### 2. Introduce Artifact Schemas
-
-Define schemas for each artifact type so the engine can validate:
-
-- mandatory fields
-- identifier patterns
-- allowed statuses
-- required links
-- phase-specific entry and exit criteria
-
-### 3. Add Waiver and Exception Management
-
-Any enterprise-grade system needs formal handling for:
-
-- accepted deficiencies
-- deferred controls
-- partial compliance
-- risk ownership
-
-### 4. Add Methodology Synchronization Rules
-
-For Hybrid delivery, define exactly how:
-
-- PRD objectives feed backlog epics
-- formal requirements map to user stories
-- agile increments update design baselines
-- governance consumes both formal and agile artifacts
-
-### 5. Add Evidence-Oriented Domain Packages
-
-Each regulated domain should include:
-
-- control catalog
-- required artifacts
-- required review gates
-- test obligations
-- audit evidence checklist
-- common failure patterns
+- the engine already checks shape well; it now needs deeper content reasoning
 
 ## Implementation Order
 
-1. Unify paths and runtime model
-2. Build canonical artifact graph
-3. Build shared validation kernel
-4. Add consistency engine and delta comparison
-5. Add ADR, change impact, and code-traceability skills
-6. Deepen regulated-domain control libraries
+1. Deepen the existing validation kernel
+2. Expand the artifact graph into a richer assurance graph
+3. Finish pathing and skill-layer normalization
+4. Add first-class validation output artifacts
+5. Add requirements-to-code and runtime evidence tracing
+6. Deepen standards proof and domain control packs
 
-That sequence turns the repository from a strong documentation framework into a true documentation intelligence platform.
+That sequence builds on the engine that already exists instead of redesigning from scratch.

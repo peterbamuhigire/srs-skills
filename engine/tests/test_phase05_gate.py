@@ -45,8 +45,8 @@ def test_passes_when_test_case_has_all_required_keys(tmp_path):
         "05-testing-documentation/test-plan/tc.md": (
             "---\n"
             "phase: '05'\n"
-            "inputs: ['x']\n"
-            "expected_results: ['y']\n"
+            "inputs: ['valid claim payload']\n"
+            "expected_results: ['claim stored']\n"
             "requirement_trace: ['FR-001']\n"
             "---\n"
             "- **TC-001** something"
@@ -59,6 +59,30 @@ def test_passes_when_test_case_has_all_required_keys(tmp_path):
     findings = FindingCollection()
     Phase05Gate().evaluate(graph, findings)
     assert findings.for_gate("phase05.normative_test_structure") == []
+
+
+def test_flags_empty_test_oracle_fields(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "05-testing-documentation/test-plan/tc.md": (
+            "---\n"
+            "phase: '05'\n"
+            "inputs: []\n"
+            "expected_results: []\n"
+            "requirement_trace: []\n"
+            "---\n"
+            "- **TC-001** something"
+        ),
+        "05-testing-documentation/29119-deterministic-checks.md": "# Checks\n- verified",
+        "05-testing-documentation/test-completion-report.md": (
+            "# Completion\nTested FR-001 with result pass."
+        ),
+    })
+    findings = FindingCollection()
+    Phase05Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings if f.gate_id == "phase05.test_oracles"]
+    assert msgs
+    assert any("empty expected_results" in m or "empty requirement_trace" in m for m in msgs)
 
 
 # -- required_evidence -------------------------------------------------------
@@ -156,8 +180,8 @@ def test_passes_coverage_when_tc_count_meets_fr_count(tmp_path):
         "05-testing-documentation/test-plan/tc.md": (
             "---\n"
             "phase: '05'\n"
-            "inputs: ['x']\n"
-            "expected_results: ['y']\n"
+            "inputs: ['valid input']\n"
+            "expected_results: ['expected output']\n"
             "requirement_trace: ['FR-001','FR-002']\n"
             "---\n"
             "- **TC-001** first\n- **TC-002** second"
@@ -196,7 +220,6 @@ def test_exit_evidence_missing_required_words(tmp_path):
     })
     findings = FindingCollection()
     Phase05Gate().evaluate(graph, findings)
-    # Missing both "tested" keyword and any FR-\d+ reference.
     assert findings.for_gate("phase05.exit_evidence"), (
         "expected an exit_evidence finding when report lacks required words"
     )
@@ -226,4 +249,3 @@ def test_findings_carry_iso_29119_clause_label(tmp_path):
     assert len(findings) > 0
     for f in findings:
         assert "BS ISO/IEC/IEEE 29119-3:2013" in f.message
-        assert "7.2" in f.message

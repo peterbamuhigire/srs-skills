@@ -1,199 +1,125 @@
 # Gap Analysis
 
-## What Prevents Enterprise-Grade Readiness
+## What Still Prevents World-Class Status
 
-The repository’s primary limitation is not missing document types. It is the gap between **declared rigor** and **enforced rigor**.
+The repository's primary limitation is no longer the absence of an engine. It now has one. The remaining limitation is the gap between **deterministic structural governance** and **deep semantic governance**.
 
-## 1. Enforcement Is Too Soft
+## 1. Semantic Assurance Still Lags Structural Assurance
 
-The engine relies too much on SKILL prose, checklists, and human review rather than on deterministic enforcement. This creates four enterprise-grade risks:
+The engine now catches many structural and consistency defects well:
 
-- low-quality artifacts can still progress downstream
-- cross-document contradictions are easy to miss
-- standards conformance is hard to prove objectively
-- reruns may drift because the rules are advisory, not binding
+- missing or orphaned identifiers
+- glossary drift
+- unresolved fail markers
+- weak traceability
+- missing governance artifacts
+- waiver expiry violations
+- sign-off ledger issues
+- baseline and change-impact defects
 
-This is the central blocker.
+What it still does not prove reliably:
 
-## 2. Pathing Model Has Been Clarified, But Skill-Level Migration Is Incomplete
+- whether a requirement is substantively correct
+- whether a design actually satisfies the requirement
+- whether a test meaningfully verifies the behaviour
+- whether a compliance claim is complete rather than merely well-linked
 
-The repository now has a documented canonical path model:
+This is the main remaining blocker.
 
-- `projects/<ProjectName>/` is the workspace root
-- `projects/<ProjectName>/_context/` is the source of truth for project inputs
-- root documentation now treats legacy `../project_context/` and `../output/` references as compatibility aliases, not as a separate architecture
+## 2. Clause-Level Standards Enforcement Is Still Uneven
 
-Remaining limitation:
-
-- many skill-local files, prompts, and helper assets still use the older relative shorthand directly
-- this is now a **controlled compatibility layer**, but not yet a full skill-by-skill migration
-
-Impact:
-
-- root-level architectural ambiguity is materially reduced
-- operational clarity is better than before
-- automation is still constrained until more skill-local files are normalized or wrapped by a stronger runtime abstraction
-
-## 3. Waterfall Is Stronger Than Agile and Hybrid
-
-The system claims robust multi-methodology support, but maturity is uneven.
-
-Waterfall:
-
-- strongest structure
-- most explicit sequencing
-- some real Python support
-- clearest audit flow
-
-Agile:
-
-- usable and thoughtfully documented
-- lighter governance depth
-- less evidence that artifacts are governed as a coherent system
-
-Hybrid:
-
-- mostly selection and routing logic
-- weak synchronization model between formal specifications, story backlogs, sprint artifacts, and governance evidence
-
-Impact:
-
-- hybrid enterprise programs will require significant manual orchestration
-
-## 4. Standards Compliance Is More Referenced Than Proven
-
-The repo cites IEEE, ISO, Scrum, OpenAPI, and compliance frameworks extensively. The problem is depth of implementation.
-
-Examples:
-
-- many skills map to standards in narrative form, but do not validate clause-level conformance mechanically
-- testing now uses BS ISO/IEC/IEEE 29119-3 with deterministic gate checklists and templates in Phase 05, but clause-level enforcement is still mostly descriptive elsewhere in the repo
-- compliance docs cover GDPR/HIPAA/SOC2 framing, but there is limited evidence of control-by-control trace enforcement
-
-Impact:
-
-- strong consulting-style outputs
-- weaker formal defensibility during audit challenge
-
-## 5. Validation Layer Is Fragmented
-
-Validation exists in multiple places:
-
-- waterfall semantic auditing
-- fundamentals validation
-- fundamentals traceability
-- fundamentals metrics
-- phase 09 governance
-
-This is good in principle, but fragmented in practice. There is no single canonical validation kernel that:
-
-- understands all artifact types
-- maintains a project-wide artifact graph
-- blocks progression on failed gates
-- preserves approved waivers and exceptions
-
-Impact:
-
-- duplicated assurance intent
-- inconsistent severity handling
-- incomplete end-to-end gatekeeping
-
-## 6. Domain Layer Is Helpful but Not Deep Enough for Regulated Assurance
-
-Domain defaults improve relevance, but enterprise-grade regulated documentation needs more than:
-
-- NFR defaults
-- regulations references
-- architecture and security notes
-
-It needs:
-
-- control libraries
-- obligation-to-control mappings
-- evidence expectations
-- required review steps
-- domain-specific test obligations
-- standard annex generation
-
-Current domain modules are valuable, but still closer to contextual guidance than a compliance rule engine.
-
-## 7. Output Consistency Risk Is High
-
-The repository repeatedly requires:
-
-- unique identifiers
-- glossary discipline
-- measurable NFRs
-- traceability
-
-But these are not reliably enforced across all generators.
-
-Impact:
-
-- identifier drift
-- terminology drift
-- duplicated or conflicting thresholds
-- missing requirement-to-test or requirement-to-design links
-
-This is one of the biggest blockers to world-class status.
-
-## 8. Phase 09 Is Strong in Shape, Weak in Proof
-
-Phase `09` is the strongest conceptual differentiator of the engine. It includes:
-
-- traceability matrix
-- audit report
-- compliance documentation
-- risk assessment
-
-But its weakness is that it mostly consumes documents and produces governance summaries. It does not yet act like a strict compliance and audit engine that can independently verify the truth of upstream content.
-
-Impact:
-
-- strong governance narrative
-- insufficient governance assurance
-
-## 9. Missing or Underdeveloped Enterprise Capabilities
-
-Important enterprise-grade capabilities are absent or underpowered:
-
-- architecture decision record management
-- formal change impact analysis
-- clause-level regulatory traceability
-- requirements-to-code traceability
-- baseline comparison and delta analysis
-- exception/waiver management
-- sign-off workflow and approvals ledger
-- evidence packs for formal reviews
-- maintenance and post-release change documentation depth
-
-## 10. Real-World Dependence on Senior Human Operators Is Still Too High
-
-A skilled architect or consultant can make this system produce good outputs. A world-class engine should reduce, not merely reframe, that dependence.
+The repo is better than before at operationalizing standards, but the enforcement depth varies by phase and artifact type.
 
 Current state:
 
-- good accelerator for experts
-- not yet robust enough for less experienced teams
-- not yet safe enough for regulated delivery without substantial manual review
+- some gates attach standards clauses and enforce specific conditions
+- some registries are schema-backed
+- some phases now operate with deterministic checks instead of narrative review only
+
+Remaining limitation:
+
+- the system still does not provide a uniformly deep, clause-by-clause conformance model across the whole SDLC
+
+Impact:
+
+- stronger internal governance
+- still limited formal defensibility under rigorous external audit challenge
+
+## 3. Hybrid Synchronization Exists, But Is Narrow
+
+Hybrid support is no longer merely conceptual. There is now an explicit gate checking synchronization behaviour. That said, the current model is still thin relative to the repository's ambition.
+
+Remaining limitation:
+
+- formal requirements, backlog artifacts, design baselines, and governance evidence are not yet synchronized through a rich shared data model
+
+Impact:
+
+- hybrid programmes are more governable than before
+- hybrid programmes still need manual coordination at scale
+
+## 4. Requirements-to-Code-to-Run Evidence Is Still Incomplete
+
+The repository is becoming strong at document-to-document governance. It is still weaker at tracing into implementation and runtime reality.
+
+Missing or underdeveloped depth:
+
+- requirements-to-code linkage
+- requirements-to-test-result linkage beyond document references
+- release/runtime evidence integration
+- operational signal linkage back to requirements and controls
+
+Impact:
+
+- strong documentation governance
+- incomplete engineering assurance chain
+
+## 5. Skill-Layer Normalization Is Not Finished
+
+The canonical pathing model is clearer now, and the engine supports it operationally. But some skill-local files and compatibility assumptions still reflect the older execution style.
+
+Impact:
+
+- architecture is more coherent than in the earlier assessment
+- complete consistency between repository guidance and every skill-local asset is not yet achieved
+
+## 6. Domain Assurance Is Better Framed Than Fully Enforced
+
+Domain overlays are useful, and governance checks now reach into domain control and obligations files where present. That is real progress.
+
+Remaining limitation:
+
+- domain packs are still not yet full compliance rule engines with comprehensive evidence obligations, review duties, and control-verification depth
+
+Impact:
+
+- domain-aware documentation is credible
+- domain-specific assurance is still not strong enough to replace specialist review
+
+## 7. Output Quality Is More Repeatable, But Not Yet Self-Proving
+
+The combination of scaffolding, artifact graphing, validation, sync, and governance tooling materially improves repeatability. However, repeatability is still strongest for shape and linkage, not for substance.
+
+Impact:
+
+- the engine now raises the quality floor substantially
+- it still cannot guarantee that a polished, fully linked artifact set is also fully correct
 
 ## Summary of Structural Gaps
 
 ### High-Severity Gaps
 
-- Lack of deterministic enforcement
-- Weak hybrid synchronization
-- Incomplete standards proof model
-- Fragmented validation architecture
+- Limited semantic truth validation
+- Uneven clause-level standards proof
+- Incomplete requirements-to-code/runtime evidence chain
 
 ### Medium-Severity Gaps
 
-- Incomplete skill-level path migration despite a clarified canonical model
-- Domain compliance depth not yet sufficient
-- Output consistency controls too weak
-- Phase 09 assurance stronger in appearance than in verification
-- Missing ADR, impact analysis, and baseline-delta capabilities
+- Narrow Hybrid synchronization depth
+- Incomplete skill-layer normalization
+- Domain assurance not yet deep enough for regulated substitution
+- Output quality still depends on expert substantive review
 
 ### Bottom-Line Gap
 
-The repository is already a **strong documentation framework**. To become an **enterprise-grade documentation intelligence system**, it must convert normative prose into executable governance.
+The repository has largely solved the earlier problem of missing deterministic governance. The remaining gap to world-class status is converting the current **structural validation engine** into a **deeper assurance engine** that can reason more reliably about correctness, compliance completeness, and implementation-grounded evidence.

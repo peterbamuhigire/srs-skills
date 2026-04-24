@@ -5,26 +5,23 @@
 ### Strengths
 
 - Strong recognition that documentation methodology must be selected before generation begins.
-- New-project scaffolding is one of the most operationally useful parts of the repo.
-- Domain deduction and documentation roadmap concepts are good.
+- Project scaffolding is now backed by an actual CLI command, which makes initialization operational rather than just instructional.
+- The workspace model is clearer and aligns better with the current engine.
 
 ### Weaknesses
 
-- Path assumptions are inconsistent with later project-scoped `_context/` guidance.
-- Methodology detection is still largely heuristic and prose-driven.
-- Hybrid support is selected here, but not fully operationalized later.
+- Methodology selection is still lighter than later validation stages.
+- Hybrid selection still becomes richer only once later validation kicks in.
 
 ### Gaps
 
-- No unified runtime contract for generated projects
-- No machine-readable project manifest
-- No formal enforcement that required context files are complete before later phases
+- No richer machine-readable project manifest beyond the current workspace conventions
+- Limited completeness scoring for upstream context before document generation starts
 
 ### Improvements
 
-- Create a canonical project manifest JSON/YAML file
-- Make methodology selection produce explicit downstream gate rules
-- Add context completeness scoring before phase progression
+- Add a formal project manifest with methodology, domain, and required evidence expectations
+- Add pre-generation context completeness checks
 
 ## Phase 01: Strategic Vision
 
@@ -32,227 +29,186 @@
 
 - Good artifact set: vision, PRD, business case, lean canvas
 - Strong bridge from business framing to downstream engineering
-- Better than average standards awareness for product/requirements framing
 
 ### Weaknesses
 
-- Depends heavily on missing or optional context such as `stakeholders.md`
-- Competitive/market context can easily become inferred rather than evidenced
-- Strategic outputs are not strongly tied to later governance beyond narrative traceability intent
+- Strategic outputs still rely heavily on the quality of provided context
+- Business assumptions remain less formally governed than later technical artifacts
 
 ### Gaps
 
-- No explicit scope exclusion and assumptions-control discipline across all artifacts
-- No formal benefit realization model or KPI ownership model
-- No decision log tying business-case assumptions to design and release decisions
+- Limited decision logging from business assumptions into downstream design/governance choices
+- Limited owner/KPI enforcement at the engine level
 
 ### Improvements
 
-- Add objective-to-metric-to-owner mappings
-- Add out-of-scope and assumption-risk sections consistently
-- Add a business decision register that feeds governance
+- Add business decision registers and KPI ownership mappings
 
 ## Phase 02: Requirements Engineering
 
 ### Strengths
 
-- This is the repository’s strongest phase overall.
-- Good separation of fundamentals, Waterfall, and Agile.
-- Waterfall pipeline is clearly staged.
-- Fundamentals layer shows serious understanding of requirements engineering as a lifecycle, not just a document.
+- Still the strongest content phase overall.
+- The engine now materially improves this phase by syncing identifiers and enforcing glossary/traceability quality through the registry and governance layers.
+- Waterfall remains especially strong.
 
 ### Weaknesses
 
-- Waterfall implementation quality is uneven between rich guidance and simplistic scripts.
-- Agile is useful but materially less rigorous than Waterfall.
-- Requirements validation and metrics are strong conceptually but not enforced strongly enough.
+- Agile remains lighter than Waterfall.
+- Semantic requirement quality still depends partly on skilled review.
 
 ### Gaps
 
-- Incomplete hard enforcement of glossary, measurability, and acceptance-test linkage
-- Hybrid synchronization between formal requirements and stories is underdeveloped
-- No stable enterprise-grade baseline/delta handling
+- No deep requirement semantic verifier
+- Hybrid requirement-story synchronization remains narrower than ideal
 
 ### Improvements
 
-- Add canonical requirement schema and stable IDs
-- Require inline source, rationale, and test oracle fields
-- Build a formal bridge between SRS requirements and agile backlog items
+- Add richer requirement schema and stronger requirement-to-test/result enforcement
 
 ## Phase 03: Design
 
 ### Strengths
 
 - Good breadth: HLD, LLD, API, database, UX, infrastructure
-- Strong traceability intent from requirements to design
-- Good use of Mermaid and structured outputs
+- Better positioned than before because ADR catalogue checking now exists in the governance layer
 
 ### Weaknesses
 
-- Design rationale is not enforced strongly enough
-- ADR discipline is missing
-- Diagrams are generated as part of narrative structure, but not validated for completeness or consistency
+- Design quality is still validated more through documentation structure than architectural correctness
+- Rejected alternatives and deeper rationale discipline are still not uniformly enforced
 
 ### Gaps
 
-- No architectural decision registry
-- No rejected-alternatives record
-- No systematic operability/testability design review lens
+- Limited architectural fitness validation
+- Limited requirement-to-design sufficiency checking
 
 ### Improvements
 
-- Add ADR and design rationale skills
-- Add component-level quality attribute scenarios
-- Add design review gate with architecture compliance findings
+- Deepen ADR usage and add architecture review findings tied to quality attributes
 
 ## Phase 04: Development
 
 ### Strengths
 
-- Good recognition that teams need implementation-facing documentation, not just analysis and design
-- Technical specification and coding guidelines are useful bridge artifacts
+- Good bridge artifacts for implementation teams
+- More credible now because the repository has a real engine kernel behind the docs
 
 ### Weaknesses
 
-- Still largely document-generation oriented, not tightly linked to actual code or repo structure
-- Contribution and environment docs risk becoming generic if not grounded deeply
+- Still loosely connected to actual code structure and ownership in client projects
 
 ### Gaps
 
-- No code-traceability layer
-- No implementation evidence mapping
-- No link between technical specs and actual module ownership
+- No strong requirements-to-code trace capability
+- No implementation evidence mapping in the main engine
 
 ### Improvements
 
-- Add requirements-to-code trace skill
-- Add module ownership and implementation status mappings
-- Add implementation conformance audit against technical specification
+- Add module ownership, code trace, and implementation conformance checks
 
 ## Phase 05: Testing
 
 ### Strengths
 
-- Testing is included explicitly and linked to requirements
-- Test plan skill correctly aims to derive cases from "shall" statements
+- Testing is now more credible in the overall system because the engine itself has a strong automated test suite and deterministic behaviour.
+- The repository's testing documentation posture is stronger than in the earlier evaluation.
 
 ### Weaknesses
 
-- Standards posture is dated in many places
-- Test strategy/plan/report set is useful but not enough for enterprise test governance
-- No strong executable enforcement that every requirement has meaningful verification evidence
+- Verification evidence is still stronger at the document layer than at live result ingestion
 
 ### Gaps
 
-- Weak modernization beyond IEEE 829 framing
-- Missing stronger test design, incident, completion, and regression governance
-- Limited evidence model for test environment fidelity and control verification
+- No full requirement-to-test-result evidence chain in the main engine
+- Limited integration of real execution evidence from client systems
 
 ### Improvements
 
-- Update testing framework to modern test documentation practice
-- Add incident report and test completion artifacts
-- Add requirement-to-test-to-result control chain
+- Extend validation to consume actual test-result artifacts and map them back to requirement IDs
 
 ## Phase 06: Deployment
 
 ### Strengths
 
-- Strong and practical phase
-- Deployment guide, runbook, monitoring, and infrastructure docs are directly useful in real teams
-- Better than average recognition of operational documentation as part of SDLC
+- Deployment, runbook, monitoring, and infrastructure documentation remain practical and useful
+- Evidence-pack generation improves the operational governance story
 
 ### Weaknesses
 
-- Operational docs are still mostly text artifacts, not linked to live infrastructure or config
-- Little evidence of deployment-control verification
+- Operational docs are still not deeply linked to live environments or observed runtime controls
 
 ### Gaps
 
 - No environment drift detection
-- No operational readiness checklist tied to actual service dependencies
-- No production evidence package
+- No stronger runtime evidence ingestion
 
 ### Improvements
 
-- Add operational readiness review skill
-- Add deployment control and rollback verification evidence
-- Add SLI/SLO-to-monitoring traceability
+- Add SLI/SLO evidence ingestion and release/runtime verification links
 
 ## Phase 07: Agile
 
 ### Strengths
 
-- Useful supporting artifacts for real teams
-- Sprint planning, DoD, DoR, and retrospectives are practical and well scoped
+- Useful real-team artifacts remain in place
+- Hybrid enforcement now gives agile artifacts more formal weight than before
 
 ### Weaknesses
 
-- Agile governance is lighter than the rest of the engine
-- These artifacts are not deeply synchronized with formal baselines or risk/compliance controls
+- Agile governance depth is still lighter than the waterfall/governance path
 
 ### Gaps
 
-- No strong rule set for keeping sprint-level execution aligned to formal requirements in Hybrid settings
-- No structured carry-through from retrospective findings into documentation or controls
+- Limited sprint-to-risk and sprint-to-control evidence flow
+- Retrospective learning is not strongly connected back into formal baselines
 
 ### Improvements
 
-- Add hybrid synchronization rules
-- Add sprint-to-requirement and sprint-to-risk traceability
-- Add release-level evidence aggregation from agile artifacts
+- Strengthen sprint-to-requirement and sprint-to-governance trace rules
 
 ## Phase 08: End-User Docs
 
 ### Strengths
 
-- Important and often neglected area is explicitly covered
-- User manual, installation guide, FAQ, and release notes are sensible outputs
+- Explicitly covered and still better than many comparable repos
+- Benefits indirectly from stronger upstream controls
 
 ### Weaknesses
 
-- High risk of generic documentation if source artifacts are weak
-- User docs are not yet strongly connected to tested workflows and release evidence
+- End-user doc quality still depends heavily on upstream artifact quality and review discipline
 
 ### Gaps
 
-- No stronger audience modeling and usability validation loop
-- No release-to-user-doc consistency validation
-- No content quality or information architecture engine
+- Limited release-to-user-doc evidence validation
+- Limited audience/usability verification
 
 ### Improvements
 
-- Add task verification and usability walk-through rules
-- Add audience segmentation metadata
-- Add release note consistency checks against implementation and test results
+- Add task verification and release-note consistency validation
 
 ## Phase 09: Governance
 
 ### Strengths
 
-- This phase is the strongest conceptual differentiator of the repository.
-- Traceability, audit, compliance, and risk are all present.
-- Good enterprise instinct: governance is treated as a terminal phase, not an afterthought.
+- This phase has improved the most.
+- It now behaves like a real governance kernel with traceability, controls, obligations, ADR catalogue, change impact, baseline delta, sign-off, waiver discipline, and evidence-pack buildability checks.
+- This is no longer just document generation; it is enforceable governance logic.
 
 ### Weaknesses
 
-- Produces governance documents more reliably than governance proof
-- Compliance posture is still mostly document-mapping, not control assurance
-- Audit quality depends too much on upstream artifact quality and model honesty
+- It still verifies linkage and completeness better than substantive truth.
+- External-audit-grade proof is still not guaranteed by the engine alone.
 
 ### Gaps
 
-- No central evidence registry
-- No waiver/exception management
-- No formal review-pack generator
-- No clause-to-control-to-test-to-evidence chain strong enough for regulated assurance
+- Limited regulation-to-control-to-test-to-runtime evidence depth
+- Limited semantic challenge capability against upstream weak content
 
 ### Improvements
 
-- Build a true evidence model
-- Add waivers, approvals, and review board outputs
-- Add regulation-to-control-to-requirement traceability
+- Deepen clause-level compliance proof and live evidence integration
 
 ## Overall Phase Pattern
 
-The phase model is a real strength. The progression from initialization to governance is logical and professionally structured. The major deficiency across phases is consistent: the repository knows what enterprise documentation should look like, but it has not yet fully engineered the machinery that guarantees those properties.
+The phase model was already a strength. The important change now is that the repository has started to connect that phase model to an executable enforcement layer. The remaining deficiency is no longer lack of machinery; it is the depth and scope of what that machinery can prove.
