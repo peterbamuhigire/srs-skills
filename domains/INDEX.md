@@ -17,6 +17,7 @@ to auto-inject `[DOMAIN-DEFAULT]` tagged requirements into the project scaffold.
 | Government | FISMA, FedRAMP, GDPR | High | [government/](government/INDEX.md) |
 | Uganda | DPPA 2019, PPDA Act, Income Tax Act, NSSF Act, EFRIS, OAG | High | [uganda/](uganda/INDEX.md) |
 | Agriculture | Uganda DPA, EUDR, GlobalGAP, Employment Act | Medium | [agriculture/](agriculture/INDEX.md) |
+| Automotive | PCI-DSS, ISO 3779/3780 (VIN), SAE J1979 (OBD-II), GDPR / jurisdictional DPA, EFRIS / ZATCA / CFDI (e-invoicing) | Medium | [automotive/](automotive/INDEX.md) |
 
 ## How Domain Injection Works
 
