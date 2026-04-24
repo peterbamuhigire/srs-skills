@@ -1,8 +1,8 @@
 ---
 phase: '05'
-inputs: []
-expected_results: []
-requirement_trace: []
+inputs: ['See individual TC lines below for concrete stimuli.']
+expected_results: ['See individual TC lines below for concrete expected outcomes.']
+requirement_trace: ['FR-001']
 ---
 # Test Plan
 

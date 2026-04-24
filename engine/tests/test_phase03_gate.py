@@ -211,6 +211,45 @@ def test_passes_nfr_check_when_no_nfrs_declared(tmp_path):
     assert findings.for_gate("phase03.nfrs_link_to_design_choices") == []
 
 
+def test_flags_fr_without_design_evidence(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "02-requirements-engineering/fr.md": (
+            "# FR\n"
+            "\n"
+            "- **FR-001** The system shall accept claim submissions.\n"
+        ),
+        "03-design-documentation/adr/0001.md": (
+            "# ADR\nFR-001 is important.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase03.requirements_have_design_evidence"]
+    assert msgs
+    assert "concrete design evidence keywords" in msgs[0]
+
+
+def test_passes_when_fr_has_design_evidence(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "02-requirements-engineering/fr.md": (
+            "# FR\n"
+            "\n"
+            "- **FR-001** The system shall accept claim submissions.\n"
+        ),
+        "03-design-documentation/03-api-specification/claims.md": (
+            "# Claims API\nPOST /claims returns 201; endpoint fulfils FR-001.\n"
+        ),
+        "03-design-documentation/adr/0001.md": "# ADR",
+        "03-design-documentation/threat-model.md": "# Threat Model",
+    })
+    findings = FindingCollection()
+    Phase03Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase03.requirements_have_design_evidence") == []
+
+
 # -- security_threat_model_present ------------------------------------------
 
 def test_passes_when_threat_model_present(tmp_path):
@@ -345,4 +384,3 @@ def test_findings_carry_iso_42010_clause_label(tmp_path):
     assert len(findings) > 0
     for f in findings:
         assert "ISO/IEC/IEEE 42010:2011" in f.message
-        assert "5.3" in f.message

@@ -56,6 +56,22 @@ def test_passes_clean_phase02_project(tmp_path):
     assert len(findings) == 0
 
 
+def test_flags_ambiguous_or_compound_fr_semantics(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "02-requirements-engineering/fr.md": (
+            "# FR\n"
+            "\n"
+            "- **FR-001** The system shall be user-friendly and/or shall process claims.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase02Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings if f.gate_id == "phase02.requirement_semantics"]
+    assert msgs
+    assert any("ambiguous phrase" in m or "multiple behaviours" in m for m in msgs)
+
+
 # -- silent skip for missing registries --------------------------------------
 
 def test_skips_registry_checks_when_no_registry_yaml(tmp_path):
@@ -139,4 +155,4 @@ def test_findings_carry_ieee_830_clause_label(tmp_path):
     Phase02Gate().evaluate(graph, findings)
     assert len(findings) > 0
     for f in findings:
-        assert "[IEEE Std 830-1998 §4.3]" in f.message
+        assert "IEEE Std 830-1998" in f.message

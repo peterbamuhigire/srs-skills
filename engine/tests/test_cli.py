@@ -77,9 +77,9 @@ def _seed_clean_project(tmp_path: Path) -> None:
     (testing / "test-plan/tc.md").write_text(
         "---\n"
         "phase: '05'\n"
-        "inputs: []\n"
-        "expected_results: []\n"
-        "requirement_trace: []\n"
+        "inputs: ['valid claim payload']\n"
+        "expected_results: ['claim stored successfully']\n"
+        "requirement_trace: ['FR-001']\n"
         "---\n"
         "- **TC-001** covers FR-001",
         encoding="utf-8",

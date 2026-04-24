@@ -113,6 +113,50 @@ def test_flags_audit_report_without_gate_references(tmp_path):
     assert "does not list pass/fail status" in msgs[0]
 
 
+def test_flags_selected_control_without_complete_evidence_section(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "_registry/controls.yaml": (
+            "selected:\n"
+            "  - id: CTRL-UG-001\n"
+            "    applies_because: \"Personal data collection\"\n"
+        ),
+        "09-governance-compliance/03-compliance.md": (
+            "# Compliance\n"
+            "## CTRL-UG-001\n"
+            "- Evidence: FR-001.\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase09Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings if f.gate_id == "phase09.compliance_evidence"]
+    assert msgs
+    assert "lacks complete compliance evidence" in msgs[0]
+
+
+def test_passes_selected_control_with_complete_evidence_section(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "_registry/controls.yaml": (
+            "selected:\n"
+            "  - id: CTRL-UG-001\n"
+            "    applies_because: \"Personal data collection\"\n"
+        ),
+        "09-governance-compliance/03-compliance.md": (
+            "# Compliance\n"
+            "## CTRL-UG-001\n"
+            "- Status: Implemented.\n"
+            "- Evidence: FR-001 and 03-design-documentation/05-ux-specification/ui-spec.md.\n"
+            "- Reviewer: Data Protection Officer.\n"
+        ),
+        "09-governance-compliance/audit-report.md": "# Audit\n- phase09: PASS\n",
+        "09-governance-compliance/risk-register.md": "# Risks\n- **R-001** linked to CTRL-UG-001 and FR-001.\n",
+    })
+    findings = FindingCollection()
+    Phase09Gate().evaluate(graph, findings)
+    assert findings.for_gate("phase09.compliance_evidence") == []
+
+
 # -- risk_register_links_to_fr --------------------------------------------
 
 def test_passes_when_risks_link_to_fr(tmp_path):
@@ -248,4 +292,3 @@ def test_findings_carry_iso_27001_clause_label(tmp_path):
     assert len(findings) > 0
     for f in findings:
         assert "ISO/IEC 27001:2022" in f.message
-        assert "9" in f.message

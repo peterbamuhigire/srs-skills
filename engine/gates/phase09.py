@@ -6,6 +6,7 @@ from engine.artifact_graph import Artifact, ArtifactGraph
 from engine.checks.adr_catalog import AdrCatalogCheck
 from engine.checks.baseline_delta import BaselineDeltaCheck
 from engine.checks.change_impact import ChangeImpactCheck
+from engine.checks.compliance_evidence import ComplianceEvidenceCheck
 from engine.checks.controls import ControlsCheck
 from engine.checks.glossary_registry import GlossaryRegistryCheck
 from engine.checks.identifier_registry import IdentifierRegistryCheck
@@ -18,7 +19,21 @@ from engine.gates.base import Gate
 from engine.gates._shared import ClauseRef, attach_clause
 from engine.waivers import WaiverRegister
 
-_CLAUSE = ClauseRef("ISO/IEC 27001:2022", "9")
+_CLAUSE_TRACEABILITY = ClauseRef("ISO/IEC 27001:2022", "9.1")
+_CLAUSE_AUDIT = ClauseRef("ISO/IEC 27001:2022", "9.2")
+_CLAUSE_RISK = ClauseRef("ISO/IEC 27001:2022", "6.1")
+_CLAUSE_WAIVERS = ClauseRef("ISO/IEC 27001:2022", "10.2")
+_CLAUSE_ID_REGISTRY = ClauseRef("ISO/IEC 27001:2022", "7.5")
+_CLAUSE_GLOSSARY = ClauseRef("ISO/IEC 27001:2022", "7.5")
+_CLAUSE_NFR = ClauseRef("ISO/IEC 27001:2022", "6.2")
+_CLAUSE_CONTROLS = ClauseRef("ISO/IEC 27001:2022", "8.1")
+_CLAUSE_COMPLIANCE_EVIDENCE = ClauseRef("ISO/IEC 27001:2022", "9.1")
+_CLAUSE_OBLIGATIONS = ClauseRef("ISO/IEC 27001:2022", "6.1.3")
+_CLAUSE_ADR = ClauseRef("ISO/IEC 27001:2022", "7.5")
+_CLAUSE_CHANGE = ClauseRef("ISO/IEC 27001:2022", "8.1")
+_CLAUSE_BASELINE = ClauseRef("ISO/IEC 27001:2022", "8.1")
+_CLAUSE_SIGN_OFF = ClauseRef("ISO/IEC 27001:2022", "9.3")
+_CLAUSE_EVIDENCE_PACK = ClauseRef("ISO/IEC 27001:2022", "7.5")
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _KNOWN_DOMAINS = (
@@ -95,6 +110,7 @@ class Phase09Gate(Gate):
         self._check_glossary_registry(graph, findings)
         self._check_nfr_threshold_dedup(graph, findings)
         self._check_controls(graph, findings)
+        self._check_compliance_evidence(graph, findings)
         self._check_obligations(graph, findings)
         self._check_adr_catalog(graph, findings)
         self._check_change_impact(graph, findings)
@@ -109,7 +125,7 @@ class Phase09Gate(Gate):
         tmp = FindingCollection()
         TraceabilityCheck(f"{self.id}.traceability").run(graph, tmp)
         for f in tmp:
-            findings.add(attach_clause(f, _CLAUSE))
+            findings.add(attach_clause(f, _CLAUSE_TRACEABILITY))
 
     # -- Check 2: audit report present -----------------------------------
     def _check_audit_report_present(
@@ -126,7 +142,7 @@ class Phase09Gate(Gate):
                 ),
                 location=None,
                 line=None,
-            ), _CLAUSE))
+            ), _CLAUSE_AUDIT))
             return
         if art.body.strip() == "":
             findings.add(attach_clause(Finding(
@@ -135,7 +151,7 @@ class Phase09Gate(Gate):
                 message=f"Audit report '{_posix(art.path)}' is empty",
                 location=art.path,
                 line=None,
-            ), _CLAUSE))
+            ), _CLAUSE_AUDIT))
             return
         if not _PHASE_REF_RE.findall(art.body):
             findings.add(attach_clause(Finding(
@@ -148,7 +164,7 @@ class Phase09Gate(Gate):
                 ),
                 location=art.path,
                 line=None,
-            ), _CLAUSE))
+            ), _CLAUSE_AUDIT))
 
     # -- Check 3: risk register links to FR/NFR/CTRL ---------------------
     def _check_risk_register_links_to_fr(
@@ -166,7 +182,7 @@ class Phase09Gate(Gate):
                 ),
                 location=None,
                 line=None,
-            ), _CLAUSE))
+            ), _CLAUSE_RISK))
             return
         body = art.body
         for m in _RISK_ENTRY_RE.finditer(body):
@@ -191,7 +207,7 @@ class Phase09Gate(Gate):
                 ),
                 location=art.path,
                 line=None,
-            ), _CLAUSE))
+            ), _CLAUSE_RISK))
 
     # -- Check 4: waivers have expiry within 90 days ---------------------
     def _check_waivers_have_expiry(
@@ -216,7 +232,7 @@ class Phase09Gate(Gate):
                     ),
                     location=Path("_registry/waivers.yaml"),
                     line=None,
-                ), _CLAUSE))
+                ), _CLAUSE_WAIVERS))
             elif delta > 90:
                 findings.add(attach_clause(Finding(
                     gate_id=f"{self.id}.waivers_have_expiry",
@@ -227,7 +243,7 @@ class Phase09Gate(Gate):
                     ),
                     location=Path("_registry/waivers.yaml"),
                     line=None,
-                ), _CLAUSE))
+                ), _CLAUSE_WAIVERS))
 
     # -- Check 5: identifier registry (delegates to IdentifierRegistryCheck) -
     def _check_identifier_registry(
@@ -243,7 +259,7 @@ class Phase09Gate(Gate):
             f"{self.id}.id_registry", registry_path
         ).run(graph, tmp)
         for f in tmp:
-            findings.add(attach_clause(f, _CLAUSE))
+            findings.add(attach_clause(f, _CLAUSE_ID_REGISTRY))
 
     # -- Check 6: glossary registry (delegates to GlossaryRegistryCheck) -----
     def _check_glossary_registry(
@@ -259,7 +275,7 @@ class Phase09Gate(Gate):
             f"{self.id}.glossary_registry", registry_path
         ).run(graph, tmp)
         for f in tmp:
-            findings.add(attach_clause(f, _CLAUSE))
+            findings.add(attach_clause(f, _CLAUSE_GLOSSARY))
 
     # -- Check 7: NFR threshold dedup (delegates to NfrThresholdDedupCheck) --
     def _check_nfr_threshold_dedup(
@@ -270,7 +286,7 @@ class Phase09Gate(Gate):
             f"{self.id}.nfr_threshold_dedup"
         ).run(graph, tmp)
         for f in tmp:
-            findings.add(attach_clause(f, _CLAUSE))
+            findings.add(attach_clause(f, _CLAUSE_NFR))
 
     # -- Check 8: domain control selection (delegates to ControlsCheck) ------
     def _check_controls(
@@ -291,9 +307,22 @@ class Phase09Gate(Gate):
             f"{self.id}.controls", graph.root, domain_register
         ).run(graph, tmp)
         for f in tmp:
-            findings.add(attach_clause(f, _CLAUSE))
+            findings.add(attach_clause(f, _CLAUSE_CONTROLS))
 
-    # -- Check 9: regulatory obligations (delegates to ObligationsCheck) -----
+    # -- Check 9: compliance evidence quality ----------------------------
+    def _check_compliance_evidence(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        if graph.root is None:
+            return
+        tmp = FindingCollection()
+        ComplianceEvidenceCheck(
+            f"{self.id}.compliance_evidence", graph.root
+        ).run(graph, tmp)
+        for f in tmp:
+            findings.add(attach_clause(f, _CLAUSE_COMPLIANCE_EVIDENCE))
+
+    # -- Check 10: regulatory obligations (delegates to ObligationsCheck) ----
     def _check_obligations(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
@@ -312,9 +341,9 @@ class Phase09Gate(Gate):
             f"{self.id}.obligations", graph.root, obligations_file
         ).run(graph, tmp)
         for f in tmp:
-            findings.add(attach_clause(f, _CLAUSE))
+            findings.add(attach_clause(f, _CLAUSE_OBLIGATIONS))
 
-    # -- Check 10: ADR catalog (delegates to AdrCatalogCheck) ----------------
+    # -- Check 11: ADR catalog (delegates to AdrCatalogCheck) ----------------
     def _check_adr_catalog(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
@@ -328,9 +357,9 @@ class Phase09Gate(Gate):
             f"{self.id}.adr_catalog", graph.root
         ).run(graph, tmp)
         for f in tmp:
-            findings.add(attach_clause(f, _CLAUSE))
+            findings.add(attach_clause(f, _CLAUSE_ADR))
 
-    # -- Check 11: change-impact (delegates to ChangeImpactCheck) ------------
+    # -- Check 12: change-impact (delegates to ChangeImpactCheck) ------------
     def _check_change_impact(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
@@ -344,9 +373,9 @@ class Phase09Gate(Gate):
             f"{self.id}.change_impact", graph.root
         ).run(graph, tmp)
         for f in tmp:
-            findings.add(attach_clause(f, _CLAUSE))
+            findings.add(attach_clause(f, _CLAUSE_CHANGE))
 
-    # -- Check 12: baseline-delta (delegates to BaselineDeltaCheck) ----------
+    # -- Check 13: baseline-delta (delegates to BaselineDeltaCheck) ----------
     def _check_baseline_delta(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
@@ -360,9 +389,9 @@ class Phase09Gate(Gate):
             f"{self.id}.baseline_delta", graph.root
         ).run(graph, tmp)
         for f in tmp:
-            findings.add(attach_clause(f, _CLAUSE))
+            findings.add(attach_clause(f, _CLAUSE_BASELINE))
 
-    # -- Check 13: sign-off ledger (delegates to SignOffCheck) ---------------
+    # -- Check 14: sign-off ledger (delegates to SignOffCheck) ---------------
     def _check_sign_off(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
@@ -376,9 +405,9 @@ class Phase09Gate(Gate):
             f"{self.id}.sign_off", graph.root
         ).run(graph, tmp)
         for f in tmp:
-            findings.add(attach_clause(f, _CLAUSE))
+            findings.add(attach_clause(f, _CLAUSE_SIGN_OFF))
 
-    # -- Check 14: evidence pack buildable -----------------------------------
+    # -- Check 15: evidence pack buildable -----------------------------------
     def _check_evidence_pack_buildable(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
@@ -400,7 +429,7 @@ class Phase09Gate(Gate):
                     severity=Severity.HIGH,
                     message=f"Evidence pack could not be built: {exc}",
                     location=None, line=None,
-                ), _CLAUSE))
+                ), _CLAUSE_EVIDENCE_PACK))
         finally:
             if tmp_path.exists():
                 try:

@@ -2,11 +2,16 @@
 from __future__ import annotations
 import re
 from engine.artifact_graph import Artifact, ArtifactGraph
+from engine.checks.test_oracles import TestOraclesCheck
 from engine.findings import Finding, FindingCollection, Severity
 from engine.gates.base import Gate
 from engine.gates._shared import ClauseRef, attach_clause
 
-_CLAUSE = ClauseRef("BS ISO/IEC/IEEE 29119-3:2013", "7.2")
+_CLAUSE_NORMATIVE = ClauseRef("BS ISO/IEC/IEEE 29119-3:2013", "7.2")
+_CLAUSE_ORACLES = ClauseRef("BS ISO/IEC/IEEE 29119-3:2013", "7.3")
+_CLAUSE_EVIDENCE = ClauseRef("BS ISO/IEC/IEEE 29119-3:2013", "7.4")
+_CLAUSE_COVERAGE = ClauseRef("BS ISO/IEC/IEEE 29119-3:2013", "7.5")
+_CLAUSE_EXIT = ClauseRef("BS ISO/IEC/IEEE 29119-3:2013", "7.6")
 
 _REQUIRED_TC_KEYS = ("inputs", "expected_results", "requirement_trace")
 _REQUIRED_EVIDENCE_SUFFIX = "05-testing-documentation/29119-deterministic-checks.md"
@@ -35,6 +40,7 @@ class Phase05Gate(Gate):
 
     def evaluate(self, graph: ArtifactGraph, findings: FindingCollection) -> None:
         self._check_normative_test_structure(graph, findings)
+        self._check_meaningful_test_oracles(graph, findings)
         self._check_required_evidence(graph, findings)
         self._check_coverage_measurable(graph, findings)
         self._check_exit_evidence(graph, findings)
@@ -57,9 +63,18 @@ class Phase05Gate(Gate):
                     ),
                     location=art.path,
                     line=None,
-                ), _CLAUSE))
+                ), _CLAUSE_NORMATIVE))
 
-    # -- Check 2: required evidence --------------------------------------
+    # -- Check 2: meaningful test oracles -------------------------------
+    def _check_meaningful_test_oracles(
+        self, graph: ArtifactGraph, findings: FindingCollection
+    ) -> None:
+        tmp = FindingCollection()
+        TestOraclesCheck(f"{self.id}.test_oracles").run(graph, tmp)
+        for f in tmp:
+            findings.add(attach_clause(f, _CLAUSE_ORACLES))
+
+    # -- Check 3: required evidence --------------------------------------
     def _check_required_evidence(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
@@ -73,7 +88,7 @@ class Phase05Gate(Gate):
                 ),
                 location=None,
                 line=None,
-            ), _CLAUSE))
+            ), _CLAUSE_EVIDENCE))
             return
         if art.body.strip() == "":
             findings.add(attach_clause(Finding(
@@ -84,9 +99,9 @@ class Phase05Gate(Gate):
                 ),
                 location=art.path,
                 line=None,
-            ), _CLAUSE))
+            ), _CLAUSE_EVIDENCE))
 
-    # -- Check 3: coverage measurable ------------------------------------
+    # -- Check 4: coverage measurable ------------------------------------
     def _check_coverage_measurable(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
@@ -105,9 +120,9 @@ class Phase05Gate(Gate):
             ),
             location=None,
             line=None,
-        ), _CLAUSE))
+        ), _CLAUSE_COVERAGE))
 
-    # -- Check 4: exit evidence ------------------------------------------
+    # -- Check 5: exit evidence ------------------------------------------
     def _check_exit_evidence(
         self, graph: ArtifactGraph, findings: FindingCollection
     ) -> None:
@@ -121,7 +136,7 @@ class Phase05Gate(Gate):
                 ),
                 location=None,
                 line=None,
-            ), _CLAUSE))
+            ), _CLAUSE_EXIT))
             return
         body = art.body
         lower = body.lower()
@@ -142,4 +157,4 @@ class Phase05Gate(Gate):
                 ),
                 location=art.path,
                 line=None,
-            ), _CLAUSE))
+            ), _CLAUSE_EXIT))

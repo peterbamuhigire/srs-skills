@@ -4,74 +4,67 @@
 
 | Dimension | Score | Rationale |
 |---|---:|---|
-| Coverage | 9/10 | The repository covers nearly the whole SDLC, including strategy, requirements, design, testing, deployment, agile execution, user docs, and governance. Coverage is its biggest strength. The deduction is for gaps around maintenance/change-impact depth and uneven maturity across tracks. |
-| Standards Alignment | 7/10 | The system is standards-aware and cites IEEE/ISO throughout. However, much of compliance is declarative rather than enforced. Testing still leans heavily on IEEE 829 references. Clause-level conformance is not consistently machine-checked. |
-| Methodology Support | 7/10 | Waterfall is the strongest path. Agile is usable but lighter and less rigorously gated. Hybrid support exists as routing logic, but not yet as a deeply integrated evidence model keeping formal specs and agile artifacts synchronized. |
-| Instruction Quality | 8/10 | Many SKILL files are concrete, stepwise, and genuinely usable. Inputs, outputs, output formats, pitfalls, and verification checklists are often strong. The deduction is for inconsistency between very strong full-length skills and thinner wrapper-style skills relying on `logic.prompt` or scripts. |
-| System Flow | 7/10 | The intended progression is logical and readable. `skill_overview.md`, phase READMEs, and scaffold status files all support a real operating model. The deduction is for path inconsistency, split architecture assumptions, and limited runtime dependency enforcement. |
-| Validation & Governance | 6/10 | This is where the repo talks a very strong game but still under-delivers. There are many governance artifacts and quality gates, but not enough deterministic enforcement. Phase 09 produces audit-shaped outputs more reliably than audit-grade proof. |
-| AI Integration | 5/10 | AI is woven through the repo at the instruction layer, and helper skills exist for orchestration and error prevention. But those AI skills do not materially harden the documentation engine itself. They read more like adjacent guidance than integrated quality controls. |
-| Real-World Usability | 7/10 | A real consulting or architecture team could use this repository, especially with an experienced lead. It is more practical than academic. However, it still needs strong human supervision, especially for regulated documentation and cross-artifact consistency. |
-| Output Quality Potential | 7/10 | Under a disciplined operator with rich context, outputs could be impressive and very usable. On its own, the engine is still too permissive and too prompt-dependent to guarantee repeatable enterprise-grade results. |
+| Coverage | 9/10 | Coverage remains a standout strength. The repository still spans strategy, requirements, design, development, testing, deployment, agile execution, end-user documentation, and governance. The deduction is for uneven depth between tracks and the still-limited implementation/runtime trace layer. |
+| Standards Alignment | 8/10 | Standards alignment is now materially more operational. The engine attaches clause references in some gates, uses schema-backed registries, and enforces more requirements than before. The deduction is for uneven clause-level proof across phases and limited ability to prove substantive compliance completeness. |
+| Methodology Support | 8/10 | Waterfall is strong, Agile is usable, and Hybrid now has an actual synchronization gate instead of existing only as routing intent. The deduction is for Hybrid still being relatively narrow and for lighter governance on the agile side. |
+| Instruction Quality | 8/10 | The skill layer remains broadly strong and actionable. The deduction is still for some unevenness between rich, execution-ready skills and lighter wrappers or compatibility-era assets. |
+| System Flow | 8/10 | System flow is much stronger now because the repo has a real kernel: project scaffolding, artifact graphing, sync, validation, doctor checks, waivers, sign-off, baseline commands, and evidence packs. The deduction is for remaining path/asset migration work and the gap between engine contracts and all skill-local behavior. |
+| Validation & Governance | 9/10 | This dimension improved the most. The repo now has deterministic gate execution, a canonical validation CLI, registry checks, formal waiver limits, sign-off validation, baseline/delta support, change-impact checks, and evidence-pack generation. The deduction is for semantic truth validation and incomplete clause-proof depth in some domains and phases. |
+| AI Integration | 6/10 | AI-related skills still help the repository philosophically more than they harden the engine itself. The score improves slightly because the engine now gives AI generation a firmer validation substrate, but the repo still lacks deeply integrated AI-specific evaluation and drift control inside the main kernel. |
+| Real-World Usability | 8/10 | A disciplined consulting, architecture, or delivery team can use this repository as an actual operating system for documentation work. The deduction is for continued dependence on experienced reviewers when stakes are high. |
+| Output Quality Potential | 9/10 | Under the current engine, output quality is no longer merely prompt-dependent. Deterministic checks, registries, and governance workflows materially raise the floor. The deduction is for semantic and implementation-grounding gaps that still prevent guaranteed audit-grade outputs. |
 
 ## Weighted View
 
-There is no explicit weighting model in the repository, but if validation/governance and output quality are weighted more heavily, the overall picture is:
+If validation/governance and output quality are weighted more heavily, the current picture is:
 
-- strong architecture and breadth
-- moderate methodology maturity
-- weak-to-moderate hard assurance
+- strong lifecycle coverage
+- strong validation mechanics at the structural and governance layer
+- moderate remaining risk at the semantic and audit-proof layer
 
 ## Overall Score
 
-**6.8 / 10**
+**8.1 / 10**
 
 ## Score Justification by Theme
 
-### Why Coverage Scores High
+### Why Validation & Governance Jumped
 
-Most repositories in this category stop at PRD, SRS, or design docs. This one goes much further:
+The biggest change since the prior evaluation is that the repository now has a real validation kernel:
 
-- business case
-- traceability
-- audit report
-- compliance docs
-- risk assessment
-- runbooks
-- user manuals
+- `python -m engine.cli validate`
+- phase gates from `01` to `09`
+- artifact graph construction
+- identifier and glossary registries
+- waiver enforcement
+- sign-off ledger support
+- baseline snapshot and diff commands
+- evidence-pack assembly
 
-That makes it a full documentation system candidate rather than a narrow requirements generator.
+That closes the biggest weakness in the earlier assessment: lack of deterministic enforcement.
 
-### Why Validation Scores Lower Than the Rest
+### Why Coverage Stays High Rather Than Increasing
 
-The core issue is enforcement. The system contains:
+Coverage was already strong in the earlier evaluation. The engine work does not broaden the SDLC footprint dramatically; it mainly makes the existing breadth more operational. Coverage stays high, but the score does not rise because the main improvement is assurance quality, not scope expansion.
 
-- many checklists
-- many "shall" instructions
-- many quality claims
+### Why Standards Alignment Improved but Is Not Yet Elite
 
-But far fewer:
+The repo is better than before at converting standards language into executable checks, especially in governance-heavy areas. However, clause-level proof is still not uniform across all phases, all domains, and all artifact types. The engine can enforce many structural conditions, but it still cannot independently validate all substantive standard obligations.
 
-- executable validators
-- schema-based gates
-- artifact graph integrity checks
-- cross-document conflict detectors
-- requirement ID preservation and delta validation
+### Why AI Integration Is Still the Lowest Dimension
 
-That gap is decisive.
+The repository has AI skills, but the core engine is still fundamentally a documentation validation kernel rather than an AI quality-evaluation platform. The current engine helps constrain AI outputs after generation; it does not yet deeply monitor model quality, model drift, or prompt/model regressions as first-class runtime concerns.
 
-### Why AI Integration Scores the Lowest
+### Why the System Is Now Firmly Above Average
 
-The repository includes AI-related skills, but they are not yet deeply embedded into the main documentation engine in a way that measurably prevents documentation failure. They improve philosophy and working style, not the deterministic behavior of the pipeline.
+This repository now combines:
 
-### Why the System Is Still Above Average
+- full-lifecycle document scope
+- a project workspace model
+- domain overlays
+- methodology branching
+- deterministic validation
+- governance workflows
+- automated test evidence for the engine itself
 
-Despite the weaknesses, the repo is materially more capable than typical AI prompt bundles because it has:
-
-- explicit lifecycle framing
-- a real project scaffold
-- domain injection
-- multiple methodology paths
-- a terminal governance layer
-
-The problem is not lack of ambition. It is that the last 20-30% of engineering needed for enterprise trust has not been completed.
+That combination is uncommon. The remaining work is about moving from strong enterprise tooling to truly audit-grade, world-class documentation intelligence.
