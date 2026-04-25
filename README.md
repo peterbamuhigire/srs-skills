@@ -223,7 +223,7 @@ git checkout main
 Run the methodology detection skill:
 
 ```bash
-Run skill: 00-meta-initialization
+Run skill: skills/00-meta-initialization
 ```
 
 This will:
@@ -277,7 +277,7 @@ Each phase builds on the previous:
 
 ```
 sdlc-docs-engine/
-├── 00-meta-initialization/          # Methodology selection & project setup
+├── docs/                            # Repository documentation
 ├── domains/                         # Domain knowledge bases (tracked)
 │   ├── INDEX.md
 │   ├── healthcare/                  # HIPAA, HL7/FHIR, NFR defaults
@@ -322,13 +322,12 @@ sdlc-docs-engine/
 ├── 07-agile-artifacts/              # Sprint planning, DoD, DoR, retrospectives
 ├── 08-end-user-documentation/       # User manuals, installation guides, FAQs
 ├── 09-governance-compliance/        # Traceability, audits, compliance docs
-└── skills/                          # Domain-specific patterns & utilities
-    ├── multi-tenant-saas-architecture/
-    ├── feature-planning/
-    ├── doc-architect/
-    ├── mysql-best-practices/
-    ├── webapp-gui-design/
-    └── [25+ additional skills]
+└── skills/                          # Standard skill layout
+    ├── 00-meta-initialization/
+    │   └── SKILL.md
+    ├── professional-word-output/
+    │   └── SKILL.md
+    └── <skill-name>/SKILL.md
 ```
 
 ## Pathing Model
@@ -338,6 +337,8 @@ The canonical runtime model is the project workspace under `projects/<ProjectNam
 - Context source of truth: `projects/<ProjectName>/_context/`
 - Generated markdown and phase artifacts: `projects/<ProjectName>/<phase>/...`
 - Final `.docx` outputs: `projects/<ProjectName>/<phase>/`
+- Portable skill entrypoints: `skills/<skill-name>/SKILL.md`
+- Repository root: project documentation plus `docs/`, `skills/`, and `projects/` where relevant, alongside operational folders such as `engine/`, `templates/`, and `scripts/`
 
 Many existing skill-local files still use `../project_context/` and `../output/`. Those are compatibility aliases used inside skill execution contexts. They are not a second architecture. Root documentation follows the canonical workspace model described in [docs/pathing-model.md](/C:/wamp64/www/srs-skills/docs/pathing-model.md).
 
@@ -884,6 +885,6 @@ This project builds on industry standards:
 |------|---------|--------|
 | **Waterfall SRS** | `02-requirements-engineering/waterfall/01-initialize-srs` | IEEE 830 SRS |
 | **Agile User Stories** | `02-requirements-engineering/agile/01-user-story-generation` | User story backlog |
-| **Methodology Selection** | `00-meta-initialization` | Documentation roadmap |
+| **Methodology Selection** | `skills/00-meta-initialization` | Documentation roadmap |
 | **Design Docs** | `03-design-documentation/01-high-level-design` | HLD, architecture diagrams |
 | **Traceability** | `09-governance-compliance/01-traceability-matrix` | RTM, audit report |

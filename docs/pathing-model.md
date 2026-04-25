@@ -5,6 +5,7 @@ This repository uses a **single canonical workspace model**:
 - Project root: `projects/<ProjectName>/`
 - Context root: `projects/<ProjectName>/_context/`
 - Generated artifact root: `projects/<ProjectName>/...` under the active phase and document workspace
+- Skill entrypoint root: `skills/<skill-name>/SKILL.md`
 
 ## Canonical Rule
 
@@ -31,7 +32,7 @@ Interpret them as:
 - `../project_context/` -> the active project's canonical context root, `projects/<ProjectName>/_context/`
 - `../output/` -> the active project's generated artifact location for the current workflow or shared artifact set
 
-Use the relative form inside skill-local instructions when preserving established behavior is important. Use the canonical `projects/<ProjectName>/...` form in root documentation, architecture notes, migration guidance, and repository-level analysis.
+Use the relative form inside skill-local instructions when preserving established behavior is important. Use the canonical `projects/<ProjectName>/...` form in root documentation, architecture notes, migration guidance, and repository-level analysis. Repository skill references should use `skills/<skill-name>/SKILL.md`.
 
 ## Documentation Guidance
 
