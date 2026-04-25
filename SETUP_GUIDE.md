@@ -70,7 +70,7 @@ chmod +x setup-srs-project.sh
 
 1. Clones your empty repo to the target directory
 2. Adds `srs-skills` as a git submodule named `skills/`
-3. Initializes all submodules recursively (including nested `skills/skills/`)
+3. Initializes all submodules recursively
 4. Creates `project_context/` with starter templates:
    - `vision.md` - Project vision and business goals
    - `stakeholders.md` - Stakeholder registry
@@ -84,11 +84,11 @@ chmod +x setup-srs-project.sh
 ```
 my-project/
 ├── skills/                    # srs-skills submodule
-│   ├── 00-meta-initialization/
+│   ├── docs/
 │   ├── 02-requirements-engineering/
 │   │   ├── waterfall/         # IEEE 830 SRS pipeline (8 phases)
 │   │   └── agile/             # INVEST user stories
-│   ├── skills/                # 33+ domain utility skills
+│   ├── skills/                # skills/<skill-name>/SKILL.md
 │   ├── CLAUDE.md
 │   ├── README.md
 │   └── ...
@@ -139,7 +139,7 @@ Please help me:
 1. Refine the project vision and identify missing context
 2. Determine the best methodology (Waterfall/Agile/Hybrid)
 3. Create a documentation roadmap
-4. Identify which domain skills from skills/skills/ are relevant
+4. Identify which domain skills from skills/<skill-name>/SKILL.md are relevant
 
 Start by reading my project_context/ files, then use the brainstorming
 skill to explore requirements before we begin generating documentation.
@@ -152,7 +152,7 @@ Claude will use the `superpowers:brainstorming` skill to explore your requiremen
 After brainstorming, run the entry-point skill:
 
 ```
-Run skill: 00-meta-initialization
+Run skill: skills/00-meta-initialization
 ```
 
 This will:
@@ -199,7 +199,7 @@ Generates INVEST-compliant user stories with acceptance criteria.
 
 ## Step 7: Domain Skills (As Needed)
 
-The engine includes 33+ domain-specific utility skills in `skills/skills/`. These are invoked automatically when relevant, or you can request them:
+The engine includes reusable skills under `skills/<skill-name>/SKILL.md`. These are invoked automatically when relevant, or you can request them:
 
 | Domain | Skill | When to Use |
 |--------|-------|-------------|

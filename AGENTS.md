@@ -6,21 +6,21 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 - Preserve the existing Claude Code workflow defined in [CLAUDE.md](/C:/wamp64/www/srs-skills/CLAUDE.md).
 - Expose the same skills to Codex through predictable `SKILL.md` frontmatter, local references, and repo-level routing rules.
-- Keep skills in place. Do not relocate them unless a path is actually broken.
+- Keep portable skill entrypoints under `skills/<skill-name>/SKILL.md`.
 
 ## Skill Families
 
-- Phase-based SDLC skills live at the repository root in directories such as `00-meta-initialization/`, `01-strategic-vision/`, and `02-requirements-engineering/`. These generate or review lifecycle documents for client workspaces.
-- General-purpose engineering skills live under `skills/`. These are reusable technical and product skills for architecture, implementation, security, UX, data, operations, and planning.
+- Portable skills live under `skills/<skill-name>/SKILL.md`. This includes methodology-selection skills such as `skills/00-meta-initialization/SKILL.md` and reusable technical, product, security, UX, data, operations, and planning skills.
+- Root directories are reserved for project documentation and repository-level folders such as `docs/`, `skills/`, and `projects/`, plus operational folders (`engine/`, `templates/`, `scripts/`, `domains/`) where relevant.
 - Domain packs live under `domains/`. They are not skills by themselves; use them as context sources when a task is domain-specific.
 
 ## Baseline Routing
 
-- New client-documentation or methodology-selection requests: start with `00-meta-initialization`.
+- New client-documentation or methodology-selection requests: start with `skills/00-meta-initialization`.
 - SDLC document generation or review: route to the relevant numbered phase skill first, then load supporting domain references from `domains/<domain>/`.
 - General software engineering work: start with `skills/world-class-engineering`, then add the narrowest relevant skills.
 - Skill authoring or upgrades inside this repository: use `skills/skill-writing`.
-- Word or `.docx` output quality work: use `professional-word-output` or `skills/professional-word-output`, depending on which path the current workflow already references.
+- Word or `.docx` output quality work: use `skills/professional-word-output`.
 
 ## Working Rules
 
@@ -48,4 +48,4 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 - `CLAUDE.md` remains the Claude-specific root protocol and should not be replaced by this file.
 - `AGENTS.md` provides Codex-facing baseline behavior and repository routing.
-- `SKILL.md` files now carry a portable metadata contract so both assistants can identify use conditions, inputs, workflow expectations, quality gates, anti-patterns, outputs, and references without changing directory layout.
+- `SKILL.md` files carry a portable metadata contract so both assistants can identify use conditions, inputs, workflow expectations, quality gates, anti-patterns, outputs, and references from the standard `skills/<skill-name>/SKILL.md` layout.

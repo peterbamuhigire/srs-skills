@@ -6,8 +6,8 @@ You are an expert Systems Architect. You are assisting in developing and executi
 
 ## Directory Logic & Pathing
 
-- **Submodule Root:** This directory (where `README.md` and phase folders live).
-- **Internal Tools:** Located in `/skills/`. Use these internal skills to help author or refine the main SRS generation skills.
+- **Submodule Root:** This directory (where root project documentation and repository-level folders live).
+- **Skills:** Located in `/skills/<skill-name>/SKILL.md`. Use these skills for methodology selection, document generation support, and reusable engineering workflows.
 - **Domain Knowledge:** Located in `/domains/`. Read the relevant domain `INDEX.md` when generating requirements for a domain-specific project.
 - **Project Workspace:** Located in `projects/<ProjectName>/` (untracked, gitignored). All client documentation is built here.
 - **Context Source of Truth:** Read all project-specific data from `projects/<ProjectName>/_context/`.
@@ -38,7 +38,7 @@ If `projects/<ProjectName>/_context/methodology.md` declares `methodology: hybri
 ## Build Document Protocol
 
 When the user says "build the [document]":
-1. Resolve the document directory using the mapping in `00-meta-initialization/new-project/SKILL.md`
+1. Resolve the document directory using the mapping in `skills/00-meta-initialization/new-project/SKILL.md`
 2. Check for `manifest.md` in the document directory — use it if present, otherwise sort all `*.md` files (excluding `manifest.md`) alphabetically
 3. Execute: `bash scripts/build-doc.sh <doc-dir> <OutputName>`
 4. Report the output `.docx` path to the user
@@ -153,7 +153,7 @@ Project workspaces (`projects/<ProjectName>/`) are **local only** and gitignored
 
 ### Filling Context Gaps
 
-When the kernel reports `[CONTEXT-GAP: <topic>]`, consult `00-meta-initialization/new-project/prompts/context-gap-fillers.md` before authoring from scratch. It contains an opinionated prompt per topic you can paste into a fresh assistant session.
+When the kernel reports `[CONTEXT-GAP: <topic>]`, consult `skills/00-meta-initialization/new-project/prompts/context-gap-fillers.md` before authoring from scratch. It contains an opinionated prompt per topic you can paste into a fresh assistant session.
 
 ### Failure Protocols
 

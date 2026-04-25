@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026-04-25] - Standard Skill Repository Layout
+
+### Changed
+
+- Moved the root-level `00-meta-initialization` skill into the standard `skills/00-meta-initialization/SKILL.md` layout.
+- Removed the duplicate root-level `professional-word-output` skill; the canonical copy remains at `skills/professional-word-output/SKILL.md`.
+- Updated root project documentation to state that portable skills live under `skills/<skill-name>/SKILL.md` and that the repository root is reserved for project documentation plus `docs/`, `skills/`, and `projects/` where relevant.
+
 ## [2026-04-14] — Skills Engine Completion Plan — 10-Phase Execution Roadmap
 
 ### Added

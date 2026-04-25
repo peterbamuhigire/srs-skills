@@ -1,2 +1,0 @@
-# Threat Model
-STRIDE analysis.
