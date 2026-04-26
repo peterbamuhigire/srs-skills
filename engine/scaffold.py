@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Optional
 
 
-EXAMPLES_DIR = Path(__file__).resolve().parents[1] / "00-meta-initialization" / "new-project" / "examples"
+EXAMPLES_DIR = Path(__file__).resolve().parents[1] / "skills" / "00-meta-initialization" / "new-project" / "examples"
 
 
 def scaffold(project_root: Path, methodology: str, domain: str, example: Optional[str]) -> None:
