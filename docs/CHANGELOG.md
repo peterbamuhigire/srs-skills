@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026-04-28] - Project DOCX Export Contract
+
+### Added
+
+- Defined the required per-project DOCX export contract: `projects/<ProjectName>/export/`, `projects/<ProjectName>/export-docs.ps1`, and `projects/<ProjectName>/export-docs.sh`.
+- Updated the engine scaffold so every new project receives the export folder and both export scripts, including example-seeded projects.
+- Updated setup scripts, root protocols, pathing documentation, and Word-output guidance to require refreshing `export/` after `.docx` generation.
+
 ## [2026-04-25] - Standard Skill Repository Layout
 
 ### Changed

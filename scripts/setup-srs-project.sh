@@ -194,6 +194,63 @@ if [ ! -f "output/.gitkeep" ]; then
     print_ok "Created output directory with .gitkeep"
 fi
 
+print_step "Creating DOCX export contract..."
+mkdir -p export
+if [ ! -f "export/.gitkeep" ]; then
+    touch export/.gitkeep
+fi
+if [ ! -f "export-docs.sh" ]; then
+    cat > "export-docs.sh" << 'EXPORT_SH_EOF'
+#!/usr/bin/env bash
+# export-docs.sh -- Copy all .docx deliverables into export/
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+EXPORT_DIR="$SCRIPT_DIR/export"
+mkdir -p "$EXPORT_DIR"
+echo "Project   : $(basename "$SCRIPT_DIR")"
+echo "Exporting : $EXPORT_DIR"
+echo ""
+count=0
+while IFS= read -r -d '' f; do
+    dest="$EXPORT_DIR/$(basename "$f")"
+    if [ -f "$dest" ]; then
+        echo "  OVERWRITE: $(basename "$f")"
+    else
+        echo "  COPY:      $(basename "$f")"
+    fi
+    cp "$f" "$dest"
+    ((count++)) || true
+done < <(find "$SCRIPT_DIR" -name "*.docx" -not -path "*/export/*" -print0)
+echo ""
+echo "Exported $count file(s) to $EXPORT_DIR"
+EXPORT_SH_EOF
+    chmod +x export-docs.sh
+fi
+if [ ! -f "export-docs.ps1" ]; then
+    cat > "export-docs.ps1" << 'EXPORT_PS1_EOF'
+# export-docs.ps1 -- Copy all .docx deliverables into export/
+$ScriptDir  = Split-Path -Parent $MyInvocation.MyCommand.Path
+$ExportDir  = Join-Path $ScriptDir 'export'
+New-Item -ItemType Directory -Force -Path $ExportDir | Out-Null
+Write-Host "Project   : $(Split-Path -Leaf $ScriptDir)"
+Write-Host "Exporting : $ExportDir"
+Write-Host ""
+$docxFiles = Get-ChildItem -Path $ScriptDir -Recurse -Filter '*.docx' |
+             Where-Object { $_.FullName -notlike "*\export\*" }
+$count = 0
+foreach ($f in $docxFiles) {
+    $dest = Join-Path $ExportDir $f.Name
+    if (Test-Path $dest) { Write-Host "  OVERWRITE: $($f.Name)" }
+    else                 { Write-Host "  COPY:      $($f.Name)" }
+    Copy-Item -Path $f.FullName -Destination $dest -Force
+    $count++
+}
+Write-Host ""
+Write-Host "Exported $count file(s) to $ExportDir"
+EXPORT_PS1_EOF
+fi
+print_ok "Created export/, export-docs.sh, and export-docs.ps1"
+
 # Step 7: Create/update .gitignore
 print_step "Updating .gitignore..."
 GITIGNORE_ENTRIES=(
@@ -233,6 +290,7 @@ else
 - Added srs-skills as 'skills' submodule
 - Created project_context/ with starter templates (vision, stakeholders, glossary)
 - Created output/ directory for generated documentation
+- Created export/ plus export-docs scripts for DOCX delivery copies
 - Updated .gitignore"
     print_ok "Initial commit created"
 fi
@@ -256,6 +314,7 @@ echo " Project:         $TARGET_DIR"
 echo " Skills submodule: $TARGET_DIR/$SUBMODULE_NAME"
 echo " Project context:  $TARGET_DIR/project_context/"
 echo " Output:           $TARGET_DIR/output/"
+echo " DOCX export:      $TARGET_DIR/export/"
 echo ""
 echo " Next Steps:"
 echo " 1. Edit project_context/vision.md with your project details"

@@ -18,6 +18,10 @@ def test_new_project_creates_canonical_workspace(tmp_path: Path, monkeypatch):
     assert "methodology: hybrid" in methodology_body
     assert (project / "_registry" / "controls.yaml").exists()
     assert (project / "_registry" / "baseline-trace.yaml").exists()
+    assert (project / "export").is_dir()
+    assert (project / "export" / ".gitkeep").exists()
+    assert (project / "export-docs.ps1").exists()
+    assert (project / "export-docs.sh").exists()
 
 
 def test_new_project_without_example_seeds_minimum_context(tmp_path: Path, monkeypatch):
@@ -31,5 +35,8 @@ def test_new_project_without_example_seeds_minimum_context(tmp_path: Path, monke
     project = tmp_path / "projects" / "Minimal"
     assert (project / "_context" / "vision.md").exists()
     assert (project / "_context" / "methodology.md").exists()
+    assert (project / "export").is_dir()
+    assert (project / "export-docs.ps1").exists()
+    assert (project / "export-docs.sh").exists()
     # No example => no baseline-trace.yaml for agile
     assert not (project / "_registry" / "baseline-trace.yaml").exists()
