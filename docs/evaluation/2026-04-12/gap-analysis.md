@@ -2,7 +2,7 @@
 
 ## What Still Prevents World-Class Status
 
-The repository's primary limitation is no longer the absence of an engine. It now has one. The remaining limitation is the gap between **deterministic structural governance** and **deep semantic governance**.
+The repository's primary limitation is no longer the absence of an engine. It now has one. The remaining limitation is again the gap between **deterministic structural governance** and **deep semantic governance**.
 
 ## 1. Semantic Assurance Still Lags Structural Assurance
 
@@ -80,7 +80,7 @@ The canonical pathing model is clearer now, and the engine supports it operation
 
 Impact:
 
-- architecture is more coherent than in the earlier assessment
+- architecture is materially more coherent than in the earlier assessment
 - complete consistency between repository guidance and every skill-local asset is not yet achieved
 
 ## 6. Domain Assurance Is Better Framed Than Fully Enforced
@@ -122,4 +122,4 @@ Impact:
 
 ### Bottom-Line Gap
 
-The repository has largely solved the earlier problem of missing deterministic governance. The remaining gap to world-class status is converting the current **structural validation engine** into a **deeper assurance engine** that can reason more reliably about correctness, compliance completeness, and implementation-grounded evidence.
+The repository has largely solved the earlier problem of missing deterministic governance and restored coherence between the kernel and the operating contract. The remaining gap to world-class status is converting the current **structural validation engine** into a **deeper assurance engine** that can reason more reliably about correctness, compliance completeness, and implementation-grounded evidence.
