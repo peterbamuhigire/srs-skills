@@ -6,7 +6,7 @@
 
 - Strong recognition that documentation methodology must be selected before generation begins.
 - Project scaffolding is now backed by an actual CLI command, which makes initialization operational rather than just instructional.
-- The workspace model is clearer and aligns better with the current engine.
+- The workspace model is clear and aligns with the current engine.
 
 ### Weaknesses
 
@@ -50,16 +50,17 @@
 
 - Still the strongest content phase overall.
 - The engine now materially improves this phase by syncing identifiers and enforcing glossary/traceability quality through the registry and governance layers.
+- Requirement semantics are stronger than in the earlier evaluation because there is now an explicit `requirement_semantics` check.
 - Waterfall remains especially strong.
 
 ### Weaknesses
 
 - Agile remains lighter than Waterfall.
-- Semantic requirement quality still depends partly on skilled review.
+- Semantic requirement quality still depends partly on skilled review because the current semantics check is useful but shallow.
 
 ### Gaps
 
-- No deep requirement semantic verifier
+- No deep requirement semantic verifier beyond normative-language and observable-behaviour heuristics
 - Hybrid requirement-story synchronization remains narrower than ideal
 
 ### Improvements
@@ -72,6 +73,7 @@
 
 - Good breadth: HLD, LLD, API, database, UX, infrastructure
 - Better positioned than before because ADR catalogue checking now exists in the governance layer
+- Design sufficiency is now checked explicitly at a basic level through downstream requirement-reference enforcement
 
 ### Weaknesses
 
@@ -111,12 +113,13 @@
 
 ### Strengths
 
-- Testing is now more credible in the overall system because the engine itself has a strong automated test suite and deterministic behaviour.
+- Testing is now more credible in the overall system because the engine itself has a large automated test suite, deterministic behaviour, and a working proof workspace.
 - The repository's testing documentation posture is stronger than in the earlier evaluation.
+- Test artifacts now have some explicit oracle and requirement-trace validation.
 
 ### Weaknesses
 
-- Verification evidence is still stronger at the document layer than at live result ingestion
+- Verification evidence is still stronger at the document layer than at live result ingestion.
 
 ### Gaps
 
@@ -137,6 +140,7 @@
 ### Weaknesses
 
 - Operational docs are still not deeply linked to live environments or observed runtime controls
+- Release/runtime proof remains weaker than the document layer
 
 ### Gaps
 
@@ -192,7 +196,7 @@
 ### Strengths
 
 - This phase has improved the most.
-- It now behaves like a real governance kernel with traceability, controls, obligations, ADR catalogue, change impact, baseline delta, sign-off, waiver discipline, and evidence-pack buildability checks.
+- It now behaves like a real governance kernel with traceability, controls, obligations, ADR catalogue, change impact, baseline delta, sign-off, waiver discipline, evidence-pack buildability checks, and newer compliance-evidence checks.
 - This is no longer just document generation; it is enforceable governance logic.
 
 ### Weaknesses
@@ -211,4 +215,4 @@
 
 ## Overall Phase Pattern
 
-The phase model was already a strength. The important change now is that the repository has started to connect that phase model to an executable enforcement layer. The remaining deficiency is no longer lack of machinery; it is the depth and scope of what that machinery can prove.
+The phase model was already a strength. The important change now is that the repository has connected that phase model to an executable enforcement layer and added some early semantic checks. The remaining deficiency is no longer lack of machinery alone. It is the depth and scope of what that machinery can prove.

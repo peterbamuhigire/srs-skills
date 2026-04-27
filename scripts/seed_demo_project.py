@@ -246,6 +246,9 @@ are in scope for design.
 - `POST /prescriptions` returns 201 per FR-004.
 - `POST /invoices` returns 201 per FR-005 and FR-012.
 - `POST /dsar` returns 202 per FR-008.
+- `POST /pdpo-breach-notifications` returns 202 and dispatches the PDPO webhook per FR-009.
+- `GET /dashboard/kpis` returns 200 with last-30-day aggregates per FR-010.
+- `POST /patients/{id}/erasure` returns 202 and starts anonymisation per FR-011.
 
 Latency target NFR-001 applies; throughput target NFR-007 applies.
 """)
@@ -256,7 +259,8 @@ Latency target NFR-001 applies; throughput target NFR-007 applies.
 Table `patients` has PRIMARY KEY `id`; column `nin` is encrypted with AES-256-GCM
 per CTRL-UG-002 (S-tier). Table `encounters` has PRIMARY KEY `id`. Table
 `invoices` has PRIMARY KEY `id`. Table `audit_log` has PRIMARY KEY `id` and is
-append-only per FR-013.
+append-only per FR-013. Table `patient_erasure_jobs` records FR-011 anonymisation
+requests and key-destruction status.
 
 Storage budget per NFR-004.
 """)
@@ -267,7 +271,9 @@ Storage budget per NFR-004.
 Consent capture is the first step of the enrolment wizard per CTRL-UG-001 and FR-006.
 The receptionist cannot proceed without a captured consent token.
 
-Dashboard rendering observes NFR-001 for interactive charts.
+Dashboard rendering for FR-010 observes NFR-001 for interactive charts. The
+privacy workflow exposes an FR-011 erasure request screen with confirmation and
+status feedback.
 """)
 
     write(f"{design}/05-ux-specification/accessibility.md", """\
@@ -367,9 +373,51 @@ All 14 test cases tested with result PASS.
         f"{testing}/test-plan/tc.md",
         "---\n"
         "phase: '05'\n"
-        "inputs: []\n"
-        "expected_results: []\n"
-        "requirement_trace: []\n"
+        "inputs:\n"
+        "  - enrolment form\n"
+        "  - booking query\n"
+        "  - clinical note save\n"
+        "  - prescription submit\n"
+        "  - billing confirm\n"
+        "  - enrolment without consent\n"
+        "  - provider login without TOTP\n"
+        "  - DSAR submit\n"
+        "  - simulated breach\n"
+        "  - dashboard open\n"
+        "  - erasure request\n"
+        "  - invoice confirmed\n"
+        "  - PII read\n"
+        "  - unauthorised endpoint hit\n"
+        "expected_results:\n"
+        "  - patient record persisted\n"
+        "  - available slots returned\n"
+        "  - note persisted and audit entry\n"
+        "  - prescription id returned\n"
+        "  - invoice produced\n"
+        "  - request rejected\n"
+        "  - access denied\n"
+        "  - DSAR fulfilled within 30 days\n"
+        "  - PDPO webhook called immediately\n"
+        "  - KPIs rendered within 3 seconds\n"
+        "  - record anonymised within 7 days\n"
+        "  - EFRIS receipt recorded\n"
+        "  - audit entry appended\n"
+        "  - request rejected 403\n"
+        "requirement_trace:\n"
+        "  - FR-001\n"
+        "  - FR-002\n"
+        "  - FR-003\n"
+        "  - FR-004\n"
+        "  - FR-005\n"
+        "  - FR-006\n"
+        "  - FR-007\n"
+        "  - FR-008\n"
+        "  - FR-009\n"
+        "  - FR-010\n"
+        "  - FR-011\n"
+        "  - FR-012\n"
+        "  - FR-013\n"
+        "  - FR-014\n"
         "---\n"
         "# Test Plan\n\n"
         "Every test case below uses AES-256-GCM-encrypted fixtures to exercise "
@@ -590,22 +638,30 @@ Selected controls and regulatory anchors.
 ## CTRL-UG-001 Lawful basis for personal data collection
 - Framework: Uganda DPPA 2019 §7.
 - Evidence: FR-006 consent capture; 03-design-documentation/05-ux-specification/ui-spec.md.
+- Owner: Product Owner.
 - Reviewer: Data Protection Officer.
+- Status: Implemented.
 
 ## CTRL-UG-002 Encryption of special personal data at rest
 - Framework: Uganda DPPA 2019 §19.
 - Evidence: 03-design-documentation/04-database-design/schema.md; TC-005 encryption fixtures.
+- Owner: Security Architect.
 - Reviewer: Security Architect.
+- Status: Implemented.
 
 ## CTRL-UG-003 Breach notification to PDPO
 - Framework: Uganda DPPA 2019 §23.
 - Evidence: 06-deployment-operations/runbook.md; 06-deployment-operations/incident-response/playbook.md; FR-009.
+- Owner: Operations Lead.
 - Reviewer: Data Protection Officer.
+- Status: Implemented.
 
 ## CTRL-UG-004 Data subject access request handling
 - Framework: Uganda DPPA 2019 §30.
 - Evidence: FR-008 DSAR; TC-008 fulfilment; FR-013 audit log; FR-014 RBAC.
+- Owner: Compliance Lead.
 - Reviewer: Data Protection Officer.
+- Status: Implemented.
 """)
 
     write(f"{gov}/risk-assessment.md", """\
