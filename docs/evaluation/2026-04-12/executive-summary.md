@@ -31,9 +31,9 @@ This does not make the system world-class yet. The remaining issue is no longer 
 
 - **Clause-level standards proof is still uneven.** Standards are better operationalized, but full clause-by-clause compliance checking is still strongest in selected areas rather than uniform across the system.
 - **Semantic truth checking remains limited.** The engine catches structural and linkage defects well, but it still cannot independently prove that upstream content is substantively correct.
-- **Methodology maturity is still uneven.** Waterfall and governance flows are the strongest. Agile is useful but lighter, and Hybrid synchronization is present but still narrow.
-- **Requirements-to-code and runtime evidence tracing remain incomplete.** The system is strong from document to document, but weaker from requirement to implementation and live operational evidence.
-- **Skill-layer migration is still incomplete.** The root pathing model is clearer, but some skill-local assets still rely on compatibility-era assumptions.
+- **Methodology maturity is still uneven.** Waterfall and governance flows are the strongest. Agile is useful but lighter, and Hybrid synchronization is present but still too narrow to eliminate manual coordination at scale across formal requirements, backlog artifacts, design baselines, and governance evidence.
+- **Requirements-to-code and runtime evidence tracing remain incomplete.** The system is strong from document to document, but weaker from requirement to implementation, executable test results, releases, and live operational evidence.
+- **Skill-layer migration is still incomplete.** The root pathing model is clearer, but some skill-local assets still rely on compatibility-era assumptions, so the canonical runtime model is not yet expressed consistently across every local entrypoint and helper asset.
 
 ## Overall Score
 
@@ -62,4 +62,4 @@ Current fit:
 
 ## Bottom Line
 
-The repository has crossed an important threshold. It is no longer accurate to describe it as mostly prose-driven governance. It now contains a genuine validation kernel with enforceable controls. The remaining gap to world-class status is chiefly about **deeper semantic assurance, broader clause-level standards enforcement, and stronger traceability from documents into code, test results, and operational reality**.
+The repository has crossed an important threshold. It is no longer accurate to describe it as mostly prose-driven governance. It now contains a genuine validation kernel with enforceable controls. The remaining gap to world-class status is chiefly about **deeper semantic assurance, broader clause-level standards enforcement, richer Hybrid synchronization, and stronger traceability from documents into code, test results, releases, and operational reality**.
