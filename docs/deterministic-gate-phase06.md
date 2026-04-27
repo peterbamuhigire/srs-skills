@@ -1,0 +1,31 @@
+# Deterministic Gate: Phase 06
+
+## Scope
+
+Phase 06 validates deployment and operations readiness.
+
+## Standard Anchor
+
+- IEEE Std 1062-2015 clause 6.3
+
+## Enforced Checks
+
+- `phase06.deployment_guide_has_rollback`
+- `phase06.runbook_has_escalation`
+- `phase06.monitoring_has_slo`
+- `phase06.infra_has_ir_diagram`
+- `phase06.go_live_readiness_checklist_complete`
+- `phase06.change_window_documented`
+
+## Intent
+
+- Require rollback procedures in deployment guides
+- Require escalation paths in runbooks
+- Require SLO, SLI, or SLA references in monitoring docs
+- Require incident-response references in infrastructure docs
+- Require complete go-live readiness checklists
+- Require a documented change window
+
+## Pass Condition
+
+Operational artefacts are specific enough to support repeatable release, rollback, monitoring, escalation, and cutover planning.
