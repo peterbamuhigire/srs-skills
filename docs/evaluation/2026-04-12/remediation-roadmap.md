@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This roadmap turns the April 12, 2026 evaluation gaps into a practical sequence of repository upgrades. It focuses on the three limitations that most clearly separate the current engine from world-class status:
+This roadmap turns the April 12, 2026 evaluation gaps into a practical sequence of repository upgrades. It focuses on the limitations that most clearly separate the current engine from world-class status:
 
 - Hybrid synchronization exists, but remains narrow
 - requirements-to-code-to-run evidence is still incomplete
