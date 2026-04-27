@@ -12,6 +12,7 @@ You are an expert Systems Architect. You are assisting in developing and executi
 - **Project Workspace:** Located in `projects/<ProjectName>/` (untracked, gitignored). All client documentation is built here.
 - **Context Source of Truth:** Read all project-specific data from `projects/<ProjectName>/_context/`.
 - **Output Destination:** Write all generated section files to `projects/<ProjectName>/<phase>/<document>/`. Write final `.docx` files to `projects/<ProjectName>/<phase>/`.
+- **DOCX Export Contract:** Every project workspace MUST contain `projects/<ProjectName>/export/`, `projects/<ProjectName>/export-docs.ps1`, and `projects/<ProjectName>/export-docs.sh`. After building `.docx` deliverables, run the appropriate export script so `export/` contains a flat delivery copy of every generated Word document.
 - **Pathing:** Skill files MUST use the canonical `projects/<ProjectName>/_context/` and `projects/<ProjectName>/<phase>/` paths. Legacy `../project_context/` and `../output/` references are only permitted inside `<!-- alias-block start --> ... <!-- alias-block end -->` HTML comments and are enforced by `python -m engine validate-skills`.
 - **Templates:** `templates/reference.docx` is the Pandoc Word style reference.
 - **Build Script:** `scripts/build-doc.sh` stitches `.md` files into `.docx`.
@@ -41,7 +42,8 @@ When the user says "build the [document]":
 1. Resolve the document directory using the mapping in `skills/00-meta-initialization/new-project/SKILL.md`
 2. Check for `manifest.md` in the document directory — use it if present, otherwise sort all `*.md` files (excluding `manifest.md`) alphabetically
 3. Execute: `bash scripts/build-doc.sh <doc-dir> <OutputName>`
-4. Report the output `.docx` path to the user
+4. Run `projects/<ProjectName>/export-docs.ps1` on Windows or `projects/<ProjectName>/export-docs.sh` on bash-capable shells to refresh `projects/<ProjectName>/export/`
+5. Report both the phase-local output `.docx` path and the exported copy in `projects/<ProjectName>/export/` to the user
 
 ## Domain Injection Protocol
 

@@ -5,6 +5,8 @@ This repository uses a **single canonical workspace model**:
 - Project root: `projects/<ProjectName>/`
 - Context root: `projects/<ProjectName>/_context/`
 - Generated artifact root: `projects/<ProjectName>/...` under the active phase and document workspace
+- DOCX export root: `projects/<ProjectName>/export/`
+- DOCX export scripts: `projects/<ProjectName>/export-docs.ps1` and `projects/<ProjectName>/export-docs.sh`
 - Skill entrypoint root: `skills/<skill-name>/SKILL.md`
 
 ## Canonical Rule
@@ -17,6 +19,19 @@ Examples:
 - `projects/<ProjectName>/_context/tech_stack.md`
 - `projects/<ProjectName>/02-requirements-engineering/...`
 - `projects/<ProjectName>/03-design-documentation/...`
+- `projects/<ProjectName>/export/`
+- `projects/<ProjectName>/export-docs.ps1`
+- `projects/<ProjectName>/export-docs.sh`
+
+## DOCX Export Rule
+
+Every project workspace must contain a flat DOCX delivery export area:
+
+- `projects/<ProjectName>/export/` stores delivery copies of generated `.docx` files.
+- `projects/<ProjectName>/export-docs.ps1` copies all `.docx` files under the project into `export/`, excluding files already inside `export/`.
+- `projects/<ProjectName>/export-docs.sh` provides the same behavior for bash-capable shells.
+
+Phase-local `.docx` files remain the working outputs. The `export/` directory is the delivery bundle refreshed after Word documents are generated or rebuilt.
 
 ## Relative Alias Rule
 

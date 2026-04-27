@@ -206,6 +206,68 @@ if (-not (Test-Path $gitkeep)) {
     Write-Ok "Created output directory with .gitkeep"
 }
 
+Write-Step "Creating DOCX export contract..."
+$exportDir = Join-Path $TargetDir "export"
+if (-not (Test-Path $exportDir)) {
+    New-Item -ItemType Directory -Path $exportDir -Force | Out-Null
+}
+$exportGitkeep = Join-Path $exportDir ".gitkeep"
+if (-not (Test-Path $exportGitkeep)) {
+    New-Item -ItemType File -Path $exportGitkeep -Force | Out-Null
+}
+$exportSh = Join-Path $TargetDir "export-docs.sh"
+if (-not (Test-Path $exportSh)) {
+    @'
+#!/usr/bin/env bash
+# export-docs.sh -- Copy all .docx deliverables into export/
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+EXPORT_DIR="$SCRIPT_DIR/export"
+mkdir -p "$EXPORT_DIR"
+echo "Project   : $(basename "$SCRIPT_DIR")"
+echo "Exporting : $EXPORT_DIR"
+echo ""
+count=0
+while IFS= read -r -d '' f; do
+    dest="$EXPORT_DIR/$(basename "$f")"
+    if [ -f "$dest" ]; then
+        echo "  OVERWRITE: $(basename "$f")"
+    else
+        echo "  COPY:      $(basename "$f")"
+    fi
+    cp "$f" "$dest"
+    ((count++)) || true
+done < <(find "$SCRIPT_DIR" -name "*.docx" -not -path "*/export/*" -print0)
+echo ""
+echo "Exported $count file(s) to $EXPORT_DIR"
+'@ | Set-Content -Path $exportSh -Encoding UTF8
+}
+$exportPs1 = Join-Path $TargetDir "export-docs.ps1"
+if (-not (Test-Path $exportPs1)) {
+    @'
+# export-docs.ps1 -- Copy all .docx deliverables into export/
+$ScriptDir  = Split-Path -Parent $MyInvocation.MyCommand.Path
+$ExportDir  = Join-Path $ScriptDir 'export'
+New-Item -ItemType Directory -Force -Path $ExportDir | Out-Null
+Write-Host "Project   : $(Split-Path -Leaf $ScriptDir)"
+Write-Host "Exporting : $ExportDir"
+Write-Host ""
+$docxFiles = Get-ChildItem -Path $ScriptDir -Recurse -Filter '*.docx' |
+             Where-Object { $_.FullName -notlike "*\export\*" }
+$count = 0
+foreach ($f in $docxFiles) {
+    $dest = Join-Path $ExportDir $f.Name
+    if (Test-Path $dest) { Write-Host "  OVERWRITE: $($f.Name)" }
+    else                 { Write-Host "  COPY:      $($f.Name)" }
+    Copy-Item -Path $f.FullName -Destination $dest -Force
+    $count++
+}
+Write-Host ""
+Write-Host "Exported $count file(s) to $ExportDir"
+'@ | Set-Content -Path $exportPs1 -Encoding UTF8
+}
+Write-Ok "Created export/, export-docs.sh, and export-docs.ps1"
+
 # Step 7: Create/update .gitignore
 Write-Step "Updating .gitignore..."
 $gitignorePath = Join-Path $TargetDir ".gitignore"
@@ -251,6 +313,7 @@ Initialize SRS project with SDLC-Docs-Engine submodule
 - Added srs-skills as 'skills' submodule
 - Created project_context/ with starter templates (vision, stakeholders, glossary)
 - Created output/ directory for generated documentation
+- Created export/ plus export-docs scripts for DOCX delivery copies
 - Updated .gitignore
 "@
     Write-Ok "Initial commit created"
@@ -277,6 +340,7 @@ Write-Host " Project:          $TargetDir"
 Write-Host " Skills submodule: $TargetDir\$SUBMODULE_NAME"
 Write-Host " Project context:  $TargetDir\project_context\"
 Write-Host " Output:           $TargetDir\output\"
+Write-Host " DOCX export:      $TargetDir\export\"
 Write-Host ""
 Write-Host " Next Steps:" -ForegroundColor Yellow
 Write-Host " 1. Edit project_context\vision.md with your project details"

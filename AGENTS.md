@@ -34,6 +34,7 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 - The canonical project workspace model is `projects/<ProjectName>/...`.
 - The source of truth for project context is `projects/<ProjectName>/_context/`.
+- Every project workspace must include the DOCX export contract: `projects/<ProjectName>/export/`, `projects/<ProjectName>/export-docs.ps1`, and `projects/<ProjectName>/export-docs.sh`. Generated Word deliverables remain in their phase folders, then the export script copies all `.docx` files into `export/` for delivery.
 - Existing skill-local references such as `../project_context/` and `../output/` should be treated as execution aliases into the active project workspace, not as a separate architecture.
 - Root documentation should prefer the canonical model described in [docs/pathing-model.md](/C:/wamp64/www/srs-skills/docs/pathing-model.md).
 
