@@ -61,6 +61,8 @@ For each component in HLD.md, define the metrics to collect:
 - **Application metrics:** Request rate, error rate, response latency (p50, p95, p99)
 - **Business metrics:** Active users, transaction volume, conversion rate
 - Each metric shall specify name, type (counter, gauge, histogram), unit, and collection interval
+- **Delivery metrics:** deployment frequency, change lead time, change failure rate, mean time to restore, release marker visibility
+- **Queue and worker metrics:** queue depth, job age, failed jobs, retry rate, dead-letter count where asynchronous processing exists
 
 ### Step 3: Define Alert Thresholds
 
@@ -69,6 +71,7 @@ For each metric, define warning and critical thresholds derived from `quality_st
 - Critical threshold: breach of SLA requiring immediate action
 - Each alert shall specify evaluation window, aggregation method, and notification channel
 - Thresholds shall align with SLOs defined in quality_standards.md
+- Classify every alert as page, ticket, or dashboard-only. Page only when there is a clear operator action or customer-impact risk.
 
 ### Step 4: Define Dashboard Specifications
 
@@ -114,6 +117,7 @@ The generated `Monitoring_Setup.md` shall contain these sections in order: Docum
 |---------|--------|
 | Metrics without units or collection intervals | Every metric shall specify unit and collection interval |
 | Alert thresholds not tied to SLAs | Every critical threshold shall reference a specific SLA or SLO |
+| Noisy alerts with no owner | Every paging alert shall have an owner, action, runbook link, and escalation path |
 | Dashboards without refresh intervals | Every dashboard shall specify its refresh interval |
 | Health checks without timeout values | Every health check shall define check interval and timeout |
 
@@ -126,6 +130,8 @@ The generated `Monitoring_Setup.md` shall contain these sections in order: Docum
 - [ ] Health check endpoints exist for every service with liveness and readiness checks.
 - [ ] Log aggregation defines format standard, pipeline, and retention policy.
 - [ ] Notification rules map alert severity to notification channels.
+- [ ] Alerts distinguish page-worthy customer impact from ticket or dashboard-only signals.
+- [ ] Dashboards include release markers and delivery-system metrics where production deployment is in scope.
 
 ## Integration
 

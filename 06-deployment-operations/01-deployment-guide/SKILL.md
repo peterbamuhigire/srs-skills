@@ -71,6 +71,8 @@ Produce numbered deployment steps with exact commands where the tech stack permi
 - Artifact deployment (copy, pull, install)
 - Service startup sequence with dependency ordering
 - Each step shall include expected duration and success criteria
+- For DevOps-ready systems, specify whether deployment is rolling, blue-green, canary, dark-launch, or GitOps-driven; state why that pattern fits the release risk.
+- For PHP systems, include Composer install mode, environment file handling, PHP-FPM reload/restart, OPcache reset or warm-up, queue worker restart, cache clear/warm, web server reload, and file ownership checks.
 
 ### Step 4: Define Database Migration Steps
 
@@ -103,6 +105,8 @@ Document verification procedures after deployment completes:
 - Smoke test scenarios (critical user paths)
 - Performance baseline comparison
 - Log review checklist (error rates, warnings)
+- Release markers in logs, metrics, and traces so incidents can be tied to the deployed version.
+- Actionable alert checks for error rate, latency, saturation, queue depth, failed jobs, and business-critical transactions.
 
 ### Step 8: Define Environment Matrix and Write Output
 
@@ -120,6 +124,7 @@ The generated `Deployment_Guide.md` shall contain these sections in order: Docum
 | Missing rollback procedure | Every deployment guide shall include a complete reversal procedure |
 | No environment differentiation | Configuration shall distinguish dev, staging, and prod explicitly |
 | Post-deployment verification omitted | Every guide shall define health checks and smoke tests |
+| Rollback ignores data and queues | Classify migrations as reversible, compensating-only, or forward-fix-only; include cache and queue recovery |
 
 ## Verification Checklist
 
@@ -129,6 +134,7 @@ The generated `Deployment_Guide.md` shall contain these sections in order: Docum
 - [ ] Rollback procedure reverses every deployment step.
 - [ ] Post-deployment verification defines health checks and smoke tests.
 - [ ] Environment matrix covers dev, staging, and production.
+- [ ] Release markers, alert watch list, and observation owner are specified for production changes.
 
 ## Integration
 
