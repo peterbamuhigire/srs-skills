@@ -18,6 +18,10 @@ and real-time inventory accuracy.
 - Returns processing and restocking workflow
 - Inventory discrepancy exception workflow with supervisor approval
 - Warehouse throughput and productivity reporting
+- Inventory policy support by SKU/location: ABC class, cycle stock, safety stock, reorder point, MOQ, expiry/FEFO, lot/batch, spares, packaging, quarantine, and in-transit status
+- Backorder, stockout, excess-stock, damaged-stock, and slow-stock exception queues with owner, reason, SLA, and financial impact
+- Dock-to-stock, inventory accuracy, pick accuracy, order fulfilment cycle time, storage utilisation, and material-handling productivity metrics
+- Reverse-logistics receiving for returns, recalls, reusable packaging, repair, recycling, disposal, and supplier returns
 
 ## Regulatory Hooks
 - DOT 49 CFR Parts 171–173: hazardous materials storage must comply with segregation requirements and quantity limits

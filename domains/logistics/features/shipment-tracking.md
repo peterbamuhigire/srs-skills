@@ -16,6 +16,10 @@ and proof-of-delivery capture.
 - Exception management workflow (damage, delay, address issue, refused delivery)
 - Multi-carrier tracking aggregation (carrier-agnostic tracking interface)
 - Shipment history and audit trail export for customs and insurance
+- Freight document management for BOL, waybill, freight bill, commercial invoice, packing list, customs declaration, certificate, and proof of delivery
+- Track-and-trace, expediting, consolidation, customs hold, delay, damage, shortage, refused delivery, lost shipment, and return exception workflows
+- Shipment-level linkage to reserved stock, in-transit inventory, backorders, freight claims, customer notifications, and finance postings
+- Carrier scorecard metrics: on-time pickup, on-time delivery, OTIF, damage rate, claims rate, documentation error rate, and exception closure time
 
 ## Regulatory Hooks
 - CBP (19 CFR Part 163): shipment records including origin, destination, commodity, and value must be retained 7 years

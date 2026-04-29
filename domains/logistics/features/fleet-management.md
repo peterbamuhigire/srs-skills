@@ -16,6 +16,10 @@ and ELD data management.
 - Driver scorecard (safety events: hard braking, speeding, harsh acceleration)
 - Fleet utilization and idle time reporting
 - Vehicle out-of-service tracking and return-to-service workflow
+- Private-fleet versus for-hire carrier comparison using cost, utilisation, service reliability, compliance burden, claims exposure, and control requirements
+- Fleet capacity planning by vehicle class, payload/volume, route, dispatch window, maintenance downtime, driver availability, and seasonal demand
+- Backhaul, empty-running, fuel, insurance, licensing, maintenance, and replacement-capital reporting
+- Dispatch integration with shipment booking, route plans, proof of delivery, freight claims, and customer delivery promises
 
 ## Regulatory Hooks
 - DOT FMCSA 49 CFR Part 396: vehicle inspection records required; defects must be corrected before dispatch

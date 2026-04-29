@@ -17,6 +17,10 @@ HOS constraints, and traffic conditions.
 - Route plan export to driver mobile app and ELD
 - Route adherence monitoring with deviation alerts
 - Planned vs. actual route comparison reporting
+- Mode, carrier, and service-level selection based on cost, capacity, lane, promised delivery window, compliance, tracking capability, and historical performance
+- Load consolidation, cross-dock, backhaul, empty-running reduction, and delivery-frequency optimisation
+- Cost-to-serve route reporting by customer zone, delivery promise, order size, vehicle type, distance, dwell time, and exception history
+- Network-design support for comparing hub-and-spoke, direct delivery, cross-dock, branch replenishment, and regional stocking scenarios
 
 ## Regulatory Hooks
 - DOT FMCSA 49 CFR Part 395: route plans must not schedule driving time that would cause HOS violations
