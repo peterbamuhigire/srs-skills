@@ -48,6 +48,8 @@ ETA must be recalculated every 5 minutes or on each GPS update, whichever is soo
 - Common operations: rate quote, booking, label generation, pickup scheduling, tracking query
 - EDI X12 204 (motor carrier load tender) and 214 (shipment status) must be supported for truckload carriers
 - Carrier API failures must trigger automatic fallback to secondary carrier or manual booking queue
+- Carrier selection must be explainable from configured lane, service level, cutoff time, cost, capacity, compliance, claims performance, tracking capability, and fallback priority
+- The carrier abstraction must support courier, parcel, truckload, freight forwarder, 3PL, 4PL, lead logistics provider, and owned-fleet dispatch models
 
 ## Warehouse Bin/Slot Management
 
@@ -55,6 +57,15 @@ ETA must be recalculated every 5 minutes or on each GPS update, whichever is soo
 - Putaway rules must direct items to optimal slots based on product dimensions, weight, and velocity class
 - Slot occupancy must be updated atomically with the pick or putaway scan event
 - Cross-docking: inbound receipts that match open outbound orders must bypass slot assignment
+- Inventory availability must distinguish on-hand, reserved, allocated, quarantined, damaged, expired, backordered, and in-transit quantities
+- Replenishment services should evaluate ABC class, review method, reorder point, safety stock, MOQ, scheduled receipts, route reliability, supplier lead time, and current in-transit stock
+
+## Logistics Network and Documentation Model
+
+- Model network nodes as first-class records: supplier, port, border, plant, warehouse, cross-dock, branch, customer zone, return centre, and disposal site
+- Trade lanes connect nodes with mode, normal lead time, cost basis, risk rating, customs/border requirements, and allowed carriers
+- Shipment records must link orders, reservations, route plans, carrier/fleet assignment, freight documents, shipment events, exceptions, claims, and proof of delivery
+- International flows must store Incoterms, customs broker, commercial invoice, packing list, BOL/waybill, declaration, duties, clearance status, and cost/risk transfer point
 
 ## Barcode and RFID Scanning
 

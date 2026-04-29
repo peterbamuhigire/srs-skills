@@ -31,6 +31,7 @@ Key injected areas:
 
 - [regulations.md](references/regulations.md) — DOT FMCSA, ISO 28000, IATA DGR, C-TPAT, Incoterms 2020
 - [architecture-patterns.md](references/architecture-patterns.md) — GPS tracking, event-driven status, ETA calculation, multi-carrier API, warehouse management
+- [cltd-network-inventory-transportation.md](references/cltd-network-inventory-transportation.md) — logistics network design, inventory service levels, transportation, carrier/fleet strategy, customs documents, LSP models, and logistics KPIs
 - [security-baseline.md](references/security-baseline.md) — GPS integrity, chain of custody, tamper-evidence, driver identity, cargo theft prevention
 - [nfr-defaults.md](references/nfr-defaults.md) — default non-functional requirements for injection
 
