@@ -13,6 +13,8 @@ system (MIS) dashboards for compliance oversight.
 - KYC risk rating reports and EDD case tracking
 - Regulatory capital and Basel III reporting outputs
 - General ledger trial balance and financial statement generation
+- Income statement, balance sheet, cash flow, AR/AP aging, fixed asset register, inventory valuation, bank reconciliation, tax schedules, and management pack outputs
+- Budget vs actual, flexible-budget variance, standard-cost variance, cost-centre, profit-centre, project, branch, and contribution-margin reporting where applicable
 - Audit log search and export (by user, account, date range, transaction type)
 - Immutable report archive with tamper-evident storage
 

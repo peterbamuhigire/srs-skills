@@ -15,6 +15,10 @@ ledger posting.
 - Transaction reversal and chargeback handling
 - Foreign currency conversion with exchange rate audit trail
 - End-of-day settlement and nostro/vostro reconciliation
+- Source-transaction to GL posting rules for invoices, receipts, bills, payments, payroll, inventory movements, depreciation, tax, accruals, prepayments, and write-offs
+- Subledger-to-control-account reconciliation for AR, AP, inventory, fixed assets, payroll, tax, and bank/mobile money
+- Period close controls, recurring journals, reversing journals, and controlled closed-period reopening
+- Posting dimensions for legal entity, branch, cost centre, profit centre, project, fund, product/service, location, and tax code where applicable
 
 ## Regulatory Hooks
 - BSA CTR: automatic FinCEN CTR filing for cash transactions exceeding $10,000
