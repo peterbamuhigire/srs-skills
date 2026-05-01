@@ -58,6 +58,7 @@ See [docs/plans/completion2026-04-16/PROGRESS.md](docs/plans/completion2026-04-1
 
 ## What's New in v3.2
 
+- **AI Economic Value Brief** - strategic AI brief for AI apps, agents, analytics, automation, evaluation gates, and operating ownership
 - **Phase 01: Strategic Vision** - 3 new skills: Vision Statement (IEEE 29148), PRD (IEEE 29148/1233), Business Case (IEEE 1058)
 - **Phase 02: Agile Track Complete** - 3 new skills: Acceptance Criteria, Story Mapping, Backlog Prioritization (IEEE 29148)
 - **Phase 03: Design Documentation** - 4 new skills: HLD, LLD (IEEE 1016), API Specification (OpenAPI 3.0), Database Design (IEEE 1016)
@@ -86,6 +87,7 @@ See [docs/plans/completion2026-04-16/PROGRESS.md](docs/plans/completion2026-04-1
 - **Vision Statements**
 - **Business Cases**
 - **Lean Canvas & Impact Mapping** (NEW) - MVP/startup alternative to PRD (decision gate)
+- **AI Economic Value Brief** - AI business value, data readiness, evaluation, governance, and roadmap
 
 ### **Requirements Engineering (Phase 02)**
 
