@@ -2,124 +2,172 @@
 
 ## What Still Prevents World-Class Status
 
-The repository's primary limitation is no longer the absence of an engine. It now has one. The remaining limitation is again the gap between **deterministic structural governance** and **deep semantic governance**.
+The project has the right architecture and much of the right machinery. The remaining blockers are concentrated in proof, normalization, semantic depth, and implementation/runtime linkage.
 
-## 1. Semantic Assurance Still Lags Structural Assurance
+## 1. Missing End-to-End Proof Workspace
 
-The engine now catches many structural and consistency defects well:
+The most concrete gap is that `README.md` and engine tests reference `projects/_demo-hybrid-regulated`, but that workspace is absent.
 
-- missing or orphaned identifiers
+Impact:
+
+- two engine tests fail
+- the claimed clean end-to-end proof path cannot be reproduced
+- the old evaluation's strongest evidence claim is no longer valid
+
+World-class expectation:
+
+- at least one committed project workspace validates cleanly across all gates
+- the test suite depends only on committed fixtures or generated fixtures
+- README proof claims are reproducible from a fresh checkout
+
+## 2. Engine Suite Is Not Green From Current Checkout
+
+After installing declared dev dependencies, the suite runs but fails:
+
+- 211 tests run
+- 2 fail
+- 2 skip
+- 95% coverage
+
+Impact:
+
+- the kernel remains credible, but release confidence is reduced
+- coverage is high, but passing status matters more than the percentage
+
+World-class expectation:
+
+- `pip install -e ".[dev]"`
+- `python -X utf8 -m pytest engine\tests -q`
+- zero failures
+- documented fixture generation where committed examples are not stored
+
+## 3. Project-Level Validation Is Not Clean
+
+`projects\AcademiaPro` currently fails validation with many HIGH findings, including missing canonical context, ADR/threat model, development setup, test evidence, deployment docs, agile artifacts, end-user docs, and governance files.
+
+Impact:
+
+- the engine can detect defects, which is good
+- but the repository does not currently demonstrate a clean client-scale workspace
+
+World-class expectation:
+
+- one small synthetic green workspace
+- one realistic green workspace
+- one intentionally broken fixture that proves failures are specific and useful
+
+## 4. Skill-Layer Normalization Is Incomplete
+
+The local quick validator found 15 failing skill entrypoints out of 240.
+
+Observed failure types:
+
+- missing portable metadata
+- missing dual-compat markers
+- broken local links
+- legacy `../CLAUDE.md` and `../sdlc-lifecycle.md` assumptions
+- validator assumptions tied to `skills/skills`
+- root-level routing drift
+
+Impact:
+
+- most of the catalog is usable
+- the system is not yet uniformly portable across Claude Code and Codex
+- path drift increases operator confusion
+
+World-class expectation:
+
+- 100% quick-validator pass rate or explicit documented exemptions
+- root docs and nested docs agree on canonical paths
+- every skill with warnings has a planned owner and remediation path
+
+## 5. Semantic Assurance Still Lags Structural Assurance
+
+The engine catches many structural and governance issues:
+
+- missing identifiers
+- weak traceability
 - glossary drift
 - unresolved fail markers
-- weak traceability
-- missing governance artifacts
-- waiver expiry violations
-- sign-off ledger issues
-- baseline and change-impact defects
+- missing required artifacts
+- waiver and sign-off defects
+- baseline and change-impact issues
 
-What it still does not prove reliably:
+It still cannot reliably prove:
 
 - whether a requirement is substantively correct
-- whether a design actually satisfies the requirement
-- whether a test meaningfully verifies the behaviour
-- whether a compliance claim is complete rather than merely well-linked
-
-This is the main remaining blocker.
-
-## 2. Clause-Level Standards Enforcement Is Still Uneven
-
-The repo is better than before at operationalizing standards, but the enforcement depth varies by phase and artifact type.
-
-Current state:
-
-- some gates attach standards clauses and enforce specific conditions
-- some registries are schema-backed
-- some phases now operate with deterministic checks instead of narrative review only
-
-Remaining limitation:
-
-- the system still does not provide a uniformly deep, clause-by-clause conformance model across the whole SDLC
-
-Impact:
-
-- stronger internal governance
-- still limited formal defensibility under rigorous external audit challenge
-
-## 3. Hybrid Synchronization Exists, But Is Narrow
-
-Hybrid support is no longer merely conceptual. There is now an explicit gate checking synchronization behaviour. That said, the current model is still thin relative to the repository's ambition.
-
-Remaining limitation:
-
-- formal requirements, backlog artifacts, design baselines, and governance evidence are not yet synchronized through a rich shared data model
-
-Impact:
-
-- hybrid programmes are more governable than before
-- hybrid programmes still need manual coordination at scale
-
-## 4. Requirements-to-Code-to-Run Evidence Is Still Incomplete
-
-The repository is becoming strong at document-to-document governance. It is still weaker at tracing into implementation and runtime reality.
-
-Missing or underdeveloped depth:
-
-- requirements-to-code linkage
-- requirements-to-test-result linkage beyond document references
-- release/runtime evidence integration
-- operational signal linkage back to requirements and controls
+- whether a design truly satisfies the requirement
+- whether a test would catch the important failure modes
+- whether a compliance claim is complete
+- whether runtime behavior matches documented intent
 
 Impact:
 
 - strong documentation governance
-- incomplete engineering assurance chain
+- limited substantive assurance
 
-## 5. Skill-Layer Normalization Is Not Finished
+## 6. Requirements-to-Code-to-Run Traceability Is Missing
 
-The canonical pathing model is clearer now, and the engine supports it operationally. But some skill-local files and compatibility assumptions still reflect the older execution style.
+The current engine is strongest inside the documentation layer. It is weaker once the assurance chain should enter implementation, CI, releases, and operations.
+
+Missing depth:
+
+- requirement-to-module mapping
+- requirement-to-API/schema mapping
+- requirement-to-test-result mapping
+- release manifest ingestion
+- runtime SLO/incident evidence linkage
 
 Impact:
 
-- architecture is materially more coherent than in the earlier assessment
-- complete consistency between repository guidance and every skill-local asset is not yet achieved
+- good document-to-document consistency
+- incomplete engineering assurance for real products
 
-## 6. Domain Assurance Is Better Framed Than Fully Enforced
+## 7. Hybrid Synchronization Is Still Narrow
 
-Domain overlays are useful, and governance checks now reach into domain control and obligations files where present. That is real progress.
+Hybrid support is present, but not yet rich enough for large programs.
 
-Remaining limitation:
+Missing depth:
 
-- domain packs are still not yet full compliance rule engines with comprehensive evidence obligations, review duties, and control-verification depth
+- shared model across formal requirements, backlog items, design baselines, test results, controls, and release evidence
+- bidirectional change propagation
+- drift reporting between agile delivery and formal baselines
+
+Impact:
+
+- useful Hybrid structure
+- continued manual coordination at scale
+
+## 8. Domain Packs Are Useful But Not Full Rule Engines
+
+The domain packs provide features, controls, obligations, evidence expectations, and reference guidance. They are valuable context sources.
+
+Remaining gap:
+
+- they are not yet comprehensive compliance engines with full control verification, mandatory evidence scoring, review workflow, and jurisdiction-specific clause proof.
 
 Impact:
 
 - domain-aware documentation is credible
-- domain-specific assurance is still not strong enough to replace specialist review
+- domain assurance still requires specialist review
 
-## 7. Output Quality Is More Repeatable, But Not Yet Self-Proving
+## Summary of Gaps
 
-The combination of scaffolding, artifact graphing, validation, sync, and governance tooling materially improves repeatability. However, repeatability is still strongest for shape and linkage, not for substance.
+### High Severity
 
-Impact:
+- Missing proof workspace
+- Engine suite failing from current checkout
+- No clean committed project validation proof
+- Missing requirements-to-code-to-run assurance chain
 
-- the engine now raises the quality floor substantially
-- it still cannot guarantee that a polished, fully linked artifact set is also fully correct
+### Medium Severity
 
-## Summary of Structural Gaps
-
-### High-Severity Gaps
-
-- Limited semantic truth validation
-- Uneven clause-level standards proof
-- Incomplete requirements-to-code/runtime evidence chain
-
-### Medium-Severity Gaps
-
-- Narrow Hybrid synchronization depth
-- Incomplete skill-layer normalization
-- Domain assurance not yet deep enough for regulated substitution
-- Output quality still depends on expert substantive review
+- 15 skill quick-validation failures
+- 17 contract-gate warnings
+- root/path documentation drift
+- narrow Hybrid synchronization
+- domain packs not yet rule engines
 
 ### Bottom-Line Gap
 
-The repository has largely solved the earlier problem of missing deterministic governance and restored coherence between the kernel and the operating contract. The remaining gap to world-class status is converting the current **structural validation engine** into a **deeper assurance engine** that can reason more reliably about correctness, compliance completeness, and implementation-grounded evidence.
+The project has moved from "documentation generator" to "documentation operating system with validation." To become world-class, it must now move from **validation machinery** to **reproducible assurance evidence**.

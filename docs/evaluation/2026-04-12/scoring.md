@@ -4,81 +4,86 @@
 
 | Dimension | Score | Rationale |
 |---|---:|---|
-| Coverage | 9/10 | Coverage remains a standout strength. The repository still spans strategy, requirements, design, development, testing, deployment, agile execution, end-user documentation, and governance. The deduction is for uneven depth between tracks and the still-limited implementation/runtime trace layer. |
-| Standards Alignment | 8/10 | Standards alignment is materially operational inside the engine: clause references exist in several gates, registries are schema-backed, deterministic gate docs are restored, and newer checks now enforce requirement semantics, design sufficiency, test oracles, and compliance evidence. The deduction remains for uneven clause-level proof across phases and the still-limited ability to prove substantive compliance completeness. |
-| Methodology Support | 8/10 | Waterfall is strong, Agile is usable, and Hybrid has an explicit synchronization gate plus a restored operating-model document and proof workspace. The deduction remains because Hybrid still lacks a rich shared data model spanning formal requirements, backlog artifacts, design baselines, and governance evidence. |
-| Instruction Quality | 8/10 | The skill layer remains broadly strong and actionable, and the root contract surface is coherent again. The deduction remains for unevenness between richer execution-ready assets and older compatibility-oriented materials that are not yet fully normalized. |
-| System Flow | 8/10 | System flow is strong because the repo has a real kernel, a restored `projects/<ProjectName>/` workspace model, a proof workspace, scaffolding, artifact graphing, sync, validation, doctor checks, waivers, sign-off, baseline commands, and evidence packs. The deduction is for remaining path/asset normalization work and the gap between current contracts and fully implementation-grounded evidence. |
-| Validation & Governance | 9/10 | This dimension is one of the strongest. The repo has deterministic gate execution, a canonical validation CLI, registry checks, formal waiver limits, sign-off validation, baseline/delta support, change-impact checks, evidence-pack generation, newer semantic/compliance checks, a passing repo-level contract validator, and a passing proof-workspace test path. The deduction remains for semantic truth validation and incomplete clause-proof depth in some domains and phases. |
-| AI Integration | 6/10 | AI-related skills still help the repository philosophically more than they harden the engine itself. The score improves slightly because the engine now gives AI generation a firmer validation substrate, but the repo still lacks deeply integrated AI-specific evaluation and drift control inside the main kernel. |
-| Real-World Usability | 8/10 | A disciplined consulting, architecture, or delivery team can use this repository as an actual operating system for documentation work. The deduction is for continued dependence on experienced reviewers when stakes are high and for still-incomplete runtime-evidence integration. |
-| Output Quality Potential | 9/10 | Under the current engine, output quality is no longer merely prompt-dependent. Deterministic checks, registries, governance workflows, restored contract coherence, and newer semantic checks materially raise the floor. The deduction remains because semantic, implementation-grounding, and runtime-evidence gaps still prevent guaranteed audit-grade outputs. |
-
-## Weighted View
-
-If validation/governance and output quality are weighted more heavily, the current picture is:
-
-- strong lifecycle coverage
-- strong validation mechanics at the structural and governance layer
-- stronger semantic direction than the earlier bundle reflected
-- moderate remaining risk at the semantic and audit-proof layer
+| Coverage | 9/10 | The repository covers the full SDLC: strategy, requirements, design, development artifacts, testing, deployment, agile operations, end-user documentation, governance, domains, and reusable technical skills. The deduction is for uneven depth and weak implementation/runtime traceability. |
+| Standards Alignment | 8/10 | Standards are not merely named; deterministic gate docs and `docs/standards-clause-registry.md` exist, and the engine has clause-linked findings. The deduction remains because clause-level proof is uneven and not yet complete across every artifact type and domain. |
+| Methodology Support | 8/10 | Waterfall, Agile, and Hybrid are all represented. Hybrid has explicit documentation and validation logic. The deduction is for a still-thin shared model between formal requirements, agile artifacts, design baselines, governance evidence, and runtime evidence. |
+| Instruction Quality | 8/10 | The skill layer is broad, mostly valid, and often operational. However, 15 of 240 `SKILL.md` files fail the repo quick validator, and root/path guidance still contains drift around `skills/world-class-engineering` versus `skills/skills/world-class-engineering`. |
+| System Flow | 8/10 | The intended flow is coherent: scaffold, populate `_context`, sync registries, validate, waive/sign off, baseline, pack. The deduction is for missing committed proof workspace and unclean validation of visible project workspaces. |
+| Validation & Governance | 8/10 | The kernel is real and strong, and `scripts/validate_engine.py` passes. But the full suite currently fails 2 tests because `projects/_demo-hybrid-regulated` is missing, so the governance proof chain is not clean. |
+| AI Integration | 6/10 | The repository has many AI skills and AI-aware guidance, but the core kernel does not yet provide first-class AI evaluation, prompt/model regression testing, drift control, hallucination scoring, or AI output provenance. |
+| Real-World Usability | 8/10 | A disciplined team can use the repo today as a serious documentation and delivery accelerator. Setup requires installing dev dependencies, and high-stakes use still requires expert review and manual assurance. |
+| Output Quality Potential | 8/10 | The repository can produce high-quality SDLC artifacts when operated well. The deduction is for incomplete semantic assurance, missing clean project proof, incomplete skill normalization, and lack of requirements-to-code-to-run evidence. |
 
 ## Overall Score
 
-**8.4 / 10**
+**8.1 / 10**
+
+## Why The Score Changed
+
+The previous evaluation gave **8.4 / 10** and stated that:
+
+- the full engine test suite passed
+- coverage was 96%
+- `projects/_demo-hybrid-regulated` existed and validated cleanly
+
+The current checkout does not support those claims:
+
+- full engine test run: 211 tests, 2 failures, 2 skips
+- coverage: 95%
+- failure cause: missing `projects/_demo-hybrid-regulated`
+- visible project validation: `projects\AcademiaPro` returns multiple HIGH findings
+
+The score therefore drops to **8.1 / 10**. The project remains strong because the engine and skill system are real, but the evidence chain has regressed.
 
 ## Score Justification by Theme
 
-### Why Validation & Governance Still Scores Highly
+### Validation Kernel
 
-The repository still has a real validation kernel:
+The engine deserves a high score for actual implemented capabilities:
 
-- `python -m engine.cli validate`
-- phase gates from `01` to `09`
-- artifact graph construction
+- CLI command surface
+- phase gates
+- artifact graphing
 - identifier and glossary registries
-- waiver enforcement
-- sign-off ledger support
-- baseline snapshot and diff commands
+- waiver and sign-off handling
+- baseline snapshot and diff support
 - evidence-pack assembly
+- JUnit, Markdown, and SARIF reporters
+- checks for traceability, NFR quality, ADRs, controls, obligations, compliance evidence, test oracles, and design sufficiency
 
-That closes the biggest weakness in the earlier assessment: lack of deterministic enforcement. In addition, the current engine has deeper checks than the earlier 8.1 bundle explicitly recognized, including requirement semantics, design sufficiency, test-oracle quality, and compliance evidence completeness.
+The limitation is proof hygiene, not absence of machinery.
 
-### Why Coverage Stays High Rather Than Increasing
+### Skill Catalog
 
-Coverage was already strong in the earlier evaluation. The engine work does not broaden the SDLC footprint dramatically; it mainly makes the existing breadth more operational. Coverage stays high, but the score does not rise because the main improvement is assurance quality, not scope expansion.
+The skill system is large and mostly valid:
 
-### Why Standards Alignment Improved Again
+- 240 total `SKILL.md` files
+- 225 pass quick validation
+- 15 fail quick validation
+- 226 evidence contracts scanned by contract gate
+- 0 contract errors, 17 warnings, 10 exempt
 
-The repo is better than before at converting standards language into executable checks, especially in governance-heavy areas. The deterministic-gate and operating-model docs are restored, and the repo-level contract validator now passes again. The remaining limitation is not broken contract surface. It is that clause-level proof is still uneven across phases, domains, and artifact types.
+This is strong but not clean enough for a world-class portable skill system.
 
-### Why Methodology Support Still Stops Short of Full Hybrid Depth
+### Project Proof
 
-Hybrid support is materially better than in the earlier assessment because it is backed by an explicit synchronization gate, a restored hybrid operating model, and a working proof workspace. However, the present model still does not synchronize formal requirements, backlog items, design baselines, and governance evidence through a richer shared data model. That is now the main Hybrid limitation again.
+This is the weakest current proof area. The repo references a canonical demo project that is absent, and at least one visible project workspace does not validate cleanly. A world-class engine needs one or more committed green proof workspaces.
 
-### Why Output Quality Still Depends on an Incomplete Assurance Chain
+### Standards and Auditability
 
-The repository is now strong at document-to-document governance, and stronger than before at semantic checking within the document layer. But the assurance chain is still incomplete beyond that layer. Requirements are not yet traced deeply enough into implementation structures, executable test results, releases, and runtime signals. That is still the clearest reason the engine remains short of fully self-proving engineering assurance.
+The standards story is above average because the repository has a clause registry and deterministic gate documents. It is not yet audit-grade because the engine still emphasizes structure and linkage more than full substantive correctness, implementation evidence, and runtime observation.
 
-### Why System Flow Recovered
+### AI Layer
 
-The system flow score recovers because the canonical `projects/<ProjectName>/` workspace model is present again, the proof workspace exists, `scripts/validate_engine.py` passes, and the sabotage path is green in the engine test suite. The remaining deduction is now about maturity depth, not about broken repository wiring.
+AI skills are broad, but AI quality control is not deeply integrated into the kernel. AI-generated documentation can be constrained after generation, but there is no central model/prompt evaluation loop, hallucination register, or regression harness.
 
-### Why AI Integration Is Still the Lowest Dimension
+## Current Maturity Band
 
-The repository has AI skills, but the core engine is still fundamentally a documentation validation kernel rather than an AI quality-evaluation platform. The current engine helps constrain AI outputs after generation; it does not yet deeply monitor model quality, model drift, or prompt/model regressions as first-class runtime concerns.
+**Strong enterprise-oriented internal platform.**
 
-### Why the System Is Now Firmly Above Average
+Not yet:
 
-This repository now combines:
-
-- full-lifecycle document scope
-- a project workspace model
-- domain overlays
-- methodology branching
-- deterministic validation
-- governance workflows
-- automated test evidence for the engine itself
-- emerging semantic-assurance checks beyond pure structural validation
-
-That combination is still uncommon. The immediate work is again what the stronger April assessment was aiming at: moving from strong enterprise tooling to truly audit-grade documentation intelligence.
+- a self-proving audit engine
+- a complete requirements-to-code-to-runtime assurance graph
+- a fully normalized portable skill catalog
+- a green end-to-end proof distribution

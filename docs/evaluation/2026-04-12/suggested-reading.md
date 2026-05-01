@@ -2,140 +2,139 @@
 
 ## Standards and Frameworks
 
-### IEEE/ISO/IEC 29148
+### ISO/IEC/IEEE 29148
 
 Why it matters:
 
 - modern foundation for requirements engineering
-- stronger basis than relying on older SRS thinking alone
-- helps align stakeholder requirements, system requirements, quality, and traceability
+- useful for requirement quality, fit criteria, traceability, and stakeholder/system requirement separation
 
 How it improves this system:
 
-- strengthens requirement quality rules
-- supports better linkage between PRD, SRS, stories, and acceptance criteria
+- deepens requirement validation beyond IDs and normative wording
+- strengthens links between PRD, SRS, stories, acceptance criteria, design, and tests
 
 ### ISO/IEC/IEEE 29119 Series
 
 Why it matters:
 
-- modern test documentation and testing process framework
-- more current than an IEEE 829-centered approach
+- modern test process and test documentation framework
+- stronger basis for test evidence than simple test-plan templates
 
 How it improves this system:
 
-- modernizes Phase 05
-- improves test design, reporting, and incident/completion evidence
+- strengthens Phase 05
+- supports requirement-to-test-result evidence
+- improves incident, completion, and environment evidence
 
 ### IEEE 1012
 
 Why it matters:
 
-- core V&V standard
-- critical for auditability and governance
+- verification and validation discipline for high-assurance systems
 
 How it improves this system:
 
-- supports a stronger validation kernel and severity model
-- gives better structure for Phase 09 findings and gate control
+- supports a stronger assurance model
+- helps define severity, independence, evidence, and V&V planning rigor
 
 ### IEEE 1016
 
 Why it matters:
 
-- formal structure for design descriptions
+- formal design description structure
 
 How it improves this system:
 
 - strengthens HLD/LLD artifacts
-- supports better design rationale and traceability
+- supports design rationale, viewpoints, concerns, and traceability
+
+### ISO/IEC/IEEE 12207 and ISO/IEC/IEEE 15288
+
+Why they matter:
+
+- lifecycle process standards for software and systems engineering
+
+How they improve this system:
+
+- formalize phase entry and exit criteria
+- strengthen maintenance, operations, and change-control workflows
+
+### ISO/IEC 27001 and ISO/IEC 27002
+
+Why they matter:
+
+- control-oriented security and governance baseline
+
+How they improve this system:
+
+- deepen security and compliance controls
+- support finance, healthcare, government, and regulated-domain evidence packs
 
 ### ISO 31000
 
 Why it matters:
 
-- common risk framework usable across industries
+- risk management framework usable across domains
 
 How it improves this system:
 
-- deepens the risk assessment skill beyond generic risk registers
+- improves risk registers, control mapping, and change-impact reasoning
 
-### ISO/IEC 27001 and ISO/IEC 27002
+### NIST SP 800-53
 
 Why it matters:
 
-- control-oriented security and governance baseline
+- comprehensive security and privacy control catalog
 
 How it improves this system:
 
-- provides a stronger security/compliance control model than broad references alone
-- especially useful for finance, healthcare, and government domains
-
-### ISO/IEC 15288 and ISO/IEC 12207
-
-Why they matter:
-
-- lifecycle process standards for systems and software
-
-How they improve this system:
-
-- strengthen the engine’s lifecycle architecture
-- help formalize phase entry/exit criteria and governance checkpoints
+- provides a stronger basis for domain control libraries and evidence expectations
 
 ## Books
 
-### Karl Wiegers and Joy Beatty, *Software Requirements*
+### Karl Wiegers and Joy Beatty, Software Requirements
 
 Why it matters:
 
-- practical, high-signal guidance on requirement quality, analysis, and traceability
+- practical guidance on requirement quality, elicitation, analysis, and traceability
 
 How it improves this system:
 
-- makes requirements generation less template-driven and more quality-driven
-- helps sharpen ambiguity, completeness, and validation gates
+- reduces template-driven requirements
+- improves ambiguity, completeness, and verification checks
 
-### Suzanne Robertson and James Robertson, *Mastering the Requirements Process*
+### Suzanne Robertson and James Robertson, Mastering the Requirements Process
 
 Why it matters:
 
-- rigorous treatment of requirement discovery, fit criteria, and scope control
+- strong treatment of scope, fit criteria, and requirement discovery
 
 How it improves this system:
 
-- improves elicitation, scope boundaries, and fit-criterion-based quality enforcement
+- improves context completeness and requirement acceptance quality
 
-### Ian Sommerville, *Software Engineering*
+### Bass, Clements, and Kazman, Software Architecture in Practice
 
 Why it matters:
 
-- broad lifecycle grounding across requirements, architecture, testing, and process
+- architecture as tradeoff analysis around quality attributes
 
 How it improves this system:
 
-- useful for balancing documentation formality with practical engineering flow
+- strengthens ADRs, quality-attribute scenarios, and design sufficiency checks
 
-### Bass, Clements, and Kazman, *Software Architecture in Practice*
+### Michael Nygard, Release It!
 
 Why it matters:
 
-- architecture as a trade-off discipline, not just diagram production
+- operational reliability, failure modes, stability patterns, and production readiness
 
 How it improves this system:
 
-- strengthens design rationale, quality attribute scenarios, and ADR-oriented thinking
+- deepens deployment, runbook, monitoring, resilience, and maintenance artifacts
 
-### Michael Nygard, *Release It!*
-
-Why it matters:
-
-- operational reliability, failure modes, and production readiness
-
-How it improves this system:
-
-- deepens deployment, runbook, monitoring, and risk documentation
-
-### Nicole Forsgren, Jez Humble, and Gene Kim, *Accelerate*
+### Nicole Forsgren, Jez Humble, and Gene Kim, Accelerate
 
 Why it matters:
 
@@ -143,85 +142,55 @@ Why it matters:
 
 How it improves this system:
 
-- makes agile, deployment, and operational documentation more outcome-aware
-- supports evidence-driven metrics in governance
+- strengthens release metrics, engineering management, flow, and operational learning
 
-### Dan North / BDD material and Gojko Adzic, *Specification by Example*
-
-Why it matters:
-
-- practical bridge from requirements to executable acceptance criteria
-
-How it improves this system:
-
-- helps close the gap between requirements, tests, and verification evidence
-
-### Anne Gentle, *Docs Like Code*
+### Gojko Adzic, Specification by Example
 
 Why it matters:
 
-- practical governance model for maintainable documentation systems
+- practical bridge from requirements to executable examples
 
 How it improves this system:
 
-- improves rerunnability, review, versioning, and documentation operations
+- helps close the requirement-to-test and requirement-to-behavior gap
 
-## Industry Frameworks
-
-### TOGAF
+### Anne Gentle, Docs Like Code
 
 Why it matters:
 
-- enterprise architecture governance and artifact discipline
+- practical model for maintainable documentation systems
 
 How it improves this system:
 
-- useful for architecture repository structure, decision governance, and cross-domain consistency
+- improves review, versioning, automation, documentation ownership, and release alignment
 
-### PMBOK / PRINCE2 / MSP-style governance
+### Martin Fowler, Patterns of Enterprise Application Architecture
 
 Why it matters:
 
-- structured governance and decision checkpoints
+- durable implementation patterns and tradeoffs for enterprise systems
 
 How it improves this system:
 
-- helps formalize approval flows, change boards, and decision rights
-
-### NIST SP 800-53
-
-Why it matters:
-
-- strong control catalog for regulated and government-adjacent environments
-
-How it improves this system:
-
-- gives the compliance layer a real control library and evidence structure
-
-### HITRUST, PCI DSS, SOC 2 criteria, HIPAA guidance
-
-Why they matter:
-
-- domain-specific compliance programs
-
-How they improve this system:
-
-- help the engine move from generic compliance prose to control-specific documentation
+- helps extend the assurance chain from design documents into implementation structures
 
 ## Highest-Value Reading Sequence
 
-1. IEEE/ISO/IEC 29148
-2. Wiegers and Beatty, *Software Requirements*
+1. ISO/IEC/IEEE 29148
+2. Wiegers and Beatty, Software Requirements
 3. ISO/IEC/IEEE 29119
-4. Bass/Clements/Kazman, *Software Architecture in Practice*
+4. Bass, Clements, and Kazman, Software Architecture in Practice
 5. IEEE 1012
-6. ISO 27001/27002 or NIST 800-53 depending on target domain
-7. Anne Gentle, *Docs Like Code*
+6. Release It!
+7. Docs Like Code
+8. ISO/IEC 27001/27002 or NIST SP 800-53, depending on target domain
 
-This sequence would most directly improve the repository’s weakest areas:
+This sequence most directly improves the current weak points:
 
-- test modernization
-- cross-artifact rigor
+- reproducible proof
+- requirement quality
 - design rationale
-- enforceable governance
+- test-result evidence
+- runtime assurance
+- compliance defensibility
 - maintainable documentation operations

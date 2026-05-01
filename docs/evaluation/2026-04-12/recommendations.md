@@ -2,166 +2,193 @@
 
 ## System-Level Priorities
 
-### 1. Deepen the Existing Validation Kernel
+### 1. Restore a Green Proof Workspace
 
-The repository no longer needs a first validation kernel. It has one. The next step is to deepen it.
+Highest priority:
 
-Priority areas:
+- restore or regenerate `projects/_demo-hybrid-regulated`
+- ensure it validates cleanly
+- commit the workspace or replace tests with a deterministic fixture generator
+- update `README.md` so every proof claim is reproducible
 
-- semantic requirement-quality checks
-- requirement-to-design sufficiency checks
-- requirement-to-test-result linkage
-- release/runtime evidence ingestion
-- stronger clause-level standards proofs
+Acceptance criteria:
 
-Why this matters:
+- `python -X utf8 -m pytest engine\tests -q` passes
+- `python -X utf8 -m engine.cli validate projects\_demo-hybrid-regulated` passes
+- the proof workspace includes `_context`, `_registry`, all phase directories, baseline evidence, and packable evidence output
 
-- the current engine is strong at structure and governance
-- the next maturity step is substantive assurance
+### 2. Make Test Setup Frictionless
 
-### 2. Extend the Artifact Graph into a Richer Assurance Graph
+The declared package installs correctly, but a fresh environment cannot run the tests until dependencies are installed.
 
-The current artifact graph is a real foundation. Expand it to track:
+Recommended changes:
 
-- artifact class and subtype
-- review state and approver state
+- document `python -m pip install -e ".[dev]"` as the first verification step
+- optionally add `scripts/setup-dev.ps1` and `scripts/setup-dev.sh`
+- add a short "fresh checkout verification" section to `README.md`
+- consider a lock file or constraints file for reproducible CI
+
+Acceptance criteria:
+
+- a new operator can run setup and tests from README without inference
+- CI runs the same command sequence as the docs
+
+### 3. Fix Skill Catalog Validation Failures
+
+Address the 15 quick-validator failures.
+
+Priority fixes:
+
+- repair legacy `../CLAUDE.md` and `../sdlc-lifecycle.md` links in SDLC skills
+- add missing portable metadata and dual-compat markers where appropriate
+- normalize `demand-forecasting`, `tabler-email-templates`, `color-theory`, `design-by-nature`, and `every-layout`
+- resolve validator/root assumptions around `skills/00-meta-initialization`
+- update root `AGENTS.md` to point to `skills/skills/world-class-engineering` or move the catalog to the documented path
+
+Acceptance criteria:
+
+- 240 of 240 quick validations pass, or documented exemptions are explicit and intentional
+- `contract_gate.py --all --strict` is either clean or has tracked accepted warnings
+
+### 4. Create a Clean Realistic Project Workspace
+
+The repo should contain one realistic project that validates cleanly, not only a tiny fixture.
+
+Recommended target:
+
+- choose `AcademiaPro` or create a controlled `ReferenceEnterpriseApp`
+- fill missing canonical artifacts
+- run `engine sync`
+- validate all gates
+- build an evidence pack
+
+Acceptance criteria:
+
+- one realistic workspace passes `engine validate`
+- evidence pack generation succeeds
+- the workspace is used in docs as the real proof path
+
+### 5. Extend the Artifact Graph into an Assurance Graph
+
+Current artifact graphing is a strong foundation. Extend it to model:
+
+- artifact type and subtype
+- owner and approver state
+- requirement, design, code, test, release, and runtime links
 - baseline lineage
-- trace categories
 - evidence attachments
-- implementation/runtime references
+- stale-link detection
 
-This should become the basis for deeper impact analysis and evidence reasoning.
+Acceptance criteria:
 
-This richer graph should also become the shared synchronization model for Hybrid work so that formal requirements, backlog artifacts, design baselines, and governance evidence are not coordinated only through narrow gate logic.
-
-### 3. Finish Pathing and Skill-Layer Normalization
-
-The canonical pathing model is much clearer now. Keep migrating skill-local assets and helper prompts so the whole repository behaves consistently under the current workspace/runtime model.
-
-### 4. Add First-Class Validation Outputs
-
-The engine already emits machine-actionable pass/fail behaviour. Make the validation outputs richer and more reusable:
-
-- `validation-report.json`
-- `validation-report.md`
-- `gate-status.json`
-- `evidence-index.json`
-
-That will improve CI use, review-pack generation, and downstream integrations.
+- validation can answer "what proves this requirement?"
+- validation can detect when implementation or test evidence is missing or stale
 
 ## Skill-Level Improvements
 
-### 1. Strengthen Requirements Generation
+### Requirements Skills
 
-- require stable IDs at first creation
-- require explicit source/rationale fields
-- require acceptance or verification intent on creation
-- detect compound and weak requirements more aggressively
+- require stable IDs at creation time
+- require source, rationale, fit criterion, and verification intent
+- detect compound, vague, unverifiable, and orphaned requirements
+- require downstream trace targets before exit
 
-### 2. Strengthen Design Generation
+### Design Skills
 
-- require ADR use for significant design choices
-- require rejected alternatives where trade-offs matter
-- require operability and testability notes per major component
+- enforce ADRs for irreversible or expensive design decisions
+- require rejected alternatives where tradeoffs matter
+- require quality-attribute scenarios for key architecture choices
+- link components to requirements, interfaces, data, risks, and operational controls
 
-### 3. Strengthen Testing Documentation
+### Development Skills
 
-- bind tests more tightly to requirement IDs and result evidence
-- add stronger environment fidelity controls
-- ingest actual result artifacts where possible
+- introduce requirement-to-code mapping templates
+- require module ownership and implementation evidence
+- connect coding standards to actual repository structure
+- add checks for stale implementation references
 
-### 4. Strengthen Compliance Documentation
+### Testing Skills
 
-- extend obligation-to-control-to-requirement-to-test-to-evidence chains
-- deepen domain control libraries and review obligations
+- ingest actual test-result artifacts
+- map test cases and results back to requirement IDs
+- distinguish test presence from meaningful oracle quality
+- report unverified high-risk requirements
 
-### 5. Strengthen End-User Documentation
+### Deployment and Maintenance Skills
 
-- add task-verification workflows
-- add release-note consistency checks
-- add audience and usability validation metadata
+- require release manifests and rollback evidence
+- connect monitoring and SLOs to requirements and controls
+- ingest incidents, operational checks, and post-deploy verification
+- link maintenance changes back to baselines and change impact
 
 ## New Capabilities to Add
 
-### 1. Requirements-to-Code Traceability
+### 1. Fresh Checkout Verification Command
 
-Purpose:
+Add a single documented command or script that verifies:
 
-- connect requirement IDs to modules, APIs, schema objects, tests, and releases
+- package install
+- engine contract
+- engine tests
+- skill quick validation
+- contract gate
+- proof workspace validation
+- evidence pack generation
 
-Why:
+### 2. Project Health Dashboard
 
-- this is now the clearest missing segment in the assurance chain
+Generate a `project-health.md` and `project-health.json` summary for each workspace:
 
-### 2. Runtime Evidence Integration
+- gate status
+- HIGH/MEDIUM/LOW findings
+- missing artifacts
+- stale traces
+- waiver status
+- sign-off status
+- evidence-pack readiness
 
-Purpose:
+### 3. Requirements-to-Code Traceability
 
-- connect monitoring, release markers, incident reports, and operational checks back to documented controls and requirements
+Add machine-readable mappings from requirements to:
 
-Why:
+- modules
+- APIs
+- schema objects
+- jobs/events
+- UI flows
+- tests
+- releases
 
-- world-class status requires proof beyond static documents
+### 4. Runtime Evidence Integration
 
-## Remediation Roadmap
+Add ingestion for:
 
-### Stage 1: Normalize the Operating Model
+- release manifests
+- deployment markers
+- smoke-test results
+- SLO checks
+- incident reports
+- monitoring snapshots
 
-- finish pathing and skill-local asset normalization against `projects/<ProjectName>/`
-- remove compatibility-era execution assumptions from helper prompts and local references
-- make validation outputs canonical inputs for downstream skills and evidence packs
+### 5. AI Evaluation Harness
 
-### Stage 2: Deepen Hybrid Synchronization
+For the AI skill layer, add:
 
-- define a shared data model spanning requirement IDs, backlog items, design elements, baselines, and governance evidence
-- extend sync checks from presence/consistency gates to change-aware bidirectional propagation rules
-- make Hybrid deltas visible in baseline and change-impact outputs
-
-### Stage 3: Close the Requirements-to-Code-to-Test Chain
-
-- map requirement IDs to modules, interfaces, schema objects, test cases, and test-result artifacts
-- require machine-readable evidence references where implementations and tests exist
-- expose broken or stale links as first-class validation findings
-
-### Stage 4: Add Release and Runtime Evidence
-
-- ingest release manifests, deployment markers, operational checks, incidents, and monitoring evidence
-- link operational signals back to requirements, controls, and waivers where applicable
-- add gate logic that can distinguish documented intent from observed operational proof
-
-### Stage 5: Raise Assurance to Audit Depth
-
-- deepen clause-level standards proofs across more phases and artifact types
-- add semantic sufficiency checks across requirement, design, test, and control chains
-- generate reusable audit views that show requirement-to-code-to-run evidence continuity
-
-### 3. Richer Standards Proof Packs
-
-Purpose:
-
-- generate clause-oriented evidence views for standards and regulatory reviews
-
-Why:
-
-- this is the most direct path from strong governance tooling to audit-grade defensibility
-
-### 4. Semantic Consistency and Sufficiency Checks
-
-Purpose:
-
-- detect contradictions, weak coverage, shallow verification, and likely false completeness across the artifact estate
-
-Why:
-
-- the engine already checks shape well; it now needs deeper content reasoning
+- prompt regression tests
+- hallucination and unsupported-claim checks
+- source-grounding checks
+- model/version metadata
+- drift review for generated documentation quality
 
 ## Implementation Order
 
-1. Deepen the existing validation kernel
-2. Expand the artifact graph into a richer assurance graph
-3. Finish pathing and skill-layer normalization
-4. Add first-class validation output artifacts
-5. Add requirements-to-code and runtime evidence tracing
-6. Deepen standards proof and domain control packs
+1. Restore `_demo-hybrid-regulated` or replace it with generated fixtures.
+2. Make the engine suite green.
+3. Fix all quick-validator skill failures.
+4. Align root and nested path documentation.
+5. Create one realistic clean project workspace.
+6. Add project health outputs.
+7. Extend traceability into code, tests, releases, and runtime evidence.
+8. Add AI-specific evaluation and provenance controls.
 
-That sequence builds on the engine that already exists instead of redesigning from scratch.
+This sequence fixes reproducibility first, then deepens assurance.

@@ -2,27 +2,35 @@
 
 ## What This Repository Actually Is
 
-This repository is now best described as a **phase-based SDLC documentation platform with a validation kernel**.
+This repository is a **dual-purpose SDLC system**:
 
-Its current operating model is:
+1. a portable skill catalog for Claude Code and Codex
+2. an executable SDLC documentation validation engine
 
-1. Scaffold a project workspace
-2. Select methodology and domain context
-3. Populate project context under `projects/<ProjectName>/_context/`
-4. Generate or curate phase artifacts
-5. Sync registries and validate the project workspace
-6. Record waivers/sign-off where needed
-7. Assemble evidence packs and downstream document outputs
+It is not just a markdown collection. It contains a runtime kernel under `engine/`, a large skill catalog under `skills/skills/`, domain packs under `domains/`, and project workspaces under `projects/`.
 
-That is materially stronger than the earlier picture of a mainly stateless prompt system.
+## Current Operating Model
 
-## Core Operating Model
+The intended flow is:
 
-### 1. Phase Structure
+1. Select methodology and domain context.
+2. Scaffold or prepare a `projects/<ProjectName>/` workspace.
+3. Populate `_context/` with project truth.
+4. Generate or curate phase artifacts.
+5. Sync `_registry/` data.
+6. Validate with `engine.cli`.
+7. Record waivers and sign-offs.
+8. Create baselines and evidence packs.
+9. Export or deliver documents.
 
-The repository still uses the same phase spine:
+This is a coherent operating model, but the current checkout does not yet prove it cleanly end to end.
 
-- `00-meta-initialization`
+## Core Components
+
+### 1. Phase Spine
+
+The repository includes the lifecycle phases:
+
 - `01-strategic-vision`
 - `02-requirements-engineering`
 - `03-design-documentation`
@@ -33,127 +41,130 @@ The repository still uses the same phase spine:
 - `08-end-user-documentation`
 - `09-governance-compliance`
 
-The difference is that this phase model is now connected to executable gates in the `engine/` package.
+The skill catalog also includes `00-meta-initialization` for project and methodology selection.
 
 ### 2. Runtime Kernel
 
-The `engine/` package now acts as the repository's control plane.
+The `engine/` package provides:
 
-Current implemented capabilities include:
-
+- CLI commands
+- workspace loading
 - artifact graph construction
 - phase gate registry
-- workspace loading
-- registry sync for identifiers and glossary terms
-- hybrid synchronization checks
-- waiver loading and expiry enforcement
-- sign-off ledger handling
-- baseline snapshot and diff support
-- evidence-pack ZIP assembly
+- checks under `engine/checks`
+- phase gates under `engine/gates`
+- identifier and glossary registries
+- waiver handling
+- sign-off handling
+- baseline snapshot and diff
+- sync
+- evidence-pack assembly
+- Markdown, JUnit, and SARIF reporting
 - doctor diagnostics
-- markdown, JUnit, and SARIF reporting
 
-The presence of `python -m engine.cli` is the clearest sign that the repository has crossed from guidance into runtime enforcement.
+This is the strongest evidence that the project has crossed from guidance into executable governance.
 
-### 3. Context Injection
+### 3. Skill Catalog
 
-The source of truth is the project workspace:
+The catalog contains 240 `SKILL.md` entrypoints. Most are under `skills/skills/`, while a few remain at the first `skills/` level.
 
-- `projects/<ProjectName>/_context/`
-- `projects/<ProjectName>/_registry/`
-- project-local phase directories
+The catalog covers:
 
-The root documentation now aligns more clearly with this model, even though some skill-local assets still preserve legacy compatibility assumptions.
+- software engineering baseline
+- architecture
+- databases
+- testing
+- deployment
+- reliability
+- observability
+- security
+- UX and product
+- AI systems
+- mobile
+- SaaS and ERP
+- language and framework skills
+- SDLC documentation skills
 
-### 4. Validation Flow
+Current state:
 
-The current validation flow is roughly:
+- 225 of 240 pass quick validation
+- 15 fail and need normalization
+- contract gate reports 0 errors but 17 warnings
 
-1. Load a project workspace
-2. Build an artifact graph from markdown artifacts
-3. Run kernel checks and phase gates
-4. Apply hybrid checks where applicable
-5. Apply waivers
-6. Emit blocking or passing status
-7. Optionally render markdown/JUnit/SARIF results
+### 4. Domain Packs
 
-This is a genuine validation kernel, even if its reasoning depth is still bounded.
+Domain packs exist for:
 
-## Real Project Flow
+- agriculture
+- automotive
+- education
+- finance
+- government
+- healthcare
+- logistics
+- retail
+- Uganda
 
-### Step A: Project Initialization
+They provide domain context, feature expectations, controls, obligations, evidence expectations, and NFR/security defaults. They are useful context packs, not yet complete compliance rule engines.
 
-Project initialization now has a stronger runtime path because scaffolding is exposed through the engine CLI, not only through skills.
+### 5. Project Workspaces
 
-### Step B: Methodology Selection
+Current visible workspaces:
 
-Methodology branching still supports:
+- `AcademiaPro`
+- `BIRDC-ERP`
+- `LonghornERP`
+- `Maduuka`
+- `Medic8`
 
-- Waterfall
-- Agile
-- Hybrid
+The previously claimed `_demo-hybrid-regulated` proof workspace is not present. This is the largest mismatch between documentation, tests, and repository state.
 
-Hybrid is also now reflected in explicit validation logic rather than being only a routing concept.
+## What Defines, Generates, and Validates
 
-### Step C: Content Generation Across Phases
-
-The skill system still generates the majority of the actual document content. That has not changed. What has changed is that generated artifacts now sit inside a more coherent validation and governance environment.
-
-### Step D: Registry and Governance Operations
-
-The repository now has a real `_registry/` operating model, including:
-
-- identifier registry
-- glossary registry
-- waivers
-- sign-off ledger
-- baseline data
-- ADR catalogues and change-impact support where present
-
-This substantially improves consistency management and governance repeatability.
-
-### Step E: Packaging and Review
-
-The engine can now assemble evidence packs and emit validation reports, while the existing document-build layer still supports final packaging such as `.docx` workflows.
-
-## What Defines the Standard vs What Generates vs What Validates
-
-### What Defines the Standard
-
-The normative layer still lives primarily in:
+### Defines Standards
 
 - `CLAUDE.md`
 - `AGENTS.md`
 - `README.md`
 - `skill_overview.md`
-- the phase skills
-- domain materials
+- `docs/pathing-model.md`
+- `docs/standards-clause-registry.md`
+- phase and domain documentation
 
-### What Generates Outputs
+### Generates Outputs
 
-The skills remain the main content generators across phases `01` through `09`.
+- portable skills
+- phase skills
+- domain references
+- templates and scripts
+- project-specific context and artifacts
 
-### What Validates Outputs
+### Validates Outputs
 
-This is the biggest change in the reconstruction. Validation is no longer only dispersed inside skills. It is now centralized substantially in `engine/`, especially through:
-
-- the CLI
-- the gate registry
-- the artifact graph
-- checks under `engine/checks`
-- gates under `engine/gates`
-- registry schemas
-- pack/reporting workflows
+- `engine/`
+- quick skill validator
+- contract gate
+- engine tests
+- project validation commands
+- evidence-pack generation
 
 ## Actual System Characterization
 
-The most accurate reconstruction now is:
+The repository is:
 
-- It is **not** a simple markdown repository.
-- It **is** a multi-phase documentation operating model.
-- It **does** support real project flow from initialization to governance.
-- It **does** contain a real validation kernel with deterministic checks.
-- It **does** contain early semantic and compliance-evidence checks beyond pure structure validation.
-- It **does not yet** provide full semantic or audit-grade assurance across every phase and domain.
+- a serious SDLC documentation engine
+- a broad portable skill catalog
+- a strong internal consulting accelerator
+- a validation-backed governance system
 
-The repository now has the shape and much of the machinery of an enterprise documentation engine. The next maturity step is not inventing the engine. It is deepening the assurance model already in place.
+The repository is not yet:
+
+- a fully self-proving audit platform
+- a cleanly packaged product distribution
+- a fully normalized skill system
+- a requirements-to-code-to-runtime assurance engine
+- a green end-to-end proof system from current checkout
+
+## Reconstruction Conclusion
+
+The system architecture is strong. The current weakness is evidence discipline. To become world-class, the repository must make its best claims reproducible: green tests, green proof workspace, clean skill validation, clean realistic project validation, and traceability beyond documents into implementation and runtime reality.
