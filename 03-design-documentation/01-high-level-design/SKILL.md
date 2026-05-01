@@ -60,6 +60,8 @@ Read `SRS_Draft.md` (all sections) from `projects/<ProjectName>/<phase>/<documen
 
 Analyze `tech_stack.md` and the SRS constraints (Section 3.4) to determine the architectural style: monolith, microservices, serverless, layered, or event-driven. State the chosen style with a one-paragraph rationale citing specific SRS constraints or technology requirements that drove the decision.
 
+For domain-heavy, integration-heavy, or scale-sensitive projects, load `references/practical-architecture-knowledge.md` before finalising the architectural style. Apply its bounded-context, scalability, reliability, and architecture-metric checks.
+
 ### Step 3: Generate System Context Diagram
 
 Produce a Mermaid C4Context diagram showing the system boundary, external actors (derived from SRS Section 2.0 user classes), external systems (from SRS Section 3.1 interfaces), and data exchanges between them. Every node and edge shall have a descriptive label.
@@ -176,6 +178,7 @@ graph TD
 - [ ] Every component in the architecture diagram has a name, responsibility, and interface.
 - [ ] Technology decisions table cites SRS constraints in the Rationale column.
 - [ ] Traceability table maps every HLD component to at least one SRS requirement ID.
+- [ ] For non-trivial systems, HLD includes bounded-context ownership, critical-flow failure handling, and practical architecture fitness measures from `references/practical-architecture-knowledge.md`.
 
 ## Integration
 
@@ -194,4 +197,5 @@ graph TD
 ## Resources
 
 - `logic.prompt` -- Executable prompt containing the step-by-step HLD generation logic.
+- `references/practical-architecture-knowledge.md` -- Book-distilled DDD, scalability, reliability, and architecture-metric checks.
 - `README.md` -- Quick-start guide for this skill.
