@@ -2,115 +2,132 @@
 
 ## Purpose
 
-This roadmap turns the April 12, 2026 evaluation gaps into a practical sequence of repository upgrades. It focuses on the limitations that most clearly separate the current engine from world-class status:
+This roadmap turns the 2026-05-01 re-evaluation into an execution sequence. The goal is to move the repository from a strong internal SDLC engine to a reproducible, world-class software planning, design, development, and maintenance assurance system.
 
-- Hybrid synchronization exists, but remains narrow
-- requirements-to-code-to-run evidence is still incomplete
-- skill-layer normalization is not finished
-
-## Design Principle
-
-Do not redesign the repository around a new abstraction first. Build forward from the kernel that already exists:
-
-- workspace model
-- artifact graph
-- phase gates
-- registries
-- baseline and evidence-pack workflows
-
-## Stage 1: Finish Skill-Layer Normalization
+## Stage 1: Restore Reproducible Proof
 
 Goal:
 
-- make the canonical `projects/<ProjectName>/` execution model consistent across root guidance, skill-local entrypoints, helper prompts, and supporting assets
+- make the current checkout prove its own claims from a fresh environment
 
-Concrete outputs:
+Concrete work:
 
-- eliminate obsolete pathing assumptions in skill-local references
-- align helper assets with `_context/`, `_registry/`, and canonical output locations
-- make validation and evidence outputs reusable inputs for downstream skills
+- restore or regenerate `projects/_demo-hybrid-regulated`
+- ensure `engine/tests/test_cli_sabotage.py` passes
+- document `python -m pip install -e ".[dev]"`
+- run and document `python -X utf8 -m pytest engine\tests -q`
+- update README proof claims to match actual commands and outputs
 
 Success condition:
 
-- the same project behaves consistently whether invoked from root guidance, a phase skill, or a helper asset
+- engine contract passes
+- engine test suite passes
+- demo project validates cleanly
+- coverage claim matches the actual report
 
-## Stage 2: Expand Hybrid Synchronization into a Shared Model
+## Stage 2: Normalize the Skill Catalog
 
 Goal:
 
-- replace narrow synchronization checks with a richer shared model spanning formal and agile artifacts
+- make every portable skill entrypoint consistent and validator-clean
 
-Concrete outputs:
+Concrete work:
 
-- shared identifiers linking requirements, backlog items, design baselines, and governance evidence
-- explicit synchronization rules for forward and backward change propagation
-- baseline and change-impact views that show Hybrid drift and unresolved deltas
+- fix the 15 quick-validator failures
+- resolve broken local links in SDLC skills
+- add missing metadata and portable contract markers
+- decide whether canonical skill paths are `skills/<name>` or `skills/skills/<name>`
+- align `AGENTS.md`, `README.md`, `PROJECT_BRIEF.md`, and skill-local links to the chosen path
+- reduce contract-gate warnings to zero or document accepted exemptions
 
 Success condition:
 
-- Hybrid programmes no longer depend mainly on manual coordination once artifact volume and change frequency increase
+- 240 of 240 skills pass quick validation, or exemptions are explicit
+- contract gate is clean under strict mode or has documented accepted exceptions
 
-## Stage 3: Build the Requirements-to-Code-to-Test Chain
+## Stage 3: Establish Clean Project Proof
 
 Goal:
 
-- extend traceability beyond document references into implementation and verification structures
+- demonstrate that the engine can govern a realistic workspace, not only a tiny fixture
 
-Concrete outputs:
+Concrete work:
 
-- requirement-to-module, API, schema, and interface mappings
-- requirement-to-test-case and test-result mappings
-- validation findings for broken, stale, or missing implementation/test evidence links
+- select a reference project such as `AcademiaPro`
+- add missing canonical `_context` files
+- add ADR, threat model, coding standards, environment setup, and contribution guide
+- add 29119 testing evidence, completion report, deployment guide, runbook, monitoring/SLO, readiness, and change-window docs
+- add agile artifacts, user docs, audit report, and risk register
+- run `engine sync`
+- run `engine validate`
+- generate an evidence pack
 
 Success condition:
 
-- a reviewer can trace a requirement through design, implementation, and executed verification evidence without relying on narrative interpretation alone
+- at least one realistic workspace validates cleanly
+- evidence pack generation succeeds
+- documentation links to this workspace as the realistic proof path
 
-## Stage 4: Add Release and Runtime Evidence
+## Stage 4: Build Requirements-to-Code-to-Test Traceability
 
 Goal:
 
-- connect the documented system to release events and operational reality
+- extend assurance beyond document-to-document linkage
 
-Concrete outputs:
+Concrete work:
 
-- release manifest and deployment evidence ingestion
-- operational check, incident, monitoring, and SLI/SLO evidence linkage
-- trace paths from runtime signals back to requirements, controls, and waivers
+- define trace schemas for requirements to modules, APIs, schemas, jobs, UI flows, tests, and test results
+- add validators for missing, stale, or weak implementation evidence
+- require test-result artifacts for release-scoped requirements
+- expose trace gaps in Markdown and JSON reports
 
 Success condition:
 
-- the engine can distinguish "documented" from "implemented and observed"
+- a reviewer can trace a requirement from business intent to design, implementation target, test case, and test result
 
-## Stage 5: Deepen Assurance Quality
+## Stage 5: Add Release and Runtime Evidence
 
 Goal:
 
-- convert strong structural governance into stronger engineering assurance
+- connect documented intent to observed operational reality
 
-Concrete outputs:
+Concrete work:
 
-- broader clause-level standards proof across more phases and artifact classes
-- semantic sufficiency checks across requirement, design, test, and control chains
-- audit-oriented evidence views showing end-to-end continuity
+- ingest release manifests
+- ingest deployment and rollback evidence
+- link smoke tests, SLO checks, incidents, and monitoring snapshots to requirements and controls
+- add runtime-evidence gates for release readiness and maintenance review
 
 Success condition:
 
-- the engine can defend not only artifact structure and linkage, but also a materially stronger claim of implementation-grounded assurance
+- the engine can distinguish documented intent from deployed and observed behavior
+
+## Stage 6: Deepen Semantic and Audit Assurance
+
+Goal:
+
+- move from structural governance to deeper correctness and compliance assurance
+
+Concrete work:
+
+- expand clause-level proof across more standards and artifacts
+- add semantic sufficiency checks across requirement, design, test, and control chains
+- add contradiction and false-completeness detection
+- generate audit views by obligation, control, requirement, evidence, waiver, and sign-off
+
+Success condition:
+
+- external reviewers can inspect coherent clause-level and evidence-level proof without relying on narrative interpretation alone
 
 ## Recommended Order
 
-1. Finish skill-layer normalization
-2. Expand Hybrid synchronization into a shared model
-3. Build the requirements-to-code-to-test chain
-4. Add release and runtime evidence
-5. Deepen assurance quality
+1. Restore reproducible proof.
+2. Normalize the skill catalog.
+3. Establish clean project proof.
+4. Build requirements-to-code-to-test traceability.
+5. Add release and runtime evidence.
+6. Deepen semantic and audit assurance.
 
 ## Why This Order
 
-The sequence keeps the repository coherent while increasing assurance depth:
-
-- normalization removes local execution inconsistency before adding more coupling
-- Hybrid synchronization becomes easier once the operating model is stable
-- code and test traceability should exist before runtime evidence is layered on top
-- audit-depth reasoning is strongest after the evidence graph is richer
+The current blocker is not conceptual design. It is reproducibility. A world-class engine must first keep its proof assets, tests, validators, and documentation in sync. Once that foundation is green, deeper assurance features will compound instead of adding more unverified claims.

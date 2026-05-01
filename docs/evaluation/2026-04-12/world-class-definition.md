@@ -2,189 +2,186 @@
 
 ## Definition
 
-A world-class SDLC documentation system is not just a generator of polished documents. It is a **documentation intelligence system** that can:
+A world-class software planning, design, development, and maintenance engine is not merely a generator of polished documents or prompts. It is an **assurance system** that helps teams create, validate, evolve, release, operate, and audit software products with high confidence.
 
-- create the right artifacts for the right delivery model
-- maintain consistency across those artifacts over time
-- prove traceability from business intent to operational control
-- enforce quality gates before bad documentation propagates downstream
-- support reruns without destabilizing prior baselines
-- survive real audit scrutiny in regulated environments
+The benchmark is:
 
-The benchmark is not "looks professional." The benchmark is:
-
-- top-tier consulting deliverable quality
+- product and business clarity
 - enterprise architecture coherence
+- secure and maintainable implementation guidance
+- verification and release discipline
+- operational and maintenance readiness
 - audit and compliance defensibility
-- operational usefulness for delivery teams
+- reproducible evidence from a fresh checkout
 
 ## Core Capabilities
 
-### 1. Complete SDLC Coverage
+### 1. Complete Lifecycle Coverage
 
-A world-class system must cover the full lifecycle:
+A world-class system covers:
 
 - vision and business rationale
-- stakeholder and business requirements
-- system/software requirements
+- stakeholders and business requirements
+- software and system requirements
 - architecture and design
-- development-facing specifications
-- verification and validation planning
+- implementation planning and development artifacts
+- verification and validation
 - deployment and operations
+- maintenance and change control
 - user-facing documentation
-- governance, compliance, and change control
+- governance, risk, compliance, and audit evidence
 
-Coverage is not enough by itself. Each phase must have defined entry criteria, outputs, and exit criteria.
+Coverage alone is insufficient. Each phase needs entry criteria, output contracts, exit criteria, validation rules, and ownership.
 
 ### 2. Standards Compliance
 
-It must do more than cite IEEE and ISO names. It must:
+It must do more than cite standards. It must:
 
-- map document structures to standards clauses
-- enforce mandatory sections
-- enforce quality properties required by the standard
-- record deviations and waivers explicitly
-- maintain evidence that the standard was applied, not merely referenced
+- map artifacts to standards clauses
+- enforce required sections and quality properties
+- record deviations and waivers
+- maintain traceable evidence
+- generate audit views by clause, control, requirement, test, and evidence
 
-### 3. Structured Documentation Generation
+### 3. Controlled Generation
 
-Artifacts must be generated from controlled inputs rather than free-form prompting alone. A world-class engine should:
+Artifacts should be generated or curated from controlled inputs:
 
-- define explicit input contracts
-- define output schemas and mandatory sections
-- support modular assembly
-- preserve identifiers and baselines across reruns
+- project context
+- domain context
+- methodology selection
+- stable identifiers
+- baselines
+- approved changes
+- reusable templates and schemas
 
-### 4. Traceability Across Artifacts
+Free-form generation should never be the only control.
 
-A world-class system maintains bidirectional traceability across:
+### 4. Traceability Across the Product System
+
+A world-class engine maintains traceability across:
 
 - objectives to requirements
 - requirements to design
-- design to tests
+- design to code
+- code to tests
 - tests to results
-- requirements and controls to compliance obligations
-- changes to impacted artifacts
+- releases to deployed artifacts
+- runtime signals to controls and requirements
+- changes to impacted artifacts and approvals
 
-### 5. Methodology Flexibility
+### 5. Methodology Flexibility Without Loss of Rigor
 
-It must support:
+It should support:
 
 - Waterfall
 - Agile
 - Hybrid
 
-But flexibility must not degrade rigor. Hybrid support must define how formal documents and agile artifacts stay synchronized.
+Hybrid support must define how formal documents, backlog items, design baselines, tests, releases, and governance evidence stay synchronized.
 
 ## Advanced Capabilities
 
-### 1. Automated Cross-Document Consistency
+### 1. Automated Cross-Artifact Consistency
 
-The system should detect and prevent conflicts such as:
+The system should detect:
 
-- mismatched terminology
+- terminology drift
 - inconsistent identifiers
 - conflicting NFR thresholds
 - undocumented scope changes
-- requirements lacking downstream evidence
+- stale links
+- missing downstream evidence
+- weak or unverifiable requirements
+- shallow test oracles
 
 ### 2. Strong Validation and Auditing
 
-Validation must include:
+Validation should include:
 
 - structural conformance
-- semantic conformance
-- placeholder and ambiguity detection
+- semantic quality checks
 - standards clause coverage
+- trace completeness
+- implementation evidence
+- runtime evidence
+- waiver and sign-off discipline
 - audit-ready findings with severity, evidence, and remediation
 
-### 3. Domain-Aware Documentation
+### 3. Domain-Aware Assurance
 
-A world-class engine adapts outputs to:
+Domain support should include:
 
-- healthcare
-- finance
-- government
-- public sector
-- regional compliance contexts
+- required controls
+- obligations
+- evidence expectations
+- mandatory reviews
+- risk defaults
+- domain-specific NFRs
+- jurisdiction-specific compliance mappings
 
-This requires more than domain examples. It requires domain-specific controls, mandatory evidence expectations, and risk-aware defaults.
+Domain packs should eventually behave as rule and evidence packs, not only reference material.
 
-### 4. AI-Assisted Generation with Error Prevention
+### 4. AI-Assisted Generation With Error Prevention
 
-AI can accelerate authoring, but the system must protect against:
+AI can accelerate authoring, but a world-class system must control:
 
-- hallucinated controls
-- invented requirements
-- weak trace links
-- generic filler content
+- unsupported claims
+- hallucinated requirements
+- invented controls
+- generic filler
 - false compliance claims
+- prompt/model regressions
 
-This means AI must operate inside controlled workflows with verification, not as a freeform author.
+AI outputs need source grounding, validation, provenance, and regression testing.
 
-### 5. Iterative Re-runnability
+### 5. Reproducibility
 
-Enterprise documentation systems are not one-shot generators. They must support:
+A world-class engine must prove itself from a fresh checkout:
 
-- reruns without breaking IDs
-- delta-aware updates
-- baseline comparisons
-- impact analysis
-- approved exceptions and waivers
+- documented install command
+- deterministic test command
+- green test suite
+- green proof workspace
+- reproducible evidence pack
+- validation outputs that match documentation claims
 
 ## Quality Dimensions
 
 ### Correctness
 
-Documentation reflects the actual project intent, constraints, and implementation strategy.
+Artifacts reflect real project intent, constraints, design choices, implementation state, and operational behavior.
 
 ### Completeness
 
-Mandatory topics, interfaces, decisions, controls, and evidence links are present.
+Mandatory topics, decisions, controls, interfaces, tests, evidence, owners, and approvals are present.
 
 ### Consistency
 
-The same concept means the same thing everywhere across documents.
+The same concept means the same thing across documents, skills, registries, code references, and project artifacts.
 
 ### Verifiability
 
-Requirements, controls, and procedures can be tested or inspected with objective pass/fail criteria.
+Requirements, controls, procedures, and acceptance criteria can be checked with objective pass/fail evidence.
 
 ### Traceability
 
-Every significant statement can be followed upstream and downstream.
+Significant statements can be followed upstream to intent and downstream to design, code, tests, releases, and runtime evidence.
 
 ### Usability
 
-The documentation is useful to:
-
-- executives
-- architects
-- engineers
-- QA teams
-- operations teams
-- auditors
-- end users
-
-## World-Class Maturity Criteria
-
-A documentation engine should be considered world-class only when it can reliably demonstrate all of the following:
-
-- It produces complete artifacts across the lifecycle with minimal manual re-structuring.
-- It prevents low-quality or contradictory artifacts from progressing.
-- It can show clause-level standards alignment and justified deviations.
-- It can regenerate artifacts after change while preserving identity and trace links.
-- It can support both delivery teams and audit/compliance stakeholders.
-- It can handle domain-specific obligations without falling back to generic boilerplate.
+The system is useful to executives, product teams, architects, engineers, QA, operations, auditors, and end users.
 
 ## Practical Threshold
 
-In practical terms, a world-class SDLC documentation system should be able to support a regulated enterprise program where:
+A system should be considered world-class when:
 
-- external reviewers can inspect traceability and evidence
-- architecture and testing teams can work from the produced artifacts
-- change control boards can evaluate impact
-- compliance teams can map controls to obligations
-- project teams can rerun documentation after scope or design change without corrupting the documentation estate
+- its proof claims are reproducible
+- its validation suite is green
+- at least one realistic project validates cleanly
+- its skill catalog is consistently portable
+- it can show clause-level and evidence-level assurance
+- it traces requirements beyond documents into implementation and runtime
+- it supports change without corrupting baselines or identifiers
 
-Anything below that is useful tooling. It is not yet world-class documentation intelligence.
+Anything below that can still be useful and high-quality. It is not yet a world-class software assurance engine.
