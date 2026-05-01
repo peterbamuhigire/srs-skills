@@ -60,6 +60,8 @@ Read `SRS_Draft.md` and `HLD.md` from `projects/<ProjectName>/<phase>/<document>
 
 Extract entities and operations from SRS Section 3.2 to identify API resources. Each entity that the system manages (e.g., User, Order, Product) becomes a resource. Each operation on that entity becomes an endpoint.
 
+For public, partner, workflow-heavy, or long-lived APIs, load `references/practical-api-architecture.md` before locking the resource model. Apply its consumer contract, idempotency, lifecycle, error-code, and observability checks.
+
 ### Step 3: Map CRUD to HTTP Methods
 
 Map CRUD operations to HTTP methods following REST conventions: Create = POST, Read = GET, Update (full) = PUT, Update (partial) = PATCH, Delete = DELETE. Use HLD component boundaries to determine resource grouping and URL namespace.
@@ -166,6 +168,7 @@ Section 10 (Traceability Matrix) shall map each endpoint to its originating SRS 
 - [ ] The error response format is consistent across all endpoints.
 - [ ] List endpoints include pagination parameters and response metadata.
 - [ ] The `openapi.yaml` file is valid OpenAPI 3.0 and contains all endpoints defined in `API_Specification.md`.
+- [ ] For long-lived or side-effecting APIs, the specification includes a consumer contract matrix, idempotency map, stable error-code registry with retryability, versioning/deprecation policy, and contract-test obligations.
 
 ## Integration
 
@@ -178,6 +181,7 @@ Section 10 (Traceability Matrix) shall map each endpoint to its originating SRS 
 | Reference  | `skills/api-error-handling/`                 | Canonical error response patterns                  |
 | Reference  | `skills/api-pagination/`                     | Pagination strategy patterns                       |
 | Reference  | `skills/dual-auth-rbac/`                     | Authentication and RBAC patterns                   |
+| Reference  | `references/practical-api-architecture.md`   | Book-distilled API architecture, lifecycle, idempotency, and error-semantics checks |
 
 ## Standards
 
