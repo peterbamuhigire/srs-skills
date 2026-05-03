@@ -1,7 +1,11 @@
 ---
-name: "ux-specification"
+name: "05-ux-specification"
 description: "Generate a comprehensive UX specification document covering information architecture, wireframing standards, design system documentation, usability testing protocols, and design handoff specs per ISO 9241-210 and ISO 25010."
 metadata:
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
   use_when: "Use when the task matches ux specification skill and this skill's local workflow."
   do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
   required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
@@ -14,11 +18,75 @@ metadata:
 
 # UX Specification Skill
 
+<!-- dual-compat-start -->
+## Use When
+
+- Generate or update a UX specification for a user-facing software product.
+- SRS, user stories, HLD, vision, or stakeholder context exists and must be translated into IA, wireframes, design-system requirements, usability testing, and implementation handoff.
+- The product is premium, revenue-critical, dashboard-heavy, Android, iOS, or web and needs testable UI/UX quality requirements.
+
+## Do Not Use When
+
+- Required project context is missing and cannot be inferred safely.
+- A narrower downstream implementation skill owns the current task and no formal UX specification is needed.
+- The requested work is backend-only, infrastructure-only, or not user-facing.
+
+## Required Inputs
+
+- `SRS_Draft.md` or `user_stories.md`.
+- `HLD.md`.
+- `vision.md`.
+- `features.md` and `stakeholder_register.md` when available.
+- Platform context, existing UI evidence, business goals, and accessibility constraints.
+
+## Workflow
+
+1. Read the required context files and log the absolute paths used.
+2. Invoke frontend design analysis before writing the formal specification.
+3. Generate IA, navigation, content inventory, and card-sorting templates.
+4. Define low-, mid-, and high-fidelity wireframe standards.
+5. Generate design-system tokens, component catalog, patterns, governance, and premium experience foundation when applicable.
+6. Define interaction, accessibility, usability-testing, handoff, and traceability requirements.
+7. Add premium UI/UX requirements and gate scoring for premium, dashboard, web, Android, or iOS products.
+8. Verify the output against the checklist before completion.
+
+## Quality Standards
+
+- Outputs must be standards-grounded, traceable to source context, and specific enough to review or verify.
+- Requirements must be testable and avoid vague taste language.
+- Design-system documentation must include tokens, states, source of truth, ownership, and governance.
+- Premium products must include platform fit, visual quality, data quality, accessibility, and production acceptance criteria.
+
+## Anti-Patterns
+
+- Fabricating missing requirements.
+- Skipping human review gates.
+- Substituting vague prose for verifiable UX requirements.
+- Treating premium UI/UX as cosmetic polish instead of a business and usability requirement.
+
+## Outputs
+
+- `projects/<ProjectName>/<phase>/<document>/UX_Specification.md`.
+- Traceability entries linking screens/components to SRS requirements.
+- Premium UI/UX gate score and remediation requirements when applicable.
+
+## References
+
+- `references/information-architecture.md`
+- `references/wireframing-standards.md`
+- `references/design-system-guide.md`
+- `references/usability-testing.md`
+- `references/design-handoff.md`
+- `references/premium-ui-ux-specification.md`
+<!-- dual-compat-end -->
+
 ## Overview
 
 Produces a complete UX specification document that bridges user research insights and engineering implementation. The output includes information architecture diagrams (Mermaid flowcharts), wireframing standards across three fidelity levels, design system token definitions, usability testing protocols with quantitative metrics, and developer-ready design handoff specifications. This skill draws on ISO 9241-210 (Human-centred design for interactive systems), ISO 25010 (Systems and software quality models), and principles from "The Effective Product Designer" and "Design for How People Think" (John Whalen).
 
 The UX specification must treat the design system as a maintained product, not a style appendix. Token layers, component contracts, source-of-truth expectations, and governance responsibilities are part of the specification.
+
+For premium, revenue-critical, executive-facing, dashboard-heavy, Android, or iOS products, the UX specification must also apply the `premium-ui-ux-design` skill and `references/premium-ui-ux-specification.md` so beauty, pleasantness, commercial credibility, platform fit, data quality, and production polish become testable requirements.
 
 ## When to Use
 
@@ -72,6 +140,8 @@ The frontend-design plugin will analyze:
 - Recommended design framework (Bootstrap, Material Design, Tabler, etc.)
 
 Capture the plugin's UI/UX recommendation and incorporate it into all subsequent steps of this skill — especially Step 2 (IA), Step 3 (Wireframe Standards), and Step 4 (Design System).
+
+If the product is premium, revenue-critical, dashboard-heavy, Android, or iOS, also load `premium-ui-ux-design` and include its requirements in the UX specification from the start rather than as a final polish pass.
 
 ### Step 1: Read Context Files
 
@@ -168,6 +238,19 @@ The specification shall define:
 - how deprecated components are retired
 
 See `references/design-system-guide.md` for token taxonomy and documentation templates.
+
+**4.5 Premium Experience Foundation**
+
+For premium products, the system shall add:
+
+- Visual voice and rationale tied to the target user, domain, and business model.
+- Dominant/subordinate/accent color logic, dark mode expectations, and chart palette rules.
+- Typography roles for headings, body, metadata, numbers, captions, labels, and data tables.
+- Image, icon, motion, chart, and proof-presentation rules.
+- Component state matrix covering default, hover, focus, pressed, selected, disabled, loading, empty, error, success, offline, and permission-denied states.
+- Platform-specific criteria for web, Android, and iOS where applicable.
+
+See `references/premium-ui-ux-specification.md` for the premium addendum.
 
 ### Step 5: Define Interaction Specifications
 
@@ -273,6 +356,7 @@ The system shall produce developer-ready handoff specifications:
 - Responsive layouts shall function correctly at all three breakpoint ranges.
 - All WCAG 2.1 AA criteria defined in Step 6 shall pass automated and manual testing.
 - Interaction timing shall match specification within 50ms tolerance.
+- Premium products shall include a premium UI/UX gate score with every category at 8/10 or better before design sign-off.
 
 ## Output Format
 
@@ -287,9 +371,13 @@ The generated `UX_Specification.md` shall use this section structure with a Docu
 7. **Design Handoff** -- Annotation standards, asset delivery, acceptance criteria
 8. **Traceability Matrix** -- Screen/Component mapped to SRS Section/Requirement IDs
 
+For premium products, add **Premium Experience Strategy** and **Premium Gate** subsections inside Sections 3, 6, 7, and 8 rather than appending generic polish notes.
+
 ## Cross-References
 
-For cognitive evaluation of designs (mental models, attention patterns, emotional response, memory load), reference `skills/cognitive-ux-framework/`.
+For cognitive evaluation of designs (mental models, attention patterns, emotional response, memory load), reference `cognitive-ux-framework`.
+
+For premium visual quality, platform fit, data quality, and production gates, reference `premium-ui-ux-design`.
 
 ## Common Pitfalls
 
@@ -313,6 +401,7 @@ For cognitive evaluation of designs (mental models, attention patterns, emotiona
 - [ ] Usability testing protocol defines quantitative success metrics.
 - [ ] Design handoff uses token references, not raw values.
 - [ ] Traceability matrix links every screen/component to SRS requirements.
+- [ ] Premium products include the premium UI/UX addendum and gate score.
 
 ## Integration
 
@@ -322,7 +411,8 @@ For cognitive evaluation of designs (mental models, attention patterns, emotiona
 | Upstream | Phase 02 (Requirements) | Consumes SRS or user stories for functional context |
 | Downstream | Phase 04 (Development) | Provides component specs, tokens, and acceptance criteria for front-end implementation |
 | Downstream | Phase 05 (Testing) | Provides usability test protocols and accessibility verification criteria |
-| Cross-Ref | `skills/cognitive-ux-framework/` | Cognitive evaluation methodology for design decisions |
+| Cross-Ref | `cognitive-ux-framework` | Cognitive evaluation methodology for design decisions |
+| Cross-Ref | `premium-ui-ux-design` | Premium UI/UX requirements, platform fit, data quality, and visual production gate |
 
 ## Standards
 
@@ -338,4 +428,5 @@ For cognitive evaluation of designs (mental models, attention patterns, emotiona
 - `references/design-system-guide.md` -- Token taxonomy, component documentation template, pattern library.
 - `references/usability-testing.md` -- Test planning, SUS questionnaire, observation format.
 - `references/design-handoff.md` -- Annotation standards, asset delivery, acceptance criteria.
+- `references/premium-ui-ux-specification.md` -- Premium UI/UX addendum for visual quality, platform fit, dashboard quality, and premium gate scoring.
 - `README.md` -- Quick-start guide for this skill.
