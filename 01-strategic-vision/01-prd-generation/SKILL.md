@@ -73,6 +73,7 @@ Write one paragraph in active voice that distills the product purpose, the prima
 - **Problem Space**: Extract directly from the Problem Statement in `vision.md`.
 - **Target Market Segments**: Derive from `stakeholders.md` user roles and domains.
 - **Competitive Landscape**: Infer from domain constraints and technology choices. Flag any assertions that lack grounding with `[INFERRED]`.
+- **Premium Positioning**: If the product targets premium, affluent, executive, enterprise, luxury, high-ticket, or elite users, load `../07-premium-product-positioning/SKILL.md` and apply its requirements gate before finalising market context, feature priorities, success metrics, or release strategy.
 
 ### Step 5: Generate Product Objectives
 
