@@ -32,6 +32,7 @@ Key injected areas:
 - [regulations.md](references/regulations.md) — PCI-DSS, SOX, BSA/AML, KYC, GDPR/CCPA
 - [architecture-patterns.md](references/architecture-patterns.md) — financial data isolation, double-entry ledger, ACID, audit trail
 - [accounting-erp-patterns.md](references/accounting-erp-patterns.md) — accounting ERP implementation patterns for GL, subledgers, control accounts, reconciliation, close, cost accounting, and finance dimensions
+- [accounting-requirements-gate.md](references/accounting-requirements-gate.md) — requirements gate for accounting engines, POS/ERP finance, IFRS-aware reporting, management accounting, controls, reconciliations, and acceptance criteria
 - [security-baseline.md](references/security-baseline.md) — AES-256, TLS 1.2+, tokenization, HSM, maker-checker
 - [nfr-defaults.md](references/nfr-defaults.md) — default non-functional requirements for injection
 
