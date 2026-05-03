@@ -44,6 +44,9 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 - Do not invent missing requirements or hidden project context.
 - Use local standards, checklists, and references before falling back to generic knowledge.
 - If a skill points to upstream or downstream skills, respect that sequence unless the user explicitly narrows the task.
+- Premium, world-class quality is the default for this engine. SRS, PRD, UX, architecture, and business-case outputs must support premium products and serious clients by default, not commodity or lowest-cost positioning.
+- When a project targets cheap, vague, low-trust, or sub-premium work, treat it as a poor-fit engagement. Recommend narrowing scope to a premium deliverable, raising discovery/quality requirements, or declining the work rather than lowering the SRS quality bar.
+- Use `01-strategic-vision/07-premium-product-positioning` whenever buyer trust, executive adoption, high-ticket pricing, affluent/elite users, or premium product experience matters.
 
 ## Compatibility Notes
 

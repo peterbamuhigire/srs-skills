@@ -63,6 +63,14 @@ When the user says "build the [document]":
 6. **Minimum-Length Directive:** Output only the content required for verifiability and completeness. Every sentence must earn its length. No padding, no restatements of the obvious, no vague qualifiers. Long sentences are acceptable only when every word is load-bearing. *(Cunningham, 2013)*
 7. **Prohibition on Vague Adjectives:** Do not use "fast," "intuitive," "reliable," "robust," "seamless," or similar adjectives without defining the specific IEEE-982.1 metric. Replace with measurable thresholds: "response time ≤ 500 ms at P95 under normal load."
 
+## Premium Default
+
+This SRS engine is for premium, world-class systems work. Do not generate commodity-grade requirements, vague low-cost specifications, or documents intended to justify weak products. If a client or project brief implies sub-premium work, either narrow the scope to a premium deliverable or flag the engagement as poor fit.
+
+- Premium requirements are specific, verifiable, outcome-linked, operationally realistic, and designed to support serious buyers and high-trust users.
+- For executive, enterprise, affluent, luxury, high-ticket, or premium product contexts, invoke `01-strategic-vision/07-premium-product-positioning` before PRD/SRS finalisation.
+- Premium is not marketing language in the SRS; it must appear as measurable quality, trust, onboarding, reporting, support, governance, usability, security, reliability, and service-level requirements.
+
 ## Skill Execution Workflow
 
 > **PRIME Methodology (Kodukula & Vinueza, 2024):** Every skill execution follows the PRIME cycle — **P**repare (`_context/` files populated with real data), **R**elay (invoke the skill), **I**nspect (review output against context), **M**odify (refine and re-invoke if needed), **E**xecute (run `build-doc.sh`). Never skip Inspect and Modify — the first AI output is a draft, not a deliverable.
