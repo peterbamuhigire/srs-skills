@@ -35,6 +35,10 @@ The following client projects are maintained under `projects/` (gitignored — n
 - **CI positive + negative path** — `.github/workflows/engine.yml` now runs both the clean demo validation and the sabotaged demo (expected to fail), guarding against silent-pass regressions.
 - **New registries** — `_registry/adr-catalog.yaml`, `change-impact.yaml`, `baselines.yaml`, `baseline-trace.yaml`, `sign-off-ledger.yaml`, `waivers.yaml` are all schema-validated and enforced by phase09 checks.
 - **Operator seeder** — `scripts/seed_demo_project.py` is idempotent; re-running reproduces a PASSING demo workspace including `engine sync` and baseline snapshot.
+- **Premium UI/UX specification layer** — `03-design-documentation/05-ux-specification`
+  now validates as a portable phase skill and can invoke `premium-ui-ux-design`
+  to make beauty, pleasantness, dashboard clarity, Android/iOS platform fit,
+  accessibility, and commercial credibility testable UX requirements.
 
 See [docs/plans/completion2026-04-16/PROGRESS.md](docs/plans/completion2026-04-16/PROGRESS.md) for the full execution ledger.
 
@@ -125,6 +129,8 @@ See [docs/plans/completion2026-04-16/PROGRESS.md](docs/plans/completion2026-04-1
 - **API Specifications** - OpenAPI 3.0, advanced API patterns (Geewax)
 - **Database Design** - ERDs, schema documentation
 - **UX Specification** (NEW) - Information architecture, wireframes, design systems, usability testing
+- **Premium UI/UX Specification** (NEW) - Premium visual quality, data/dashboard
+  quality, platform-specific Android/iOS criteria, and premium gate scoring
 - **Infrastructure Design** (NEW) - Scalability, caching, reliability, monitoring (decision gate)
 - **IoT System Design** (NEW) - Device, edge, connectivity, fleet lifecycle, secure operations
 
