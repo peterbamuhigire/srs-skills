@@ -67,6 +67,8 @@ When the user says "build the [document]":
 
 This SRS engine is for premium, world-class systems work. Do not generate commodity-grade requirements, vague low-cost specifications, or documents intended to justify weak products. If a client or project brief implies sub-premium work, either narrow the scope to a premium deliverable or flag the engagement as poor fit.
 
+Premium requirements must make value visible through product packaging, simple usable UX, buyer proof, service quality, content/SEO authority where relevant, pricing power, and high-value sales/proposal assets.
+
 - Premium requirements are specific, verifiable, outcome-linked, operationally realistic, and designed to support serious buyers and high-trust users.
 - For executive, enterprise, affluent, luxury, high-ticket, or premium product contexts, invoke `01-strategic-vision/07-premium-product-positioning` before PRD/SRS finalisation.
 - Premium is not marketing language in the SRS; it must appear as measurable quality, trust, onboarding, reporting, support, governance, usability, security, reliability, and service-level requirements.
