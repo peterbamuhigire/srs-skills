@@ -188,3 +188,33 @@ Before marking this skill as complete, confirm all of the following:
 
 - `logic.prompt` — Executable prompt containing the step-by-step generation logic
 - `README.md` — Quick-start guide for this skill
+
+## Vision-statement filter (added 2026-05-04 from Levy)
+
+Canonical reference: `docs/ux-foundations.md` Section 2 (Top-10 Not-UX-Strategies).
+
+Reject any vision statement that matches one of Levy's anti-patterns. Most common SRS-context failures, in order of frequency:
+
+### #10 — The North Star
+**Symptom:** "Be the [Uber / Airbnb / Stripe] of [industry]." No operational meaning. Reads like a slogan.
+**Fix:** rewrite to describe the *change* the product creates in the user's life — what specifically becomes possible that wasn't before?
+
+### #9 — The Hallmark-card affirmation
+**Symptom:** "Deliver excellence, innovation, and customer delight." Too vague to act on. Cannot be operationalized into requirements.
+**Fix:** name the specific user, the specific change, the specific evidence that the change has happened.
+
+### #4 — The buzzword permutation
+**Symptom:** "AI-powered Web3 platform for the metaverse." Trends concatenated. No customer in the sentence.
+**Fix:** drop every buzzword that doesn't directly describe what the user does or experiences.
+
+### #5 — Generic motivational statement
+**Symptom:** "Empower every team, every day, everywhere." Could fit any product.
+**Fix:** make it falsifiable — what would prove this is happening, and what would prove it isn't?
+
+### #1 — The killer idea
+**Symptom:** "Our killer idea is X." Idea-as-vision. No persona, no problem, no validation.
+**Fix:** rewrite as user-problem + observable outcome.
+
+### Procedure when a draft matches an anti-pattern
+
+Return to the interview/discovery stage. Do not polish the prose of an anti-pattern vision statement; the underlying thinking has not happened yet. Document the rejection and the path back in the project log so the rework is auditable.

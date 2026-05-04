@@ -62,3 +62,57 @@ metadata:
 
 - `references/premium-product-requirements-gate.md` - requirements gate for premium software and high-value users.
 <!-- dual-compat-end -->
+
+## Premium positioning gate (added 2026-05-04 from Synechron Enterprise UX)
+
+Canonical reference: `docs/ux-foundations.md` Section 3 (5 outcomes + 5-level UX maturity).
+
+Premium-pricing claims must pass two gates: outcomes (launch gate) and maturity (process gate). Both are required; neither alone is sufficient.
+
+### Gate 1 — Five Outcomes (launch gate)
+
+A premium positioning document must declare evidence-based pass on ALL FIVE outcomes:
+
+| Outcome | Evidence required |
+|---|---|
+| **Useful** | Persona-validated; tested against documented goals |
+| **Easy to use** | First-task success in usability test without coaching |
+| **Efficient** | Task time benchmarked against competitor or prior baseline |
+| **Pleasing** | Subjective rating ≥ 4/5 on initial-impression test |
+| **Accessible** | ADA / Section 508 / WCAG 2.1 AA verified |
+
+**4-of-5 disqualifies premium pricing.** Drop the positioning to standard tier and re-engage when the missing outcome has evidence.
+
+### Gate 2 — UX Maturity Level (process gate)
+
+A premium claim must operate at UX Maturity Level 3 (UX Design) minimum. Top-tier (luxury, regulated, mission-critical) requires Level 4 (Experience Design).
+
+Required documented activities at Level 3:
+- Problem definition + business objective
+- Stakeholder discussions (interview notes)
+- Success criteria (signed)
+- User research (qualitative + quantitative)
+- Competitor analysis matrix
+- Personas (named, with goals + pain points)
+- User journeys (per primary persona)
+- Information architecture (sitemap + navigation flow)
+- Wireframes (low-fi + high-fi)
+- Clickable prototype (per crucial scenarios)
+- Heuristic evaluation report
+- Visual design mockups
+- ADA / Section 508 verification
+
+Level 4 additionally requires: experience maps, mood boards, usability testing, test cases & scenarios.
+
+### Cross-engine references
+
+- `website-skills/skills/design-quality-score/` — Category 8 (UX Maturity) scores the same gate independently per artifact. Same project may carry separate scores in each engine.
+- `website-skills/skills/premium-ui-ux-design/references/enterprise-five-outcomes.md` — same outcomes, applied to website templates.
+
+### Procedure when either gate fails
+
+Do not re-position the product as premium. Either:
+1. Close the gap (add the missing evidence or activities) and re-engage, OR
+2. Re-position at a lower tier (standard / mid-tier) honestly
+
+Premium claims that fail either gate damage credibility on first audit.
