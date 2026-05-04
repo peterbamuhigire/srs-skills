@@ -200,3 +200,33 @@ The generated `PRD.md` shall follow this template structure:
 
 - `logic.prompt` -- executable prompt for automated PRD generation.
 - `README.md` -- quick-start guide for this skill.
+
+## Strategic foundations check (added 2026-05-04 from Levy + Branson)
+
+Canonical reference: `docs/ux-foundations.md` Sections 1 and 2.
+
+Three checks before producing or finalizing the PRD:
+
+### 1. Four Tenets check (Levy)
+
+Verify the upstream artifacts and PRD scope contain evidence for all four tenets:
+
+| Tenet | PRD section | Pass criterion |
+|---|---|---|
+| **Business Strategy** | Strategic context / problem statement | Value proposition declared with revenue model |
+| **Value Innovation** | Differentiation / competitive context | Specific differentiation vs named competitors, not generic claims |
+| **Validated User Research** | User segments / personas | Personas cite real research, not pure hypothesis |
+| **Killer UX Design** | Success criteria / UX requirements | UX outcomes specified, not implied |
+
+If any tenet lacks evidence, the PRD is "speculative" — return to upstream stage rather than ship a polished but unfounded PRD.
+
+### 2. Persona discipline (Branson, Section 1)
+
+The PRD's persona section must:
+- Declare ONE Essential Persona per primary user role (no averaging)
+- Include the full Mechanics floor (name, demographics, goals, environment, pain points, stress points)
+- Use specific, named personas in feature-justification arguments — "Persona X needs Y" — not "users want Y"
+
+### 3. Field-of-Dreams flag (Levy)
+
+If the PRD contains no validated user research and no plan to acquire it, mark the PRD itself as "speculative." Speculative PRDs cannot be priced as execution engagements; they must precede a discovery engagement. Document the speculative-status banner at the top of the PRD.

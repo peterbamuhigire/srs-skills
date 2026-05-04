@@ -297,3 +297,37 @@ The generated `Lean_Canvas.md` shall contain:
 - `references/impact-mapping-guide.md` -- Impact Map construction and Mermaid syntax
 - `references/hypothesis-driven-requirements.md` -- Hypothesis templates and experiment design
 - `README.md` -- Quick-start guide with decision gate explanation
+
+## Lean Canvas ↔ Business Model Canvas mapping (added 2026-05-04 from Levy)
+
+Canonical reference: `docs/ux-foundations.md` Section 2 (Business Model Canvas — 9 building blocks).
+
+This is an **additive mapping** — it does not replace the existing Lean Canvas methodology in this skill. Lean Canvas (Maurya) and Osterwalder's BMC are complementary tools; both have their place.
+
+### Block-by-block mapping
+
+| Lean Canvas | Business Model Canvas | UX-strategy intersection |
+|---|---|---|
+| Problem | (covered indirectly by Customer Segments + Value Propositions) | Where personas' pain points live |
+| Customer Segments | **Customer Segments** | **Bolded — UX strategy primary intersection** |
+| Unique Value Proposition | **Value Propositions** | **Bolded — UX strategy primary intersection** |
+| Solution | (BMC has no direct equivalent — implicit in Value Propositions + Key Activities) | Where UX-design tenet 4 (Killer UX Design) lives |
+| Channels | Channels | Where omni-channel UX questions live |
+| Revenue Streams | Revenue Streams | — |
+| Cost Structure | Cost Structure | — |
+| Key Metrics | (BMC has no direct equivalent) | Where Levy's Funnel Matrix metrics fit |
+| Unfair Advantage | (covered in Key Resources + Key Partnerships) | Where Value Innovation differentiation lives |
+| (no equivalent) | Customer Relationships | How acquisition + retention happen |
+| (no equivalent) | Key Resources | Strategic assets — content, capital, patents |
+| (no equivalent) | Key Activities | What unique things the business does |
+| (no equivalent) | Key Partnerships | Suppliers and partners |
+
+### When to use which
+
+- **Lean Canvas:** early-stage startup, validating problem-solution fit
+- **Business Model Canvas:** established product, articulating full operating model for strategic alignment
+- **Both:** premium engagements where the team wants both fast-validation framing AND complete strategic articulation
+
+### UX-strategy implication (per Levy)
+
+UX strategy intersects most strongly with Customer Segments + Value Propositions on the BMC — exactly the same blocks where Lean Canvas places Customer Segments + Unique Value Proposition. Whichever canvas you use, those two blocks are where validated user research must produce evidence, not hypothesis.

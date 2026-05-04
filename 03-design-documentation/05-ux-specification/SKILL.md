@@ -430,3 +430,45 @@ For premium visual quality, platform fit, data quality, and production gates, re
 - `references/design-handoff.md` -- Annotation standards, asset delivery, acceptance criteria.
 - `references/premium-ui-ux-specification.md` -- Premium UI/UX addendum for visual quality, platform fit, dashboard quality, and premium gate scoring.
 - `README.md` -- Quick-start guide for this skill.
+
+## UX foundations integration (added 2026-05-04 from Branson + Synechron + Deacon)
+
+Canonical reference: `docs/ux-foundations.md` (engine-local, 6 sections).
+
+This skill consumes the broadest portion of the foundations doc. Required reading before producing a UX specification:
+
+- **Section 1 (Branson personas)** — every UX spec's persona section must declare an Essential Persona and pass the Mechanics floor (name, demographics, goals, environment, pain points, stress points)
+- **Section 3 (Synechron 5 outcomes + maturity)** — every UX spec must declare which maturity level (Level 3 minimum for premium) and document the 5 outcomes as launch criteria
+- **Section 4 (working memory + 4-stage affordance)** — used as NFR templates and design-review heuristics
+- **Section 5 (Deacon 3 levels of scope)** — every UX spec declares which scope level it targets
+
+### Required NFR templates (drawn from Section 4)
+
+The UX spec's non-functional-requirements section must include, where applicable:
+
+- **List-length cap** — primary navigation, dropdowns, and primary action lists ≤ 7 items (Miller). If more required, chunk into groups.
+- **Form-field-per-step cap** — ≤ 7 visible fields per step. Longer forms split into multi-step flows with explicit progress and saved state.
+- **Cognitive-load minimization** — plot working-memory load across the primary user task; identify task-closure points; redesign if load never reaches zero across the flow.
+- **Stacking-safe interruption recovery** — every multi-step flow auto-saves state; every page that can be interrupted has a "back to where you were" affordance.
+
+### Required affordance audit (drawn from Section 4)
+
+For every primary CTA listed in the UX spec, document Yes/No on each of:
+- **Presence** — does the affordance exist?
+- **Visibility/Perceivability** — can it be seen at first glance?
+- **Recognizability** — can it be detected without searching?
+- **Intelligibility** — is the meaning clear once read?
+
+Any No = redesign required before launch.
+
+### Required scope declaration (drawn from Section 5)
+
+The UX spec opens with one sentence: "This specification targets [Single Interaction / Journey / Relationship] level UX scope, per Deacon's 3-level model."
+
+### Required maturity declaration (drawn from Section 3)
+
+The UX spec opens with one sentence: "This specification operates at UX Maturity Level [3 / 4], per the Synechron 5-level model. Premium-pricing claims require Level 3 minimum."
+
+### Existing references unchanged
+
+This section augments — does not replace — the existing references in `references/`: `design-handoff.md`, `design-system-guide.md`, `information-architecture.md`, `premium-ui-ux-specification.md`, `usability-testing.md`, `wireframing-standards.md`. Use them as before; the new section adds upstream discipline.
