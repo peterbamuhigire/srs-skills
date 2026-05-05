@@ -1,7 +1,11 @@
 ---
-name: "lean-canvas"
-description: "Generate a Lean Canvas, Impact Map, and Hypothesis Board for MVP/startup/exploratory projects as a lightweight alternative to full PRD per Ash Maurya and IEEE 29148."
+name: "04-lean-canvas"
+description: "Generate a Lean Canvas, Impact Map, and Hypothesis Board for MVP, startup, exploratory, SaaS, AI, website, mobile, or uncertain projects as a lightweight alternative or precursor to full PRD. Use when assumptions, customer discovery, measurable goals, outcome traceability, and validation thresholds must drive requirements."
 metadata:
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
   use_when: "Use when the task matches lean canvas skill and this skill's local workflow."
   do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
   required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
@@ -13,6 +17,57 @@ metadata:
 ---
 
 # Lean Canvas Skill
+
+<!-- dual-compat-start -->
+## Use When
+
+- A product has high uncertainty and needs Lean Canvas, Impact Map, hypothesis board, customer discovery, or MVP validation before PRD/SRS commitment.
+- Business goals, actors, impacts, assumptions, interviews, experiments, and validation thresholds must become traceable requirements inputs.
+- Premium SaaS, AI, website, mobile, or public-sector systems need measurable outcome discovery before feature generation.
+
+## Do Not Use When
+
+- Requirements are already baselined and the task is downstream design, testing, deployment, or governance.
+- The project is regulated or fixed-scope enough to require a full PRD/SRS first.
+- No customer/problem/actor evidence can be collected and the user wants unsupported invention.
+
+## Required Inputs
+
+- `projects/<ProjectName>/_context/vision.md`, `features.md`, and optionally `stakeholders.md`, `personas.md`, market evidence, interview notes, pricing assumptions, and adoption constraints.
+
+## Workflow
+
+1. Score the Lean Canvas decision gate.
+2. Create the Lean Canvas and identify risky assumptions.
+3. Build an Impact Map from measurable goal to actors, impacts, deliverables, and measures.
+4. Define hypothesis cards, discovery interviews, experiments, and validation thresholds.
+5. Convert validated outcomes into PRD, SRS, backlog, or experience-mapping inputs.
+6. Use `references/discovery-interview-and-hypothesis-validation.md` and `references/impact-map-traceability-matrix.md` for detailed execution.
+
+## Quality Standards
+
+- Every deliverable must trace to a goal, actor, impact, assumption, and validation signal.
+- Avoid solution bias; unvalidated solution ideas remain hypotheses until evidence supports them.
+- Use measurable pivot, persevere, or stop thresholds.
+
+## Anti-Patterns
+
+- Treating the Lean Canvas as a pitch deck instead of a requirements discovery instrument.
+- Asking users to predict future usage instead of describing recent behaviour and current workarounds.
+- Shipping feature lists with no measurable actor impact.
+
+## Outputs
+
+- Lean Canvas, Impact Map, Hypothesis Board, discovery interview plan, validation thresholds, and outcome-to-requirement trace matrix.
+
+## References
+
+- `references/lean-canvas-guide.md`
+- `references/impact-mapping-guide.md`
+- `references/hypothesis-driven-requirements.md`
+- `references/discovery-interview-and-hypothesis-validation.md`
+- `references/impact-map-traceability-matrix.md`
+<!-- dual-compat-end -->
 
 ## Overview
 
@@ -186,6 +241,7 @@ Prioritization rules:
    - **Viability**: Will this sustain the business?
 3. For each hypothesis, suggest an experiment type: concierge MVP, Wizard of Oz, landing page test, A/B test, user interview, or prototype test.
 4. Define a pivot/persevere threshold for each hypothesis.
+5. Use `references/discovery-interview-and-hypothesis-validation.md` to avoid predictive interview questions and to define evidence thresholds before experiments run.
 
 ### Step 6: Validate Internal Consistency
 
@@ -296,6 +352,8 @@ The generated `Lean_Canvas.md` shall contain:
 - `references/lean-canvas-guide.md` -- Block-by-block filling guide with examples and common mistakes
 - `references/impact-mapping-guide.md` -- Impact Map construction and Mermaid syntax
 - `references/hypothesis-driven-requirements.md` -- Hypothesis templates and experiment design
+- `references/discovery-interview-and-hypothesis-validation.md` -- customer interview patterns, assumption ledger, and validation thresholds derived from local HTML extractions
+- `references/impact-map-traceability-matrix.md` -- goal-to-actor-to-impact-to-requirement trace matrix and milestone rules
 - `README.md` -- Quick-start guide with decision gate explanation
 
 ## Lean Canvas ↔ Business Model Canvas mapping (added 2026-05-04 from Levy)

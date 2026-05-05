@@ -47,8 +47,9 @@ metadata:
 4. Define low-, mid-, and high-fidelity wireframe standards.
 5. Generate design-system tokens, component catalog, patterns, governance, and premium experience foundation when applicable.
 6. Define interaction, accessibility, usability-testing, handoff, and traceability requirements.
-7. Add premium UI/UX requirements and gate scoring for premium, dashboard, web, Android, or iOS products.
-8. Verify the output against the checklist before completion.
+7. For text-heavy screens, forms, onboarding, checkout, applications, public-sector workflows, or error-prone tasks, invoke `03-design-documentation/09-ux-content-and-form-specification`.
+8. Add premium UI/UX requirements and gate scoring for premium, dashboard, web, Android, or iOS products.
+9. Verify the output against the checklist before completion.
 
 ## Quality Standards
 
@@ -373,6 +374,8 @@ The generated `UX_Specification.md` shall use this section structure with a Docu
 
 For premium products, add **Premium Experience Strategy** and **Premium Gate** subsections inside Sections 3, 6, 7, and 8 rather than appending generic polish notes.
 
+For forms, critical microcopy, onboarding, checkout, applications, error-heavy workflows, or public-sector submissions, add a companion output from `03-design-documentation/09-ux-content-and-form-specification` so labels, help text, validation, error states, completion metrics, and content governance are testable.
+
 ## Cross-References
 
 For cognitive evaluation of designs (mental models, attention patterns, emotional response, memory load), reference `cognitive-ux-framework`.
@@ -413,6 +416,7 @@ For premium visual quality, platform fit, data quality, and production gates, re
 | Downstream | Phase 05 (Testing) | Provides usability test protocols and accessibility verification criteria |
 | Cross-Ref | `cognitive-ux-framework` | Cognitive evaluation methodology for design decisions |
 | Cross-Ref | `premium-ui-ux-design` | Premium UI/UX requirements, platform fit, data quality, and visual production gate |
+| Cross-Ref | `03-design-documentation/09-ux-content-and-form-specification` | Detailed UX content, form, validation, and error-state requirements |
 
 ## Standards
 
@@ -429,6 +433,7 @@ For premium visual quality, platform fit, data quality, and production gates, re
 - `references/usability-testing.md` -- Test planning, SUS questionnaire, observation format.
 - `references/design-handoff.md` -- Annotation standards, asset delivery, acceptance criteria.
 - `references/premium-ui-ux-specification.md` -- Premium UI/UX addendum for visual quality, platform fit, dashboard quality, and premium gate scoring.
+- `03-design-documentation/09-ux-content-and-form-specification` -- companion skill for UX text, form quality gates, validation timing, and error recovery requirements.
 - `README.md` -- Quick-start guide for this skill.
 
 ## UX foundations integration (added 2026-05-04 from Branson + Synechron + Deacon)

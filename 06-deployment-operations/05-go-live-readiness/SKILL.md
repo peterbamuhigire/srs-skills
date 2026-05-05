@@ -1,7 +1,11 @@
 ---
-name: "go-live-readiness"
+name: "05-go-live-readiness"
 description: "Generate a go-live readiness assessment and launch control plan that verifies the system is operationally, organizationally, and commercially ready for release."
 metadata:
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
   use_when: "Use when the product is approaching release, pilot, cutover, or production launch and a structured readiness decision is required."
   do_not_use_when: "Do not use when the project is still in early design without an intended deployment target, release scope, or operational owner."
   required_inputs: "Provide the release scope, deployment approach, operational documentation, unresolved risks, support model, and stakeholder decision context."
@@ -13,6 +17,53 @@ metadata:
 ---
 
 # Go-Live Readiness Skill
+
+<!-- dual-compat-start -->
+## Use When
+
+- A release, pilot, migration, public-sector launch, SaaS rollout, AI deployment, website launch, or production cutover needs a go/no-go decision.
+- Deployment, monitoring, support, training, communication, rollback, hypercare, and organisational readiness must be reviewed together.
+
+## Do Not Use When
+
+- The project is still in early design with no release scope, target environment, operating owner, or launch window.
+- The task is only a deployment procedure; use deployment/runbook skills first.
+
+## Required Inputs
+
+- Release scope, deployment guide, runbook, monitoring setup, infrastructure docs, test report, support model, training plan, risks, blockers, rollback plan, and approvers.
+
+## Workflow
+
+1. Define release decision context, launch type, launch window, owners, and approvers.
+2. Evaluate product, deployment, rollback, monitoring, support, security, data, training, communication, vendor, and transition readiness.
+3. Score each dimension as ready, conditionally ready, or blocked.
+4. Build blocker register with owner, evidence gap, due date, and mitigation.
+5. Build launch control plan with cutover timeline, decision checkpoints, abort triggers, communications, hypercare, and success metrics.
+6. Route adoption/support gaps to `06-deployment-operations/06-customer-adoption-and-support-plan`.
+7. Record go, conditional-go, or no-go recommendation.
+
+## Quality Standards
+
+- Every conditional or blocked item must have evidence, owner, due date, and decision impact.
+- Technical readiness is insufficient without support, training, communication, rollback, and operating ownership.
+- The final recommendation must be usable in a real go/no-go meeting.
+
+## Anti-Patterns
+
+- Declaring readiness because tests passed while support, rollback, or training is missing.
+- Launching without named incident, communication, and recovery owners.
+- Treating premium or public-sector user support as generic post-launch help.
+
+## Outputs
+
+- Go-live readiness report, blocker register, launch control plan, cutover decision record, and adoption/support handoff.
+
+## References
+
+- `references/`
+- `06-deployment-operations/06-customer-adoption-and-support-plan`
+<!-- dual-compat-end -->
 
 ## Overview
 
@@ -74,6 +125,8 @@ Document:
 - communications cadence
 - hypercare support period
 - first-day and first-week success metrics
+
+If adoption, training, service desk, customer recovery, or maintenance commitments are material to launch success, invoke `06-deployment-operations/06-customer-adoption-and-support-plan` and attach its support scripts and adoption metrics as readiness evidence.
 
 ### Step 5: Record the Go/No-Go Recommendation
 
