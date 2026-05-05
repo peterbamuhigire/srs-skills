@@ -109,8 +109,8 @@ Level 4 additionally requires: experience maps, mood boards, usability testing, 
 
 ### Cross-engine references
 
-- `website-skills/skills/design-quality-score/` — Category 8 (UX Maturity) scores the same gate independently per artifact. Same project may carry separate scores in each engine.
-- `website-skills/skills/premium-ui-ux-design/references/enterprise-five-outcomes.md` — same outcomes, applied to website templates.
+- Website engine `design-quality-score` — Category 8 (UX Maturity) scores the same gate independently per artefact. Same project may carry separate scores in each engine.
+- Website engine `premium-ui-ux-design` reference `enterprise-five-outcomes.md` — same outcomes, applied to website templates.
 
 ### Procedure when either gate fails
 
