@@ -29,6 +29,13 @@ Repository-level pathing is canonicalized to `projects/<ProjectName>/...`.
 | 01-prd-generation | ../project_context/vision.md, features.md, stakeholders.md; optionally ../output/Vision_Statement.md | Generate Product Requirements Document with market context, SMART objectives, feature priority matrix (MoSCoW), and success metrics | IEEE 29148-2018; IEEE 1233-1998 – System Requirements Development | ../output/PRD.md |
 | 02-business-case | ../project_context/vision.md, stakeholders.md; optionally ../output/PRD.md | Generate business case with cost-benefit analysis (NPV), ROI projection, risk assessment matrix, and go/no-go criteria | IEEE 1058-1998 – Software Project Management Plans | ../output/Business_Case.md |
 
+### Phase 01 Outcome Discovery And Premium Positioning Additions
+
+| Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
+|-----------------|--------|----------------|-------------------|----------------|
+| 04-lean-canvas | vision.md, features.md, stakeholders.md, discovery evidence | Generate Lean Canvas, Impact Map, Hypothesis Board, discovery interview plan, and validation thresholds for uncertain products | IEEE 29148; Lean Customer Development; Impact Mapping | Lean_Canvas.md, impact map, hypothesis board |
+| 07-premium-product-positioning | buyer/user context, pricing intent, proof assets, service model | Convert premium positioning into measurable product, UX, proof, support, adoption, governance, and service requirements | IEEE 29148; premium product strategy | Premium positioning requirements and quality gate |
+
 ## Phase 02: Agile Requirements Track
 
 | Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
@@ -38,6 +45,13 @@ Repository-level pathing is canonicalized to `projects/<ProjectName>/...`.
 | 03-story-mapping | ../output/user_stories.md, epic_breakdown.md | Build Jeff Patton story maps with backbone activities, walking skeleton, and release slices | IEEE 29148-2018; Jeff Patton Story Mapping (2014) | ../output/story_map.md, story_map.mmd |
 | 04-backlog-prioritization | ../output/user_stories.md, ../project_context/vision.md | Prioritize backlog using MoSCoW classification and WSJF scoring, allocate stories to sprints | IEEE 29148-2018 Sec 6.4.6; SAFe WSJF | ../output/prioritized_backlog.md, release_plan.md |
 
+### Phase 02 Experience And Service Requirements Additions
+
+| Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
+|-----------------|--------|----------------|-------------------|----------------|
+| 11-experience-mapping-requirements | journey evidence, interviews, analytics, support logs, stakeholder register | Convert journey stages, touchpoints, pain points, evidence, and future-state opportunities into traceable SDLC requirements | IEEE 29148; ISO 9241-210; experience mapping | experience_mapping_requirements.md |
+| 12-service-blueprint-requirements | service scenario, journey/process evidence, support model, operational actors | Convert frontstage/backstage actions, handoffs, evidence, service failures, and recovery into product, support, governance, and rollout requirements | IEEE 29148; ISO 9241-210; service design | service_blueprint_requirements.md |
+
 ## Phase 03: Design Documentation
 
 | Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
@@ -46,6 +60,13 @@ Repository-level pathing is canonicalized to `projects/<ProjectName>/...`.
 | 02-low-level-design | ../output/HLD.md, SRS_Draft.md, ../project_context/business_rules.md | Decompose HLD into module specs with class, sequence, and state diagrams (Mermaid), algorithm formalization (LaTeX), error handling design | IEEE 1016-2009 Sec 6 – Design Elements | ../output/LLD.md |
 | 03-api-specification | ../output/SRS_Draft.md, HLD.md, ../project_context/tech_stack.md | Generate REST API endpoint definitions, schemas, auth, error format, and machine-readable OpenAPI 3.0 YAML | OpenAPI 3.0; IEEE 29148-2018; RFC 7231 | ../output/API_Specification.md, openapi.yaml |
 | 04-database-design | ../output/SRS_Draft.md, HLD.md, ../project_context/business_rules.md, tech_stack.md | Generate ERD (Mermaid), normalized table definitions, indexing strategy, data dictionary, migration strategy. MANDATORY: mysql-best-practices for MySQL | IEEE 1016-2009 Sec 6.7; ISO/IEC 25010 | ../output/Database_Design.md, erd.mmd |
+
+### Phase 03 Strategy And UX Content Additions
+
+| Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
+|-----------------|--------|----------------|-------------------|----------------|
+| 08-engineering-strategy-brief | PRD/SRS, tech stack, risks, constraints, current architecture, quality attributes | Produce engineering strategy diagnosis, guiding policies, coherent actions, operating mechanisms, ADR candidates, and SaaS assumptions | IEEE 1016; engineering strategy | Engineering_Strategy_Brief.md |
+| 09-ux-content-and-form-specification | UX spec, SRS/user stories, personas, existing screens/forms, content evidence | Generate UX content, microcopy, form, validation, error-state, accessibility, and completion-metric requirements | ISO 9241-210; WCAG 2.1 AA | UX_Content_And_Form_Specification.md |
 
 ## Phase 04: Development Artifacts
 
@@ -72,6 +93,13 @@ Repository-level pathing is canonicalized to `projects/<ProjectName>/...`.
 | 02-runbook | ../output/Deployment_Guide.md (optional); ../project_context/tech_stack.md | Generate operational runbook with incident response procedures, escalation paths, health checks, and recovery playbooks per SRE practices | SRE Best Practices | ../output/Runbook.md |
 | 03-monitoring-setup | ../project_context/tech_stack.md, quality_standards.md | Generate monitoring configuration guide with metrics definitions, alerting rules, dashboard specifications, and SLI/SLO targets | ISO/IEC 25010 – Software Product Quality | ../output/Monitoring_Setup.md |
 | 04-infrastructure-docs | ../project_context/tech_stack.md; ../output/HLD.md (optional) | Generate infrastructure documentation with architecture diagrams (Mermaid), resource inventory, networking topology, and scaling policies | IEEE 1016-2009 – Software Design Descriptions | ../output/Infrastructure_Docs.md |
+
+### Phase 06 Rollout And Support Additions
+
+| Skill ID & Name | Inputs | Process Logic | Governing Standard | Primary Output |
+|-----------------|--------|----------------|-------------------|----------------|
+| 05-go-live-readiness | deployment guide, runbook, monitoring, test report, support/training evidence | Generate go-live readiness assessment, blocker register, launch control plan, and go/no-go recommendation | Operational readiness; transition governance | Go_Live_Readiness.md |
+| 06-customer-adoption-and-support-plan | release scope, stakeholder roles, user docs, support model, known risks, service levels | Generate adoption, training, rollout communication, service desk, escalation, recovery, maintenance, and feedback-loop plan | Transition governance; service design | Customer_Adoption_And_Support_Plan.md |
 
 ## Phase 07: Agile Artifacts
 
