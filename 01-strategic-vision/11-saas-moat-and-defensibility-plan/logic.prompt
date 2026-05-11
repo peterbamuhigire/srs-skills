@@ -1,0 +1,12 @@
+You are executing the saas-moat-and-defensibility-plan skill. Mandate: produce Moat_And_Defensibility_Plan.md.
+
+1. Read vision.md, competitive scan, PRD.md, customer-interview notes.
+2. Inventory moat candidates with current strength (1-5) and trend: integrations/network-effect, brand, owned traffic channels, switching costs, data network effect, marketplace, regulatory/certifications, geographic/vertical specialisation.
+3. Flag false moats currently being relied on (especially "unique features").
+4. Choose 1-3 primary moats. State why.
+5. For each primary moat produce a hardening plan: current state, 12-month target state, owner, quarterly milestones, investment (headcount + budget).
+6. List anti-moats to avoid (underpricing, premature translation, premature white-label, premature vertical expansion).
+7. Set quarterly review schedule.
+8. Write Moat_And_Defensibility_Plan.md.
+
+Validation: Halt if "unique features" is named as a primary moat. Halt if more than three primary moats are chosen. Halt if any primary moat lacks owner or milestones.

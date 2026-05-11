@@ -1,0 +1,14 @@
+You are executing the saas-billing-and-metering-spec skill. Mandate: produce Billing_And_Metering_Spec.md.
+
+1. Read PRD.md, vision.md, pricing & packaging spec, Multi_Tenancy_Architecture_Spec.md or HLD.md, tech_stack.md. Identify every billable, quota-limited, or tier-enforcing action.
+2. Build the Metered Event Catalogue table with columns: event name, schema (JSON keys), granularity, source service, sink, retention raw + aggregate, used-for, tenant fields. Minimum events: api.request.completed, storage.snapshot, seat.assigned, feature.used; add product-specific meters.
+3. Document Tenant Context Propagation rules: every event MUST have tenant_id; billable events MUST have tier, region, trace_id; events missing tenant_id MUST be rejected at bus ingress.
+4. Document Transport: append-only event bus, per-tenant partition key, at-least-once with idempotency keys, raw retention 13 months, aggregate retention 7 years.
+5. Document Aggregation & Pricing Engine: minute → hour → day → month rollups; pricing engine consumes aggregates + versioned tier price book + contract overrides; price-book changes require an ADR.
+6. Document Revenue Recognition rules per ASC 606 / IFRS 15: contract identification, performance-obligation identification, transaction-price determination, allocation, recognition. For each price-list line declare ratable / point-in-time / milestone / usage pattern.
+7. Document Dunning sequence (D+0 reminder → D+3 → D+7 read-only → D+14 suspension → D+45 offboarding), Refund authority and audit, Credit application from SLA breaches.
+8. Document Audit & Reconciliation: daily reconciliation metering vs raw vs charged, 0.1% discrepancy alarm, annual external audit.
+9. Document ERP / Finance handoff: cadence, format, meter-to-GL mapping, period-end cutoff.
+10. Write Billing_And_Metering_Spec.md with sections: 1) Event Catalogue, 2) Tenant Context Rules, 3) Transport / Retention / Ordering, 4) Aggregation & Pricing Engine, 5) Revenue Recognition, 6) Dunning / Refunds / Credits, 7) Audit & Reconciliation, 8) ERP Handoff, 9) Traceability.
+
+Validation: Halt if any meter lacks retention or used-for. Halt if any priced line item lacks a revenue-recognition pattern. Halt if dunning sequence lacks suspension and offboarding steps.

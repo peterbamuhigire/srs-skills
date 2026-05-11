@@ -9,10 +9,13 @@ metadata:
   quality_standards: "Every ADR has status, decided_on, deciders; every `superseded_by` points to a real ADR; every catalog entry has a matching file."
   anti_patterns: "Do not write ADRs after the fact for decisions already reversed; do not omit the options considered or the rejection rationale."
   outputs: "One `NNNN-slug.md` file under `projects/<ProjectName>/09-governance-compliance/05-adr/` plus a matching catalog entry."
-  references: "Reuses `skills/skill-composition-standards/references/adr-template.md` for file structure."
+  references: "Reuses `skills/skill-composition-standards/references/adr-template.md` for file structure. For SaaS projects, ALSO see `references/saas-adr-catalogue.md` enumerating the required ADR families (tenancy-per-service, pricing decisions, GTM decisions, SLO targets, compliance attestations, engineering-platform decisions)."
 ---
 
 # Architecture Decision Records Skill
+
+> **SaaS mode:** if the project is a multi-tenant SaaS, see `references/saas-adr-catalogue.md` for the expected ADR families.
+
 
 ## Overview
 

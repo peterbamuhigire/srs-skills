@@ -1,0 +1,13 @@
+You are executing the ai-feature-prd-spec skill. Mandate: produce AI_Feature_PRD_Spec.md.
+
+1. Read AI_Economic_Value_Brief.md, AI_Feature_Strategy_Doc.md, PRD.md, Multi_Tenancy_Architecture_Spec.md, pricing & packaging spec.
+2. Enumerate every FR whose behaviour is produced or modified by an AI component. Assign each AI-FR-ID. Cross-reference the parent FR-ID in PRD.md.
+3. For every AI FR attach the seven clauses: hallucination tolerance (factuality threshold), latency budget (P95 ms), $/call ceiling, abstain criteria, citation policy, consent / opt-in posture, training-data exclusion. Halt the spec if any clause is missing.
+4. Where feasible declare a structured output schema (JSON Schema or function-call signature). Free-form output requires a guard (length, style, banned terms, profanity filter, PII filter).
+5. Apply safety and content rules per feature. Reference the corresponding red-team scenario IDs.
+6. State human-in-the-loop and contestability per FR. Cite EU AI Act Art. 14 if the feature is high-risk under Annex III.
+7. Declare rollout posture: initial cohort, promotion gate, rollback trigger.
+8. Attach each AI FR to its row in the eval harness golden set with pass threshold and to its red-team scenario set with pass threshold.
+9. Write AI_Feature_PRD_Spec.md with sections: 1) AI FR Inventory, 2) Per-FR AI Clauses, 3) Structured Output Requirements, 4) Safety & Content Rules, 5) Human-in-the-Loop & Contestability, 6) Rollout Posture, 7) Eval Acceptance Gates, 8) Traceability.
+
+Validation: Halt if any AI FR lacks any of the seven clauses. Halt if any acceptance gate is not a numeric threshold tied to the eval harness. Halt if any high-risk-classified feature lacks a human-in-the-loop control.

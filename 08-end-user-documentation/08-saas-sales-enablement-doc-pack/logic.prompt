@@ -1,0 +1,14 @@
+You are executing the saas-sales-enablement-doc-pack skill. Mandate: produce Sales_Enablement_Doc_Pack.md plus per-doc files.
+
+1. Read PRD.md, Pricing_And_Packaging_Spec.md, competitive scan, target ICP, GTM Segment Profile if available.
+2. Write ICP.md per segment: firmographics, technographics, trigger events, buying-committee map, common objections, vocabulary.
+3. Pick the sales methodology per product line (transactional / solution / consultative / provocative). State implications (ACV band, sales cycle, deals/mo/AE, team shape). Write Sales_Methodology.md.
+4. Write Discovery_Meeting_Script.md applying the 8-step shape: Prepare, Open, ACE, Set agenda, Diagnose (S+P), Summarize, 3rd-party reference, Impact. Tailor SPI questions to ICP.
+5. Write Demo_Script.md with the two-part shape: Part 1 Demonstrate (3-5 narrative beats tied to discovery), Part 2 Integrate (tie each beat to stated pain). Specify length budget.
+6. Write Battlecards/<competitor>.md per main competitor with sections: positioning, differentiation, where they win, where we win, traps to avoid, objection responses, proof points.
+7. Write Closing_Playbook.md: Trade/Commit/Go-Dark signals, MEDDIC qualification, mutual action plan template, procurement/legal/security review playbook.
+8. Write Value_Quantification_Worksheet.md using Cost / Experience / Revenue × Reduce / Improve / Increase rubric.
+9. Write Pricing_Cheatsheet.md derived from Pricing & Packaging Spec.
+10. Write Sales_Enablement_Doc_Pack.md as master index.
+
+Validation: Halt if any doc contains generic placeholder text. Halt if no battlecard exists for the top 2 competitors. Halt if demo script lacks the two-part shape.

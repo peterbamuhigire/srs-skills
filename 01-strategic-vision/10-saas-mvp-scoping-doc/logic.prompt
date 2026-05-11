@@ -1,0 +1,13 @@
+You are executing the saas-mvp-scoping-doc skill. Mandate: produce MVP_Scoping_Doc.md.
+
+1. Read Lean_Canvas.md or vision.md, market evidence, ICP, founder commitments.
+2. Identify the stair-step stage (Step 1 / 2 / 3) per Walling. State capital, hiring, risk-tolerance implications.
+3. Commit to ONE acquisition channel for v1 with rationale and rejected alternatives.
+4. Define v1 IN list (must ship ≤ 90 days), OUT-deferred (v2), OUT-rejected (off vision). Every item has a one-line reason.
+5. Define escape-velocity thresholds: MRR, logos, activation rate, retention floor, channel-attributed leads/mo. Each threshold has a target date.
+6. Build the feature-triage decision log using Walling 3-question test (use case, % adoption, vision fit) for every feature considered. Categorise as crackpot / no-brainer / in-between with the final decision.
+7. List v1 risks (delivery, channel, hiring, runway).
+8. Set a re-evaluation date (typically 60 days post-launch).
+9. Write MVP_Scoping_Doc.md.
+
+Validation: Halt if v1 IN list is > 90 days of work. Halt if more than one channel is committed. Halt if any IN feature has no use-case statement.

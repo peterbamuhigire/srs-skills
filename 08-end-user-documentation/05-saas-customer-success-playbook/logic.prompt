@@ -1,0 +1,13 @@
+You are executing the saas-customer-success-playbook skill. Mandate: produce Customer_Success_Playbook.md.
+
+1. Read PRD.md, Pricing_And_Packaging_Spec.md, Onboarding_Journey_Spec.md (if available), churn data, contract types.
+2. Define Customer Health Score: composite signals (usage depth, breadth, engagement frequency, support sentiment, NPS, contract age, expansion signal), weights, scoring formula, refresh cadence (weekly), bands (Green/Yellow/Red), action per band.
+3. Segment customers by tier × stage. Stages: onboarding 0-90d, adoption 90-365d, renewal window T-90 to T-0, at-risk, churned-recoverable.
+4. Write per (segment, stage) plays. Each play: Trigger, Owner, Action, Channels, Frequency, Success measurement, Escalation rule. Minimum plays: Onboarding kickoff (D0), First-value milestone (D7), 30-day health review, At-risk intervention, Renewal forecast T-90/T-60/T-30, Renewal-at-risk save, Expansion/upsell, Dunning recovery, Churned-recoverable re-engagement.
+5. Write QBR template: business objectives, usage review, value delivered, support summary, expansion opportunities, action items.
+6. Define escalation matrix: triggers for escalating CSM → CS Lead → CRO → executive sponsor.
+7. Document tooling (CRM, CS platform, billing) and the source-of-truth.
+8. Define cadence and review (weekly health review, monthly business review, quarterly playbook revision).
+9. Write Customer_Success_Playbook.md.
+
+Validation: Halt if any play lacks trigger or owner. Halt if Health Score lacks formula or refresh cadence. Halt if dunning recovery play is missing.

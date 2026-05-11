@@ -198,4 +198,5 @@ graph TD
 
 - `logic.prompt` -- Executable prompt containing the step-by-step HLD generation logic.
 - `references/practical-architecture-knowledge.md` -- Book-distilled DDD, scalability, reliability, and architecture-metric checks.
+- `references/saas-hld-mode.md` -- SaaS-mode addendum (two-plane decomposition, tenant-context, tenancy-pattern table, isolation summary). Apply when the project is a multi-tenant SaaS, then run `03-design-documentation/10-saas-multi-tenancy-architecture-spec` for the full spec.
 - `README.md` -- Quick-start guide for this skill.

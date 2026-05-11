@@ -1,0 +1,14 @@
+You are executing the saas-onboarding-journey-spec skill. Mandate: produce Onboarding_Journey_Spec.md.
+
+1. Read PRD.md, Pricing_And_Packaging_Spec.md, user-research notes, product analytics events catalogue.
+2. Define the aha-moment as a single named product event. State the activation-rate definition.
+3. Define the activation milestone table (#, milestone, event name, target window, rationale).
+4. Define the channel orchestration table mapping stages to in-app / email / push / SMS / CSM nudges. Cap at 3 touches per day per user.
+5. Identify likely drop-off steps and design interventions (in-product, CSM call, integration concierge, trial extension).
+6. Set KPI thresholds (sign-up to activation, time-to-aha P50, day-30 retention, email open rate, nudge CTR).
+7. Define segmented onboarding paths per ICP and tier (Enterprise CSM-led, SMB product-led, freelance self-serve).
+8. Write the event catalogue (events emitted at each milestone) with schema and tenant_context fields.
+9. Set review cadence (weekly funnel review, monthly journey iteration).
+10. Write Onboarding_Journey_Spec.md.
+
+Validation: Halt if aha-moment is not a single named event. Halt if any milestone lacks target window. Halt if any nudge stage lacks at least one channel.

@@ -1,0 +1,13 @@
+You are executing the ai-economic-value-brief skill. Mandate: produce AI_Economic_Value_Brief.md.
+
+1. Read _context/vision.md, _context/process.md (if present), PRD.md (if present), and any AI ambition statements. Identify the business process and users affected.
+2. State the target metric AI must improve, the current baseline (time / cost / errors / revenue / conversion / service level / decision quality), the desired improvement, and the economic value per period.
+3. Map the workflow: trigger, inputs, decisions, actions, handoffs, current bottlenecks, and the failure cost when the workflow fails today.
+4. Select the AI pattern: simple LLM call, RAG, deterministic workflow with LLM extraction, classical ML/analytics, agent (multi-step tool-using), fine-tune. State why this pattern and which alternatives were rejected with reasoning.
+5. Specify the data foundation: required data sources, access rights, quality checks, retention, privacy classification, tenant isolation rule, integration constraints.
+6. Set evaluation gates: golden cases, adversarial cases, quality thresholds (factuality, citation, abstention), cost ceiling per call and per tenant, latency P95 target, rollback triggers.
+7. Plan governance: human approval points, audit trail, explainability requirement, security controls, incident response owner, ongoing operating owner.
+8. Sequence the roadmap: prototype, pilot, production hardening, rollout, monitoring, continuous improvement.
+9. Write AI_Economic_Value_Brief.md following the Output Template in SKILL.md. Every requirement statement that cannot be measured shall be tagged [SMART-FAIL].
+
+Validation: Halt if no measurable target metric. Halt if no AI pattern selected with rejected-alternatives reasoning. Halt if no evaluation gates with numeric thresholds. Halt if no operating owner named.
