@@ -1,0 +1,13 @@
+You are executing the ai-agent-eval-spec skill. Mandate: produce AI_Agent_Eval_Spec.md and seed golden-task and replay-set files.
+
+1. Read AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md, AI_Eval_Harness_Spec.md, AI_Agent_Architecture_Spec.md.
+2. For each agent FR, inventory a golden-task set GOLDEN-AGT-<FEATURE>-NNN. Each task carries id, feature, initial_state, user_goal, gold_trajectory, goal_state, acceptance_rubric, tags.
+3. For each feature, declare a deterministic replay environment under replay-env/<feature>/. Responder maps (tool_name, input_args_canonical) -> fixed output. Variance zero. Failure-injection parameterised for adversarial replays.
+4. Declare the six core metrics with thresholds: task success rate (>= 0.90), step efficiency (<= 1.5x gold), tool-choice quality (>= 0.92), hallucinated-argument rate (<= 0.01), irreversible-action-incident rate (0), intervention rate (feature-specific from PRD).
+5. Define judge-LLM rubric per metric: task success (pairwise vs goal_state), tool-choice quality (exact tool_name + semantic args), hallucinated args (judge flags any arg not derivable from observations). Calibration set scored monthly by humans.
+6. Define CI gate: triggered by PRs touching planner/, tools/, prompts/agent/, action-catalogue/. Task success not down > 2 pp; tool-choice not down > 1 pp; hallucinated-arg not up > 0.005 pp; irreversible-action-incident rate = 0.
+7. Define scheduled regression: nightly golden + adversarial smoke; weekly full red-team replay; monthly calibration; quarterly full sweep.
+8. Define operational ownership: AI lead + named back-up; replay-env changes require back-end owner reviewer; golden-task additions sign-off AI lead + product owner.
+9. Write AI_Agent_Eval_Spec.md sections: 1) Per-feature Golden-Task Inventory, 2) Replay Environments, 3) Metrics & Thresholds, 4) Judge-LLM Rubrics, 5) CI Gate, 6) Scheduled Regression, 7) Operational Ownership, 8) Traceability.
+
+Validation: Halt if any agent feature lacks a replay environment. Halt if any feature lacks all six metrics. Halt if the irreversible-action-incident threshold is non-zero. Halt if the judge has no calibration set.

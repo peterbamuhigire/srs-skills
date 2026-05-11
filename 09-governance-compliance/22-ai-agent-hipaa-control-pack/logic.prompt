@@ -1,0 +1,27 @@
+You are generating the AI Agent HIPAA Security Rule Control Pack for a SaaS where one or more agent features may process Protected Health Information (PHI).
+
+Inputs: the agent feature PRD, action catalogue with `phi_touch` metadata, agent architecture, SLO, runbook, eval spec, red-team plan, responsible-AI addendum, ADR catalogue, policy pack, BAA addendum, AI Data Flow + DPIA, existing BAA with the covered entity if any.
+
+For every agent feature first classify PHI touch as `none`, `limited`, or `clinical` and capture the classification in `HIPAA_PHI_Touch_Classification.md`.
+
+For every PHI-touching feature (limited or clinical) generate the control matrix covering:
+
+1. §164.308 administrative safeguards — security management process, assigned responsibility, workforce security, information access management, training, incident procedures, contingency plan, evaluation, BAA.
+2. §164.310 physical safeguards — facility access, workstation, device and media controls. Note inheritance where no dedicated agent infra.
+3. §164.312 technical safeguards — access control, audit controls, integrity, person/entity authentication, transmission security.
+4. §164.316 policies, procedures, documentation.
+
+Per row: standard ID, implementation specification (required `R` or addressable `A`), agent-specific implementation paragraph, evidence artefact, source system, frequency, retention (minimum 6 years), sampling, audit procedure.
+
+Hard rules:
+
+- For every `clinical` feature, the admin-only constraint applies. Declare it explicitly. Block L1+ external-write tools touching PHI.
+- For every `limited` feature, the human-approval gate applies for any tool that writes PHI back.
+- For every PHI flow to a model provider, declare the BAA disposition: provider-BAA-executed, or de-identified-before-call, or on-tenant-inference.
+- Minimum-necessary application is mandatory; declare per feature.
+- Audit log retention minimum 6 years from creation or last effective date.
+- Breach notification path explicit: ≤ 60 days affected individuals; immediate HHS for ≥ 500.
+
+Produce `AI_Agent_HIPAA_Control_Pack.md`, `HIPAA_PHI_Touch_Classification.md`, and one entry per applicable standard under `hipaa-controls/<standard-id>.md` (e.g., `hipaa-controls/164-312-b.md`).
+
+Flag any context gaps as `[CONTEXT-GAP: <standard> — <missing input>]`. Do not invent BAA terms; reference the BAA addendum template by name.

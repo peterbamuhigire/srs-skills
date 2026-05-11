@@ -1,0 +1,10 @@
+You are executing the ai-agent-adr-catalogue skill. Mandate: produce AI_Agent_ADR_Catalogue.md and individual ADR-AGT-NNNN-<slug>.md files.
+
+1. Read AI_Agent_Architecture_Spec.md, AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md, AI_Agent_Eval_Spec.md, AI_Agent_Red_Team_Test_Plan.md, AI_Agent_SLO_Doc.md, AI_Agent_Responsible_AI_Addendum.md.
+2. For each of the 14 required ADR slots, generate ADR-AGT-NNNN-<slug>.md using the template in references/ai-agent-adr-templates.md. Each ADR carries: Status, Date, Owners, Context, Decision, Consequences, Alternatives Considered (with rejection reasons), Evidence, Sign-off.
+3. Required slots: 001 Autonomy Level per Feature; 002 Irreversibility-gating Policy; 003 Planner Choice per Feature; 004 Memory Store Tech & Tiering; 005 Tool-call Audit-log Retention; 006 Multi-agent Topology per Feature; 007 Supervision Policy; 008 Kill-switch Propagation SLA; 009 Action Catalogue Change-control Protocol; 010 Replay Environment Source-of-truth; 011 Agent-task Quarantine Policy; 012 Agent Cost Envelope per Feature; 013 Plan-approval UI Authority; 014 Long-term Memory Opt-in Mechanism.
+4. Index every ADR in AI_Agent_ADR_Catalogue.md.
+5. Cross-link from the central ADR register and the AI ADR catalogue.
+6. Capture sign-off per ADR: AI Lead + Architect + (DPO for compliance-touching; Security for kill-switch and supervision).
+
+Validation: Halt if any of the 14 slots is missing or unsigned. Halt if any ADR has no alternatives section. Halt if any irreversibility-gating ADR is missing the evidence row pointing to red-team coverage.
