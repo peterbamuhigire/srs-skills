@@ -1,0 +1,16 @@
+You are executing the ai-model-card skill. Mandate: produce one model card per (feature, model-version, prompt-tag) deployable.
+
+1. Read AI_Feature_PRD_Spec.md, AI_Architecture_Spec.md, AI_Data_And_Knowledge_Base_Spec.md, latest eval report, latest red-team report, provider model card.
+2. Identify the artefact: feature, base model + version, prompt registry tag, retrieval index version, post-processing version. Pin all five.
+3. Write the Purpose section: what the feature does, who uses it, what decisions it informs, AI FR ID reference.
+4. Write Training/Grounding data summary: provider training-data disclosure + date for hosted base; our retrieval source summary for RAG; for fine-tunes the labelled training and holdout sets.
+5. Attach the most recent eval metrics: golden pass rate, factuality, abstention precision, citation rate, hallucination rate, judge-LLM score, latency P95, cost/call. Each row carries date and eval-set ID.
+6. Attach the red-team summary by category: prompt injection, jailbreak, data exfil, cross-tenant leak, PII surfacing, hallucination probe, bias surfacing. List any open finding with severity and remediation date.
+7. Limitations: concrete failure modes (knowledge cutoff, locale gaps, edge cases, latency conditions).
+8. Bias notes + mitigations across gender / race / age / disability / geography / language.
+9. Intended use AND out-of-scope use (mirror the safety rules in the PRD spec).
+10. Operational pins: model+version, prompt tag, retrieval index version, gateway config tag, content-filter version, eval suite tag.
+11. EU AI Act Annex IV cross-walk table.
+12. Write the file Model_Card_<feature>_v<version>.md with date stamp and owner.
+
+Validation: Halt if any of {version pin, eval metrics with date, red-team summary, limitations, bias notes, intended use, out-of-scope use, Annex IV cross-walk} is missing.

@@ -1,0 +1,13 @@
+You are executing the ai-cost-runbook skill. Mandate: produce AI_Cost_Runbook.md.
+
+1. Read AI_Feature_PRD_Spec.md, AI_Architecture_Spec.md, Billing_And_Metering_Spec.md, pricing & packaging spec, Monitoring_Setup.md.
+2. Inventory cost-generating components per AI feature: model calls, embedding calls, vector ops, reranker, judge-LLM, content filter, agent tool invocations, egress.
+3. Set per-(feature, tenant) daily and monthly ceilings; tier defaults from pricing spec. Provide admin-request path for higher ceilings.
+4. Define spend anomaly detection: 14-d baseline per tenant; 2x within 1 h alert; 3x within 5 min for Enterprise.
+5. Define throttle / pause / fallback rules at 100% / 150% / 200% of ceiling; cheaper-model route at 130%; SEV1 pause at 5x baseline.
+6. Define model-fallback ladder per feature: primary -> cheaper-comparable -> abstain.
+7. Define FinOps cadence: daily dashboard, weekly per-feature trend, monthly top-spender outliers, quarterly cost-vs-tier reconciliation.
+8. Define billing-event reconciliation: every cost-bearing call emits a metering event; nightly job matches gateway logs to billing-event store; missing events trigger SEV3.
+9. Write AI_Cost_Runbook.md with sections: 1) Cost-Generating Components, 2) Ceilings, 3) Spend Anomaly Detection, 4) Throttle / Pause / Fallback, 5) Model-Fallback Policy, 6) FinOps Cadence, 7) Billing-Event Reconciliation, 8) On-Call Procedure.
+
+Validation: Halt if any feature lacks per-tenant ceilings. Halt if no anomaly detection threshold is declared. Halt if no billing-event reconciliation job is defined.

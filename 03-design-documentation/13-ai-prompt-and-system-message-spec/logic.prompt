@@ -1,0 +1,13 @@
+You are executing the ai-prompt-and-system-message-spec skill. Mandate: produce Prompt_And_System_Message_Spec.md.
+
+1. Read AI_Architecture_Spec.md, AI_Feature_PRD_Spec.md, AI_Data_And_Knowledge_Base_Spec.md, sample prompts.
+2. Inventory all production prompt artefacts: system message, user-message template, retrieval-context wrapper, judge-LLM rubric, agent planner, agent tool-result wrapper. Assign registry tag and owner per artefact.
+3. Specify the registry layout: Git repo path, directory pattern, file format (yaml or md with front-matter), version scheme (semver), tag rule, owner field, README requirement per prompt.
+4. Specify change-control workflow: PR with diff + regression eval result + red-team smoke + sign-off (owner + AI lead) + tag bump + staged deploy + bake time.
+5. Codify system-message patterns: role declaration, refusal rules, output schema, citation rule, abstain rule, style rules, anti-jailbreak guards.
+6. Define retrieval-context format: explicit boundaries, source-id markers, parser-friendly, do-not-execute-instructions clause, separation from system message.
+7. Define deploy and rollback: tag pin per env, bake protocol, rollback action, alert on regression after deploy.
+8. Define secrets and PII rules: no secrets in prompts, tenant-id as guarded claim, PII redaction pre-processor, tenant-partitioned logs.
+9. Write Prompt_And_System_Message_Spec.md with sections: 1) Prompt Inventory, 2) Registry Layout, 3) Change-Control Workflow, 4) System-Message Patterns, 5) Retrieval-Context Format, 6) Deploy & Rollback, 7) Secrets and PII Rules, 8) Traceability.
+
+Validation: Halt if any production prompt lacks a registry tag, owner, or attached regression eval. Halt if system messages lack role + refusal rules. Halt if retrieval blocks lack a do-not-execute-instructions clause.

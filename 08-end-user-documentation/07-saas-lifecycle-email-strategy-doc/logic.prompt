@@ -1,0 +1,15 @@
+You are executing the saas-lifecycle-email-strategy-doc skill. Mandate: produce Lifecycle_Email_Strategy_Doc.md.
+
+1. Read Onboarding_Journey_Spec.md, Pricing_And_Packaging_Spec.md, Customer_Success_Playbook.md, ESP/lifecycle-tool access, target ICP.
+2. Produce the lifecycle map: Pre-trial / Acquisition → Trial / Onboarding → Activation → Adoption / Retention → Expansion / Upsell → At-risk / Dunning → Churned / Win-back. Define audience per stage.
+3. Produce RFM segmentation rules (Recency, Frequency, Monetary) and the segment→campaign mapping.
+4. Catalogue campaigns per stage. Each campaign carries the 9 elements: audience, channel, template, content, stop-date, goal, schedule, post-send action, A/B test.
+5. Document the pre-send QA checklist (segmentation, sender, subject, preview, personalization, copy, links, privacy, template across inboxes, goal tracking).
+6. Define measurement: per-campaign (send, opens, clicks, goal, replies, delivery) and per-program (cohort activation lift, retention lift, expansion lift, dunning recovery rate).
+7. Distinguish transactional vs lifecycle vs behavioral sends. Define throttling rules and frequency caps (e.g. max 3 lifecycle emails per week to active subs).
+8. Document compliance: consent capture, lawful basis, one-click unsubscribe, address footer, sub-processor for ESP.
+9. Document tooling & source-of-truth.
+10. Set review cadence (weekly results, monthly experiment cycle, quarterly strategy revision).
+11. Write Lifecycle_Email_Strategy_Doc.md.
+
+Validation: Halt if any campaign lacks goal or stop-date. Halt if pre-send QA checklist is missing any required item. Halt if frequency caps are not stated.

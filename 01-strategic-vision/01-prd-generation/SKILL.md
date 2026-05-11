@@ -9,10 +9,13 @@ metadata:
   quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
   anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
   outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `README.md`, `logic.prompt` when deeper detail is needed."
+  references: "Use `README.md`, `logic.prompt` when deeper detail is needed. For SaaS projects, ALSO apply `references/saas-prd-addendum.md` (mandatory SaaS sections: ICP, pricing summary, tenancy expectation, tier-mapped features, SaaS KPI targets, onboarding journey expectation, trust & compliance posture, SaaS-specific risks)."
 ---
 
 # PRD Generation Skill
+
+> **SaaS mode:** if the project is a multi-tenant SaaS, apply `references/saas-prd-addendum.md` in addition to the generic steps below.
+
 
 ## Overview
 

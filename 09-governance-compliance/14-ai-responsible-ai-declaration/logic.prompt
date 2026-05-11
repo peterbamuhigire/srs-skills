@@ -1,0 +1,14 @@
+You are executing the ai-responsible-ai-declaration skill. Mandate: produce Responsible_AI_Declaration.md (public) and Responsible_AI_Declaration_Internal.md (evidence pack).
+
+1. Read AI_Feature_PRD_Spec.md, each AI Model Card, AI_Architecture_Spec.md, AI_Act_Regulatory_Compliance_Doc.md, DPA, sub-processor list, Trust Center pack.
+2. Write the public summary paragraph in plain language.
+3. For every AI feature write: what the AI does, what it does NOT do, what humans control. Use plain language.
+4. Document human oversight + contestability: how users see that AI produced an output; regenerate / edit / reject; flag inaccuracy; escalate; request human-only handling.
+5. Write data-use and training summary: what data goes to providers, training-data exclusion, fine-tune policy, retention, tenant isolation summary.
+6. List model providers and sub-processors: provider, data classes, contract terms (no-training, residency), cross-link sub-processor list.
+7. Per feature declare EU AI Act tier (prohibited / high-risk / limited-risk / minimal-risk) + US sectoral + African DPA applicability.
+8. State incident disclosure approach for AI-quality incidents. Tie to saas-incident-response-and-postmortem.
+9. Declare review cadence (quarterly) + sign-offs (AI Lead, DPO, Security, Legal). Include version history.
+10. Write the public document with plain-language phrasing; write the internal document with evidence references (model cards, eval reports, audit dates, contract IDs).
+
+Validation: Halt if any AI feature lacks a does/does-not statement, HITL statement, data-use statement, regulatory tier, or model-provider declaration. Halt if any statement is marketing copy without underlying evidence.

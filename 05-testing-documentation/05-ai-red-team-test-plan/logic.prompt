@@ -1,0 +1,13 @@
+You are executing the ai-red-team-test-plan skill. Mandate: produce AI_Red_Team_Test_Plan.md and red-team scenario seed files.
+
+1. Read AI_Feature_PRD_Spec.md, AI_Architecture_Spec.md, AI_Data_And_Knowledge_Base_Spec.md, AI_Eval_Harness_Spec.md, threat model.
+2. Inventory required adversarial categories: prompt-injection (direct + indirect), jailbreak, data exfiltration, cross-tenant leakage, PII surfacing, hallucination probe, agent tool misuse (agent features only), bias surfacing, cost/DoS abuse, content policy bypass.
+3. Per AI feature, mark applicability per category and rationale for any N/A.
+4. Author scenarios per (feature, category). Each scenario carries id, description, reproducible attack input, expected behaviour, severity-if-fail, verification method. Place each scenario in red-team/<feature>/<category>/RT-S-*.yaml.
+5. Apply the severity matrix: CRITICAL / HIGH / MEDIUM / LOW with definitions and treatment rules.
+6. Define CI smoke set (10-20 highest-severity per feature) and weekly full run. State block-on-fail rules: CRITICAL or HIGH in smoke = block merge.
+7. Define sign-off rules: zero CRITICAL + zero HIGH open before GA; quarterly re-run; re-run on model bump / major prompt change.
+8. Define scenario library maintenance: new external attack added within 7 days, retirement requires sign-off + ADR.
+9. Write AI_Red_Team_Test_Plan.md with sections: 1) Categories, 2) Per-Feature Applicability, 3) Scenario Catalogue, 4) Severity Matrix, 5) CI Smoke + Weekly Cadence, 6) Sign-off Rules, 7) Library Maintenance, 8) Traceability.
+
+Validation: Halt if any AI feature lacks scenarios in every applicable category. Halt if any scenario lacks severity-if-fail or expected behaviour. Halt if no CI smoke gate is declared.

@@ -1,0 +1,15 @@
+You are executing the ai-architecture-spec skill. Mandate: produce AI_Architecture_Spec.md plus ADR seeds.
+
+1. Read HLD.md, Multi_Tenancy_Architecture_Spec.md, AI_Feature_PRD_Spec.md, AI_Data_And_Knowledge_Base_Spec.md, tech_stack.md.
+2. Declare the AI plane decomposition. Required services: Model Gateway, Prompt Registry, Vector Store, Eval Harness Runner, Observability Bus. Place each in control plane or application plane. Produce a Mermaid diagram.
+3. Map each AI feature to a pattern: direct LLM call / RAG / agent / fine-tune / classical ML. State the verdict and the rejected alternatives.
+4. Specify the Model Gateway: providers + models (primary + fallback), authentication, tenant-id propagation, rate limit per tenant + feature, cost ceiling enforcement, request/response log retention, content-filter chain, fallback routing, idempotency keys.
+5. Specify the Vector Store per index: technology, partitioning model, embedding model + version, dimensions, ANN params, freshness, encryption, key management.
+6. Specify the Prompt Registry: versioning, tagging, PR-based change with regression eval, deploy pipeline, rollback procedure.
+7. Specify the Eval Harness in production terms: dataset store, judge-LLM, CI gate hook, scheduled regression, alert on score drop.
+8. Specify observability: tokens in/out per request, model latency per provider, fallback rate, abstention rate, citation rate, judge-LLM score, cost per tenant per feature, content-filter trips, red-team alerts. Define metric names, sampling, retention.
+9. Specify security boundaries: prompt injection surfaces, tool-execution sandbox, egress allow-list, secrets handling rule, cross-tenant retrieval prohibition.
+10. Emit ADR seeds in adr-seeds/: model choice per feature, RAG-vs-fine-tune, vector store choice, eval threshold, abstain policy, content filter, fallback policy.
+11. Write AI_Architecture_Spec.md with sections: 1) AI Plane Diagram, 2) Feature-to-Pattern Map, 3) Model Gateway, 4) Vector Store, 5) Prompt Registry, 6) Eval Harness, 7) Observability, 8) Security Boundaries, 9) ADR Seed Index, 10) Traceability.
+
+Validation: Halt if any AI feature lacks a pattern with drivers. Halt if any service calls a model provider outside the gateway. Halt if cross-tenant retrieval is not explicitly prohibited at the gateway. Halt if the eval harness is not in the diagram.
