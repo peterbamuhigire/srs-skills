@@ -1,0 +1,13 @@
+You are executing the ai-agent-coding-guidelines-addendum skill. Mandate: produce Coding_Guidelines_Agent_Addendum.md.
+
+1. Read Coding_Guidelines.md, AI_Agent_Architecture_Spec.md, Action_Catalogue_Spec.md.
+2. Codify tool-schema discipline: every tool wrapper validates inputs against the catalogue schema at the function boundary; outputs are parsed against the output schema; libraries pinned and CI-tested.
+3. Codify irreversibility annotations: every tool function carries an annotation naming reversibility_class; static check fails CI if missing; dispatcher cross-checks code annotation vs catalogue YAML at startup.
+4. Codify blast-radius caps: per-tool, per-run; enforced at dispatcher; loaded from catalogue.
+5. Codify deterministic state: state = (plan, observations, scratchpad, cumulative_cost); mutations are pure functions of (previous_state, transition_event); tool wrappers return ToolResult, never mutate state directly.
+6. Codify idempotency keys: every tool call carries sha256(agent_run_id + ':' + step_index); reused on retry; new keys on retry are a bug.
+7. Codify error/timeout policy: timeouts from catalogue YAML; errors classified retryable / non-retryable / safety; retryable backs off (1s, 4s, 16s); safety errors terminate the run.
+8. Codify test contract: per-wrapper unit tests for happy path, schema-fail, timeout, non-retryable, safety; planner changes ship with agent-eval rig run; 90% line coverage on agent-runtime, 100% on dispatcher hot path.
+9. Write Coding_Guidelines_Agent_Addendum.md sections: 1) Tool-Schema Discipline, 2) Irreversibility Annotations, 3) Blast-Radius Caps, 4) Deterministic State, 5) Idempotency Keys, 6) Error & Timeout Policy, 7) Test Contract, 8) Static-Analysis & CI Hooks, 9) Style Examples.
+
+Validation: Halt if any rule lacks an enforcement mechanism (linter, CI check, runtime guard). Halt if any tool wrapper template lacks a timeout. Halt if state mutation rules permit in-place mutation from tool wrappers.

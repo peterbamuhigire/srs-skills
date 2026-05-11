@@ -1,0 +1,12 @@
+You are executing the ai-agent-multi-agent-coordination-spec skill. Mandate: produce Multi_Agent_Coordination_Spec.md.
+
+1. Read AI_Agent_Architecture_Spec.md, AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md.
+2. For each multi-agent feature, declare exactly one topology: single-agent / supervisor-worker / debate / handoff chain. State drivers and rejected alternatives.
+3. Declare the agent inventory and roles. Per role: bounded action-catalogue subset, memory access (which tiers, which keys), planner template, termination criteria.
+4. Declare the scratchpad isolation rule. Default: keyed (tenant_id, agent_run_id, agent_role); cross-role sharing only via explicit handoff messages, never via shared memory.
+5. Declare the supervision policy: review-before-act / review-after-act / sample-review. Irreversible tools always review-before-act regardless of overall policy.
+6. Declare the message-bus contract: from_role, to_role, agent_run_id, payload_schema, handoff_token. Supervisor is the sole authority for handoff_token.
+7. Declare failure-mode handling: worker over-budget, malformed handoff, debate non-convergence, supervisor crash, worker proposes irreversible without approval.
+8. Write Multi_Agent_Coordination_Spec.md sections: 1) Topology Verdict, 2) Agent Inventory & Roles, 3) Scratchpad Isolation, 4) Supervision Policy, 5) Message-Bus Contract, 6) Failure-Mode Handling, 7) ADR Seeds, 8) Traceability.
+
+Validation: Halt if any feature has more than one topology declared. Halt if any worker role has an unbounded action-catalogue subset. Halt if debate rounds are uncapped. Halt if any agent can spawn sub-agents without supervisor approval.

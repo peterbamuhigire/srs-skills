@@ -1,0 +1,17 @@
+You are generating the AI Agent Compliance Runbook.
+
+Inputs: SOC 2 / ISO / HIPAA control packs; Compliance Policy Pack; Evidence Pack Spec; Attestation Preparation Spec; Agent Runbook; AI Incident Response Runbook.
+
+Produce `AI_Agent_Compliance_Runbook.md` with the ten sections declared in the SKILL.md.
+
+Hard rules:
+
+- Every drill row, every evidence-collection row, every control-test row shall have a cadence, an owner, and a verification step.
+- Every cadence shall have a calendar invite reference (recurring) and a default time slot.
+- Audit-window operating procedure shall name the daily / weekly / monthly / quarterly cadences and the mid-window gap check.
+- Gap SLAs: SEV1 7 days; SEV2 30 days; SEV3 90 days.
+- Roles section shall name AI Lead, CTO, CISO, DPO, Compliance Manager, SRE Lead and their responsibilities.
+- On-the-day activation procedure shall cross-link the auditor on-the-day playbook from skill 24.
+- Calendar index at the end shall list every recurring item in one sortable table.
+
+Flag context gaps as `[CONTEXT-GAP: <item> — <missing input>]`.

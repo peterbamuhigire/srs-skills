@@ -1,0 +1,19 @@
+You are generating the AI Agent Attestation Preparation Spec.
+
+Inputs: SOC 2 / ISO / HIPAA control packs, Policy Pack, Evidence Pack Spec, Compliance Runbook, prior-year findings, auditor engagement letter.
+
+Produce three files:
+
+1. `AI_Agent_Attestation_Preparation_Spec.md` — the master spec with the timeline, evidence pre-gathering schedule, gap-remediation cadence, prior-year-finding status, cross-refs.
+2. `AI_Agent_Compliance_Readiness_Checklist.md` — 50-100 point checklist covering policy currency, control coverage, evidence completeness, training, drills, sub-processor and BAA currency, in-product disclosures, auditor portal preparation.
+3. `AI_Agent_Auditor_On_The_Day_Playbook.md` — for each likely auditor question, the demoer role, the click path, the artefact handed over, the suggested response.
+
+Hard rules:
+
+- Timeline shall start at T-12 for SOC 2 Type II.
+- Every evidence artefact in the evidence pack spec shall have a target date and a collector owner.
+- Every prior-year finding shall be listed with current status (closed / open / verified-closed-with-evidence).
+- Gap SEV1 SLA shall be 7 days; SEV2 30 days; SEV3 90 days.
+- On-the-day playbook shall cover at least: agent governance walkthrough, action audit-log walkthrough, kill-switch drill walkthrough, approval-event flow walkthrough, evidence-pack assembly walkthrough, change-management sample walkthrough, anomaly response walkthrough, BAA execution walkthrough (where HIPAA in scope).
+
+Flag context gaps as `[CONTEXT-GAP: <area> — <missing input>]`.

@@ -30,3 +30,24 @@ Run 01-traceability-matrix first as it feeds the audit report. Skills 03 and 04 
 ## Quality Gate
 
 All governance artifacts SHALL pass the IEEE 1012 V&V criteria (correctness, completeness, consistency, traceability) before release to external stakeholders.
+
+## AI agent compliance family (new)
+
+The following agent-specific compliance skills extend Phase 09 with SOC 2 / ISO 27001 / HIPAA control packs, policy pack, attestation preparation, evidence pack spec, BAA / DPA language, and the multi-regulator overlap mapping. They are required when the SaaS operates one or more agent features at L1 or higher autonomy and intends to pass SOC 2 Type II, ISO 27001 certification, or HIPAA covered-entity review.
+
+| Order | Skill | Output | Standard |
+|-------|-------|--------|----------|
+| 20 | 20-ai-agent-soc2-control-pack | AI_Agent_SOC2_Control_Pack.md | AICPA TSP 100 |
+| 21 | 21-ai-agent-iso27001-control-pack | AI_Agent_ISO27001_Control_Pack.md | ISO/IEC 27001:2022 |
+| 22 | 22-ai-agent-hipaa-control-pack | AI_Agent_HIPAA_Control_Pack.md | 45 CFR §164 |
+| 23 | 23-ai-agent-compliance-policy-pack | AI_Agent_Compliance_Policy_Pack.md (7 policies) | SOC2 CC1; ISO A.5.1; HIPAA §164.316 |
+| 24 | 24-ai-agent-attestation-preparation-spec | AI_Agent_Attestation_Preparation_Spec.md | AICPA AT-C 205; ISO/IEC 17021 |
+| 25 | 25-ai-agent-evidence-pack-spec | AI_Agent_Evidence_Pack_Spec.md | AICPA TSP 100; ISO/IEC 27007 |
+| 26 | 26-ai-agent-baa-and-data-processing-language | AI_Agent_BAA_Addendum.md; AI_Agent_DPA_Addendum.md | HIPAA §164.504(e); GDPR Art. 28 |
+| 27 | 27-ai-agent-regulator-overlap-mapping | AI_Agent_Regulator_Overlap_Mapping.md | All listed regimes |
+
+Operational counterpart: `06-deployment-operations/20-ai-agent-compliance-runbook` (drill, evidence-collection, control-test, audit-window operating procedure).
+
+## Cross-engine handoff (compliance × software-dev)
+
+The agent compliance family **owns the artefacts**: policy text, control narratives, evidence pack layout, audit procedures, BAA/DPA language. A parallel software-dev pass **owns the machinery**: automated evidence collectors, hash-chain audit-log implementation, gap detector, integrity verifier, auditor portal. Cross-link via the evidence frequency table at `25-ai-agent-evidence-pack-spec/references/ai-agent-evidence-frequency-table.md`.

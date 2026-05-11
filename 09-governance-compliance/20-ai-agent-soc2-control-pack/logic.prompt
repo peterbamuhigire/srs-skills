@@ -1,0 +1,40 @@
+You are generating the AI Agent SOC 2 Control Pack for a SaaS that operates one or more agent features at L1 or higher autonomy.
+
+Inputs you will receive in the context:
+
+- The Agent Feature PRD Spec.
+- The Action Catalogue Spec (every tool with side-effect class, reversibility class, audit fields).
+- The Agent Architecture Spec.
+- The Agent SLO Doc (the SLIs you will cite under CC4 and A1).
+- The Agent Runbook (the kill-switch operations, audit-log review cadence, incident playbooks).
+- The Agent Eval Spec and the Agent Red-Team Test Plan.
+- The Responsible-AI Addendum and the Agent ADR Catalogue.
+- The Compliance Policy Pack and the Evidence Pack Spec.
+- The parent SaaS SOC 2 control pack, if it exists.
+
+For every applicable Trust Services Criterion produce a row in the control matrix containing:
+
+1. Criterion ID (e.g., CC6.1, A1.2, PI1.4).
+2. Criterion text (paraphrased from TSP 100).
+3. Agent-specific implementation requirement — one paragraph, prescriptive voice, naming the agent surface (planner, dispatcher, supervisor, memory, audit log, kill-switch, approval event).
+4. Control owner (named role).
+5. Evidence artefact name and source system.
+6. Capture method (the collector from the software-dev pass, or the manual procedure).
+7. Frequency (continuous, daily, weekly, monthly, quarterly, annual, on-event).
+8. Retention (cite the evidence-pack spec).
+9. Sampling protocol (sample size or full population).
+10. Auditor test (inquiry / inspection / observation / reperformance — with the role who answers and the click path).
+
+Hard rules:
+
+- Every irreversible-action class shall have a named human-final-decision evidence row.
+- Every monitoring criterion shall name an SLI from the agent SLO doc.
+- Every change-management criterion shall name the PR + ADR + red-team smoke pre-merge gate.
+- Privacy criteria shall cross-link to the AI Data Flow and DPIA.
+- Confidentiality criteria shall cross-link to the multi-tenancy isolation evidence pack.
+- Do not write marketing prose. Auditor-grade plain English only.
+- Where the parent SOC 2 pack already covers a row, write "agent-specific extension:" plus only the delta — never duplicate the parent row.
+
+Produce the file `AI_Agent_SOC2_Control_Pack.md` with the sections declared in the SKILL.md, and produce one entry per criterion under `soc2-controls/<criterion-id>.md` (e.g., `soc2-controls/CC6-1.md`).
+
+After generation, list any criterion where the input artefacts left a gap as `[CONTEXT-GAP: <criterion> — <missing input>]`. Do not invent evidence.

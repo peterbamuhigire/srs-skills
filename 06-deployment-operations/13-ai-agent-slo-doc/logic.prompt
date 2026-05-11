@@ -1,0 +1,12 @@
+You are executing the ai-agent-slo-doc skill. Mandate: produce AI_Agent_SLO_Doc.md.
+
+1. Read AI_Agent_Feature_PRD_Spec.md, AI_Agent_Eval_Spec.md, AI_Hallucination_SLO_Doc.md, SLO_And_Error_Budget_Doc.md, Monitoring_Setup.md, pricing & packaging spec.
+2. Inventory required SLIs per agent feature: task success, step efficiency, intervention, irreversible-action-incident, agent-task availability, agent-cost-per-run, tool-error rate. State measurement source and sampling per SLI.
+3. Set per-feature SLO targets by tier (Pro / Enterprise). Task success >= 0.90 / 0.95; intervention <= 20% / 10%; irreversible incidents = 0; availability >= 0.99 / 0.995; cost-per-run within feature cap.
+4. Compute error budgets per SLI. Irreversible-action incidents: zero budget; any breach is SEV1 plus per-tenant feature kill-switch.
+5. Define multi-burn-rate alerts: fast (14x, 1h, 2%); medium (6x, 6h, 5%); slow (1x, 3d, 10%); intervention surge (3x baseline, 1h); irreversible incident (any); cost overshoot (per-tenant 200%, 1h, throttle then pause).
+6. Define freeze and pause rules: task-success budget exhausted -> freeze planner/catalogue changes; intervention rate up > 50% in 7 d -> roll back last change; irreversible incident -> per-tenant feature kill-switch + SEV1; cost overshoot -> throttle then pause.
+7. Define customer-facing commitments per tier: agent-task availability number, irreversible-incident notification within 24h, "performed by agent" notification standard, right to request human handling.
+8. Write AI_Agent_SLO_Doc.md sections: 1) Agent SLI Inventory, 2) Measurement Procedure, 3) Per-feature SLO Targets, 4) Error Budgets, 5) Burn-Rate Alerts, 6) Freeze & Pause Rules, 7) Customer-Facing Commitments, 8) Review Cadence.
+
+Validation: Halt if any feature lacks all required SLIs. Halt if the irreversible-action-incident SLO has non-zero error budget. Halt if no cost-per-run SLO is set.

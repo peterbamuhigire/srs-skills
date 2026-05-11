@@ -1,0 +1,21 @@
+You are generating the AI Agent Evidence Pack Spec.
+
+Inputs: SOC 2 control pack, ISO 27001 control pack (where in scope), HIPAA control pack (where in scope), Compliance Policy Pack, Agent Architecture Spec, Agent Runbook, AI Incident Evidence Pack Spec, parent evidence-pack builder skill.
+
+Produce three files:
+
+1. `AI_Agent_Evidence_Pack_Spec.md` — the master spec.
+2. `AI_Agent_Attestation_Evidence_Pack_Template.md` — the auditor-ready package layout for one audit window.
+3. `AI_Agent_Evidence_Frequency_Table.md` — per-control evidence cadence in a single sortable table.
+
+Hard rules:
+
+- Every control row in every control pack shall map to one or more evidence items.
+- Every evidence item shall name: artefact, source system, collector (cross-link software-dev pass), capture method, frequency, retention, sampling, redaction class, presentation format.
+- Sampling defaults: 25 stratified for high-volume populations; full population for low-volume.
+- Chain-of-custody: SHA-256 hash, append-only manifest, signed at pack close.
+- Retention floor: HIPAA 6 years; SOC 2 5 years preferred; default 7 years.
+- Auditor portal access: time-bound (window + 14 days), named-recipient, every access logged with hash of any downloaded artefact.
+- Pack layout shall be a deterministic directory tree the auditor can navigate without guidance.
+
+Flag context gaps as `[CONTEXT-GAP: <control> — <missing input>]`.
