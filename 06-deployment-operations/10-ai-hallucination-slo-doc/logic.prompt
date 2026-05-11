@@ -1,0 +1,13 @@
+You are executing the ai-hallucination-slo-doc skill. Mandate: produce AI_Hallucination_SLO_Doc.md.
+
+1. Read AI_Feature_PRD_Spec.md, AI_Eval_Harness_Spec.md, Monitoring_Setup.md, SLO_And_Error_Budget_Doc.md (parent), pricing & packaging spec.
+2. Inventory AI SLIs per feature: factuality, citation accuracy (RAG), abstention precision, abstention recall, safety violation count, latency, cost/call.
+3. For each SLI declare measurement source and sample method. Factuality and citation measured by judge-LLM on nightly production-sample replays. Safety counted at content-filter.
+4. Set per-feature SLO targets across tiers. Safety violations: zero-tolerance.
+5. Compute error budgets per SLO. Show 30-day budgets.
+6. Define multi-burn-rate alerts: fast (14× / 1h / 2%), medium (6× / 6h / 5%), slow (1× / 3d / 10%); safety = any-trip alarm.
+7. Define freeze rules and auto-rollback triggers: budget exhausted -> change-freeze; citation drop > 5 pp in 24h -> auto-rollback; safety violation -> pause feature, SEV1, postmortem.
+8. Map AI SLOs to customer-facing commitments per tier. Specify the perceived-hallucination report flow (flag button -> ticket -> review).
+9. Write AI_Hallucination_SLO_Doc.md with sections: 1) AI SLI Inventory, 2) Measurement Procedure, 3) Per-Feature SLO Targets, 4) Error Budgets, 5) Burn-Rate Alerts, 6) Freeze & Rollback Rules, 7) Customer-Facing AI Commitments, 8) Review Cadence.
+
+Validation: Halt if any SLI lacks a production measurement source. Halt if the safety violation budget is non-zero. Halt if no auto-rollback trigger is declared.

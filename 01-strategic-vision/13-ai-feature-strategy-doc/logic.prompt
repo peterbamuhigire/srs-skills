@@ -1,0 +1,13 @@
+You are executing the ai-feature-strategy-doc skill. Mandate: produce AI_Feature_Strategy_Doc.md.
+
+1. Read Vision_Statement.md, PRD.md, pricing & packaging spec, competitor scan, every AI Economic Value Brief in scope.
+2. Inventory all candidate AI features. For each: name, user-visible behaviour, buyer outcome, primary user persona.
+3. Classify each feature as differentiating, table-stakes, or experimental. Cite a competitor row for every differentiating claim.
+4. Map each feature to a pricing tier. Reject any tier placement that contradicts the pricing & packaging spec.
+5. Choose build-vs-buy per feature: hosted general / hosted specialised / open-weights self-hosted / fine-tune / classical ML. State the verdict, rejected alternatives, and the cost profile.
+6. Declare moat per differentiating feature: proprietary data / distribution / integration depth / fine-tune+eval suite / operational learning. A feature with no moat shall be relabelled table-stakes.
+7. Sequence the features by (revenue lift × confidence) / cost-to-build. Place each in a quarter. List dependencies (eval harness, data foundation, content store, billing).
+8. Build the risk & dependency register: model-provider risk, regulatory risk (EU AI Act tier), dataset risk, eval-gap risk, cost-volatility risk, with mitigation and owner per row.
+9. Write AI_Feature_Strategy_Doc.md with sections: 1) AI Feature Inventory, 2) Differentiation Map, 3) Tier Placement, 4) Build-vs-Buy Verdicts, 5) Moat Declaration, 6) Sequencing Roadmap, 7) Risk & Dependency Register, 8) Glossary.
+
+Validation: Halt if any AI feature lacks a buyer outcome, a tier placement, a build-vs-buy verdict, or a moat declaration (or table-stakes relabel). Halt if a differentiating claim lacks a competitor citation. Halt if any feature's tier placement contradicts the pricing & packaging spec.

@@ -1,0 +1,15 @@
+You are executing the saas-pricing-and-packaging-spec skill. Mandate: produce Pricing_And_Packaging_Spec.md.
+
+1. Read PRD.md, vision.md, competitive scan, target ICP, business case.
+2. Choose the value metric. List rejected candidates with reasons. State why the chosen metric grows with customer value extraction.
+3. Define 3-4 public tiers + 1 enterprise tier. Each tier has: name, price per month annualised, value-metric units included, key features, support level, SLA target.
+4. Inventory feature gates. Each gate evaluates server-side from tenant.tier. State the upsell UX when a gate fires.
+5. Define expansion levers: value-metric expansion, feature expansion, cross-sell. Each lever: trigger event, in-product upsell UX, sales-assisted path, expected conversion rate.
+6. Decide freemium / no-freemium with drivers (virality, channel, cost-to-serve, conversion, competitive pressure). Record as ADR seed.
+7. Decide credit-card-up-front / no-CC for trial. Document trade-offs.
+8. Define price-raise & grandfathering policy: annual cadence, Rule of 10 trigger, 12-month grandfather window, announcement protocol, discount-offer.
+9. Define discount & concession authority table (AE 10%, lead 20%, VP 30%, CFO >30%).
+10. Write the public price-page contract: must show prices, tiers, features, limits, FAQ; not show negotiated enterprise pricing.
+11. Write Pricing_And_Packaging_Spec.md with sections: 1) Value Metric, 2) Tier Definitions, 3) Feature Gates Inventory, 4) Expansion Levers, 5) Freemium/Trial Decision, 6) Credit-Card-Up-Front Decision, 7) Price-Raise & Grandfathering Policy, 8) Discount & Concession Authority, 9) Public Price Page Contract, 10) Traceability.
+
+Validation: Halt if value metric is not stated. Halt if any tier lacks price, features, limits, support, SLA. Halt if any gate is client-side only.

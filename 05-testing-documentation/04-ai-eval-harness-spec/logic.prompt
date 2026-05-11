@@ -1,0 +1,14 @@
+You are executing the ai-eval-harness-spec skill. Mandate: produce AI_Eval_Harness_Spec.md and eval-set seed files.
+
+1. Read AI_Feature_PRD_Spec.md, AI_Architecture_Spec.md, Prompt_And_System_Message_Spec.md, AI_Data_And_Knowledge_Base_Spec.md.
+2. Inventory eval suites per AI feature: golden set, adversarial set (link red-team), judge-LLM rubric, calibration set.
+3. For each golden set declare: provenance rule, labeller(s), class balance, version, fields per example (input, expected output, rubric, category tag, locale, sensitivity).
+4. Choose metrics per feature with numeric thresholds: pass rate, factuality, citation rate, citation accuracy, abstention precision, abstention recall, safety violation rate (zero-tolerance), latency P95, cost/call.
+5. Define judge-LLM patterns per feature: judge model + version, rubric, pairwise vs absolute, calibration set, drift-detection rule.
+6. Define the CI gate rule: regression > N pp on golden = block; any safety violation = block.
+7. Define scheduled regression: nightly golden, weekly red-team, score history retention, alert rules.
+8. Define A/B prompt eval procedure: snapshot set, side-by-side judging, win criterion on primary metric, no regression on safety metric.
+9. Declare operational ownership: AI lead, back-up, dataset versioning, judge versioning, rubric versioning, change-control via PR.
+10. Write AI_Eval_Harness_Spec.md with sections: 1) Per-feature Suite Inventory, 2) Golden Set Construction, 3) Metrics & Thresholds, 4) Judge-LLM Patterns, 5) CI Gate, 6) Scheduled Regression, 7) A/B Prompt Eval, 8) Operational Ownership, 9) Traceability. Emit seed eval-set files at eval-sets/<feature>/.
+
+Validation: Halt if any AI FR lacks a golden set with provenance + size + pass threshold. Halt if any judge has no calibration evidence. Halt if no CI gate rule is declared. Halt if safety metric threshold is not zero-tolerance.

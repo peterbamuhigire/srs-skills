@@ -1,0 +1,12 @@
+You are executing the saas-slo-and-error-budget-doc skill. Mandate: produce SLO_And_Error_Budget_Doc.md.
+
+1. Read Multi_Tenancy_Architecture_Spec.md, Monitoring_Setup.md, quality_standards.md, pricing & packaging spec. Identify tiers and services in scope.
+2. For each service-tier combination, define SLIs: availability, latency P95, latency P99, throughput, correctness, freshness, durability. Each SLI carries definition, measurement source, sampling window, exclusions.
+3. Set per-tier SLOs in a table (Tier × SLI). Recommended ladder: Bronze 99.5% / 800 ms, Silver 99.9% / 400 ms, Gold 99.95% / 200 ms, Enterprise 99.99% / 150 ms. Allow override from quality_standards.md.
+4. Compute error budgets per tier using error_budget_minutes = (1 - SLO) × period_minutes. Show 30-day and 90-day budgets.
+5. Define multi-burn-rate alerts: fast burn (14.4× / 1h / 2%), medium burn (6× / 6h / 5%), slow burn (1× / 3d / 10%). State severity, owner, runbook link.
+6. Define freeze rules when error budget exhausted: deploy freeze on risky changes, mandatory postmortems for breach, executive notification, customer-comms.
+7. Map internal SLOs to customer-facing SLAs per tier. Service credit schedule: e.g. <99.9% = 10% credit, <99% = 25%, <95% = 50%. State exclusions (force majeure, customer-caused, planned maintenance, third-party dependencies). State measurement method and credit-request process.
+8. Write SLO_And_Error_Budget_Doc.md with sections: 1) SLI Inventory, 2) Per-Tier SLO Targets, 3) Error-Budget Math, 4) Burn-Rate Alerts, 5) Freeze Rules, 6) Customer-SLA Mapping & Service Credits, 7) Review Cadence.
+
+Validation: Halt if any tier in pricing & packaging has no SLO row. Halt if any SLO has no SLI definition with measurement source. Halt if customer-SLA mapping lacks a service-credit schedule.

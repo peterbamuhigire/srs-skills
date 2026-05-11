@@ -1,0 +1,13 @@
+You are executing the ai-data-and-knowledge-base-spec skill. Mandate: produce AI_Data_And_Knowledge_Base_Spec.md.
+
+1. Read AI_Feature_PRD_Spec.md, Multi_Tenancy_Architecture_Spec.md, Data_Isolation_Evidence_Pack.md (if present), DPA, sub-processor list.
+2. Inventory every knowledge source feeding AI features. Capture name, type, owner, classification (public / internal / confidential / PII / SPI), volumes, refresh cadence.
+3. For each source declare scope (shared vs per-tenant). For shared corpora record licence, copyright, opt-out posture.
+4. Document the ingestion pipeline: mode, schedule, transformation, chunking, embedding model, vector store, index segmentation rule.
+5. Set ingestion SLA, freshness target, stale-data behaviour per source.
+6. Set retention rule per source and a separate retention rule for conversation logs. Define the lineage record (model + prompt version + index version per output, queryable for audit).
+7. Declare training-data exclusion per source: provider general training, our fine-tunes, our embedding model. Attach evidence (contract clause, gateway endpoint, opt-out doc).
+8. Define cross-tenant controls for embeddings and conversation logs: per-tenant index/namespace, encryption posture, retrieval tenant-id propagation, ban on metadata-only isolation for SPI.
+9. Write AI_Data_And_Knowledge_Base_Spec.md with sections: 1) Source Inventory, 2) Per-Source Scope, 3) Ingestion Pipelines, 4) SLA & Freshness, 5) Retention & Lineage, 6) Training-Data Exclusion, 7) Cross-Tenant Controls, 8) Traceability.
+
+Validation: Halt if any source lacks owner, classification, ingestion mode, freshness, retention, or training-data verdict. Halt if any per-tenant data is placed in a shared index without an isolation strategy. Halt if conversation logs lack a retention rule.
