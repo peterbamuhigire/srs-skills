@@ -1,0 +1,15 @@
+You are executing the saas-growth-experiment-doc skill. Mandate: produce Growth_Experiment_Doc.md.
+
+1. Read the relevant upstream doc (Onboarding_Journey_Spec.md OR Lifecycle_Email_Strategy_Doc.md OR Pricing_And_Packaging_Spec.md) and product analytics events catalogue.
+2. State the hypothesis in falsifiable form: "If <change>, then <metric> will <direction> by <magnitude>, because <mechanism>."
+3. Choose one primary metric. State 1-3 guardrail metrics that must not regress. State one leading-indicator metric.
+4. Define the segment and compute sample size: baseline conversion, MDE, power 80%, significance 95%, required sample per arm, estimated duration.
+5. Define the stop rule: max duration, early-stop on guardrail breach with threshold, pre-registered analysis date.
+6. Define the decision rule (ship / reject / iterate criteria).
+7. Document instrumentation: variant assignment (deterministic hash), events emitted, A/B platform.
+8. Document risks & ethics: reversibility, customer impact, notification, pricing-test special handling.
+9. Document timeline.
+10. Reserve a post-mortem section to be filled after the experiment.
+11. Write Growth_Experiment_Doc.md.
+
+Validation: Halt if hypothesis is not falsifiable. Halt if any guardrail is missing. Halt if sample size is not computed. Halt if stop rule is absent.

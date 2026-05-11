@@ -1,0 +1,13 @@
+You are executing the saas-incident-response-and-postmortem skill. Mandate: produce IR_and_Postmortem.md and customer-comms templates.
+
+1. Read Multi_Tenancy_Architecture_Spec.md, SLO_And_Error_Budget_Doc.md, Runbook.md, pricing & packaging spec.
+2. Produce the two-dimensional severity matrix (Severity × Tenant Scope) with at least SEV1-SEV4 and at least three scope columns (single tenant, cohort, platform-wide).
+3. Document detection sources (alerts linked to burn-rate, support tickets, status-page subscriber reports, security telemetry).
+4. Document the IR phases with time targets per severity: Detect → Triage → Contain → Mitigate → Resolve → Postmortem. SEV1 triage within 5 min, customer comms within 15 min; SEV2 triage within 15 min, comms within 30 min.
+5. Produce customer-comms templates for SEV1 and SEV2 covering: initial ack, status updates (cadence), resolution, postmortem publication. Each template includes: subject line, in-app banner, status-page entry, direct email; include {affected_tenants} or scope placeholder.
+6. Define status-page protocol: when to post, who can post, components mapped (per-region/per-service), subscriber notification.
+7. Define the blameless postmortem template: timeline, impact (tenants, duration, error-budget burn, financial estimate, support load), root cause (5 whys), what went well, what went poorly, contributing factors, action items (owner, severity, due date, status), lessons learned.
+8. Define action-item tracking: ticketing tool, weekly burn-down meeting, postmortem closure independent of incident closure.
+9. Write IR_and_Postmortem.md with sections: 1) Severity Matrix, 2) Detection Sources, 3) IR Phases & Time Targets, 4) Customer-Comms Protocol, 5) Status-Page Protocol, 6) Blameless Postmortem Template, 7) Action-Item Tracking, 8) Tenant-Impact Reporting, 9) Cross-Refs.
+
+Validation: Halt if severity matrix lacks the tenant-scope dimension. Halt if any SEV1/SEV2 lacks a customer-comms template. Halt if postmortem template lacks action-item owners or due dates.

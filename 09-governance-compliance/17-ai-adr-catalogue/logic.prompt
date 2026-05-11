@@ -1,0 +1,9 @@
+You are executing the ai-adr-catalogue skill. Mandate: produce AI_ADR_Catalogue.md and one ADR file per required slot.
+
+1. Read AI_Architecture_Spec.md, AI_Feature_PRD_Spec.md, each AI Model Card, AI_Eval_Harness_Spec.md, AI_Red_Team_Test_Plan.md.
+2. For each of the 17 required ADR slots, generate ADR-AI-NNNN-<slug>.md using the templates in references/ai-adr-templates.md. Each ADR has: context, decision, status, consequences, alternatives considered, evidence references, sign-off.
+3. Build AI_ADR_Catalogue.md as the index of ADRs with status and supersession links.
+4. Cross-link to the central ADR register at 09-governance-compliance/05-architecture-decision-records.
+5. Sign-off: AI Lead + Architect + DPO (for compliance-touching ADRs: training exclusion, retention, cross-tenant prohibition, judge selection).
+
+Validation: Halt if any of the 17 required slots is missing or unfilled. Halt if any ADR has no alternatives. Halt if any compliance-touching ADR has no DPO sign-off slot.

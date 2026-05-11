@@ -1,0 +1,13 @@
+You are executing the saas-trust-center-document-pack skill. Mandate: produce Trust_Center_Document_Pack.md and per-section public-facing markdown.
+
+1. Read Compliance_Docs.md, Data_Isolation_Evidence_Pack.md, Risk_Assessment.md, DPA, sub-processor list.
+2. Produce the Security Overview page: encryption at rest, encryption in transit, auth (SSO, MFA), authz, tenant isolation, vuln mgmt, secure SDLC, pentest cadence, incident response, data residency.
+3. Produce the Compliance Attestations index table. Status options: held, in progress, planned, not applicable. Include report-request form URL placeholder.
+4. Produce the Sub-Processor List: name, purpose, region, data classes processed, certifications. Include the 30-day advance-notice commitment.
+5. Produce the DPA & privacy section linking the published DPA, privacy policy, cookie policy, data-residency options, breach-notification commitment (72 h GDPR / 72 h ISO / per-jurisdiction).
+6. Produce the Vulnerability Disclosure Policy: reporting channel, safe-harbour scope, response SLA, hall-of-fame / bounty.
+7. Produce the Status Page commitment: public URL, incident-comms protocol, postmortem-publication commitment.
+8. Produce the Customer Data Handling summary: data classes, retention defaults, deletion options, export options, residency, encryption posture per class.
+9. Write Trust_Center_Document_Pack.md as the master index. Place each section's public markdown under public/trust/.
+
+Validation: Halt if any attestation row claims "held" without an auditor name and period. Halt if sub-processor list is empty. Halt if vulnerability disclosure policy lacks a reporting channel or response SLA.

@@ -1,0 +1,12 @@
+You are executing the ai-feature-rollout-runbook skill. Mandate: produce AI_Feature_Rollout_Runbook.md.
+
+1. Read AI_Feature_PRD_Spec.md, AI_Eval_Harness_Spec.md, AI_Red_Team_Test_Plan.md, AI_Hallucination_SLO_Doc.md, Tenant_Lifecycle_Runbook.md.
+2. Declare the rollout stages: internal staff, design partners, opt-in beta, percentage cohort (5/25/50/100), GA.
+3. Set per-stage promotion gates: eval golden green for bake duration; red-team smoke green (0 CRITICAL/HIGH); hallucination SLO met; cost/call within ceiling; customer success sign-off.
+4. Wire auto-rollback triggers in the gateway / feature-flag system: citation drop > 5 pp in 24 h -> rollback prompt tag; safety violation -> pause; per-tenant cost 200% for 1 h -> throttle then pause; eval CI regression -> block merge.
+5. Define comms plan per stage: internal launch-readiness, design-partner emails, opt-in-beta in-product modal + help article, percentage-cohort status-page entry + release notes, GA blog + email + sales enablement + trust-center.
+6. Define opt-in / opt-out: default state per region (EEA = off for high-risk), workspace-admin override, end-user disclosure, consent capture.
+7. Define post-launch monitoring window: 14 d heightened; daily AI-quality stand-up; flagged-output review; per-tenant cost review.
+8. Write AI_Feature_Rollout_Runbook.md with sections: 1) Rollout Stages, 2) Promotion Gates, 3) Auto-Rollback Triggers, 4) Comms Plan, 5) Opt-in / Opt-out, 6) Post-Launch Monitoring, 7) Roles & Sign-off Ledger.
+
+Validation: Halt if any stage lacks a promotion gate or an auto-rollback trigger. Halt if EEA / high-risk region default state is not explicit. Halt if there is no rollback rehearsal recorded before GA.

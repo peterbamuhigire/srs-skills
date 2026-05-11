@@ -9,10 +9,13 @@ metadata:
   quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
   anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
   outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `README.md`, `logic.prompt` when deeper detail is needed."
+  references: "Use `README.md`, `logic.prompt` when deeper detail is needed. For multi-tenant SaaS projects, ALSO apply `references/saas-dod-addendum.md` (mandatory tenant-context hygiene, billing-event emission, isolation regression, observability, lifecycle compatibility, compliance, and customer-comms items)."
 ---
 
 # Definition of Done Skill
+
+> **SaaS mode:** if the project is a multi-tenant SaaS, apply `references/saas-dod-addendum.md` in addition to the generic steps below.
+
 
 ## Overview
 
