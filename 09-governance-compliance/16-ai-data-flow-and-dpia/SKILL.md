@@ -75,6 +75,18 @@ Augment the base risk register:
 
 `AI_Data_Flow_And_DPIA.md` sections: 1) Data Flow Inventory, 2) Data-Flow Diagram, 3) AI DPIA (full Art. 35 form), 4) Consent Capture, 5) Training-Data Exclusion Evidence, 6) Cross-Border Transfer Mechanism, 7) AI-Specific Risk Register, 8) Sign-off Ledger.
 
+## Agent-specific data-flow elements (additions)
+
+When agent features are present, the data-flow inventory shall additionally capture:
+
+- Agent service-principal flow — every system the agent acts as principal against (per-tenant scope).
+- Tool-call flow per tool in the action catalogue (source, sink, classification, retention).
+- Memory tier flow — scratchpad / episodic / long-term; tenant opt-in flag; erasure SLA.
+- Approval-event flow — signed event capture and storage.
+- Action audit-log flow — append-only store; hash-chain integrity job.
+
+These additions support SOC 2 P3, ISO/IEC 27001 A.5.34, and HIPAA §164.502 evidence rows in the agent compliance evidence pack (`09-governance-compliance/25-ai-agent-evidence-pack-spec`).
+
 ## Standards
 
 - GDPR Art. 35 + Art. 36

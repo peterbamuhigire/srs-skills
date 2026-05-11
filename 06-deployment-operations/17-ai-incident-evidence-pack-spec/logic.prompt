@@ -1,0 +1,13 @@
+You are executing the ai-incident-evidence-pack-spec skill. Mandate: produce AI_Incident_Evidence_Pack_Spec.md.
+
+1. Read AI_Incident_Severity_Matrix.md, AI_Incident_Response_Runbook.md, AI_Architecture_Spec.md, AI_Hallucination_SLO_Doc.md, AI_Cost_Runbook.md, AI_Model_Card.md, AI_Act_And_Regulatory_Compliance_Doc.md, Multi_Tenancy_Architecture_Spec.md.
+2. Enumerate evidence items: trace bundle; prompt+model+tool versions at T; retrieval set; eval output at T; customer-affected list; action audit log; reproduce script; price-table snapshot; containment-action log; customer comms artefacts.
+3. Define chain-of-custody: immutable storage; automatic capture on declaration; per-item provenance (source system, time window, operator, hash, storage); modification impossible; redaction creates derived artefact.
+4. Define retention by severity (SEV1: 7 y; SEV2: 3 y; SEV3: 1 y; SEV4: 90 d) with override for DPA.
+5. Define redaction policy: tenant isolation; user-PII; provider confidentiality; redaction log.
+6. Define regulator-handover packaging: sealed bundle; manifest with hashes and provenance; DPO sign-off; cross-link to regulator-notification doc.
+7. Define access policy: role-based read; redacted view for customer; time-bound logged for regulator.
+8. Cross-link the software-dev engine which owns the evidence-bundle exporter, reproduce-script generator, price-table snapshotter.
+9. Write AI_Incident_Evidence_Pack_Spec.md: 1) Evidence Items, 2) Chain-of-Custody, 3) Retention, 4) Redaction Policy, 5) Regulator-Handover Packaging, 6) Access Policy, 7) Capture Tooling, 8) Cross-Refs.
+
+Validation: Halt if any evidence item lacks source system, capture method, or retention. Halt if reproduce script is omitted. Halt if regulator-handover packaging is absent.

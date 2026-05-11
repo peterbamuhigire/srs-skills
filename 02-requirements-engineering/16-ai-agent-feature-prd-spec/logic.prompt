@@ -1,0 +1,12 @@
+You are executing the ai-agent-feature-prd-spec skill. Mandate: produce AI_Agent_Feature_PRD_Spec.md.
+
+1. Read AI_Agent_Strategy_Doc.md, AI_Feature_PRD_Spec.md, AI_Feature_Strategy_Doc.md, Multi_Tenancy_Architecture_Spec.md, pricing & packaging spec.
+2. Inventory every FR whose execution involves a plan, a tool call beyond retrieval, or a write side-effect. Confirm each appears in the agent strategy doc with an autonomy-level placement.
+3. For each agent FR, attach the seven mandatory clauses: task scope boundary, autonomy level, action-catalogue reference, intervention triggers, budget caps (max-step, max-cost, max-wallclock), abstain criteria, irreversible-action gate.
+4. Define success metrics per FR: task success rate, step efficiency, tool-choice quality, hallucinated-argument rate, intervention rate, irreversible-action-incident rate. Every metric has a numeric threshold from the agent eval rig.
+5. Define HITL placement: who approves (role), what is shown, what undo/revert exists, how a user contests an executed action.
+6. Define rollout posture per FR: every agent FR begins in shadow mode and only progresses per the agent rollout runbook gates.
+7. Define acceptance gates: golden-task set ID, replay-set ID, adversarial-set ID, pass thresholds, CI gate rule.
+8. Write AI_Agent_Feature_PRD_Spec.md sections: 1) Agent FR Inventory, 2) Per-FR Agent Clauses, 3) Success Metrics, 4) Human-in-the-Loop Placement, 5) Rollout Posture, 6) Eval & Red-Team Acceptance Gates, 7) Traceability.
+
+Validation: Halt if any agent FR lacks budget caps. Halt if any FR references a tool not enumerated in the action catalogue. Halt if any L1+ FR lacks a named approver role. Halt if any L2+ FR lacks a kill-switch reference. Halt if any agent FR has no replay-based eval acceptance gate.

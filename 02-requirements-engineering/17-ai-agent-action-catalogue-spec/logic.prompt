@@ -1,0 +1,13 @@
+You are executing the ai-agent-action-catalogue-spec skill. Mandate: produce Action_Catalogue_Spec.md and per-tool YAML entries.
+
+1. Read AI_Agent_Feature_PRD_Spec.md, AI_Architecture_Spec.md, Multi_Tenancy_Architecture_Spec.md, and the API specs for any back-end the agent will call.
+2. Inventory every candidate tool from the agent FRs. Include reads, writes, external API calls, internal RPCs.
+3. Apply the reversibility classification rubric: idempotent / compensable / irreversible. Use references/agent-reversibility-classification-rubric.md for edge-case treatment.
+4. For each tool, write a YAML entry: name, description, input_schema, output_schema, side_effect_class (read | write-internal | write-external | billing | network-egress), reversibility_class, compensating_tool (if any).
+5. Declare tier_availability per tool: which pricing tier may include the tool for which autonomy level. Reject any side_effect != read on Free tier.
+6. Declare audit fields the dispatcher will log per tool call: tenant_id, user_id, agent_run_id, plan_id, step_index, tool_name, input_args_redacted, output_summary_redacted, latency_ms, cost_usd, outcome, irreversibility_class snapshot, human_approval_event_id if applicable.
+7. Assign rate-limit class per tool (cheap-read / expensive-read / internal-write / external-write / billing) with per-tenant, per-agent-run, and burst limits.
+8. Declare kill-switch behaviour per tool: global kill-switch refuses (yes/no), per-tenant kill-switch refuses (yes/no), user-visible refusal message.
+9. Write Action_Catalogue_Spec.md sections: 1) Catalogue summary table, 2) Reversibility rubric, 3) Per-tool entries, 4) Tier availability matrix, 5) Audit field schema, 6) Rate-limit class table, 7) Kill-switch behaviour, 8) Change-control protocol, 9) Traceability to agent FRs.
+
+Validation: Halt if any tool lacks input_schema or output_schema. Halt if any tool with side_effect != read is admitted at Free tier. Halt if any irreversible tool is included without a human-approval gate referenced at the FR layer. Halt if any tool has no kill-switch behaviour declared.

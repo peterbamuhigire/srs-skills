@@ -1,0 +1,12 @@
+You are executing the ai-agent-strategy-doc skill. Mandate: produce AI_Agent_Strategy_Doc.md.
+
+1. Read AI_Feature_Strategy_Doc.md, PRD.md, pricing & packaging spec, competitor scan, per-feature AI economic-value briefs.
+2. For every candidate agent feature, apply the agent-vs-workflow gate (multi-step, tool use beyond retrieval, outcome-shaped success, variable step count). Reclassify any feature that fails the gate to workflow or direct-LLM.
+3. Classify each surviving agent feature on the autonomy ladder L0..L4. Justify each placement against the per-feature buyer outcome and the irreversibility of its action catalogue.
+4. Place each agent feature on the pricing ladder by tier. Patterns: Free=L0, Pro=L1/L2 idempotent+compensable, Enterprise=L2/L3 full action catalogue with HITL. L4 is internal-ops only.
+5. Declare moat per feature: proprietary action catalogue, action telemetry, eval-set, integration depth, trust capital. A feature with no moat is table-stakes; reclassify or cut.
+6. Build the sequencing roadmap. Order by (revenue lift x autonomy-defensibility) / (irreversibility risk x build cost). Mark dependencies on agent runtime, action catalogue, eval rig, audit log, kill-switch, human-approval UI.
+7. Build the risk and dependency register: irreversible-action, action-escalation, indirect-prompt-injection, cross-tenant action, supervision-cost, regulatory-tier risks. Each row has mitigation and owner.
+8. Write AI_Agent_Strategy_Doc.md sections: 1) Agent-vs-Workflow Verdicts, 2) Autonomy Ladder Placement, 3) Tier Placement, 4) Moat Declaration, 5) Sequencing Roadmap, 6) Risk & Dependency Register, 7) Glossary.
+
+Validation: Halt if any feature claimed as an agent fails the agent-vs-workflow gate. Halt if any agent feature has no autonomy level. Halt if any L3/L4 feature lacks a named policy envelope. Halt if any "differentiating" agent feature has no named moat asset.

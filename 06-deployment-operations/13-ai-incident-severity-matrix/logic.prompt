@@ -1,0 +1,11 @@
+You are executing the ai-incident-severity-matrix skill. Mandate: produce AI_Incident_Severity_Matrix.md.
+
+1. Read AI_Feature_PRD_Spec.md, AI_Hallucination_SLO_Doc.md, AI_Cost_Runbook.md, AI_Feature_Rollout_Runbook.md, Multi_Tenancy_Architecture_Spec.md, pricing spec, AI_Act_And_Regulatory_Compliance_Doc.md.
+2. Declare the three dimensions: severity (SEV1-4), tenant scope (single / cohort / platform-wide / cross-tenant leakage), autonomy / blast-radius (advisory / assistive / autonomous-with-rollback / autonomous-irreversible).
+3. For each AI failure class (hallucination spike, prompt drift, model regression, jailbreak/injection, tool-chain failure, cost runaway, agent-action incident, training-data shift, retrieval drift, eval drift) set SEV1/2/3 thresholds tied to measurable signals.
+4. Map severity to SLA service credits per tier (Free / Pro / Enterprise); AI feature availability and cross-tenant leakage are in scope; numerical factuality is not.
+5. Map AI failure classes to EU AI Act Art. 73 serious-incident limbs (death/serious harm; critical infrastructure; fundamental rights; property/environment) and to the reporting windows (immediate / 10 d / 15 d).
+6. Define elevation and de-escalation rules; severity changes are logged in the timeline.
+7. Write AI_Incident_Severity_Matrix.md with sections: 1) Dimensions, 2) Per-Failure-Class Thresholds, 3) Service-Credit Mapping, 4) EU AI Act Art. 73 Mapping, 5) Elevation / De-escalation Rules, 6) Cross-Refs.
+
+Validation: Halt if any AI failure class is missing thresholds. Halt if autonomy dimension is omitted. Halt if Art. 73 mapping is absent for any high-risk feature.

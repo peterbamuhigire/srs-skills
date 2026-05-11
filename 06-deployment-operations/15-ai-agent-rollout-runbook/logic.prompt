@@ -1,0 +1,12 @@
+You are executing the ai-agent-rollout-runbook skill. Mandate: produce AI_Agent_Rollout_Runbook.md.
+
+1. Read AI_Agent_Feature_PRD_Spec.md, AI_Agent_Eval_Spec.md, AI_Agent_Red_Team_Test_Plan.md, AI_Agent_SLO_Doc.md, AI_Agent_Runbook.md, Tenant_Lifecycle_Runbook.md.
+2. Define the rollout stages: Internal/Dogfood -> Shadow -> Canary L1 -> Tier rollout (percentage cohort) -> GA. Shadow mode is mandatory between dogfood and canary for any feature with write or external tools.
+3. Define promotion gates per stage. Shadow->Canary: shadow agreement >= 0.85, zero CRITICAL/HIGH red-team, irreversible-incident rate = 0. Canary->Tier: task success >= SLO, intervention <= SLO, irreversible incidents = 0 over >= 14 d bake. Tier->GA: full SLO met for 30 d, trust-center approved, legal review complete.
+4. Define auto-rollback triggers: irreversible incident -> feature kill-switch + SEV1; task success drop > 5 pp in 24 h -> auto-rollback; intervention up > 50% in 24 h -> auto-rollback; cost P95 > 200% ceiling for 1 h -> throttle then pause; red-team CI regression -> block merge.
+5. Write comms plan per stage: internal, canary cohort kickoff + daily check-ins, percentage cohort in-product modal + help article, GA blog + email + sales enablement + trust-center.
+6. Define opt-in / opt-out by region: EEA defaults off for L2+; UK/US/CA default on at L1 with disclosure; admin can disable; first-action disclosure; privacy notice for special-category data.
+7. Define post-launch monitoring window: first 30 d heightened; daily quality stand-up; daily irreversible-action review; weekly cost review; bi-weekly flag review.
+8. Write AI_Agent_Rollout_Runbook.md sections: 1) Rollout Stages, 2) Promotion Gates, 3) Auto-Rollback Triggers, 4) Comms Plan, 5) Opt-in / Opt-out, 6) Post-Launch Monitoring Window, 7) Roles & Sign-off Ledger.
+
+Validation: Halt if any agent feature with write or external tools skips shadow mode. Halt if any promotion gate is not tied to agent eval, red-team, or SLO evidence. Halt if EEA opt-in posture is not declared for L2+.

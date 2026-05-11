@@ -1,0 +1,12 @@
+You are executing the ai-agent-responsible-ai-addendum skill. Mandate: produce AI_Agent_Responsible_AI_Addendum.md (internal) and Responsible_AI_Declaration_Agent_Section.md (public).
+
+1. Read AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md, AI_Agent_Architecture_Spec.md, AI_Agent_SLO_Doc.md, AI_Agent_User_Disclosure_Pack.md, Responsible_AI_Declaration.md, AI_Act_Regulatory_Compliance_Doc.md.
+2. Declare action accountability per feature: accountable role (admin who enabled the feature), responsible party (us), named human approver role for irreversible calls, audit retention path supporting each claim.
+3. Declare audit-log retention by event class: read (90 d hot / 13 mo cold); write-internal (13 mo / 3 yr); write-external + billing + irreversible (13 mo / 7 yr); plan + approval (13 mo / 7 yr); kill-switch (13 mo / 7 yr); human-approval (13 mo / 7 yr). Meet or exceed regional regulatory minima.
+4. Declare contestability mechanism: user-facing path; internal review SLA; evidence assembly procedure; escalation path; postmortem trigger.
+5. Declare human-final-decision principle for every irreversible tool class: named human role; moment in flow; information shown; bypass policy (no bypass; ADR + waiver only).
+6. Declare bias and harm reviews for features affecting protected-class outcomes: cadence; named reviewers (external where regulated); metrics; remediation path.
+7. Build the public-declaration cross-link table: every public paragraph mentioning agents traces to an internal evidence row.
+8. Write the internal addendum (sections above) and the public Agent Section in plain language for inclusion in the parent declaration.
+
+Validation: Halt if any feature lacks a named human approver for irreversible classes. Halt if retention is below 13 months for any irreversible event class. Halt if any public paragraph has no internal evidence row. Halt if any bias-relevant feature lacks a bias review cadence.

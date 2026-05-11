@@ -1,8 +1,6 @@
-# TODO: expand with additional controls — this is a minimum-viable starter library.
-# Contribute additions via PR; engine validates the schema at load time.
 domain: finance
-version: "1.0"
-source_framework: "PCI-DSS v4.0 + SOX §404"
+version: "1.1"
+source_framework: "PCI-DSS v4.0 + SOX 404 + IFRS / IFRS for SMEs control objectives"
 controls:
   - id: CTRL-FIN-001
     title: Encrypt cardholder data at rest
@@ -45,5 +43,65 @@ controls:
       - "Approval workflow requires preparer and approver to be different identities"
       - "Audit trail records both roles for each reporting cycle"
     regulatory_anchor:
-      framework: "Sarbanes-Oxley Act"
-      clause: "§404"
+      framework: "Internal control over financial reporting"
+      clause: "Authorization"
+
+  - id: CTRL-FIN-005
+    title: Immutable accounting ledger
+    category: accounting_integrity
+    verification_kinds: [design_review, test, audit_log_inspection]
+    minimum_evidence:
+      - "Design specifies append-only journal_entries and journal_lines"
+      - "Tests prove posted journal lines cannot be updated, deleted, or soft-deleted"
+      - "Correction workflow posts reversing journals linked to originals"
+    regulatory_anchor:
+      framework: "IFRS / IFRS for SMEs control objective"
+      clause: "Audit trail and faithful representation"
+
+  - id: CTRL-FIN-006
+    title: Single posting service write path
+    category: change_control
+    verification_kinds: [code_review, test]
+    minimum_evidence:
+      - "All ledger writes pass through LedgerPostingService or project-equivalent service"
+      - "Static/code review finds no direct writes to ledger tables outside the posting service"
+      - "Posting service validates period, account status, tenant scope, idempotency, and debit-credit equality"
+    regulatory_anchor:
+      framework: "Internal control over financial reporting"
+      clause: "Completeness and accuracy"
+
+  - id: CTRL-FIN-007
+    title: Period close and locked-period enforcement
+    category: close_control
+    verification_kinds: [test, audit_log_inspection]
+    minimum_evidence:
+      - "Accounting periods have open, closed, and locked states"
+      - "Tests prove locked-period postings are rejected"
+      - "Reopening workflow records approver, reason, timestamp, and post-close integrity result"
+    regulatory_anchor:
+      framework: "Internal control over financial reporting"
+      clause: "Cut-off and authorization"
+
+  - id: CTRL-FIN-008
+    title: Control account reconciliation
+    category: reconciliation
+    verification_kinds: [test, report_inspection]
+    minimum_evidence:
+      - "AR, AP, inventory, fixed assets, payroll, tax, bank, and mobile-money control accounts reconcile to subledgers or tagged journal lines"
+      - "Nightly per-tenant integrity job stores reconciliation results"
+      - "Failures generate operator alerts and incident records"
+    regulatory_anchor:
+      framework: "Internal control over financial reporting"
+      clause: "Reconciliation"
+
+  - id: CTRL-FIN-009
+    title: Financial report rebuildability
+    category: reporting_integrity
+    verification_kinds: [test, design_review]
+    minimum_evidence:
+      - "Trial balance, income statement, statement of financial position, and cash flow reports are generated from journal lines"
+      - "Materialized balances are documented as rebuildable caches"
+      - "Rebuild command output agrees with stored report cache values"
+    regulatory_anchor:
+      framework: "IFRS / IFRS for SMEs control objective"
+      clause: "Verifiability"
