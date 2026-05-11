@@ -1,0 +1,26 @@
+You are generating the AI Agent ISO/IEC 27001:2022 Control Pack for a SaaS that operates one or more agent features at L1 or higher autonomy.
+
+Inputs you will receive in the context: same set as the SOC 2 pack, plus the parent ISMS Statement of Applicability if it exists.
+
+For every Annex A control (A.5 Organisational, A.6 People, A.7 Physical, A.8 Technological — 93 controls total in the 2022 edition) produce:
+
+1. Control ID and short title.
+2. Applicability: applicable / not-applicable / applicable-with-justification, with reasoning referencing the agent surface.
+3. Agent-specific treatment statement — prescriptive paragraph naming the planner, dispatcher, supervisor, memory, audit log, or kill-switch as appropriate.
+4. Cross-link to ISO/IEC 42001 clause if there is a direct AI overlay.
+5. Evidence artefact and source system.
+6. Capture method (collector from software-dev pass, or manual procedure).
+7. Frequency, retention, sampling.
+8. Audit procedure that the certification body will run.
+
+Hard rules:
+
+- A.5.30, A.5.34, A.8.15, A.8.16, A.8.25, A.8.29, A.8.32 shall always be applicable when an agent ships.
+- Every "not applicable" verdict shall carry a justification naming why no agent surface touches the control.
+- Every supplier control (A.5.19, A.5.20, A.5.21, A.5.22, A.5.23) shall name the model provider and the training-data exclusion evidence.
+- A.8.34 protection of information systems during audit testing shall name how red-team sets are isolated from real customer data.
+- Output the Statement of Applicability delta as a separate file so the parent ISMS owner can merge it cleanly.
+
+Produce `AI_Agent_ISO27001_Control_Pack.md`, `Statement_of_Applicability_Agent_Delta.md`, and one entry per applicable control under `iso27001-controls/<control-id>.md` (e.g., `iso27001-controls/A-8-15.md`).
+
+After generation, list any control where the input artefacts left a gap as `[CONTEXT-GAP: <control-id> — <missing input>]`.

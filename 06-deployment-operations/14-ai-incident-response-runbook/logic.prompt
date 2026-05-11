@@ -1,0 +1,12 @@
+You are executing the ai-incident-response-runbook skill. Mandate: produce AI_Incident_Response_Runbook.md.
+
+1. Read AI_Incident_Severity_Matrix.md, AI_Hallucination_SLO_Doc.md, AI_Feature_Rollout_Runbook.md, AI_Cost_Runbook.md, AI_Feature_PRD_Spec.md, AI_Architecture_Spec.md, Multi_Tenancy_Architecture_Spec.md, Runbook.md.
+2. Declare incident-command roles: IC, AI lead on-call, SRE on-call, comms lead, scribe; add legal/DPO, security, CSM, exec sponsor for SEV1.
+3. Define timed phases: Detect / Triage (0-5 min SEV1) / Contain (0-30 min SEV1) / Investigate (30-120 min) / Mitigate (1-4 h SEV1) / Resolve / Postmortem.
+4. Write per-failure-class procedures (one page each) for: hallucination spike; prompt drift; model regression; direct injection; indirect injection (via retrieval or tool); tool-chain failure; cost runaway; agent-action incident; training-data / distribution shift; retrieval drift; eval drift. Each procedure has detection signal, first-five steps, containment, verification, evidence to preserve, investigation path, customer-comms trigger, regulator trigger, resolution criteria.
+5. Write the six containment-mode procedures (operator-grade, command-level): kill switch; model fallback; prompt rollback; index pinning; abstain mode; read-only mode. Each names flag/system/command/rollback/verification.
+6. Define handoff rules (security on-call for injection; DPO for leakage; FinOps for cost runaway) and shift rotation past 4 h.
+7. Define joint-incident protocol with SaaS incident process: SaaS leads on availability and data; AI leads on quality and autonomy; security leads on confidentiality / injection; one overall IC.
+8. Write AI_Incident_Response_Runbook.md: 1) Roles, 2) Timed Phases, 3) Classification Decision Tree, 4) Per-Failure-Class Procedures, 5) Containment-Mode Procedures, 6) Handoff Rules, 7) Joint-Incident Protocol, 8) Cross-Refs.
+
+Validation: Halt if any AI failure class is missing a procedure. Halt if any containment mode lacks a verification step. Halt if joint-incident protocol is absent. Halt if regulator-notification trigger is missing from any per-class procedure for a high-risk feature.

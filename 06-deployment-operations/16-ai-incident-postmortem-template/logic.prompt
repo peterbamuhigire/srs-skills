@@ -1,0 +1,14 @@
+You are executing the ai-incident-postmortem-template skill. Mandate: produce AI_Postmortem_<incident_id>.md.
+
+1. Read AI_Incident_Severity_Matrix.md, AI_Incident_Response_Runbook.md, AI_RCA_Taxonomy_Doc.md, AI_Incident_Evidence_Pack_Spec.md, the incident timeline, AI_Hallucination_SLO_Doc.md, pricing spec, the evidence pack for this incident.
+2. Write header and metadata: incident id, dates, severity (final), tenant scope, autonomy level, AI failure class, RCA tags (primary + contributing), author, status.
+3. Write summary (one paragraph) and impact (tenants, duration, error-budget burn, financial, support load, reputational).
+4. Write the timeline UTC, source-attributed from the evidence pack.
+5. Write 5-whys with taxonomy tags attached to each level; identify primary + contributing.
+6. Write per-tenant impact table (anonymised for Free/Pro; named for Enterprise).
+7. Write regulator-impact assessment for every SEV1: EU AI Act Art. 73 limbs evaluated; GDPR Art. 33; US state-level; African regulators; DPO sign-off.
+8. Write action items by class (improve eval / change gate / add red-team / change containment / change provider posture / update model card / update runbook / update drill).
+9. Decide publication policy (internal / customer-distributed / public) with redaction policy.
+10. State closure rule (all SEV-high action items done).
+
+Validation: Halt if any SEV1 lacks regulator-impact assessment. Halt if no RCA tag is set. Halt if any action item lacks an owner or due date. Halt if individual blame is implied.

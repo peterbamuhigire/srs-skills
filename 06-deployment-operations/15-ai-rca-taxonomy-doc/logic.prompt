@@ -1,0 +1,11 @@
+You are executing the ai-rca-taxonomy-doc skill. Mandate: produce AI_RCA_Taxonomy_Doc.md.
+
+1. Read AI_Incident_Response_Runbook.md, AI_Hallucination_SLO_Doc.md, AI_Feature_Rollout_Runbook.md, AI_Cost_Runbook.md, AI_Architecture_Spec.md, AI_Eval_Harness_Spec.md, AI_Red_Team_Test_Plan.md, AI_Model_Card.md.
+2. Enumerate six families: model, retrieval, tool/agent, eval, data, infra & commercial.
+3. For each family enumerate nodes (e.g., model.regression, model.deprecation, model.fine-tune-drift, model.prompt-regression; retrieval.index-drift, retrieval.embedding-change, retrieval.citation-drift, retrieval.poison; tool.api-change, tool.schema-change, tool.scope-expansion, tool.indirect-injection, tool.vendor-outage; eval.golden-set-rot, eval.judge-drift, eval.test-set-leakage, eval.coverage-gap; data.distribution-shift, data.ingestion-error, data.lineage-loss; infra.gateway-routing-change, commercial.price-change, commercial.rate-limit-change).
+4. For each node provide: definition; example incident; default containment pointer; pre-production detection; durable mitigation.
+5. Define the tagging rule (every postmortem closes with >= 1 tag; primary vs contributing; IC assigns; RAI committee may re-tag).
+6. Define aggregation thresholds: 3 same-node incidents per quarter -> roadmap action; 1 SEV1 node -> review pre-production detection.
+7. Write AI_RCA_Taxonomy_Doc.md: 1) Families, 2) Node Catalogue, 3) Tagging Rule, 4) Aggregation & Review Cadence, 5) Cross-Refs.
+
+Validation: Halt if any node lacks an example or default containment pointer. Halt if aggregation thresholds are absent.

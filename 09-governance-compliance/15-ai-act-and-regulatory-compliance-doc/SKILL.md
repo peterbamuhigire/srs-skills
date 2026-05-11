@@ -68,6 +68,18 @@ UI copy for required disclosures per region:
 
 `AI_Act_And_Regulatory_Compliance_Doc.md` sections: 1) EU AI Act Classification, 2) US Sectoral Exposure, 3) Canada / UK, 4) African Regulators, 5) Annex IV Technical Documentation Index, 6) Disclosure Copy Library, 7) Open Compliance Items, 8) Review Cadence.
 
+## Agent-specific overlap with SOC 2 / ISO 27001 / HIPAA
+
+When the SaaS ships agent features alongside the AI features covered here, this doc shall cross-link to the agent-specific compliance stack:
+
+- SOC 2: `09-governance-compliance/20-ai-agent-soc2-control-pack` (per-TSC agent-specific implementations).
+- ISO 27001: `09-governance-compliance/21-ai-agent-iso27001-control-pack` (Annex A agent treatments).
+- HIPAA: `09-governance-compliance/22-ai-agent-hipaa-control-pack` (Security Rule agent treatments; admin-only constraint).
+- BAA / DPA: `09-governance-compliance/26-ai-agent-baa-and-data-processing-language`.
+- Regulator overlap matrix (one-evidence-many-regimes): `09-governance-compliance/27-ai-agent-regulator-overlap-mapping`.
+
+EU AI Act high-risk classification (Annex III) drives extra documentation that this doc owns (Annex IV technical-documentation index), while the agent-specific operating controls are owned by the agent control packs. The crosswalk in `27-ai-agent-regulator-overlap-mapping` shows where evidence is reused vs where the AI Act demands artefacts unique to itself (e.g., conformity assessment, post-market monitoring per Art. 72, serious-incident reporting per Art. 73).
+
 ## Standards
 
 - EU Reg 2024/1689 (AI Act)

@@ -1,0 +1,16 @@
+You are executing the ai-agent-architecture-spec skill. Mandate: produce AI_Agent_Architecture_Spec.md plus ADR seeds.
+
+1. Read AI_Architecture_Spec.md, AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md, Multi_Tenancy_Architecture_Spec.md, tech_stack.md.
+2. Declare the agent runtime decomposition. Required services: Agent Orchestrator, Planner, Tool Dispatcher, Memory Tiers (scratchpad / episodic / long-term), Supervisor (if multi-agent), Durable State Store, HITL Hook, Audit Log Pipeline, Kill-switch Controller. Produce a Mermaid diagram placing each service.
+3. Spec the loop (observe -> plan -> act -> observe) and the state machine states: pending, planning, awaiting-approval, executing-tool, awaiting-tool-result, intervened, aborted, completed-success, completed-abstain, completed-failed. Define transitions and durability points.
+4. Spec memory tiers: scratchpad (per-run ephemeral, key = tenant_id + agent_run_id), episodic (TTL'd, key = tenant_id + user_id), long-term (opt-in, key = tenant_id). State encryption posture, key management, redaction rule.
+5. Spec the planner: ReAct / Plan-and-execute / Tree-of-thought / Function-calling-loop. State prompt template source (prompt registry), budget hooks (halt on max-step / max-cost), abstain payload contract.
+6. Spec the tool dispatcher: catalogue lookup, schema validation, tenant-claim re-validation, kill-switch consultation, rate-limit consultation, HITL invocation for irreversible/above-threshold, API execution, tool-output sanitisation, audit-log emission. The dispatcher is the only egress for tool calls.
+7. If multi-agent, place the supervisor in the diagram and cross-link to 15-ai-agent-multi-agent-coordination-spec.
+8. Spec durability and resumability: persist state at every transition; serialisation format; resume SLA; idempotency key derived from (agent_run_id, step_index).
+9. Spec kill-switch wiring: operator surface; global / per-tenant / per-feature switches; propagation SLA (default <= 5s); monthly rehearsal.
+10. Spec per-tenant isolation enforcement at planner, dispatcher, memory tiers, audit log.
+11. Emit ADR seeds in adr-seeds/: planner choice per feature, memory store technology, durable state store, supervisor topology, kill-switch SLA, irreversibility-gating policy, tool-call audit log retention.
+12. Write AI_Agent_Architecture_Spec.md sections: 1) Agent Runtime Diagram, 2) Loop & State Machine, 3) Memory Tiers, 4) Planner, 5) Tool Dispatcher, 6) Supervisor, 7) Durability & Resumability, 8) Kill-switch Wiring, 9) Per-Tenant Isolation, 10) ADR Seed Index, 11) Traceability.
+
+Validation: Halt if any tool call path bypasses the dispatcher. Halt if scratchpad isolation is not keyed by tenant + run. Halt if resume SLA is unspecified. Halt if kill-switch propagation SLA is unspecified. Halt if any tier's encryption posture is missing.

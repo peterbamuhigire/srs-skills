@@ -1,0 +1,29 @@
+You are generating the seven-policy AI Agent Compliance Policy Pack.
+
+Inputs: Agent PRD, Action Catalogue, Agent Architecture, SLO, Runbook, Eval, Red-Team, Responsible-AI Addendum, ADR Catalogue, Evidence Pack Spec, parent information security policy set.
+
+Produce eight files: `AI_Agent_Compliance_Policy_Pack.md` (the bundle with cover page, table of policies, signature summary) and one file per policy under `policies/`:
+
+- `policies/agent-action-governance-policy.md`
+- `policies/agent-audit-log-retention-policy.md`
+- `policies/agent-approval-and-supervision-policy.md`
+- `policies/agent-kill-switch-and-drill-policy.md`
+- `policies/agent-memory-erasure-policy.md`
+- `policies/agent-red-team-and-safety-policy.md`
+- `policies/agent-compliance-evidence-and-attestation-policy.md`
+
+Each policy has the ten sections defined in the SKILL.md. Every statement uses prescriptive 'shall' language. Every policy lists the SOC2 / ISO / HIPAA control IDs it supports. Every policy ends with a signature block: AI Lead, CTO, CEO, DPO, CISO (where applicable) — do not let one person sign all seven; spread accountability.
+
+Hard rules:
+
+- Policy 1 shall name the reversibility classes (idempotent / compensable / irreversible) and the autonomy levels (L0–L4).
+- Policy 2 shall reproduce the retention table from the Responsible-AI Addendum verbatim and bind it as policy.
+- Policy 3 shall name when review-before-act vs review-after-act vs sample-review applies.
+- Policy 4 shall name the two-person rule for global kill-switch and the propagation SLA.
+- Policy 5 shall name the memory tiers and the erasure-trigger events.
+- Policy 6 shall name the CRITICAL/HIGH zero-open-finding gate before L1+.
+- Policy 7 shall name the SOC 2 Type II, ISO surveillance, HIPAA annual cadence.
+- Exceptions section in every policy shall name the maximum exception duration and the approver role.
+- Cross-link sections to the runbook and evidence pack spec.
+
+Flag context gaps as `[CONTEXT-GAP: <policy> — <missing input>]`.

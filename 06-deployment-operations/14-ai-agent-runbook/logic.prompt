@@ -1,0 +1,13 @@
+You are executing the ai-agent-runbook skill. Mandate: produce AI_Agent_Runbook.md.
+
+1. Read AI_Agent_Architecture_Spec.md, Action_Catalogue_Spec.md, AI_Agent_SLO_Doc.md, AI_Feature_Rollout_Runbook.md, parent Runbook.md, SaaS_Incident_Response_And_Postmortem.md.
+2. Document the three kill-switches: global (two-person rule), per-tenant, per-feature. State propagation SLA (default 5 s), monthly rehearsal in staging, operator surface (console + API + paging integration).
+3. Document force-pause (run-level, tenant-level) and force-resume (only after SEV closure review).
+4. Document replay: operator replays any historical run against current planner + catalogue in the eval environment.
+5. Document agent-task quarantine: mark run quarantined; refuse tool calls; preserve state; notify tenant admin within 24h.
+6. Document audit-log review cadence: daily irreversible-action review by on-call; weekly per-feature summary by AI lead; quarterly export to Enterprise tenants.
+7. Write incident playbooks for: mass irreversible-action incident; cross-tenant tool routing detected; indirect prompt injection succeeded; budget-runaway; orchestrator crash; tool-provider compromise; agent-action disclosure (regulatory/customer). Each playbook: detection -> SEV declared -> kill-switch decision -> contain -> investigate -> notify -> postmortem.
+8. Document on-call rotation: kill-switch access, read-only per-tenant audit access, paging from SLO burn-rate + irreversible-incident triggers, escalation AI Lead -> Architect -> CTO -> CEO.
+9. Write AI_Agent_Runbook.md sections: 1) Kill-switch Operations, 2) Force-Pause & Resume, 3) Replay, 4) Quarantine, 5) Audit-Log Review, 6) Incident Playbooks, 7) On-call Rotation, 8) Rehearsal Cadence.
+
+Validation: Halt if any kill-switch lacks a propagation SLA. Halt if global kill-switch lacks a two-person rule. Halt if any of the seven incident playbooks is missing. Halt if audit-log review cadence is undefined.

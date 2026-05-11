@@ -1,0 +1,13 @@
+You are executing the ai-agent-user-disclosure-pack skill. Mandate: produce AI_Agent_User_Disclosure_Pack.md and per-locale UI copy strings.
+
+1. Read AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md, AI_Agent_Rollout_Runbook.md, Responsible_AI_Declaration.md, Trust Center doc pack.
+2. Per feature, write does / does-not paragraph in plain language (one sentence each).
+3. Per feature, write the authority statement: whose authority, allowed actions, disallowed actions, per-call approval requirements.
+4. Per feature, write override + undo copy: how to disable; how to undo specific action; how to cancel run-in-progress; what is not reversible (explicit list).
+5. Design the "agent worked on your behalf" notification: when it shows, where, what it shows (verb + target + timestamp + agent name + revert + how-it-worked link), dismissal pattern.
+6. Per feature, write the contestation path: report form, response time, evidence gathered, escalation to human reviewer.
+7. Author regional disclosures: EEA AI Act Art. 13; UK ICO; US (CO 2026, NYC bias audits for employment); Africa (Uganda DPPA, Ghana DPA, Nigeria NDPR).
+8. Layperson review with 3 non-engineering reviewers; revise.
+9. Write AI_Agent_User_Disclosure_Pack.md sections: 1) Per-feature Disclosure Blocks, 2) Notification Design, 3) Contestation Path, 4) Regional Disclosures, 5) Copy String Tables, 6) Review Cadence.
+
+Validation: Halt if any feature has no does/does-not paragraph. Halt if any feature has no undo path. Halt if regional disclosures are missing for any region the product ships to. Halt if marketing language is used (e.g. "smart", "powerful", "intuitive").
