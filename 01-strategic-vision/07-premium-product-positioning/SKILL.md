@@ -35,9 +35,10 @@ metadata:
 2. Define the premium buyer and decision path: economic buyer, users, influencers, gatekeepers, risk owners, and proof required.
 3. Convert positioning into requirements: outcomes, trust, speed, reliability, onboarding, reporting, support, service levels, governance, and proof.
 4. Specify product quality signals: restrained interface, excellent copy, fast workflows, reliable data, branded outputs, polished notifications, and mature edge states.
-5. Specify premium service requirements: onboarding, configuration, training, review meetings, escalation, success reporting, renewal/expansion, and account ownership.
+5. Specify premium service requirements: onboarding, configuration, training, review meetings, escalation, success reporting, renewal/expansion, account ownership, and recovery after service failures.
 6. Add pricing and sales-support requirements where relevant: packages, tiers, scope boundaries, ROI dashboards, proposal exports, and buyer-specific reports.
-7. Run `references/premium-product-requirements-gate.md` before finalising the PRD, SRS, or design spec.
+7. For launch or handover, route the service promises into `06-deployment-operations/06-customer-adoption-and-support-plan`.
+8. Run `references/premium-product-requirements-gate.md` before finalising the PRD, SRS, or design spec.
 
 ## Quality Standards
 
@@ -56,11 +57,13 @@ metadata:
 - Premium positioning section for PRD/SRS/business case.
 - Requirements and acceptance criteria for premium buyer experience.
 - Feature priorities that support pricing power and high-level adoption.
+- Adoption, support, recovery, and maintenance requirements that make premium promises deliverable.
 - Risks, assumptions, and validation questions.
 
 ## References
 
 - `references/premium-product-requirements-gate.md` - requirements gate for premium software and high-value users.
+- `06-deployment-operations/06-customer-adoption-and-support-plan` - rollout, training, service desk, recovery, and maintenance planning.
 <!-- dual-compat-end -->
 
 ## Premium positioning gate (added 2026-05-04 from Synechron Enterprise UX)
@@ -106,8 +109,8 @@ Level 4 additionally requires: experience maps, mood boards, usability testing, 
 
 ### Cross-engine references
 
-- `website-skills/skills/design-quality-score/` — Category 8 (UX Maturity) scores the same gate independently per artifact. Same project may carry separate scores in each engine.
-- `website-skills/skills/premium-ui-ux-design/references/enterprise-five-outcomes.md` — same outcomes, applied to website templates.
+- Website engine `design-quality-score` — Category 8 (UX Maturity) scores the same gate independently per artefact. Same project may carry separate scores in each engine.
+- Website engine `premium-ui-ux-design` reference `enterprise-five-outcomes.md` — same outcomes, applied to website templates.
 
 ### Procedure when either gate fails
 
