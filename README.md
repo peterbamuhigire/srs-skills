@@ -8,6 +8,22 @@ Hybrid and regulated delivery are now documented as explicit operating models ra
 - Regulated evidence chain: [docs/regulated-evidence-model.md](/C:/wamp64/www/srs-skills/docs/regulated-evidence-model.md)
 - Repo-wide deterministic enforcement gates: [docs/deterministic-governance.md](/C:/wamp64/www/srs-skills/docs/deterministic-governance.md)
 
+## SaaS + AI-on-SaaS + Agent Documentation Stack (May 2026)
+
+Major SDLC documentation layer added across phases 01–09 for SaaS products, AI-on-SaaS features, agent products, AI incident response, and agent compliance attestation.
+
+**SaaS docs (16 phase-placed skills + 8 enhancements):** strategic-vision (MVP scoping, moat plan, pricing/packaging spec), requirements (billing/metering spec, billing addendums), design (multi-tenancy architecture spec), operations (tenant lifecycle runbook, SLO/error-budget doc, incident response, growth experiment doc, customer success playbook, onboarding journey, lifecycle email strategy, sales enablement pack), governance (data-isolation evidence pack, trust-center pack, DPA/privacy set).
+
+**AI-on-SaaS docs (16 skills + 8 enhancements):** AI feature strategy, AI feature PRD, AI data/KB spec, AI architecture spec, AI model card (EU AI Act Annex IV cross-walk), AI prompt registry, AI coding-guidelines addendum, AI eval harness spec, AI red-team plan, AI hallucination SLO, AI rollout runbook, AI cost runbook, AI responsible-AI declaration, AI Act compliance, AI data flow + DPIA, AI ADR catalogue.
+
+**Agent docs (14 skills + 11 cross-link enhancements + 12 templates):** strategy (autonomy ladder L0–L5), feature PRD (seven agent clauses), action catalogue spec, agent architecture spec, multi-agent coordination spec, coding-guidelines addendum, eval spec, red-team plan (10 agent-specific attack categories), agent SLO doc, agent runbook (three kill-switches with two-person rule), rollout runbook (shadow → supervised → agentic), user disclosure pack (per-locale notification), responsible-AI addendum, ADR catalogue (14 seed ADRs).
+
+**AI incident response docs (8 skills + 8 enhancements):** severity matrix (sev × tenant scope × autonomy), incident response runbook (first 5/30/120-min + 10 per-failure-class playbooks), RCA taxonomy, postmortem template, evidence pack spec, customer-comms templates per severity, regulator notification template (EU AI Act Art. 73 15-day clock, GDPR Art. 33 72-hour, KE/NG 72h, UG 24h, RW 48h, ZA ASAP), drill & game-day catalogue (7 scenarios).
+
+**Agent compliance docs (9 skills + 11 enhancements + 12 templates):** SOC2 control pack (AICPA TSC CC1–CC9, A1, C1, PI1, P1–P8), ISO 27001 control pack (Annex A 2022 + ISO 42001 overlay), HIPAA control pack (§164.308/.310/.312/.316 with PHI-touch classification), compliance policy pack (7 bundled signed policies), attestation prep spec (12-mo SOC2 Type II / 6-mo ISO surveillance / 90-day HIPAA timelines), evidence pack spec (SHA-256 chain-of-custody, HIPAA 6yr / SOC2 7yr retention), agent compliance runbook, BAA + DPA templates (KE/NG/ZA/UG/RW annexes), regulator overlap matrix.
+
+**Book extractions** (in `book-extractions/`): 7 SaaS books distilled through the docs lens, plus 6 audit documents.
+
 ## Embedded Accounting Engine Additions
 
 For any system that handles money, inventory value, payroll, tax, receivables, payables, grants, fixed assets, or financial reports, route the documentation flow through these added skills:
