@@ -1,3 +1,6 @@
 [submodule "skills"]
 	path = skills
 	url = https://github.com/peterbamuhigire/skills-web-dev
+[submodule "doctrine"]
+	path = doctrine
+	url = https://github.com/peterbamuhigire/chwezi-accounting-doctrine.git
