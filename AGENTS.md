@@ -10,17 +10,17 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 ## Skill Families
 
-- Portable skills live under `skills/<skill-name>/SKILL.md`. This includes methodology-selection skills such as `skills/00-meta-initialization/SKILL.md` and reusable technical, product, security, UX, data, operations, and planning skills.
-- Root directories are reserved for project documentation and repository-level folders such as `docs/`, `skills/`, and `projects/`, plus operational folders (`engine/`, `templates/`, `scripts/`, `domains/`) where relevant.
+- Portable skills live under `skills/skills/<category>/<skill-name>/SKILL.md` (the `skills/` directory is a git submodule whose internal `skills/` namespace is grouped into 15 categories — see the "Skill Categories" section in `CLAUDE.md`). Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
+- Root directories are reserved for project documentation and repository-level folders such as `docs/`, `skills/` (submodule), and `projects/`, plus operational folders (`engine/`, `templates/`, `scripts/`, `domains/`) where relevant.
 - Domain packs live under `domains/`. They are not skills by themselves; use them as context sources when a task is domain-specific.
 
 ## Baseline Routing
 
 - New client-documentation or methodology-selection requests: start with `skills/00-meta-initialization`.
 - SDLC document generation or review: route to the relevant numbered phase skill first, then load supporting domain references from `domains/<domain>/`.
-- General software engineering work: start with `skills/world-class-engineering`, then add the narrowest relevant skills.
-- Skill authoring or upgrades inside this repository: use `skills/skill-writing`.
-- Word or `.docx` output quality work: use `skills/professional-word-output`.
+- General software engineering work: start with `skills/skills/sdlc-meta/world-class-engineering`, then add the narrowest relevant skills.
+- Skill authoring or upgrades inside this repository: use `skills/skills/sdlc-meta/skill-writing`.
+- Word or `.docx` output quality work: use `skills/skills/product-business/professional-word-output`.
 
 ## Cross-Engine Handoffs
 
