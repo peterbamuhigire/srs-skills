@@ -7,7 +7,7 @@ You are an expert Systems Architect. You are assisting in developing and executi
 ## Directory Logic & Pathing
 
 - **Submodule Root:** This directory (where root project documentation and repository-level folders live).
-- **Skills:** Located in `/skills/<skill-name>/SKILL.md`. Use these skills for methodology selection, document generation support, and reusable engineering workflows.
+- **Skills:** The `/skills/` directory is a git submodule (https://github.com/peterbamuhigire/skills-web-dev). Portable skills live at `/skills/skills/<category>/<skill-name>/SKILL.md` across 15 categories — see the "Skill Categories" section below. Use these skills for methodology selection, document generation support, and reusable engineering workflows.
 - **Domain Knowledge:** Located in `/domains/`. Read the relevant domain `INDEX.md` when generating requirements for a domain-specific project.
 - **Project Workspace:** Located in `projects/<ProjectName>/` (untracked, gitignored). All client documentation is built here.
 - **Context Source of Truth:** Read all project-specific data from `projects/<ProjectName>/_context/`.
@@ -86,6 +86,30 @@ Premium requirements must make value visible through product packaging, simple u
 ## Full Skill Suite
 
 Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: Initialization, Introduction, Overview, Interfaces, Functional Requirements, Logic Modeling, Attribute Mapping, and Semantic Auditing with verification artifacts.
+
+## Skill Categories
+
+The `skills/` submodule organizes its portable skill catalog into 15 category subdirectories under `skills/skills/<category>/<skill-name>/SKILL.md`. When routing to an individual skill, always include the category segment in the path.
+
+| Category | Scope |
+| --- | --- |
+| `ai` | LLM integration, agent runtime, RAG, prompt engineering, AI app architecture, AI ops/eval, AI economics, AI safety/security/UX, openai-agents-sdk. |
+| `android` | Android development, UI/UX, data persistence, TDD. |
+| `architecture` | API design-first, REST/GraphQL patterns, microservices architecture/communication/orchestration, distributed systems patterns, contract validation, system architecture design. |
+| `backend-databases` | MySQL and PostgreSQL engineering/administration/operations/performance, database design, internals and reliability, vector databases. |
+| `devops-cloud` | CI/CD (pipeline design, Jenkins, DevSecOps), Docker, Kubernetes (fundamentals/platform/production/SaaS delivery), IaC, cloud architecture, deployment/release, observability, reliability engineering. |
+| `finance-accounting` | Accounting engine, finance/controller, chart of accounts, payroll (Uganda), inventory costing/management, demand forecasting, fixed assets/depreciation, multicurrency/FX, chwezi finance engine skeletons. |
+| `frontend-ux` | React, Next.js App Router, Tailwind, design audit/principles/maturity, premium and practical UI, enterprise UX process, motion/interaction/form/data-viz, healthcare/POS UI, image compression, web app GUI design, UX content strategy, frontend performance. |
+| `gis` | GIS mapping, maps integration, PostGIS backend, platform engineering, enterprise GIS domain. |
+| `ios` | iOS development, architecture, data persistence, UI/UX, AI/ML, monetization, platform capabilities, quality/release, security/RBAC; macOS AppKit/sandbox/system-integrations/git-libgit2; Swift concurrency; Xcode Cloud/TestFlight, Instruments, project engineering. |
+| `languages` | JavaScript modern/patterns, TypeScript (mastery/effective/full-stack/patterns), Node.js, Python (modern, data analytics, data pipelines, ML predictive, SaaS integration), PHP modern/security, language standards. |
+| `mobile-cross` | KMP development, PWA offline-first, mobile platform operations, mobile reports. |
+| `product-business` | Product strategy/vision, product discovery, product-led growth, premium product positioning/execution, software business models/pricing, growth telemetry, experiment engineering, customer service, content writing, IT proposal writing, Excel spreadsheets, professional Word output. |
+| `saas` | SaaS architecture strategy, modular/multi-tenant, control plane, admin/backoffice, lifecycle email, entitlements/plan gating, rate limiting/quotas, SSO/SCIM enterprise auth, tenant onboarding/portability/erasure, deployment models, business metrics, SaaS ERP/accounting design, subscription billing, Stripe payments, seeder, sales organization. |
+| `sdlc-meta` | World-class engineering, engineering management/strategy, advanced testing strategy, E2E testing, AI-assisted development, git collaboration workflow, plan implementation, project requirements, SDLC (planning/design/documentation/testing/user-deploy), markdown lint cleanup, doc-architect, capability matrix, continuous improvement, custom sub-agents, implementation status auditor, skill-writing, skill safety audit, skill composition standards, update-claude-documentation. |
+| `security` | Code safety scanner, DPIA generator, dual-auth RBAC, Linux security hardening, network security, Uganda DPPA compliance, vibe security skill, web app security audit. |
+
+To locate a specific skill quickly: `ls skills/skills/<category>/` inside the submodule, or grep `skills/skills/<category>/<skill-name>/SKILL.md`.
 
 ## Compliance Skills (Uganda Domain)
 
