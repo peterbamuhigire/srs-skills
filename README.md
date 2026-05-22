@@ -357,13 +357,44 @@ sdlc-docs-engine/
 ├── 07-agile-artifacts/              # Sprint planning, DoD, DoR, retrospectives
 ├── 08-end-user-documentation/       # User manuals, installation guides, FAQs
 ├── 09-governance-compliance/        # Traceability, audits, compliance docs
-└── skills/                          # Standard skill layout
-    ├── 00-meta-initialization/
-    │   └── SKILL.md
-    ├── professional-word-output/
-    │   └── SKILL.md
-    └── <skill-name>/SKILL.md
+└── skills/                          # Git submodule: https://github.com/peterbamuhigire/skills-web-dev
+    └── skills/                      # 15 category subdirectories (see "Skill Categories" below)
+        ├── ai/<skill-name>/SKILL.md
+        ├── android/<skill-name>/SKILL.md
+        ├── architecture/<skill-name>/SKILL.md
+        ├── backend-databases/<skill-name>/SKILL.md
+        ├── devops-cloud/<skill-name>/SKILL.md
+        ├── finance-accounting/<skill-name>/SKILL.md
+        ├── frontend-ux/<skill-name>/SKILL.md
+        ├── gis/<skill-name>/SKILL.md
+        ├── ios/<skill-name>/SKILL.md
+        ├── languages/<skill-name>/SKILL.md
+        ├── mobile-cross/<skill-name>/SKILL.md
+        ├── product-business/<skill-name>/SKILL.md
+        ├── saas/<skill-name>/SKILL.md
+        ├── sdlc-meta/<skill-name>/SKILL.md
+        └── security/<skill-name>/SKILL.md
 ```
+
+### Skill Categories
+
+The portable skill catalog inside the `skills/` submodule is grouped into 15 categories. Reference any individual skill as `skills/skills/<category>/<skill-name>/SKILL.md`.
+
+- **ai** — LLM integration, agent runtime, RAG, prompt engineering, AI app architecture, evaluation/observability, AI economics, safety, security, UX, openai-agents-sdk.
+- **android** — Android development, UI/UX, data persistence, TDD.
+- **architecture** — API design-first, REST/GraphQL patterns, microservices architecture/communication/orchestration, distributed systems, contract validation, system architecture design.
+- **backend-databases** — MySQL and PostgreSQL engineering/admin/operations/performance, database design, internals, reliability, vector databases.
+- **devops-cloud** — CI/CD, Docker, Kubernetes (fundamentals/platform/production/SaaS), IaC, cloud architecture, deployment/release, observability, reliability engineering.
+- **finance-accounting** — Accounting engine, finance controller, chart of accounts, payroll (Uganda), inventory costing/management, demand forecasting, fixed assets/depreciation, multicurrency/FX.
+- **frontend-ux** — React, Next.js, Tailwind, design audit/principles, premium/practical UI, enterprise UX process, motion/interaction/form/data-viz, healthcare/POS UI, frontend performance, UX content strategy.
+- **gis** — GIS mapping, maps integration, PostGIS backend, platform engineering, enterprise GIS domain.
+- **ios** — iOS development/architecture/data/UI/AI-ML/monetization/platform/quality/security; macOS AppKit/sandbox/system-integrations; Swift concurrency; Xcode Cloud/TestFlight/Instruments.
+- **languages** — JavaScript modern/patterns, TypeScript (mastery/effective/full-stack), Node.js, Python (modern/data/ML/SaaS), PHP modern/security, language standards.
+- **mobile-cross** — KMP development, PWA offline-first, mobile platform operations, mobile reports.
+- **product-business** — Product strategy/vision/discovery, PLG, premium positioning/execution, software business models/pricing, growth telemetry, experiment engineering, customer service, content/proposal writing, Excel, professional Word output.
+- **saas** — SaaS architecture strategy, modular/multi-tenant, control plane, admin/backoffice, lifecycle email, entitlements/plan gating, rate limiting/quotas, SSO/SCIM, tenant onboarding/portability/erasure, deployment models, business metrics, SaaS ERP/accounting, subscription billing, Stripe payments.
+- **sdlc-meta** — World-class engineering, engineering management/strategy, advanced testing strategy, E2E testing, AI-assisted development, git collaboration workflow, plan implementation, project requirements, SDLC (planning/design/documentation/testing/user-deploy), doc-architect, capability matrix, continuous improvement, custom sub-agents, skill-writing, skill safety audit, skill composition standards.
+- **security** — Code safety scanner, DPIA generator, dual-auth RBAC, Linux security hardening, network security, Uganda DPPA compliance, web app security audit.
 
 ## Pathing Model
 
@@ -870,7 +901,7 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 We welcome contributions! To add or improve skills:
 
 1. Review existing skills for format and structure
-2. Follow the `skills/skill-writing/` meta-skill guidelines
+2. Follow the `skills/skills/sdlc-meta/skill-writing/` meta-skill guidelines
 3. Ensure 500-line limit and two-tier documentation structure
 4. Add examples and anti-patterns
 5. Update `README.md` and `PROJECT_BRIEF.md`
