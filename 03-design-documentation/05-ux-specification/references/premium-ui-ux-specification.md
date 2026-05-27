@@ -72,3 +72,5 @@ For SaaS, dashboards, portals, and AI-enabled workflows, include:
 - A component state matrix covering loading, empty, error, success, disabled, offline, permission denied, and AI/tool failure where applicable.
 - UX cost drivers: roles, workflows, data density, fidelity, research/testing depth, accessibility target, integration risk, and sign-off complexity.
 - Uganda or regional market calibration notes in the software development plan or proposal handoff when cost guidance is requested.
+- Mobile navigation and onboarding requirements when mobile is in scope: primary destinations, thumb-zone actions, platform back behavior, permission timing, time-to-value, and activation metrics.
+- Dashboard requirements when dashboards are in scope: decision owner, metric context, data freshness, thresholds, drill-downs, and rejected chart anti-patterns.

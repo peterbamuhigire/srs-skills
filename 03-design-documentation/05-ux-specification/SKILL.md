@@ -49,7 +49,7 @@ metadata:
 6. Define interaction, accessibility, usability-testing, handoff, and traceability requirements.
 7. For text-heavy screens, forms, onboarding, checkout, applications, public-sector workflows, or error-prone tasks, invoke `03-design-documentation/09-ux-content-and-form-specification`.
 8. Add premium UI/UX requirements and gate scoring for premium, dashboard, web, Android, or iOS products.
-9. For SaaS, dashboard, multi-role, or AI-enabled products, add scope/cost drivers, time-to-value metrics, and a web-app pattern register.
+9. For SaaS, dashboard, multi-role, mobile, or AI-enabled products, add scope/cost drivers, time-to-value metrics, onboarding requirements, navigation requirements, and a web-app pattern register.
 10. Verify the output against the checklist before completion.
 
 ## Quality Standards
@@ -82,6 +82,7 @@ metadata:
 - `references/premium-ui-ux-specification.md`
 - `references/saas-ux-scope-costing.md`
 - `references/web-app-ui-pattern-selection.md`
+- `references/mobile-dashboard-ux-requirements.md`
 <!-- dual-compat-end -->
 
 ## Overview
@@ -151,6 +152,11 @@ If the product is SaaS, dashboard-heavy, multi-role, subscription-based, or AI-e
 load `references/saas-ux-scope-costing.md` and
 `references/web-app-ui-pattern-selection.md` so UX scope, cost drivers, onboarding,
 time-to-value, and pattern choices become traceable requirements.
+
+If the product has mobile screens, onboarding, or decision dashboards, also load
+`references/mobile-dashboard-ux-requirements.md` so mobile navigation, first-run value,
+permission timing, dashboard ownership, metric context, and verification methods are
+specified.
 
 ### Step 1: Read Context Files
 
