@@ -49,7 +49,8 @@ metadata:
 6. Define interaction, accessibility, usability-testing, handoff, and traceability requirements.
 7. For text-heavy screens, forms, onboarding, checkout, applications, public-sector workflows, or error-prone tasks, invoke `03-design-documentation/09-ux-content-and-form-specification`.
 8. Add premium UI/UX requirements and gate scoring for premium, dashboard, web, Android, or iOS products.
-9. Verify the output against the checklist before completion.
+9. For SaaS, dashboard, multi-role, or AI-enabled products, add scope/cost drivers, time-to-value metrics, and a web-app pattern register.
+10. Verify the output against the checklist before completion.
 
 ## Quality Standards
 
@@ -79,6 +80,8 @@ metadata:
 - `references/usability-testing.md`
 - `references/design-handoff.md`
 - `references/premium-ui-ux-specification.md`
+- `references/saas-ux-scope-costing.md`
+- `references/web-app-ui-pattern-selection.md`
 <!-- dual-compat-end -->
 
 ## Overview
@@ -143,6 +146,11 @@ The frontend-design plugin will analyze:
 Capture the plugin's UI/UX recommendation and incorporate it into all subsequent steps of this skill — especially Step 2 (IA), Step 3 (Wireframe Standards), and Step 4 (Design System).
 
 If the product is premium, revenue-critical, dashboard-heavy, Android, or iOS, also load `premium-ui-ux-design` and include its requirements in the UX specification from the start rather than as a final polish pass.
+
+If the product is SaaS, dashboard-heavy, multi-role, subscription-based, or AI-enabled,
+load `references/saas-ux-scope-costing.md` and
+`references/web-app-ui-pattern-selection.md` so UX scope, cost drivers, onboarding,
+time-to-value, and pattern choices become traceable requirements.
 
 ### Step 1: Read Context Files
 
