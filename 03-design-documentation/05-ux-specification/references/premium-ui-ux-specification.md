@@ -10,6 +10,7 @@ Document:
 - Primary user decisions/tasks the UI must make easier.
 - Trust, perceived quality, conversion, efficiency, retention, or risk-reduction goals.
 - Platform-specific experience expectations for web, Android, iOS, tablet, or dashboard contexts.
+- For SaaS products, the activation path, time-to-value target, core 3-5 MVP capabilities, and UX cost drivers that affect estimation.
 
 ## Required Section: Premium Design System
 
@@ -62,3 +63,12 @@ Include a scoring table for:
 | Platform and production fit | >= 8/10 | Device/browser QA and handoff audit |
 
 Any category below target creates a traceable remediation requirement.
+
+## Required Section: Scope And Pattern Evidence
+
+For SaaS, dashboards, portals, and AI-enabled workflows, include:
+
+- A pattern register that explains why cards, tables, tabs, modals, steppers, dashboards, pagination, notifications, or AI controls were selected.
+- A component state matrix covering loading, empty, error, success, disabled, offline, permission denied, and AI/tool failure where applicable.
+- UX cost drivers: roles, workflows, data density, fidelity, research/testing depth, accessibility target, integration risk, and sign-off complexity.
+- Uganda or regional market calibration notes in the software development plan or proposal handoff when cost guidance is requested.
