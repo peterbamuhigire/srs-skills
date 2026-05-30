@@ -18,6 +18,7 @@ to auto-inject `[DOMAIN-DEFAULT]` tagged requirements into the project scaffold.
 | Uganda | DPPA 2019, PPDA Act, Income Tax Act, NSSF Act, EFRIS, OAG | High | [uganda/](uganda/INDEX.md) |
 | Agriculture | Uganda DPA, EUDR, GlobalGAP, Employment Act | Medium | [agriculture/](agriculture/INDEX.md) |
 | Automotive | PCI-DSS, ISO 3779/3780 (VIN), SAE J1979 (OBD-II), GDPR / jurisdictional DPA, EFRIS / ZATCA / CFDI (e-invoicing) | Medium | [automotive/](automotive/INDEX.md) |
+| Productivity | GDPR / jurisdictional DPA (opt-in cloud AI only), WCAG 2.2 AA, ISO/IEC 25010, ISO/IEC 27001-aligned hygiene | Medium | [productivity/](productivity/INDEX.md) |
 
 ## How Domain Injection Works
 
