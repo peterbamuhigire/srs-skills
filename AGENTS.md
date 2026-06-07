@@ -21,6 +21,8 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 - General software engineering work: start with `skills/skills/sdlc-meta/world-class-engineering`, then add the narrowest relevant skills.
 - Skill authoring or upgrades inside this repository: use `skills/skills/sdlc-meta/skill-writing`.
 - Word or `.docx` output quality work: use `skills/skills/product-business/professional-word-output`.
+- Anti-AI-slop pre-ship gate: run `09-governance-compliance/28-anti-ai-slop` on every generated SRS/spec/doc/code artefact before delivery (MANDATORY).
+- Slop analysis/audit: `09-governance-compliance/29-ai-slop-audit` auto-runs whenever the user asks to analyse, review, evaluate, audit, critique, or de-slop any spec, requirement, document, system, or codebase, or asks "does this look AI-generated?".
 
 ## Cross-Engine Handoffs
 
@@ -56,6 +58,7 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 - Premium requirements must make value visible through product packaging, simple usable UX, buyer proof, service quality, content/SEO authority where relevant, pricing power, and high-value sales/proposal assets.
 - When a project targets cheap, vague, low-trust, or sub-premium work, treat it as a poor-fit engagement. Recommend narrowing scope to a premium deliverable, raising discovery/quality requirements, or declining the work rather than lowering the SRS quality bar.
 - Use `01-strategic-vision/07-premium-product-positioning` whenever buyer trust, executive adoption, high-ticket pricing, affluent/elite users, or premium product experience matters.
+- No generated artefact ships if it reads as AI slop. Run `09-governance-compliance/28-anti-ai-slop` as the pre-ship gate: every section must carry a concrete `_context/`-grounded element, every quality attribute a defined IEEE-982.1 / ISO 25010 metric, every requirement a deterministic test oracle, and no hallucinated API, package, or citation. Use the banned-vocabulary list and the SRS/spec avoidance block.
 
 ## Compatibility Notes
 

@@ -168,6 +168,15 @@ These rules apply to all generated output — SRS sections, design documents, te
 
 - Do not use subjective adjectives like "fast," "intuitive," or "reliable" without defining the specific IEEE-982.1 metric (see Principle 7 above).
 
+## Anti-AI-Slop Quality Gate (MANDATORY)
+
+Two cross-cutting skills enforce that no generated artefact reads as "AI slop" — low-quality, untestable, hallucination-prone output produced at volume:
+
+- **`09-governance-compliance/28-anti-ai-slop`** — a **MANDATORY gate applied in REAL TIME on every generated SRS, PRD, user story, acceptance criterion, design document, test document, ADR, runbook, and code artefact**. It is a live constraint applied **continuously while generating** — to every requirement, section, criterion, and line of code as it is written, not only as a final pre-ship pass. The moment a banned word, a subjective adjective with no IEEE-982.1 metric, a generic placeholder, an unverified figure, a hallucinated API, or a template default appears, fix it in place. Run its ship-gate checklist after the Phase 09 IEEE 1012 audit and before presenting any draft at the Human Review Gate (PRIME "Inspect" step). Any unticked box promotes to the matching V&V fail tag (`[SMART-FAIL]`, `[V&V-FAIL]`, `[CONTEXT-GAP]`, `[TRACE-GAP]`, `[VERIFIABILITY-FAIL]`). Its banned-vocabulary list incorporates Principle 7: never ship "fast/intuitive/reliable/robust/scalable" without a defined IEEE-982.1 / ISO 25010 metric.
+- **`09-governance-compliance/29-ai-slop-audit`** — **RUNS AFTER EACH MAJOR ITERATION (not only on request)**. Run it after each completed unit of work — each drafted SRS section, each completed design or test document, each finished module or feature, each significant revision, each phase or milestone — logging a verdict each time and mapping any blocking finding to its V&V fail tag; a grade **F blocks progression** to the next section or iteration until the blocking findings are fixed. It also **auto-runs whenever the user asks to analyse, review, evaluate, audit, critique, or "de-slop"** any spec, requirement, user story, document, system, or codebase, or asks "does this look AI-generated?", and as the final gate before a `.docx` deliverable ships. It produces a graded slop report (A–F) with per-marker evidence and a concrete fix, and maps each blocking finding to a V&V fail tag.
+
+Both skills preserve verified evidence only: Merriam-Webster 2025 Word of the Year; Kommers et al. (arXiv 2601.06060); Spracklen et al. (USENIX Security 2025 — 19.7% package hallucination); Veracode (45% of AI code flawed, XSS 86%, log-injection 88%); GitClear duplication 8.3% (2020) → 12.3% (2024). Do not add new statistics or sources to these skills without verification.
+
 ## Git Commit Protocol for Projects
 
 Project workspaces (`projects/<ProjectName>/`) are **local only** and gitignored — this repository is public and publishes only skills, engine code, and domain packs, not client work. Never `git add -f` a project path. Never commit the Word binary template (`templates/reference.docx`). Commits to this repo contain skill logic, engine code, domains, templates, and documentation only.

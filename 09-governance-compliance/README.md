@@ -48,6 +48,17 @@ The following agent-specific compliance skills extend Phase 09 with SOC 2 / ISO 
 
 Operational counterpart: `06-deployment-operations/20-ai-agent-compliance-runbook` (drill, evidence-collection, control-test, audit-window operating procedure).
 
+## Anti-AI-slop quality gate (new)
+
+Two cross-cutting skills guard every generated artefact against AI slop — low-quality, untestable, hallucination-prone output. They are not phase-sequential; they wrap the whole engine.
+
+| Order | Skill | Role | Output |
+|-------|-------|------|--------|
+| 28 | 28-anti-ai-slop | MANDATORY pre-ship guardrail on every generated SRS/spec/doc/code artefact | Ship/no-ship gate + V&V fail tags |
+| 29 | 29-ai-slop-audit | AUTO-RUNS whenever the user asks to analyse/review/evaluate/audit a spec, requirement, document, or system for AI slop | Graded slop report (A–F) with evidence and fixes |
+
+`28-anti-ai-slop` runs after the IEEE 1012 V&V audit and before any draft reaches the consultant (PRIME "Inspect" step). `29-ai-slop-audit` is the detector and feeds findings back as `[SMART-FAIL]`, `[V&V-FAIL]`, `[TRACE-GAP]`, and `[VERIFIABILITY-FAIL]` tags for remediation. Verified anchors: Merriam-Webster 2025 Word of the Year; Kommers et al. (arXiv 2601.06060); Spracklen et al. (USENIX Security 2025, 19.7% package hallucination); Veracode (45% flawed, XSS 86%, log-injection 88%); GitClear duplication 8.3%→12.3%.
+
 ## Cross-engine handoff (compliance × software-dev)
 
 The agent compliance family **owns the artefacts**: policy text, control narratives, evidence pack layout, audit procedures, BAA/DPA language. A parallel software-dev pass **owns the machinery**: automated evidence collectors, hash-chain audit-log implementation, gap detector, integrity verifier, auditor portal. Cross-link via the evidence frequency table at `25-ai-agent-evidence-pack-spec/references/ai-agent-evidence-frequency-table.md`.
