@@ -197,6 +197,10 @@ See [docs/plans/completion2026-04-16/PROGRESS.md](docs/plans/completion2026-04-1
 - **Waiver Management** - 90-day bounded exceptions
 - **Sign-Off Ledger** - role-based phase-gate approvals
 - **Evidence Pack Builder** - auditor-ready ZIP via `python -m engine pack`
+- **Anti-AI-Slop Guardrail** (`28-anti-ai-slop`) - real-time pre-ship gate on every generated artefact
+- **AI-Slop Audit** (`29-ai-slop-audit`) - graded A–F slop report; runs after each major iteration and on any analyse/review/audit request
+
+> **Anti-AI-slop quality gate.** Two cross-cutting Phase 09 skills keep generated output from reading as AI slop. `28-anti-ai-slop` is a **real-time guardrail** applied continuously while authoring every SRS, spec, design doc, test doc, ADR, and code artefact. `29-ai-slop-audit` is the detector: it **runs after each major iteration** and **auto-runs on any analyse / review / audit / de-slop request**, producing a graded A–F report. A grade **F blocks progression** until the blocking findings are fixed, and every blocking finding maps to the engine's V&V fail tags (`[SMART-FAIL]`, `[V&V-FAIL]`, `[TRACE-GAP]`, `[VERIFIABILITY-FAIL]`). Verified anchors: Merriam-Webster 2025 Word of the Year and Kommers et al. (arXiv 2601.06060).
 
 ---
 
