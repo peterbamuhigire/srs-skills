@@ -1,0 +1,388 @@
+# API Integration Standards
+
+Retrofit-based API integration with standardized error handling and repository pattern.
+
+## Local Development Networking (WAMP)
+
+- On local Windows/Ubuntu dev machines, the Android emulator must reach the backend via the host machine's static LAN IP, not `localhost`.
+- Ensure firewall rules allow inbound access to the WAMP HTTP port.
+
+## API Service Interface
+
+```kotlin
+interface UserApiService {
+
+    @GET("users/{userId}")
+    suspend fun getUser(
+        @Path("userId") userId: String,
+        @Header("Authorization") token: String
+    ): ApiResponse<UserDto>
+
+    @GET("users")
+    suspend fun getUsers(
+        @Query("page") page: Int = 1,
+        @Query("per_page") perPage: Int = 20,
+        @Query("search") search: String? = null,
+        @Header("Authorization") token: String
+    ): ApiResponse<PaginatedResponse<UserDto>>
+
+    @POST("users")
+    suspend fun createUser(
+        @Body request: CreateUserRequest,
+        @Header("Authorization") token: String
+    ): ApiResponse<UserDto>
+
+    @PUT("users/{userId}")
+    suspend fun updateUser(
+        @Path("userId") userId: String,
+        @Body request: UpdateUserRequest,
+        @Header("Authorization") token: String
+    ): ApiResponse<UserDto>
+
+    @DELETE("users/{userId}")
+    suspend fun deleteUser(
+        @Path("userId") userId: String,
+        @Header("Authorization") token: String
+    ): ApiResponse<Unit>
+
+    @Multipart
+    @POST("users/{userId}/avatar")
+    suspend fun uploadAvatar(
+        @Path("userId") userId: String,
+        @Part file: MultipartBody.Part,
+        @Header("Authorization") token: String
+    ): ApiResponse<AvatarResponse>
+}
+```
+
+## Standard API Response Wrapper
+
+```kotlin
+data class ApiResponse<T>(
+    @Json(name = "success") val success: Boolean,
+    @Json(name = "data") val data: T? = null,
+    @Json(name = "message") val message: String? = null,
+    @Json(name = "errors") val errors: List<ApiError>? = null,
+    @Json(name = "meta") val meta: PaginationMeta? = null
+)
+
+data class ApiError(
+    @Json(name = "field") val field: String? = null,
+    @Json(name = "message") val message: String
+)
+
+data class PaginationMeta(
+    @Json(name = "current_page") val currentPage: Int,
+    @Json(name = "last_page") val lastPage: Int,
+    @Json(name = "per_page") val perPage: Int,
+    @Json(name = "total") val total: Int
+)
+
+data class PaginatedResponse<T>(
+    @Json(name = "items") val items: List<T>,
+    @Json(name = "pagination") val pagination: PaginationMeta
+)
+```
+
+## DTO and Domain Mapping
+
+```kotlin
+// Data Transfer Object (matches API JSON)
+data class UserDto(
+    @Json(name = "user_id") val userId: String,
+    @Json(name = "full_name") val fullName: String,
+    @Json(name = "email_address") val email: String,
+    @Json(name = "phone_number") val phone: String?,
+    @Json(name = "avatar_url") val avatarUrl: String?,
+    @Json(name = "created_at") val createdAt: String
+) {
+    fun toDomain() = User(
+        id = userId,
+        name = fullName,
+        email = email,
+        phone = phone,
+        avatarUrl = avatarUrl
+    )
+}
+
+// Domain model (used in app)
+data class User(
+    val id: String,
+    val name: String,
+    val email: String,
+    val phone: String? = null,
+    val avatarUrl: String? = null
+)
+
+// Request DTOs
+data class CreateUserRequest(
+    @Json(name = "full_name") val name: String,
+    @Json(name = "email_address") val email: String,
+    @Json(name = "phone_number") val phone: String?
+)
+```
+
+## Repository Implementation with Error Handling
+
+```kotlin
+class UserRepositoryImpl @Inject constructor(
+    private val apiService: UserApiService,
+    private val userDao: UserDao,
+    private val tokenManager: TokenManager,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+) : UserRepository {
+
+    override suspend fun getUser(userId: String): Result<User> =
+        withContext(ioDispatcher) {
+            safeApiCall {
+                val token = requireToken()
+                val response = apiService.getUser(userId, "Bearer $token")
+                handleResponse(response) { it.toDomain() }
+            }
+        }
+
+    override suspend fun getUsers(
+        page: Int,
+        search: String?
+    ): Result<PaginatedResult<User>> =
+        withContext(ioDispatcher) {
+            safeApiCall {
+                val token = requireToken()
+                val response = apiService.getUsers(
+                    page = page, search = search, token = "Bearer $token"
+                )
+                handleResponse(response) { paginated ->
+                    PaginatedResult(
+                        items = paginated.items.map { it.toDomain() },
+                        currentPage = paginated.pagination.currentPage,
+                        lastPage = paginated.pagination.lastPage,
+                        total = paginated.pagination.total
+                    )
+                }
+            }
+        }
+
+    private fun requireToken(): String {
+        return tokenManager.getToken()
+            ?: throw AuthException("Not authenticated")
+    }
+
+    private fun <T, R> handleResponse(
+        response: ApiResponse<T>,
+        mapper: (T) -> R
+    ): Result<R> {
+        return if (response.success && response.data != null) {
+            Result.success(mapper(response.data))
+        } else {
+            val errorMessage = response.errors?.firstOrNull()?.message
+                ?: response.message
+                ?: "Unknown error"
+            Result.failure(ApiException(errorMessage))
+        }
+    }
+}
+```
+
+## Safe API Call Utility
+
+```kotlin
+suspend fun <T> safeApiCall(block: suspend () -> Result<T>): Result<T> {
+    return try {
+        block()
+    } catch (e: HttpException) {
+        when (e.code()) {
+            401 -> Result.failure(AuthException("Session expired. Please login again."))
+            403 -> Result.failure(PermissionException("You don't have permission."))
+            404 -> Result.failure(NotFoundException("Resource not found."))
+            422 -> {
+                val errorBody = e.response()?.errorBody()?.string()
+                val message = parseValidationErrors(errorBody)
+                Result.failure(ValidationException(message))
+            }
+            in 500..599 -> Result.failure(ServerException("Server error. Try again later."))
+            else -> Result.failure(ApiException("HTTP error: ${e.code()}"))
+        }
+    } catch (e: IOException) {
+        Result.failure(NetworkException("No internet connection."))
+    } catch (e: AuthException) {
+        Result.failure(e)
+    } catch (e: Exception) {
+        Result.failure(UnexpectedException("Something went wrong: ${e.message}"))
+    }
+}
+```
+
+## Custom Exception Hierarchy
+
+```kotlin
+sealed class AppException(message: String) : Exception(message)
+
+class AuthException(message: String) : AppException(message)
+class NetworkException(message: String) : AppException(message)
+class ApiException(message: String) : AppException(message)
+class ValidationException(message: String) : AppException(message)
+class PermissionException(message: String) : AppException(message)
+class NotFoundException(message: String) : AppException(message)
+class ServerException(message: String) : AppException(message)
+class UnexpectedException(message: String) : AppException(message)
+```
+
+## File Upload
+
+```kotlin
+suspend fun uploadAvatar(userId: String, imageUri: Uri): Result<String> =
+    withContext(ioDispatcher) {
+        safeApiCall {
+            val token = requireToken()
+
+            val contentResolver = context.contentResolver
+            val inputStream = contentResolver.openInputStream(imageUri)
+                ?: return@safeApiCall Result.failure(ApiException("Cannot read file"))
+
+            val bytes = inputStream.readBytes()
+            inputStream.close()
+
+            val requestBody = bytes.toRequestBody("image/*".toMediaType())
+            val part = MultipartBody.Part.createFormData(
+                "avatar", "avatar.jpg", requestBody
+            )
+
+            val response = apiService.uploadAvatar(userId, part, "Bearer $token")
+            handleResponse(response) { it.url }
+        }
+    }
+```
+
+## Handling Inconsistent API Types (Custom KSerializer)
+
+PHP/MySQL backends sometimes return inconsistent JSON types — e.g. a string field returns `{}` (empty object) when there's no data, or a number field returns `"0"` as a string. Use a custom `KSerializer` to absorb these quirks at the DTO layer.
+
+```kotlin
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.descriptors.PrimitiveKind
+import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.encoding.Decoder
+import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.JsonDecoder
+import kotlinx.serialization.json.JsonPrimitive
+
+/**
+ * Deserializes a JSON value that may be either a string or an object/array.
+ * Returns the string content if primitive, or "" if the API sent {} or [].
+ */
+object StringOrObjectSerializer : KSerializer<String> {
+    override val descriptor = PrimitiveSerialDescriptor("StringOrObject", PrimitiveKind.STRING)
+
+    override fun serialize(encoder: Encoder, value: String) {
+        encoder.encodeString(value)
+    }
+
+    override fun deserialize(decoder: Decoder): String {
+        val jsonDecoder = decoder as? JsonDecoder
+            ?: return decoder.decodeString()
+        return when (val element = jsonDecoder.decodeJsonElement()) {
+            is JsonPrimitive -> element.content
+            else -> ""  // {} or [] → empty string
+        }
+    }
+}
+
+// Usage in DTO:
+@Serializable
+data class StatisticsDto(
+    @SerialName("most_active_dpc")
+    @Serializable(with = StringOrObjectSerializer::class)
+    val mostActiveDpc: String = "",
+)
+```
+
+**When to use:** Any DTO field where the backend returns mixed types (e.g. `"John"` when data exists, `{}` when empty). Place the serializer in the same file as the DTO or in a shared `serializers/` package.
+
+## API Integration Rules
+
+1. **DTOs separate from domain models** - always map at repository boundary
+2. **Token injection via interceptor** preferred over manual header passing
+3. **Typed exception hierarchy** - catch specific errors in ViewModel
+4. **Pagination support** via standard `PaginatedResult` wrapper
+5. **File uploads** via `MultipartBody.Part`
+6. **No raw Retrofit calls in ViewModels** - always go through repository
+7. **Offline fallback** - cache API responses in Room when appropriate
+8. **Moshi codegen only** — NEVER use `KotlinJsonAdapterFactory()` (reflection). All DTOs must have `@JsonClass(generateAdapter = true)`. Reflection adapter crashes under R8 minification.
+9. **Image URLs from BuildConfig** — NEVER hardcode server URLs like `http://10.0.2.2/...`. Use `BuildConfig.API_BASE_URL` and strip `/api/` to get the web root. Create a shared `buildImageUrl()` utility.
+10. **API Error Response Structure** — CRITICAL: Backend must return errors as simple string in `error` field, not nested object:
+    ```json
+    // ✅ CORRECT - error is a string
+    {
+      "success": false,
+      "error": "Invalid email or password",
+      "message": "Optional additional message"
+    }
+
+    // ❌ WRONG - error is an object (causes deserialization failure)
+    {
+      "success": false,
+      "error": { "code": "...", "type": "...", "details": {...} }
+    }
+    ```
+    **Why:** The Android DTO expects `error: String?`, not a complex object. Moshi will fail with `ClassCastException` when trying to deserialize a nested object into String type. Keep error responses simple.
+11. **Handle inconsistent API types** — Use custom `KSerializer` (e.g. `StringOrObjectSerializer`) for fields where the backend returns mixed JSON types. Never let a DTO crash on unexpected `{}` or `[]`.
+12. **ProGuard signature preservation** — CRITICAL for release builds. Add to `proguard-rules.pro`:
+    ```
+    # Keep generic signatures (required for Moshi reflection on parameterized types)
+    -keepattributes Signature
+    -keepattributes InnerClasses
+    -keepattributes EnclosingMethod
+
+    # Keep all Moshi adapters and DTOs
+    -keep class **JsonAdapter { <init>(...); }
+    -keep @com.squareup.moshi.JsonClass class *
+    ```
+    **Why:** R8 minification strips `Signature` attribute by default, causing Moshi to lose generic type information (`Map<String, Double>` → `Map`). At runtime, Moshi reflection fails with `java.lang.Class cannot be cast to reflect.ParameterizedType`. This affects ALL release builds with generic DTOs.
+13. **CRITICAL: Moshi Generic Types** — NEVER use `Map<String, Any>` in DTOs (with @JsonClass). This causes `ClassCastException` or "reflect.parametized type" error at runtime. Moshi cannot deserialize generic `Any` type. **Use concrete types instead:**
+    - `Map<String, Any>?` → causes ClassCastException/parametized type error
+    - `Map<String, String>?` → safe, Moshi can deserialize
+    - `Map<String, Int>?` → safe for integer maps
+    - `Map<String, Double>?` → safe for numeric/float maps (for summary stats)
+    - Specific data class → best practice
+
+    **Real Examples Fixed (2026-02-19):**
+    ```kotlin
+    // WRONG - ApiErrorBody.details caused login to crash
+    data class ApiErrorBody(@Json(name = "details") val details: Map<String, Any>?)
+
+    // FIXED
+    data class ApiErrorBody(@Json(name = "details") val details: Map<String, String>?)
+
+    // WRONG - PaginatedData.summary caused "reflect.parametized" error on report endpoints
+    @JsonClass(generateAdapter = true)
+    data class PaginatedData<T>(
+        @Json(name = "items") val items: List<T>,
+        @Json(name = "pagination") val pagination: PaginationMeta,
+        @Json(name = "summary") val summary: Map<String, Any>?  // Generic Any fails
+    )
+
+    // FIXED - Use concrete type
+    @JsonClass(generateAdapter = true)
+    data class PaginatedData<T>(
+        @Json(name = "items") val items: List<T>,
+        @Json(name = "pagination") val pagination: PaginationMeta,
+        @Json(name = "summary") val summary: Map<String, Double>?  // Concrete type
+    )
+
+    // WRONG - Domain model with unsafe casts
+    data class ReportSummary(val data: Map<String, Any>) {
+        fun getDouble(key: String): Double = (data[key] as? Number)?.toDouble() ?: 0.0
+    }
+
+    // FIXED - Use concrete type for domain model
+    data class ReportSummary(val data: Map<String, Double>) {
+        fun getDouble(key: String): Double = data[key] ?: 0.0
+    }
+    ```
+
+    **Why this happens:** Kotlin generic type erasure means `Any` is erased at compile-time. Moshi needs a concrete type to generate a deserializer. At runtime, Moshi tries to cast the deserialized value to `Any`, which fails because the actual type info is lost. Error message varies: "ClassCastException" or "reflect.parametized type".
+
+    **When it surfaces:**
+    - Login/auth error responses (ApiErrorBody)
+    - Report endpoints with paginated responses that include summary stats (PaginatedData.summary)
+    - Any API call returning an error with nested fields or aggregates
