@@ -48,7 +48,7 @@ The following client projects are maintained under `projects/` (gitignored — n
 | Maduuka | POS + Bookkeeping SaaS (Africa SMBs) | Hybrid (Water-Scrum-Fall) | AI Business Intelligence — 4 features (UGX 30K–200K/mo) | Full SDLC complete — development ready |
 | BIRDC-ERP | Bespoke Banana Factory ERP (BIRDC/PIBID) | Waterfall (consulting) | AI Intelligence Phase 7 — 5 capabilities (lump-sum extension) | Full SDLC complete — 38 docs delivered |
 
-> *Project files are gitignored per the submodule design. Only the skills, domains, templates, and documentation tooling are committed to this repository. Project DOCUMENTATION-STATUS.md files within each project directory are the authoritative status reference for each engagement.*
+> *Project files are gitignored per the unified repository design. Only the skills, doctrine submodule pointer, domains, templates, and documentation tooling are committed to this repository. Project DOCUMENTATION-STATUS.md files within each project directory are the authoritative status reference for each engagement.*
 
 ---
 
@@ -247,10 +247,10 @@ To export a finished document to Word:
 
 ### Installation
 
-Add this project as a submodule in your existing repository:
+Clone this engine beside your project or copy it into your standard tools workspace:
 
 ```bash
-git submodule add https://github.com/peterbamuhigire/srs-skills.git skills
+git clone https://github.com/peterbamuhigire/srs-skills.git
 cd skills
 git checkout main
 ```
@@ -361,7 +361,7 @@ sdlc-docs-engine/
 ├── 07-agile-artifacts/              # Sprint planning, DoD, DoR, retrospectives
 ├── 08-end-user-documentation/       # User manuals, installation guides, FAQs
 ├── 09-governance-compliance/        # Traceability, audits, compliance docs
-└── skills/                          # Git submodule: https://github.com/peterbamuhigire/skills-web-dev
+└── skills/                          # Tracked portable skill catalog
     └── skills/                      # 15 category subdirectories (see "Skill Categories" below)
         ├── ai/<skill-name>/SKILL.md
         ├── android/<skill-name>/SKILL.md
@@ -382,7 +382,7 @@ sdlc-docs-engine/
 
 ### Skill Categories
 
-The portable skill catalog inside the `skills/` submodule is grouped into 15 categories. Reference any individual skill as `skills/skills/<category>/<skill-name>/SKILL.md`.
+The portable skill catalog inside the tracked `skills/` directory is grouped into 15 categories. Reference any individual skill as `skills/skills/<category>/<skill-name>/SKILL.md`.
 
 - **ai** — LLM integration, agent runtime, RAG, prompt engineering, AI app architecture, evaluation/observability, AI economics, safety, security, UX, openai-agents-sdk.
 - **android** — Android development, UI/UX, data persistence, TDD.
@@ -636,11 +636,11 @@ When re-running skills on existing documentation:
 
 ## 🧠 Design Philosophy
 
-- **Project-Workspace Targeting:** Skills execute within the submodule but target the active project workspace under `projects/<ProjectName>/`
+- **Project-Workspace Targeting:** Skills execute within this repository and target the active project workspace under `projects/<ProjectName>/`
 - **Standards-Driven Prompts:** Every skill maps to specific IEEE/ISO clauses
 - **Engineering over Authorship:** Requirements use stimulus-response patterns and logic modeling for verifiability
 - **Methodology-Agnostic Core:** Choose Waterfall, Agile, or Hybrid based on project needs
-- **Submodule Portability:** The engine is stateless; project-specific data never commits to this submodule
+- **Repository Portability:** The engine is stateless; project-specific data stays in gitignored project workspaces unless explicitly promoted to examples or documentation
 - **Token Efficiency:** 500-line hard limit on all `.md` files ensures AI comprehension and cost efficiency
 
 ---

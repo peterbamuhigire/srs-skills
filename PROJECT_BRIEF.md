@@ -60,10 +60,10 @@ Previously called **SRS-Skills** (focused only on IEEE 830 SRS generation), v3.0
 
 ## How It Works
 
-### 1. Install as Submodule
+### 1. Install as Unified Repository
 
 ```bash
-git submodule add https://github.com/peterbamuhigire/srs-skills.git skills
+git clone https://github.com/peterbamuhigire/srs-skills.git
 cd skills
 ```
 
@@ -169,7 +169,7 @@ sdlc-docs-engine/
 - Skills live under `skills/<skill-name>/SKILL.md`
 - Project data in `../project_context/` (parent project)
 - Generated docs in `../output/` (parent project)
-- No project-specific data commits to submodule
+- No project-specific data commits to the repository unless explicitly promoted to examples or documentation
 
 ---
 

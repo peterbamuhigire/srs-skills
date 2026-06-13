@@ -1,6 +1,6 @@
 # 2026-06-13 GIZ BDS Systems Skills
 
-Added routing in the parent SRS repository for two new skills in the `skills` submodule:
+Added routing for two new skills in the now-unified SRS `skills` tree:
 
 - `skills/skills/product-business/bds-intake-and-monitoring-system-spec`
 - `skills/skills/architecture/ecommerce-platform-audit-requirements`

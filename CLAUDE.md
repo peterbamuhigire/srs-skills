@@ -1,13 +1,14 @@
-# AI Assistant Protocol: SRS-Skills (Submodule Mode)
+# AI Assistant Protocol: SRS-Skills (Unified Repository Mode)
 
 ## Project Mission
 
-You are an expert Systems Architect. You are assisting in developing and executing modular, IEEE-compliant skills that reside within this submodule to generate high-fidelity Software Requirements Specifications for a parent project.
+You are an expert Systems Architect. You are assisting in developing and executing modular, IEEE-compliant skills that reside within this repository to generate high-fidelity Software Requirements Specifications for an active project workspace.
 
 ## Directory Logic & Pathing
 
-- **Submodule Root:** This directory (where root project documentation and repository-level folders live).
-- **Skills:** The `/skills/` directory is a git submodule (https://github.com/peterbamuhigire/skills-web-dev). Portable skills live at `/skills/skills/<category>/<skill-name>/SKILL.md` across 15 categories — see the "Skill Categories" section below. Use these skills for methodology selection, document generation support, and reusable engineering workflows.
+- **Repository Root:** This directory (where root project documentation and repository-level folders live).
+- **Skills:** The `/skills/` directory is tracked directly in this repository. Portable skills live at `/skills/skills/<category>/<skill-name>/SKILL.md` across 15 categories; see the "Skill Categories" section below. Use these skills for methodology selection, document generation support, and reusable engineering workflows.
+- **Finance Doctrine:** The `/doctrine/` directory is a Git submodule pointing to the canonical finance/accounting doctrine repository. Keep it current with `git submodule update --init --remote doctrine`.
 - **Domain Knowledge:** Located in `/domains/`. Read the relevant domain `INDEX.md` when generating requirements for a domain-specific project.
 - **Project Workspace:** Located in `projects/<ProjectName>/` (untracked, gitignored). All client documentation is built here.
 - **Context Source of Truth:** Read all project-specific data from `projects/<ProjectName>/_context/`.
@@ -89,7 +90,7 @@ Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: 
 
 ## Skill Categories
 
-The `skills/` submodule organizes its portable skill catalog into 15 category subdirectories under `skills/skills/<category>/<skill-name>/SKILL.md`. When routing to an individual skill, always include the category segment in the path.
+The `skills/` directory organizes its portable skill catalog into 15 category subdirectories under `skills/skills/<category>/<skill-name>/SKILL.md`. When routing to an individual skill, always include the category segment in the path.
 
 | Category | Scope |
 | --- | --- |
@@ -109,7 +110,7 @@ The `skills/` submodule organizes its portable skill catalog into 15 category su
 | `sdlc-meta` | World-class engineering, engineering management/strategy, advanced testing strategy, E2E testing, AI-assisted development, git collaboration workflow, plan implementation, project requirements, SDLC (planning/design/documentation/testing/user-deploy), markdown lint cleanup, doc-architect, capability matrix, continuous improvement, custom sub-agents, implementation status auditor, skill-writing, skill safety audit, skill composition standards, update-claude-documentation. |
 | `security` | Code safety scanner, DPIA generator, dual-auth RBAC, Linux security hardening, network security, Uganda DPPA compliance, vibe security skill, web app security audit. |
 
-To locate a specific skill quickly: `ls skills/skills/<category>/` inside the submodule, or grep `skills/skills/<category>/<skill-name>/SKILL.md`.
+To locate a specific skill quickly: `ls skills/skills/<category>/`, or grep `skills/skills/<category>/<skill-name>/SKILL.md`.
 
 ## Compliance Skills (Uganda Domain)
 
@@ -255,7 +256,7 @@ The validation kernel (`python -m engine validate <project>`) will fail if:
 
 ## Finance & Accounting Trigger
 
-Load `doctrine/accounting-finance-doctrine.md` whenever the user's request, the artefact being generated, or the code being edited touches **any** of:
+Load `doctrine/doctrine/accounting-finance-doctrine.md` whenever the user's request, the artefact being generated, or the code being edited touches **any** of:
 
 - Money flows: sales, purchases, payments, refunds, credit notes, expenses
 - Stock and inventory
@@ -272,11 +273,12 @@ Load `doctrine/accounting-finance-doctrine.md` whenever the user's request, the 
 
 When the trigger fires:
 
-1. Read `doctrine/accounting-finance-doctrine.md`.
-2. Read the relevant doctrine reference file under `doctrine/references/`.
-3. Read the relevant skill `SKILL.md` under `skills/finance/`.
-4. Apply the **finance & accounting quality gate** from `doctrine/governance/finance-accounting-quality-gate.md`.
-5. Record the gate run in the artefact manifest.
+1. Ensure the submodule is present and current with `git submodule update --init --remote doctrine`.
+2. Read `doctrine/doctrine/accounting-finance-doctrine.md`.
+3. Read the relevant doctrine reference file under `doctrine/doctrine/references/`.
+4. Read the relevant finance skill `SKILL.md` under `doctrine/skills/`.
+5. Apply the **finance & accounting quality gate** from `doctrine/governance/finance-accounting-quality-gate.md`.
+6. Record the gate run in the artefact manifest.
 
-The `finance-module-audit` skill (at `skills/finance/finance-module-audit/`) auto-runs whenever the user asks to analyse, review, audit, build, propose, or replace any software system with even a slight finance element.
+The `finance-module-audit` skill (at `doctrine/skills/finance-module-audit/`) auto-runs whenever the user asks to analyse, review, audit, build, propose, or replace any software system with even a slight finance element.
 

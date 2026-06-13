@@ -35,13 +35,13 @@ This document enumerates the installation and runtime prerequisites for the SRS-
 ### Windows
 
 - Prefer PowerShell 7.x or WSL2 to avoid legacy PowerShell/Command limitations.
-- For WSL2, map the submodule directory with consistent permissions and run scripts via `bash` or `pwsh` to maintain path parity.
-- Warning: Git submodules default to CRLF; set `core.autocrlf=false` and rely on `.gitattributes` to normalize line endings before committing to avoid mismatched checksums.
+- For WSL2, map the repository directory with consistent permissions and run scripts via `bash` or `pwsh` to maintain path parity.
+- Warning: keep `core.autocrlf` and `.gitattributes` settings consistent before committing to avoid line-ending churn.
 - If using local CMD shells, install `python3.10` from the Windows store or an official installer and add it to `%PATH%`.
 
-## Submodule Architecture Constraints
+## Repository Architecture Constraints
 
-- The engine **must** have read/write access to `../project_context/` for context ingestion and to `../output/` for artifact delivery. Document this during onboarding so parent projects add the necessary Git submodule bindings.
+- The engine **must** have read/write access to the active `projects/<ProjectName>/_context/` and output folders for context ingestion and artefact delivery. Document this during onboarding so project workspaces use the canonical SRS pathing model.
 - The repository is stateless: **no project-specific data** should ever be written under `skills/` or any part of `srs-skills`—all outputs belong to `../output/`, and inputs live in `../project_context/`.
 - The seeder skill (`01-initialize-srs`) creates the initial template files but never persists project answers inside this repo.
 

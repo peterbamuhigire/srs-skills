@@ -10,8 +10,8 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 ## Skill Families
 
-- Portable skills live under `skills/skills/<category>/<skill-name>/SKILL.md` (the `skills/` directory is a git submodule whose internal `skills/` namespace is grouped into 15 categories — see the "Skill Categories" section in `CLAUDE.md`). Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
-- Root directories are reserved for project documentation and repository-level folders such as `docs/`, `skills/` (submodule), and `projects/`, plus operational folders (`engine/`, `templates/`, `scripts/`, `domains/`) where relevant.
+- Portable skills live under `skills/skills/<category>/<skill-name>/SKILL.md`. The `skills/` directory is tracked directly in this repository, and its internal `skills/` namespace is grouped into 15 categories; see the "Skill Categories" section in `CLAUDE.md`. Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
+- Root directories are reserved for project documentation and repository-level folders such as `docs/`, `skills/`, `doctrine/`, and `projects/`, plus operational folders (`engine/`, `templates/`, `scripts/`, `domains/`) where relevant. The `doctrine/` directory is a Git submodule for the canonical finance and accounting standards repo.
 - Domain packs live under `domains/`. They are not skills by themselves; use them as context sources when a task is domain-specific.
 
 ## Baseline Routing
@@ -79,7 +79,7 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 ## Finance & Accounting Trigger
 
-Load `doctrine/accounting-finance-doctrine.md` whenever the user's request, the artefact being generated, or the code being edited touches **any** of:
+Load `doctrine/doctrine/accounting-finance-doctrine.md` whenever the user's request, the artefact being generated, or the code being edited touches **any** of:
 
 - Money flows: sales, purchases, payments, refunds, credit notes, expenses
 - Stock and inventory
@@ -96,11 +96,12 @@ Load `doctrine/accounting-finance-doctrine.md` whenever the user's request, the 
 
 When the trigger fires:
 
-1. Read `doctrine/accounting-finance-doctrine.md`.
-2. Read the relevant doctrine reference file under `doctrine/references/`.
-3. Read the relevant skill `SKILL.md` under `skills/finance/`.
-4. Apply the **finance & accounting quality gate** from `doctrine/governance/finance-accounting-quality-gate.md`.
-5. Record the gate run in the artefact manifest.
+1. Ensure the submodule is present and current with `git submodule update --init --remote doctrine`.
+2. Read `doctrine/doctrine/accounting-finance-doctrine.md`.
+3. Read the relevant doctrine reference file under `doctrine/doctrine/references/`.
+4. Read the relevant finance skill `SKILL.md` under `doctrine/skills/`.
+5. Apply the **finance & accounting quality gate** from `doctrine/governance/finance-accounting-quality-gate.md`.
+6. Record the gate run in the artefact manifest.
 
-The `finance-module-audit` skill (at `skills/finance/finance-module-audit/`) auto-runs whenever the user asks to analyse, review, audit, build, propose, or replace any software system with even a slight finance element.
+The `finance-module-audit` skill (at `doctrine/skills/finance-module-audit/`) auto-runs whenever the user asks to analyse, review, audit, build, propose, or replace any software system with even a slight finance element.
 

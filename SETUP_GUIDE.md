@@ -16,6 +16,7 @@ example and validate it, run these five commands:
 ```bash
 git clone --recurse-submodules https://github.com/peterbamuhigire/srs-skills.git
 cd srs-skills
+git submodule update --init --remote doctrine
 pip install -e ".[dev]"
 python -m engine doctor
 python -m engine new-project Acme --methodology waterfall --domain healthcare --example healthcare-saas
@@ -24,7 +25,7 @@ python -m engine validate projects/Acme
 
 The remaining sections below cover the full provisioning flow when you
 also need to create an empty GitHub repo, run the setup script, and
-wire the submodule from scratch.
+wire the unified SRS engine into that project workspace.
 
 ## Step 1: Create an Empty Repo on GitHub
 
@@ -69,8 +70,8 @@ chmod +x setup-srs-project.sh
 ### What the Script Does
 
 1. Clones your empty repo to the target directory
-2. Adds `srs-skills` as a git submodule named `skills/`
-3. Initializes all submodules recursively
+2. Adds or links the unified `srs-skills` engine under `skills/` for the target project workflow
+3. Verifies the engine checkout is available
 4. Creates `project_context/` with starter templates:
    - `vision.md` - Project vision and business goals
    - `stakeholders.md` - Stakeholder registry
@@ -83,7 +84,7 @@ chmod +x setup-srs-project.sh
 
 ```
 my-project/
-├── skills/                    # srs-skills submodule
+├── skills/                    # srs-skills engine checkout
 │   ├── docs/
 │   ├── 02-requirements-engineering/
 │   │   ├── waterfall/         # IEEE 830 SRS pipeline (8 phases)
@@ -213,23 +214,22 @@ The engine includes reusable skills under `skills/<skill-name>/SKILL.md`. These 
 | Mapping | `gis-mapping` | Location-based features |
 | Accounting | `saas-accounting-system` | Financial/bookkeeping modules |
 
-## Updating the Skills Submodule
+## Updating the SRS Engine Checkout
 
-To pull the latest version of the documentation engine:
+To pull the latest version of the documentation engine when working directly in this repository:
 
 ```bash
-cd my-project
-git submodule update --remote skills
-git add skills
-git commit -m "Update skills submodule to latest"
+cd srs-skills
+git pull origin main
 ```
 
 ## Troubleshooting
 
-### Submodule is empty after clone
+### Skills directory is missing after clone
 
 ```bash
-git submodule update --init --recursive
+git status
+git pull origin main
 ```
 
 ### Permission denied on script (Linux/macOS)
