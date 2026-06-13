@@ -21,6 +21,8 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 - General software engineering work: start with `skills/skills/sdlc-meta/world-class-engineering`, then add the narrowest relevant skills.
 - Skill authoring or upgrades inside this repository: use `skills/skills/sdlc-meta/skill-writing`.
 - Word or `.docx` output quality work: use `skills/skills/product-business/professional-word-output`.
+- BDS programme intake, selection, monitoring, or donor dashboard requirements: use `skills/skills/product-business/bds-intake-and-monitoring-system-spec`.
+- E-commerce platform, payment, API, AI, data-protection, or integration audit requirements: use `skills/skills/architecture/ecommerce-platform-audit-requirements`.
 - Anti-AI-slop pre-ship gate: run `09-governance-compliance/28-anti-ai-slop` on every generated SRS/spec/doc/code artefact before delivery (MANDATORY).
 - Slop analysis/audit: `09-governance-compliance/29-ai-slop-audit` auto-runs whenever the user asks to analyse, review, evaluate, audit, critique, or de-slop any spec, requirement, document, system, or codebase, or asks "does this look AI-generated?".
 
@@ -59,6 +61,14 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 - When a project targets cheap, vague, low-trust, or sub-premium work, treat it as a poor-fit engagement. Recommend narrowing scope to a premium deliverable, raising discovery/quality requirements, or declining the work rather than lowering the SRS quality bar.
 - Use `01-strategic-vision/07-premium-product-positioning` whenever buyer trust, executive adoption, high-ticket pricing, affluent/elite users, or premium product experience matters.
 - No generated artefact ships if it reads as AI slop. Run `09-governance-compliance/28-anti-ai-slop` as the pre-ship gate: every section must carry a concrete `_context/`-grounded element, every quality attribute a defined IEEE-982.1 / ISO 25010 metric, every requirement a deterministic test oracle, and no hallucinated API, package, or citation. Use the banned-vocabulary list and the SRS/spec avoidance block.
+
+## Document and Spreadsheet Tooling
+
+- Before promising `.docx`, `.pdf`, `.xlsx`, application registers, scoring matrices, budgets, monitoring dashboards, reports, or annexes, check whether document and spreadsheet tooling is available.
+- Prefer built-in Codex/Claude document and spreadsheet plugins where available. If unavailable, use local Python libraries such as `openpyxl`, `XlsxWriter`, `pandas`, `python-docx`, `docxtpl`, `docxcompose`, `pypandoc`, `markdown`, `PyMuPDF`, `pypdf`, `pdfplumber`, and `reportlab`.
+- Check binaries such as `pandoc`, LibreOffice/`soffice`, `wkhtmltopdf`, and `tesseract` when conversion or OCR is needed.
+- Run a minimal DOCX/XLSX smoke test on a new machine before production export.
+- Never claim a generated Word, PDF, or Excel file exists unless it was actually written and opened or validated.
 
 ## Compatibility Notes
 
