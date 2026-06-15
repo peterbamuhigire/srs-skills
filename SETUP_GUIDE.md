@@ -14,9 +14,12 @@ If you only need to stand up a new project workspace from a shipped
 example and validate it, run these five commands:
 
 ```bash
-git clone --recurse-submodules https://github.com/peterbamuhigire/srs-skills.git
+git clone https://github.com/peterbamuhigire/srs-skills.git
 cd srs-skills
-git submodule update --init --remote doctrine
+# Engineering/methodology skills live in the sibling engineering catalog engine at
+#   C:\Users\BIRDC\.claude\skills  (skills under skills/<category>/<skill-name>/SKILL.md)
+# Finance/accounting lives in the sibling finance engine at
+#   C:\wamp64\www\chwezi-accounting-doctrine  (consult its README.md router)
 pip install -e ".[dev]"
 python -m engine doctor
 python -m engine new-project Acme --methodology waterfall --domain healthcare --example healthcare-saas
@@ -153,7 +156,7 @@ Claude will use the `superpowers:brainstorming` skill to explore your requiremen
 After brainstorming, run the entry-point skill:
 
 ```
-Run skill: skills/00-meta-initialization
+Run skill: 00-meta-initialization (engineering catalog engine)
 ```
 
 This will:

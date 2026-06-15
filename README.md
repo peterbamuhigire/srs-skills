@@ -48,7 +48,7 @@ The following client projects are maintained under `projects/` (gitignored — n
 | Maduuka | POS + Bookkeeping SaaS (Africa SMBs) | Hybrid (Water-Scrum-Fall) | AI Business Intelligence — 4 features (UGX 30K–200K/mo) | Full SDLC complete — development ready |
 | BIRDC-ERP | Bespoke Banana Factory ERP (BIRDC/PIBID) | Waterfall (consulting) | AI Intelligence Phase 7 — 5 capabilities (lump-sum extension) | Full SDLC complete — 38 docs delivered |
 
-> *Project files are gitignored per the unified repository design. Only the skills, doctrine submodule pointer, domains, templates, and documentation tooling are committed to this repository. Project DOCUMENTATION-STATUS.md files within each project directory are the authoritative status reference for each engagement.*
+> *Project files are gitignored. Only domains, templates, and documentation tooling are committed to this repository. Engineering/methodology skills live in the sibling engineering catalog engine at `C:\Users\BIRDC\.claude\skills`, and finance/accounting lives in the sibling finance engine at `C:\wamp64\www\chwezi-accounting-doctrine`. Project DOCUMENTATION-STATUS.md files within each project directory are the authoritative status reference for each engagement.*
 
 ---
 
@@ -262,7 +262,7 @@ git checkout main
 Run the methodology detection skill:
 
 ```bash
-Run skill: skills/00-meta-initialization
+Run skill: 00-meta-initialization (engineering catalog engine)
 ```
 
 This will:
@@ -360,29 +360,32 @@ sdlc-docs-engine/
 ├── 06-deployment-operations/        # Deployment guides, runbooks, IaC docs
 ├── 07-agile-artifacts/              # Sprint planning, DoD, DoR, retrospectives
 ├── 08-end-user-documentation/       # User manuals, installation guides, FAQs
-├── 09-governance-compliance/        # Traceability, audits, compliance docs
-└── skills/                          # Tracked portable skill catalog
-    └── skills/                      # 15 category subdirectories (see "Skill Categories" below)
-        ├── ai/<skill-name>/SKILL.md
-        ├── android/<skill-name>/SKILL.md
-        ├── architecture/<skill-name>/SKILL.md
-        ├── backend-databases/<skill-name>/SKILL.md
-        ├── devops-cloud/<skill-name>/SKILL.md
-        ├── finance-accounting/<skill-name>/SKILL.md
-        ├── frontend-ux/<skill-name>/SKILL.md
-        ├── gis/<skill-name>/SKILL.md
-        ├── ios/<skill-name>/SKILL.md
-        ├── languages/<skill-name>/SKILL.md
-        ├── mobile-cross/<skill-name>/SKILL.md
-        ├── product-business/<skill-name>/SKILL.md
-        ├── saas/<skill-name>/SKILL.md
-        ├── sdlc-meta/<skill-name>/SKILL.md
-        └── security/<skill-name>/SKILL.md
+└── 09-governance-compliance/        # Traceability, audits, compliance docs
+
+# Engineering/methodology skills live in the SIBLING engineering catalog engine at
+#   C:\Users\BIRDC\.claude\skills  (15 category subdirectories; see "Skill Categories" below)
+#       skills/ai/<skill-name>/SKILL.md
+#       skills/android/<skill-name>/SKILL.md
+#       skills/architecture/<skill-name>/SKILL.md
+#       skills/backend-databases/<skill-name>/SKILL.md
+#       skills/devops-cloud/<skill-name>/SKILL.md
+#       skills/finance-accounting/<skill-name>/SKILL.md
+#       skills/frontend-ux/<skill-name>/SKILL.md
+#       skills/gis/<skill-name>/SKILL.md
+#       skills/ios/<skill-name>/SKILL.md
+#       skills/languages/<skill-name>/SKILL.md
+#       skills/mobile-cross/<skill-name>/SKILL.md
+#       skills/product-business/<skill-name>/SKILL.md
+#       skills/saas/<skill-name>/SKILL.md
+#       skills/sdlc-meta/<skill-name>/SKILL.md
+#       skills/security/<skill-name>/SKILL.md
+# Finance/accounting lives in the SIBLING finance engine at
+#   C:\wamp64\www\chwezi-accounting-doctrine  (consult its README.md router)
 ```
 
 ### Skill Categories
 
-The portable skill catalog inside the tracked `skills/` directory is grouped into 15 categories. Reference any individual skill as `skills/skills/<category>/<skill-name>/SKILL.md`.
+The portable skill catalog lives in the sibling **engineering catalog engine** at `C:\Users\BIRDC\.claude\skills`, grouped into 15 categories. Reference any individual skill as `skills/<category>/<skill-name>/SKILL.md` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`).
 
 - **ai** — LLM integration, agent runtime, RAG, prompt engineering, AI app architecture, evaluation/observability, AI economics, safety, security, UX, openai-agents-sdk.
 - **android** — Android development, UI/UX, data persistence, TDD.
@@ -905,7 +908,7 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 We welcome contributions! To add or improve skills:
 
 1. Review existing skills for format and structure
-2. Follow the `skills/skills/sdlc-meta/skill-writing/` meta-skill guidelines
+2. Follow the `sdlc-meta/skill-writing/` meta-skill guidelines in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`)
 3. Ensure 500-line limit and two-tier documentation structure
 4. Add examples and anti-patterns
 5. Update `README.md` and `PROJECT_BRIEF.md`
@@ -955,6 +958,6 @@ This project builds on industry standards:
 |------|---------|--------|
 | **Waterfall SRS** | `02-requirements-engineering/waterfall/01-initialize-srs` | IEEE 830 SRS |
 | **Agile User Stories** | `02-requirements-engineering/agile/01-user-story-generation` | User story backlog |
-| **Methodology Selection** | `skills/00-meta-initialization` | Documentation roadmap |
+| **Methodology Selection** | `00-meta-initialization` (engineering catalog engine) | Documentation roadmap |
 | **Design Docs** | `03-design-documentation/01-high-level-design` | HLD, architecture diagrams |
 | **Traceability** | `09-governance-compliance/01-traceability-matrix` | RTM, audit report |
