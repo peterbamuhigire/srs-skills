@@ -10,19 +10,19 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 ## Skill Families
 
-- Portable skills live under `skills/skills/<category>/<skill-name>/SKILL.md`. The `skills/` directory is tracked directly in this repository, and its internal `skills/` namespace is grouped into 15 categories; see the "Skill Categories" section in `CLAUDE.md`. Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
-- Root directories are reserved for project documentation and repository-level folders such as `docs/`, `skills/`, `doctrine/`, and `projects/`, plus operational folders (`engine/`, `templates/`, `scripts/`, `domains/`) where relevant. The `doctrine/` directory is a Git submodule for the canonical finance and accounting standards repo.
+- Engineering/methodology skills live in the sibling **engineering catalog engine** at `C:\Users\BIRDC\.claude\skills` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router, then read the matching SKILL.md directly. Its `<category>` namespace is grouped into 15 categories; see the "Skill Categories" section in `CLAUDE.md`. Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
+- Root directories are reserved for project documentation and repository-level folders such as `docs/` and `projects/`, plus operational folders (`engine/`, `templates/`, `scripts/`, `domains/`) where relevant. Finance/accounting is the standalone cross-cutting **finance engine** at `C:\wamp64\www\chwezi-accounting-doctrine` — consult it whenever finance/IFRS/IAS/tax/bookkeeping arises, in addition to the active work.
 - Domain packs live under `domains/`. They are not skills by themselves; use them as context sources when a task is domain-specific.
 
 ## Baseline Routing
 
-- New client-documentation or methodology-selection requests: start with `skills/00-meta-initialization`.
+- New client-documentation or methodology-selection requests: start with `00-meta-initialization` (engineering catalog engine).
 - SDLC document generation or review: route to the relevant numbered phase skill first, then load supporting domain references from `domains/<domain>/`.
-- General software engineering work: start with `skills/skills/sdlc-meta/world-class-engineering`, then add the narrowest relevant skills.
-- Skill authoring or upgrades inside this repository: use `skills/skills/sdlc-meta/skill-writing`.
-- Word or `.docx` output quality work: use `skills/skills/product-business/professional-word-output`.
-- BDS programme intake, selection, monitoring, or donor dashboard requirements: use `skills/skills/product-business/bds-intake-and-monitoring-system-spec`.
-- E-commerce platform, payment, API, AI, data-protection, or integration audit requirements: use `skills/skills/architecture/ecommerce-platform-audit-requirements`.
+- General software engineering work: start with `sdlc-meta/world-class-engineering` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`), then add the narrowest relevant skills.
+- Skill authoring or upgrades: use `sdlc-meta/skill-writing` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`).
+- Word or `.docx` output quality work: use `product-business/professional-word-output` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`).
+- BDS programme intake, selection, monitoring, or donor dashboard requirements: use `product-business/bds-intake-and-monitoring-system-spec` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`).
+- E-commerce platform, payment, API, AI, data-protection, or integration audit requirements: use `architecture/ecommerce-platform-audit-requirements` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`).
 - Anti-AI-slop pre-ship gate: run `09-governance-compliance/28-anti-ai-slop` on every generated SRS/spec/doc/code artefact before delivery (MANDATORY).
 - Slop analysis/audit: `09-governance-compliance/29-ai-slop-audit` auto-runs whenever the user asks to analyse, review, evaluate, audit, critique, or de-slop any spec, requirement, document, system, or codebase, or asks "does this look AI-generated?".
 
@@ -79,7 +79,7 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 ## Finance & Accounting Trigger
 
-Load `doctrine/doctrine/accounting-finance-doctrine.md` whenever the user's request, the artefact being generated, or the code being edited touches **any** of:
+Consult the finance engine at `C:\wamp64\www\chwezi-accounting-doctrine` whenever the user's request, the artefact being generated, or the code being edited touches **any** of:
 
 - Money flows: sales, purchases, payments, refunds, credit notes, expenses
 - Stock and inventory
@@ -96,12 +96,11 @@ Load `doctrine/doctrine/accounting-finance-doctrine.md` whenever the user's requ
 
 When the trigger fires:
 
-1. Ensure the submodule is present and current with `git submodule update --init --remote doctrine`.
-2. Read `doctrine/doctrine/accounting-finance-doctrine.md`.
-3. Read the relevant doctrine reference file under `doctrine/doctrine/references/`.
-4. Read the relevant finance skill `SKILL.md` under `doctrine/skills/`.
-5. Apply the **finance & accounting quality gate** from `doctrine/governance/finance-accounting-quality-gate.md`.
-6. Record the gate run in the artefact manifest.
+1. Consult the finance engine at `C:\wamp64\www\chwezi-accounting-doctrine` — start from its `README.md` router.
+2. Follow the router to the relevant doctrine and reference material in that engine.
+3. Read the relevant finance skill `SKILL.md` in that engine.
+4. Apply the **finance & accounting quality gate** defined in that engine.
+5. Record the gate run in the artefact manifest.
 
-The `finance-module-audit` skill (at `doctrine/skills/finance-module-audit/`) auto-runs whenever the user asks to analyse, review, audit, build, propose, or replace any software system with even a slight finance element.
+The `finance-module-audit` skill (in the finance engine at `C:\wamp64\www\chwezi-accounting-doctrine`) auto-runs whenever the user asks to analyse, review, audit, build, propose, or replace any software system with even a slight finance element.
 

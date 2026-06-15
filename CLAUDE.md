@@ -1,4 +1,4 @@
-# AI Assistant Protocol: SRS-Skills (Unified Repository Mode)
+# AI Assistant Protocol: SRS-Skills
 
 ## Project Mission
 
@@ -7,8 +7,8 @@ You are an expert Systems Architect. You are assisting in developing and executi
 ## Directory Logic & Pathing
 
 - **Repository Root:** This directory (where root project documentation and repository-level folders live).
-- **Skills:** The `/skills/` directory is tracked directly in this repository. Portable skills live at `/skills/skills/<category>/<skill-name>/SKILL.md` across 15 categories; see the "Skill Categories" section below. Use these skills for methodology selection, document generation support, and reusable engineering workflows.
-- **Finance Doctrine:** The `/doctrine/` directory is a Git submodule pointing to the canonical finance/accounting doctrine repository. Keep it current with `git submodule update --init --remote doctrine`.
+- **Skills:** Engineering/methodology skills live in the sibling **engineering catalog engine** at `C:\Users\BIRDC\.claude\skills` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router, then read the matching SKILL.md directly. Use these skills for methodology selection, document generation support, and reusable engineering workflows.
+- **Finance/Accounting:** Finance/accounting is the standalone cross-cutting **finance engine** at `C:\wamp64\www\chwezi-accounting-doctrine` — consult it whenever finance/IFRS/IAS/tax/bookkeeping arises, in addition to the active work.
 - **Domain Knowledge:** Located in `/domains/`. Read the relevant domain `INDEX.md` when generating requirements for a domain-specific project.
 - **Project Workspace:** Located in `projects/<ProjectName>/` (untracked, gitignored). All client documentation is built here.
 - **Context Source of Truth:** Read all project-specific data from `projects/<ProjectName>/_context/`.
@@ -40,7 +40,7 @@ If `projects/<ProjectName>/_context/methodology.md` declares `methodology: hybri
 ## Build Document Protocol
 
 When the user says "build the [document]":
-1. Resolve the document directory using the mapping in `skills/00-meta-initialization/new-project/SKILL.md`
+1. Resolve the document directory using the mapping in `00-meta-initialization/new-project/SKILL.md` (engineering catalog engine)
 2. Check for `manifest.md` in the document directory — use it if present, otherwise sort all `*.md` files (excluding `manifest.md`) alphabetically
 3. Execute: `bash scripts/build-doc.sh <doc-dir> <OutputName>`
 4. Run `projects/<ProjectName>/export-docs.ps1` on Windows or `projects/<ProjectName>/export-docs.sh` on bash-capable shells to refresh `projects/<ProjectName>/export/`
@@ -90,7 +90,7 @@ Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: 
 
 ## Skill Categories
 
-The `skills/` directory organizes its portable skill catalog into 15 category subdirectories under `skills/skills/<category>/<skill-name>/SKILL.md`. When routing to an individual skill, always include the category segment in the path.
+The engineering catalog engine (`C:\Users\BIRDC\.claude\skills`) organizes its portable skill catalog into 15 category subdirectories under `<category>/<skill-name>/...`. When routing to an individual skill, always include the category segment in the path.
 
 | Category | Scope |
 | --- | --- |
@@ -110,7 +110,7 @@ The `skills/` directory organizes its portable skill catalog into 15 category su
 | `sdlc-meta` | World-class engineering, engineering management/strategy, advanced testing strategy, E2E testing, AI-assisted development, git collaboration workflow, plan implementation, project requirements, SDLC (planning/design/documentation/testing/user-deploy), markdown lint cleanup, doc-architect, capability matrix, continuous improvement, custom sub-agents, implementation status auditor, skill-writing, skill safety audit, skill composition standards, update-claude-documentation. |
 | `security` | Code safety scanner, DPIA generator, dual-auth RBAC, Linux security hardening, network security, Uganda DPPA compliance, vibe security skill, web app security audit. |
 
-To locate a specific skill quickly: `ls skills/skills/<category>/`, or grep `skills/skills/<category>/<skill-name>/SKILL.md`.
+To locate a specific skill quickly: `ls "C:\Users\BIRDC\.claude\skills\skills\<category>"` in the engineering catalog engine, then read the matching `<skill-name>/SKILL.md`.
 
 ## Compliance Skills (Uganda Domain)
 
@@ -199,7 +199,7 @@ Project workspaces (`projects/<ProjectName>/`) are **local only** and gitignored
 
 ### Filling Context Gaps
 
-When the kernel reports `[CONTEXT-GAP: <topic>]`, consult `skills/00-meta-initialization/new-project/prompts/context-gap-fillers.md` before authoring from scratch. It contains an opinionated prompt per topic you can paste into a fresh assistant session.
+When the kernel reports `[CONTEXT-GAP: <topic>]`, consult `00-meta-initialization/new-project/prompts/context-gap-fillers.md` (engineering catalog engine) before authoring from scratch. It contains an opinionated prompt per topic you can paste into a fresh assistant session.
 
 ### Failure Protocols
 
@@ -256,7 +256,7 @@ The validation kernel (`python -m engine validate <project>`) will fail if:
 
 ## Finance & Accounting Trigger
 
-Load `doctrine/doctrine/accounting-finance-doctrine.md` whenever the user's request, the artefact being generated, or the code being edited touches **any** of:
+Consult the finance engine at `C:\wamp64\www\chwezi-accounting-doctrine` whenever the user's request, the artefact being generated, or the code being edited touches **any** of:
 
 - Money flows: sales, purchases, payments, refunds, credit notes, expenses
 - Stock and inventory
@@ -273,12 +273,11 @@ Load `doctrine/doctrine/accounting-finance-doctrine.md` whenever the user's requ
 
 When the trigger fires:
 
-1. Ensure the submodule is present and current with `git submodule update --init --remote doctrine`.
-2. Read `doctrine/doctrine/accounting-finance-doctrine.md`.
-3. Read the relevant doctrine reference file under `doctrine/doctrine/references/`.
-4. Read the relevant finance skill `SKILL.md` under `doctrine/skills/`.
-5. Apply the **finance & accounting quality gate** from `doctrine/governance/finance-accounting-quality-gate.md`.
-6. Record the gate run in the artefact manifest.
+1. Consult the finance engine at `C:\wamp64\www\chwezi-accounting-doctrine` — start from its `README.md` router.
+2. Follow the router to the relevant doctrine and reference material in that engine.
+3. Read the relevant finance skill `SKILL.md` in that engine.
+4. Apply the **finance & accounting quality gate** defined in that engine.
+5. Record the gate run in the artefact manifest.
 
-The `finance-module-audit` skill (at `doctrine/skills/finance-module-audit/`) auto-runs whenever the user asks to analyse, review, audit, build, propose, or replace any software system with even a slight finance element.
+The `finance-module-audit` skill (in the finance engine at `C:\wamp64\www\chwezi-accounting-doctrine`) auto-runs whenever the user asks to analyse, review, audit, build, propose, or replace any software system with even a slight finance element.
 

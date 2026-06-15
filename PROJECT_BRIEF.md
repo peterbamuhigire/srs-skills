@@ -70,7 +70,7 @@ cd skills
 ### 2. Select Methodology
 
 ```bash
-Run skill: skills/00-meta-initialization
+Run skill: 00-meta-initialization (engineering catalog engine)
 ```
 
 The engine scans your project and recommends Waterfall, Agile, or Hybrid based on:
@@ -218,7 +218,7 @@ Built-in IEEE 1012 auditing ensures correctness, completeness, consistency.
 **Scenario:** FDA-regulated medical device requires IEEE 830 SRS
 
 **Workflow:**
-1. Run `skills/00-meta-initialization` → Detects "FDA", recommends Waterfall
+1. Run `00-meta-initialization` (engineering catalog engine) → Detects "FDA", recommends Waterfall
 2. Run `02-requirements-engineering/waterfall/01-initialize-srs`
 3. Populate context files (`vision.md`, `features.md`, `business_rules.md`)
 4. Run phases 02-08 sequentially
@@ -233,7 +233,7 @@ Built-in IEEE 1012 auditing ensures correctness, completeness, consistency.
 **Scenario:** E-commerce startup needs rapid iteration with user stories
 
 **Workflow:**
-1. Run `skills/00-meta-initialization` → Detects "MVP", recommends Agile
+1. Run `00-meta-initialization` (engineering catalog engine) → Detects "MVP", recommends Agile
 2. Run `01-strategic-vision/01-prd-generation` → Lightweight PRD
 3. Run `02-requirements-engineering/agile/01-user-story-generation`
 4. Output: User Stories + Story Map + Sprint-ready backlog
@@ -247,7 +247,7 @@ Built-in IEEE 1012 auditing ensures correctness, completeness, consistency.
 **Scenario:** SaaS platform with regulated backend + agile frontend
 
 **Workflow:**
-1. Run `skills/00-meta-initialization` → Detects microservices, recommends Hybrid
+1. Run `00-meta-initialization` (engineering catalog engine) → Detects microservices, recommends Hybrid
 2. Backend: Run `02-requirements-engineering/waterfall/` → SRS for payment service
 3. Frontend: Run `02-requirements-engineering/agile/` → User stories for UI
 4. Shared: Run `03-design-documentation/01-high-level-design` → Unified architecture
@@ -284,7 +284,7 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 
 | Task | Command | Output |
 |------|---------|--------|
-| **Select Methodology** | `skills/00-meta-initialization` | `methodology.md`, `doc_roadmap.md` |
+| **Select Methodology** | `00-meta-initialization` (engineering catalog engine) | `methodology.md`, `doc_roadmap.md` |
 | **Waterfall SRS** | `02-requirements-engineering/waterfall/01-initialize-srs` | IEEE 830 SRS |
 | **Agile User Stories** | `02-requirements-engineering/agile/01-user-story-generation` | User story backlog |
 | **High-Level Design** | `03-design-documentation/01-high-level-design` | HLD with C4 diagrams |
