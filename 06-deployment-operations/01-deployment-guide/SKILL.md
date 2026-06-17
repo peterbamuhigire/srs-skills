@@ -9,7 +9,7 @@ metadata:
   quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
   anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
   outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `README.md`, `logic.prompt` when deeper detail is needed."
+  references: "Use `README.md`, `logic.prompt` when deeper detail is needed. For Ugandan government/local-government/public-entity/NGO/donor-funded clients, ALSO apply `09-governance-compliance/05-formal-review-gates/references/uganda-public-sector-and-ngo-delivery-constraints.md` — a cutover cannot precede the funding and procurement sign-offs that authorise it, and the go-live/hypercare window must avoid FY-close, board-of-survey, and audit blackout periods."
 ---
 
 # Deployment Guide Skill
@@ -63,6 +63,7 @@ Document every action that shall occur before deployment begins:
 - Maintenance window scheduling (duration estimate, approval)
 - Dependency verification (external services, third-party APIs)
 - Artifact readiness (build artifacts, container images, checksums)
+- For Ugandan government/local-government/public-entity/NGO/donor-funded clients, add procurement and fiscal pre-checks: the contract is signed (and Solicitor-General-cleared where applicable), the Contracts Committee award stands, the funding instrument (warrant/release or signed grant tranche) and uncommitted quarterly balance are confirmed, and the cutover window avoids financial-year close, board-of-survey, and audit blackout periods. A cutover SHALL NOT precede these sign-offs. See `09-governance-compliance/05-formal-review-gates/references/uganda-public-sector-and-ngo-delivery-constraints.md`; the finance engine (`C:\wamp64\www\chwezi-accounting-doctrine`) is the authority for the substance, and no statutory threshold is fixed as current.
 
 ### Step 3: Define Deployment Steps
 

@@ -11,7 +11,7 @@ metadata:
   quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
   anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
   outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use sibling files in this directory when deeper detail is needed."
+  references: "Use sibling files in this directory when deeper detail is needed. For Ugandan government/local-government/public-entity/NGO/donor-funded clients, ALSO apply `references/uganda-public-sector-and-ngo-delivery-constraints.md` — sequence each review gate after the funding and procurement sign-offs that authorise it, and away from FY-close/audit blackout periods."
 ---
 
 # Skill: Formal Review Gates (PSR / CSR / FSAR)
@@ -103,6 +103,10 @@ When generating any review gate document:
 3. Read the relevant completed documents (HLD for PSR, LLD/API spec for CSR, Test Report for FSAR)
 4. Generate the document with all sections populated from available context
 5. Flag with `<!-- TODO: CUSTOMER SIGNATURE REQUIRED -->` any field requiring physical signature
+
+## Ugandan Public-Sector / NGO Delivery Constraints
+
+For Ugandan government, local-government, public-entity, NGO, or donor-funded clients, treat funding availability and procurement sign-off as *blocking* gates. Sequence each review gate (and especially the FSAR-to-deployment handover) **after** the procurement and fiscal sign-offs that fund and authorise the work, and record the warrant/release and Contracts Committee/contract-signature/Solicitor-General evidence at the gate. Schedule the gate away from financial-year close, board-of-survey, and audit blackout periods. See `references/uganda-public-sector-and-ngo-delivery-constraints.md`; the finance engine (`C:\wamp64\www\chwezi-accounting-doctrine`) is the authority for the substance, and no statutory threshold is fixed here as current.
 
 ## Standards References
 - IEEE 1028-2008: Software Reviews and Audits
