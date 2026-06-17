@@ -9,7 +9,7 @@ metadata:
   quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
   anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
   outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `README.md`, `logic.prompt` when deeper detail is needed."
+  references: "Use `README.md`, `logic.prompt` when deeper detail is needed. For Ugandan government/local-government/public-entity/NGO/donor-funded clients, ALSO apply `09-governance-compliance/05-formal-review-gates/references/uganda-public-sector-and-ngo-delivery-constraints.md` for sector risk-register additions (budget-release delays, procurement/PPDA-suspension exposure, donor-audit findings & ineligible-cost recovery, political/electoral disruption, FX volatility on donor budgets, procurement-unit staff turnover)."
 ---
 
 # Risk Assessment Skill
@@ -73,6 +73,8 @@ This skill generates a systematic risk assessment that identifies, analyzes, and
    - **Project:** Schedule delays, scope creep, budget overruns, stakeholder misalignment
 
 5. The skill SHALL analyze each risk using the 5x5 probability-impact matrix and assign a composite risk score.
+
+   - For Ugandan government, local-government, public-entity, NGO, or donor-funded engagements, the skill SHALL also evaluate the sector risk-register additions in `09-governance-compliance/05-formal-review-gates/references/uganda-public-sector-and-ngo-delivery-constraints.md` (budget-release/warrant delays, procurement-process delays, PPDA suspension/administrative-review exposure, donor-audit findings and ineligible-cost recovery, political/electoral-cycle disruption, exchange-rate volatility on USD/EUR donor budgets, and procurement/finance staff turnover), scoring and assigning owners per this skill's method. The finance engine (`C:\wamp64\www\chwezi-accounting-doctrine`) is the authority for the substance, and no statutory threshold is fixed as current in any mitigation.
 
 6. The skill SHALL construct a Risk Register Table with columns: Risk ID, Category, Description, Probability (1-5), Impact (1-5), Risk Score, Mitigation Strategy, Owner, Status.
 

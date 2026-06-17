@@ -15,3 +15,6 @@ htmlcov/
 .tox/
 dist/
 build/
+
+# Stale local mirror of the finance engine (canonical: C:\wamp64\www\chwezi-accounting-doctrine; never commit)
+/doctrine/
