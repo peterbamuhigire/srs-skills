@@ -8,6 +8,14 @@ Hybrid and regulated delivery are now documented as explicit operating models ra
 - Regulated evidence chain: [docs/regulated-evidence-model.md](/C:/wamp64/www/srs-skills/docs/regulated-evidence-model.md)
 - Repo-wide deterministic enforcement gates: [docs/deterministic-governance.md](/C:/wamp64/www/srs-skills/docs/deterministic-governance.md)
 
+## Architecture & cross-cutting engines (updated 2026-06-21)
+
+This engine is one of several sibling skill engines on the host. None is natively discovered any more — every engine, including this one, is consulted through the global routing table by globbing `SKILL.md` directly and reading the matched file(s). Cross-cutting engines are **referenced** (path resolved per device from the global router), never mirrored into this repo.
+
+- **Design / UX visual layer → `design-system-skills`** (`C:\wamp64\www\design-system-skills`). This is the single home for all design, typography, UI/UX, and visual-formatting skills plus the anti-AI-slop visual doctrine. Consult it **in addition** for any presentation-layer work: the VISUAL side of a UX/design specification (design systems, UI tokens, dashboard/visual quality, the look of a generated `.docx`). The **content and structure** of specs — IA, requirements, acceptance criteria, the spec document itself — stays in this engine. Phase 03 design/UX skills here describe *what* the design must satisfy; the design engine governs *how* it looks.
+- **Finance / accounting → `chwezi-accounting-doctrine`** (referenced, not mirrored). Any money/ledger/tax/IFRS/IAS documentation work routes to the finance engine source via its `README.md` router. The old "build once, mirror everywhere" finance mirror was never populated — the empty `skills/finance/` shells were removed on 2026-06-21. Finance skills do **not** live inside this engine; only the `domains/finance/` knowledge base (PCI-DSS, SOX, AML defaults) is local.
+- **Engineering / methodology → engineering catalog engine** (see "Skill Categories" below), also referenced, not mirrored.
+
 ## SaaS + AI-on-SaaS + Agent Documentation Stack (May 2026)
 
 Major SDLC documentation layer added across phases 01–09 for SaaS products, AI-on-SaaS features, agent products, AI incident response, and agent compliance attestation.
