@@ -23,6 +23,31 @@ are absent from all storage layers post-authorization.
 ---
 
 <!-- [DOMAIN-DEFAULT: retail] Source: domains/retail/references/nfr-defaults.md -->
+#### RET-NFR-006: Product Data Quality
+The system shall prevent publication of sellable products whose required product data is incomplete for the active channel, including SKU, product name, category, price, tax class, fulfilment eligibility, return eligibility, inventory status, searchable attributes, product image or media rule, and accessibility text for meaningful images.
+
+**Verifiability:** Attempt to publish 50 products with missing required fields across web, POS, and marketplace channels. The system must block publication for every incomplete product, identify the missing fields, and create an exception record with owner, channel, and due date.
+<!-- [END DOMAIN-DEFAULT] -->
+
+---
+
+<!-- [DOMAIN-DEFAULT: retail] Source: domains/retail/references/nfr-defaults.md -->
+#### RET-NFR-007: Retail Event Auditability
+The system shall preserve an immutable audit trail for every retail event that can affect price, discount, promotion, markdown, inventory, refund, loyalty balance, gift card/store credit, vendor funding, shrink, or financial reporting. Each event must record event ID, actor, role, timestamp, source system, previous state, new state, reason code, approval status, and evidence pointer where applicable.
+
+**Verifiability:** Sample 100 events across price change, promotion approval, manual discount, refund, stock adjustment, return disposition, vendor funding claim, and shrink incident. Each sampled event must contain the required audit fields and must not allow destructive edit or deletion after posting; corrections must be represented by reversal or superseding event.
+<!-- [END DOMAIN-DEFAULT] -->
+
+---
+
+<!-- [DOMAIN-DEFAULT: retail] Source: domains/retail/references/nfr-defaults.md -->
+#### RET-NFR-008: Dashboard Freshness and Lineage
+The system shall show data freshness, source system, transformation rule, and reconciliation status for every retail KPI used in an executive, finance, merchandising, store operations, fulfilment, or weekly business review dashboard.
+
+**Verifiability:** Select gross sales, gross margin, markdown rate, return rate, fulfilment SLA, shrink rate, stock cover, and vendor funding recovery in the dashboard. Each metric must expose source system, latest refresh timestamp, transformation rule, and reconciliation status. Metrics whose source data is stale or unreconciled must display a visible exception status.
+<!-- [END DOMAIN-DEFAULT] -->
+
+<!-- [DOMAIN-DEFAULT: retail] Source: domains/retail/references/nfr-defaults.md -->
 #### RET-NFR-002: Checkout Performance
 The system shall render each step of the checkout flow — including cart review,
 address entry, shipping selection, and payment confirmation pages — within

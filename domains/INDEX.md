@@ -12,7 +12,7 @@ to auto-inject `[DOMAIN-DEFAULT]` tagged requirements into the project scaffold.
 | Healthcare | HIPAA, HL7/FHIR, FDA 21 CFR | High | [healthcare/](healthcare/INDEX.md) |
 | Finance | PCI-DSS, SOX, AML/KYC | High | [finance/](finance/INDEX.md) |
 | Education | FERPA, COPPA | Medium | [education/](education/INDEX.md) |
-| Retail | PCI-DSS, GDPR | Medium | [retail/](retail/INDEX.md) |
+| Retail | PCI-DSS, data protection, POS/inventory controls, finance reconciliation | Medium-High | [retail/](retail/INDEX.md) |
 | Logistics | DOT, ISO 28000 | Medium | [logistics/](logistics/INDEX.md) |
 | Government | FISMA, FedRAMP, GDPR | High | [government/](government/INDEX.md) |
 | Uganda | DPPA 2019, PPDA Act, Income Tax Act, NSSF Act, EFRIS, OAG | High | [uganda/](uganda/INDEX.md) |
