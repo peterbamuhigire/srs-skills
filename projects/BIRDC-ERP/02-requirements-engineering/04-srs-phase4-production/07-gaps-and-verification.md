@@ -2,7 +2,7 @@
 
 ## 6.1 Open Context Gaps
 
-The following gaps were identified during requirements generation. No assumption has been made to fill these gaps; the corresponding requirements are marked with [CONTEXT-GAP] tags and flagged below. No downstream Phase 4 development activity that depends on these gaps may begin until the gap is resolved.
+The following gaps were identified during requirements generation. No assumption has been made to fill these gaps; the corresponding requirements are marked with (open item tracked in the Open Items Register) tags and flagged below. No downstream Phase 4 development activity that depends on these gaps may begin until the gap is resolved.
 
 | Gap ID | Requirement(s) Affected | Description | Owner | Severity |
 |---|---|---|---|---|
@@ -97,7 +97,7 @@ Every functional requirement maps to a business goal in the vision document. The
 |---|---|
 | All FRs follow stimulus-response pattern | Pass |
 | All FRs have a deterministic test oracle | Pass |
-| All unresolved gaps flagged with [CONTEXT-GAP] | Pass — 1 gap (GAP-010) flagged across 7 requirements |
+| All unresolved gaps flagged with (open item tracked in the Open Items Register) | Pass — 1 gap (GAP-010) flagged across 7 requirements |
 | No vague adjectives without measurable thresholds | Pass |
 | All acronyms defined on first use | Pass (see Section 1.3) |
 | All mathematical expressions use LaTeX | Pass |

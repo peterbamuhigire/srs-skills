@@ -63,6 +63,13 @@ Per project:
 - **`phase09.compliance_evidence`** (new, stricter): each control in `_registry/controls.yaml` needs a `## CTRL-XXX` section under `09-governance-compliance/` containing the words Evidence, Owner/Reviewer, Status, and a linked artifact (`FR-12345` digit-form OR an `NN-*.md` path — note `FR-PRIV-001` style IDs do NOT match the digit regex; cite an `NN-*.md` artifact path).
 - **Glossary registry** — ALL-CAPS acronyms (≥2 chars) and CamelCase tokens used in artifacts must be defined in the canonical glossary, then `sync`'d into `_registry/glossary.yaml`. (e.g. AcademiaPro needed `PTA`.)
 - **Export script bug** — older per-project `export-docs.sh`/`.ps1` append `_2`,`_3`… duplicates instead of overwriting. The current engine template (`engine/scaffold.py`) overwrites correctly but only writes `if not exists`. Fix: regenerate both scripts from the template, purge `export/*_[0-9].docx`, re-export.
+- **Glossary must be dash-bullet form** — `sync` only extracts `- **Term:** definition` lines. If a project's `_context/glossary.md` uses a no-dash/table format, `sync` extracts ZERO terms and `glossary_registry` fails wholesale (latent on Aqar, BIRDC, Longhorn, Kulima). Fix: convert glossary to `- **Term:** def` lines, then `sync`.
+- **`04-development/` dir token** — phase04 gate matches the literal path token `/04-development/`; projects with `04-development-artifacts/` need a `04-development/` dir (rename or add root files there).
+- **Missing screenshot images** — user manuals referencing `screenshots/*.png` that don't exist crash the Pandoc docx build; Gate must add placeholder PNGs before building.
+
+## 4.2 CRITICAL: always validate with `PYTHONIOENCODING=utf-8`
+
+The engine validator crashes (`UnicodeEncodeError`, cp1252) on any non-ASCII homoglyph in an artefact and prints only PARTIAL findings before dying — so finding counts are UNDER-counts until the crash is fixed. BIRDC showed 18 HIGH but was really **151** once a Cyrillic `А` was fixed and validate ran with `PYTHONIOENCODING=utf-8`. EVERY agent (diagnose, execute, gate) MUST: (1) set `PYTHONIOENCODING=utf-8` before `python -m engine ...`; (2) scan artefacts for homoglyphs/mojibake and fix first; (3) treat diagnose-stage counts as lower bounds. Update Wave 2–4 diagnoses' counts accordingly.
 
 ## 5. BIRDC → Longhorn generalization (Wave 1 special step)
 
@@ -115,11 +122,13 @@ Per project, three stages:
 | Wave | Project | Stage | Status | Baseline | Last update |
 |---|---|---|---|---|---|
 | 0 | AcademiaPro | Gate | **DONE — PASS** | v1.1 | 2026-06-28 |
-| 1 | BIRDC-ERP | Diagnose | in progress (subagent; 18 HIGH at start) | v? | 2026-06-28 |
-| 1 | Longhorn ERP | Diagnose | in progress (subagent; 68 HIGH at start) | v? | 2026-06-28 |
-| 2 | Aqar-Property | — | not started | v? | — |
-| 2 | Kulima (docs-only) | — | not started | v? | — |
-| 3 | Maduuka | — | not started | v? | — |
+| 1 | BIRDC-ERP | Gate | **DONE — PASS** (anti-slop A; finance-audit pass-with-caveats; 40 docx rebuilt; export clean, 0 dups; byline fixed to BIRDC staff role) | v1.0 | 2026-06-28 |
+| 1 | Longhorn ERP | Gate | Execute DONE (PASS, from 68 HIGH); Gate (audits/docx/export) in progress | v? | 2026-06-28 |
+
+**Wave 1 decisions (Peter, 2026-06-28):** (1) BIRDC is single-tenant. It has **NO multi-tenant scaffold** — do not mention multi-tenancy anywhere in BIRDC docs (the diagnosis claim of a tenant scaffold was wrong; no tenancy ADR, DC-006 unchanged). (2) Longhorn's white-label/hospitality/sibling-integration/source-strategy gaps AND a tamper-evident hash-chained audit log are all specced `Planned`/`Roadmap`. (3) Execute BIRDC + Longhorn in parallel. Correction relayed to the BIRDC Execute agent mid-run.
+| 2 | Aqar-Property | Gate | Execute DONE (PASS, from 37 HIGH); Gate (audits/docx/export) in progress | v? | 2026-06-28 |
+| 2 | Kulima (docs-only) | Gate | Execute DONE (PASS; 43 docs authored, IBM Plex typeface); Gate (audits/docx/export) in progress | v? | 2026-06-28 |
+| 3 | Maduuka | Diagnose | in progress (subagent; two repos Maduuka + Maduuka-App; ~68 HIGH at triage) | v? | 2026-06-28 |
 | 4 | Medic8 | — | not started | v? | — |
 
 ### 9.1 Wave 0 — AcademiaPro (DONE 2026-06-28)
@@ -131,6 +140,23 @@ Recovered from 2026-06-27 power loss (SRS FR + UX spec had been edited; docx/exp
 - Defined `PTA` in glossary → cleared glossary-registry finding.
 - Regenerated `export-docs.sh`/`.ps1` from engine template (fixed `_N` duplication bug); purged dupes; clean re-export (29 docx).
 - Rebuilt SRS, UX, PDPOCompliance docx. `validate` → PASS. Baseline v1.1. `DOCUMENTATION-STATUS.md` updated.
+
+### 9.1.1 BIRDC-ERP diagnosis notes (2026-06-28)
+
+- All 18 HIGH = `kernel.no_unresolved_fail_markers` (bare in-prose `[CONTEXT-GAP: GAP-xxx]`); structurally engine-aligned already (no compliance-evidence/ADR/sprint-ID/phase05-06-08 gaps). `_registry/` not yet generated → `sync` needed. Export script already the fixed overwrite version.
+- **BLOCKER:** Cyrillic homoglyph "DPPА" (`А`) in `02-…/03-srs-phase3-supply-chain/05-fr-farmer.md:170` crashes `engine validate` on Windows (cp1252). Fix FIRST in Execute.
+- **Repo is custom PHP-DI/PSR-4, NOT Laravel** (correct any plan text that says Laravel).
+- Anti-slop: docs' "1,307 accounts" CoA figure is inflated (real seed ≈229) across ≥8 docs.
+- **OPEN DECISION (Peter):** code is multi-tenant-capable (`EnsureTenantSelected`, `tenant_id`) but deployed single-tenant (`tenant_id=1`); docs say single-tenant on-prem. → ADR + change-impact; affects DC-006.
+- `[CODE-DEBT]`: docs claim TOTP 2FA; code has none. Unbuilt→keep `Planned`: EFRIS, MTN/Airtel MoMo, PPDA matrix, export certs, NIN/NIRA, Bluetooth scale.
+- Feature split: ≈38 UNIVERSAL vs ≈17 BIRDC-SPECIFIC + 1 MIXED(AI). Deliverables: `projects/BIRDC-ERP/_align/alignment-plan.md` + `feature-classification.md`.
+
+### 9.1.2 Open decisions flagged for Peter (non-blocking; defaults applied)
+
+- **BIRDC commercial framing:** `08-stakeholder-analysis/06-consultant-engagement-model.md` + "Principal Consultant" milestone framing describe an EXTERNAL-consultant engagement, conflicting with the in-house BIRDC staff byline now applied. Left intact pending Peter's direction (keep as consultant engagement, or convert to in-house delivery framing).
+- **Kulima provisional sign-off:** a Phase-02 SRS sign-off (Peter Bamuhigire, Lead Consultant, 2026-06-28) was recorded "provisional — pending formal ratification" to unblock the hybrid Phase-07 gate. Ratify or amend.
+- **Kulima defaults:** AI-accuracy 80% = `Planned` target w/ stated validation; USSD = Phase-2 roadmap; docx typeface chosen per design engine. Override if desired.
+- **Aqar defaults:** native mobile = Roadmap; custom front-end stack documented as-built (claimed Bootstrap/Tabler/jQuery/ApexCharts/Leaflet/PHP-DI demoted to "considered"); accounting depth = as-built; pricing OD-010 unsettled (no figure). Override if desired.
 
 ### 9.2 Triage snapshot (HIGH findings at 2026-06-28, pre-work)
 
