@@ -115,8 +115,8 @@ Per project, three stages:
 | Wave | Project | Stage | Status | Baseline | Last update |
 |---|---|---|---|---|---|
 | 0 | AcademiaPro | Gate | **DONE — PASS** | v1.1 | 2026-06-28 |
-| 1 | BIRDC-ERP | — | not started | v? | — |
-| 1 | Longhorn ERP | — | not started | v? | — |
+| 1 | BIRDC-ERP | Diagnose | in progress (subagent; 18 HIGH at start) | v? | 2026-06-28 |
+| 1 | Longhorn ERP | Diagnose | in progress (subagent; 68 HIGH at start) | v? | 2026-06-28 |
 | 2 | Aqar-Property | — | not started | v? | — |
 | 2 | Kulima (docs-only) | — | not started | v? | — |
 | 3 | Maduuka | — | not started | v? | — |
