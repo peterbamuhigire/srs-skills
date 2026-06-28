@@ -2,7 +2,7 @@
 
 **Created:** 2026-06-28
 **Owner:** Peter Bamuhigire (Chwezi Core Systems / consultant)
-**Status:** ACTIVE — Wave 0 complete; Wave 1 next.
+**Status:** COMPLETE (2026-06-28) — all 7 focus projects (AcademiaPro, BIRDC-ERP, LonghornERP, Aqar-Property, Kulima, Maduuka, Medic8) at ENGINE CONTRACT: PASS, docx rebuilt & exported clean, baselines v1.0/v1.1 snapshotted. Outstanding items are non-blocking decisions for Peter (see §9 per-project "Needing Peter" notes). Engine fix applied to `engine/scaffold.py` (references/ export exclusion).
 **Resumption:** This document is the single source of truth. If a session is lost (power, crash, context reset), READ THIS FILE FIRST, then the per-project `_align/alignment-plan.md` of the in-flight project, then re-run `python -m engine validate projects/<P>` to confirm live state. Do **not** restart from scratch.
 
 ---
@@ -123,13 +123,15 @@ Per project, three stages:
 |---|---|---|---|---|---|
 | 0 | AcademiaPro | Gate | **DONE — PASS** | v1.1 | 2026-06-28 |
 | 1 | BIRDC-ERP | Gate | **DONE — PASS** (anti-slop A; finance-audit pass-with-caveats; 40 docx rebuilt; export clean, 0 dups; byline fixed to BIRDC staff role) | v1.0 | 2026-06-28 |
-| 1 | Longhorn ERP | Gate | Execute DONE (PASS, from 68 HIGH); Gate (audits/docx/export) in progress | v? | 2026-06-28 |
+| 1 | Longhorn ERP | Gate | **DONE — PASS** (anti-slop A after fixing 4 mechanical blockers; finance-audit pass-with-caveats across 12 money modules; 54 docx rebuilt — 8 BOM-corrupted manifests fixed; export clean 54, 0 dups; typeface Spectral/Public Sans/JetBrains Mono; note: `_registry/identifiers.yaml` empty → baseline 0 entries) | v1.0 | 2026-06-28 |
 
 **Wave 1 decisions (Peter, 2026-06-28):** (1) BIRDC is single-tenant. It has **NO multi-tenant scaffold** — do not mention multi-tenancy anywhere in BIRDC docs (the diagnosis claim of a tenant scaffold was wrong; no tenancy ADR, DC-006 unchanged). (2) Longhorn's white-label/hospitality/sibling-integration/source-strategy gaps AND a tamper-evident hash-chained audit log are all specced `Planned`/`Roadmap`. (3) Execute BIRDC + Longhorn in parallel. Correction relayed to the BIRDC Execute agent mid-run.
-| 2 | Aqar-Property | Gate | Execute DONE (PASS, from 37 HIGH); Gate (audits/docx/export) in progress | v? | 2026-06-28 |
-| 2 | Kulima (docs-only) | Gate | Execute DONE (PASS; 43 docs authored, IBM Plex typeface); Gate (audits/docx/export) in progress | v? | 2026-06-28 |
-| 3 | Maduuka | Diagnose | in progress (subagent; two repos Maduuka + Maduuka-App; ~68 HIGH at triage) | v? | 2026-06-28 |
-| 4 | Medic8 | — | not started | v? | — |
+| 2 | Aqar-Property | Gate | **DONE — PASS** (anti-slop B, no blockers; finance-audit pass-with-caveats; 28 docx rebuilt; export clean 28, 0 dups; export scripts hardened to exclude references/; typeface Spectral/Public Sans/JetBrains Mono) | v1.0 | 2026-06-28 |
+| 2 | Kulima (docs-only) | Gate | **DONE — PASS** (anti-slop B, 1 blocker fixed: AI-confidence 60/70% reconciled; finance-audit FAIL→remediated to PASS-WITH-CAVEATS: journal-header double-entry + posting service, NSSF 5/10% + statutory_rates register, FR-TASK-011 record-only Phase 1, recon/tax → Phase 3 Planned; 32 docx built; export clean 0 dups; Spectral/Public Sans/JetBrains Mono typeface) | v1.0 | 2026-06-28 |
+| 3 | Maduuka | Gate | **DONE — PASS** (two repos → one SRS, 68→0 HIGH; repair-verification found+fixed 101 residual `-** -` em-dash corruptions across 18 files from the Execute incident; anti-slop A clean; finance-audit pass-with-caveats — immutability/reversal/net-tax-gross/recon/config-driven-tax all aligned, EFRIS `[BLOCKED: GAP-005]`, deep GL stack deferred to Peter; 34 docx rebuilt — all stale/Draft/alt-name purged; export clean 34, 0 dups, no references-docx; export scripts hardened to exclude references/; Spectral/Public Sans/JetBrains Mono typeface. Deferred by design: `_registry` absent (sync would break PASS — DO NOT sync), SRS-spine restructure + accounting-depth + EFRIS-label decisions for Peter) | v1.0 | 2026-06-28 |
+| 4 | Medic8 | Gate | **DONE — PASS** (true 863→0 HIGH, masked by module-prefixed IDs; anti-slop B, no blockers, 6 minor fixed incl. Inter/Roboto→IBM Plex Sans UI typeface; finance-audit FAIL→remediated to PASS-WITH-CAVEATS via finance-accounting-standards addendum — double-entry/IFRS-for-SMEs/control-accounts/idempotency/period-locks/deferred-revenue; 36 docx rebuilt; export clean, 0 dups, no references-docx; Spectral/Public Sans/JetBrains Mono. Deferred to Peter: ID-alias adoption, Laravel-vs-PHP-DI framework-terminology drift, Phase-1 Simple-Mode vs double-entry, EFRIS/per-tenant VAT) | v1.0 | 2026-06-28 |
+
+**Engine fix (2026-06-28, orchestrator):** Patched `engine/scaffold.py` export-script templates (`.sh` + `.ps1`) to exclude `*/references/*` — previously they swept extracted source-material docx in `references/` into `export/`, inflating deliverable counts. Add to §4.1 drift list. (Aqar's per-project scripts were hardened by its gate agent; future scaffolds inherit the fix.)
 
 ### 9.1 Wave 0 — AcademiaPro (DONE 2026-06-28)
 
