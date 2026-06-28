@@ -26,7 +26,7 @@ while IFS= read -r -d '' f; do
     fi
     cp "$f" "$dest"
     ((count++)) || true
-done < <(find "$SCRIPT_DIR" -name "*.docx" -not -path "*/export/*" -print0)
+done < <(find "$SCRIPT_DIR" -name "*.docx" -not -path "*/export/*" -not -path "*/references/*" -print0)
 echo ""
 echo "Exported $count file(s) to $EXPORT_DIR"
 """
@@ -39,7 +39,7 @@ Write-Host "Project   : $(Split-Path -Leaf $ScriptDir)"
 Write-Host "Exporting : $ExportDir"
 Write-Host ""
 $docxFiles = Get-ChildItem -Path $ScriptDir -Recurse -Filter '*.docx' |
-             Where-Object { $_.FullName -notlike "*\\export\\*" }
+             Where-Object { $_.FullName -notlike "*\\export\\*" -and $_.FullName -notlike "*\\references\\*" }
 $count = 0
 foreach ($f in $docxFiles) {
     $dest = Join-Path $ExportDir $f.Name
