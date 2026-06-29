@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from engine.artifact_graph import ArtifactGraph
 from engine.findings import Finding, FindingCollection, Severity
+from engine.idscan import find_ids
 from engine.registry.identifiers import IdentifierRegistry
 
 class IdentifierRegistryCheck:
@@ -12,7 +13,11 @@ class IdentifierRegistryCheck:
 
     def run(self, graph: ArtifactGraph, findings: FindingCollection) -> None:
         registry_ids = {e.id for e in self._registry}
-        artifact_ids = set(graph.all_identifiers())
+        # Module-aware scan (matches sync/baseline), not the narrow bold-only
+        # graph.all_identifiers() used by the traceability/phase gates.
+        artifact_ids: set[str] = set()
+        for art in graph.artifacts:
+            artifact_ids |= find_ids(art.body)
         for ident in artifact_ids - registry_ids:
             findings.add(Finding(
                 gate_id=f"{self.gate_id}.unknown_id",
