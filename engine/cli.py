@@ -109,8 +109,15 @@ def validate(project: str, junit: str | None, sarif: str | None,
 
 @main.command()
 @click.argument("project", type=click.Path(exists=True, file_okay=False))
-def sync(project: str) -> None:
-    """Populate _registry/identifiers.yaml and _registry/glossary.yaml."""
+@click.option("--identifiers-only", is_flag=True,
+              help="Write _registry/identifiers.yaml only; leave the glossary registry untouched.")
+def sync(project: str, identifiers_only: bool) -> None:
+    """Populate _registry/identifiers.yaml and _registry/glossary.yaml.
+
+    Use --identifiers-only for projects whose glossary registry is deliberately
+    absent (e.g. docs that embed many code-identifier tokens the glossary scan
+    would otherwise demand as terms).
+    """
     from engine.sync import sync as do_sync
     ws = Workspace.load(Path(project))
     ids, gloss, errors = do_sync(ws)
@@ -121,8 +128,11 @@ def sync(project: str) -> None:
     reg_dir = ws.root / "_registry"
     reg_dir.mkdir(exist_ok=True)
     ids.save(reg_dir / "identifiers.yaml")
-    gloss.save(reg_dir / "glossary.yaml")
-    click.echo(f"Wrote {len(ids)} identifiers and {len(gloss)} glossary terms.")
+    if identifiers_only:
+        click.echo(f"Wrote {len(ids)} identifiers (glossary left untouched).")
+    else:
+        gloss.save(reg_dir / "glossary.yaml")
+        click.echo(f"Wrote {len(ids)} identifiers and {len(gloss)} glossary terms.")
 
 @main.command("validate-skills")
 def validate_skills() -> None:

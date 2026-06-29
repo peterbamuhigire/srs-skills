@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Dict
 from ruamel.yaml import YAML
 from engine.artifact_graph import Artifact, ArtifactGraph
+from engine.idscan import find_ids
 
 _yaml = YAML(typ="safe")
 
@@ -19,18 +20,25 @@ class Snapshot:
 
 
 def _first_line_mentioning(ident: str, art: Artifact) -> str:
-    needle = f"**{ident}**"
+    # Match the id whether or not it is bold (module-prefixed IDs are often
+    # unbolded), preferring a bold definition line when one exists.
+    bold = f"**{ident}**"
+    fallback = ""
     for line in art.body.splitlines():
-        if needle in line:
+        if bold in line:
             return line
-    return ""
+        if not fallback and ident in line:
+            fallback = line
+    return fallback
 
 
 def snapshot(graph: ArtifactGraph, label: str, today: date | None = None) -> Snapshot:
     today = today or date.today()
     entries: Dict[str, str] = {}
     for art in graph.artifacts:
-        for ident in art.identifiers:
+        for ident in find_ids(art.body):
+            if ident in entries:
+                continue  # first artifact (build order) wins
             line = _first_line_mentioning(ident, art)
             h = hashlib.sha256(line.encode("utf-8")).hexdigest()
             entries[ident] = h
