@@ -17,7 +17,7 @@ _REQUIRED_TC_KEYS = ("inputs", "expected_results", "requirement_trace")
 _REQUIRED_EVIDENCE_SUFFIX = "05-testing-documentation/29119-deterministic-checks.md"
 _EXIT_REPORT_SUFFIX = "test-completion-report.md"
 _MATRIX_SUFFIX = "coverage-matrix.md"
-_FR_ID = re.compile(r"\bFR-\d+\b")
+_FR_ID = re.compile(r"\bFR-(?:[A-Z]+-)?\d+\b")  # bare FR-1 or module-qualified FR-META-006
 _TC_PREFIX = "TC-"
 _FR_PREFIX = "FR-"
 

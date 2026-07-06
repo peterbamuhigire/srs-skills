@@ -30,6 +30,13 @@ _CAMEL_CASE = re.compile(r"\b([a-z]*[A-Z][a-z]+[A-Z][A-Za-z0-9]*)\b")
 
 _GLOSSARY_DEF_LINE = re.compile(r"^\s*-\s+\*\*[A-Z][A-Za-z0-9_-]+:\*\*")
 
+# Inline code spans (`FtsIndexService`) are references to code identifiers,
+# not undefined jargon — markdown monospace is the documented convention for
+# file paths, commands, and system identifiers. Strip them before scanning,
+# and skip fenced code blocks entirely for the same reason.
+_CODE_SPAN = re.compile(r"`[^`\n]*`")
+_FENCE = re.compile(r"^\s*(```|~~~)")
+
 # Strip identifier patterns (FR-NNN, FR-ACA-001, CTRL-UG-005, ADR-0001, etc.)
 # before acronym scanning so the scanner does not flag identifier prefixes
 # or module codes as standalone acronyms.
@@ -113,10 +120,16 @@ class GlossaryRegistryCheck:
         usage: dict[str, set[str]] = defaultdict(set)
         for art in graph.artifacts:
             path_key = str(art.path)
+            in_fence = False
             for line in art.body.splitlines():
+                if _FENCE.match(line):
+                    in_fence = not in_fence
+                    continue
+                if in_fence:
+                    continue
                 if _GLOSSARY_DEF_LINE.search(line):
                     continue
-                stripped = _IDENTIFIER.sub(" ", line)
+                stripped = _IDENTIFIER.sub(" ", _CODE_SPAN.sub(" ", line))
                 for m in _ACRONYM.finditer(stripped):
                     tok = m.group(1)
                     if tok in _ACRONYM_STOPLIST or _is_sample_id(tok):

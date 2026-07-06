@@ -11,6 +11,16 @@ from engine.findings import Finding, FindingCollection
 class WaiverError(Exception):
     """Raised on malformed waiver file."""
 
+def _as_date(value) -> date:
+    """Coerce a YAML value to a date. The waive CLI quotes dates, so they may
+    load as ISO strings rather than date objects."""
+    if isinstance(value, date):
+        return value
+    try:
+        return date.fromisoformat(str(value))
+    except ValueError as exc:
+        raise WaiverError(f"Invalid waiver date: {value!r}") from exc
+
 @dataclass(frozen=True)
 class Waiver:
     id: str
@@ -49,8 +59,8 @@ class WaiverRegister:
                     scope=item.get("scope", "*"),
                     reason=item["reason"],
                     approver=item["approver"],
-                    approved_on=item["approved_on"],
-                    expires_on=item["expires_on"],
+                    approved_on=_as_date(item["approved_on"]),
+                    expires_on=_as_date(item["expires_on"]),
                 )
                 for item in items
             ]
