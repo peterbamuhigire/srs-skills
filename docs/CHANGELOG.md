@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026-07-06] - Validation Kernel Fixes (glossary code spans, waiver dates, FR ID pattern)
+
+### Fixed
+
+- `engine/checks/glossary_registry.py`: the jargon scanner now strips inline code spans and skips fenced code blocks before extracting acronym/CamelCase candidates. Backticked identifiers (`FtsIndexService`) are code references under the documented monospace convention, not undefined glossary jargon; previously a code-grounded document set produced hundreds of false `missing_term` findings.
+- `engine/waivers.py`: waiver `approved_on`/`expires_on` values are coerced to `date` on load. The `engine waive` CLI writes quoted ISO strings, which made `phase09.waivers_have_expiry` crash with a `str - str` TypeError on any project that used its own waiver command.
+- `engine/gates/phase05.py`: the exit-evidence FR-reference pattern now accepts module-qualified IDs (`FR-META-006`) in addition to bare `FR-1`, matching the identifier convention the engine's own idscan enforces.
+
 ## [2026-04-28] - Project DOCX Export Contract
 
 ### Added
