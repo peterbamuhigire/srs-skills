@@ -1,18 +1,86 @@
 ---
-name: "solution-evaluation-and-transition"
-description: "Plan organizational transition, go/no-go evidence, adoption readiness, and post-implementation solution evaluation after requirements and delivery artifacts exist."
+name: 12-solution-evaluation-and-transition
+description: "Use when planning adoption, readiness, go/no-go evidence, transition, and post-implementation outcome evaluation; use go-live-readiness for the release-day operational gate."
 metadata:
-  use_when: "Use when the task matches solution evaluation and transition and this skill's local workflow."
-  do_not_use_when: "Do not use when the project is still in early discovery and there is no credible implementation or release baseline to evaluate."
-  required_inputs: "Provide requirements, validation, testing, deployment, stakeholder, and operational context needed to assess transition and solution performance."
-  workflow: "Follow the transition, readiness, adoption, evaluation, and evidence steps before making a release or implementation recommendation."
-  quality_standards: "Keep outputs evidence-based, adoption-aware, and explicit about readiness gaps, residual risk, and success measures."
-  anti_patterns: "Do not equate feature completion with organizational readiness or ignore adoption and operational ownership."
-  outputs: "Produce a transition and evaluation plan with readiness evidence, adoption actions, go/no-go framing, and performance measures."
-  references: "Use sibling files in this directory when deeper detail is needed."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # Solution Evaluation And Transition Skill
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- planning adoption, readiness, go/no-go evidence, transition, and post-implementation outcome evaluation; use go-live-readiness for the release-day operational gate.
+- Use this procedure when the required source artefacts are available and `Solution evaluation and transition plan` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `go-live-readiness` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Approved requirements, delivered solution evidence, stakeholder impacts, and success measures | Project sponsor, operations, users, and delivery records | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `Solution evaluation and transition plan`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| Solution evaluation and transition plan | Sponsor, adoption leads, operations, and benefits owner | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `Solution evaluation and transition plan` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. This procedure is read-only by default. Editing the reviewed artefact, publishing, production mutation, destructive action, spending, or certification requires explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A transition dependency has no owner or observable readiness evidence | Block the affected transition milestone and assign evidence ownership. | Go-live without operational or organisational readiness. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `Solution evaluation and transition plan` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `Solution evaluation and transition plan` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `go-live-readiness` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../../../docs/skill-authoring-standard.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 

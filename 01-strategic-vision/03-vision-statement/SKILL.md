@@ -1,18 +1,91 @@
 ---
-name: "vision-statement"
-description: "Generate a formal project vision document with elevator pitch, product positioning, value propositions, and success criteria per IEEE 29148 Sec 6.2."
+name: 03-vision-statement
+description: Use when a project needs a concise strategic north star defining target users, problem, differentiated value, success and scope boundaries; use lean-canvas to test uncertain assumptions and PRD generation to specify approved product behaviour.
 metadata:
-  use_when: "Use when the task matches 03-vision-statement skill and this skill's local workflow."
-  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
-  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
-  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
-  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
-  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
-  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `README.md`, `logic.prompt` when deeper detail is needed."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # 03-Vision-Statement Skill
+<!-- dual-compat-start -->
+## Use When
+
+- Stakeholders need one stable vision before a business case, PRD or SRS is drafted.
+
+## Do Not Use When
+
+- Do not use for feature-level requirements, financial approval or architecture decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Raw project context | `projects/<ProjectName>/_context/` | Required | Stop if the user, problem or sponsor outcome cannot be identified. |
+| Stakeholder priorities | Sponsor interviews and approved decisions | Required | Record disagreements as open decisions instead of averaging them. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the Vision Statement and manifest through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the Vision Statement and manifest to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Vision Statement and manifest | Sponsor, product team and downstream documentation skills | A reader can identify user, problem, value, success test, in-scope boundary and exclusions without consulting hidden context. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified Vision Statement and manifest draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| One user/problem/outcome is supported | Write a focused vision | Downstream teams share a north star |
+| Competing visions remain | Present alternatives and request sponsor selection | Consensus wording conceals conflict |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Writing a slogan instead of a decision. Fix: name user, problem and measurable outcome.
+- Listing every stakeholder as the target. Fix: identify the primary beneficiary and secondary stakeholders.
+- Using motivational adjectives as differentiation. Fix: state the concrete alternative and advantage.
+- Omitting exclusions to keep everyone pleased. Fix: define scope boundaries explicitly.
+- Inventing success targets. Fix: use approved targets or label the metric as awaiting baseline.
+
+## References
+
+- [Generation logic](logic.prompt)
+- [PRD generation neighbour](../01-prd-generation/SKILL.md)
+- [Lean Canvas neighbour](../04-lean-canvas/SKILL.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

@@ -1,18 +1,90 @@
 ---
-name: "ai-model-card"
-description: "Generate the AI Model Card per deployed AI feature: purpose, training data summary, evaluation metrics, limitations, bias notes, intended and out-of-scope use, version pin, and the EU AI Act Annex IV technical-documentation cross-walk."
+name: 12-ai-model-card
+description: Use when a production AI feature needs a version-specific model card covering purpose, data, evaluation, limitations, bias, intended use, prohibited use and operational pins; use AI architecture for system design and evaluation artefacts as evidence inputs.
 metadata:
-  use_when: "Use for every AI feature that ships to production. One model card per (feature, model-version, prompt-tag) deployable."
-  do_not_use_when: "Do not use for research-only or internal experiments not exposed to customers."
-  required_inputs: "AI_Feature_PRD_Spec.md, AI_Architecture_Spec.md, AI_Data_And_Knowledge_Base_Spec.md, latest eval report, latest red-team report, provider model card (for hosted models)."
-  workflow: "Collect model + prompt + retrieval pins, summarise training data, attach eval metrics, attach red-team summary, declare limitations and bias notes, declare intended and out-of-scope use, cross-walk to EU AI Act Annex IV, write the model card."
-  quality_standards: "Every model card shall include the version pin, the eval metrics with date, the red-team summary, named limitations, named bias risks with mitigations, intended use, and prohibited use."
-  anti_patterns: "Do not write a model card without limitations. Do not omit the date and version pin. Do not copy the provider's model card unchanged."
-  outputs: "Model_Card_<feature>_v<version>.md."
-  references: "Use references/ai-model-card-template.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # AI Model Card Skill
+<!-- dual-compat-start -->
+## Use When
+
+- A feature/model/prompt configuration is ready for release review or material update.
+
+## Do Not Use When
+
+- Do not use for an unevaluated experiment or to copy a provider card as proof of the deployed system.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Deployed configuration pins and provider evidence | AI architecture, prompt registry and provider sources | Required | Stop if the deployable cannot be identified reproducibly. |
+| Evaluation, red-team, data and incident evidence | Current project evidence | Required | Mark each missing check `not assessed` and block certification claims. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the Versioned AI Model Card through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the Versioned AI Model Card to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Versioned AI Model Card | Users, buyers, risk reviewers, auditors and operations | Every claim cites deployment-specific evidence; limitations and prohibited uses are explicit; missing assessments are not reported as passes. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified Versioned AI Model Card draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Evidence describes deployed feature and version | Include with source/date | Card remains auditable |
+| Only provider-level evidence exists | Qualify applicability and require system evaluation | Generic claims do not certify the product |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Copying the provider model card. Fix: document the deployed feature, prompts, retrieval and controls.
+- Omitting limitations. Fix: name measured and unassessed failure modes.
+- Reporting an eval score without dataset/date. Fix: cite both and the version pin.
+- Calling bias mitigated without subgroup evidence. Fix: report scope and residual risk.
+- Using the card as a compliance certificate. Fix: state evidence and reviewer authority precisely.
+
+## References
+
+- [Model card template](references/ai-model-card-template.md)
+- [AI Architecture neighbour](../11-ai-architecture-spec/SKILL.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

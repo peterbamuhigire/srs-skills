@@ -2,6 +2,19 @@
 
 **SDLC-Docs-Engine** (formerly SRS-Skills) is a modular, AI-driven toolkit for generating **comprehensive, standards-compliant documentation** across all phases of software development. It supports **Waterfall, Agile, and Hybrid methodologies**, providing IEEE/ISO-aligned documentation from strategic vision to deployment operations.
 
+## July 2026 skill-engine conformance
+
+The active catalogue contains 147 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 36 routing fixtures at a top-three precision threshold of 100%.
+
+```powershell
+python -X utf8 scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json
+python -X utf8 scripts/routing_smoke_test.py
+python -X utf8 scripts/validate_engine.py
+python -m engine validate-skills
+```
+
+The machine-readable baseline is not a waiver: any new finding, duplicate name, broken relative resource, catalogue-count drift, or routing miss fails the release gate.
+
 Hybrid and regulated delivery are now documented as explicit operating models rather than implied claims:
 
 - Hybrid execution contract: [docs/hybrid-operating-model.md](/C:/wamp64/www/srs-skills/docs/hybrid-operating-model.md)
@@ -66,7 +79,7 @@ The following client projects are maintained under `projects/` (gitignored — n
 | Maduuka | POS + Bookkeeping SaaS (Africa SMBs) | Hybrid (Water-Scrum-Fall) | AI Business Intelligence — 4 features (UGX 30K–200K/mo) | Full SDLC complete — development ready |
 | BIRDC-ERP | Bespoke Banana Factory ERP (BIRDC/PIBID) | Waterfall (consulting) | AI Intelligence Phase 7 — 5 capabilities (lump-sum extension) | Full SDLC complete — 38 docs delivered |
 
-> *Project files are gitignored. Only domains, templates, and documentation tooling are committed to this repository. Engineering/methodology skills live in the sibling engineering catalog engine at `C:\Users\BIRDC\.claude\skills`, and finance/accounting lives in the sibling finance engine at `C:\wamp64\www\chwezi-accounting-doctrine`. Project DOCUMENTATION-STATUS.md files within each project directory are the authoritative status reference for each engagement.*
+> *Project files are gitignored. Only domains, templates, and documentation tooling are committed to this repository. Engineering/methodology skills live in the sibling engineering catalog engine at `C:\Users\Peter\.claude\skills`, and finance/accounting lives in the sibling finance engine resolved through the global engine router. Project DOCUMENTATION-STATUS.md files within each project directory are the authoritative status reference for each engagement.*
 
 ---
 
@@ -381,7 +394,7 @@ sdlc-docs-engine/
 └── 09-governance-compliance/        # Traceability, audits, compliance docs
 
 # Engineering/methodology skills live in the SIBLING engineering catalog engine at
-#   C:\Users\BIRDC\.claude\skills  (15 category subdirectories; see "Skill Categories" below)
+#   C:\Users\Peter\.claude\skills  (15 category subdirectories; see "Skill Categories" below)
 #       skills/ai/<skill-name>/SKILL.md
 #       skills/android/<skill-name>/SKILL.md
 #       skills/architecture/<skill-name>/SKILL.md
@@ -403,7 +416,7 @@ sdlc-docs-engine/
 
 ### Skill Categories
 
-The portable skill catalog lives in the sibling **engineering catalog engine** at `C:\Users\BIRDC\.claude\skills`, grouped into 15 categories. Reference any individual skill as `skills/<category>/<skill-name>/SKILL.md` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`).
+The portable skill catalog lives in the sibling **engineering catalog engine** at `C:\Users\Peter\.claude\skills`, grouped into 15 categories. Reference any individual skill as `skills/<category>/<skill-name>/SKILL.md` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`).
 
 - **ai** — LLM integration, agent runtime, RAG, prompt engineering, AI app architecture, evaluation/observability, AI economics, safety, security, UX, openai-agents-sdk.
 - **android** — Android development, UI/UX, data persistence, TDD.
@@ -926,7 +939,7 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 We welcome contributions! To add or improve skills:
 
 1. Review existing skills for format and structure
-2. Follow the `sdlc-meta/skill-writing/` meta-skill guidelines in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`)
+2. Follow the `sdlc-meta/skill-writing/` meta-skill guidelines in the engineering catalog engine (`C:\Users\Peter\.claude\skills`)
 3. Ensure 500-line limit and two-tier documentation structure
 4. Add examples and anti-patterns
 5. Update `README.md` and `PROJECT_BRIEF.md`

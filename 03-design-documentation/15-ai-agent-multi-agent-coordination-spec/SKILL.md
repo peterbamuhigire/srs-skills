@@ -1,18 +1,90 @@
 ---
-name: "ai-agent-multi-agent-coordination-spec"
-description: "Generate the Multi-Agent Coordination Spec: topology choice (single-agent / supervisor-worker / debate / handoff chain), scratchpad isolation between agents, supervision policy, message-bus contract, and failure-mode handling specific to multi-agent systems."
+name: 15-ai-agent-multi-agent-coordination-spec
+description: Use when two or more agents participate in one user task and need a bounded topology, role inventory, scratchpad isolation, supervision, message contract and failure handling; use agent architecture for the common single-agent runtime.
 metadata:
-  use_when: "Use when more than one agent participates in a single user task: supervisor-worker, debate, handoff chains, or any topology where one agent's output feeds another agent's plan."
-  do_not_use_when: "Do not use for single-agent features. Cover those with `ai-agent-architecture-spec` only."
-  required_inputs: "AI_Agent_Architecture_Spec.md, AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md."
-  workflow: "Declare the topology, declare the agent inventory and roles, declare the scratchpad isolation rule, declare the supervision policy, declare the message-bus contract, declare failure-mode handling, write the Multi_Agent_Coordination_Spec.md."
-  quality_standards: "Every multi-agent feature shall declare exactly one topology. Every agent role shall have a bounded action-catalogue subset. Scratchpads shall not be shared across agent roles unless the topology explicitly declares the sharing rule. The supervisor shall be the sole authority for handoff."
-  anti_patterns: "Do not allow worker agents to spawn sub-agents without supervisor approval. Do not share scratchpads across agents that have different policy envelopes. Do not run an unbounded debate; cap rounds."
-  outputs: "Multi_Agent_Coordination_Spec.md."
-  references: "Use references/ai-agent-multi-agent-coordination-spec-template.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # AI Agent Multi-Agent Coordination Spec Skill
+<!-- dual-compat-start -->
+## Use When
+
+- An approved feature requires supervisor-worker, handoff, debate or another multi-agent topology.
+
+## Do Not Use When
+
+- Do not use for a single agent, parallel independent jobs, or to justify extra agents without measured need.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Approved agent architecture, feature and action catalogue | Phase 02/03 artefacts | Required | Stop if roles, authority or handoff outcome are undefined. |
+| Latency, cost, privacy and failure constraints | Product, security and platform owners | Required | Return a single-agent alternative when multi-agent evidence is weak. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the Multi-Agent Coordination Specification through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the Multi-Agent Coordination Specification to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Multi-Agent Coordination Specification | Agent, platform, security, evaluation and operations teams | Exactly one topology is chosen; every role has bounded actions, message schema, context rule, budget, supervision, timeout and recovery path. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified Multi-Agent Coordination Specification draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Roles need distinct permissions or expertise | Use supervised workers with explicit handoffs | Authority remains bounded |
+| One agent can complete the task within limits | Keep one agent | Coordination cost and emergent failure are avoided |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Adding agents to appear advanced. Fix: show the measured need and single-agent comparator.
+- Sharing all scratchpads. Fix: pass only typed handoff data allowed by policy.
+- Allowing workers to spawn workers. Fix: centralise topology authority in the supervisor.
+- Running debate without a round cap. Fix: set budget, stop rule and tie-breaker.
+- Retrying a failed handoff blindly. Fix: use idempotency, timeout and escalation rules.
+
+## References
+
+- [Coordination template](references/ai-agent-multi-agent-coordination-spec-template.md)
+- [Agent Architecture neighbour](../14-ai-agent-architecture-spec/SKILL.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Core Instructions
 

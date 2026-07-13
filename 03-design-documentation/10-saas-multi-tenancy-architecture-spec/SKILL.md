@@ -1,18 +1,91 @@
 ---
-name: "saas-multi-tenancy-architecture-spec"
-description: "Generate a Multi-Tenancy Architecture Specification for a SaaS system covering control-plane / application-plane decomposition, per-microservice tenancy pattern (silo / pool / mixed / pod / VPC-per-tenant), tenant-context propagation, isolation strategy, noisy-neighbor controls, and ADR seeds per Golding (2024)."
+name: 10-saas-multi-tenancy-architecture-spec
+description: Use when a multi-tenant SaaS HLD needs explicit control/application planes, per-service tenancy patterns, context propagation, isolation, noisy-neighbour controls and cost attribution; use generic HLD for the complete system and accounting design for ledger isolation.
 metadata:
-  use_when: "Use when the project is a multi-tenant SaaS and the High-Level Design must capture tenancy decisions that will not be expressed adequately by the generic HLD skill."
-  do_not_use_when: "Do not use for single-tenant on-prem systems or simple internal tools without tenant boundaries."
-  required_inputs: "SRS_Draft.md (Phase 02), HLD.md (must exist as the generic parent), tech_stack.md, PRD.md or Vision_Statement.md, any regulatory/data-residency constraints, business-model context (B2B SMB vs Enterprise vs B2C)."
-  workflow: "Read inputs, declare two-plane decomposition, fill the per-microservice tenancy-pattern matrix, write the tenant-context spec, write the isolation strategy, emit ADR seeds, write the Multi_Tenancy_Architecture_Spec.md."
-  quality_standards: "Every microservice in scope shall appear in the tenancy-pattern matrix. Every tenancy pattern shall cite the drivers (regulatory, isolation, blast-radius, cost, noisy-neighbor, performance). Every tenant-touching service shall have a documented context-propagation rule and a fail-safe behaviour."
-  anti_patterns: "Do not state a tenancy model without naming the drivers. Do not assert isolation; show how it is enforced and detected. Do not skip control-plane services (onboarding, identity, tenant management, metering, billing) on the assumption they are 'infrastructure'."
-  outputs: "Multi_Tenancy_Architecture_Spec.md and a set of ADR seeds in projects/<ProjectName>/<phase>/<document>/adr-seeds/."
-  references: "Use references/saas-tenancy-decision-template.md, references/saas-control-plane-services.md, and the book-extraction at book-extractions/saas-architectures-srs-extraction.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # SaaS Multi-Tenancy Architecture Specification Skill
+<!-- dual-compat-start -->
+## Use When
+
+- Tenant boundaries materially affect service, data, deployment or operating design.
+
+## Do Not Use When
+
+- Do not use for a single-tenant system or to claim isolation without enforcement and detection evidence.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Approved HLD, SRS and business model | Phase 01-03 artefacts | Required | Stop if tenant identity or service inventory is incomplete. |
+| Residency, isolation, scale and cost constraints | Security, compliance, platform and finance owners | Required | Make unknown constraints explicit ADR blockers. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the Multi-Tenancy Architecture Specification and ADR seeds through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the Multi-Tenancy Architecture Specification and ADR seeds to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Multi-Tenancy Architecture Specification and ADR seeds | Service, data, security, platform and billing teams | Every tenant-touching service has a pattern, context rule, enforcement, failure behaviour, noisy-neighbour control, observability and cost attribution. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified Multi-Tenancy Architecture Specification and ADR seeds draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Isolation/regulation outweighs pooling economy | Choose silo, pod or dedicated pattern | Blast radius and residency are bounded |
+| Workload is homogeneous with enforceable row isolation | Choose pool with defence in depth | Unnecessary unit cost is avoided |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Declaring `multi-tenant` without a service matrix. Fix: decide per service and store.
+- Trusting a request header for tenant context. Fix: derive and verify context from authenticated identity.
+- Using row filters without bypass tests. Fix: add database and service enforcement evidence.
+- Ignoring background jobs. Fix: propagate tenant context through queues and schedulers.
+- Calling throttling a noisy-neighbour strategy. Fix: define quotas, fairness, detection and tier behaviour.
+
+## References
+
+- [Tenancy decision template](references/saas-tenancy-decision-template.md)
+- [Control-plane services](references/saas-control-plane-services.md)
+- [HLD neighbour](../01-high-level-design/SKILL.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

@@ -1,56 +1,86 @@
 ---
-name: "retail-operating-model-srs"
-description: "Generate retail SRS sections for omnichannel retail, merchandising, pricing, promotions, markdowns, loyalty, CRM, e-commerce, fulfilment, returns, store operations, shrink, vendor funding, private label, planograms, and KPI/WBR dashboards as testable software requirements with finance/control gates."
+name: retail-operating-model-srs
+description: "Use when specifying retail, omnichannel, POS, merchandising, pricing, promotions, fulfilment, returns, shrink, loyalty, vendor funding, or store operations; use embedded-accounting-engine-srs for the shared ledger core."
 metadata:
   portable: true
   compatible_with:
     - claude-code
     - codex
-  use_when: "Use when a software project touches retail, stores, POS, e-commerce, product catalogue, inventory, orders, fulfilment, returns, loyalty, merchandising, pricing, promotions, markdowns, vendor funding, private label, shrink, planograms, or retail dashboards."
-  do_not_use_when: "Do not use for generic websites with no retail transaction, inventory, fulfilment, or customer-commerce operations."
-  required_inputs: "projects/<ProjectName>/_context/, domains/retail/INDEX.md, domains/retail/references/retail-operating-model.md, domains/retail/references/finance-control-gates.md, and the relevant domains/retail/features/*.md files."
-  workflow: "Classify the retail capability scope, build the entity/workflow/event catalogue, apply finance/control gates, write stimulus-response FRs, measurable NFRs, interfaces, data model, acceptance tests, and traceability."
-  quality_standards: "Every requirement must have source context, deterministic acceptance criteria, event/audit implications where relevant, and finance-engine routing where inventory, payments, refunds, discounts, vendor funding, shrink, or dashboards are in scope."
-  anti_patterns: "Do not reduce retail software to catalogue plus checkout. Do not omit inventory, returns, controls, source events, or dashboard lineage. Do not invent market statistics or accounting treatment."
-  outputs: "Retail_Domain_SRS.md, Retail_Event_Catalogue.md, Retail_Finance_Control_Gates.md, Retail_Acceptance_Tests.md."
-  references: "domains/retail/references/retail-operating-model.md, domains/retail/references/finance-control-gates.md"
 ---
 
 # Retail Operating Model SRS Skill
 
+<!-- local-contract-start -->
 <!-- dual-compat-start -->
 ## Use When
 
-Use when a software project touches retail, stores, POS, e-commerce, product catalogue, inventory, orders, fulfilment, returns, loyalty, merchandising, pricing, promotions, markdowns, vendor funding, private label, shrink, planograms, or retail dashboards.
+- specifying retail, omnichannel, POS, merchandising, pricing, promotions, fulfilment, returns, shrink, loyalty, vendor funding, or store operations; use embedded-accounting-engine-srs for the shared ledger core.
+- Use this procedure when the required source artefacts are available and `Retail operating-model SRS` is the next lifecycle deliverable.
 
 ## Do Not Use When
 
-Do not use for generic websites with no retail transaction, inventory, fulfilment, or customer-commerce operations.
+- Use `embedded-accounting-engine-srs` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
 
 ## Required Inputs
 
-Project context, `domains/retail/INDEX.md`, `domains/retail/references/retail-operating-model.md`, `domains/retail/references/finance-control-gates.md`, and the relevant `domains/retail/features/*.md` files.
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Retail scope, actors, channels, catalogue, inventory, money flows, controls, integrations, and finance doctrine | Retail operators, project context, and finance owner | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
 
 ## Workflow
 
-Classify retail capability scope, build the entity/workflow/event catalogue, apply finance/control gates, write stimulus-response functional requirements, define measurable NFRs and interfaces, then produce acceptance tests and traceability.
-
-## Quality Standards
-
-Every requirement has source context, deterministic acceptance criteria, event/audit implications where relevant, and finance-engine routing where inventory, payments, refunds, discounts, vendor funding, shrink, or dashboards are in scope.
-
-## Anti-Patterns
-
-Do not reduce retail software to catalogue plus checkout. Do not omit inventory, returns, controls, source events, or dashboard lineage. Do not invent market statistics or accounting treatment.
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `Retail operating-model SRS`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
 
 ## Outputs
 
-Retail domain SRS sections, retail event catalogue, finance/control gates, acceptance tests, and traceability matrix.
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| Retail operating-model SRS | Architecture, implementation, finance, test, and operations teams | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `Retail operating-model SRS` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. Editing is allowed only when the request authorises creation or repair of the named requirements artefact. Publishing, production mutation, destructive action, spending, and certification require explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A stock, refund, discount, settlement, shrink, or loyalty event has no accounting and reconciliation path | Block the flow and specify source event, posting, control, evidence, and exception handling. | Operational and financial records diverging. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `Retail operating-model SRS` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `Retail operating-model SRS` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `embedded-accounting-engine-srs` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
 
 ## References
 
-Use `domains/retail/references/retail-operating-model.md`, `domains/retail/references/finance-control-gates.md`, and the relevant retail feature references.
+- [Skill authoring and release standard](../../docs/skill-authoring-standard.md)
 <!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 

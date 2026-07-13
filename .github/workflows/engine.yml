@@ -18,7 +18,10 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: pytest --cov=engine --cov-fail-under=90
       - run: python scripts/validate_engine.py
+      - run: python scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json
+      - run: python scripts/routing_smoke_test.py
       - run: python -m engine validate-skills
+      - run: python scripts/seed_demo_project.py
       - name: Demo passes
         run: python -m engine validate projects/_demo-hybrid-regulated
       - name: Demo fails when sabotaged

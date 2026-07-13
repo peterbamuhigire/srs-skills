@@ -1,18 +1,90 @@
 ---
-name: "ai-agent-action-catalogue-spec"
-description: "Generate the Action Catalogue Spec: the enumerated, schema-bound set of tools an agent may call. Every tool declares input/output schema, side-effect class, reversibility class, per-tier availability, audit fields, rate-limit class, and kill-switch behaviour. This is the contract between the planner, the dispatcher, and the operator."
+name: 17-ai-agent-action-catalogue-spec
+description: "Use when defining the schema-bound tools an AI agent may invoke, including side effects, reversibility, approvals, audit fields, quotas, and kill switches; use agent PRD for user outcomes."
 metadata:
-  use_when: "Use as soon as one or more agent features are admitted to the AI Agent Feature PRD Spec. The action catalogue is the single source of truth for what tools the agent may call."
-  do_not_use_when: "Do not use for non-agent AI features that have no tool surface; the AI architecture spec already covers retrieval and direct LLM calls."
-  required_inputs: "AI_Agent_Feature_PRD_Spec.md, AI_Architecture_Spec.md, Multi_Tenancy_Architecture_Spec.md, API specifications for the back-end systems the agent will call, agent reversibility classification rubric."
-  workflow: "Inventory candidate tools, apply the reversibility classification rubric, attach schema and side-effect class, attach per-tier availability, attach audit fields, attach rate-limit class, attach kill-switch behaviour, write the Action_Catalogue_Spec.md."
-  quality_standards: "Every tool shall declare schema, side-effect class, reversibility class, per-tier availability, audit fields, rate-limit class, and kill-switch behaviour. Any tool with reversibility=irreversible shall have a human-approval gate referenced at the FR layer."
-  anti_patterns: "Do not admit free-form 'execute shell' tools. Do not omit the reversibility class. Do not let any tool ship at Free tier with side-effect class != read. Do not omit the kill-switch behaviour."
-  outputs: "Action_Catalogue_Spec.md and per-tool YAML entries in `action-catalogue/`."
-  references: "Use references/ai-agent-action-catalogue-template.md and references/agent-reversibility-classification-rubric.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # AI Agent Action Catalogue Spec Skill
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- defining the schema-bound tools an AI agent may invoke, including side effects, reversibility, approvals, audit fields, quotas, and kill switches; use agent PRD for user outcomes.
+- Use this procedure when the required source artefacts are available and `AI agent action catalogue` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `ai-agent-feature-prd-spec` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Approved agent tasks, autonomy limits, APIs, roles, and control policy | Product, API, security, and operations owners | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `AI agent action catalogue`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| AI agent action catalogue | Agent runtime, security, evaluation, and operations teams | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `AI agent action catalogue` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. Editing is allowed only when the request authorises creation or repair of the named requirements artefact. Publishing, production mutation, destructive action, spending, and certification require explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A tool mutates state but lacks idempotency, approval, or compensation | Classify it as unavailable until the missing control is specified. | Uncontrolled or unrecoverable agent mutation. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `AI agent action catalogue` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `AI agent action catalogue` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `ai-agent-feature-prd-spec` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../docs/skill-authoring-standard.md)
+- [Skill guidance](README.md)
+- [Executable generation logic](logic.prompt)
+- [Agent Reversibility Classification Rubric](references/agent-reversibility-classification-rubric.md)
+- [Ai Agent Action Catalogue Template](references/ai-agent-action-catalogue-template.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 

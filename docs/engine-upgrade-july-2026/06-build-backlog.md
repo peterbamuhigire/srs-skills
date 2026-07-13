@@ -1,5 +1,7 @@
 # Concrete Build Backlog
 
+Status at 2026-07-13: structural conformance debt is complete. The items below are capability expansion and proof work; none is a waiver in `tests/skill-quality-baseline.json`.
+
 | # | Filename/path | Purpose | Acceptance criteria | Effort |
 | --- | --- | --- | --- | --- |
 | 1 | docs/world-class-exemplar/README.md | Define one complete exemplar programme with context, generated outputs, validation logs, and export evidence. | A new user can inspect the exemplar and see every phase, gate, and artefact without using private project folders. | M |

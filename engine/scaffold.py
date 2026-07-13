@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Optional
 
 
-EXAMPLES_DIR = Path(__file__).resolve().parents[1] / "skills" / "00-meta-initialization" / "new-project" / "examples"
+EXAMPLES_DIR = Path(__file__).resolve().parents[1] / "templates" / "project-examples"
 
 EXPORT_DOCS_SH = """#!/usr/bin/env bash
 # export-docs.sh -- Copy all .docx deliverables into export/

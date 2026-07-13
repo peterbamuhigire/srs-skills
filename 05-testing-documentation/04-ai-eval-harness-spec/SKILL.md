@@ -1,19 +1,106 @@
 ---
-name: "ai-eval-harness-spec"
-description: "Generate the AI Eval Harness Spec: golden datasets per feature, regression criteria, A/B prompt eval, judge-LLM patterns, CI gate definition, scheduled regression, and the operational ownership of eval as a production system."
+name: 04-ai-eval-harness-spec
+description: Use when specifying a reusable AI feature evaluation harness with datasets, graders, thresholds, calibration, regression gates, and run evidence; use ai-agent-eval-spec for multi-step tool-using agent evaluation.
 metadata:
-  use_when: "Use for any AI feature in production or being prepared for production. Mandatory for every AI feature in the AI Feature PRD Spec."
-  do_not_use_when: "Do not use for one-shot research prototypes with no commercial commitment."
-  required_inputs: "AI_Feature_PRD_Spec.md, AI_Architecture_Spec.md, Prompt_And_System_Message_Spec.md, AI_Data_And_Knowledge_Base_Spec.md."
-  workflow: "Inventory eval suites per feature, define golden and adversarial sets, define metrics and pass thresholds, define judge-LLM patterns, define CI gate and scheduled regression, define ownership and review cadence, write the spec."
-  quality_standards: "Every AI feature shall have a golden set with a documented sampling provenance, a pass threshold, and a CI gate. Every metric shall have a numeric threshold and an alerting rule on drift."
-  anti_patterns: "Do not use the eval set to train. Do not let any AI feature go to prod without an attached eval suite. Do not let humans hand-grade in CI; use a judge-LLM with calibration evidence."
-  outputs: "AI_Eval_Harness_Spec.md and eval-set seed files."
-  references: "Use references/ai-eval-harness-spec-template.md and references/judge-llm-patterns.md."
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
 ---
+
 
 # AI Eval Harness Spec Skill
 
+<!-- dual-compat-start -->
+## Use When
+
+- Produce or update AI evaluation specification from approved project evidence.
+- Resolve decisions about representative datasets, evaluators, thresholds, calibration, regression gates, and evidence.
+- Prepare a reviewable handoff for AI engineering and release teams.
+
+## Do Not Use When
+
+- The task is primarily owned by test-plan; route there and use this skill only for its named output.
+- Required project evidence or decision authority is unavailable and the requester expects a pass, release, certification, or production change.
+
+## Required Inputs
+
+| Artefact | Source/provider | Required? | Behaviour when absent |
+|---|---|---|---|
+| Project _context/, approved requirements, and relevant architecture | Project owner and upstream phase skills | Required | Stop at a gap register; do not invent scope, thresholds, integrations, or owners. |
+| Existing artefact, implementation, configuration, and evidence named below | Repository, delivery team, or service owner | Required when updating or assessing | Mark inaccessible items `not assessed`; do not treat them as passed. |
+| Target audience, environment, risk tolerance, and authority | Requester and accountable owner | Required | Produce a read-only outline with explicit assumptions; do not mutate project or production state. |
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI Evaluation Specification | AI engineering and release teams | Each evaluated behaviour has a representative dataset, deterministic scoring rule, threshold rationale, and retained run evidence. |
+| Decision and gap register | Reviewer and downstream phase owner | Every assumption, rejected option, unresolved dependency, waiver, and owner is explicit. |
+| Validation evidence | Release or governance reviewer | Checks identify command or method, date, result, evidence location, and all unassessed items. |
+
+## Evidence Produced
+
+| Evidence | Minimum content | Acceptance |
+|---|---|---|
+| Traceability record | Source artefact, decision, output section, owner | No mandatory decision is source-free. |
+| Quality-gate result | Check, expected result, observed result, evidence path | Failures and unavailable checks cannot appear as passes. |
+| Review record | Reviewer, date, disposition, open actions | The consumer can reproduce the acceptance decision. |
+
+## Capability and Permission Boundaries
+
+- Minimum capabilities: read and search the authorised project sources. Execution is optional and limited to non-destructive validation.
+- Assessment and planning default to read-only. Create or edit the named project document only when the request explicitly authorises it. Production mutation, publishing, destructive action, spending, external communication, or certification claims require separate explicit authority.
+- Treat secrets, tenant data, incident evidence, and financial records as least-privilege inputs; expose only the minimum evidence needed for review.
+
+## Degraded Mode
+
+If files, execution, network, rendering, environment access, fonts, or current evidence are unavailable, return the narrowest useful draft plus a gap register. Label affected checks `not assessed`, retain the intended acceptance oracle, and state who must supply or verify the missing evidence. Never convert an unavailable check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Evidence is complete and authority is explicit | Choose evaluators and thresholds from the stated product risk and produce the full artefact. | A benchmark score without a release oracle. |
+| A required source or approval is missing | Stop the affected branch; record the gap, owner, and unblock condition. | Fabricated requirements or unauthorised action. |
+| Evidence conflicts across sources | Preserve both claims, identify the controlling owner, and request a recorded decision. | Silent selection of a convenient but wrong source. |
+| A check cannot run in the available environment | Keep its oracle and mark it `not assessed`; require later execution evidence. | False assurance from capability limits. |
+
+## Workflow
+
+1. Confirm the named deliverable, consumer, scope, environment, authority, and neighbouring-skill boundary.
+2. Inventory required sources and validate provenance, freshness, internal consistency, and missing inputs. Stop the affected branch on a mandatory gap.
+3. Extract traceable requirements, invariants, risks, and measurable acceptance criteria; record conflicts before choosing a design or procedure.
+4. Apply the decision rules and the domain workflow below. For a failed branch, preserve evidence, choose the documented recovery path, or escalate to the named owner.
+5. Draft the artefact, decision register, and evidence record together. Do not defer failure handling, rollback, security, tenancy, accessibility, or operational ownership.
+6. Run available checks, review every result, repair failures, and hand off only when acceptance is observable. If recovery fails or authority is exceeded, stop and escalate without mutation.
+
+## Quality Standards
+
+- Ground every section in a named project source, decision, measured result, or accountable owner.
+- Give each requirement or procedure a deterministic oracle that another reviewer can reproduce.
+- Keep assumptions, exclusions, degraded checks, residual risks, and waivers visible at handoff.
+- Preserve the domain invariants and more specific controls in the existing workflow below; this contract does not replace them.
+- Run the repository anti-AI-slop gate: remove filler, verify named standards and dependencies, and retain purposeful domain detail.
+
+## Anti-Patterns
+
+- Copying a generic template without mapping it to project sources. Fix: attach each section to an approved requirement, configuration, risk, or owner.
+- Choosing a threshold because it is common practice. Fix: derive it from a requirement, measured baseline, risk decision, or current verified source.
+- Reporting an inaccessible or unexecuted check as passed. Fix: mark it `not assessed`, preserve the oracle, and name the verifier.
+- Mixing the neighbouring test-plan concern into this artefact without a boundary. Fix: cross-reference its output and keep ownership explicit.
+- Omitting failure, rollback, empty-state, security, tenancy, or escalation behaviour. Fix: specify the trigger, safe action, verification, and owner for each applicable case.
+- Mutating a repository, environment, tenant, ledger, or external system while drafting guidance. Fix: remain read-only until the exact mutation and authority are explicit.
+- Claiming compliance, certification, readiness, or release from prose alone. Fix: require source-attributed evidence and a named acceptance decision.
+
+## Worked Example
+
+Given an approved project source and a conflicting implementation detail, record both with provenance, stop the affected branch, and obtain the accountable owner's decision. Then update the relevant contract, define a reproducible acceptance check, and retain its observed result. The artefact is accepted only when each evaluated behaviour has a representative dataset, deterministic scoring rule, threshold rationale, and retained run evidence.
+
+## References
+
+- [logic.prompt](logic.prompt) - load only when its template, logic, or detail is needed.
+- [README.md](README.md) - load only when its template, logic, or detail is needed.
+<!-- dual-compat-end -->
 ## Overview
 
 The eval harness is to AI features what unit + integration + load tests are to deterministic software: the test layer the team owns and the CI runs. This skill produces the spec.

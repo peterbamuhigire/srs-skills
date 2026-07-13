@@ -1,73 +1,92 @@
 ---
-name: "04-lean-canvas"
-description: "Generate a Lean Canvas, Impact Map, and Hypothesis Board for MVP, startup, exploratory, SaaS, AI, website, mobile, or uncertain projects as a lightweight alternative or precursor to full PRD. Use when assumptions, customer discovery, measurable goals, outcome traceability, and validation thresholds must drive requirements."
+name: 04-lean-canvas
+description: Use when an MVP, startup, SaaS, AI, website or mobile initiative still has material customer, problem, channel or value assumptions to test through a Lean Canvas, Impact Map and Hypothesis Board; use PRD generation once evidence supports stable requirements.
 metadata:
   portable: true
   compatible_with:
-  - claude-code
-  - codex
-  use_when: "Use when the task matches lean canvas skill and this skill's local workflow."
-  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
-  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
-  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
-  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
-  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
-  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `references/`, `README.md` when deeper detail is needed."
+    - claude-code
+    - codex
 ---
-
 # Lean Canvas Skill
-
 <!-- dual-compat-start -->
 ## Use When
 
-- A product has high uncertainty and needs Lean Canvas, Impact Map, hypothesis board, customer discovery, or MVP validation before PRD/SRS commitment.
-- Business goals, actors, impacts, assumptions, interviews, experiments, and validation thresholds must become traceable requirements inputs.
-- Premium SaaS, AI, website, mobile, or public-sector systems need measurable outcome discovery before feature generation.
+- Customer, problem, value, channel or solution assumptions need explicit tests before full requirements investment.
 
 ## Do Not Use When
 
-- Requirements are already baselined and the task is downstream design, testing, deployment, or governance.
-- The project is regulated or fixed-scope enough to require a full PRD/SRS first.
-- No customer/problem/actor evidence can be collected and the user wants unsupported invention.
+- Do not use as a substitute for an approved PRD, business case or detailed design after uncertainty has been resolved.
 
 ## Required Inputs
 
-- `projects/<ProjectName>/_context/vision.md`, `features.md`, and optionally `stakeholders.md`, `personas.md`, market evidence, interview notes, pricing assumptions, and adoption constraints.
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Discovery observations and stakeholder goals | Project context, interviews and research | Required | Mark unsupported canvas blocks as hypotheses and schedule evidence collection. |
+| Decision horizon and validation budget | Sponsor or product owner | Required | Stop if no owner can accept, reject or fund a test. |
 
 ## Workflow
 
-1. Score the Lean Canvas decision gate.
-2. Create the Lean Canvas and identify risky assumptions.
-3. Build an Impact Map from measurable goal to actors, impacts, deliverables, and measures.
-4. Define hypothesis cards, discovery interviews, experiments, and validation thresholds.
-5. Convert validated outcomes into PRD, SRS, backlog, or experience-mapping inputs.
-6. Use `references/discovery-interview-and-hypothesis-validation.md` and `references/impact-map-traceability-matrix.md` for detailed execution.
-
-## Quality Standards
-
-- Every deliverable must trace to a goal, actor, impact, assumption, and validation signal.
-- Avoid solution bias; unvalidated solution ideas remain hypotheses until evidence supports them.
-- Use measurable pivot, persevere, or stop thresholds.
-
-## Anti-Patterns
-
-- Treating the Lean Canvas as a pitch deck instead of a requirements discovery instrument.
-- Asking users to predict future usage instead of describing recent behaviour and current workarounds.
-- Shipping feature lists with no measurable actor impact.
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the Lean Canvas, Impact Map and Hypothesis Board through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the Lean Canvas, Impact Map and Hypothesis Board to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
 
 ## Outputs
 
-- Lean Canvas, Impact Map, Hypothesis Board, discovery interview plan, validation thresholds, and outcome-to-requirement trace matrix.
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Lean Canvas, Impact Map and Hypothesis Board | Product owner, discovery team and PRD author | Every material assumption has evidence status, test, owner, threshold and a consequence for requirements. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified Lean Canvas, Impact Map and Hypothesis Board draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Assumption is cheap and reversible | Run a bounded test | Learning precedes specification |
+| Assumption is high-risk or irreversible | Escalate evidence and approval before commitment | A weak test authorises costly scope |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Filling a canvas from imagination. Fix: label evidence and confidence for every block.
+- Treating features as outcomes. Fix: connect actor behaviour to a measurable goal in the Impact Map.
+- Writing hypotheses with no rejection threshold. Fix: define a numeric or observable decision rule.
+- Keeping disproved assumptions in the PRD. Fix: update the hypothesis board and downstream scope.
+- Testing several variables at once. Fix: isolate the riskiest assumption and one learning question.
 
 ## References
 
-- `references/lean-canvas-guide.md`
-- `references/impact-mapping-guide.md`
-- `references/hypothesis-driven-requirements.md`
-- `references/discovery-interview-and-hypothesis-validation.md`
-- `references/impact-map-traceability-matrix.md`
+- [Lean Canvas guide](references/lean-canvas-guide.md)
+- [Hypothesis-driven requirements](references/hypothesis-driven-requirements.md)
+- [Impact-map traceability](references/impact-map-traceability-matrix.md)
 <!-- dual-compat-end -->
+
+
+
+
 
 ## Overview
 

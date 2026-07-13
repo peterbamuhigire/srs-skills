@@ -1,18 +1,90 @@
 ---
-name: "saas-pricing-and-packaging-spec"
-description: "Generate a SaaS Pricing & Packaging Specification: tiers, value metric, feature gates, expansion mechanics, freemium decision, grandfathering, price-raise policy, public price-page contract, enterprise contact-us path."
+name: 12-saas-pricing-and-packaging-spec
+description: Use when a SaaS product needs testable tiers, a value metric, feature gates, expansion mechanics, freemium decision, grandfathering and price-change policy; use business-case for investment viability and PRD generation for feature requirements.
 metadata:
-  use_when: "Use for any SaaS that monetises via subscription, usage, seats, or hybrid — i.e. essentially every SaaS."
-  do_not_use_when: "Do not use for open-source or internal-only tools."
-  required_inputs: "PRD.md, vision.md, competitive scan, target ICP, business case (CAC payback target)."
-  workflow: "Choose value metric, define tiers, define gates, define expansion levers, decide freemium / credit-card-up-front, decide raise/grandfather policy, draft public price page, write the spec."
-  quality_standards: "Every tier shall list features, limits, price, SLA, support level. Every gate shall be enforceable server-side. Every expansion lever shall be measurable."
-  anti_patterns: "Do not omit the value metric. Do not pick a value metric that does not grow with customer value. Do not gate features in the client."
-  outputs: "Pricing_And_Packaging_Spec.md."
-  references: "references/saas-pricing-and-packaging-spec-template.md"
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # SaaS Pricing & Packaging Spec Skill
+<!-- dual-compat-start -->
+## Use When
+
+- Commercial and product owners must turn buyer value and cost-to-serve into enforceable packaging rules.
+
+## Do Not Use When
+
+- Do not use to guess prices without customer, willingness-to-pay or unit-cost evidence, or to implement billing architecture.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| ICP, buyer value and willingness-to-pay evidence | Research, sales and product owners | Required | Return hypotheses and a research plan if evidence is absent. |
+| Feature entitlements and cost-to-serve | PRD, finance and operations | Required | Block package approval where margin or entitlement ownership is unknown. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the SaaS Pricing and Packaging Specification through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the SaaS Pricing and Packaging Specification to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| SaaS Pricing and Packaging Specification | Product, sales, finance, billing and web teams | Tiers, value metric, entitlements, upgrade/downgrade, public claims and change policies agree and are testable. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified SaaS Pricing and Packaging Specification draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Metric tracks customer value and scales predictably | Use as the primary value metric | Expansion is understandable |
+| Metric is internal cost or easy to game | Reject or pair with a guardrail | Pricing punishes normal use |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Copying a competitor's three tiers. Fix: derive packages from buyer jobs and willingness to pay.
+- Using seats when value does not scale by user. Fix: test a value-correlated metric.
+- Hiding material limits from the price page. Fix: align public claims with entitlement rules.
+- Offering freemium without an acquisition and conversion thesis. Fix: document thresholds or reject it.
+- Ignoring grandfathering and downgrade effects. Fix: specify lifecycle and communication rules.
+
+## References
+
+- [Pricing template](references/saas-pricing-and-packaging-spec-template.md)
+- [AI tier guidance](references/ai-tier-guidance.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

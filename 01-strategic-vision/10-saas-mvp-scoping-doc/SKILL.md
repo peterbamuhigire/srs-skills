@@ -1,18 +1,90 @@
 ---
-name: "saas-mvp-scoping-doc"
-description: "Generate a SaaS MVP & Stair-Step Scoping Document: in/out for v1, single acquisition channel committed, escape-velocity success thresholds, feature-triage decision log."
+name: 10-saas-mvp-scoping-doc
+description: Use when an early-stage or new SaaS product line needs a tightly bounded v1, one acquisition channel, explicit cuts, escape-velocity measures and a feature-triage log; use lean-canvas while the customer problem is still untested and PRD generation for the approved v1.
 metadata:
-  use_when: "Use for early-stage or bootstrapped SaaS, or for any new product line within an established SaaS."
-  do_not_use_when: "Do not use for mature products with established roadmaps."
-  required_inputs: "Lean_Canvas.md or vision.md, market evidence, target ICP, founder commitments."
-  workflow: "Pick stair-step stage, choose single channel, define v1 IN/OUT, set escape-velocity thresholds, run feature-triage decision log, write the spec."
-  quality_standards: "v1 scope shall be narrow enough to ship in ≤ 90 days. Single channel chosen. Each cut feature has a documented reason."
-  anti_patterns: "Do not include 'nice to have' in v1. Do not commit to multiple channels in v1."
-  outputs: "MVP_Scoping_Doc.md."
-  references: "references/saas-mvp-scoping-template.md"
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # SaaS MVP Scoping Doc Skill
+<!-- dual-compat-start -->
+## Use When
+
+- A SaaS team must decide what can ship in v1 and what evidence justifies the next stair step.
+
+## Do Not Use When
+
+- Do not use for a mature product with an established roadmap or to force a 90-day scope without delivery evidence.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Validated Lean Canvas or vision and ICP | Phase 01 discovery | Required | Stop if the target customer and problem remain undefined. |
+| Delivery capacity, market evidence and founder commitments | Delivery team and sponsor | Required | Return scope options if capacity or channel ownership is unknown. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the SaaS MVP Scoping Document through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the SaaS MVP Scoping Document to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| SaaS MVP Scoping Document | Product, delivery and go-to-market owners | Every v1 item passes the triage rule, every cut has a reason, one channel has an owner, and success thresholds determine the next step. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified SaaS MVP Scoping Document draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Feature is necessary to test core value | Keep in v1 | MVP can test the thesis |
+| Feature serves scale, polish or a later segment | Move out with revisit trigger | Scope expands before learning |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Adding nice-to-have features to avoid a hard conversation. Fix: apply the feature-triage log.
+- Choosing several acquisition channels. Fix: commit one owner to one initial channel.
+- Setting a deadline without capacity evidence. Fix: reconcile scope with staffed delivery estimates.
+- Calling sign-ups escape velocity. Fix: use activation, retention and revenue evidence suited to the model.
+- Deleting cut features without rationale. Fix: record the reason and revisit trigger.
+
+## References
+
+- [MVP scoping template](references/saas-mvp-scoping-template.md)
+- [Lean Canvas neighbour](../04-lean-canvas/SKILL.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

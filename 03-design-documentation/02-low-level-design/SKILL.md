@@ -1,18 +1,91 @@
 ---
-name: "low-level-design"
-description: "Generate a Low-Level Design document with module specifications, class diagrams, sequence diagrams, state machines, and algorithm detail per IEEE 1016-2009 Sec 6."
+name: 02-low-level-design
+description: Use when an approved HLD needs implementation-ready module, class, sequence, state, algorithm and error contracts; use high-level-design for system boundaries, api-specification for external APIs, and database-design for persistence structures.
 metadata:
-  use_when: "Use when the task matches low-level design skill and this skill's local workflow."
-  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
-  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
-  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
-  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
-  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
-  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `README.md`, `logic.prompt` when deeper detail is needed."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # Low-Level Design Skill
+<!-- dual-compat-start -->
+## Use When
+
+- A component boundary and its requirements are approved and developers need deterministic implementation detail.
+
+## Do Not Use When
+
+- Do not use to revisit system architecture silently or to generate code without approved behavioural contracts.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Approved HLD, requirements and ADRs | Phase 02/03 artefacts | Required | Stop if component ownership or interface is unresolved. |
+| Language, platform and coding constraints | Technology decisions and engineering standards | Required | Return technology-neutral contracts when the stack is undecided. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the Low-Level Design and traceability notes through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the Low-Level Design and traceability notes to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Low-Level Design and traceability notes | Implementers, reviewers and test engineers | Each unit has responsibilities, interfaces, state transitions, errors, concurrency rules and requirement-linked test oracles. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified Low-Level Design and traceability notes draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Behaviour crosses a system boundary | Escalate to HLD/API ADR | Local design does not contradict architecture |
+| Behaviour is module-internal | Specify in LLD | Implementation ambiguity is removed |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Repeating HLD component boxes. Fix: specify units, state and call sequence.
+- Writing pseudocode with undefined failure paths. Fix: define errors and recovery.
+- Inventing framework APIs. Fix: verify the selected stack or stay technology-neutral.
+- Ignoring concurrency and idempotency. Fix: state the invariant and race handling.
+- Producing classes with no requirement trace. Fix: map each responsibility to an approved requirement.
+
+## References
+
+- [High-Level Design neighbour](../01-high-level-design/SKILL.md)
+- [API Specification neighbour](../03-api-specification/SKILL.md)
+- [Database Design neighbour](../04-database-design/SKILL.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

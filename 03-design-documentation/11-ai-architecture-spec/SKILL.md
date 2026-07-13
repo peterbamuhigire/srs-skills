@@ -1,18 +1,91 @@
 ---
-name: "ai-architecture-spec"
-description: "Generate the AI Architecture Specification: RAG vs fine-tune vs agent decisions, model gateway, vector store, eval harness, observability, security boundaries, and the SaaS-specific multi-tenant AI plane that the generic HLD does not capture."
+name: 11-ai-architecture-spec
+description: Use when approved AI features need architecture decisions for direct calls, RAG, fine-tuning or agents, plus model gateway, knowledge stores, evaluation, observability and tenant security; use HLD for the whole system and agent architecture for tool-using runtimes.
 metadata:
-  use_when: "Use when one or more AI features ship in a SaaS product. Required alongside or after the generic HLD."
-  do_not_use_when: "Do not use for projects with no AI features."
-  required_inputs: "HLD.md, Multi_Tenancy_Architecture_Spec.md, AI_Feature_PRD_Spec.md, AI_Data_And_Knowledge_Base_Spec.md, tech_stack.md."
-  workflow: "Read inputs, declare the AI plane decomposition, map each feature to a pattern (RAG / agent / fine-tune / direct call), spec the model gateway, vector store, eval harness, observability, security boundaries, emit ADR seeds, write the AI_Architecture_Spec.md."
-  quality_standards: "Every AI feature shall map to a pattern with explicit drivers. The model gateway shall be the sole egress for model calls. Every cross-tenant boundary shall name its enforcement mechanism."
-  anti_patterns: "Do not let individual services call model providers directly. Do not store conversation logs in the same store as customer documents without isolation. Do not omit the eval harness from the architecture."
-  outputs: "AI_Architecture_Spec.md plus ADR seeds in adr-seeds/."
-  references: "Use references/ai-architecture-spec-template.md and references/ai-architecture-patterns.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # AI Architecture Spec Skill
+<!-- dual-compat-start -->
+## Use When
+
+- One or more production AI features have approved value, data and evaluation requirements.
+
+## Do Not Use When
+
+- Do not use for projects without AI or to select a provider/model without current verification and measurable criteria.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Approved AI feature requirements and HLD | PRD/SRS and Phase 03 architecture | Required | Stop if feature acceptance or data ownership is unresolved. |
+| Data, evaluation, security, latency and cost constraints | AI, data, security and finance owners | Required | Return architecture options and verification gaps when current provider facts are unavailable. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the AI Architecture Specification and ADR seeds through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the AI Architecture Specification and ADR seeds to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI Architecture Specification and ADR seeds | AI, data, service, security, test and operations teams | Each feature maps to a justified pattern; gateway, data boundary, evaluation, fallback, observability, cost and tenancy controls have testable contracts. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified AI Architecture Specification and ADR seeds draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Need is grounded retrieval over governed sources | Choose RAG with citation/evaluation path | Fine-tuning does not mask knowledge freshness |
+| Task needs bounded tool planning | Route to agent architecture | Agent controls are not omitted |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Letting each service call providers directly. Fix: route through the governed model gateway.
+- Choosing RAG because AI is required. Fix: compare direct call, retrieval, fine-tune and non-AI alternatives.
+- Sharing embeddings across tenants without policy. Fix: enforce namespace and retrieval filters.
+- Treating offline eval as sufficient. Fix: add production monitoring and feedback controls.
+- Pinning a model name forever. Fix: specify capability criteria, version evidence and replacement tests.
+
+## References
+
+- [Architecture patterns](references/ai-architecture-patterns.md)
+- [Architecture template](references/ai-architecture-spec-template.md)
+- [Agent runtime cross-link](references/ai-agent-runtime-crosslink.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

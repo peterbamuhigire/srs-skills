@@ -1,18 +1,90 @@
 ---
-name: "business-case"
-description: "Generate a business case document with problem analysis, cost-benefit analysis, ROI projection, risk assessment, and go/no-go criteria per IEEE 1058."
+name: 02-business-case
+description: Use when decision-makers need a go/no-go business case with cost, benefit, risk, timing, assumptions, and sensitivity evidence; use vision-statement for direction, lean-canvas for early hypotheses, and PRD generation only after investment approval.
 metadata:
-  use_when: "Use when the task matches 02-business-case skill and this skill's local workflow."
-  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
-  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
-  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
-  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
-  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
-  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `README.md`, `logic.prompt` when deeper detail is needed. For SaaS projects, ALSO apply `references/saas-business-case-addendum.md` (mandatory SaaS-economics rows: ARR plan, CAC payback, gross/net retention, Rule of 40, cohort retention, sensitivity)."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # 02-Business-Case Skill
+<!-- dual-compat-start -->
+## Use When
+
+- A sponsor must compare an investment option against the current state or credible alternatives.
+
+## Do Not Use When
+
+- Do not use as a product requirements document or to disguise missing cost evidence; unresolved commercial assumptions remain conditional.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Problem, options and sponsor decision | Approved context and sponsor | Required | Stop if the decision or comparator is unknown. |
+| Cost, benefit and risk evidence | Finance owners, research and delivery estimates | Required | Qualify unavailable figures and show their effect on the recommendation. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the Business Case and manifest through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the Business Case and manifest to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Business Case and manifest | Sponsor, finance reviewer and steering authority | The recommendation is reproducible from named assumptions, option comparison, sensitivity cases and explicit go/no-go criteria. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified Business Case and manifest draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Benefits and costs have defensible ranges | Calculate scenarios and recommend | Recommendation rests on auditable evidence |
+| A decision-critical input is unavailable | Issue a conditional case and block final approval | False precision drives investment |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Presenting one option as the only option. Fix: compare the current state and at least one credible alternative.
+- Reporting a single ROI value from uncertain inputs. Fix: show base, downside and upside cases.
+- Mixing sunk and future costs. Fix: label timing and decision relevance.
+- Calling an unmeasured benefit strategic. Fix: define a proxy, owner and measurement date.
+- Recommending go while a knockout risk is open. Fix: make the risk an explicit approval condition.
+
+## References
+
+- [SaaS business-case addendum](references/saas-business-case-addendum.md)
+- [Generation logic](logic.prompt)
+<!-- dual-compat-end -->
+
+
+
 
 > **SaaS mode:** if the project is a multi-tenant SaaS, apply `references/saas-business-case-addendum.md` in addition to the generic steps below.
 

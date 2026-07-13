@@ -1,18 +1,98 @@
 ---
-name: "ai-agent-hipaa-control-pack"
-description: "Generate the AI Agent HIPAA Security Rule Control Pack: per-standard treatment for §164.308 Administrative, §164.310 Physical, §164.312 Technical safeguards; agent-specific implementation for access controls, audit controls, integrity controls, transmission security, contingency; admin-only constraint for clinical PHI agents; BAA implications; minimum-necessary application to agent service principals."
+name: 22-ai-agent-hipaa-control-pack
+description: Use when mapping a PHI-touching AI agent to HIPAA Security Rule safeguards, minimum-necessary access, BAA duties, evidence, testing, and breach handling. Use ISO 27001 or SOC 2 packs for those frameworks.
 metadata:
-  use_when: "Use whenever a SaaS operates one or more agent features that may process Protected Health Information (PHI) — clinical, payer, life-sciences, employer-health, behavioural-health, or wellness with regulated overlap. Mandatory before HIPAA-regulated tenants are onboarded. Refreshed annually and after any change to the planner, action catalogue, supervisor, kill-switch SLA, or BAA list."
-  do_not_use_when: "Do not use for AI features that demonstrably do not touch PHI (synthetic-data demos, non-PHI workflows, marketing analytics on de-identified Safe-Harbor data). Do not use as the sole pack if EU patients are in-scope — pair with the AI Act and GDPR coverage. Do not relax the admin-only constraint for clinical PHI agents."
-  required_inputs: "AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md (with phi_touch metadata), AI_Agent_Architecture_Spec.md, AI_Agent_SLO_Doc.md, AI_Agent_Runbook.md, AI_Agent_Eval_Spec.md, AI_Agent_Red_Team_Test_Plan.md, AI_Agent_Responsible_AI_Addendum.md, AI_Agent_ADR_Catalogue.md, AI_Agent_Compliance_Policy_Pack.md, AI_Agent_BAA_Addendum.md, AI Data Flow and DPIA, existing BAA with covered entity (if any)."
-  workflow: "Classify every agent feature by PHI touch (none / limited / clinical); apply the admin-only constraint to clinical PHI agents; declare the agent-specific treatment per HIPAA standard and implementation specification; declare BAA implications; declare evidence and audit procedure; write the pack."
-  quality_standards: "Every PHI-touching feature shall have a Security Rule treatment per standard and implementation specification (required/addressable). Clinical PHI agents shall be admin-only with no autonomous L1+ external-write tools touching PHI. Every audit control row shall reference the hash-chain action audit log. BAA addendum language shall be cited."
-  anti_patterns: "Do not run a clinical PHI agent at L1+ for irreversible external-write tools. Do not skip the addressable implementation specifications (HHS expects a documented reason if not implemented). Do not omit minimum-necessary application to the agent service principal. Do not log raw PHI fields in audit metadata — log identifiers and redacted references."
-  outputs: "AI_Agent_HIPAA_Control_Pack.md, per-standard entries in `hipaa-controls/<id>.md`, and HIPAA_PHI_Touch_Classification.md."
-  references: "Use references/ai-agent-hipaa-control-matrix-template.md."
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
 ---
 
 # AI Agent HIPAA Security Rule Control Pack Skill
+
+<!-- dual-compat-start -->
+
+## Use When
+
+- Use when mapping a PHI-touching AI agent to HIPAA Security Rule safeguards, minimum-necessary access, BAA duties, evidence, testing, and breach handling. Use ISO 27001 or SOC 2 packs for those frameworks.
+
+## Do Not Use When
+
+- Do not use for AI features that demonstrably do not touch PHI (synthetic-data demos, non-PHI workflows, marketing analytics on de-identified Safe-Harbor data). Do not use as the sole pack if EU patients are in-scope — pair with the AI Act and GDPR coverage. Do not relax the admin-only constraint for clinical PHI agents.
+- Do not use this skill to fabricate missing project facts, legal conclusions, test results, approvals, or certification claims.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing-input behaviour |
+|---|---|---:|---|
+| Target sources: AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md (with phi_touch metadata), AI_Agent_Architecture_Spec.md, AI_Agent_SLO_Doc.md, AI_Agent_Runbook.md, AI_Agent_Eval_Spec.md, AI_Agent_Red_Team_Test_Plan.md, AI_Agent_Responsible_AI_Addendum.md, AI_Agent_ADR_Catalogue.md, AI_Agent_Compliance_Policy_Pack.md, AI_Agent_BAA_Addendum.md, AI Data Flow and DPIA, existing BAA with covered entity (if any). | Project owner, approved workspace artefacts, or accountable control owner | Yes | Stop dependent claims; list the missing item, owner, and consequence. For review checks, record `not assessed`. |
+| Scope, audience, baseline/version, and accountable decision owner | Requester or project context | Yes | Ask for or record the gap; do not infer authority or scope. |
+
+## Capability and permission boundaries
+
+Default to read-only. Read and search access to the supplied artefacts are required. Editing is limited to an explicitly authorised requested draft or project files. Execute validation only when authorised; publishing, signature, certification, production mutation, destructive action, spending, and risk acceptance require explicit authority.
+
+## Degraded Mode
+
+When files, tools, network, rendering, fonts, execution, or evidence are unavailable, return the narrowest useful qualified draft or finding set. Name every unavailable check and its consequence; an unassessed check is never a pass. Preserve evidence already gathered and provide the exact next verification step.
+
+## Decision Rules
+
+| Condition | Action | Failure or risk avoided |
+|---|---|---|
+| A control is applicable but evidence or test procedure is absent | Record a gap; do not claim control effectiveness | Unsupported assurance |
+| Control, owner, evidence, sampling, and test all align | Mark the row ready for independent assessment | Framework checkbox compliance |
+
+## Workflow
+
+1. Confirm the requested artefact, audience, scope, decision owner, and applicable baseline or version. Work read-only by default; source mutation, publication, signature, certification, production change, or risk acceptance requires explicit authority.
+2. Inspect every required input and record missing, stale, conflicting, or inaccessible evidence. Stop claims that depend on an unresolved required input.
+3. Apply the Decision Rules, then execute the existing Core Instructions below in order; preserve project terminology and trace each material statement to its source.
+4. Test the draft against the output acceptance conditions and domain quality standards. If a check cannot run, mark it `not assessed` and never convert it into a pass.
+5. On failure, recover by preserving completed evidence, identifying the narrowest corrective action and owner, and rerunning only the affected checks before handoff.
+6. Produce the named artefact and evidence record; publish, sign, certify, mutate production, or accept risk only under explicit authority.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI Agent HIPAA Security Rule Control Pack | Accountable reviewer, control owner, auditor, or release authority | Every PHI-touching feature shall have a Security Rule treatment per standard and implementation specification (required/addressable). Clinical PHI agents shall be admin-only with no autonomous L1+ external-write tools touching PHI. Every audit control row shall reference the hash-chain action audit log. BAA addendum language shall be cited. |
+| Gap and decision record | Accountable owner and downstream reviewer | Every gap has status, impact, owner, next action, and no unsupported pass or approval. |
+
+## Evidence Produced
+
+| Evidence | Contents | Acceptance condition |
+|---|---|---|
+| AI Agent HIPAA Security Rule Control Pack evidence record | Source identifiers, scope/version, decisions, checks, exceptions, and approval state | A reviewer can reproduce each material conclusion from named sources. |
+| Validation record | Check, result (`pass`, `fail`, or `not assessed`), evidence location, date, and actor | No required check is omitted or silently treated as passed. |
+
+## Quality Standards
+
+- Every PHI-touching feature shall have a Security Rule treatment per standard and implementation specification (required/addressable). Clinical PHI agents shall be admin-only with no autonomous L1+ external-write tools touching PHI. Every audit control row shall reference the hash-chain action audit log. BAA addendum language shall be cited.
+- Use deterministic acceptance conditions and preserve traceability from source to decision and output.
+- Separate facts, inferences, assumptions, and approvals; never present one as another.
+- Apply `28-anti-ai-slop` during authoring and `29-ai-slop-audit` at major checkpoints and release.
+
+## Anti-Patterns
+
+- **Producing AI Agent HIPAA Security Rule Control Pack from assumptions instead of named project sources.** Fix: Cite the source or mark the item unverified.
+- **Treating a missing or inaccessible check as passed.** Fix: Mark it `not assessed`, state impact, and block dependent claims.
+- **Using vague gates such as `adequate`, `secure`, or `user-friendly`.** Fix: Replace each with an observable criterion, threshold, and evidence source.
+- **Copying a generic template without product, control, role, version, or jurisdiction detail.** Fix: Ground every section in the supplied context and remove unused boilerplate.
+- **Publishing, signing, certifying, changing production, or accepting risk without authority.** Fix: Prepare a draft and route the decision to the accountable owner.
+- **Listing evidence without provenance or an acceptance result.** Fix: Record source, period, integrity check, mapping, and pass/fail/not-assessed status.
+
+## Worked Example
+
+Example: if a control is applicable but evidence or test procedure is absent, record a gap; do not claim control effectiveness. Record the evidence and result in the validation record; this avoids unsupported assurance.
+
+## References
+
+- [Generation logic](logic.prompt): load when creating the complete artefact.
+- [Skill notes](README.md): consult for local examples and invocation context.
+- [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
+
+<!-- dual-compat-end -->
 
 ## Overview
 

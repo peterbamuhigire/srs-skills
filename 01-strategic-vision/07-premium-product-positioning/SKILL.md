@@ -1,70 +1,91 @@
 ---
 name: 07-premium-product-positioning
-description: Generate or review premium product positioning, PRD/SRS inputs, and design requirements for systems intended for premium, affluent, executive, enterprise, luxury, high-ticket, or elite users. Use when software must justify premium pricing, win high-level buyers, or feel materially better than ordinary alternatives.
+description: Use when a commercial product, client-facing system, SaaS, app or executive workflow must justify premium pricing through buyer trust, proof, service quality and materially better experience; use vision-statement for broad direction and UX specification for interface detail.
 metadata:
   portable: true
   compatible_with:
-  - claude-code
-  - codex
+    - claude-code
+    - codex
 ---
-
 # Premium Product Positioning
-
 <!-- dual-compat-start -->
 ## Use When
 
-- In this SRS engine, use this skill by default for commercial products, client-facing systems, websites, SaaS, apps, dashboards, and strategy-led systems unless the work is explicitly internal and non-premium.
-- The system is being designed for CEOs, investors, public-sector leaders, enterprise buyers, affluent customers, luxury/lifestyle users, or high-value SMEs.
-- The product must support premium pricing, high-trust adoption, executive reporting, prestige, differentiation, or high-touch service.
-- A PRD, SRS, UX specification, business case, or feature set needs premium-market discipline.
+- Premium buyers, enterprise decision-makers or high-value users require explicit value, proof and experience requirements.
 
 ## Do Not Use When
 
-- The work is purely internal and has no client-facing, buyer-facing, trust, adoption, service, or pricing implications.
-- The requester explicitly wants commodity requirements for a non-premium product and accepts that this engine should treat the engagement as poor fit.
+- Do not use to decorate a commodity offer or invent prestige claims unsupported by delivery capability.
 
 ## Required Inputs
 
-- Product context, target buyers/users, business model, pricing intent, and decision path.
-- Current features, service model, proof assets, constraints, and success metrics.
-- Any executive, enterprise, affluent, luxury, public-sector, or high-ticket buyer requirements.
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Target buyer, buying context and alternatives | Approved research and commercial owner | Required | Stop if the buyer or premium alternative is undefined. |
+| Proof, service and experience evidence | Delivery, sales and customer evidence | Required | Qualify missing proof and exclude fabricated claims. |
 
 ## Workflow
 
-1. Confirm the project is a premium-fit engagement. If it is cheap, vague, low-trust, or commodity-positioned, recommend narrowing the scope to a premium deliverable or declining the work.
-2. Define the premium buyer and decision path: economic buyer, users, influencers, gatekeepers, risk owners, and proof required.
-3. Convert positioning into requirements: outcomes, trust, speed, reliability, onboarding, reporting, support, service levels, governance, and proof.
-4. Specify product quality signals: restrained interface, excellent copy, fast workflows, reliable data, branded outputs, polished notifications, and mature edge states.
-5. Specify premium service requirements: onboarding, configuration, training, review meetings, escalation, success reporting, renewal/expansion, account ownership, and recovery after service failures.
-6. Add pricing and sales-support requirements where relevant: packages, tiers, scope boundaries, ROI dashboards, proposal exports, and buyer-specific reports.
-7. For launch or handover, route the service promises into `06-deployment-operations/06-customer-adoption-and-support-plan`.
-8. Run `references/premium-product-requirements-gate.md` before finalising the PRD, SRS, or design spec.
-
-## Quality Standards
-
-- Premium intent must become measurable requirements, acceptance criteria, service levels, reporting needs, governance, proof, and buyer experience.
-- Do not use vague premium adjectives unless the SRS defines a verifiable threshold or review criterion.
-- If the product cannot support premium positioning, document the product, service, proof, or operational gaps.
-
-## Anti-Patterns
-
-- Treating premium positioning as copywriting instead of requirements.
-- Specifying luxury visual style while ignoring onboarding, reliability, support, reporting, and governance.
-- Designing for high-value buyers without validating decision path, proof, risk, and service expectations.
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the Premium positioning requirements and gate result through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the Premium positioning requirements and gate result to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
 
 ## Outputs
 
-- Premium positioning section for PRD/SRS/business case.
-- Requirements and acceptance criteria for premium buyer experience.
-- Feature priorities that support pricing power and high-level adoption.
-- Adoption, support, recovery, and maintenance requirements that make premium promises deliverable.
-- Risks, assumptions, and validation questions.
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Premium positioning requirements and gate result | PRD, SRS, UX, sales and proposal authors | Each premium claim maps to buyer evidence, product requirement, service promise or measurable experience standard. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified Premium positioning requirements and gate result draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Premium value is observable and supportable | Encode it in requirements and proof | Pricing has credible justification |
+| Claim exceeds evidence or service capacity | Narrow or remove the claim | Prestige language creates trust debt |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Replacing value with luxury adjectives. Fix: name the buyer outcome and proof.
+- Copying mass-market feature parity into a premium package. Fix: specify differentiated service or decision quality.
+- Inventing testimonials or logos. Fix: use verified buyer evidence only.
+- Treating visual polish as the whole premium experience. Fix: include reliability, onboarding, support and reporting.
+- Promising white-glove service without capacity. Fix: define service level, owner and operating limit.
 
 ## References
 
-- `references/premium-product-requirements-gate.md` - requirements gate for premium software and high-value users.
-- `06-deployment-operations/06-customer-adoption-and-support-plan` - rollout, training, service desk, recovery, and maintenance planning.
+- [Premium requirements gate](references/premium-product-requirements-gate.md)
+- [UX specification neighbour](../../03-design-documentation/05-ux-specification/SKILL.md)
 <!-- dual-compat-end -->
+
+
+
+
 
 ## Premium positioning gate (added 2026-05-04 from Synechron Enterprise UX)
 

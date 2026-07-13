@@ -1,18 +1,98 @@
 ---
-name: "ai-agent-baa-and-data-processing-language"
-description: "Generate the AI Agent BAA Addendum (HIPAA Business Associate Agreement) and DPA Addendum (GDPR + African DPA Data Processing Agreement) language for agentic engagements. Drop-in clauses to bolt onto the parent BAA / DPA; cover service-principal access, irreversibility, audit-log retention, kill-switch SLA, memory erasure, sub-processor change, training-data exclusion, breach notification, and cross-jurisdiction transfers."
+name: 26-ai-agent-baa-and-data-processing-language
+description: Use when drafting legal-review-ready AI-agent BAA or DPA addendum clauses for service-principal access, audit logs, kill switch, memory, subprocessors, training exclusion, breach, and transfers. Use HIPAA control pack for controls and privacy-doc-set for the parent set.
 metadata:
-  use_when: "Use whenever a SaaS engages a covered-entity tenant (HIPAA) or a GDPR / KE / NG / ZA / UG / RW tenant for agent processing. Mandatory before the agent goes live for that tenant."
-  do_not_use_when: "Do not use as a substitute for legal review — these are drop-in templates that the parent BAA / DPA owner adapts. Do not use unedited; the legal team shall review."
-  required_inputs: "Parent BAA template, parent DPA template, AI Agent Architecture Spec, Action Catalogue Spec, AI Agent Responsible-AI Addendum, AI Agent Compliance Policy Pack, AI Agent SLO Doc, AI Agent Runbook, AI Data Flow + DPIA, AI HIPAA Control Pack (if PHI in scope), sub-processor list."
-  workflow: "Identify the regulatory regime per tenant; map the agent-distinctive obligations onto contract language; produce the BAA addendum (HIPAA) and DPA addendum (GDPR + African DPA) drafts; declare cross-jurisdiction transfer mechanisms; produce the signature blocks."
-  quality_standards: "Every drop-in clause shall be self-contained, referenced to a control in the relevant control pack, and signable as an addendum. Cross-jurisdiction language shall name the transfer mechanism. Breach notification clauses shall name the timeline and the recipient. Sub-processor change clauses shall name the notice period."
-  anti_patterns: "Do not write generic 'best efforts' language — auditors and regulators require specific timelines and mechanisms. Do not omit the model provider sub-processor change clause. Do not promise zero retention without verifiable provider configuration. Do not skip the agent service-principal access clause."
-  outputs: "AI_Agent_BAA_Addendum.md, AI_Agent_DPA_Addendum.md, and per-region annex files under `annexes/<region>.md`."
-  references: "Use references/ai-agent-baa-template.md and references/ai-agent-dpa-template.md."
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
 ---
 
 # AI Agent BAA and Data-Processing Language Skill
+
+<!-- dual-compat-start -->
+
+## Use When
+
+- Use when drafting legal-review-ready AI-agent BAA or DPA addendum clauses for service-principal access, audit logs, kill switch, memory, subprocessors, training exclusion, breach, and transfers. Use HIPAA control pack for controls and privacy-doc-set for the parent set.
+
+## Do Not Use When
+
+- Do not use as a substitute for legal review — these are drop-in templates that the parent BAA / DPA owner adapts. Do not use unedited; the legal team shall review.
+- Do not use this skill to fabricate missing project facts, legal conclusions, test results, approvals, or certification claims.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing-input behaviour |
+|---|---|---:|---|
+| Target sources: Parent BAA template, parent DPA template, AI Agent Architecture Spec, Action Catalogue Spec, AI Agent Responsible-AI Addendum, AI Agent Compliance Policy Pack, AI Agent SLO Doc, AI Agent Runbook, AI Data Flow + DPIA, AI HIPAA Control Pack (if PHI in scope), sub-processor list. | Project owner, approved workspace artefacts, or accountable control owner | Yes | Stop dependent claims; list the missing item, owner, and consequence. For review checks, record `not assessed`. |
+| Scope, audience, baseline/version, and accountable decision owner | Requester or project context | Yes | Ask for or record the gap; do not infer authority or scope. |
+
+## Capability and permission boundaries
+
+Default to read-only. Read and search access to the supplied artefacts are required. Editing is limited to an explicitly authorised requested draft or project files. Execute validation only when authorised; publishing, signature, certification, production mutation, destructive action, spending, and risk acceptance require explicit authority.
+
+## Degraded Mode
+
+When files, tools, network, rendering, fonts, execution, or evidence are unavailable, return the narrowest useful qualified draft or finding set. Name every unavailable check and its consequence; an unassessed check is never a pass. Preserve evidence already gathered and provide the exact next verification step.
+
+## Decision Rules
+
+| Condition | Action | Failure or risk avoided |
+|---|---|---|
+| Lawful basis, jurisdiction, data flow, or legal owner is unverified | Stop publication or signature and request legal/privacy review | Invalid privacy or contract claim |
+| Residual high risk remains after controls | Escalate to the accountable authority; do not self-certify | Unauthorised risk acceptance |
+
+## Workflow
+
+1. Confirm the requested artefact, audience, scope, decision owner, and applicable baseline or version. Work read-only by default; source mutation, publication, signature, certification, production change, or risk acceptance requires explicit authority.
+2. Inspect every required input and record missing, stale, conflicting, or inaccessible evidence. Stop claims that depend on an unresolved required input.
+3. Apply the Decision Rules, then execute the existing Core Instructions below in order; preserve project terminology and trace each material statement to its source.
+4. Test the draft against the output acceptance conditions and domain quality standards. If a check cannot run, mark it `not assessed` and never convert it into a pass.
+5. On failure, recover by preserving completed evidence, identifying the narrowest corrective action and owner, and rerunning only the affected checks before handoff.
+6. Produce the named artefact and evidence record; publish, sign, certify, mutate production, or accept risk only under explicit authority.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI Agent BAA and Data-Processing Language | Accountable reviewer, control owner, auditor, or release authority | Every drop-in clause shall be self-contained, referenced to a control in the relevant control pack, and signable as an addendum. Cross-jurisdiction language shall name the transfer mechanism. Breach notification clauses shall name the timeline and the recipient. Sub-processor change clauses shall name the notice period. |
+| Gap and decision record | Accountable owner and downstream reviewer | Every gap has status, impact, owner, next action, and no unsupported pass or approval. |
+
+## Evidence Produced
+
+| Evidence | Contents | Acceptance condition |
+|---|---|---|
+| AI Agent BAA and Data-Processing Language evidence record | Source identifiers, scope/version, decisions, checks, exceptions, and approval state | A reviewer can reproduce each material conclusion from named sources. |
+| Validation record | Check, result (`pass`, `fail`, or `not assessed`), evidence location, date, and actor | No required check is omitted or silently treated as passed. |
+
+## Quality Standards
+
+- Every drop-in clause shall be self-contained, referenced to a control in the relevant control pack, and signable as an addendum. Cross-jurisdiction language shall name the transfer mechanism. Breach notification clauses shall name the timeline and the recipient. Sub-processor change clauses shall name the notice period.
+- Use deterministic acceptance conditions and preserve traceability from source to decision and output.
+- Separate facts, inferences, assumptions, and approvals; never present one as another.
+- Apply `28-anti-ai-slop` during authoring and `29-ai-slop-audit` at major checkpoints and release.
+
+## Anti-Patterns
+
+- **Producing AI Agent BAA and Data-Processing Language from assumptions instead of named project sources.** Fix: Cite the source or mark the item unverified.
+- **Treating a missing or inaccessible check as passed.** Fix: Mark it `not assessed`, state impact, and block dependent claims.
+- **Using vague gates such as `adequate`, `secure`, or `user-friendly`.** Fix: Replace each with an observable criterion, threshold, and evidence source.
+- **Copying a generic template without product, control, role, version, or jurisdiction detail.** Fix: Ground every section in the supplied context and remove unused boilerplate.
+- **Publishing, signing, certifying, changing production, or accepting risk without authority.** Fix: Prepare a draft and route the decision to the accountable owner.
+- **Listing evidence without provenance or an acceptance result.** Fix: Record source, period, integrity check, mapping, and pass/fail/not-assessed status.
+
+## Worked Example
+
+Example: if lawful basis, jurisdiction, data flow, or legal owner is unverified, stop publication or signature and request legal/privacy review. Record the evidence and result in the validation record; this avoids invalid privacy or contract claim.
+
+## References
+
+- [Generation logic](logic.prompt): load when creating the complete artefact.
+- [Skill notes](README.md): consult for local examples and invocation context.
+- [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
+
+<!-- dual-compat-end -->
 
 ## Overview
 

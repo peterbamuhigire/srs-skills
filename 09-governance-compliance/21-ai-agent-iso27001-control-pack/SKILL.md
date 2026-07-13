@@ -1,18 +1,98 @@
 ---
-name: "ai-agent-iso27001-control-pack"
-description: "Generate the AI Agent ISO/IEC 27001:2022 Control Pack: Annex A control matrix (A.5 Organisational, A.6 People, A.7 Physical, A.8 Technological) extended with agent-specific treatments; per-control treatment statement, applicability decision, evidence required, audit procedure, sampling, and the certification-body walkthrough script. Mapped to ISO/IEC 42001 where the AI overlay applies."
+name: 21-ai-agent-iso27001-control-pack
+description: Use when mapping an L1+ AI agent to ISO/IEC 27001:2022 and applicable ISO/IEC 42001 controls, treatment, evidence, testing, sampling, and the SoA delta. Use SOC 2 or HIPAA packs for those regimes.
 metadata:
-  use_when: "Use whenever a SaaS operates one or more agent features at L1+ and intends to certify or maintain ISO/IEC 27001 certification, or holds an ISO/IEC 42001 AI management system certification. Mandatory before the ISMS surveillance audit, and refreshed annually or after any material change to the planner, action catalogue, supervisor, kill-switch SLA, or sub-processor list."
-  do_not_use_when: "Do not use as the sole framework if SOC 2 is also required — produce both control packs side by side. Do not use the 2013 control numbering; the 2022 edition (93 controls in 4 themes) is the operating reference."
-  required_inputs: "AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md, AI_Agent_Architecture_Spec.md, AI_Agent_SLO_Doc.md, AI_Agent_Runbook.md, AI_Agent_Eval_Spec.md, AI_Agent_Red_Team_Test_Plan.md, AI_Agent_Responsible_AI_Addendum.md, AI_Agent_ADR_Catalogue.md, AI_Agent_Compliance_Policy_Pack.md, AI_Agent_Evidence_Pack_Spec.md, parent ISMS Statement of Applicability."
-  workflow: "Confirm applicability per control; declare the agent-specific treatment; declare the evidence and source; declare the audit procedure; declare sampling and frequency; produce the Statement of Applicability delta; write the control pack."
-  quality_standards: "Every applicable Annex A control shall have an agent-specific treatment statement, an evidence row, an audit procedure, and a sampling note. The Statement of Applicability shall name every control as applicable, applicable-with-justification, or not-applicable-with-justification. ISO/IEC 42001 overlay controls shall be cited for every AI control."
-  anti_patterns: "Do not declare 'not applicable' for A.5.30 ICT readiness, A.5.34 privacy, A.8.16 monitoring, A.8.28 secure coding when an agent ships — these are all in-scope for agents. Do not omit A.5.7 threat intelligence — agentic CVE-style advisories are part of threat intel. Do not skip A.8.34 protection of test data when red-team sets contain real customer data."
-  outputs: "AI_Agent_ISO27001_Control_Pack.md, Statement_of_Applicability_Agent_Delta.md, and per-control entries in `iso27001-controls/<id>.md`."
-  references: "Use references/ai-agent-iso27001-control-matrix-template.md."
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
 ---
 
 # AI Agent ISO/IEC 27001 Control Pack Skill
+
+<!-- dual-compat-start -->
+
+## Use When
+
+- Use when mapping an L1+ AI agent to ISO/IEC 27001:2022 and applicable ISO/IEC 42001 controls, treatment, evidence, testing, sampling, and the SoA delta. Use SOC 2 or HIPAA packs for those regimes.
+
+## Do Not Use When
+
+- Do not use as the sole framework if SOC 2 is also required — produce both control packs side by side. Do not use the 2013 control numbering; the 2022 edition (93 controls in 4 themes) is the operating reference.
+- Do not use this skill to fabricate missing project facts, legal conclusions, test results, approvals, or certification claims.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing-input behaviour |
+|---|---|---:|---|
+| Target sources: AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md, AI_Agent_Architecture_Spec.md, AI_Agent_SLO_Doc.md, AI_Agent_Runbook.md, AI_Agent_Eval_Spec.md, AI_Agent_Red_Team_Test_Plan.md, AI_Agent_Responsible_AI_Addendum.md, AI_Agent_ADR_Catalogue.md, AI_Agent_Compliance_Policy_Pack.md, AI_Agent_Evidence_Pack_Spec.md, parent ISMS Statement of Applicability. | Project owner, approved workspace artefacts, or accountable control owner | Yes | Stop dependent claims; list the missing item, owner, and consequence. For review checks, record `not assessed`. |
+| Scope, audience, baseline/version, and accountable decision owner | Requester or project context | Yes | Ask for or record the gap; do not infer authority or scope. |
+
+## Capability and permission boundaries
+
+Default to read-only. Read and search access to the supplied artefacts are required. Editing is limited to an explicitly authorised requested draft or project files. Execute validation only when authorised; publishing, signature, certification, production mutation, destructive action, spending, and risk acceptance require explicit authority.
+
+## Degraded Mode
+
+When files, tools, network, rendering, fonts, execution, or evidence are unavailable, return the narrowest useful qualified draft or finding set. Name every unavailable check and its consequence; an unassessed check is never a pass. Preserve evidence already gathered and provide the exact next verification step.
+
+## Decision Rules
+
+| Condition | Action | Failure or risk avoided |
+|---|---|---|
+| A control is applicable but evidence or test procedure is absent | Record a gap; do not claim control effectiveness | Unsupported assurance |
+| Control, owner, evidence, sampling, and test all align | Mark the row ready for independent assessment | Framework checkbox compliance |
+
+## Workflow
+
+1. Confirm the requested artefact, audience, scope, decision owner, and applicable baseline or version. Work read-only by default; source mutation, publication, signature, certification, production change, or risk acceptance requires explicit authority.
+2. Inspect every required input and record missing, stale, conflicting, or inaccessible evidence. Stop claims that depend on an unresolved required input.
+3. Apply the Decision Rules, then execute the existing Core Instructions below in order; preserve project terminology and trace each material statement to its source.
+4. Test the draft against the output acceptance conditions and domain quality standards. If a check cannot run, mark it `not assessed` and never convert it into a pass.
+5. On failure, recover by preserving completed evidence, identifying the narrowest corrective action and owner, and rerunning only the affected checks before handoff.
+6. Produce the named artefact and evidence record; publish, sign, certify, mutate production, or accept risk only under explicit authority.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI Agent ISO/IEC 27001 Control Pack | Accountable reviewer, control owner, auditor, or release authority | Every applicable Annex A control shall have an agent-specific treatment statement, an evidence row, an audit procedure, and a sampling note. The Statement of Applicability shall name every control as applicable, applicable-with-justification, or not-applicable-with-justification. ISO/IEC 42001 overlay controls shall be cited for every AI control. |
+| Gap and decision record | Accountable owner and downstream reviewer | Every gap has status, impact, owner, next action, and no unsupported pass or approval. |
+
+## Evidence Produced
+
+| Evidence | Contents | Acceptance condition |
+|---|---|---|
+| AI Agent ISO/IEC 27001 Control Pack evidence record | Source identifiers, scope/version, decisions, checks, exceptions, and approval state | A reviewer can reproduce each material conclusion from named sources. |
+| Validation record | Check, result (`pass`, `fail`, or `not assessed`), evidence location, date, and actor | No required check is omitted or silently treated as passed. |
+
+## Quality Standards
+
+- Every applicable Annex A control shall have an agent-specific treatment statement, an evidence row, an audit procedure, and a sampling note. The Statement of Applicability shall name every control as applicable, applicable-with-justification, or not-applicable-with-justification. ISO/IEC 42001 overlay controls shall be cited for every AI control.
+- Use deterministic acceptance conditions and preserve traceability from source to decision and output.
+- Separate facts, inferences, assumptions, and approvals; never present one as another.
+- Apply `28-anti-ai-slop` during authoring and `29-ai-slop-audit` at major checkpoints and release.
+
+## Anti-Patterns
+
+- **Producing AI Agent ISO/IEC 27001 Control Pack from assumptions instead of named project sources.** Fix: Cite the source or mark the item unverified.
+- **Treating a missing or inaccessible check as passed.** Fix: Mark it `not assessed`, state impact, and block dependent claims.
+- **Using vague gates such as `adequate`, `secure`, or `user-friendly`.** Fix: Replace each with an observable criterion, threshold, and evidence source.
+- **Copying a generic template without product, control, role, version, or jurisdiction detail.** Fix: Ground every section in the supplied context and remove unused boilerplate.
+- **Publishing, signing, certifying, changing production, or accepting risk without authority.** Fix: Prepare a draft and route the decision to the accountable owner.
+- **Listing evidence without provenance or an acceptance result.** Fix: Record source, period, integrity check, mapping, and pass/fail/not-assessed status.
+
+## Worked Example
+
+Example: if a control is applicable but evidence or test procedure is absent, record a gap; do not claim control effectiveness. Record the evidence and result in the validation record; this avoids unsupported assurance.
+
+## References
+
+- [Generation logic](logic.prompt): load when creating the complete artefact.
+- [Skill notes](README.md): consult for local examples and invocation context.
+- [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
+
+<!-- dual-compat-end -->
 
 ## Overview
 

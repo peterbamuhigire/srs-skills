@@ -1,18 +1,88 @@
 ---
-name: "requirements-reuse"
-description: "Identify reusable requirements patterns and build a requirements library for product line engineering per IEEE 29148 and Laplante Ch.9. OPTIONAL skill."
+name: 11-requirements-reuse
+description: "Use when curating approved reusable requirement patterns and product-line variants after a stable baseline exists; use requirements-patterns to structure one project's complex behaviour."
 metadata:
-  use_when: "Use when the task matches requirements reuse skill guidance and this skill's local workflow."
-  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
-  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
-  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
-  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
-  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
-  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `references/` when deeper detail is needed."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # Requirements Reuse Skill Guidance
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- curating approved reusable requirement patterns and product-line variants after a stable baseline exists; use requirements-patterns to structure one project's complex behaviour.
+- Use this procedure when the required source artefacts are available and `Reusable requirements library` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `requirements-patterns` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Approved requirements, applicability context, variability rules, and provenance | Requirements baselines and product-line owner | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `Reusable requirements library`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| Reusable requirements library | Future project teams and requirements governance | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `Reusable requirements library` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. Editing is allowed only when the request authorises creation or repair of the named requirements artefact. Publishing, production mutation, destructive action, spending, and certification require explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A candidate requirement depends on hidden project-specific context | Keep it local or parameterise and test the variability explicitly. | Reused requirements that import wrong assumptions. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `Reusable requirements library` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `Reusable requirements library` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `requirements-patterns` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../../../docs/skill-authoring-standard.md)
+- [Product Line Requirements](references/product-line-requirements.md)
+- [Reuse Patterns](references/reuse-patterns.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 
