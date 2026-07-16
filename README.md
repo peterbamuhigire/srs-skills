@@ -4,7 +4,7 @@
 
 ## July 2026 skill-engine conformance
 
-The active catalogue contains 147 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 36 routing fixtures at a top-three precision threshold of 100%.
+The active catalogue contains 154 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 50 routing fixtures at a top-three precision threshold of 100%.
 
 ```powershell
 python -X utf8 scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json
@@ -46,6 +46,20 @@ Major SDLC documentation layer added across phases 01–09 for SaaS products, AI
 **Book extractions** (in `book-extractions/`): 7 SaaS books distilled through the docs lens, plus 6 audit documents.
 
 ## Embedded Accounting Engine Additions
+
+## Game Software Delivery Stack
+
+Game projects now route through seven phase-placed documentation skills while implementation doctrine remains in the canonical engineering game-development family:
+
+- `01-strategic-vision/15-game-product-and-production-brief`
+- `02-requirements-engineering/19-game-software-requirements-specification`
+- `03-design-documentation/17-game-system-architecture-specification`
+- `04-development-artifacts/05-game-technical-implementation-specification`
+- `05-testing-documentation/09-game-test-and-player-evidence-plan`
+- `06-deployment-operations/22-game-release-and-live-operations-runbook`
+- `09-governance-compliance/30-game-delivery-evidence-and-greenlight-pack`
+
+The stack maintains `GHYP/GREQ/GARCH/GIMPL/GTEST` traces across player experience, gameplay state, engines/platforms, multiplayer, saves, content, performance, accessibility/localisation, security/abuse, telemetry/economy, reproducible builds, rollout and rollback. Documentation completeness never substitutes for executable builds, target-device evidence, failed-path tests or independent replication.
 
 For any system that handles money, inventory value, payroll, tax, receivables, payables, grants, fixed assets, or financial reports, route the documentation flow through these added skills:
 
