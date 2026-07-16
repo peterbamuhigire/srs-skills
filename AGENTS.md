@@ -28,6 +28,8 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 - The local standard is `docs/skill-authoring-standard.md`; start new skills from `templates/skill/SKILL.md`.
 - Active skills are discovered from numbered phase roots. Do not maintain a hand-edited active-skill table as the source of truth.
+- Books and other copyrighted sources may inform independently written skills, but raw books, OCR output, chapter reconstructions, and long extracts must never enter this repository. Keep source files outside the repository and retain only the minimum independently expressed facts or framework needed.
+- Run `python -X utf8 scripts/source_ingestion_guardrail.py` for every skill or source-reference change; any finding blocks release.
 - Before releasing any skill change, run `python -X utf8 scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json` and `python -X utf8 scripts/routing_smoke_test.py`.
 - The baseline is zero debt, not a waiver. Any structural finding, duplicate name, broken mandatory resource, routing failure, active-count drift, or template-count drift blocks release.
 - Anti-AI-slop pre-ship gate: run `09-governance-compliance/28-anti-ai-slop` on every generated SRS/spec/doc/code artefact before delivery (MANDATORY).
