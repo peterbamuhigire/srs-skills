@@ -51,6 +51,8 @@
     {"id":"game-liveops-positive","kind":"positive","prompt":"Write the game release and live operations runbook for builds signing artifact promotion rollout rollback remote config and events.","expected":"22-game-release-and-live-operations-runbook"},
     {"id":"game-liveops-neighbour","kind":"collision","prompt":"Document game checksum promotion symbols store rollout save-compatible rollback and player incident communication.","expected":"22-game-release-and-live-operations-runbook"},
     {"id":"game-evidence-positive","kind":"positive","prompt":"Assemble the game delivery evidence and greenlight pack across player rights build test security accessibility release and replication.","expected":"30-game-delivery-evidence-and-greenlight-pack"},
-    {"id":"game-evidence-failure","kind":"failure-path","prompt":"Review a world-class game claim where prose exists but signed builds failed-path tests and independent replication are missing.","expected":"30-game-delivery-evidence-and-greenlight-pack"}
+    {"id":"game-evidence-failure","kind":"failure-path","prompt":"Review a world-class game claim where prose exists but signed builds failed-path tests and independent replication are missing.","expected":"30-game-delivery-evidence-and-greenlight-pack"},
+    {"id":"game-blender-pipeline-positive","kind":"positive","prompt":"Specify the Blender source to engine pipeline with rigs animation clips UV bakes materials collision LOD export import lineage runtime budgets and clean reimport evidence.","expected":"18-game-3d-content-and-blender-pipeline-specification"},
+    {"id":"game-blender-pipeline-neighbour","kind":"collision","prompt":"The game architecture is approved; define GASSET asset class Blender source export import and runtime acceptance contracts rather than whole-system components.","expected":"18-game-3d-content-and-blender-pipeline-specification"}
   ]
 }
