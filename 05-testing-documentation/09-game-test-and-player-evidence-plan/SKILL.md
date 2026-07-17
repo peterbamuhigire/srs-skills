@@ -14,15 +14,16 @@ metadata: {portable: true, compatible_with: [claude-code, codex]}
 | Artefact | Source or provider | Required? | Behaviour when missing |
 |---|---|---|---|
 | Requirements, architecture, build manifest, targets and gates | Product, engineering, QA and release | Yes | Stop and issue a readiness gap. |
-| Research, network, accessibility, localisation and threat cases | Specialist owners | Conditional | Mark coverage not assessed. |
+| Research, learning, culture, wellbeing, ads/privacy, network, accessibility, localisation and threat cases | Specialist owners | Conditional | Mark coverage not assessed. |
 ## Workflow
 1. Build a risk matrix across unit, integration, simulation, content, device, network, security and access layers.
 2. Specify seeds, clocks, tolerances, replay and save corruption/migration/interruption.
 3. Test latency, loss, jitter, reorder, duplication, disconnect, crash and version mismatch online.
 4. Profile release builds on named hardware for pacing, CPU/GPU, memory, loading, storage and thermal behaviour.
-5. Separate playtest questions, balance experiments and release acceptance.
+5. Separate correctness, comprehension, appeal, balance, learning, cultural acceptance, wellbeing/stopping, ad interruption/trust, commercial and release questions; no evidence class substitutes for another.
 6. Test critical verbs with alternative input and redundant feedback.
-7. Stop on missing build identity or oracle; recover with an evidence plan.
+7. Test every ad placement for expectation, disclosure, focus/input, decline/close, reward, cap/pace, save/recovery/stopping/exit, child treatment, accessibility, no-fill/offline/SDK failure and kill switch on real devices.
+8. Stop on missing build identity, oracle, consent or accountable reviewer; recover with an evidence plan.
 ## Outputs
 | Artefact | Consumer | Acceptance condition |
 |---|---|---|
@@ -49,6 +50,7 @@ Return the narrowest qualified plan, mark unavailable checks `not assessed`, and
 - Average FPS only. Fix: frame pacing.
 - Localhost multiplayer only. Fix: hostile profiles.
 - Anecdotal playtests. Fix: question, cohort and disposition.
+- Ad renders so it passes. Fix: test interruption, accidental tap, coercion, privacy, regret, trust and all failure paths.
 ## References
 - [Test evidence matrix](references/game-test-evidence-matrix.md)
 <!-- dual-compat-end -->

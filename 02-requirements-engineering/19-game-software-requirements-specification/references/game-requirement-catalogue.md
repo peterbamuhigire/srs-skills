@@ -1,2 +1,6 @@
 # Game requirement catalogue
-Back to [the parent skill](../SKILL.md). Cover `PLAY`, `STATE`, `PLAT`, `NET`, `CONT`, `QUAL`, `TRUST`, `DATA`, `REL`, and `OPS`; link each `GREQ-<AREA>-NNN` to source, design, test and evidence.
+Back to [the parent skill](../SKILL.md). Cover `PLAY`, `STATE`, `LEARN`, `CULT`, `WELL`, `VIS`, `PLAT`, `NET`, `CONT`, `QUAL`, `TRUST`, `ECON`, `DATA`, `REL`, and `OPS`; link each `GREQ-<AREA>-NNN` to source/`VCLAIM-*`, architecture, implementation, test, evidence, owner and decision.
+
+Each requirement states stimulus, precondition, authoritative transition, player/system feedback, failure/recovery, measure/tolerance, verification method and evidence class. `LEARN` distinguishes construct/measure/transfer limits from engagement. `CULT` separates fact, fiction, consultation, permission and rights. `WELL` covers voluntary sessions, stopping, regret, harmful spend, sleep/complaints/refunds and child incidents. `VIS` names gameplay readability, HUD/camera/input/access/localisation/store-asset outcomes but defers craft to the design engine.
+
+`ECON` and `DATA` require fair non-paying paths, separate Ads/Analytics/other SDK purpose-consent-deletion records, and reversible config. Advertising cannot obscure controls or interrupt gameplay, learning, narrative, saving, recovery, pause-to-stop or exit. Record placement, trigger, disclosure, choice, cap/pace, reward, no-fill/offline/error, age/territory treatment, accessibility and kill switch.

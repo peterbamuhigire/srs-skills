@@ -19,10 +19,11 @@ metadata: {portable: true, compatible_with: [claude-code, codex]}
 1. Draw contexts for client, services, platform, content/build, telemetry and operators.
 2. Define state, command/event flow, determinism, saves/migrations and time/randomness ownership.
 3. Establish engine-neutral domain boundaries and Unity, Godot, Unreal or Apple adapters.
-4. Specify content streaming, asset import, graphics/audio budgets and fallbacks.
+4. Specify content streaming, asset import, graphics/audio/UI/camera budgets, accessibility/localisation settings and fallbacks, consuming approved visual contracts from `design-system-skills`.
 5. Design online topology, replication budget, sessions, persistence and compatibility where applicable.
-6. Design trust, data/economy integrity, build provenance, observability and rollback.
-7. Stop on a missing owner, budget or failure path; recover with ADR options.
+6. Design trust, data/economy/ad integrity, separate SDK privacy boundaries, child-safe disabled defaults, build provenance, observability and rollback/kill switches.
+7. Define shared-platform seams as optional capabilities with per-game adoption, identity, performance and simplicity criteria; do not force every package into every game.
+8. Stop on a missing owner, budget, privacy/rights boundary or failure path; recover with ADR options.
 ## Outputs
 | Artefact | Consumer | Acceptance condition |
 |---|---|---|
@@ -49,6 +50,7 @@ Produce the narrowest qualified context, mark unavailable checks `not assessed`,
 - Reliable messages everywhere. Fix: semantic budgets.
 - Config without kill switch. Fix: validation and expiry.
 - Service as hard dependency. Fix: degraded behaviour.
+- Ads/analytics treated as one consent boundary. Fix: model each SDK, purpose, data flow, deletion and disable path separately.
 ## References
 - [Game architecture viewpoints](references/game-architecture-viewpoints.md)
 <!-- dual-compat-end -->

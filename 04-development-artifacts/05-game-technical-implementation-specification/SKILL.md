@@ -14,15 +14,16 @@ metadata: {portable: true, compatible_with: [claude-code, codex]}
 | Artefact | Source or provider | Required? | Behaviour when missing |
 |---|---|---|---|
 | `GREQ-*`, `GARCH-*`, ADRs, toolchain locks and acceptance tests | Architecture, engineering and QA | Yes | Stop the work package and return missing contracts. |
-| Asset schemas, adapters, protocol and build interface | Specialist owners | Conditional | Exclude or mark integration blocked. |
+| Asset/UI handoff, data/ads/privacy schemas, adapters, protocol and build interface | Design and specialist owners | Conditional | Exclude or mark integration blocked. |
 ## Workflow
 1. Decompose modules, scenes/worlds, data, assets and adapters with owners.
 2. Define responsibilities, interfaces, events, lifetime and dependency rules.
 3. Specify save/content/protocol versions, migrations, identifiers and idempotency.
 4. Add engine-specific notes only for the pinned version.
-5. Specify unit, integration, network, asset and device evidence per work package.
-6. Define instrumentation, errors, config, secrets and rollback hooks.
-7. Stop on an untestable interface; recover with a spike and exit criteria.
+5. Make every `GIMPL-*` consume `GREQ-*`, `GARCH-*`, relevant `VCLAIM-*`, approved game-design handoff, exact files/modules/assets or a bounded discovery task, and named exclusions.
+6. Specify unit, integration, network, asset/UI, ad/privacy, accessibility/localisation, performance, security and device evidence per work package, including retained failed paths.
+7. Define instrumentation purpose, errors, config, secrets, migrations, rollback/kill switches, owner role, estimate range/confidence and recalibration trigger.
+8. Stop on an untestable interface, unresolved child/culture/privacy/ad decision or absent build target; recover with a spike and exit criteria.
 ## Outputs
 | Artefact | Consumer | Acceptance condition |
 |---|---|---|
@@ -49,6 +50,7 @@ Return qualified interface stubs, mark validation `not assessed`, and do not cla
 - Manual import folklore. Fix: presets and validators.
 - Editor test as completion. Fix: packaged evidence.
 - Unbounded frame work. Fix: frequency budgets.
+- Visual handoff reduced to a screenshot. Fix: consume states, tokens, content, input/access rules and binary acceptance from the design engine.
 ## References
 - [Work-package schema](references/game-work-package-schema.md)
 <!-- dual-compat-end -->

@@ -14,15 +14,16 @@ metadata: {portable: true, compatible_with: [claude-code, codex]}
 | Artefact | Source or provider | Required? | Behaviour when missing |
 |---|---|---|---|
 | Approved brief, journeys, target matrix, rules and risks | Product, design, engineering and production | Yes | Stop affected requirements and issue a gap record. |
-| Online, economy, data, safety, rights and platform obligations | Specialist owners | Conditional | Exclude or mark the feature blocked. |
+| Online, economy/ads, learning, wellbeing, data, safety, culture/rights, visual and platform obligations | Specialist owners | Conditional | Exclude or mark the feature blocked. |
 ## Workflow
 1. Establish boundaries across client, authoritative services, platform services, content/build pipeline and operations.
 2. Assign `GREQ-*` and specify action, precondition, authoritative transition, feedback, failure and oracle.
-3. Specify saves, time/randomness, input, content, accessibility and localisation.
+3. Specify saves, time/randomness, input, content, gameplay accessibility, localisation, age treatment, learning evidence limits, wellbeing/stopping, and fact/fiction/consultation/permission controls.
 4. For online play specify authority, sessions, replication intent, reconnect, version skew and abuse cases.
 5. Add conditioned device performance, memory, loading, thermal, network and storage measures.
-6. Specify telemetry purpose, economy integrity, privacy, build provenance and rollback.
-7. Stop on an ownerless transition or unverifiable threshold; recover with a decision request.
+6. Specify telemetry purpose, economy integrity, privacy by SDK, build provenance, rollback and ethical commercial behaviour. If ads are in scope, require clear identification, a predictable genuine break after the requested action, neutral decline/close, cap/pace, no-fill/offline/error and kill switch; prohibit interruption of play, learning, narrative, saving, recovery, stopping and exit.
+7. Specify visual-direction and UI acceptance as observable game outcomes and evidence while deferring craft to the five game skills in `design-system-skills`.
+8. Stop on an ownerless transition, unresolved child/cultural/right boundary or unverifiable threshold; recover with a decision request.
 ## Outputs
 | Artefact | Consumer | Acceptance condition |
 |---|---|---|
@@ -49,6 +50,7 @@ Return the narrowest qualified subsystem, mark unavailable evidence `not assesse
 - Client-authoritative economy. Fix: trusted validation.
 - Save migration omitted. Fix: add corruption and interruption cases.
 - Menu-only accessibility. Fix: cover gameplay verbs.
+- Retention or ad revenue as a solitary acceptance measure. Fix: pair with agency, trust, wellbeing, privacy, fairness and stopping evidence.
 ## References
 - [Game requirement catalogue](references/game-requirement-catalogue.md)
 <!-- dual-compat-end -->

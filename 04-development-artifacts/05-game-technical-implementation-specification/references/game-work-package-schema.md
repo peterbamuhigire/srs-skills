@@ -1,2 +1,4 @@
 # Game implementation work-package schema
-Back to [the parent skill](../SKILL.md). Each `GIMPL-*` records owner, traces, toolchain, files/assets, interfaces, state/lifetime, budgets, telemetry, recovery, tests, build variant, dependencies, done criteria and rollback.
+Back to [the parent skill](../SKILL.md). Each `GIMPL-*` records stable outcome, owner role, `VCLAIM-*`/`GREQ-*`/`GARCH-*`/`GTEST-*` traces, exact files/modules/assets or bounded discovery, version assumptions, interfaces/events, state/lifetime/authority, content/UI handoff, budgets, privacy/security, accessibility/localisation/culture/wellbeing/commercial implications, telemetry purpose, dependencies, range/confidence/recalibration, migration, rollback/kill switch, ready/done, retained evidence and failed paths.
+
+If ads are in scope, include placement and trigger, disclosure/choice, cap/pace, reward/fairness, separate SDK data/consent/deletion, focus/input behaviour, no-fill/offline/error, child/territory treatment, accessibility, kill switch and real-device cases. A work package cannot claim implementation, asset, build, device or player completion until the matching evidence exists.
