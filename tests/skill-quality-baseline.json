@@ -1,0 +1,11 @@
+{
+  "standard": "canonical-july-2026-zero-debt",
+  "active_skill_count": 155,
+  "template_count": 1,
+  "failure_counts": {},
+  "routing": {
+    "fixture_count": 52,
+    "top_k": 3,
+    "minimum_precision": 1.0
+  }
+}

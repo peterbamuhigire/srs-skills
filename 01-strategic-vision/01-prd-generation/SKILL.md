@@ -1,18 +1,91 @@
 ---
-name: "prd-generation"
-description: "Generate a Product Requirements Document with market context, objectives, success metrics, and feature priority matrix per IEEE 29148 and IEEE 1233."
+name: 01-prd-generation
+description: Use when converting approved discovery evidence into a traceable PRD with objectives, prioritised features, success measures, constraints, and release scope; use vision-statement for the strategic north star and lean-canvas while assumptions still need testing.
 metadata:
-  use_when: "Use when the task matches prd generation skill and this skill's local workflow."
-  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
-  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
-  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
-  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
-  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
-  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `README.md`, `logic.prompt` when deeper detail is needed. For SaaS projects, ALSO apply `references/saas-prd-addendum.md` (mandatory SaaS sections: ICP, pricing summary, tenancy expectation, tier-mapped features, SaaS KPI targets, onboarding journey expectation, trust & compliance posture, SaaS-specific risks)."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # PRD Generation Skill
+<!-- dual-compat-start -->
+## Use When
+
+- Discovery is sufficient to define product outcomes, users, feature priorities, measurable success and release boundaries.
+
+## Do Not Use When
+
+- Do not use to test an unvalidated business model; use `04-lean-canvas`. Do not use for implementation design; route approved requirements to Phase 03.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Project context and discovery evidence | `projects/<ProjectName>/_context/` and approved research | Required | Stop and list the missing discovery decisions; do not invent requirements. |
+| Vision, scope and stakeholder decisions | Approved Phase 01 artefacts and decision log | Required | Mark unresolved conflicts and withhold affected requirements. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the Product Requirements Document and manifest through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the Product Requirements Document and manifest to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Product Requirements Document and manifest | Requirements, UX, architecture and delivery teams | Every feature traces to an objective and has a measurable acceptance or success condition; exclusions and open decisions are explicit. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified Product Requirements Document and manifest draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Discovery maturity: Evidence resolves target user, problem and outcome | Write the PRD | Premature requirements harden guesses |
+| Material assumption remains untested | Route it to the Lean Canvas hypothesis board | False certainty enters the backlog |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Writing a feature list without objective traceability. Fix: map each feature to a named objective and measure.
+- Turning stakeholder wishes into requirements without evidence. Fix: label the source and decision owner.
+- Using `high/medium/low` without a rule. Fix: apply the priority matrix in this skill.
+- Hiding scope exclusions in prose. Fix: maintain an explicit out-of-scope register.
+- Claiming a metric without a baseline or measurement method. Fix: name the baseline gap and instrumentation owner.
+
+## References
+
+- [SaaS PRD addendum](references/saas-prd-addendum.md)
+- [AI feature PRD addendum](references/ai-feature-prd-addendum.md)
+- [Generation logic](logic.prompt)
+<!-- dual-compat-end -->
+
+
+
 
 > **SaaS mode:** if the project is a multi-tenant SaaS, apply `references/saas-prd-addendum.md` in addition to the generic steps below.
 

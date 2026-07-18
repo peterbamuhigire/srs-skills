@@ -1,18 +1,88 @@
 ---
-name: "user-story-generation"
-description: "Generate IEEE 29148-aligned user stories from project context with INVEST criteria compliance, acceptance criteria, and story point estimation for Agile projects"
+name: 01-user-story-generation
+description: "Use when decomposing approved features into INVEST user stories, epics, story points, and initial acceptance criteria; use acceptance-criteria when stories already exist and only test oracles are needed."
 metadata:
-  use_when: "Use when the task matches user story generation skill and this skill's local workflow."
-  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
-  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
-  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
-  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
-  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
-  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `references/`, `templates/`, `examples/` when deeper detail is needed."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # User Story Generation Skill
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- decomposing approved features into INVEST user stories, epics, story points, and initial acceptance criteria; use acceptance-criteria when stories already exist and only test oracles are needed.
+- Use this procedure when the required source artefacts are available and `User-story backlog and story map` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `acceptance-criteria` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Vision, feature catalogue, personas, glossary, and quality targets | Project `_context/` and product owner | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `User-story backlog and story map`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| User-story backlog and story map | Product owner, delivery team, and acceptance-criteria skill | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `User-story backlog and story map` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. Editing is allowed only when the request authorises creation or repair of the named requirements artefact. Publishing, production mutation, destructive action, spending, and certification require explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A story exceeds one sprint or combines independent outcomes | Split it by user outcome and preserve trace links to the parent epic. | Oversized stories that cannot be estimated or accepted. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `User-story backlog and story map` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `User-story backlog and story map` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `acceptance-criteria` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../../docs/skill-authoring-standard.md)
+- [Invest Criteria](references/invest-criteria.md)
+- [Output Examples](references/output-examples.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 
@@ -228,130 +298,9 @@ graph TD
     US005 --> US006
 ```
 
-## Output Format Specification
+## Output examples
 
-### File: `projects/<ProjectName>/<phase>/<document>/user_stories.md`
-
-```markdown
-# User Story Backlog: [Project Name]
-
-**Generated:** [Date]
-**Methodology:** Agile (Scrum)
-**Standards:** IEEE 29148-2018, INVEST Criteria
-
----
-
-## Backlog Overview
-
-| Metric | Value |
-|--------|-------|
-| Total Stories | 45 |
-| Total Story Points | 187 |
-| Epics | 6 |
-| Critical Priority | 12 stories (63 points) |
-| High Priority | 18 stories (89 points) |
-| Medium Priority | 10 stories (28 points) |
-| Low Priority | 5 stories (7 points) |
-
----
-
-## Epic 1: User Management (25 points)
-
-### US-001: User Registration
-
-**As a** new customer
-**I want to** create an account with email and password
-**So that** I can access personalized features
-
-**Acceptance Criteria:**
-- [ ] Given I am on the registration page
-      When I enter a valid email and password (min 8 chars)
-      Then my account is created and I receive a confirmation email
-- [ ] Given I enter an already-registered email
-      When I attempt to register
-      Then I see an error: "Email already in use"
-- [ ] Given I enter an invalid email format
-      When I attempt to register
-      Then I see inline validation error before submission
-
-**Story Points:** 3
-**Priority:** Critical
-**Epic:** User Management
-**Dependencies:** None
-**Tags:** #authentication #mvp #sprint-1
-
-**Technical Notes:**
-- Use bcrypt for password hashing (from quality_standards.md)
-- Email verification via SendGrid API
-- Store user in `users` table with unique email constraint
-
----
-
-### US-002: User Login
-
-[... similar format ...]
-
----
-
-## Epic 2: Product Catalog (58 points)
-
-[... continue for all epics ...]
-
----
-
-## Appendix A: INVEST Compliance Report
-
-All stories validated against INVEST criteria. No failures detected.
-
-## Appendix B: Story Point Distribution
-
-[Chart showing Fibonacci distribution of story points]
-
-## Appendix C: Personas Reference
-
-[Link to projects/<ProjectName>/_context/personas.md]
-```
-
-### File: `projects/<ProjectName>/<phase>/<document>/backlog_summary.md`
-
-```markdown
-# Backlog Summary
-
-**Project:** [Name]
-**Generated:** [Date]
-**Total Estimated Effort:** 187 story points (~9.4 sprints @ 20 points/sprint)
-
-## Sprint Recommendations
-
-### Sprint 1 (MVP Foundation) - 20 points
-- US-001: User Registration (3 pts)
-- US-002: User Login (2 pts)
-- US-005: Browse Products (5 pts)
-- US-010: Shopping Cart (8 pts)
-- US-015: Basic Checkout (2 pts)
-
-### Sprint 2 (MVP Completion) - 21 points
-[... continue ...]
-
-## Risk Assessment
-
-| Risk | Stories Affected | Mitigation |
-|------|------------------|------------|
-| Payment Gateway Integration | US-018, US-019 | Spike story in Sprint 1 to prototype |
-| Performance (<200ms target) | US-005, US-006 | Load testing after Sprint 2 |
-
-## Dependencies Graph
-
-[Mermaid diagram showing story dependencies]
-```
-
-## Resources
-
-- **[templates/personas.md.template](templates/personas.md.template)**: Persona definition template
-- **[templates/user_story.md.template](templates/user_story.md.template)**: Single story template
-- **[references/invest-criteria.md](references/invest-criteria.md)**: Detailed INVEST validation guide
-- **[references/story-estimation-guide.md](references/story-estimation-guide.md)**: Story point calibration examples
-- **[examples/sample-backlog.md](examples/sample-backlog.md)**: Complete example backlog
+Use the [worked user-story outputs](references/output-examples.md) for the required file shapes and before/after example.
 
 ## Final Step: Write `manifest.md`
 
@@ -422,46 +371,6 @@ This skill implements:
 - **INVEST Criteria** (Bill Wake, 2003)
 - **Story Mapping** (Jeff Patton, 2014)
 - **IEEE Std 610.12-1990**: Software Engineering Terminology (for glossary alignment)
-
-## Example: Before vs. After
-
-### Before (from features.md)
-
-```markdown
-## Feature: User Management
-Allow users to create accounts, log in, and manage their profiles.
-```
-
-### After (Generated User Stories)
-
-```markdown
-### US-001: User Registration
-**As a** new customer
-**I want to** create an account with email and password
-**So that** I can access personalized recommendations
-
-**Acceptance Criteria:**
-- [ ] Given I am on registration page, When I enter valid email/password, Then account is created
-- [ ] Given I use weak password, When I submit, Then I see validation error
-- [ ] Given I use existing email, When I submit, Then I see "Email already registered"
-
-**Story Points:** 3 | **Priority:** Critical | **Epic:** User Management
-
----
-
-### US-002: User Login
-[... similar format ...]
-
----
-
-### US-003: Password Reset
-[... similar format ...]
-
----
-
-### US-004: Profile Management
-[... similar format ...]
-```
 
 ## Maintenance & Updates
 

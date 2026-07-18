@@ -1,18 +1,87 @@
 ---
-name: "business-process-modeling"
-description: "Model as-is and to-be business processes, actors, handoffs, exceptions, and control points to clarify requirements before detailed specification or design."
+name: 08-business-process-modeling
+description: "Use when modelling as-is and to-be workflows, actors, handoffs, controls, events, and exceptions to expose requirements; use service-blueprint-requirements for frontstage/backstage service delivery."
 metadata:
-  use_when: "Use when the task matches business process modeling and this skill's local workflow."
-  do_not_use_when: "Do not use when the project has no meaningful workflow complexity or when use-case modeling alone is sufficient."
-  required_inputs: "Provide elicitation artifacts, stakeholder context, feature scope, and any known process constraints or business rules."
-  workflow: "Follow the process discovery, modeling, exception, and validation steps in this file before finalizing the process model."
-  quality_standards: "Keep outputs workflow-accurate, traceable to stakeholder input, and explicit about exceptions, handoffs, and control points."
-  anti_patterns: "Do not flatten complex workflows into happy-path prose or confuse system functions with business process steps."
-  outputs: "Produce as-is and to-be process models with narrative, actors, exceptions, and requirement implications."
-  references: "Use `references/` when deeper detail is needed."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # Business Process Modeling Skill
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- modelling as-is and to-be workflows, actors, handoffs, controls, events, and exceptions to expose requirements; use service-blueprint-requirements for frontstage/backstage service delivery.
+- Use this procedure when the required source artefacts are available and `Business process models and requirement implications` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `service-blueprint-requirements` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Process scope, stakeholders, policies, observed evidence, events, and pain points | Process owners, operators, and elicitation records | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `Business process models and requirement implications`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| Business process models and requirement implications | Requirements analysis, service design, controls, and automation teams | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `Business process models and requirement implications` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. Editing is allowed only when the request authorises creation or repair of the named requirements artefact. Publishing, production mutation, destructive action, spending, and certification require explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A handoff has no owner, trigger, completion signal, or exception path | Keep the process unresolved and assign those fields before approval. | Automation built on an incomplete workflow. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `Business process models and requirement implications` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `Business process models and requirement implications` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `service-blueprint-requirements` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../../../docs/skill-authoring-standard.md)
+- [Modeling Patterns](references/modeling-patterns.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 

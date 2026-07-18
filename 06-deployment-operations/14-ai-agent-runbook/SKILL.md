@@ -1,19 +1,106 @@
 ---
-name: "ai-agent-runbook"
-description: "Generate the AI Agent Runbook: kill-switch (global, per-tenant, per-feature), force-pause, force-resume, replay-a-run, agent-task quarantine, audit-log review cadence, agent-incident handling playbooks, and the operator-on-call rotation for agent-specific incidents."
+name: 14-ai-agent-runbook
+description: Use when producing or updating AI-agent operations runbook for agent health, pauses, retries, replay, tool failures, containment, and operator authority. Use incident-response-runbook for the neighbouring concern; this skill owns the named document contract and its acceptance evidence.
 metadata:
-  use_when: "Use whenever a SaaS operates one or more agent features at L1+ in production. Required before any L1+ rollout."
-  do_not_use_when: "Do not use for L0 (suggest-only) features with no execution surface; the generic runbook is sufficient."
-  required_inputs: "AI_Agent_Architecture_Spec.md, Action_Catalogue_Spec.md, AI_Agent_SLO_Doc.md, AI_Feature_Rollout_Runbook.md, Runbook.md (parent), SaaS_Incident_Response_And_Postmortem.md."
-  workflow: "Define the kill-switch operations, define force-pause / force-resume, define replay, define agent-task quarantine, define audit-log review cadence, write playbooks for each agent incident class, define the on-call rotation, write the runbook."
-  quality_standards: "Every agent feature shall have a kill-switch procedure with a propagation SLA. Every irreversible-action incident shall have a documented playbook. Audit-log review shall have a cadence and an owner."
-  anti_patterns: "Do not require code deploy for kill-switch. Do not omit the two-person rule for global kill-switch. Do not let the audit log accumulate unreviewed."
-  outputs: "AI_Agent_Runbook.md."
-  references: "Use references/ai-agent-runbook-template.md."
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
 ---
+
 
 # AI Agent Runbook Skill
 
+<!-- dual-compat-start -->
+## Use When
+
+- Produce or update AI-agent operations runbook from approved project evidence.
+- Resolve decisions about agent health, pauses, retries, replay, tool failures, containment, and operator authority.
+- Prepare a reviewable handoff for AI operations and SRE.
+
+## Do Not Use When
+
+- The task is primarily owned by incident-response-runbook; route there and use this skill only for its named output.
+- Required project evidence or decision authority is unavailable and the requester expects a pass, release, certification, or production change.
+
+## Required Inputs
+
+| Artefact | Source/provider | Required? | Behaviour when absent |
+|---|---|---|---|
+| Project _context/, approved requirements, and relevant architecture | Project owner and upstream phase skills | Required | Stop at a gap register; do not invent scope, thresholds, integrations, or owners. |
+| Existing artefact, implementation, configuration, and evidence named below | Repository, delivery team, or service owner | Required when updating or assessing | Mark inaccessible items `not assessed`; do not treat them as passed. |
+| Target audience, environment, risk tolerance, and authority | Requester and accountable owner | Required | Produce a read-only outline with explicit assumptions; do not mutate project or production state. |
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI-agent Operations Runbook | AI operations and SRE | Every operator action has an authority check, observable precondition, safe execution step, verification, and audit evidence. |
+| Decision and gap register | Reviewer and downstream phase owner | Every assumption, rejected option, unresolved dependency, waiver, and owner is explicit. |
+| Validation evidence | Release or governance reviewer | Checks identify command or method, date, result, evidence location, and all unassessed items. |
+
+## Evidence Produced
+
+| Evidence | Minimum content | Acceptance |
+|---|---|---|
+| Traceability record | Source artefact, decision, output section, owner | No mandatory decision is source-free. |
+| Quality-gate result | Check, expected result, observed result, evidence path | Failures and unavailable checks cannot appear as passes. |
+| Review record | Reviewer, date, disposition, open actions | The consumer can reproduce the acceptance decision. |
+
+## Capability and Permission Boundaries
+
+- Minimum capabilities: read and search the authorised project sources. Execution is optional and limited to non-destructive validation.
+- Inspection is read-only by default. Create or edit the named project document only when explicitly authorised. Production mutation, publishing, destructive action, spending, external communication, or certification claims require separate explicit authority.
+- Treat secrets, tenant data, incident evidence, and financial records as least-privilege inputs; expose only the minimum evidence needed for review.
+
+## Degraded Mode
+
+If files, execution, network, rendering, environment access, fonts, or current evidence are unavailable, return the narrowest useful draft plus a gap register. Label affected checks `not assessed`, retain the intended acceptance oracle, and state who must supply or verify the missing evidence. Never convert an unavailable check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Evidence is complete and authority is explicit | Choose operation from run state, tool reversibility, and incident severity and produce the full artefact. | Duplicate, unauthorised, or unreplayable actions. |
+| A required source or approval is missing | Stop the affected branch; record the gap, owner, and unblock condition. | Fabricated requirements or unauthorised action. |
+| Evidence conflicts across sources | Preserve both claims, identify the controlling owner, and request a recorded decision. | Silent selection of a convenient but wrong source. |
+| A check cannot run in the available environment | Keep its oracle and mark it `not assessed`; require later execution evidence. | False assurance from capability limits. |
+
+## Workflow
+
+1. Confirm the named deliverable, consumer, scope, environment, authority, and neighbouring-skill boundary.
+2. Inventory required sources and validate provenance, freshness, internal consistency, and missing inputs. Stop the affected branch on a mandatory gap.
+3. Extract traceable requirements, invariants, risks, and measurable acceptance criteria; record conflicts before choosing a design or procedure.
+4. Apply the decision rules and the domain workflow below. For a failed branch, preserve evidence, choose the documented recovery path, or escalate to the named owner.
+5. Draft the artefact, decision register, and evidence record together. Do not defer failure handling, rollback, security, tenancy, accessibility, or operational ownership.
+6. Run available checks, review every result, repair failures, and hand off only when acceptance is observable. If recovery fails or authority is exceeded, stop and escalate without mutation.
+
+## Quality Standards
+
+- Ground every section in a named project source, decision, measured result, or accountable owner.
+- Give each requirement or procedure a deterministic oracle that another reviewer can reproduce.
+- Keep assumptions, exclusions, degraded checks, residual risks, and waivers visible at handoff.
+- Preserve the domain invariants and more specific controls in the existing workflow below; this contract does not replace them.
+- Run the repository anti-AI-slop gate: remove filler, verify named standards and dependencies, and retain purposeful domain detail.
+
+## Anti-Patterns
+
+- Copying a generic template without mapping it to project sources. Fix: attach each section to an approved requirement, configuration, risk, or owner.
+- Choosing a threshold because it is common practice. Fix: derive it from a requirement, measured baseline, risk decision, or current verified source.
+- Reporting an inaccessible or unexecuted check as passed. Fix: mark it `not assessed`, preserve the oracle, and name the verifier.
+- Mixing the neighbouring incident-response-runbook concern into this artefact without a boundary. Fix: cross-reference its output and keep ownership explicit.
+- Omitting failure, rollback, empty-state, security, tenancy, or escalation behaviour. Fix: specify the trigger, safe action, verification, and owner for each applicable case.
+- Mutating a repository, environment, tenant, ledger, or external system while drafting guidance. Fix: remain read-only until the exact mutation and authority are explicit.
+- Claiming compliance, certification, readiness, or release from prose alone. Fix: require source-attributed evidence and a named acceptance decision.
+
+## Worked Example
+
+Given an approved project source and a conflicting implementation detail, record both with provenance, stop the affected branch, and obtain the accountable owner's decision. Then update the relevant contract, define a reproducible acceptance check, and retain its observed result. The artefact is accepted only when every operator action has an authority check, observable precondition, safe execution step, verification, and audit evidence.
+
+## References
+
+- [logic.prompt](logic.prompt) - load only when its template, logic, or detail is needed.
+- [README.md](README.md) - load only when its template, logic, or detail is needed.
+<!-- dual-compat-end -->
 ## Core Instructions
 
 ### Step 1: Kill-switch operations

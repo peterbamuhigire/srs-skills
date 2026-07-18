@@ -1,18 +1,98 @@
 ---
-name: "ai-data-flow-and-dpia"
-description: "Generate the AI Data-Flow Diagram and AI-specific DPIA addendum: where customer data flows when AI features run, every model provider as a processor, sub-processor notice, consent capture, training-data exclusion evidence, cross-border transfer mechanism, and the AI-specific risk register that augments the base DPIA."
+name: 16-ai-data-flow-and-dpia
+description: Use when mapping AI data flows and assessing privacy necessity, lawful basis, risks, controls, residual risk, and consultation triggers. Use DPA/privacy-doc-set for contractual documents and responsible-ai-declaration for broader AI governance.
 metadata:
-  use_when: "Use for any SaaS shipping AI features that process personal data. Mandatory before EU launch or any regulated-region launch."
-  do_not_use_when: "Do not use for AI features that demonstrably process no personal data."
-  required_inputs: "AI_Feature_PRD_Spec.md, AI_Data_And_Knowledge_Base_Spec.md, DPA, sub-processor list, Multi_Tenancy_Architecture_Spec.md, base DPIA (if exists)."
-  workflow: "Inventory data flows, draw the AI data-flow diagram with model providers as processors, write the AI DPIA addendum, declare consent capture, declare training-data exclusion evidence, declare cross-border transfer mechanism, write the AI-specific risk register, write the document."
-  quality_standards: "Every data flow shall name source, sink, classification, transfer mechanism, training-exclusion verdict, retention. Every processor shall have a contract reference."
-  anti_patterns: "Do not omit retrieval and embedding flows. Do not treat conversation logs as ephemeral if they persist. Do not claim provider-side training exclusion without contract evidence."
-  outputs: "AI_Data_Flow_And_DPIA.md plus data-flow diagram source."
-  references: "Use references/ai-dpia-addendum-template.md and references/ai-data-flow-diagram-conventions.md."
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
 ---
 
 # AI Data-Flow and DPIA Skill
+
+<!-- dual-compat-start -->
+
+## Use When
+
+- Use when mapping AI data flows and assessing privacy necessity, lawful basis, risks, controls, residual risk, and consultation triggers. Use DPA/privacy-doc-set for contractual documents and responsible-ai-declaration for broader AI governance.
+
+## Do Not Use When
+
+- Do not use for AI features that demonstrably process no personal data.
+- Do not use this skill to fabricate missing project facts, legal conclusions, test results, approvals, or certification claims.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing-input behaviour |
+|---|---|---:|---|
+| Target sources: AI_Feature_PRD_Spec.md, AI_Data_And_Knowledge_Base_Spec.md, DPA, sub-processor list, Multi_Tenancy_Architecture_Spec.md, base DPIA (if exists). | Project owner, approved workspace artefacts, or accountable control owner | Yes | Stop dependent claims; list the missing item, owner, and consequence. For review checks, record `not assessed`. |
+| Scope, audience, baseline/version, and accountable decision owner | Requester or project context | Yes | Ask for or record the gap; do not infer authority or scope. |
+
+## Capability and permission boundaries
+
+Default to read-only. Read and search access to the supplied artefacts are required. Editing is limited to an explicitly authorised requested draft or project files. Execute validation only when authorised; publishing, signature, certification, production mutation, destructive action, spending, and risk acceptance require explicit authority.
+
+## Degraded Mode
+
+When files, tools, network, rendering, fonts, execution, or evidence are unavailable, return the narrowest useful qualified draft or finding set. Name every unavailable check and its consequence; an unassessed check is never a pass. Preserve evidence already gathered and provide the exact next verification step.
+
+## Decision Rules
+
+| Condition | Action | Failure or risk avoided |
+|---|---|---|
+| Lawful basis, jurisdiction, data flow, or legal owner is unverified | Stop publication or signature and request legal/privacy review | Invalid privacy or contract claim |
+| Residual high risk remains after controls | Escalate to the accountable authority; do not self-certify | Unauthorised risk acceptance |
+
+## Workflow
+
+1. Confirm the requested artefact, audience, scope, decision owner, and applicable baseline or version. Work read-only by default; source mutation, publication, signature, certification, production change, or risk acceptance requires explicit authority.
+2. Inspect every required input and record missing, stale, conflicting, or inaccessible evidence. Stop claims that depend on an unresolved required input.
+3. Apply the Decision Rules, then execute the existing Core Instructions below in order; preserve project terminology and trace each material statement to its source.
+4. Test the draft against the output acceptance conditions and domain quality standards. If a check cannot run, mark it `not assessed` and never convert it into a pass.
+5. On failure, recover by preserving completed evidence, identifying the narrowest corrective action and owner, and rerunning only the affected checks before handoff.
+6. Produce the named artefact and evidence record; publish, sign, certify, mutate production, or accept risk only under explicit authority.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI Data-Flow and DPIA | Accountable reviewer, control owner, auditor, or release authority | Every data flow shall name source, sink, classification, transfer mechanism, training-exclusion verdict, retention. Every processor shall have a contract reference. |
+| Gap and decision record | Accountable owner and downstream reviewer | Every gap has status, impact, owner, next action, and no unsupported pass or approval. |
+
+## Evidence Produced
+
+| Evidence | Contents | Acceptance condition |
+|---|---|---|
+| AI Data-Flow and DPIA evidence record | Source identifiers, scope/version, decisions, checks, exceptions, and approval state | A reviewer can reproduce each material conclusion from named sources. |
+| Validation record | Check, result (`pass`, `fail`, or `not assessed`), evidence location, date, and actor | No required check is omitted or silently treated as passed. |
+
+## Quality Standards
+
+- Every data flow shall name source, sink, classification, transfer mechanism, training-exclusion verdict, retention. Every processor shall have a contract reference.
+- Use deterministic acceptance conditions and preserve traceability from source to decision and output.
+- Separate facts, inferences, assumptions, and approvals; never present one as another.
+- Apply `28-anti-ai-slop` during authoring and `29-ai-slop-audit` at major checkpoints and release.
+
+## Anti-Patterns
+
+- **Producing AI Data-Flow and DPIA from assumptions instead of named project sources.** Fix: Cite the source or mark the item unverified.
+- **Treating a missing or inaccessible check as passed.** Fix: Mark it `not assessed`, state impact, and block dependent claims.
+- **Using vague gates such as `adequate`, `secure`, or `user-friendly`.** Fix: Replace each with an observable criterion, threshold, and evidence source.
+- **Copying a generic template without product, control, role, version, or jurisdiction detail.** Fix: Ground every section in the supplied context and remove unused boilerplate.
+- **Publishing, signing, certifying, changing production, or accepting risk without authority.** Fix: Prepare a draft and route the decision to the accountable owner.
+- **Listing evidence without provenance or an acceptance result.** Fix: Record source, period, integrity check, mapping, and pass/fail/not-assessed status.
+
+## Worked Example
+
+Example: if lawful basis, jurisdiction, data flow, or legal owner is unverified, stop publication or signature and request legal/privacy review. Record the evidence and result in the validation record; this avoids invalid privacy or contract claim.
+
+## References
+
+- [Generation logic](logic.prompt): load when creating the complete artefact.
+- [Skill notes](README.md): consult for local examples and invocation context.
+- [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
+
+<!-- dual-compat-end -->
 
 ## Core Instructions
 

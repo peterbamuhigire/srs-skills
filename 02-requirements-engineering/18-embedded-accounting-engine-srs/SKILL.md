@@ -1,11 +1,86 @@
 ---
-name: embedded-accounting-engine-srs
-description: Generate the SRS subsection for any system that handles money, inventory value, payroll, tax, grants, fees, payments, receivables, payables, fixed assets, or financial reporting. Specifies embedded accounting engine requirements: chart of accounts, mapping layer, LedgerPostingService, append-only journals, subledgers, accounting periods, reversals, reports, audit trail, IFRS/IFRS for SMEs/local tax context, and integrity invariants.
+name: 18-embedded-accounting-engine-srs
+description: "Use when specifying software that touches money, inventory value, payroll, tax, grants, payments, assets, or financial reports; use the finance doctrine for accounting policy and current statutory facts."
 metadata:
   portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # Embedded Accounting Engine SRS
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- specifying software that touches money, inventory value, payroll, tax, grants, payments, assets, or financial reports; use the finance doctrine for accounting policy and current statutory facts.
+- Use this procedure when the required source artefacts are available and `Embedded accounting engine SRS` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `finance-module-audit` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Money-flow map, reporting framework, jurisdiction, roles, and finance doctrine baseline | Project context, finance owner, and canonical finance doctrine | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `Embedded accounting engine SRS`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| Embedded accounting engine SRS | Architecture, finance, implementation, test, and audit owners | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `Embedded accounting engine SRS` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. Editing is allowed only when the request authorises creation or repair of the named requirements artefact. Publishing, production mutation, destructive action, spending, and certification require explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A money flow bypasses the approved posting service or lacks a control-account tie-out | Block release and add ledger, reversal, reconciliation, and evidence requirements. | Broken double entry, misstated reports, or unauditable transactions. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `Embedded accounting engine SRS` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `Embedded accounting engine SRS` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `finance-module-audit` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../docs/skill-authoring-standard.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Use When
 

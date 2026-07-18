@@ -1,18 +1,87 @@
 ---
-name: "business-analysis-planning"
-description: "Plan business analysis governance, stakeholder engagement, decision rights, work cadence, and artifact strategy before detailed requirements work begins."
+name: 04-business-analysis-planning
+description: "Use when defining business-analysis governance, decision rights, stakeholder engagement, cadence, artefact plan, and change approach before detailed work; use stakeholder-analysis for the stakeholder register."
 metadata:
-  use_when: "Use when the task matches business analysis planning and this skill's local workflow."
-  do_not_use_when: "Do not use when detailed elicitation or specification has already started and a narrower downstream skill owns the work."
-  required_inputs: "Provide the target project, context files, stakeholder information, delivery constraints, and governance assumptions."
-  workflow: "Follow the ordered planning, governance, stakeholder, and work-definition steps in this file before moving into elicitation."
-  quality_standards: "Keep outputs grounded in project context, explicit about decision rights, and specific enough to guide real analysis work."
-  anti_patterns: "Do not invent governance structures, skip decision ownership, or treat business analysis as informal note-taking."
-  outputs: "Produce a business analysis plan with governance, engagement, work plan, artifacts, and decision gates."
-  references: "Use `references/` when deeper detail is needed."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # Business Analysis Planning Skill
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- defining business-analysis governance, decision rights, stakeholder engagement, cadence, artefact plan, and change approach before detailed work; use stakeholder-analysis for the stakeholder register.
+- Use this procedure when the required source artefacts are available and `Business analysis plan` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `stakeholder-analysis` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Project mandate, delivery method, scope, constraints, governance, and known stakeholders | Sponsor and delivery governance | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `Business analysis plan`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| Business analysis plan | Business analysts, sponsor, and phase owners | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `Business analysis plan` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. This procedure is read-only by default. Editing the reviewed artefact, publishing, production mutation, destructive action, spending, or certification requires explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A decision has no accountable owner or approval path | Stop dependent analysis and assign decision authority. | Unowned requirements and stalled approvals. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `Business analysis plan` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `Business analysis plan` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `stakeholder-analysis` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../../../docs/skill-authoring-standard.md)
+- [Governance And Engagement](references/governance-and-engagement.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 

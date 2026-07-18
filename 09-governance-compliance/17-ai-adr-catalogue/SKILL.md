@@ -1,18 +1,98 @@
 ---
-name: "ai-adr-catalogue"
-description: "Generate the AI ADR Catalogue: the required architecture decision records for an AI-feature SaaS -- model choice, RAG vs fine-tune, vector store, eval threshold, abstain policy, content filter, fallback, retraining trigger, and the prompt-registry change protocol."
+name: 17-ai-adr-catalogue
+description: Use when maintaining a catalogue of consequential AI architecture, model, data, evaluation, safety, and provider decisions. Use architecture-decision-records for general ADRs and ai-agent-adr-catalogue for autonomous-agent decisions.
 metadata:
-  use_when: "Use as soon as the AI Architecture Spec is drafted. Each AI feature shipping to production shall have its ADR catalogue completed."
-  do_not_use_when: "Do not use for projects without AI features or for one-off research prototypes."
-  required_inputs: "AI_Architecture_Spec.md, AI_Feature_PRD_Spec.md, AI_Model_Card.md, AI_Eval_Harness_Spec.md, AI_Red_Team_Test_Plan.md."
-  workflow: "Inventory required ADR slots, fill each ADR with context / decision / consequences / alternatives / evidence, index them in the AI ADR register, link to the central ADR catalogue, write the catalogue doc."
-  quality_standards: "Every required ADR slot shall be filled or explicitly waived with an ADR-style waiver. Every decision shall cite its alternatives and the evidence that drove the choice."
-  anti_patterns: "Do not record decisions without alternatives. Do not let ADRs lag behind production changes."
-  outputs: "AI_ADR_Catalogue.md and ADR-AI-NNNN-<slug>.md files."
-  references: "Use references/ai-adr-templates.md."
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
 ---
 
 # AI ADR Catalogue Skill
+
+<!-- dual-compat-start -->
+
+## Use When
+
+- Use when maintaining a catalogue of consequential AI architecture, model, data, evaluation, safety, and provider decisions. Use architecture-decision-records for general ADRs and ai-agent-adr-catalogue for autonomous-agent decisions.
+
+## Do Not Use When
+
+- Do not use for projects without AI features or for one-off research prototypes.
+- Do not use this skill to fabricate missing project facts, legal conclusions, test results, approvals, or certification claims.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing-input behaviour |
+|---|---|---:|---|
+| Target sources: AI_Architecture_Spec.md, AI_Feature_PRD_Spec.md, AI_Model_Card.md, AI_Eval_Harness_Spec.md, AI_Red_Team_Test_Plan.md. | Project owner, approved workspace artefacts, or accountable control owner | Yes | Stop dependent claims; list the missing item, owner, and consequence. For review checks, record `not assessed`. |
+| Scope, audience, baseline/version, and accountable decision owner | Requester or project context | Yes | Ask for or record the gap; do not infer authority or scope. |
+
+## Capability and permission boundaries
+
+Default to read-only. Read and search access to the supplied artefacts are required. Editing is limited to an explicitly authorised requested draft or project files. Execute validation only when authorised; publishing, signature, certification, production mutation, destructive action, spending, and risk acceptance require explicit authority.
+
+## Degraded Mode
+
+When files, tools, network, rendering, fonts, execution, or evidence are unavailable, return the narrowest useful qualified draft or finding set. Name every unavailable check and its consequence; an unassessed check is never a pass. Preserve evidence already gathered and provide the exact next verification step.
+
+## Decision Rules
+
+| Condition | Action | Failure or risk avoided |
+|---|---|---|
+| A required source, owner, obligation, or acceptance condition is missing | Stop the affected claim and record the gap | Unsupported governance artefact |
+| Evidence satisfies the declared acceptance condition | Record the decision and hand off to the named consumer | Ambiguous approval or release |
+
+## Workflow
+
+1. Confirm the requested artefact, audience, scope, decision owner, and applicable baseline or version. Work read-only by default; source mutation, publication, signature, certification, production change, or risk acceptance requires explicit authority.
+2. Inspect every required input and record missing, stale, conflicting, or inaccessible evidence. Stop claims that depend on an unresolved required input.
+3. Apply the Decision Rules, then execute the existing Core Instructions below in order; preserve project terminology and trace each material statement to its source.
+4. Test the draft against the output acceptance conditions and domain quality standards. If a check cannot run, mark it `not assessed` and never convert it into a pass.
+5. On failure, recover by preserving completed evidence, identifying the narrowest corrective action and owner, and rerunning only the affected checks before handoff.
+6. Produce the named artefact and evidence record; publish, sign, certify, mutate production, or accept risk only under explicit authority.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI ADR Catalogue | Accountable reviewer, control owner, auditor, or release authority | Every required ADR slot shall be filled or explicitly waived with an ADR-style waiver. Every decision shall cite its alternatives and the evidence that drove the choice. |
+| Gap and decision record | Accountable owner and downstream reviewer | Every gap has status, impact, owner, next action, and no unsupported pass or approval. |
+
+## Evidence Produced
+
+| Evidence | Contents | Acceptance condition |
+|---|---|---|
+| AI ADR Catalogue evidence record | Source identifiers, scope/version, decisions, checks, exceptions, and approval state | A reviewer can reproduce each material conclusion from named sources. |
+| Validation record | Check, result (`pass`, `fail`, or `not assessed`), evidence location, date, and actor | No required check is omitted or silently treated as passed. |
+
+## Quality Standards
+
+- Every required ADR slot shall be filled or explicitly waived with an ADR-style waiver. Every decision shall cite its alternatives and the evidence that drove the choice.
+- Use deterministic acceptance conditions and preserve traceability from source to decision and output.
+- Separate facts, inferences, assumptions, and approvals; never present one as another.
+- Apply `28-anti-ai-slop` during authoring and `29-ai-slop-audit` at major checkpoints and release.
+
+## Anti-Patterns
+
+- **Producing AI ADR Catalogue from assumptions instead of named project sources.** Fix: Cite the source or mark the item unverified.
+- **Treating a missing or inaccessible check as passed.** Fix: Mark it `not assessed`, state impact, and block dependent claims.
+- **Using vague gates such as `adequate`, `secure`, or `user-friendly`.** Fix: Replace each with an observable criterion, threshold, and evidence source.
+- **Copying a generic template without product, control, role, version, or jurisdiction detail.** Fix: Ground every section in the supplied context and remove unused boilerplate.
+- **Publishing, signing, certifying, changing production, or accepting risk without authority.** Fix: Prepare a draft and route the decision to the accountable owner.
+- **Listing evidence without provenance or an acceptance result.** Fix: Record source, period, integrity check, mapping, and pass/fail/not-assessed status.
+
+## Worked Example
+
+Example: if a required source, owner, obligation, or acceptance condition is missing, stop the affected claim and record the gap. Record the evidence and result in the validation record; this avoids unsupported governance artefact.
+
+## References
+
+- [Generation logic](logic.prompt): load when creating the complete artefact.
+- [Skill notes](README.md): consult for local examples and invocation context.
+- [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
+
+<!-- dual-compat-end -->
 
 ## Required ADR slots
 

@@ -1,18 +1,90 @@
 ---
-name: "iot-system-design"
-description: "Generate IoT system design documentation covering device, edge, connectivity, cloud, security, lifecycle, and operational architecture for connected products."
+name: 07-iot-system-design
+description: Use when approved requirements involve devices, sensors, gateways, edge processing or operational technology and need end-to-end connectivity, identity, lifecycle, safety and fleet operations; use HLD for the wider system context.
 metadata:
-  use_when: "Use when the system includes connected devices, embedded controllers, telemetry, remote commands, or physical-world integration that requires IoT-specific design decisions."
-  do_not_use_when: "Do not use when the product is purely web or enterprise software with no meaningful device, sensor, or edge-computing scope."
-  required_inputs: "Provide the product context, operating environment, device types, connectivity assumptions, data flows, security constraints, and lifecycle expectations."
-  workflow: "Follow the device-context, architecture, connectivity, security, lifecycle, and operations steps before generating the final design."
-  quality_standards: "Keep the design explicit about device constraints, trust boundaries, failure modes, update strategy, and end-to-end operational ownership."
-  anti_patterns: "Do not treat IoT as only cloud APIs, ignore offline behavior, or omit fleet security and lifecycle management."
-  outputs: "Produce an IoT system design document with architecture, device lifecycle, connectivity, security, observability, and deployment decisions."
-  references: "Use `references/` when deeper detail is needed."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # IoT System Design Skill
+<!-- dual-compat-start -->
+## Use When
+
+- A connected product must be designed from device constraints through cloud and operations.
+
+## Do Not Use When
+
+- Do not use for ordinary web or mobile clients, or when device safety, connectivity and lifecycle evidence is unavailable.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Device capabilities, environment and safety constraints | Hardware, domain and requirements owners | Required | Stop on unknown safety-critical limits or regulatory obligations. |
+| Connectivity, fleet scale and cloud integration | Network, platform and operations owners | Required | Model offline operation when live network evidence is unavailable. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the IoT System Design through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the IoT System Design to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| IoT System Design | Firmware, edge, cloud, security, test and fleet operations teams | Identity, provisioning, telemetry, commands, offline behaviour, update, decommissioning, observability and failure recovery are specified end to end. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified IoT System Design draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Safety or latency needs local action | Place the rule at device/edge with safe fallback | Cloud outage does not create unsafe behaviour |
+| Data is non-urgent and bandwidth constrained | Buffer, batch and reconcile | Connectivity cost and loss are controlled |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Treating a device as an always-online API client. Fix: design buffering and reconnection.
+- Sharing fleet credentials. Fix: use per-device identity and rotation.
+- Omitting failed-update recovery. Fix: specify signed updates, rollback and safe mode.
+- Sending every sample to cloud. Fix: filter and aggregate against use cases.
+- Ending lifecycle at deployment. Fix: specify monitoring, replacement and decommissioning.
+
+## References
+
+- [IoT architecture checklist](references/iot-architecture-checklist.md)
+- [HLD neighbour](../01-high-level-design/SKILL.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

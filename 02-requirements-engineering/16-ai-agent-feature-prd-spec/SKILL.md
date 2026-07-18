@@ -1,18 +1,89 @@
 ---
-name: "ai-agent-feature-prd-spec"
-description: "Generate the AI Agent Feature PRD Spec: IEEE 830-form requirements for every agentic feature, with task scope, autonomy level, action-catalogue summary, intervention triggers, success metrics, max-step / max-cost / wallclock budgets, abstain criteria, and irreversible-action gates anchored to the agent eval and red-team registries."
+name: 16-ai-agent-feature-prd-spec
+description: "Use when defining testable product requirements for an agent's task scope, autonomy, budgets, intervention, success, and irreversible-action gates; use ai-agent-strategy-doc for portfolio strategy."
 metadata:
-  use_when: "Use for every feature classified as an agent by the AI Agent Strategy Doc (L0..L4). Addendum to the AI Feature PRD Spec."
-  do_not_use_when: "Do not use for direct-LLM or RAG features that do not call write or external tools; cover those with `ai-feature-prd-spec` alone."
-  required_inputs: "AI_Agent_Strategy_Doc.md, AI_Feature_PRD_Spec.md, AI_Feature_Strategy_Doc.md, Multi_Tenancy_Architecture_Spec.md, pricing & packaging spec."
-  workflow: "Inventory agent-powered FRs, attach the agent clauses to each, define intervention triggers, define budget caps, define irreversible-action gates, define acceptance gates against the agent eval rig, write the AI_Agent_Feature_PRD_Spec.md."
-  quality_standards: "Every agent FR shall declare: task scope boundary, autonomy level, action-catalogue reference, intervention triggers, max-step / max-cost / max-wallclock budgets, abstain criteria, and the irreversible-action gating rule. Every acceptance gate shall be a numeric threshold backed by the agent eval rig."
-  anti_patterns: "Do not approve an agent FR without budget caps. Do not allow an agent FR to call any tool not enumerated in the action catalogue. Do not mark an L2+ FR as requirements-complete without a named human approver role and a kill-switch reference."
-  outputs: "AI_Agent_Feature_PRD_Spec.md."
-  references: "Use references/ai-agent-feature-prd-spec-template.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # AI Agent Feature PRD Spec Skill
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- defining testable product requirements for an agent's task scope, autonomy, budgets, intervention, success, and irreversible-action gates; use ai-agent-strategy-doc for portfolio strategy.
+- Use this procedure when the required source artefacts are available and `AI agent feature PRD specification` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `ai-agent-strategy-doc` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Approved agent strategy, user journeys, action catalogue, and risk limits | Product owner, operator, and AI governance owner | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `AI agent feature PRD specification`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| AI agent feature PRD specification | Agent architecture, evaluation, red-team, and operations teams | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `AI agent feature PRD specification` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. Editing is allowed only when the request authorises creation or repair of the named requirements artefact. Publishing, production mutation, destructive action, spending, and certification require explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| An action is irreversible or high impact | Require explicit approval, evidence capture, and a tested recovery path. | Unbounded agent side effects. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `AI agent feature PRD specification` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `AI agent feature PRD specification` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `ai-agent-strategy-doc` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../docs/skill-authoring-standard.md)
+- [Skill guidance](README.md)
+- [Executable generation logic](logic.prompt)
+- [Ai Agent Feature Prd Spec Template](references/ai-agent-feature-prd-spec-template.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 

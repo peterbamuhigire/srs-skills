@@ -1,18 +1,91 @@
 ---
-name: "infrastructure-design"
-description: "Generate an Infrastructure Design document for systems requiring high availability, scalability, or distributed architecture. OPTIONAL skill with a score-based decision gate per IEEE 1016-2009 and ISO 25010."
+name: 06-infrastructure-design
+description: Use when a scored decision gate shows that availability, scale, distributed deployment, security or recovery needs infrastructure design beyond the HLD; use HLD for logical architecture and deployment planning for release execution.
 metadata:
-  use_when: "Use when the task matches infrastructure design skill and this skill's local workflow."
-  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
-  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
-  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
-  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
-  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
-  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `references/`, `README.md` when deeper detail is needed."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # Infrastructure Design Skill
+<!-- dual-compat-start -->
+## Use When
+
+- Non-trivial infrastructure quality attributes require topology, capacity, observability, continuity and operating ownership.
+
+## Do Not Use When
+
+- Do not use by default for a simple system that fails the score gate, or to name cloud services without verified constraints.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| HLD, workloads and quality targets | Architecture and requirements artefacts | Required | Stop if availability, recovery or capacity targets are undefined. |
+| Environment, security, cost and operating constraints | Platform, security, finance and operations owners | Required | Produce options and gaps when provider facts or budgets are unavailable. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the Infrastructure Design and decision-gate evidence through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the Infrastructure Design and decision-gate evidence to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Infrastructure Design and decision-gate evidence | Platform, security, delivery and operations teams | Topology traces to measured targets; failure domains, capacity, observability, backup, recovery, cost and ownership have verification methods. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified Infrastructure Design and decision-gate evidence draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Score gate meets infrastructure threshold | Produce the full design | Complex needs receive operational depth |
+| Score gate is below threshold | Keep deployment notes in HLD | Unneeded platform complexity is avoided |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Copying a reference cloud diagram. Fix: derive topology from workload and failure targets.
+- Claiming high availability with one failure domain. Fix: map redundancy and failover tests.
+- Sizing from peak guesses. Fix: state workload assumptions and headroom rule.
+- Omitting recovery exercises. Fix: define restore and failover evidence.
+- Naming alerts without owners. Fix: tie every actionable alert to a runbook and response owner.
+
+## References
+
+- [Reliability patterns](references/reliability-patterns.md)
+- [Monitoring and observability](references/monitoring-observability.md)
+- [Scalability patterns](references/scalability-patterns.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

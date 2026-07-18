@@ -1,18 +1,91 @@
 ---
-name: "saas-billing-and-metering-spec"
-description: "Generate a SaaS Billing & Metering Specification: the event catalogue, granularity, tenant-context propagation, transport bus, retention, aggregation, ERP/finance handoff, revenue-recognition rules per ASC 606 / IFRS 15, dunning, refund/credit handling — all as testable requirements."
+name: 13-saas-billing-and-metering-spec
+description: "Use when specifying SaaS usage events, billing, credits, refunds, dunning, finance handoff, and testable metering controls; use pricing-and-packaging for commercial tier design."
 metadata:
-  use_when: "Use for any SaaS where usage, seats, features, or any consumption is metered for billing or for tier enforcement."
-  do_not_use_when: "Do not use for flat-fee internal tools with no usage instrumentation."
-  required_inputs: "PRD.md, vision.md, pricing & packaging spec, Multi_Tenancy_Architecture_Spec.md (or HLD.md), tech_stack.md."
-  workflow: "Catalogue metered events, define granularity and tenant-context fields, define transport and retention, define aggregation and pricing engine inputs, define revenue-recognition rules, define dunning and refund flows, write the spec."
-  quality_standards: "Every meter shall have: event name, schema, granularity, source service, sink, retention, used-for. Every revenue rule shall cite ASC 606 / IFRS 15 trigger."
-  anti_patterns: "Do not define meters without retention. Do not skip tenant-context propagation on events. Do not write 'usage-based' without naming the unit and the formula."
-  outputs: "Billing_And_Metering_Spec.md."
-  references: "references/saas-billing-and-metering-srs-template.md, references/saas-revenue-recognition-spec-template.md"
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # SaaS Billing & Metering Spec Skill
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- specifying SaaS usage events, billing, credits, refunds, dunning, finance handoff, and testable metering controls; use pricing-and-packaging for commercial tier design.
+- Use this procedure when the required source artefacts are available and `SaaS billing and metering specification` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `pricing-and-packaging` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Approved pricing, entitlement, finance, and tenant context | Product owner and finance doctrine | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `SaaS billing and metering specification`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| SaaS billing and metering specification | Architecture, finance, API, and test owners | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `SaaS billing and metering specification` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. Editing is allowed only when the request authorises creation or repair of the named requirements artefact. Publishing, production mutation, destructive action, spending, and certification require explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A chargeable event cannot be tied to tenant, source, quantity, and idempotency key | Reject the event contract and close the lineage gap. | Unbillable usage, duplicate charges, or unauditable revenue. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `SaaS billing and metering specification` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `SaaS billing and metering specification` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `pricing-and-packaging` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../docs/skill-authoring-standard.md)
+- [Skill guidance](README.md)
+- [Executable generation logic](logic.prompt)
+- [Ai Usage Events](references/ai-usage-events.md)
+- [Saas Billing And Metering Srs Template](references/saas-billing-and-metering-srs-template.md)
+- [Saas Revenue Recognition Spec Template](references/saas-revenue-recognition-spec-template.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 

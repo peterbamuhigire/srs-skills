@@ -1,0 +1,4 @@
+# Game test evidence matrix
+Back to [the parent skill](../SKILL.md). Each `GTEST-*` records requirement, evidence question/class, build checksum, versions, device/OS/input/assist/locale, scene/content, seed/clock, network/storage/thermal profile, cohort/consent where applicable, steps, invariant or observation method, tolerance, result, logs/capture, failure/defect, limitation, decision, reviewer and approver.
+
+Keep documented, prototype-observed, build-executed, device-measured, player-observed and accountable-expert-approved evidence distinct. Learning studies name construct, measure, comparator/baseline, duration and transfer limit. Cultural acceptance names reviewer/authority and permission scope. Ads cover disclosure, expectation, focus, decline/close, cap/pace, reward/fairness, save/recovery/stopping/exit, child/privacy, accessibility, no-fill/offline/error and kill switch.

@@ -1,18 +1,91 @@
 ---
-name: "ai-prompt-and-system-message-spec"
-description: "Generate the AI Prompt and System-Message Spec: versioned prompt registry layout, change-control workflow, regression-eval attachment, jailbreak-resistant system-message patterns, retrieval-context formatting, and the deployment / rollback procedure for prompts."
+name: 13-ai-prompt-and-system-message-spec
+description: Use when production AI features rely on owned prompts that require registry tags, change control, regression evaluation, safe system-message patterns, retrieval formatting and rollback; use AI architecture for the wider runtime and model card for release disclosure.
 metadata:
-  use_when: "Use when any production AI feature relies on a prompt that the team owns and updates."
-  do_not_use_when: "Do not use when the only prompt is a one-shot research prompt with no production deployment."
-  required_inputs: "AI_Architecture_Spec.md, AI_Feature_PRD_Spec.md, AI_Data_And_Knowledge_Base_Spec.md, sample prompts."
-  workflow: "Inventory prompts, define registry layout and version scheme, define change-control workflow, codify jailbreak-resistant patterns, define retrieval-context format, define deploy/rollback, write the Prompt_And_System_Message_Spec.md."
-  quality_standards: "Every production prompt shall have a registry tag, an owner, a regression eval pinned to its tag, and a deploy/rollback procedure. System messages shall enforce role and refusal rules at the top."
-  anti_patterns: "Do not deploy a prompt without an attached regression eval. Do not store secrets in prompts. Do not blend system message and user message at runtime."
-  outputs: "Prompt_And_System_Message_Spec.md."
-  references: "Use references/ai-prompt-registry-spec-template.md and references/system-message-patterns.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # AI Prompt and System-Message Spec Skill
+<!-- dual-compat-start -->
+## Use When
+
+- A prompt or system message is a versioned production dependency.
+
+## Do Not Use When
+
+- Do not use for one-off research prompts or to store secrets, policy solely in prose, or untested jailbreak claims.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Approved AI architecture, feature requirements and sample prompts | Phase 02/03 artefacts | Required | Stop if prompt ownership or expected behaviour is undefined. |
+| Regression, safety and data-handling criteria | Evaluation, security and privacy owners | Required | Block deployment when required tests or secret rules are absent. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the Prompt and System-Message Specification through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the Prompt and System-Message Specification to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Prompt and System-Message Specification | AI engineers, security, evaluation and release teams | Every production prompt has owner, version, variables, trust boundary, regression suite, deployment, monitoring and rollback contract. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified Prompt and System-Message Specification draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Change can alter user-visible or safety behaviour | Create a new version and run full regression | Silent prompt drift is prevented |
+| Context contains untrusted retrieved/user text | Delimit it as data and preserve instruction priority | Prompt injection cannot redefine authority |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Editing a prompt in production. Fix: version, review, evaluate and deploy it.
+- Putting secrets in system messages. Fix: retrieve secrets through authorised runtime controls.
+- Concatenating untrusted text with instructions. Fix: delimit context and enforce hierarchy.
+- Testing only ideal prompts. Fix: include adversarial, empty, long and conflicting inputs.
+- Rolling back code but not prompts. Fix: pin prompt tags and specify independent rollback.
+
+## References
+
+- [Prompt registry template](references/ai-prompt-registry-spec-template.md)
+- [System-message patterns](references/system-message-patterns.md)
+- [AI Model Card neighbour](../12-ai-model-card/SKILL.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Core Instructions
 

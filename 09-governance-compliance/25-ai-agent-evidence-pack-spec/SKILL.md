@@ -1,18 +1,98 @@
 ---
-name: "ai-agent-evidence-pack-spec"
-description: "Generate the AI Agent Evidence Pack Spec: what evidence the auditor expects per control class; evidence-pack file layout; sampling protocol; chain-of-custody; retention; redaction policy; presentation format; auditor portal access governance. Defines the contract the software-dev pass's collectors must satisfy."
+name: 25-ai-agent-evidence-pack-spec
+description: Use when defining AI-agent compliance evidence items, sources, collection, sampling, integrity, chain of custody, retention, redaction, presentation, and auditor access. Use evidence-pack-builder to assemble a specific pack and control packs to define obligations.
 metadata:
-  use_when: "Use whenever a SaaS operates one or more agent features at L1+ and prepares for SOC 2, ISO, HIPAA, or covered-entity audit. Mandatory before the audit window opens and refreshed annually."
-  do_not_use_when: "Do not use as the incident evidence pack spec — this is the steady-state compliance evidence pack; the incident pack is a superset for SEV3+ events. Cross-link to `06-deployment-operations/17-ai-incident-evidence-pack-spec`."
-  required_inputs: "AI_Agent_SOC2_Control_Pack.md, AI_Agent_ISO27001_Control_Pack.md (where applicable), AI_Agent_HIPAA_Control_Pack.md (where applicable), AI_Agent_Compliance_Policy_Pack.md, AI_Agent_Architecture_Spec.md, AI_Agent_Runbook.md, AI Incident Evidence Pack Spec, parent evidence-pack builder skill."
-  workflow: "Enumerate evidence items by control class; define pack layout; define sampling protocol; define chain-of-custody; define retention; define redaction policy; define presentation format; define auditor portal access governance; write the spec."
-  quality_standards: "Every control row in every control pack shall map to one or more evidence items. Every evidence item shall name source system, collector, capture method, frequency, retention, sampling, redaction, presentation. Chain-of-custody shall be tamper-evident. Auditor portal access shall be time-bound, logged, and named-recipient."
-  anti_patterns: "Do not produce evidence ad hoc per audit; the pack shall be continuous. Do not skip the chain-of-custody manifest. Do not put raw customer data in the auditor portal; redact per the redaction policy. Do not let evidence cadence be 'continuous' without naming the collector."
-  outputs: "AI_Agent_Evidence_Pack_Spec.md, AI_Agent_Attestation_Evidence_Pack_Template.md, AI_Agent_Evidence_Frequency_Table.md."
-  references: "Use references/ai-agent-attestation-evidence-pack-template.md and references/ai-agent-evidence-frequency-table.md."
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
 ---
 
 # AI Agent Evidence Pack Spec Skill
+
+<!-- dual-compat-start -->
+
+## Use When
+
+- Use when defining AI-agent compliance evidence items, sources, collection, sampling, integrity, chain of custody, retention, redaction, presentation, and auditor access. Use evidence-pack-builder to assemble a specific pack and control packs to define obligations.
+
+## Do Not Use When
+
+- Do not use as the incident evidence pack spec — this is the steady-state compliance evidence pack; the incident pack is a superset for SEV3+ events. Cross-link to `06-deployment-operations/17-ai-incident-evidence-pack-spec`.
+- Do not use this skill to fabricate missing project facts, legal conclusions, test results, approvals, or certification claims.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing-input behaviour |
+|---|---|---:|---|
+| Target sources: AI_Agent_SOC2_Control_Pack.md, AI_Agent_ISO27001_Control_Pack.md (where applicable), AI_Agent_HIPAA_Control_Pack.md (where applicable), AI_Agent_Compliance_Policy_Pack.md, AI_Agent_Architecture_Spec.md, AI_Agent_Runbook.md, AI Incident Evidence Pack Spec, parent evidence-pack builder skill. | Project owner, approved workspace artefacts, or accountable control owner | Yes | Stop dependent claims; list the missing item, owner, and consequence. For review checks, record `not assessed`. |
+| Scope, audience, baseline/version, and accountable decision owner | Requester or project context | Yes | Ask for or record the gap; do not infer authority or scope. |
+
+## Capability and permission boundaries
+
+Default to read-only. Read and search access to the supplied artefacts are required. Editing is limited to an explicitly authorised requested draft or project files. Execute validation only when authorised; publishing, signature, certification, production mutation, destructive action, spending, and risk acceptance require explicit authority.
+
+## Degraded Mode
+
+When files, tools, network, rendering, fonts, execution, or evidence are unavailable, return the narrowest useful qualified draft or finding set. Name every unavailable check and its consequence; an unassessed check is never a pass. Preserve evidence already gathered and provide the exact next verification step.
+
+## Decision Rules
+
+| Condition | Action | Failure or risk avoided |
+|---|---|---|
+| Provenance, integrity, period, or control mapping is absent | Quarantine the item and record the gap | Misleading or tampered evidence |
+| Evidence meets scope, integrity, and traceability checks | Index it for the named consumer | Unreviewable evidence dumps |
+
+## Workflow
+
+1. Confirm the requested artefact, audience, scope, decision owner, and applicable baseline or version. Work read-only by default; source mutation, publication, signature, certification, production change, or risk acceptance requires explicit authority.
+2. Inspect every required input and record missing, stale, conflicting, or inaccessible evidence. Stop claims that depend on an unresolved required input.
+3. Apply the Decision Rules, then execute the existing Core Instructions below in order; preserve project terminology and trace each material statement to its source.
+4. Test the draft against the output acceptance conditions and domain quality standards. If a check cannot run, mark it `not assessed` and never convert it into a pass.
+5. On failure, recover by preserving completed evidence, identifying the narrowest corrective action and owner, and rerunning only the affected checks before handoff.
+6. Produce the named artefact and evidence record; publish, sign, certify, mutate production, or accept risk only under explicit authority.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI Agent Evidence Pack Spec | Accountable reviewer, control owner, auditor, or release authority | Every control row in every control pack shall map to one or more evidence items. Every evidence item shall name source system, collector, capture method, frequency, retention, sampling, redaction, presentation. Chain-of-custody shall be tamper-evident. Auditor portal access shall be time-bound, logged, and named-recipient. |
+| Gap and decision record | Accountable owner and downstream reviewer | Every gap has status, impact, owner, next action, and no unsupported pass or approval. |
+
+## Evidence Produced
+
+| Evidence | Contents | Acceptance condition |
+|---|---|---|
+| AI Agent Evidence Pack Spec evidence record | Source identifiers, scope/version, decisions, checks, exceptions, and approval state | A reviewer can reproduce each material conclusion from named sources. |
+| Validation record | Check, result (`pass`, `fail`, or `not assessed`), evidence location, date, and actor | No required check is omitted or silently treated as passed. |
+
+## Quality Standards
+
+- Every control row in every control pack shall map to one or more evidence items. Every evidence item shall name source system, collector, capture method, frequency, retention, sampling, redaction, presentation. Chain-of-custody shall be tamper-evident. Auditor portal access shall be time-bound, logged, and named-recipient.
+- Use deterministic acceptance conditions and preserve traceability from source to decision and output.
+- Separate facts, inferences, assumptions, and approvals; never present one as another.
+- Apply `28-anti-ai-slop` during authoring and `29-ai-slop-audit` at major checkpoints and release.
+
+## Anti-Patterns
+
+- **Producing AI Agent Evidence Pack Spec from assumptions instead of named project sources.** Fix: Cite the source or mark the item unverified.
+- **Treating a missing or inaccessible check as passed.** Fix: Mark it `not assessed`, state impact, and block dependent claims.
+- **Using vague gates such as `adequate`, `secure`, or `user-friendly`.** Fix: Replace each with an observable criterion, threshold, and evidence source.
+- **Copying a generic template without product, control, role, version, or jurisdiction detail.** Fix: Ground every section in the supplied context and remove unused boilerplate.
+- **Publishing, signing, certifying, changing production, or accepting risk without authority.** Fix: Prepare a draft and route the decision to the accountable owner.
+- **Listing evidence without provenance or an acceptance result.** Fix: Record source, period, integrity check, mapping, and pass/fail/not-assessed status.
+
+## Worked Example
+
+Example: if provenance, integrity, period, or control mapping is absent, quarantine the item and record the gap. Record the evidence and result in the validation record; this avoids misleading or tampered evidence.
+
+## References
+
+- [Generation logic](logic.prompt): load when creating the complete artefact.
+- [Skill notes](README.md): consult for local examples and invocation context.
+- [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
+
+<!-- dual-compat-end -->
 
 ## Overview
 

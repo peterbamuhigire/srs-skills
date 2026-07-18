@@ -1,18 +1,91 @@
 ---
-name: "ai-agent-strategy-doc"
-description: "Generate the AI Agent Strategy Doc: when to use an agent vs a workflow or a single LLM call, agent capability ladder by pricing tier, autonomy-level taxonomy (suggest / approve-each / approve-batch / autonomous), proprietary action catalogue and tool-telemetry moat, and the agent-feature sequencing roadmap."
+name: 14-ai-agent-strategy-doc
+description: Use when a product may ship tool-using AI agents and needs to decide agent versus workflow, autonomy levels, tiered capabilities, action-catalogue advantage and sequencing; use AI feature strategy for the wider AI portfolio and agent architecture after approval.
 metadata:
-  use_when: "Use whenever a SaaS roadmap contains one or more agentic features — features where an LLM plans, calls tools, and acts on behalf of the user or tenant across multiple steps."
-  do_not_use_when: "Do not use for products that ship only direct-LLM or RAG features without tool-using planners; cover those with `ai-feature-strategy-doc` alone."
-  required_inputs: "AI_Feature_Strategy_Doc.md, PRD.md, pricing & packaging spec, competitor scan, AI Economic Value Brief for each candidate agent feature."
-  workflow: "Apply the agent-vs-workflow gate per candidate feature, classify each agent feature by autonomy level, place on the agent capability ladder by tier, declare the agent moat asset, write the sequencing roadmap, write the AI_Agent_Strategy_Doc.md."
-  quality_standards: "Every agentic feature shall pass the agent-vs-workflow gate before being included. Every agent feature shall declare an autonomy level, a tier placement, a moat asset, and the irreversibility profile of its action catalogue at the strategic level."
-  anti_patterns: "Do not classify a deterministic workflow as an agent because it uses an LLM. Do not place an autonomous-tier agent feature in a Free tier. Do not declare an agent moat without naming the asset (proprietary action catalogue, action telemetry, eval-set, integration depth)."
-  outputs: "AI_Agent_Strategy_Doc.md."
-  references: "Use references/ai-agent-strategy-doc-template.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # AI Agent Strategy Doc Skill
+<!-- dual-compat-start -->
+## Use When
+
+- Product and risk owners must justify agentic autonomy and define its commercial and control boundaries.
+
+## Do Not Use When
+
+- Do not use for a direct model call, ordinary RAG answer or deterministic automation that needs no planning or tool use.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Candidate workflows, actions and user value | Product discovery and operational owners | Required | Stop if the action catalogue or accountable user outcome is undefined. |
+| Risk tolerance, approval policy and cost envelope | Security, compliance, finance and product owners | Required | Default to the lowest autonomy level until approved evidence exists. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the AI Agent Strategy Document through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the AI Agent Strategy Document to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI Agent Strategy Document | Product, pricing, PRD, security and agent architecture teams | Each agent use case has agent-necessity rationale, autonomy level, allowed actions, approval boundary, tier, success measure, cost limit and sequence gate. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified AI Agent Strategy Document draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Task needs adaptive planning across bounded tools | Consider an agent with minimum autonomy | Complexity is justified |
+| Task is deterministic or one-step | Use a workflow or direct call | Agent risk and cost are unnecessary |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Calling a chatbot an agent. Fix: require planning plus bounded tool action.
+- Starting at autonomous mode. Fix: begin at the lowest useful approval level.
+- Treating more tools as more value. Fix: bound actions to the user job and risk policy.
+- Ignoring attempted-versus-completed cost. Fix: define budgets and outcome accounting.
+- Claiming an action-catalogue moat without usage evidence. Fix: define telemetry and compounding learning.
+
+## References
+
+- [Agent strategy template](references/ai-agent-strategy-doc-template.md)
+- [AI feature strategy neighbour](../13-ai-feature-strategy-doc/SKILL.md)
+- [Agent architecture neighbour](../../03-design-documentation/14-ai-agent-architecture-spec/SKILL.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

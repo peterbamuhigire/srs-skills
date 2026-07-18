@@ -1,18 +1,89 @@
 ---
-name: "ai-data-and-knowledge-base-spec"
-description: "Generate the AI Data and Knowledge-Base Spec: the canonical record of what data feeds AI features, per-tenant vs shared scope, ingestion SLA, freshness, retention, lineage, training-data exclusion, and the cross-tenant leak controls for embeddings and conversation logs."
+name: 15-ai-data-and-knowledge-base-spec
+description: "Use when specifying AI knowledge sources, ingestion, tenant isolation, freshness, retention, lineage, and training-data exclusions; use ai-feature-prd-spec for user-facing behaviour."
 metadata:
-  use_when: "Use when one or more AI features are powered by retrieval, fine-tuning, or any dataset that feeds the model. Mandatory for RAG features."
-  do_not_use_when: "Do not use for a single LLM-call feature that takes only the user's own request as input."
-  required_inputs: "AI_Feature_PRD_Spec.md, Multi_Tenancy_Architecture_Spec.md, Data_Isolation_Evidence_Pack.md (if exists), DPA, sub-processor list."
-  workflow: "Inventory knowledge sources, declare per-source scope (shared vs per-tenant), set ingestion SLA and freshness, declare retention and lineage, declare training-data exclusion clauses, declare embedding and conversation-log isolation rules, write the AI_Data_And_Knowledge_Base_Spec.md."
-  quality_standards: "Every knowledge source shall have an owner, classification, ingestion mode, freshness target, retention rule, and training-data exclusion verdict. Every shared store shall have a documented cross-tenant control."
-  anti_patterns: "Do not put per-tenant content into a shared embedding index without an explicit isolation strategy. Do not omit retention. Do not assume the model provider will not retain logs by default."
-  outputs: "AI_Data_And_Knowledge_Base_Spec.md."
-  references: "Use references/ai-data-and-knowledge-base-spec-template.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # AI Data and Knowledge-Base Spec Skill
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- specifying AI knowledge sources, ingestion, tenant isolation, freshness, retention, lineage, and training-data exclusions; use ai-feature-prd-spec for user-facing behaviour.
+- Use this procedure when the required source artefacts are available and `AI data and knowledge-base specification` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `ai-feature-prd-spec` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Approved AI use cases, data inventory, tenancy model, and privacy constraints | Data owner, security owner, and product context | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `AI data and knowledge-base specification`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| AI data and knowledge-base specification | Data engineering, AI, security, and evaluation teams | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `AI data and knowledge-base specification` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. Editing is allowed only when the request authorises creation or repair of the named requirements artefact. Publishing, production mutation, destructive action, spending, and certification require explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A source has unknown ownership, tenant scope, or deletion behaviour | Quarantine the source until provenance and lifecycle controls are assigned. | Cross-tenant leakage or untraceable model context. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `AI data and knowledge-base specification` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `AI data and knowledge-base specification` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `ai-feature-prd-spec` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../docs/skill-authoring-standard.md)
+- [Skill guidance](README.md)
+- [Executable generation logic](logic.prompt)
+- [Ai Data And Knowledge Base Spec Template](references/ai-data-and-knowledge-base-spec-template.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 

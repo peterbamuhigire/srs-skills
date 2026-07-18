@@ -1,6 +1,6 @@
 ---
 name: 28-anti-ai-slop
-description: MANDATORY pre-ship guardrail. Run on EVERY generated SRS, technical spec, user story, acceptance criterion, design document, test document, ADR, or code artefact before it is delivered, so the output cannot be recognised as "AI slop". Carries the verified slop definition, the seven universal markers each paired with an avoidance rule, the banned-vocabulary list merged with this engine's prohibited-adjective rule, the SRS/spec avoidance block, and a ship-gate checklist. Load first; it overrides stylistic preferences but defers to IEEE/ISO grounding.
+description: Use when producing any SRS, requirement, design, test, ADR, document, or code artefact; apply continuously and at the pre-ship gate to prevent generic, unverified, template-shaped output. Use 29-ai-slop-audit for independent detection and grading.
 metadata:
   portable: true
   compatible_with:
@@ -14,6 +14,87 @@ metadata:
 Acknowledgement: Shared by Peter Bamuhigire, techguypeter.com, +256 784 464178.
 
 <!-- dual-compat-start -->
+
+## Use When
+
+- Use when producing any SRS, requirement, design, test, ADR, document, or code artefact; apply continuously and at the pre-ship gate to prevent generic, unverified, template-shaped output. Use 29-ai-slop-audit for independent detection and grading.
+
+## Do Not Use When
+
+- Do not use when a neighbouring skill owns the requested artefact or the task lacks a concrete source to ground it.
+- Do not use this skill to fabricate missing project facts, legal conclusions, test results, approvals, or certification claims.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing-input behaviour |
+|---|---|---:|---|
+| Target sources: The concrete target artefact, intended audience, applicable baseline, and project evidence. | Project owner, approved workspace artefacts, or accountable control owner | Yes | Stop dependent claims; list the missing item, owner, and consequence. For review checks, record `not assessed`. |
+| Scope, audience, baseline/version, and accountable decision owner | Requester or project context | Yes | Ask for or record the gap; do not infer authority or scope. |
+
+## Capability and permission boundaries
+
+Default to read-only. Read and search access to the supplied artefacts are required. Editing is limited to an explicitly authorised requested draft or project files. Execute validation only when authorised; publishing, signature, certification, production mutation, destructive action, spending, and risk acceptance require explicit authority.
+
+## Degraded Mode
+
+When files, tools, network, rendering, fonts, execution, or evidence are unavailable, return the narrowest useful qualified draft or finding set. Name every unavailable check and its consequence; an unassessed check is never a pass. Preserve evidence already gathered and provide the exact next verification step.
+
+## Decision Rules
+
+| Condition | Action | Failure or risk avoided |
+|---|---|---|
+| A claim, metric, citation, API, or package is unverified | Verify, qualify, or remove it before release | Confident wrongness |
+| A section has no project-specific evidence or decision | Rewrite or cut it | Superficial template content |
+
+## Workflow
+
+1. Confirm the requested artefact, audience, scope, decision owner, and applicable baseline or version. Work read-only by default; source mutation, publication, signature, certification, production change, or risk acceptance requires explicit authority.
+2. Inspect every required input and record missing, stale, conflicting, or inaccessible evidence. Stop claims that depend on an unresolved required input.
+3. Apply the Decision Rules, then execute the existing Core Instructions below in order; preserve project terminology and trace each material statement to its source.
+4. Test the draft against the output acceptance conditions and domain quality standards. If a check cannot run, mark it `not assessed` and never convert it into a pass.
+5. On failure, recover by preserving completed evidence, identifying the narrowest corrective action and owner, and rerunning only the affected checks before handoff.
+6. Produce the named artefact and evidence record; publish, sign, certify, mutate production, or accept risk only under explicit authority.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| Guarded production artefact and ship-gate record | Accountable reviewer, control owner, auditor, or release authority | Every material claim is traceable, reviewable, and bounded by the available evidence. |
+| Gap and decision record | Accountable owner and downstream reviewer | Every gap has status, impact, owner, next action, and no unsupported pass or approval. |
+
+## Evidence Produced
+
+| Evidence | Contents | Acceptance condition |
+|---|---|---|
+| Guarded production artefact and ship-gate record evidence record | Source identifiers, scope/version, decisions, checks, exceptions, and approval state | A reviewer can reproduce each material conclusion from named sources. |
+| Validation record | Check, result (`pass`, `fail`, or `not assessed`), evidence location, date, and actor | No required check is omitted or silently treated as passed. |
+
+## Quality Standards
+
+- Every material claim is traceable, reviewable, and bounded by the available evidence.
+- Use deterministic acceptance conditions and preserve traceability from source to decision and output.
+- Separate facts, inferences, assumptions, and approvals; never present one as another.
+- Apply `28-anti-ai-slop` during authoring and `29-ai-slop-audit` at major checkpoints and release.
+
+## Anti-Patterns
+
+- **Producing Guarded production artefact and ship-gate record from assumptions instead of named project sources.** Fix: Cite the source or mark the item unverified.
+- **Treating a missing or inaccessible check as passed.** Fix: Mark it `not assessed`, state impact, and block dependent claims.
+- **Using vague gates such as `adequate`, `secure`, or `user-friendly`.** Fix: Replace each with an observable criterion, threshold, and evidence source.
+- **Copying a generic template without product, control, role, version, or jurisdiction detail.** Fix: Ground every section in the supplied context and remove unused boilerplate.
+- **Publishing, signing, certifying, changing production, or accepting risk without authority.** Fix: Prepare a draft and route the decision to the accountable owner.
+- **Listing evidence without provenance or an acceptance result.** Fix: Record source, period, integrity check, mapping, and pass/fail/not-assessed status.
+
+## Worked Example
+
+Example: if a claim, metric, citation, API, or package is unverified, verify, qualify, or remove it before release. Record the evidence and result in the validation record; this avoids confident wrongness.
+
+## References
+
+- [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
+- [Independent AI slop audit](../29-ai-slop-audit/SKILL.md): run after major iterations and before release.
+
+<!-- dual-compat-end -->
 
 The guardrail every generated artefact passes before it ships. Detection lives in the companion `29-ai-slop-audit` skill; this skill governs **production** — writing the SRS, spec, design doc, test doc, or code so slop never appears in the first place. It sits on top of this engine's V&V SOP and IEEE/ISO grounding, never below them: a requirement that is verifiable but generic still fails here.
 

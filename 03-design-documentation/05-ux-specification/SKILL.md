@@ -1,90 +1,93 @@
 ---
-name: "05-ux-specification"
-description: "Generate a comprehensive UX specification document covering information architecture, wireframing standards, design system documentation, usability testing protocols, and design handoff specs per ISO 9241-210 and ISO 25010."
+name: 05-ux-specification
+description: Use when approved user journeys need testable information architecture, interaction patterns, states, accessibility, design-system rules, usability evidence and handoff specifications; use UX content and form specification for copy and validation detail.
 metadata:
   portable: true
   compatible_with:
-  - claude-code
-  - codex
-  use_when: "Use when the task matches ux specification skill and this skill's local workflow."
-  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
-  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
-  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
-  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
-  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
-  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `references/`, `README.md` when deeper detail is needed."
+    - claude-code
+    - codex
 ---
-
 # UX Specification Skill
-
 <!-- dual-compat-start -->
 ## Use When
 
-- Generate or update a UX specification for a user-facing software product.
-- SRS, user stories, HLD, vision, or stakeholder context exists and must be translated into IA, wireframes, design-system requirements, usability testing, and implementation handoff.
-- The product is premium, revenue-critical, dashboard-heavy, Android, iOS, or web and needs testable UI/UX quality requirements.
+- User-facing behaviour must be specified across web, mobile or responsive states before build handoff.
 
 ## Do Not Use When
 
-- Required project context is missing and cannot be inferred safely.
-- A narrower downstream implementation skill owns the current task and no formal UX specification is needed.
-- The requested work is backend-only, infrastructure-only, or not user-facing.
+- Do not use to choose product scope, write production code, or invent a visual identity without design-system authority.
 
 ## Required Inputs
 
-- `SRS_Draft.md` or `user_stories.md`.
-- `HLD.md`.
-- `vision.md`.
-- `features.md` and `stakeholder_register.md` when available.
-- Platform context, existing UI evidence, business goals, and accessibility constraints.
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Approved users, journeys and functional requirements | PRD/SRS and research | Required | Stop where a critical journey or user need lacks evidence. |
+| Brand/design system, device and accessibility constraints | Design owner and project context | Required | Use an explicit provisional system if authorised; otherwise qualify visual decisions. |
 
 ## Workflow
 
-1. Read the required context files and log the absolute paths used.
-2. Invoke frontend design analysis before writing the formal specification.
-3. Generate IA, navigation, content inventory, and card-sorting templates.
-4. Define low-, mid-, and high-fidelity wireframe standards.
-5. Generate design-system tokens, component catalog, patterns, governance, and premium experience foundation when applicable.
-6. Define interaction, accessibility, usability-testing, handoff, and traceability requirements.
-7. For text-heavy screens, forms, onboarding, checkout, applications, public-sector workflows, or error-prone tasks, invoke `03-design-documentation/09-ux-content-and-form-specification`.
-8. Add premium UI/UX requirements and gate scoring for premium, dashboard, web, Android, or iOS products.
-9. Verify the output against the checklist before completion.
-9. For SaaS, dashboard, multi-role, mobile, or AI-enabled products, add scope/cost drivers, time-to-value metrics, onboarding requirements, navigation requirements, and a web-app pattern register.
-10. Verify the output against the checklist before completion.
-
-## Quality Standards
-
-- Outputs must be standards-grounded, traceable to source context, and specific enough to review or verify.
-- Requirements must be testable and avoid vague taste language.
-- Design-system documentation must include tokens, states, source of truth, ownership, and governance.
-- Premium products must include platform fit, visual quality, data quality, accessibility, and production acceptance criteria.
-
-## Anti-Patterns
-
-- Fabricating missing requirements.
-- Skipping human review gates.
-- Substituting vague prose for verifiable UX requirements.
-- Treating premium UI/UX as cosmetic polish instead of a business and usability requirement.
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the UX Specification and handoff evidence through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the UX Specification and handoff evidence to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
 
 ## Outputs
 
-- `projects/<ProjectName>/<phase>/<document>/UX_Specification.md`.
-- Traceability entries linking screens/components to SRS requirements.
-- Premium UI/UX gate score and remediation requirements when applicable.
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| UX Specification and handoff evidence | Designers, developers, testers and product owner | Every critical journey includes normal, loading, empty, error, disabled and recovery states; accessibility and usability criteria have observable tests. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified UX Specification and handoff evidence draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Interaction pattern already exists in the design system | Reuse and document variation | Product remains coherent |
+| User evidence requires a new pattern | Prototype and test before standardising | Novelty does not create avoidable usability risk |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Specifying only the happy path. Fix: cover all operational states and recovery.
+- Using lorem ipsum in handoff. Fix: use approved content or labelled realistic samples.
+- Naming a font or colour without design-system evidence. Fix: cite the authorised token source.
+- Calling a screen accessible without a test. Fix: define keyboard, focus, contrast and assistive-technology checks.
+- Hiding responsive behaviour in mock-ups. Fix: specify breakpoint and reflow rules.
 
 ## References
 
-- `references/information-architecture.md`
-- `references/wireframing-standards.md`
-- `references/design-system-guide.md`
-- `references/usability-testing.md`
-- `references/design-handoff.md`
-- `references/premium-ui-ux-specification.md`
-- `references/saas-ux-scope-costing.md`
-- `references/web-app-ui-pattern-selection.md`
-- `references/mobile-dashboard-ux-requirements.md`
+- [Design handoff](references/design-handoff.md)
+- [Usability testing](references/usability-testing.md)
+- [Premium UX specification](references/premium-ui-ux-specification.md)
+- [UX content neighbour](../09-ux-content-and-form-specification/SKILL.md)
 <!-- dual-compat-end -->
+
+
+
+
 
 ## Overview
 

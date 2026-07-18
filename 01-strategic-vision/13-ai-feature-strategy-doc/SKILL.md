@@ -1,18 +1,91 @@
 ---
-name: "ai-feature-strategy-doc"
-description: "Generate the AI Feature Strategy Doc for a SaaS product: AI feature inventory by tier, differentiating-vs-table-stakes split, build-vs-buy decisions on models, moat analysis, sequencing, and the AI-feature go-to-market position."
+name: 13-ai-feature-strategy-doc
+description: Use when a SaaS or digital product needs to choose, tier and sequence AI features, separate table stakes from differentiation, decide build versus buy, and define an AI moat; use AI economic value brief for a single initiative's value proof and AI architecture spec for implementation.
 metadata:
-  use_when: "Use when a SaaS roadmap contains two or more AI-powered features and the product needs an explicit strategy that ties each AI feature to a pricing tier, a buyer outcome, and a model-choice rationale."
-  do_not_use_when: "Do not use for a single AI experiment or a research prototype with no commercial commitment."
-  required_inputs: "Vision_Statement.md, PRD.md, pricing & packaging spec, competitor scan, AI Economic Value Brief for each candidate feature."
-  workflow: "Inventory candidate AI features, classify each as differentiating or table-stakes, set tier placement, pick build-vs-buy per model, declare moat assumptions, write the sequencing roadmap, write the AI_Feature_Strategy_Doc.md."
-  quality_standards: "Every AI feature shall name its buyer outcome, tier placement, model class, build-vs-buy verdict, and moat dependency. Every claim of differentiation shall cite a competitor scan."
-  anti_patterns: "Do not list AI features without a buyer outcome. Do not place every AI feature at the top tier by default. Do not declare moat without naming the asset (data, distribution, integration, fine-tune, eval suite)."
-  outputs: "AI_Feature_Strategy_Doc.md."
-  references: "Use references/ai-feature-strategy-doc-template.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # AI Feature Strategy Doc Skill
+<!-- dual-compat-start -->
+## Use When
+
+- Product leadership must select an AI portfolio and go-to-market position before feature PRDs.
+
+## Do Not Use When
+
+- Do not use to approve an AI feature without workflow value, data readiness, evaluation ownership or operating-cost evidence.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Product strategy, ICP and candidate AI uses | Vision, PRD and customer evidence | Required | Stop if features cannot be tied to user jobs. |
+| Data, evaluation, model and cost constraints | AI, data, finance and risk owners | Required | Mark unavailable evidence as a sequencing blocker. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the AI Feature Strategy Document through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the AI Feature Strategy Document to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI Feature Strategy Document | Product, commercial, PRD and AI architecture teams | Every selected feature has user value, tier, differentiation role, build/buy choice, evaluation owner, prerequisite and sequence gate. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified AI Feature Strategy Document draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Feature has distinctive data/workflow advantage | Prioritise as differentiation | Investment supports positioning |
+| Feature is table stakes with mature supply | Buy or integrate behind a controlled gateway | Team rebuilds commodity capability |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Starting with a model catalogue. Fix: start with user jobs and economic outcomes.
+- Calling every AI feature differentiating. Fix: compare table stakes and proprietary advantage.
+- Choosing build for prestige. Fix: score control, data, cost, speed and switching risk.
+- Tiering AI without cost guardrails. Fix: map usage limits and unit economics.
+- Sequencing features before data and evaluation readiness. Fix: make prerequisites release gates.
+
+## References
+
+- [AI feature strategy template](references/ai-feature-strategy-doc-template.md)
+- [AI economic value neighbour](../06-ai-economic-value-brief/SKILL.md)
+- [AI architecture neighbour](../../03-design-documentation/11-ai-architecture-spec/SKILL.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

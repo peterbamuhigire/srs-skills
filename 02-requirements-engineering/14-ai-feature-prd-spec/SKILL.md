@@ -1,18 +1,91 @@
 ---
-name: "ai-feature-prd-spec"
-description: "Generate the AI-Feature PRD Spec: IEEE 830-form requirements for every AI-powered feature, with hallucination tolerance, latency budget, $/call ceiling, abstain criteria, citation policy, consent and training-data exclusion clauses, and acceptance tests anchored to the eval harness."
+name: 14-ai-feature-prd-spec
+description: "Use when converting an approved AI feature strategy into testable PRD requirements for quality, latency, cost, abstention, citations, consent, and evaluation; use ai-feature-strategy-doc for portfolio choices."
 metadata:
-  use_when: "Use for any feature whose behaviour is produced or modified by an LLM, vision model, embedding-based retrieval, agent, or fine-tune."
-  do_not_use_when: "Do not use for deterministic features that merely call into AI infrastructure as a passive consumer (e.g. logging)."
-  required_inputs: "AI_Economic_Value_Brief.md, AI_Feature_Strategy_Doc.md, PRD.md, Multi_Tenancy_Architecture_Spec.md, pricing & packaging spec."
-  workflow: "Inventory AI-powered FRs, attach AI clauses to each, define acceptance gates against the eval harness, declare consent and data-use rules, write the AI_Feature_PRD_Spec.md."
-  quality_standards: "Every AI-powered FR shall declare: hallucination tolerance, latency budget, $/call ceiling, abstain criteria, citation policy, consent or opt-in posture, training-data exclusion. Every acceptance gate shall be a numeric threshold backed by the eval harness."
-  anti_patterns: "Do not approve an AI FR that is verifiable only by human judgement. Do not omit the abstain rule. Do not allow free-form output where structured output is feasible."
-  outputs: "AI_Feature_PRD_Spec.md."
-  references: "Use references/ai-feature-prd-spec-template.md and the addendum at references/ai-feature-prd-addendum.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # AI Feature PRD Spec Skill
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- converting an approved AI feature strategy into testable PRD requirements for quality, latency, cost, abstention, citations, consent, and evaluation; use ai-feature-strategy-doc for portfolio choices.
+- Use this procedure when the required source artefacts are available and `AI feature PRD specification` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `ai-feature-strategy-doc` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Approved AI feature strategy, users, data constraints, and evaluation targets | Product owner and AI governance owner | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `AI feature PRD specification`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| AI feature PRD specification | AI architecture, evaluation, safety, and delivery teams | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `AI feature PRD specification` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. Editing is allowed only when the request authorises creation or repair of the named requirements artefact. Publishing, production mutation, destructive action, spending, and certification require explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A model behaviour has no measurable evaluation oracle | Mark it blocked and define the dataset, metric, threshold, and owner. | An AI claim that cannot be tested or governed. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `AI feature PRD specification` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `AI feature PRD specification` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `ai-feature-strategy-doc` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../docs/skill-authoring-standard.md)
+- [Skill guidance](README.md)
+- [Executable generation logic](logic.prompt)
+- [Ai Agent Feature Addendum Crosslink](references/ai-agent-feature-addendum-crosslink.md)
+- [Ai Feature Prd Addendum](references/ai-feature-prd-addendum.md)
+- [Ai Feature Prd Spec Template](references/ai-feature-prd-spec-template.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 

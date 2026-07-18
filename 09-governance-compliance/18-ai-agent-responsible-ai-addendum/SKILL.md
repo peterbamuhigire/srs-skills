@@ -1,18 +1,98 @@
 ---
-name: "ai-agent-responsible-ai-addendum"
-description: "Generate the AI Agent Responsible-AI Addendum: action accountability (who is responsible for an agent action), audit-log retention by event class, contestability of agent actions, human-final-decision principle for irreversible actions, agent-specific bias and harm reviews, and the cross-link to the public Responsible AI Declaration."
+name: 18-ai-agent-responsible-ai-addendum
+description: Use when extending a responsible-AI declaration with agent autonomy, action approval, supervision, kill switch, memory, auditability, and red-team controls. Use user-disclosure-pack for customer language and compliance-policy-pack for signed policies.
 metadata:
-  use_when: "Use whenever a SaaS ships one or more agent features to external users. Required alongside the parent Responsible AI Declaration. Updated quarterly."
-  do_not_use_when: "Do not use for AI features that do not call tools or act on the user's behalf. Cover those under the parent Responsible AI Declaration."
-  required_inputs: "AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md, AI_Agent_Architecture_Spec.md, AI_Agent_SLO_Doc.md, AI_Agent_User_Disclosure_Pack.md, Responsible_AI_Declaration.md, AI_Act_Regulatory_Compliance_Doc.md."
-  workflow: "Declare action accountability per feature, declare audit-log retention by event class, declare the contestability mechanism, declare the human-final-decision principle for irreversible actions, declare bias and harm reviews, cross-link the public declaration, write the addendum."
-  quality_standards: "Every irreversible-action class shall have a named human-final-decision principle. Every agent feature shall have a contestability path. Audit-log retention shall meet or exceed regulatory minima. Every paragraph in the public declaration that mentions agents shall trace back to an internal evidence row in the addendum."
-  anti_patterns: "Do not claim 'human-in-the-loop' without stating where the human sits in the loop. Do not retain less than 13 months of irreversible-action audit log. Do not omit the bias review for any feature that affects a protected-class outcome."
-  outputs: "AI_Agent_Responsible_AI_Addendum.md (internal evidence pack) and Responsible_AI_Declaration_Agent_Section.md (public)."
-  references: "Use references/ai-agent-responsible-ai-addendum-template.md."
+  portable: true
+  compatible_with:
+  - claude-code
+  - codex
 ---
 
 # AI Agent Responsible-AI Addendum Skill
+
+<!-- dual-compat-start -->
+
+## Use When
+
+- Use when extending a responsible-AI declaration with agent autonomy, action approval, supervision, kill switch, memory, auditability, and red-team controls. Use user-disclosure-pack for customer language and compliance-policy-pack for signed policies.
+
+## Do Not Use When
+
+- Do not use for AI features that do not call tools or act on the user's behalf. Cover those under the parent Responsible AI Declaration.
+- Do not use this skill to fabricate missing project facts, legal conclusions, test results, approvals, or certification claims.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing-input behaviour |
+|---|---|---:|---|
+| Target sources: AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md, AI_Agent_Architecture_Spec.md, AI_Agent_SLO_Doc.md, AI_Agent_User_Disclosure_Pack.md, Responsible_AI_Declaration.md, AI_Act_Regulatory_Compliance_Doc.md. | Project owner, approved workspace artefacts, or accountable control owner | Yes | Stop dependent claims; list the missing item, owner, and consequence. For review checks, record `not assessed`. |
+| Scope, audience, baseline/version, and accountable decision owner | Requester or project context | Yes | Ask for or record the gap; do not infer authority or scope. |
+
+## Capability and permission boundaries
+
+Default to read-only. Read and search access to the supplied artefacts are required. Editing is limited to an explicitly authorised requested draft or project files. Execute validation only when authorised; publishing, signature, certification, production mutation, destructive action, spending, and risk acceptance require explicit authority.
+
+## Degraded Mode
+
+When files, tools, network, rendering, fonts, execution, or evidence are unavailable, return the narrowest useful qualified draft or finding set. Name every unavailable check and its consequence; an unassessed check is never a pass. Preserve evidence already gathered and provide the exact next verification step.
+
+## Decision Rules
+
+| Condition | Action | Failure or risk avoided |
+|---|---|---|
+| A required source, owner, obligation, or acceptance condition is missing | Stop the affected claim and record the gap | Unsupported governance artefact |
+| Evidence satisfies the declared acceptance condition | Record the decision and hand off to the named consumer | Ambiguous approval or release |
+
+## Workflow
+
+1. Confirm the requested artefact, audience, scope, decision owner, and applicable baseline or version. Work read-only by default; source mutation, publication, signature, certification, production change, or risk acceptance requires explicit authority.
+2. Inspect every required input and record missing, stale, conflicting, or inaccessible evidence. Stop claims that depend on an unresolved required input.
+3. Apply the Decision Rules, then execute the existing Core Instructions below in order; preserve project terminology and trace each material statement to its source.
+4. Test the draft against the output acceptance conditions and domain quality standards. If a check cannot run, mark it `not assessed` and never convert it into a pass.
+5. On failure, recover by preserving completed evidence, identifying the narrowest corrective action and owner, and rerunning only the affected checks before handoff.
+6. Produce the named artefact and evidence record; publish, sign, certify, mutate production, or accept risk only under explicit authority.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI Agent Responsible-AI Addendum | Accountable reviewer, control owner, auditor, or release authority | Every irreversible-action class shall have a named human-final-decision principle. Every agent feature shall have a contestability path. Audit-log retention shall meet or exceed regulatory minima. Every paragraph in the public declaration that mentions agents shall trace back to an internal evidence row in the addendum. |
+| Gap and decision record | Accountable owner and downstream reviewer | Every gap has status, impact, owner, next action, and no unsupported pass or approval. |
+
+## Evidence Produced
+
+| Evidence | Contents | Acceptance condition |
+|---|---|---|
+| AI Agent Responsible-AI Addendum evidence record | Source identifiers, scope/version, decisions, checks, exceptions, and approval state | A reviewer can reproduce each material conclusion from named sources. |
+| Validation record | Check, result (`pass`, `fail`, or `not assessed`), evidence location, date, and actor | No required check is omitted or silently treated as passed. |
+
+## Quality Standards
+
+- Every irreversible-action class shall have a named human-final-decision principle. Every agent feature shall have a contestability path. Audit-log retention shall meet or exceed regulatory minima. Every paragraph in the public declaration that mentions agents shall trace back to an internal evidence row in the addendum.
+- Use deterministic acceptance conditions and preserve traceability from source to decision and output.
+- Separate facts, inferences, assumptions, and approvals; never present one as another.
+- Apply `28-anti-ai-slop` during authoring and `29-ai-slop-audit` at major checkpoints and release.
+
+## Anti-Patterns
+
+- **Producing AI Agent Responsible-AI Addendum from assumptions instead of named project sources.** Fix: Cite the source or mark the item unverified.
+- **Treating a missing or inaccessible check as passed.** Fix: Mark it `not assessed`, state impact, and block dependent claims.
+- **Using vague gates such as `adequate`, `secure`, or `user-friendly`.** Fix: Replace each with an observable criterion, threshold, and evidence source.
+- **Copying a generic template without product, control, role, version, or jurisdiction detail.** Fix: Ground every section in the supplied context and remove unused boilerplate.
+- **Publishing, signing, certifying, changing production, or accepting risk without authority.** Fix: Prepare a draft and route the decision to the accountable owner.
+- **Listing evidence without provenance or an acceptance result.** Fix: Record source, period, integrity check, mapping, and pass/fail/not-assessed status.
+
+## Worked Example
+
+Example: if a required source, owner, obligation, or acceptance condition is missing, stop the affected claim and record the gap. Record the evidence and result in the validation record; this avoids unsupported governance artefact.
+
+## References
+
+- [Generation logic](logic.prompt): load when creating the complete artefact.
+- [Skill notes](README.md): consult for local examples and invocation context.
+- [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
+
+<!-- dual-compat-end -->
 
 ## Core Instructions
 

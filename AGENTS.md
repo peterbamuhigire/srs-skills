@@ -10,7 +10,7 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 ## Skill Families
 
-- Engineering/methodology skills live in the sibling **engineering catalog engine** at `C:\Users\BIRDC\.claude\skills` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router, then read the matching SKILL.md directly. Its `<category>` namespace is grouped into 15 categories; see the "Skill Categories" section in `CLAUDE.md`. Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
+- Engineering/methodology skills live in the sibling **engineering catalog engine** at `C:\Users\Peter\.claude\skills` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router, then read the matching SKILL.md directly. Its `<category>` namespace is grouped into 15 categories; see the "Skill Categories" section in `CLAUDE.md`. Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
 - Root directories are reserved for project documentation and repository-level folders such as `docs/` and `projects/`, plus operational folders (`engine/`, `templates/`, `scripts/`, `domains/`) where relevant. Finance/accounting is the standalone cross-cutting **finance engine** at `C:\wamp64\www\chwezi-accounting-doctrine` — consult it whenever finance/IFRS/IAS/tax/bookkeeping arises, in addition to the active work.
 - Domain packs live under `domains/`. They are not skills by themselves; use them as context sources when a task is domain-specific.
 
@@ -18,11 +18,20 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 - New client-documentation or methodology-selection requests: start with `00-meta-initialization` (engineering catalog engine).
 - SDLC document generation or review: route to the relevant numbered phase skill first, then load supporting domain references from `domains/<domain>/`.
-- General software engineering work: start with `sdlc-meta/world-class-engineering` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`), then add the narrowest relevant skills.
-- Skill authoring or upgrades: use `sdlc-meta/skill-writing` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`).
-- Word or `.docx` output quality work: use `product-business/professional-word-output` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`).
-- BDS programme intake, selection, monitoring, or donor dashboard requirements: use `product-business/bds-intake-and-monitoring-system-spec` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`).
-- E-commerce platform, payment, API, AI, data-protection, or integration audit requirements: use `architecture/ecommerce-platform-audit-requirements` in the engineering catalog engine (`C:\Users\BIRDC\.claude\skills`).
+- General software engineering work: start with `sdlc-meta/world-class-engineering` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`), then add the narrowest relevant skills.
+- Skill authoring or upgrades: use `sdlc-meta/skill-writing` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`).
+- Word or `.docx` output quality work: use `product-business/professional-word-output` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`).
+- BDS programme intake, selection, monitoring, or donor dashboard requirements: use `product-business/bds-intake-and-monitoring-system-spec` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`).
+- E-commerce platform, payment, API, AI, data-protection, or integration audit requirements: use `architecture/ecommerce-platform-audit-requirements` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`).
+
+## Skill Authoring and Release Gate
+
+- The local standard is `docs/skill-authoring-standard.md`; start new skills from `templates/skill/SKILL.md`.
+- Active skills are discovered from numbered phase roots. Do not maintain a hand-edited active-skill table as the source of truth.
+- Books and other copyrighted sources may inform independently written skills, but raw books, OCR output, chapter reconstructions, and long extracts must never enter this repository. Keep source files outside the repository and retain only the minimum independently expressed facts or framework needed.
+- Run `python -X utf8 scripts/source_ingestion_guardrail.py` for every skill or source-reference change; any finding blocks release.
+- Before releasing any skill change, run `python -X utf8 scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json` and `python -X utf8 scripts/routing_smoke_test.py`.
+- The baseline is zero debt, not a waiver. Any structural finding, duplicate name, broken mandatory resource, routing failure, active-count drift, or template-count drift blocks release.
 - Anti-AI-slop pre-ship gate: run `09-governance-compliance/28-anti-ai-slop` on every generated SRS/spec/doc/code artefact before delivery (MANDATORY).
 - Slop analysis/audit: `09-governance-compliance/29-ai-slop-audit` auto-runs whenever the user asks to analyse, review, evaluate, audit, critique, or de-slop any spec, requirement, document, system, or codebase, or asks "does this look AI-generated?".
 

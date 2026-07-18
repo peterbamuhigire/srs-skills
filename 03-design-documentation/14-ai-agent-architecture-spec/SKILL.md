@@ -1,18 +1,91 @@
 ---
-name: "ai-agent-architecture-spec"
-description: "Generate the AI Agent Architecture Spec: agent runtime loop, state machine, memory tiers (scratchpad, episodic, long-term), planner, tool dispatcher, supervisor (for multi-agent), durability and resumability, kill-switch wiring, and per-tenant isolation. Sits alongside the AI Architecture Spec and is mandatory for any product shipping an agent."
+name: 14-ai-agent-architecture-spec
+description: Use when an approved tool-using AI agent needs a runtime loop, state machine, memory tiers, planner, dispatcher, durability, kill switch and tenant isolation; use AI architecture for non-agent AI services and multi-agent coordination only when several agents share a task.
 metadata:
-  use_when: "Use whenever one or more features are classified as agents (L0..L4) in the AI Agent Strategy Doc. Required alongside the AI Architecture Spec."
-  do_not_use_when: "Do not use for products that ship only direct-LLM or RAG features without tool-using planners."
-  required_inputs: "AI_Architecture_Spec.md, AI_Agent_Feature_PRD_Spec.md, Action_Catalogue_Spec.md, Multi_Tenancy_Architecture_Spec.md, tech_stack.md."
-  workflow: "Read inputs, declare the agent runtime decomposition, spec the loop and state machine, spec memory tiers, spec the planner, spec the tool dispatcher with audit-log integration, spec the supervisor (if multi-agent), spec durability and resumability, spec kill-switch wiring, spec per-tenant isolation, emit ADR seeds, write AI_Agent_Architecture_Spec.md."
-  quality_standards: "Every agent run shall have a durable state. Every tool call shall route through the dispatcher. The kill-switch shall halt every running agent within a documented bound. Per-tenant isolation shall be enforced at the planner, dispatcher, and memory layers."
-  anti_patterns: "Do not let agent code call the model gateway directly without dispatcher mediation. Do not store scratchpads across tenants in a shared namespace. Do not omit the resumability contract. Do not omit the kill-switch wiring diagram."
-  outputs: "AI_Agent_Architecture_Spec.md plus ADR seeds in `adr-seeds/`."
-  references: "Use references/ai-agent-architecture-spec-template.md."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
-
 # AI Agent Architecture Spec Skill
+<!-- dual-compat-start -->
+## Use When
+
+- The strategy and feature requirements justify adaptive planning and bounded tool actions.
+
+## Do Not Use When
+
+- Do not use for direct calls, ordinary RAG or deterministic workflows that do not require an agent.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Missing behaviour |
+|---|---|---|---|
+| Approved agent feature, action catalogue and AI architecture | Phase 01-03 artefacts | Required | Stop if actions, authority or autonomy level are undefined. |
+| Durability, tenancy, audit, cost and safety constraints | Platform, security, finance and operations owners | Required | Default to lower autonomy and narrower actions when evidence is incomplete. |
+
+## Workflow
+
+1. Read the named inputs and confirm their approval, version and unresolved decisions.
+2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
+3. Produce the AI Agent Architecture Specification and ADR seeds through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the AI Agent Architecture Specification and ADR seeds to an input, decision or explicitly qualified assumption.
+5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
+6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
+
+## Outputs
+
+| Artefact | Consumer | Observable acceptance condition |
+|---|---|---|
+| AI Agent Architecture Specification and ADR seeds | Agent, platform, security, test and operations teams | State is durable; every action passes dispatcher policy and audit; budgets, approval, recovery, kill switch and tenant isolation have deterministic tests. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Source and decision trace | Reviewer and downstream owner | Each material statement cites an approved input, named decision or qualified open issue. |
+| Completed verification record | Release or phase gate owner | Every applicable check records pass/fail; unavailable checks remain `not assessed`. |
+
+## Capability and permission boundaries
+
+Read-only is the default for analysis, review, evaluation and planning. Read and search access to authorised project artefacts are required. Editing is limited to an explicitly requested project deliverable. Execution may run document, syntax or validation checks. Network access is used only for facts that require current verification. Do not publish, spend, change production, approve policy, or claim certification without explicit authority.
+
+## Degraded mode
+
+If any required capability is unavailable, return the narrowest useful qualified AI Agent Architecture Specification and ADR seeds draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice | Action | Failure or risk avoided |
+|---|---|---|
+| Action has material external effect | Require policy check and explicit approval per strategy | Agent cannot exceed delegated authority |
+| Run is long-lived or retriable | Persist state and idempotency keys | Resume does not duplicate action |
+
+## Quality Standards
+
+- Preserve repository terminology and trace every material choice to project context.
+- Use deterministic acceptance conditions; replace vague quality claims with an observable check, threshold or named approval.
+- Cover error, empty, edge, recovery and operational cases relevant to this skill.
+- Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
+- Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
+
+## Anti-Patterns
+
+- Letting the planner call tools directly. Fix: require dispatcher enforcement and audit.
+- Sharing memory namespaces across tenants. Fix: bind every memory operation to verified tenant context.
+- Using an in-memory loop for durable work. Fix: persist checkpoints and recovery state.
+- Defining a kill switch without a response bound. Fix: specify propagation, cancellation and evidence.
+- Allowing unbounded steps or spend. Fix: enforce per-run budgets and escalation.
+
+## References
+
+- [Agent architecture template](references/ai-agent-architecture-spec-template.md)
+- [AI Architecture neighbour](../11-ai-architecture-spec/SKILL.md)
+- [Multi-agent neighbour](../15-ai-agent-multi-agent-coordination-spec/SKILL.md)
+<!-- dual-compat-end -->
+
+
+
 
 ## Overview
 

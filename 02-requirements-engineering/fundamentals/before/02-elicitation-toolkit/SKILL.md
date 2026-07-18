@@ -1,18 +1,92 @@
 ---
-name: "elicitation-toolkit"
-description: "Multi-technique requirements gathering skill that guides the AI through choosing and executing the right elicitation techniques per IEEE 29148 Section 6.3 and Wiegers Practices 4-6."
+name: 02-elicitation-toolkit
+description: "Use when selecting and conducting interviews, workshops, observation, surveys, document analysis, or prototypes to gather requirements; use stakeholder-analysis to identify participants first."
 metadata:
-  use_when: "Use when the task matches elicitation toolkit skill and this skill's local workflow."
-  do_not_use_when: "Do not use when a more specific upstream or downstream skill owns the task, or when the required project context has not been prepared."
-  required_inputs: "Provide the target project or document, the relevant context files, scope constraints, and any domain or standards inputs referenced here."
-  workflow: "Follow the ordered steps, review gates, and local generation logic in this file before consulting deeper support files as needed."
-  quality_standards: "Keep outputs grounded in source context, traceable to stated standards, and specific enough to review or verify."
-  anti_patterns: "Do not fabricate missing requirements, skip human review gates, or substitute vague prose for verifiable documentation."
-  outputs: "Produce or update the document, scaffold, analysis, or phase artifact that this skill defines."
-  references: "Use `references/` when deeper detail is needed."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # Elicitation Toolkit Skill
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- selecting and conducting interviews, workshops, observation, surveys, document analysis, or prototypes to gather requirements; use stakeholder-analysis to identify participants first.
+- Use this procedure when the required source artefacts are available and `Elicitation plan, raw evidence, and issue log` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `stakeholder-analysis` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Stakeholder register, elicitation objectives, domain context, constraints, and consent needs | Business analyst, sponsor, and project context | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `Elicitation plan, raw evidence, and issue log`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| Elicitation plan, raw evidence, and issue log | Requirements analysis and project decision owners | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `Elicitation plan, raw evidence, and issue log` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. Editing is allowed only when the request authorises creation or repair of the named requirements artefact. Publishing, production mutation, destructive action, spending, and certification require explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| A claim is important but has only one conflicted or indirect source | Triangulate it or mark it disputed before requirements analysis. | False consensus and invented requirements. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `Elicitation plan, raw evidence, and issue log` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `Elicitation plan, raw evidence, and issue log` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `stakeholder-analysis` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../../../docs/skill-authoring-standard.md)
+- [Domain Checklists](references/domain-checklists.md)
+- [Interview Guide](references/interview-guide.md)
+- [Jad Workshop](references/jad-workshop.md)
+- [Observation Ethnography](references/observation-ethnography.md)
+- [Prototyping For Elicitation](references/prototyping-for-elicitation.md)
+- [Questionnaires Surveys](references/questionnaires-surveys.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 

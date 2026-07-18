@@ -1,18 +1,87 @@
 ---
-name: "business-rules-analysis"
-description: "Capture, classify, normalize, and validate business rules so policy, calculations, decisions, and constraints are explicit before specification and design."
+name: 09-business-rules-analysis
+description: "Use when capturing and reconciling policies, calculations, eligibility, decisions, constraints, ownership, and effective dates; use requirements-patterns to express the approved behaviour structurally."
 metadata:
-  use_when: "Use when the task matches business rules analysis and this skill's local workflow."
-  do_not_use_when: "Do not use when the project has no meaningful domain logic beyond simple CRUD validation or when rules are already formalized elsewhere."
-  required_inputs: "Provide business context, elicitation artifacts, process models, and any existing policies, calculations, or compliance constraints."
-  workflow: "Follow the ordered discovery, classification, normalization, and validation steps before using the rules downstream."
-  quality_standards: "Keep rules testable, source-attributed, exception-aware, and separated from implementation detail."
-  anti_patterns: "Do not hide business rules inside prose paragraphs, user stories, or UI mockups without a catalog."
-  outputs: "Produce a normalized business rules catalog with sources, classifications, examples, and downstream impacts."
-  references: "Use `references/` when deeper detail is needed."
+  portable: true
+  compatible_with:
+    - claude-code
+    - codex
 ---
 
 # Business Rules Analysis Skill
+
+<!-- local-contract-start -->
+<!-- dual-compat-start -->
+## Use When
+
+- capturing and reconciling policies, calculations, eligibility, decisions, constraints, ownership, and effective dates; use requirements-patterns to express the approved behaviour structurally.
+- Use this procedure when the required source artefacts are available and `Business rule catalogue and contradiction log` is the next lifecycle deliverable.
+
+## Do Not Use When
+
+- Use `requirements-patterns` when that neighbouring route owns the decision or deliverable.
+- Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
+
+## Required Inputs
+
+| Artefact | Source or provider | Required? | Behaviour when missing |
+| --- | --- | --- | --- |
+| Policies, process evidence, calculations, exceptions, terminology, and rule owners | Policy owners, domain experts, and elicitation evidence | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+
+## Workflow
+
+1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
+2. Apply this skill's existing domain workflow and decision rules to produce `Business rule catalogue and contradiction log`.
+3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
+4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+| --- | --- | --- |
+| Business rule catalogue and contradiction log | Requirements, design, test, compliance, and operations | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+
+## Evidence Produced
+
+| Evidence | Reviewer | Acceptance condition |
+| --- | --- | --- |
+| Source, decision, trace, and validation record for `Business rule catalogue and contradiction log` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search are required. This procedure is read-only by default. Editing the reviewed artefact, publishing, production mutation, destructive action, spending, or certification requires explicit authority.
+
+## Degraded mode
+
+Fallback: if a required file, reviewer, standard source, network check, renderer, or execution capability is unavailable, return the narrowest useful qualified result and mark the affected check `not assessed`; never convert an unassessed check into a pass.
+
+## Decision Rules
+
+| Choice or condition | Action | Failure or risk avoided |
+| --- | --- | --- |
+| Two rules overlap with different outcomes or effective periods | Escalate to the rule owner and block affected requirements until resolved. | Contradictory automated decisions. |
+| Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
+| A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
+
+## Quality Standards
+
+- Preserve stable identifiers and bidirectional traceability from project evidence to `Business rule catalogue and contradiction log` and its acceptance checks.
+- Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
+
+## Anti-Patterns
+
+- Producing `Business rule catalogue and contradiction log` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
+- Crossing into `requirements-patterns` without routing the decision. Fix: hand off the named input and preserve trace links.
+- Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
+- Claiming standards, statutory, or stakeholder approval without evidence. Fix: cite the source and reviewer or qualify the claim.
+
+## References
+
+- [Skill authoring and release standard](../../../../docs/skill-authoring-standard.md)
+- [Rule Catalog Pattern](references/rule-catalog-pattern.md)
+<!-- dual-compat-end -->
+<!-- local-contract-end -->
 
 ## Overview
 
