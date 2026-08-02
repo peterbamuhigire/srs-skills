@@ -629,97 +629,97 @@ The table quotes the discovered `name` and `description` frontmatter values. `[M
 | projects/Kulima/_context/quality-log.md | 7 | 436fd7254a91 | Quality Log |
 | projects/Kulima/_context/quality-standards.md | 37 | a7d6b4c82403 | Quality Standards — Kulima |
 | projects/Kulima/_context/quality_standards.md | 57 | 8b49b90b0674 | Quality Standards |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/02-inventory/03-warehouse-management.md | 38 | 52234d3075b5 | Warehouse Management |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/05-hr-payroll/02a-position-and-workforce-governance.md | 18 | 223ea384abd7 | Position and Workforce Governance |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/05-hr-payroll/06a-payroll-governance-controls.md | 18 | d48aa06f617d | Payroll Governance and Controls |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/00-cover.md | 24 | c75595e99531 |  |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/01-introduction.md | 78 | 3bbefa1923cc | Introduction to the Sales Agents and Commissions Module |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/02-agent-register.md | 68 | 183ea99e459a | Agent Register |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/03-targets-attribution.md | 70 | 6bd6ce41dc26 | Sales Targets and Attribution |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/04-commission-rules.md | 76 | 9245e18044b2 | Commission Rule Engine |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/05-commission-run.md | 78 | a2b1dd614bc0 | Commission Run, Approval Workflow, and Mobile Money Payout |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/06-agent-portal.md | 70 | c7e354ccaeb3 | Agent Self-Service Portal |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/07-stock-remittance.md | 78 | a8d460a1d426 | Agent Stock Management, Remittance Verification, and Daily Summaries |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/08-nfrs.md | 73 | f891083c2c64 | Non-Functional Requirements |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/09-traceability.md | 96 | d51d5ca44963 | Traceability Matrix, Context Gaps, and Verification Notes |
-| projects/LonghornERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/manifest.md | 11 | ca355c72fa0d |  |
-| projects/LonghornERP/03-design-documentation/01-hld/06-security-architecture.md | 99 | d6296662f67c | Security Architecture |
-| projects/LonghornERP/03-design-documentation/01-hld/08-api-architecture.md | 115 | 922b07dfa311 | API Architecture |
-| projects/LonghornERP/03-design-documentation/01-hld/10-mobile-architecture.md | 83 | e229a698ab22 | Mobile Architecture |
-| projects/LonghornERP/03-design-documentation/01-hld/11-architecture-decision-records.md | 179 | 64858ae8d07c | Architecture Decision Records |
-| projects/LonghornERP/03-design-documentation/01-hld/12-industrial-architecture.md | 119 | dbe2852b4537 | Industrial Module Architecture |
-| projects/LonghornERP/03-design-documentation/01-hld/13-finance-operations-and-group-architecture.md | 175 | cf40f51c3386 | 13. Finance Operations and Group Architecture |
-| projects/LonghornERP/03-design-documentation/01-hld/14-customer-revenue-and-service-architecture.md | 219 | 9b195d0e3f08 | Customer, Revenue, and Service Architecture |
-| projects/LonghornERP/03-design-documentation/01-hld/15-workforce-planning-and-asset-operations-architecture.md | 122 | a3237ef9ddc0 | Workforce, Planning, and Asset Operations Architecture |
-| projects/LonghornERP/03-design-documentation/04-database-design/10-indexing-strategy.md | 112 | 33d3ad3f643a | Indexing Strategy |
-| projects/LonghornERP/03-design-documentation/adr/README.md | 16 | f6d87afc8f37 | Architecture Decision Records — Index |
-| projects/LonghornERP/04-development/coding-standards.md | 29 | aa18f8fdd982 | Coding Standards — Longhorn ERP |
-| projects/LonghornERP/04-development/02-coding-guidelines/00-cover.md | 35 | cb7aa0c75cb3 | Coding Guidelines |
-| projects/LonghornERP/04-development/02-coding-guidelines/01-php-standards.md | 97 | 93ea96a9e29c | PHP 8.3 Coding Standards |
-| projects/LonghornERP/04-development/02-coding-guidelines/02-security-rules.md | 146 | 4e989618d1ac | Mandatory Security Rules |
-| projects/LonghornERP/04-development/02-coding-guidelines/03-database-patterns.md | 93 | 63119e46b79b | Database Access Patterns |
-| projects/LonghornERP/04-development/02-coding-guidelines/04-service-layer-patterns.md | 86 | e134fc7f2a6d | Service Layer Patterns |
-| projects/LonghornERP/04-development/02-coding-guidelines/05-api-endpoint-patterns.md | 98 | 188bd9e41235 | REST API Endpoint Conventions |
-| projects/LonghornERP/04-development/02-coding-guidelines/06-frontend-patterns.md | 92 | 2b4f2029a379 | Frontend JavaScript Conventions |
-| projects/LonghornERP/04-development/02-coding-guidelines/07-formatting-conventions.md | 68 | 10077c022895 | Data Formatting Conventions |
-| projects/LonghornERP/04-development/02-coding-guidelines/08-testing-standards.md | 74 | 4b1ce6b9175a | Testing Standards |
-| projects/LonghornERP/04-development/02-coding-guidelines/09-git-conventions.md | 68 | 460b4b759ded | Git Workflow Conventions |
-| projects/LonghornERP/04-development/02-coding-guidelines/manifest.md | 11 | ab41ec0c7c5f |  |
-| projects/LonghornERP/04-development/04-contribution-guide/contribution-guide.md | 30 | 41798f092313 | Contribution Guide — Longhorn ERP |
-| projects/LonghornERP/06-deployment-operations/01-deployment-guide/00-cover.md | 17 | 11868cae32fd |  |
-| projects/LonghornERP/06-deployment-operations/01-deployment-guide/01-server-requirements.md | 47 | d68db6952286 | Server Requirements for Longhorn ERP |
-| projects/LonghornERP/06-deployment-operations/01-deployment-guide/02-installation.md | 110 | 4305efc9304c | Installation Procedure for Longhorn ERP |
-| projects/LonghornERP/06-deployment-operations/01-deployment-guide/03-configuration.md | 133 | 0a2a08c63b7c | Configuration Reference for Longhorn ERP |
-| projects/LonghornERP/06-deployment-operations/01-deployment-guide/04-first-run.md | 61 | ceb2330312d6 | First-Run Configuration for Longhorn ERP |
-| projects/LonghornERP/06-deployment-operations/01-deployment-guide/05-backup-update.md | 162 | 8c2e52e400ee | Backup, Update, and Security Hardening for Longhorn ERP |
-| projects/LonghornERP/06-deployment-operations/01-deployment-guide/deployment-guide.md | 38 | e1b13913406b | Deployment Guide — Longhorn ERP |
-| projects/LonghornERP/06-deployment-operations/01-deployment-guide/manifest.md | 7 | 8c6daf19372d |  |
-| projects/LonghornERP/08-end-user-documentation/02-installation-guide/00-cover.md | 17 | 26c8ddb3b348 |  |
-| projects/LonghornERP/08-end-user-documentation/02-installation-guide/01-signup-plan-selection.md | 62 | 9458454f0ae3 | Step 1: Sign Up and Choose Your Plan |
-| projects/LonghornERP/08-end-user-documentation/02-installation-guide/02-workspace-setup.md | 100 | 2f1e49542c1b | Step 2: Set Up Your Workspace |
-| projects/LonghornERP/08-end-user-documentation/02-installation-guide/03-integration-setup.md | 73 | 0a82df0ef678 | Step 3: Set Up Integrations |
-| projects/LonghornERP/08-end-user-documentation/02-installation-guide/04-data-import.md | 103 | 8876f526eb3e | Step 4: Import Your Existing Data |
-| projects/LonghornERP/08-end-user-documentation/02-installation-guide/05-go-live-checklist.md | 79 | 37a4c5d2d70f | Step 5: Go-Live Checklist |
-| projects/LonghornERP/08-end-user-documentation/02-installation-guide/manifest.md | 7 | 0ab7ab9d477c |  |
-| projects/LonghornERP/09-governance-compliance/ai-slop-audit-report.md | 48 | 5a1baa92f4c8 | AI Slop Audit Report — Longhorn ERP |
-| projects/LonghornERP/09-governance-compliance/audit-report.md | 34 | fbd017df072b | IEEE 1012 Audit Report — Longhorn ERP |
-| projects/LonghornERP/09-governance-compliance/finance-module-audit-report.md | 47 | bc8f80531644 | Finance-Module Audit Report — Longhorn ERP |
-| projects/LonghornERP/09-governance-compliance/risk-register.md | 18 | 687ae49ef136 | Risk Register — Longhorn ERP |
-| projects/LonghornERP/09-governance-compliance/01-traceability-matrix/00-cover.md | 17 | 1f3c413d428b |  |
-| projects/LonghornERP/09-governance-compliance/01-traceability-matrix/01-introduction.md | 81 | b75212754d84 | 1. Introduction |
-| projects/LonghornERP/09-governance-compliance/01-traceability-matrix/02-summary-statistics.md | 57 | 4ea74eb05e0b | 2. Summary Statistics |
-| projects/LonghornERP/09-governance-compliance/01-traceability-matrix/03-platform-traceability.md | 446 | 36e42de9b22d | 3. Platform Requirements Traceability |
-| projects/LonghornERP/09-governance-compliance/01-traceability-matrix/04-core-modules-traceability.md | 402 | d84a971d3742 | 4. Core Module Requirements Traceability |
-| projects/LonghornERP/09-governance-compliance/01-traceability-matrix/05-addon-modules-traceability.md | 705 | af7ef0fdb248 | 5. Add-On Module Requirements Traceability |
-| projects/LonghornERP/09-governance-compliance/01-traceability-matrix/06-gap-register.md | 93 | 071b30bf0368 | 6. Gap Register |
-| projects/LonghornERP/09-governance-compliance/01-traceability-matrix/manifest.md | 8 | 8fd98cb396d1 |  |
-| projects/LonghornERP/09-governance-compliance/03-compliance/00-cover.md | 35 | bbd34bc715ae | Security Model and Compliance Framework |
-| projects/LonghornERP/09-governance-compliance/03-compliance/01-security-overview.md | 41 | 47eb80cb4ea1 | Security Design Philosophy |
-| projects/LonghornERP/09-governance-compliance/03-compliance/02-authentication.md | 85 | fb8a67e86eaf | Authentication Model |
-| projects/LonghornERP/09-governance-compliance/03-compliance/02-control-evidence-matrix.md | 33 | 15a7d6a35a86 | Control Evidence Matrix — Longhorn ERP |
-| projects/LonghornERP/09-governance-compliance/03-compliance/03-authorization.md | 70 | 9a0dad054e57 | Authorization Model |
-| projects/LonghornERP/09-governance-compliance/03-compliance/04-tenant-isolation.md | 58 | 2b22967a9fb8 | Tenant Data Isolation Controls |
-| projects/LonghornERP/09-governance-compliance/03-compliance/05-audit-log.md | 64 | 6a1216fdea5f | Audit Log Security Requirements |
-| projects/LonghornERP/09-governance-compliance/03-compliance/06-data-protection.md | 67 | 47afb5ffdfb3 | Data Protection and Privacy |
-| projects/LonghornERP/09-governance-compliance/03-compliance/07-network-security.md | 94 | a1b43e702e9b | Transport and Network Security |
-| projects/LonghornERP/09-governance-compliance/03-compliance/08-owasp-compliance.md | 144 | de960ff278d2 | OWASP Top 10 (2021) Compliance Requirements |
-| projects/LonghornERP/09-governance-compliance/03-compliance/09-nita-u-compliance.md | 42 | bab69df867ff | NITA-U SaaS Compliance Obligations |
-| projects/LonghornERP/09-governance-compliance/03-compliance/10-compliance-checklist.md | 38 | 8b359162087c | Pre-Launch Compliance Checklist |
-| projects/LonghornERP/09-governance-compliance/03-compliance/manifest.md | 12 | c9b3f6043435 |  |
-| projects/LonghornERP/09-governance-compliance/04-risk-assessment/00-cover.md | 17 | bd8145d20073 |  |
-| projects/LonghornERP/09-governance-compliance/04-risk-assessment/01-introduction.md | 66 | 25f64e568bba | Risk Assessment — Introduction and Methodology |
-| projects/LonghornERP/09-governance-compliance/04-risk-assessment/02-gap-risks.md | 27 | 964a51ece94f | Gap-Derived Risk Register (RISK-001 – RISK-018) |
-| projects/LonghornERP/09-governance-compliance/04-risk-assessment/03-operational-risks.md | 15 | 6ba42742a9b0 | Operational and Architectural Risk Register (RISK-019 – RISK-024) |
-| projects/LonghornERP/09-governance-compliance/04-risk-assessment/04-risk-summary.md | 49 | af576276ed98 | Risk Summary and Prioritisation |
-| projects/LonghornERP/09-governance-compliance/04-risk-assessment/manifest.md | 6 | ace87f0259fe |  |
-| projects/LonghornERP/09-governance-compliance/05-adr/ADR-0001-php-di-service-architecture.md | 26 | 1208384bfc0a | ADR-0001: Service-oriented PHP 8.3 with PHP-DI over a full-stack framework |
-| projects/LonghornERP/09-governance-compliance/05-adr/ADR-0002-mysql-91-single-store.md | 21 | 186460861ae5 | ADR-0002: MySQL 9.1 InnoDB as the single relational store |
-| projects/LonghornERP/09-governance-compliance/05-adr/ADR-0003-multitenancy-tenant-id.md | 25 | 9353020995ed | ADR-0003: Shared-database multi-tenancy with row-level tenant_id isolation |
-| projects/LonghornERP/09-governance-compliance/05-adr/ADR-0004-ledger-first-accounting.md | 22 | daabab760ac3 | ADR-0004: Ledger-first accounting with module GL auto-posting |
-| projects/LonghornERP/09-governance-compliance/05-adr/ADR-0005-localisation-as-configuration.md | 22 | 4da4811f4520 | ADR-0005: Localisation-as-configuration via jurisdiction compliance adapters |
-| projects/LonghornERP/09-governance-compliance/05-adr/ADR-0006-jwt-mobile-api-registry.md | 22 | 74323795698a | ADR-0006: JWT-authenticated mobile API with a self-documenting endpoint registry |
-| projects/LonghornERP/09-governance-compliance/05-adr/ADR-0007-hash-chained-audit-log.md | 25 | 488b3a78eb2d | ADR-0007: Tamper-evident hash-chained audit log (Roadmap control) |
-| projects/LonghornERP/_context/quality-standards.md | 63 | 900032b56be8 | Quality Standards — Longhorn ERP |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/02-inventory/03-warehouse-management.md | 38 | 52234d3075b5 | Warehouse Management |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/05-hr-payroll/02a-position-and-workforce-governance.md | 18 | 223ea384abd7 | Position and Workforce Governance |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/05-hr-payroll/06a-payroll-governance-controls.md | 18 | d48aa06f617d | Payroll Governance and Controls |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/00-cover.md | 24 | c75595e99531 |  |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/01-introduction.md | 78 | 3bbefa1923cc | Introduction to the Sales Agents and Commissions Module |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/02-agent-register.md | 68 | 183ea99e459a | Agent Register |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/03-targets-attribution.md | 70 | 6bd6ce41dc26 | Sales Targets and Attribution |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/04-commission-rules.md | 76 | 9245e18044b2 | Commission Rule Engine |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/05-commission-run.md | 78 | a2b1dd614bc0 | Commission Run, Approval Workflow, and Mobile Money Payout |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/06-agent-portal.md | 70 | c7e354ccaeb3 | Agent Self-Service Portal |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/07-stock-remittance.md | 78 | a8d460a1d426 | Agent Stock Management, Remittance Verification, and Daily Summaries |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/08-nfrs.md | 73 | f891083c2c64 | Non-Functional Requirements |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/09-traceability.md | 96 | d51d5ca44963 | Traceability Matrix, Context Gaps, and Verification Notes |
+| projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/manifest.md | 11 | ca355c72fa0d |  |
+| projects/CoreviaERP/03-design-documentation/01-hld/06-security-architecture.md | 99 | d6296662f67c | Security Architecture |
+| projects/CoreviaERP/03-design-documentation/01-hld/08-api-architecture.md | 115 | 922b07dfa311 | API Architecture |
+| projects/CoreviaERP/03-design-documentation/01-hld/10-mobile-architecture.md | 83 | e229a698ab22 | Mobile Architecture |
+| projects/CoreviaERP/03-design-documentation/01-hld/11-architecture-decision-records.md | 179 | 64858ae8d07c | Architecture Decision Records |
+| projects/CoreviaERP/03-design-documentation/01-hld/12-industrial-architecture.md | 119 | dbe2852b4537 | Industrial Module Architecture |
+| projects/CoreviaERP/03-design-documentation/01-hld/13-finance-operations-and-group-architecture.md | 175 | cf40f51c3386 | 13. Finance Operations and Group Architecture |
+| projects/CoreviaERP/03-design-documentation/01-hld/14-customer-revenue-and-service-architecture.md | 219 | 9b195d0e3f08 | Customer, Revenue, and Service Architecture |
+| projects/CoreviaERP/03-design-documentation/01-hld/15-workforce-planning-and-asset-operations-architecture.md | 122 | a3237ef9ddc0 | Workforce, Planning, and Asset Operations Architecture |
+| projects/CoreviaERP/03-design-documentation/04-database-design/10-indexing-strategy.md | 112 | 33d3ad3f643a | Indexing Strategy |
+| projects/CoreviaERP/03-design-documentation/adr/README.md | 16 | f6d87afc8f37 | Architecture Decision Records — Index |
+| projects/CoreviaERP/04-development/coding-standards.md | 29 | aa18f8fdd982 | Coding Standards — Corevia ERP |
+| projects/CoreviaERP/04-development/02-coding-guidelines/00-cover.md | 35 | cb7aa0c75cb3 | Coding Guidelines |
+| projects/CoreviaERP/04-development/02-coding-guidelines/01-php-standards.md | 97 | 93ea96a9e29c | PHP 8.3 Coding Standards |
+| projects/CoreviaERP/04-development/02-coding-guidelines/02-security-rules.md | 146 | 4e989618d1ac | Mandatory Security Rules |
+| projects/CoreviaERP/04-development/02-coding-guidelines/03-database-patterns.md | 93 | 63119e46b79b | Database Access Patterns |
+| projects/CoreviaERP/04-development/02-coding-guidelines/04-service-layer-patterns.md | 86 | e134fc7f2a6d | Service Layer Patterns |
+| projects/CoreviaERP/04-development/02-coding-guidelines/05-api-endpoint-patterns.md | 98 | 188bd9e41235 | REST API Endpoint Conventions |
+| projects/CoreviaERP/04-development/02-coding-guidelines/06-frontend-patterns.md | 92 | 2b4f2029a379 | Frontend JavaScript Conventions |
+| projects/CoreviaERP/04-development/02-coding-guidelines/07-formatting-conventions.md | 68 | 10077c022895 | Data Formatting Conventions |
+| projects/CoreviaERP/04-development/02-coding-guidelines/08-testing-standards.md | 74 | 4b1ce6b9175a | Testing Standards |
+| projects/CoreviaERP/04-development/02-coding-guidelines/09-git-conventions.md | 68 | 460b4b759ded | Git Workflow Conventions |
+| projects/CoreviaERP/04-development/02-coding-guidelines/manifest.md | 11 | ab41ec0c7c5f |  |
+| projects/CoreviaERP/04-development/04-contribution-guide/contribution-guide.md | 30 | 41798f092313 | Contribution Guide — Corevia ERP |
+| projects/CoreviaERP/06-deployment-operations/01-deployment-guide/00-cover.md | 17 | 11868cae32fd |  |
+| projects/CoreviaERP/06-deployment-operations/01-deployment-guide/01-server-requirements.md | 47 | d68db6952286 | Server Requirements for Corevia ERP |
+| projects/CoreviaERP/06-deployment-operations/01-deployment-guide/02-installation.md | 110 | 4305efc9304c | Installation Procedure for Corevia ERP |
+| projects/CoreviaERP/06-deployment-operations/01-deployment-guide/03-configuration.md | 133 | 0a2a08c63b7c | Configuration Reference for Corevia ERP |
+| projects/CoreviaERP/06-deployment-operations/01-deployment-guide/04-first-run.md | 61 | ceb2330312d6 | First-Run Configuration for Corevia ERP |
+| projects/CoreviaERP/06-deployment-operations/01-deployment-guide/05-backup-update.md | 162 | 8c2e52e400ee | Backup, Update, and Security Hardening for Corevia ERP |
+| projects/CoreviaERP/06-deployment-operations/01-deployment-guide/deployment-guide.md | 38 | e1b13913406b | Deployment Guide — Corevia ERP |
+| projects/CoreviaERP/06-deployment-operations/01-deployment-guide/manifest.md | 7 | 8c6daf19372d |  |
+| projects/CoreviaERP/08-end-user-documentation/02-installation-guide/00-cover.md | 17 | 26c8ddb3b348 |  |
+| projects/CoreviaERP/08-end-user-documentation/02-installation-guide/01-signup-plan-selection.md | 62 | 9458454f0ae3 | Step 1: Sign Up and Choose Your Plan |
+| projects/CoreviaERP/08-end-user-documentation/02-installation-guide/02-workspace-setup.md | 100 | 2f1e49542c1b | Step 2: Set Up Your Workspace |
+| projects/CoreviaERP/08-end-user-documentation/02-installation-guide/03-integration-setup.md | 73 | 0a82df0ef678 | Step 3: Set Up Integrations |
+| projects/CoreviaERP/08-end-user-documentation/02-installation-guide/04-data-import.md | 103 | 8876f526eb3e | Step 4: Import Your Existing Data |
+| projects/CoreviaERP/08-end-user-documentation/02-installation-guide/05-go-live-checklist.md | 79 | 37a4c5d2d70f | Step 5: Go-Live Checklist |
+| projects/CoreviaERP/08-end-user-documentation/02-installation-guide/manifest.md | 7 | 0ab7ab9d477c |  |
+| projects/CoreviaERP/09-governance-compliance/ai-slop-audit-report.md | 48 | 5a1baa92f4c8 | AI Slop Audit Report — Corevia ERP |
+| projects/CoreviaERP/09-governance-compliance/audit-report.md | 34 | fbd017df072b | IEEE 1012 Audit Report — Corevia ERP |
+| projects/CoreviaERP/09-governance-compliance/finance-module-audit-report.md | 47 | bc8f80531644 | Finance-Module Audit Report — Corevia ERP |
+| projects/CoreviaERP/09-governance-compliance/risk-register.md | 18 | 687ae49ef136 | Risk Register — Corevia ERP |
+| projects/CoreviaERP/09-governance-compliance/01-traceability-matrix/00-cover.md | 17 | 1f3c413d428b |  |
+| projects/CoreviaERP/09-governance-compliance/01-traceability-matrix/01-introduction.md | 81 | b75212754d84 | 1. Introduction |
+| projects/CoreviaERP/09-governance-compliance/01-traceability-matrix/02-summary-statistics.md | 57 | 4ea74eb05e0b | 2. Summary Statistics |
+| projects/CoreviaERP/09-governance-compliance/01-traceability-matrix/03-platform-traceability.md | 446 | 36e42de9b22d | 3. Platform Requirements Traceability |
+| projects/CoreviaERP/09-governance-compliance/01-traceability-matrix/04-core-modules-traceability.md | 402 | d84a971d3742 | 4. Core Module Requirements Traceability |
+| projects/CoreviaERP/09-governance-compliance/01-traceability-matrix/05-addon-modules-traceability.md | 705 | af7ef0fdb248 | 5. Add-On Module Requirements Traceability |
+| projects/CoreviaERP/09-governance-compliance/01-traceability-matrix/06-gap-register.md | 93 | 071b30bf0368 | 6. Gap Register |
+| projects/CoreviaERP/09-governance-compliance/01-traceability-matrix/manifest.md | 8 | 8fd98cb396d1 |  |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/00-cover.md | 35 | bbd34bc715ae | Security Model and Compliance Framework |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/01-security-overview.md | 41 | 47eb80cb4ea1 | Security Design Philosophy |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/02-authentication.md | 85 | fb8a67e86eaf | Authentication Model |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/02-control-evidence-matrix.md | 33 | 15a7d6a35a86 | Control Evidence Matrix — Corevia ERP |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/03-authorization.md | 70 | 9a0dad054e57 | Authorization Model |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/04-tenant-isolation.md | 58 | 2b22967a9fb8 | Tenant Data Isolation Controls |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/05-audit-log.md | 64 | 6a1216fdea5f | Audit Log Security Requirements |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/06-data-protection.md | 67 | 47afb5ffdfb3 | Data Protection and Privacy |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/07-network-security.md | 94 | a1b43e702e9b | Transport and Network Security |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/08-owasp-compliance.md | 144 | de960ff278d2 | OWASP Top 10 (2021) Compliance Requirements |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/09-nita-u-compliance.md | 42 | bab69df867ff | NITA-U SaaS Compliance Obligations |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/10-compliance-checklist.md | 38 | 8b359162087c | Pre-Launch Compliance Checklist |
+| projects/CoreviaERP/09-governance-compliance/03-compliance/manifest.md | 12 | c9b3f6043435 |  |
+| projects/CoreviaERP/09-governance-compliance/04-risk-assessment/00-cover.md | 17 | bd8145d20073 |  |
+| projects/CoreviaERP/09-governance-compliance/04-risk-assessment/01-introduction.md | 66 | 25f64e568bba | Risk Assessment — Introduction and Methodology |
+| projects/CoreviaERP/09-governance-compliance/04-risk-assessment/02-gap-risks.md | 27 | 964a51ece94f | Gap-Derived Risk Register (RISK-001 – RISK-018) |
+| projects/CoreviaERP/09-governance-compliance/04-risk-assessment/03-operational-risks.md | 15 | 6ba42742a9b0 | Operational and Architectural Risk Register (RISK-019 – RISK-024) |
+| projects/CoreviaERP/09-governance-compliance/04-risk-assessment/04-risk-summary.md | 49 | af576276ed98 | Risk Summary and Prioritisation |
+| projects/CoreviaERP/09-governance-compliance/04-risk-assessment/manifest.md | 6 | ace87f0259fe |  |
+| projects/CoreviaERP/09-governance-compliance/05-adr/ADR-0001-php-di-service-architecture.md | 26 | 1208384bfc0a | ADR-0001: Service-oriented PHP 8.3 with PHP-DI over a full-stack framework |
+| projects/CoreviaERP/09-governance-compliance/05-adr/ADR-0002-mysql-91-single-store.md | 21 | 186460861ae5 | ADR-0002: MySQL 9.1 InnoDB as the single relational store |
+| projects/CoreviaERP/09-governance-compliance/05-adr/ADR-0003-multitenancy-tenant-id.md | 25 | 9353020995ed | ADR-0003: Shared-database multi-tenancy with row-level tenant_id isolation |
+| projects/CoreviaERP/09-governance-compliance/05-adr/ADR-0004-ledger-first-accounting.md | 22 | daabab760ac3 | ADR-0004: Ledger-first accounting with module GL auto-posting |
+| projects/CoreviaERP/09-governance-compliance/05-adr/ADR-0005-localisation-as-configuration.md | 22 | 4da4811f4520 | ADR-0005: Localisation-as-configuration via jurisdiction compliance adapters |
+| projects/CoreviaERP/09-governance-compliance/05-adr/ADR-0006-jwt-mobile-api-registry.md | 22 | 74323795698a | ADR-0006: JWT-authenticated mobile API with a self-documenting endpoint registry |
+| projects/CoreviaERP/09-governance-compliance/05-adr/ADR-0007-hash-chained-audit-log.md | 25 | 488b3a78eb2d | ADR-0007: Tamper-evident hash-chained audit log (Roadmap control) |
+| projects/CoreviaERP/_context/quality-standards.md | 63 | 900032b56be8 | Quality Standards — Corevia ERP |
 | projects/Maduuka/README.md | 15 | 7d2f6d94e829 | Maduuka - SRS Documentation |
 | projects/Maduuka/04-development/coding-standards.md | 32 | 7c2b8dbe6c4d | Maduuka Coding Standards |
 | projects/Maduuka/04-development-artifacts/02-coding-guidelines/01-coding-guidelines.md | 198 | d4b675be1171 | Maduuka -- Coding Guidelines |
