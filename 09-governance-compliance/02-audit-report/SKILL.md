@@ -96,6 +96,11 @@ Example: if required evidence is missing or inaccessible, mark the check not ass
 
 ## Overview
 
+For an engine or produced-document audit, load the Kaizen product-audit skill and
+its evidence matrix. Report the raw diagnostic score separately from the required
+audit score `min(raw_score, 65)`, then produce a named remediation plan targeting
+95/100 with acceptance evidence and re-test criteria.
+
 This skill generates a formal Verification and Validation (V&V) audit report that systematically evaluates all project documentation against IEEE 1012-2016 criteria. The report assesses completeness, consistency, correctness, and traceability, producing categorized findings with severity levels and actionable remediation recommendations. The audit concludes with a formal recommendation of Pass, Conditional Pass, or Fail.
 
 ## When to Use This Skill

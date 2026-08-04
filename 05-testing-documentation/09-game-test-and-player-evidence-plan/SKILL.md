@@ -53,4 +53,5 @@ Return the narrowest qualified plan, mark unavailable checks `not assessed`, and
 - Ad renders so it passes. Fix: test interruption, accidental tap, coercion, privacy, regret, trust and all failure paths.
 ## References
 - [Test evidence matrix](references/game-test-evidence-matrix.md)
+- [Playtest learning evidence](references/playtest-learning-evidence.md)
 <!-- dual-compat-end -->

@@ -82,6 +82,7 @@ If any required capability is unavailable, return the narrowest useful qualified
 - [Architecture patterns](references/ai-architecture-patterns.md)
 - [Architecture template](references/ai-architecture-spec-template.md)
 - [Agent runtime cross-link](references/ai-agent-runtime-crosslink.md)
+- [AI architecture oversight and drift](references/ai-architecture-oversight-and-drift.md)
 <!-- dual-compat-end -->
 
 
@@ -98,6 +99,11 @@ The AI-distinctive architecture artefact. Sits alongside the multi-tenancy spec 
 Read HLD, multi-tenancy spec, AI feature PRD spec, AI data spec. Identify in-scope AI features, models, patterns, and the tenant boundaries.
 
 ### Step 2: Declare the AI plane
+
+Include the problem/non-AI alternative, human and affected-non-user map,
+model/system/input/output boundaries, human control, consent/notice, drift
+signals, staged promotion, rollback and re-promotion criteria. Use the
+oversight reference before selecting a runtime pattern.
 
 The AI plane is a sub-set of the application plane plus a small set of dedicated control-plane services:
 

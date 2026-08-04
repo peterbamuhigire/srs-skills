@@ -53,4 +53,5 @@ Return the narrowest qualified subsystem, mark unavailable evidence `not assesse
 - Retention or ad revenue as a solitary acceptance measure. Fix: pair with agency, trust, wellbeing, privacy, fairness and stopping evidence.
 ## References
 - [Game requirement catalogue](references/game-requirement-catalogue.md)
+- [Game narrative requirement contract](references/game-narrative-requirement-contract.md)
 <!-- dual-compat-end -->

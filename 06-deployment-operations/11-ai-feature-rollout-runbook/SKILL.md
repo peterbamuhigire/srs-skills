@@ -98,6 +98,8 @@ Given an approved project source and a conflicting implementation detail, record
 
 ## References
 
+- [AI rollout learning and rollback](references/ai-rollout-learning-and-rollback.md)
+
 - [logic.prompt](logic.prompt) - load only when its template, logic, or detail is needed.
 - [README.md](README.md) - load only when its template, logic, or detail is needed.
 <!-- dual-compat-end -->

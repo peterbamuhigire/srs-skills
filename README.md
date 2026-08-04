@@ -4,6 +4,14 @@
 
 ## July 2026 skill-engine conformance
 
+### Kaizen operating contract
+
+Continuous improvement is a mandatory SDLC and engine capability. Load
+`09-governance-compliance/31-kaizen-engine-and-product-improvement/SKILL.md` for engine or
+product audits. Published audit scores are hard-capped at 65/100; remediation plans target
+95/100 and must be proven through deterministic gates, traceability, failed-path evidence,
+and a dated re-audit. Current external claims route to Digital Research Skills Engine.
+
 The active catalogue contains 154 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 50 routing fixtures at a top-three precision threshold of 100%.
 
 ```powershell
@@ -20,6 +28,26 @@ Hybrid and regulated delivery are now documented as explicit operating models ra
 - Hybrid execution contract: [docs/hybrid-operating-model.md](/C:/wamp64/www/srs-skills/docs/hybrid-operating-model.md)
 - Regulated evidence chain: [docs/regulated-evidence-model.md](/C:/wamp64/www/srs-skills/docs/regulated-evidence-model.md)
 - Repo-wide deterministic enforcement gates: [docs/deterministic-governance.md](/C:/wamp64/www/srs-skills/docs/deterministic-governance.md)
+
+## Book-derived 2026 capability upgrade
+
+XP 2026, MSC Software Magazine, Digital Storytelling, AI for Game Developers, Video Game
+Storytelling, Platform Enterprise, Designing for AI, Leveling Up as a Tech Lead, Facility Move
+Playbook, and The Nonprofit Guide to Strategic Planning now inform the documentation system.
+PRDs capture hypotheses and learning measures; AI documents capture human control, correction,
+drift, and rollback; game documents capture narrative/gameplay contracts, playtest evidence,
+branch/rejoin behaviour, accessibility, and localisation; architecture and release documents
+capture lineage, uncertainty, evidence, readiness, cutover, stabilisation, and lessons learned.
+
+## Kaizen and product-audit contract
+
+Every document set and the engine follow `Observe -> Baseline -> Select -> Experiment -> Check ->
+Standardise -> Teach -> Re-measure`. Audits publish `min(raw_score, 65)` and produce 95/100 plans
+with owner, evidence, measure, risk, rollback, and re-audit. Product audits cover requirements,
+traceability, failed paths, accessibility, security, release evidence, user feedback, and handoff.
+Current claims route to `digital-research-skills`; presentation-layer work routes to
+`design-system-skills`. Raw book-extraction material was removed from the repository and backed up
+externally; see `docs/continuous-improvement/srs-raw-extraction-removal-2026-08.md`.
 
 ## Architecture & cross-cutting engines (updated 2026-06-21)
 

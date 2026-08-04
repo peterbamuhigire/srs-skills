@@ -81,6 +81,7 @@ If any required capability is unavailable, return the narrowest useful qualified
 
 - [SaaS PRD addendum](references/saas-prd-addendum.md)
 - [AI feature PRD addendum](references/ai-feature-prd-addendum.md)
+- [PRD learning contract](references/kaizen-prd-learning-contract.md)
 - [Generation logic](logic.prompt)
 <!-- dual-compat-end -->
 
@@ -91,6 +92,11 @@ If any required capability is unavailable, return the narrowest useful qualified
 
 
 ## Overview
+
+For every material objective, load the PRD learning contract. Convert uncertain
+assumptions into a baseline, hypothesis, smallest reversible experiment, primary
+measure, guardrails, owner, stop rule, decision, and next cycle. Do not let a
+roadmap statement masquerade as validated demand.
 
 This is the second skill in Phase 01 (Strategic Vision). It builds on the Vision Statement to create a comprehensive Product Requirements Document (PRD) that bridges strategic intent and detailed requirements engineering. The PRD serves as the authoritative source for product scope, feature prioritization, and measurable objectives before downstream skills decompose features into formal SRS-level requirements.
 

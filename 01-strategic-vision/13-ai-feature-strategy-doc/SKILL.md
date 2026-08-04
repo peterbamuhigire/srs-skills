@@ -89,6 +89,11 @@ If any required capability is unavailable, return the narrowest useful qualified
 
 ## Overview
 
+Use a problem-first decision: compare AI with a non-AI alternative, map the
+human/system/model/data layers, and sequence offline evaluation, shadow, human-
+supervised, canary, and wider release. Each strategic AI bet needs a value
+hypothesis, guardrails, owner, rollback and post-launch drift review.
+
 Produces the strategic spine of an AI-feature SaaS: which AI features exist, who pays for them, what the moat is, and which models the company builds versus buys. Sits between the AI Economic Value Brief (per-feature) and the AI Feature PRD Spec (per-feature requirements).
 
 ## Quick Reference

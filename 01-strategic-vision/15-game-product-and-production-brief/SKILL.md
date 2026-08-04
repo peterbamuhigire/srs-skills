@@ -53,4 +53,5 @@ Return the narrowest qualified concept, mark unavailable checks `not assessed`, 
 - Ads treated as a revenue default. Fix: define placement, child/privacy, trust, no-fill and kill-switch hypotheses before greenlight.
 ## References
 - [Game brief evidence model](references/game-brief-evidence-model.md)
+- [PRD learning contract](../../01-strategic-vision/01-prd-generation/references/kaizen-prd-learning-contract.md)
 <!-- dual-compat-end -->

@@ -90,6 +90,7 @@ Example: if a concern could expose or punish an individual, aggregate or anonymi
 
 - [Generation logic](logic.prompt): load when creating the complete artefact.
 - [Skill notes](README.md): consult for local examples and invocation context.
+- [Kaizen retrospective and product loop](references/kaizen-retrospective-and-product-loop.md): use for value retrospectives, hypotheses, evidence, owners, and standardisation.
 - [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
 
 <!-- dual-compat-end -->
@@ -184,6 +185,8 @@ Generate a continuous improvement metrics section that SHALL:
 - Track recurring themes to identify systemic issues.
 - Measure team satisfaction or morale trend (optional anonymous survey).
 - Include a follow-up tracking table for previous sprint action items.
+- Include the experiment hypothesis, baseline, guardrail, stop rule, result,
+  decision, owner and next-cycle measure for the highest-priority action.
 Assemble all sections into the final template. Write to `projects/<ProjectName>/<phase>/<document>/Retrospective_Template.md`. Log completion.
 
 ## Output Format Specification

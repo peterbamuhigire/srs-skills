@@ -98,6 +98,8 @@ Given an approved project source and a conflicting implementation detail, record
 
 ## References
 
+- [AI evaluation release evidence](references/ai-evaluation-release-evidence.md)
+
 - [logic.prompt](logic.prompt) - load only when its template, logic, or detail is needed.
 - [README.md](README.md) - load only when its template, logic, or detail is needed.
 <!-- dual-compat-end -->

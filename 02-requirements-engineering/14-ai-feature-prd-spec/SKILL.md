@@ -84,6 +84,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Ai Agent Feature Addendum Crosslink](references/ai-agent-feature-addendum-crosslink.md)
 - [Ai Feature Prd Addendum](references/ai-feature-prd-addendum.md)
 - [Ai Feature Prd Spec Template](references/ai-feature-prd-spec-template.md)
+- [AI system and human-control contract](references/ai-system-human-control-contract.md)
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 
@@ -106,6 +107,10 @@ Produces the AI-feature complement to the generic PRD. Every AI-powered FR carri
 List every FR whose output is produced or modified by an AI component (LLM call, RAG, classifier, embedding search, agent action, fine-tune).
 
 ### Step 2: Attach the seven AI clauses to each FR
+
+Also attach the model/system/input/output map, human oversight, correction,
+contest, undo or safe fallback, consent/notice, drift signal, and rollback
+acceptance evidence from `references/ai-system-human-control-contract.md`.
 
 For each AI-powered FR, the spec MUST capture:
 

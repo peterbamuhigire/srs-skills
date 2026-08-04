@@ -53,4 +53,5 @@ Produce the narrowest qualified context, mark unavailable checks `not assessed`,
 - Ads/analytics treated as one consent boundary. Fix: model each SDK, purpose, data flow, deletion and disable path separately.
 ## References
 - [Game architecture viewpoints](references/game-architecture-viewpoints.md)
+- [Game AI and narrative architecture contract](references/game-ai-narrative-architecture-contract.md)
 <!-- dual-compat-end -->
