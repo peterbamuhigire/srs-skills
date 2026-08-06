@@ -22,7 +22,7 @@ def test_zero_debt_baseline_and_routing_fixture_contract() -> None:
     fixtures = json.loads((ROOT / "tests" / "routing-fixtures.json").read_text(encoding="utf-8"))
 
     assert baseline["failure_counts"] == {}
-    assert baseline["active_skill_count"] == 154
+    assert baseline["active_skill_count"] == 156
     assert baseline["template_count"] == 1
     assert len(fixtures["fixtures"]) == baseline["routing"]["fixture_count"]
     assert fixtures["threshold"] == baseline["routing"]["minimum_precision"] == 1.0
@@ -58,5 +58,5 @@ def test_routing_catalogue_is_unique_and_complete() -> None:
     catalogue = routing.read_catalogue()
     names = [item["name"] for item in catalogue]
 
-    assert len(catalogue) == 154
+    assert len(catalogue) == 156
     assert len(names) == len(set(names))

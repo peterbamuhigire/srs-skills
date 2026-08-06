@@ -61,6 +61,15 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 ## Quality Bar
 
+### SDD phase-boundary control
+
+For SDD-style feature workspaces, use the additive deterministic contract in
+`docs/sdd-phase-boundary-contract.md` and run
+`python scripts/validate_sdd_phase_boundaries.py --feature-dir <feature-dir>`
+at the relevant boundary. Agent explanations and waivers do not replace
+validator evidence; persistent waivers require owner, reason, expiry, scope,
+and rollback.
+
 - Outputs must be specific, grounded in local context, and appropriate for production or delivery review.
 - Do not invent missing requirements or hidden project context.
 - Use local standards, checklists, and references before falling back to generic knowledge.

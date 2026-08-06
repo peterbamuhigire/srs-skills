@@ -21,6 +21,8 @@ jobs:
       - run: python scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json
       - run: python scripts/routing_smoke_test.py
       - run: python -m engine validate-skills
+      - name: Validate SDD phase-boundary contract
+        run: python scripts/validate_sdd_phase_boundaries.py --feature-dir engine/tests/fixtures/sdd_feature
       - run: python scripts/seed_demo_project.py
       - name: Demo passes
         run: python -m engine validate projects/_demo-hybrid-regulated

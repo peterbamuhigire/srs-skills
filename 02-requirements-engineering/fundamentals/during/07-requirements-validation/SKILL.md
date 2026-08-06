@@ -292,6 +292,22 @@ The generated `validation_report.md` SHALL contain the following sections:
 
 ## Integration
 
+### SDD phase-boundary companion
+
+When reviewing an SDD-style feature workspace containing `spec.md`, `plan.md`,
+and `tasks.md`, run the deterministic companion validator before accepting the
+requirements set as implementation-ready:
+
+```powershell
+python scripts/validate_sdd_phase_boundaries.py --feature-dir <feature-dir> --stage spec-plan
+```
+
+The validator enforces P1 requirement coverage, implementation file/symbol
+mapping, and explicit failure for missing evidence. It is a structural gate;
+the requirements validation workflow remains authoritative for correctness,
+completeness, feasibility, verifiability, standards traceability, and
+baselining. See [SDD Phase-Boundary Contract](../../../../docs/sdd-phase-boundary-contract.md).
+
 | Direction  | Skill                                              | Relationship                                    |
 |------------|----------------------------------------------------|-------------------------------------------------|
 | Upstream   | `02-requirements-engineering/fundamentals/during/04-*` | Validates analysis report                   |

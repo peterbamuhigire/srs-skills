@@ -12,7 +12,7 @@ product audits. Published audit scores are hard-capped at 65/100; remediation pl
 95/100 and must be proven through deterministic gates, traceability, failed-path evidence,
 and a dated re-audit. Current external claims route to Digital Research Skills Engine.
 
-The active catalogue contains 154 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 50 routing fixtures at a top-three precision threshold of 100%.
+The active catalogue contains 156 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 50 routing fixtures at a top-three precision threshold of 100%.
 
 ```powershell
 python -X utf8 scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json
@@ -28,6 +28,12 @@ Hybrid and regulated delivery are now documented as explicit operating models ra
 - Hybrid execution contract: [docs/hybrid-operating-model.md](/C:/wamp64/www/srs-skills/docs/hybrid-operating-model.md)
 - Regulated evidence chain: [docs/regulated-evidence-model.md](/C:/wamp64/www/srs-skills/docs/regulated-evidence-model.md)
 - Repo-wide deterministic enforcement gates: [docs/deterministic-governance.md](/C:/wamp64/www/srs-skills/docs/deterministic-governance.md)
+- SDD artifact-boundary checks: [docs/sdd-phase-boundary-contract.md](/C:/wamp64/www/srs-skills/docs/sdd-phase-boundary-contract.md)
+
+SDD-style feature workspaces can run the additive deterministic boundary
+validator with `python scripts/validate_sdd_phase_boundaries.py`. It checks
+requirement coverage, task dependencies, completion markers, and QC evidence;
+it never converts a missing artifact or unavailable check into a pass.
 
 ## Book-derived 2026 capability upgrade
 
