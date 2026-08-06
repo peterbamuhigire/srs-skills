@@ -85,7 +85,7 @@ If a game SRS has a complete feature list but no failed-path, accessibility, per
 ## References
 
 - [Local adoption plan](../../docs/continuous-improvement/kaizen-adoption-2026-08.md)
-- Portfolio standard: `C:\wamp64\www\digital-research-skills\docs\continuous-improvement\portfolio-kaizen-standard-2026-08.md`
+- Portfolio standard: `C:\wamp64\www\digital-research-engine\docs\continuous-improvement\portfolio-kaizen-standard-2026-08.md`
 - `07-agile-artifacts/04-retrospective-template/`
 - `09-governance-compliance/29-ai-slop-audit/`
 - [Product audit evidence matrix](references/product-audit-evidence-matrix.md)

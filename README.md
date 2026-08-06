@@ -56,7 +56,7 @@ Every document set and the engine follow `Observe -> Baseline -> Select -> Exper
 Standardise -> Teach -> Re-measure`. Audits publish `min(raw_score, 65)` and produce 95/100 plans
 with owner, evidence, measure, risk, rollback, and re-audit. Product audits cover requirements,
 traceability, failed paths, accessibility, security, release evidence, user feedback, and handoff.
-Current claims route to `digital-research-skills`; presentation-layer work routes to
+Current claims route to `digital-research-engine` at `C:\wamp64\www\digital-research-engine`; presentation-layer work routes to
 `design-system-skills`. Raw book-extraction material was removed from the repository and backed up
 externally; see `docs/continuous-improvement/srs-raw-extraction-removal-2026-08.md`.
 
