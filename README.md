@@ -1,5 +1,10 @@
 # SDLC-Docs-Engine: Standards-Driven Documentation Across the Software Lifecycle
 
+The shared ten-engine agent, command, hook, evidence, and handoff mapping is
+documented in [`docs/control-plane-adoption.md`](docs/control-plane-adoption.md).
+Use `python scripts/create_sdd_handoff.py` to record a structured stop or
+blocked-phase handoff.
+
 **SDLC-Docs-Engine** (formerly SRS-Skills) is a modular, AI-driven toolkit for generating **comprehensive, standards-compliant documentation** across all phases of software development. It supports **Waterfall, Agile, and Hybrid methodologies**, providing IEEE/ISO-aligned documentation from strategic vision to deployment operations.
 
 ## July 2026 skill-engine conformance

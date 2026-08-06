@@ -33,3 +33,8 @@ hooks. Native hooks should invoke the same command at plan, task, completion,
 and release events. Persist overrides in the project evidence record with an
 owner, reason, expiry, scope, and rollback; never record a gate bypass only in
 conversation.
+
+When work stops or a phase is blocked, pair the validator result with
+`python scripts/create_sdd_handoff.py --feature-dir <dir> --stage <stage>
+--status blocked --owner <owner> --next-step <step>`. The handoff record is
+the resumable stop-hook evidence; it does not replace the phase validator.

@@ -26,6 +26,14 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 ## Skill Authoring and Release Gate
 
+The shared agents, commands, hooks, evidence, and handoff contract is mapped
+for SRS work in `docs/control-plane-adoption.md` and governed centrally by
+`C:\wamp64\www\skills-web-dev\docs\engine-control-plane.md`.
+
+On interruption or a blocked phase, write `sdd-handoff.json` with
+`python scripts/create_sdd_handoff.py`; an incomplete phase is never closed
+without a resumable owner, next step, blockers, risks, and evidence list.
+
 - The local standard is `docs/skill-authoring-standard.md`; start new skills from `templates/skill/SKILL.md`.
 - Active skills are discovered from numbered phase roots. Do not maintain a hand-edited active-skill table as the source of truth.
 - Books and other copyrighted sources may inform independently written skills, but raw books, OCR output, chapter reconstructions, and long extracts must never enter this repository. Keep source files outside the repository and retain only the minimum independently expressed facts or framework needed.
