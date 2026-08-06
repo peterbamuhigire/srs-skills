@@ -30,10 +30,10 @@ The machine-readable baseline is not a waiver: any new finding, duplicate name, 
 
 Hybrid and regulated delivery are now documented as explicit operating models rather than implied claims:
 
-- Hybrid execution contract: [docs/hybrid-operating-model.md](/C:/wamp64/www/srs-skills/docs/hybrid-operating-model.md)
-- Regulated evidence chain: [docs/regulated-evidence-model.md](/C:/wamp64/www/srs-skills/docs/regulated-evidence-model.md)
-- Repo-wide deterministic enforcement gates: [docs/deterministic-governance.md](/C:/wamp64/www/srs-skills/docs/deterministic-governance.md)
-- SDD artifact-boundary checks: [docs/sdd-phase-boundary-contract.md](/C:/wamp64/www/srs-skills/docs/sdd-phase-boundary-contract.md)
+- Hybrid execution contract: [docs/hybrid-operating-model.md](docs/hybrid-operating-model.md)
+- Regulated evidence chain: [docs/regulated-evidence-model.md](docs/regulated-evidence-model.md)
+- Repo-wide deterministic enforcement gates: [docs/deterministic-governance.md](docs/deterministic-governance.md)
+- SDD artifact-boundary checks: [docs/sdd-phase-boundary-contract.md](docs/sdd-phase-boundary-contract.md)
 
 SDD-style feature workspaces can run the additive deterministic boundary
 validator with `python scripts/validate_sdd_phase_boundaries.py`. It checks
@@ -56,7 +56,7 @@ Every document set and the engine follow `Observe -> Baseline -> Select -> Exper
 Standardise -> Teach -> Re-measure`. Audits publish `min(raw_score, 65)` and produce 95/100 plans
 with owner, evidence, measure, risk, rollback, and re-audit. Product audits cover requirements,
 traceability, failed paths, accessibility, security, release evidence, user feedback, and handoff.
-Current claims route to `digital-research-engine` at `C:\wamp64\www\digital-research-engine`; presentation-layer work routes to
+Current claims route to the [Digital Research Engine](https://github.com/peterbamuhigire/digital-research-skills); presentation-layer work routes to
 `design-system-skills`. Raw book-extraction material was removed from the repository and backed up
 externally; see `docs/continuous-improvement/srs-raw-extraction-removal-2026-08.md`.
 
@@ -64,7 +64,7 @@ externally; see `docs/continuous-improvement/srs-raw-extraction-removal-2026-08.
 
 This engine is one of several sibling skill engines on the host. None is natively discovered any more — every engine, including this one, is consulted through the global routing table by globbing `SKILL.md` directly and reading the matched file(s). Cross-cutting engines are **referenced** (path resolved per device from the global router), never mirrored into this repo.
 
-- **Design / UX visual layer → `design-system-skills`** (`C:\wamp64\www\design-system-skills`). This is the single home for all design, typography, UI/UX, and visual-formatting skills plus the anti-AI-slop visual doctrine. Consult it **in addition** for any presentation-layer work: the VISUAL side of a UX/design specification (design systems, UI tokens, dashboard/visual quality, the look of a generated `.docx`). The **content and structure** of specs — IA, requirements, acceptance criteria, the spec document itself — stays in this engine. Phase 03 design/UX skills here describe *what* the design must satisfy; the design engine governs *how* it looks.
+- **Design / UX visual layer → [Design System Skills](https://github.com/peterbamuhigire/design-system-skills).** This is the single home for all design, typography, UI/UX, and visual-formatting skills plus the anti-AI-slop visual doctrine. Consult it **in addition** for any presentation-layer work: the VISUAL side of a UX/design specification (design systems, UI tokens, dashboard/visual quality, the look of a generated `.docx`). The **content and structure** of specs — IA, requirements, acceptance criteria, the spec document itself — stays in this engine. Phase 03 design/UX skills here describe *what* the design must satisfy; the design engine governs *how* it looks.
 - **Finance / accounting → `chwezi-accounting-doctrine`** (referenced, not mirrored). Any money/ledger/tax/IFRS/IAS documentation work routes to the finance engine source via its `README.md` router. The old "build once, mirror everywhere" finance mirror was never populated — the empty `skills/finance/` shells were removed on 2026-06-21. Finance skills do **not** live inside this engine; only the `domains/finance/` knowledge base (PCI-DSS, SOX, AML defaults) is local.
 - **Engineering / methodology → engineering catalog engine** (see "Skill Categories" below), also referenced, not mirrored.
 
@@ -464,7 +464,7 @@ sdlc-docs-engine/
 #       skills/sdlc-meta/<skill-name>/SKILL.md
 #       skills/security/<skill-name>/SKILL.md
 # Finance/accounting lives in the SIBLING finance engine at
-#   C:\wamp64\www\chwezi-accounting-doctrine  (consult its README.md router)
+#   https://github.com/peterbamuhigire/chwezi-accounting-doctrine  (consult its README.md router)
 ```
 
 ### Skill Categories
@@ -497,7 +497,7 @@ The canonical runtime model is the project workspace under `projects/<ProjectNam
 - Portable skill entrypoints: `skills/<skill-name>/SKILL.md`
 - Repository root: project documentation plus `docs/`, `skills/`, and `projects/` where relevant, alongside operational folders such as `engine/`, `templates/`, and `scripts/`
 
-Many existing skill-local files still use `../project_context/` and `../output/`. Those are compatibility aliases used inside skill execution contexts. They are not a second architecture. Root documentation follows the canonical workspace model described in [docs/pathing-model.md](/C:/wamp64/www/srs-skills/docs/pathing-model.md).
+Many existing skill-local files still use `../project_context/` and `../output/`. Those are compatibility aliases used inside skill execution contexts. They are not a second architecture. Root documentation follows the canonical workspace model described in [docs/pathing-model.md](docs/pathing-model.md).
 
 ---
 
@@ -693,7 +693,7 @@ You can **mix methodologies**:
 
 **Example 2:** Use Waterfall for core platform + Agile for new feature experiments
 
-Use the formal operating contract in [docs/hybrid-operating-model.md](/C:/wamp64/www/srs-skills/docs/hybrid-operating-model.md) so baselined requirements, Agile execution, and change control stay linked.
+Use the formal operating contract in [docs/hybrid-operating-model.md](docs/hybrid-operating-model.md) so baselined requirements, Agile execution, and change control stay linked.
 
 ---
 

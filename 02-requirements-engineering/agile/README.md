@@ -97,7 +97,7 @@ Run skill: 02-requirements-engineering/agile/04-backlog-prioritization
 - Downstream: Agile stories feed sprint planning, testing, and design refinement.
 - Hybrid: use this pipeline for volatile delivery areas only after the stable scope boundary is defined upstream.
 
-See [hybrid-operating-model.md](/C:/wamp64/www/srs-skills/docs/hybrid-operating-model.md) for the required handshake between baselined requirements, sprint execution, and change control.
+See [hybrid-operating-model.md](../../docs/hybrid-operating-model.md) for the required handshake between baselined requirements, sprint execution, and change control.
 
 ## Agile vs. Waterfall Requirements
 
