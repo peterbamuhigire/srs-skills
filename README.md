@@ -40,7 +40,7 @@ validator with `python scripts/validate_sdd_phase_boundaries.py`. It checks
 requirement coverage, task dependencies, completion markers, and QC evidence;
 it never converts a missing artifact or unavailable check into a pass.
 
-## Book-derived 2026 capability upgrade
+## Book-derived 2026 capability upgrades
 
 XP 2026, MSC Software Magazine, Digital Storytelling, AI for Game Developers, Video Game
 Storytelling, Platform Enterprise, Designing for AI, Leveling Up as a Tech Lead, Facility Move
