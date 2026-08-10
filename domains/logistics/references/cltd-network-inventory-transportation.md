@@ -40,7 +40,7 @@ Use this reference when generating requirements for logistics, distribution, who
 - Load utilisation, empty running, fleet utilisation, idle time, maintenance downtime, and backhaul contribution
 - Freight claims, damage rate, loss rate, claims recovery, documentation error rate, customs clearance lead time, and carrier/LSP scorecard
 
-## ERP Design Notes for Corevia and BIRDC-Style Systems
+## ERP Design Notes for Kraal Code and BIRDC-Style Systems
 
 - Treat fulfilment as a cross-module workflow spanning sales, inventory, warehouse, dispatch, finance, customer service, procurement, and reporting.
 - For agriculture or factory ERP, model inbound aggregation, batch/lot traceability, quarantine, processing release, finished-goods staging, export dispatch, claims, and returns.

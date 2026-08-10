@@ -128,7 +128,7 @@ The following client projects are maintained under `projects/` (gitignored — n
 | AcademiaPro | Education SaaS (Uganda-first, pan-Africa) | Hybrid (Water-Scrum-Fall) | AI Module — 5 features (UGX 50K–800K/mo) | Phase 1 gate open — development ready |
 | Medic8 | Healthcare SaaS (Africa-first, global) | Hybrid (Water-Scrum-Fall) | AI Clinical Intelligence — 5 features (UGX 200K–1.5M/mo) | Phase 1 gate blocked — 7 HIGH gaps |
 | Kulima | Farm Management SaaS (Uganda-first) | Hybrid (Water-Scrum-Fall) | AI Farm Advisor — 5 features (UGX 30K–300K/mo) | Phase 2 partial — SRS complete |
-| CoreviaERP | ERP SaaS (Uganda-first, universal) | Hybrid (Water-Scrum-Fall) | AI Intelligence — 5 features (UGX 100K–800K/mo) | Phase 1 complete — Phase 2 in progress |
+| KraalCode | ERP SaaS (Uganda-first, universal) | Hybrid (Water-Scrum-Fall) | AI Intelligence — 5 features (UGX 100K–800K/mo) | Phase 1 complete — Phase 2 in progress |
 | Maduuka | POS + Bookkeeping SaaS (Africa SMBs) | Hybrid (Water-Scrum-Fall) | AI Business Intelligence — 4 features (UGX 30K–200K/mo) | Full SDLC complete — development ready |
 | BIRDC-ERP | Bespoke Banana Factory ERP (BIRDC/PIBID) | Waterfall (consulting) | AI Intelligence Phase 7 — 5 capabilities (lump-sum extension) | Full SDLC complete — 38 docs delivered |
 

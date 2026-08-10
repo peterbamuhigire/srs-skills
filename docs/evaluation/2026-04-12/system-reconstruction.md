@@ -113,7 +113,7 @@ Current visible workspaces:
 
 - `AcademiaPro`
 - `BIRDC-ERP`
-- `CoreviaERP`
+- `KraalCode`
 - `Maduuka`
 - `Medic8`
 

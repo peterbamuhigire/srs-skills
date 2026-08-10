@@ -40,7 +40,7 @@ Use this reference for ERP, POS, school-fee, healthcare-billing, retail, manufac
 
 ## Project-Specific Application Prompts
 
-- CoreviaERP: strengthen finance core with GL, subledgers, close, treasury, fixed assets, tax, cost centres, profit centres, consolidation-ready dimensions, and management packs.
+- KraalCode: strengthen finance core with GL, subledgers, close, treasury, fixed assets, tax, cost centres, profit centres, consolidation-ready dimensions, and management packs.
 - Maduuka: make POS sales, stock, cashup, mobile money, receivables, payables, expenses, and owner-friendly reports post into clean bookkeeping without exposing debit/credit complexity to micro users.
 - BIRDC-ERP: link farmer purchases, production batches, inventory, export sales, grants, assets, and cost centres to auditable finance and cost accounting.
 - Medic8: link patient billing, insurance claims, pharmacy inventory, lab billing, receipts, refunds, debtors, facility cost centres, and statutory reports to controlled accounting.

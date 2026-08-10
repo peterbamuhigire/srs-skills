@@ -6,9 +6,9 @@ This inventory was captured before the audit reports were written. It excludes V
 
 - `docs/implementation/review-05-Apr-2026/06-module-details`
 - `projects/BIRDC-ERP/export`
-- `projects/CoreviaERP/02-requirements-engineering/02-user-stories`
-- `projects/CoreviaERP/07-agile-artifacts/01-sprint-planning`
-- `projects/CoreviaERP/09-governance-compliance/02-audit-report`
+- `projects/KraalCode/02-requirements-engineering/02-user-stories`
+- `projects/KraalCode/07-agile-artifacts/01-sprint-planning`
+- `projects/KraalCode/09-governance-compliance/02-audit-report`
 - `skills/doctrine`
 - `skills/skills/product-business/professional-word-output/scripts`
 - `skills/skills/sdlc-meta/skill-writing/scripts`
@@ -25,8 +25,8 @@ None.
 | 4097889236a2 | 11 | 10 | projects/AcademiaPro/08-end-user-documentation/screenshots/01-login.png, projects/AcademiaPro/08-end-user-documentation/screenshots/02-dashboard-admin.png, projects/AcademiaPro/08-end-user-documentation/screenshots/03-enrolment-form.png, projects/AcademiaPro/08-end-user-documentation/screenshots/04-fee-structure.png, projects/AcademiaPro/08-end-user-documentation/screenshots/05-attendance.png, projects/AcademiaPro/08-end-user-documentation/screenshots/06-report-card.png, projects/AcademiaPro/08-end-user-documentation/screenshots/07-uneb-export.png, projects/AcademiaPro/08-end-user-documentation/screenshots/08-emis-dashboard.png |
 | 4512a17fecc7 | 825 | 5 | projects/AcademiaPro/export-docs.ps1, projects/BIRDC-ERP/export-docs.ps1, projects/KampusPad/export-docs.ps1, projects/Kulima/export-docs.ps1, projects/Ogma-Library/export-docs.ps1 |
 | ab8244241fce | 684 | 5 | projects/AcademiaPro/export-docs.sh, projects/BIRDC-ERP/export-docs.sh, projects/KampusPad/export-docs.sh, projects/Kulima/export-docs.sh, projects/Ogma-Library/export-docs.sh |
-| d23d45369c5c | 868 | 4 | projects/Aqar-Property/export-docs.ps1, projects/CoreviaERP/export-docs.ps1, projects/Maduuka/export-docs.ps1, projects/Medic8/export-docs.ps1 |
-| 4c4c0227d1d6 | 712 | 4 | projects/Aqar-Property/export-docs.sh, projects/CoreviaERP/export-docs.sh, projects/Maduuka/export-docs.sh, projects/Medic8/export-docs.sh |
+| d23d45369c5c | 868 | 4 | projects/Aqar-Property/export-docs.ps1, projects/KraalCode/export-docs.ps1, projects/Maduuka/export-docs.ps1, projects/Medic8/export-docs.ps1 |
+| 4c4c0227d1d6 | 712 | 4 | projects/Aqar-Property/export-docs.sh, projects/KraalCode/export-docs.sh, projects/Maduuka/export-docs.sh, projects/Medic8/export-docs.sh |
 | 1aa149cdae93 | 137065 | 2 | projects/KampusPad/_output/KampusPad_Project_Baseline_v0.2_2026-04-27.docx, projects/KampusPad/export/KampusPad_Project_Baseline_v0.2_2026-04-27.docx |
 | 4802eccbdf6e | 58277 | 2 | projects/KampusPad/08-end-user-documentation/KampusPad_Phase08_End_User_Documentation_v0.2_2026-04-27.docx, projects/KampusPad/export/KampusPad_Phase08_End_User_Documentation_v0.2_2026-04-27.docx |
 | 4372f1417235 | 46950 | 2 | projects/KampusPad/02-requirements-engineering/KampusPad_SRS_v0.2_2026-04-27.docx, projects/KampusPad/export/KampusPad_SRS_v0.2_2026-04-27.docx |
@@ -981,7 +981,7 @@ docs/
     Aqar-Property.md (11619 bytes)
     BIRDC-ERP.md (14246 bytes)
     Kulima.md (11977 bytes)
-    CoreviaERP.md (16682 bytes)
+    KraalCode.md (16682 bytes)
     Maduuka.md (17867 bytes)
     Medic8.md (15762 bytes)
     _CONSOLIDATED-PLAN.md (7502 bytes)
@@ -1015,7 +1015,7 @@ docs/
   docs/plans/
     2026-05-30-ogma-library-design.md (6774 bytes)
     2026-06-28-multi-project-engine-alignment-design.md (25649 bytes)
-    2026-06-28-wave1-birdc-corevia.md (8663 bytes)
+    2026-06-28-wave1-birdc-kraalcode.md (8663 bytes)
   docs/research/
     adzic-books-analysis.md (64837 bytes)
   docs/superpowers/
@@ -2625,16 +2625,16 @@ projects/
       sign-off-ledger.yaml (1003 bytes)
     projects/Kulima/export/
       .gitkeep (0 bytes)
-  projects/CoreviaERP/
+  projects/KraalCode/
     DOCUMENTATION-STATUS.md (8566 bytes)
     export-docs.ps1 (868 bytes)
     export-docs.sh (712 bytes)
-    projects/CoreviaERP/01-strategic-vision/
-      CoreviaERP_BusinessCase.docx (23213 bytes)
-      CoreviaERP_LeanCanvas.docx (20466 bytes)
-      CoreviaERP_PRD.docx (43569 bytes)
-      CoreviaERP_Vision.docx (20595 bytes)
-      projects/CoreviaERP/01-strategic-vision/01-prd/
+    projects/KraalCode/01-strategic-vision/
+      KraalCode_BusinessCase.docx (23213 bytes)
+      KraalCode_LeanCanvas.docx (20466 bytes)
+      KraalCode_PRD.docx (43569 bytes)
+      KraalCode_Vision.docx (20595 bytes)
+      projects/KraalCode/01-strategic-vision/01-prd/
         00-cover.md (801 bytes)
         01-executive-summary.md (1311 bytes)
         02-problem-statement.md (2060 bytes)
@@ -2651,7 +2651,7 @@ projects/
         13-treasury-capital-and-group-finance.md (6798 bytes)
         14-customer-revenue-and-service-excellence.md (5700 bytes)
         manifest.md (399 bytes)
-      projects/CoreviaERP/01-strategic-vision/02-vision-statement/
+      projects/KraalCode/01-strategic-vision/02-vision-statement/
         00-cover.md (831 bytes)
         01-mission-statement.md (1257 bytes)
         02-vision-statement.md (3122 bytes)
@@ -2659,7 +2659,7 @@ projects/
         04-competitive-differentiation.md (4965 bytes)
         05-market-positioning.md (3257 bytes)
         manifest.md (136 bytes)
-      projects/CoreviaERP/01-strategic-vision/03-business-case/
+      projects/KraalCode/01-strategic-vision/03-business-case/
         00-cover.md (811 bytes)
         01-executive-summary.md (1928 bytes)
         02-problem-and-opportunity.md (3676 bytes)
@@ -2668,23 +2668,23 @@ projects/
         05-revenue-model.md (4856 bytes)
         06-risk-register.md (3936 bytes)
         manifest.md (153 bytes)
-      projects/CoreviaERP/01-strategic-vision/04-lean-canvas/
+      projects/KraalCode/01-strategic-vision/04-lean-canvas/
         00-cover.md (765 bytes)
         01-lean-canvas.md (9987 bytes)
         02-assumptions.md (8280 bytes)
         manifest.md (48 bytes)
-    projects/CoreviaERP/02-requirements-engineering/
-      CoreviaERP_StakeholderAnalysis.docx (21665 bytes)
-      projects/CoreviaERP/02-requirements-engineering/01-srs/
-        projects/CoreviaERP/02-requirements-engineering/01-srs/00-platform/
+    projects/KraalCode/02-requirements-engineering/
+      KraalCode_StakeholderAnalysis.docx (21665 bytes)
+      projects/KraalCode/02-requirements-engineering/01-srs/
+        projects/KraalCode/02-requirements-engineering/01-srs/00-platform/
           00-code-reconciliation-annex.md (6685 bytes)
-          CoreviaERP_SRS_AuditLog.docx (30471 bytes)
-          CoreviaERP_SRS_IntegrationLayer.docx (29219 bytes)
-          CoreviaERP_SRS_Localisation.docx (37848 bytes)
-          CoreviaERP_SRS_MobileAPI.docx (34918 bytes)
-          CoreviaERP_SRS_Platform_Tenancy.docx (29150 bytes)
-          CoreviaERP_SRS_RBAC.docx (24962 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/00-platform/01-multitenancy-billing/
+          KraalCode_SRS_AuditLog.docx (30471 bytes)
+          KraalCode_SRS_IntegrationLayer.docx (29219 bytes)
+          KraalCode_SRS_Localisation.docx (37848 bytes)
+          KraalCode_SRS_MobileAPI.docx (34918 bytes)
+          KraalCode_SRS_Platform_Tenancy.docx (29150 bytes)
+          KraalCode_SRS_RBAC.docx (24962 bytes)
+          projects/KraalCode/02-requirements-engineering/01-srs/00-platform/01-multitenancy-billing/
             00-cover.md (893 bytes)
             01-introduction.md (3049 bytes)
             02-tenant-provisioning.md (4932 bytes)
@@ -2694,7 +2694,7 @@ projects/
             06-nfrs.md (4840 bytes)
             07-traceability.md (8849 bytes)
             manifest.md (161 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/00-platform/02-rbac/
+          projects/KraalCode/02-requirements-engineering/01-srs/00-platform/02-rbac/
             00-cover.md (891 bytes)
             01-introduction.md (4893 bytes)
             02-user-lifecycle.md (5998 bytes)
@@ -2703,7 +2703,7 @@ projects/
             05-nfrs.md (2935 bytes)
             06-traceability.md (8991 bytes)
             manifest.md (126 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/00-platform/03-audit-log/
+          projects/KraalCode/02-requirements-engineering/01-srs/00-platform/03-audit-log/
             00-cover.md (1096 bytes)
             01-introduction.md (4085 bytes)
             02-audit-capture.md (9114 bytes)
@@ -2713,7 +2713,7 @@ projects/
             06-nfrs.md (4459 bytes)
             07-traceability.md (7229 bytes)
             manifest.md (140 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/00-platform/04-localisation/
+          projects/KraalCode/02-requirements-engineering/01-srs/00-platform/04-localisation/
             00-cover.md (1076 bytes)
             01-introduction.md (5374 bytes)
             02-profile-management.md (7912 bytes)
@@ -2724,7 +2724,7 @@ projects/
             07-nfrs.md (1963 bytes)
             08-traceability.md (21011 bytes)
             manifest.md (171 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/00-platform/05-mobile-api/
+          projects/KraalCode/02-requirements-engineering/01-srs/00-platform/05-mobile-api/
             00-cover.md (863 bytes)
             01-introduction.md (4155 bytes)
             02-authentication.md (6173 bytes)
@@ -2737,7 +2737,7 @@ projects/
             09-nfrs.md (3873 bytes)
             10-traceability.md (10218 bytes)
             manifest.md (211 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/00-platform/06-integration-layer/
+          projects/KraalCode/02-requirements-engineering/01-srs/00-platform/06-integration-layer/
             00-cover.md (784 bytes)
             01-introduction.md (5909 bytes)
             02-efris-integration.md (5351 bytes)
@@ -2748,26 +2748,26 @@ projects/
             07-nfrs.md (3465 bytes)
             08-traceability.md (11868 bytes)
             manifest.md (167 bytes)
-        projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/
-          CoreviaERP_SRS_AIIntelligence.docx (20461 bytes)
-          CoreviaERP_SRS_Accounting.docx (47840 bytes)
-          CoreviaERP_SRS_AdvancedInventory.docx (21078 bytes)
-          CoreviaERP_SRS_Assets.docx (45799 bytes)
-          CoreviaERP_SRS_Cooperative.docx (38527 bytes)
-          CoreviaERP_SRS_HRPayroll.docx (28994 bytes)
-          CoreviaERP_SRS_Inventory.docx (32408 bytes)
-          CoreviaERP_SRS_Manufacturing.docx (25072 bytes)
-          CoreviaERP_SRS_PLM.docx (18845 bytes)
-          CoreviaERP_SRS_POS.docx (23783 bytes)
-          CoreviaERP_SRS_Procurement.docx (22512 bytes)
-          CoreviaERP_SRS_Projects.docx (37926 bytes)
-          CoreviaERP_SRS_Sales.docx (29470 bytes)
-          CoreviaERP_SRS_SalesAgents.docx (38610 bytes)
-          CoreviaERP_SRS_SalesCRM.docx (27626 bytes)
-          CoreviaERP_SRS_StrategyBSC.docx (35644 bytes)
-          CoreviaERP_SRS_SupplyChainPlanning.docx (20848 bytes)
-          CoreviaERP_SRS_Transportation.docx (19007 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/01-accounting/
+        projects/KraalCode/02-requirements-engineering/01-srs/01-modules/
+          KraalCode_SRS_AIIntelligence.docx (20461 bytes)
+          KraalCode_SRS_Accounting.docx (47840 bytes)
+          KraalCode_SRS_AdvancedInventory.docx (21078 bytes)
+          KraalCode_SRS_Assets.docx (45799 bytes)
+          KraalCode_SRS_Cooperative.docx (38527 bytes)
+          KraalCode_SRS_HRPayroll.docx (28994 bytes)
+          KraalCode_SRS_Inventory.docx (32408 bytes)
+          KraalCode_SRS_Manufacturing.docx (25072 bytes)
+          KraalCode_SRS_PLM.docx (18845 bytes)
+          KraalCode_SRS_POS.docx (23783 bytes)
+          KraalCode_SRS_Procurement.docx (22512 bytes)
+          KraalCode_SRS_Projects.docx (37926 bytes)
+          KraalCode_SRS_Sales.docx (29470 bytes)
+          KraalCode_SRS_SalesAgents.docx (38610 bytes)
+          KraalCode_SRS_SalesCRM.docx (27626 bytes)
+          KraalCode_SRS_StrategyBSC.docx (35644 bytes)
+          KraalCode_SRS_SupplyChainPlanning.docx (20848 bytes)
+          KraalCode_SRS_Transportation.docx (19007 bytes)
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/01-accounting/
             00-cover.md (790 bytes)
             01-introduction.md (6387 bytes)
             02-chart-of-accounts.md (4548 bytes)
@@ -2781,7 +2781,7 @@ projects/
             10-traceability.md (30487 bytes)
             11-treasury-capital-and-group-finance.md (6316 bytes)
             manifest.md (257 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/02-inventory/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/02-inventory/
             00-cover.md (772 bytes)
             01-introduction.md (4134 bytes)
             02-item-management.md (5253 bytes)
@@ -2793,7 +2793,7 @@ projects/
             08-nfrs.md (4023 bytes)
             09-traceability.md (8932 bytes)
             manifest.md (196 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/03-sales/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/03-sales/
             00-cover.md (742 bytes)
             01-introduction.md (3453 bytes)
             02-customer-management.md (4562 bytes)
@@ -2806,7 +2806,7 @@ projects/
             09-nfrs.md (3910 bytes)
             10-traceability.md (7712 bytes)
             manifest.md (208 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/04-procurement/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/04-procurement/
             00-cover.md (754 bytes)
             01-introduction.md (4070 bytes)
             02-supplier-management.md (2201 bytes)
@@ -2819,7 +2819,7 @@ projects/
             09-nfrs.md (2561 bytes)
             10-traceability.md (1795 bytes)
             manifest.md (219 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/05-hr-payroll/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/05-hr-payroll/
             00-cover.md (786 bytes)
             01-introduction.md (4670 bytes)
             02-employee-master.md (2498 bytes)
@@ -2837,7 +2837,7 @@ projects/
             11-nfrs.md (3475 bytes)
             12-traceability.md (2439 bytes)
             manifest.md (366 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/06-pos/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/06-pos/
             00-cover.md (758 bytes)
             01-introduction.md (4135 bytes)
             02-terminal-management.md (3071 bytes)
@@ -2848,7 +2848,7 @@ projects/
             07-nfrs.md (2855 bytes)
             08-traceability.md (1637 bytes)
             manifest.md (176 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/07-advanced-inventory/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/07-advanced-inventory/
             00-cover.md (768 bytes)
             01-introduction.md (2941 bytes)
             02-multi-location.md (2223 bytes)
@@ -2860,7 +2860,7 @@ projects/
             08-nfrs.md (1860 bytes)
             09-traceability.md (1562 bytes)
             manifest.md (196 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/08-manufacturing/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/08-manufacturing/
             00-cover.md (758 bytes)
             01-introduction.md (4748 bytes)
             02-bom.md (2452 bytes)
@@ -2873,7 +2873,7 @@ projects/
             09-mes-execution.md (5993 bytes)
             10-traceability.md (2968 bytes)
             manifest.md (214 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/09-sales-crm/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/09-sales-crm/
             00-cover.md (758 bytes)
             01-introduction.md (4949 bytes)
             02-leads.md (1897 bytes)
@@ -2886,7 +2886,7 @@ projects/
             09-nfrs.md (1800 bytes)
             10-traceability.md (7326 bytes)
             manifest.md (219 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/10-sales-agents/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/10-sales-agents/
             00-cover.md (788 bytes)
             01-introduction.md (6116 bytes)
             02-agent-register.md (5311 bytes)
@@ -2898,7 +2898,7 @@ projects/
             08-nfrs.md (6025 bytes)
             09-traceability.md (12510 bytes)
             manifest.md (194 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/11-cooperative/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/11-cooperative/
             00-cover.md (814 bytes)
             01-introduction.md (6688 bytes)
             02-commodity-config.md (4936 bytes)
@@ -2910,7 +2910,7 @@ projects/
             08-nfrs.md (8168 bytes)
             09-traceability.md (9254 bytes)
             manifest.md (197 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/12-projects/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/12-projects/
             00-cover.md (736 bytes)
             01-introduction.md (7856 bytes)
             02-project-register.md (5734 bytes)
@@ -2922,7 +2922,7 @@ projects/
             08-nfrs.md (4975 bytes)
             09-traceability.md (16320 bytes)
             manifest.md (199 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/13-strategy-bsc/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/13-strategy-bsc/
             00-cover.md (748 bytes)
             01-introduction.md (8076 bytes)
             02-strategic-framework.md (3472 bytes)
@@ -2934,7 +2934,7 @@ projects/
             08-nfrs.md (4731 bytes)
             09-traceability.md (14542 bytes)
             manifest.md (209 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/14-assets/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/14-assets/
             00-cover.md (718 bytes)
             01-introduction.md (9927 bytes)
             02-asset-register.md (5046 bytes)
@@ -2949,28 +2949,28 @@ projects/
             08-nfrs.md (6923 bytes)
             09-traceability.md (19317 bytes)
             manifest.md (323 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/15-ai-intelligence/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/15-ai-intelligence/
             00-cover.md (762 bytes)
             01-introduction.md (4520 bytes)
             02-ai-features.md (8752 bytes)
             03-nfrs.md (2336 bytes)
             04-traceability.md (2747 bytes)
             manifest.md (79 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/16-plm/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/16-plm/
             00-cover.md (781 bytes)
             01-introduction.md (5065 bytes)
             02-plm-features.md (5529 bytes)
             03-nfrs.md (2196 bytes)
             04-traceability.md (3479 bytes)
             manifest.md (80 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/17-transportation/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/17-transportation/
             00-cover.md (795 bytes)
             01-introduction.md (5057 bytes)
             02-transport-features.md (5062 bytes)
             03-nfrs.md (2166 bytes)
             04-traceability.md (3572 bytes)
             manifest.md (86 bytes)
-          projects/CoreviaERP/02-requirements-engineering/01-srs/01-modules/18-supply-chain-planning/
+          projects/KraalCode/02-requirements-engineering/01-srs/01-modules/18-supply-chain-planning/
             00-cover.md (766 bytes)
             01-introduction.md (4536 bytes)
             02-demand-planning.md (2714 bytes)
@@ -2980,8 +2980,8 @@ projects/
             06-nfrs.md (2573 bytes)
             07-traceability.md (2404 bytes)
             manifest.md (180 bytes)
-      projects/CoreviaERP/02-requirements-engineering/02-user-stories/
-      projects/CoreviaERP/02-requirements-engineering/03-stakeholder-analysis/
+      projects/KraalCode/02-requirements-engineering/02-user-stories/
+      projects/KraalCode/02-requirements-engineering/03-stakeholder-analysis/
         00-cover.md (783 bytes)
         01-stakeholder-register.md (3371 bytes)
         02-influence-interest-matrix.md (3018 bytes)
@@ -2989,15 +2989,15 @@ projects/
         04-approval-matrix.md (5527 bytes)
         05-raci-matrix.md (4426 bytes)
         manifest.md (136 bytes)
-    projects/CoreviaERP/03-design-documentation/
-      CoreviaERP_APISpec.docx (78660 bytes)
-      CoreviaERP_DatabaseDesign.docx (81562 bytes)
-      CoreviaERP_HLD.docx (62744 bytes)
-      CoreviaERP_IoTSignalInventory.docx (12246 bytes)
-      CoreviaERP_LLD.docx (67955 bytes)
-      CoreviaERP_UXSpec.docx (37766 bytes)
+    projects/KraalCode/03-design-documentation/
+      KraalCode_APISpec.docx (78660 bytes)
+      KraalCode_DatabaseDesign.docx (81562 bytes)
+      KraalCode_HLD.docx (62744 bytes)
+      KraalCode_IoTSignalInventory.docx (12246 bytes)
+      KraalCode_LLD.docx (67955 bytes)
+      KraalCode_UXSpec.docx (37766 bytes)
       threat-model.md (3034 bytes)
-      projects/CoreviaERP/03-design-documentation/01-hld/
+      projects/KraalCode/03-design-documentation/01-hld/
         00-cover.md (807 bytes)
         01-system-overview.md (10694 bytes)
         02-three-tier-panels.md (4664 bytes)
@@ -3015,7 +3015,7 @@ projects/
         14-customer-revenue-and-service-architecture.md (7710 bytes)
         15-workforce-planning-and-asset-operations-architecture.md (5538 bytes)
         manifest.md (472 bytes)
-      projects/CoreviaERP/03-design-documentation/02-lld/
+      projects/KraalCode/03-design-documentation/02-lld/
         00-cover.md (404 bytes)
         01-introduction.md (2867 bytes)
         02-platform-services.md (8836 bytes)
@@ -3030,7 +3030,7 @@ projects/
         11-finance-operations-services.md (7564 bytes)
         12-workforce-planning-and-asset-services.md (7766 bytes)
         manifest.md (336 bytes)
-      projects/CoreviaERP/03-design-documentation/03-api-spec/
+      projects/KraalCode/03-design-documentation/03-api-spec/
         00-cover.md (390 bytes)
         01-introduction.md (6138 bytes)
         02-auth-endpoints.md (6775 bytes)
@@ -3046,7 +3046,7 @@ projects/
         12-workforce-planning-and-asset-endpoints.md (3740 bytes)
         13-supply-chain-planning-endpoints.md (4119 bytes)
         manifest.md (393 bytes)
-      projects/CoreviaERP/03-design-documentation/04-database-design/
+      projects/KraalCode/03-design-documentation/04-database-design/
         00-cover.md (1143 bytes)
         01-overview.md (4635 bytes)
         02-core-infrastructure-tables.md (9588 bytes)
@@ -3064,7 +3064,7 @@ projects/
         14-workforce-planning-and-asset-tables.md (6021 bytes)
         15-supply-chain-planning-tables.md (8620 bytes)
         manifest.md (644 bytes)
-      projects/CoreviaERP/03-design-documentation/05-ux-spec/
+      projects/KraalCode/03-design-documentation/05-ux-spec/
         00-cover.md (410 bytes)
         01-design-principles.md (6210 bytes)
         02-layout-navigation.md (6041 bytes)
@@ -3072,17 +3072,17 @@ projects/
         04-components.md (10552 bytes)
         05-module-wireframes.md (20689 bytes)
         manifest.md (125 bytes)
-      projects/CoreviaERP/03-design-documentation/07-iot-system-design/
+      projects/KraalCode/03-design-documentation/07-iot-system-design/
         signal-inventory.md (1981 bytes)
-      projects/CoreviaERP/03-design-documentation/adr/
+      projects/KraalCode/03-design-documentation/adr/
         README.md (935 bytes)
-    projects/CoreviaERP/04-development/
-      CoreviaERP_CodingGuidelines.docx (29585 bytes)
-      CoreviaERP_ContributionGuide.docx (11968 bytes)
-      CoreviaERP_DevSetup.docx (21387 bytes)
+    projects/KraalCode/04-development/
+      KraalCode_CodingGuidelines.docx (29585 bytes)
+      KraalCode_ContributionGuide.docx (11968 bytes)
+      KraalCode_DevSetup.docx (21387 bytes)
       coding-standards.md (1526 bytes)
       env-setup.md (1519 bytes)
-      projects/CoreviaERP/04-development/02-coding-guidelines/
+      projects/KraalCode/04-development/02-coding-guidelines/
         00-cover.md (777 bytes)
         01-php-standards.md (2940 bytes)
         02-security-rules.md (4408 bytes)
@@ -3094,7 +3094,7 @@ projects/
         08-testing-standards.md (2933 bytes)
         09-git-conventions.md (2566 bytes)
         manifest.md (233 bytes)
-      projects/CoreviaERP/04-development/03-dev-environment-setup/
+      projects/KraalCode/04-development/03-dev-environment-setup/
         00-cover.md (801 bytes)
         01-prerequisites.md (1979 bytes)
         02-windows-setup.md (3264 bytes)
@@ -3103,14 +3103,14 @@ projects/
         05-running-tests.md (1935 bytes)
         06-common-issues.md (3764 bytes)
         manifest.md (134 bytes)
-      projects/CoreviaERP/04-development/04-contribution-guide/
+      projects/KraalCode/04-development/04-contribution-guide/
         contribution-guide.md (1293 bytes)
-    projects/CoreviaERP/05-testing-documentation/
+    projects/KraalCode/05-testing-documentation/
       29119-deterministic-checks.md (1666 bytes)
-      CoreviaERP_TestPlan.docx (26203 bytes)
-      CoreviaERP_TestReport.docx (11753 bytes)
-      CoreviaERP_TestStrategy.docx (28363 bytes)
-      projects/CoreviaERP/05-testing-documentation/01-test-strategy/
+      KraalCode_TestPlan.docx (26203 bytes)
+      KraalCode_TestReport.docx (11753 bytes)
+      KraalCode_TestStrategy.docx (28363 bytes)
+      projects/KraalCode/05-testing-documentation/01-test-strategy/
         00-cover.md (395 bytes)
         01-objectives-scope.md (5831 bytes)
         02-test-levels.md (6734 bytes)
@@ -3118,7 +3118,7 @@ projects/
         04-test-environments.md (4731 bytes)
         05-defect-management.md (4787 bytes)
         manifest.md (118 bytes)
-      projects/CoreviaERP/05-testing-documentation/02-test-plan/
+      projects/KraalCode/05-testing-documentation/02-test-plan/
         00-cover.md (382 bytes)
         01-platform-tests.md (4541 bytes)
         02-accounting-tests.md (3882 bytes)
@@ -3128,16 +3128,16 @@ projects/
         06-workforce-planning-and-asset-tests.md (3634 bytes)
         07-supply-chain-planning-tests.md (3293 bytes)
         manifest.md (201 bytes)
-      projects/CoreviaERP/05-testing-documentation/03-test-report/
+      projects/KraalCode/05-testing-documentation/03-test-report/
         test-completion-report.md (1487 bytes)
-    projects/CoreviaERP/06-deployment-operations/
-      CoreviaERP_DeploymentGuide.docx (21972 bytes)
-      CoreviaERP_Infrastructure.docx (11872 bytes)
-      CoreviaERP_Monitoring.docx (11916 bytes)
-      CoreviaERP_Runbook.docx (27258 bytes)
+    projects/KraalCode/06-deployment-operations/
+      KraalCode_DeploymentGuide.docx (21972 bytes)
+      KraalCode_Infrastructure.docx (11872 bytes)
+      KraalCode_Monitoring.docx (11916 bytes)
+      KraalCode_Runbook.docx (27258 bytes)
       change-window.md (835 bytes)
       go-live-readiness.md (1554 bytes)
-      projects/CoreviaERP/06-deployment-operations/01-deployment-guide/
+      projects/KraalCode/06-deployment-operations/01-deployment-guide/
         00-cover.md (413 bytes)
         01-server-requirements.md (2044 bytes)
         02-installation.md (3190 bytes)
@@ -3146,11 +3146,11 @@ projects/
         05-backup-update.md (4552 bytes)
         deployment-guide.md (1713 bytes)
         manifest.md (113 bytes)
-      projects/CoreviaERP/06-deployment-operations/03-monitoring-setup/
+      projects/KraalCode/06-deployment-operations/03-monitoring-setup/
         monitoring.md (1243 bytes)
-      projects/CoreviaERP/06-deployment-operations/04-infrastructure-docs/
+      projects/KraalCode/06-deployment-operations/04-infrastructure-docs/
         infrastructure.md (1411 bytes)
-      projects/CoreviaERP/06-deployment-operations/runbook/
+      projects/KraalCode/06-deployment-operations/runbook/
         00-cover.md (411 bytes)
         01-daily-operations.md (2042 bytes)
         02-incident-playbooks.md (14021 bytes)
@@ -3160,25 +3160,25 @@ projects/
         06-escalation-contacts.md (2385 bytes)
         manifest.md (164 bytes)
         runbook.md (1533 bytes)
-    projects/CoreviaERP/07-agile-artifacts/
-      CoreviaERP_DoD.docx (14169 bytes)
-      CoreviaERP_DoR.docx (13764 bytes)
+    projects/KraalCode/07-agile-artifacts/
+      KraalCode_DoD.docx (14169 bytes)
+      KraalCode_DoR.docx (13764 bytes)
       velocity-history.md (849 bytes)
-      projects/CoreviaERP/07-agile-artifacts/01-sprint-planning/
-      projects/CoreviaERP/07-agile-artifacts/02-dod/
+      projects/KraalCode/07-agile-artifacts/01-sprint-planning/
+      projects/KraalCode/07-agile-artifacts/02-dod/
         00-cover.md (399 bytes)
         01-dod.md (4670 bytes)
         manifest.md (22 bytes)
-      projects/CoreviaERP/07-agile-artifacts/03-dor/
+      projects/KraalCode/07-agile-artifacts/03-dor/
         00-cover.md (403 bytes)
         01-dor.md (3538 bytes)
         manifest.md (22 bytes)
-    projects/CoreviaERP/08-end-user-documentation/
-      CoreviaERP_FAQ.docx (11614 bytes)
-      CoreviaERP_OnboardingGuide.docx (21867 bytes)
-      CoreviaERP_UserManual.docx (37458 bytes)
+    projects/KraalCode/08-end-user-documentation/
+      KraalCode_FAQ.docx (11614 bytes)
+      KraalCode_OnboardingGuide.docx (21867 bytes)
+      KraalCode_UserManual.docx (37458 bytes)
       release-notes.md (1097 bytes)
-      projects/CoreviaERP/08-end-user-documentation/01-user-manual/
+      projects/KraalCode/08-end-user-documentation/01-user-manual/
         00-cover.md (384 bytes)
         01-getting-started.md (3497 bytes)
         02-finance-manager.md (7180 bytes)
@@ -3193,7 +3193,7 @@ projects/
         11-asset-manager.md (2314 bytes)
         manifest.md (267 bytes)
         user-manual.md (1394 bytes)
-      projects/CoreviaERP/08-end-user-documentation/02-installation-guide/
+      projects/KraalCode/08-end-user-documentation/02-installation-guide/
         00-cover.md (395 bytes)
         01-signup-plan-selection.md (2541 bytes)
         02-workspace-setup.md (4490 bytes)
@@ -3201,18 +3201,18 @@ projects/
         04-data-import.md (4353 bytes)
         05-go-live-checklist.md (3407 bytes)
         manifest.md (128 bytes)
-      projects/CoreviaERP/08-end-user-documentation/03-faq/
+      projects/KraalCode/08-end-user-documentation/03-faq/
         FAQ.md (1554 bytes)
-    projects/CoreviaERP/09-governance-compliance/
-      CoreviaERP_ADRCatalog.docx (14431 bytes)
-      CoreviaERP_RiskAssessment.docx (22174 bytes)
-      CoreviaERP_SecurityCompliance.docx (39458 bytes)
-      CoreviaERP_TraceabilityMatrix.docx (71295 bytes)
+    projects/KraalCode/09-governance-compliance/
+      KraalCode_ADRCatalog.docx (14431 bytes)
+      KraalCode_RiskAssessment.docx (22174 bytes)
+      KraalCode_SecurityCompliance.docx (39458 bytes)
+      KraalCode_TraceabilityMatrix.docx (71295 bytes)
       ai-slop-audit-report.md (4275 bytes)
       audit-report.md (2048 bytes)
       finance-module-audit-report.md (4001 bytes)
       risk-register.md (2031 bytes)
-      projects/CoreviaERP/09-governance-compliance/01-traceability-matrix/
+      projects/KraalCode/09-governance-compliance/01-traceability-matrix/
         00-cover.md (425 bytes)
         01-introduction.md (4503 bytes)
         02-summary-statistics.md (3851 bytes)
@@ -3221,8 +3221,8 @@ projects/
         05-addon-modules-traceability.md (67443 bytes)
         06-gap-register.md (8420 bytes)
         manifest.md (168 bytes)
-      projects/CoreviaERP/09-governance-compliance/02-audit-report/
-      projects/CoreviaERP/09-governance-compliance/03-compliance/
+      projects/KraalCode/09-governance-compliance/02-audit-report/
+      projects/KraalCode/09-governance-compliance/03-compliance/
         00-cover.md (821 bytes)
         01-security-overview.md (3246 bytes)
         02-authentication.md (5344 bytes)
@@ -3236,14 +3236,14 @@ projects/
         09-nita-u-compliance.md (3459 bytes)
         10-compliance-checklist.md (3723 bytes)
         manifest.md (235 bytes)
-      projects/CoreviaERP/09-governance-compliance/04-risk-assessment/
+      projects/KraalCode/09-governance-compliance/04-risk-assessment/
         00-cover.md (412 bytes)
         01-introduction.md (3316 bytes)
         02-gap-risks.md (10966 bytes)
         03-operational-risks.md (5309 bytes)
         04-risk-summary.md (3767 bytes)
         manifest.md (90 bytes)
-      projects/CoreviaERP/09-governance-compliance/05-adr/
+      projects/KraalCode/09-governance-compliance/05-adr/
         ADR-0001-php-di-service-architecture.md (1209 bytes)
         ADR-0002-mysql-91-single-store.md (713 bytes)
         ADR-0003-multitenancy-tenant-id.md (966 bytes)
@@ -3251,12 +3251,12 @@ projects/
         ADR-0005-localisation-as-configuration.md (859 bytes)
         ADR-0006-jwt-mobile-api-registry.md (677 bytes)
         ADR-0007-hash-chained-audit-log.md (1046 bytes)
-      projects/CoreviaERP/09-governance-compliance/07-baseline-delta/
+      projects/KraalCode/09-governance-compliance/07-baseline-delta/
         v1.0.yaml (52 bytes)
         v1.1.yaml (213741 bytes)
-    projects/CoreviaERP/_align/
+    projects/KraalCode/_align/
       alignment-plan.md (28758 bytes)
-    projects/CoreviaERP/_context/
+    projects/KraalCode/_context/
       accounting-bookkeeping-costing-uplift.md (1499 bytes)
       cover-template.md (1371 bytes)
       crm-enhancement-roadmap.md (4001 bytes)
@@ -3277,13 +3277,13 @@ projects/
       tech-stack.md (3627 bytes)
       vision.md (4556 bytes)
       world-class-supply-chain-inventory-rebuild.md (7009 bytes)
-    projects/CoreviaERP/_registry/
+    projects/KraalCode/_registry/
       adr-catalog.yaml (1721 bytes)
       change-impact.yaml (4868 bytes)
       controls.yaml (1154 bytes)
       glossary.yaml (86465 bytes)
       identifiers.yaml (579357 bytes)
-    projects/CoreviaERP/export/
+    projects/KraalCode/export/
       .gitkeep (0 bytes)
   projects/Maduuka/
     DOCUMENTATION-STATUS.md (16940 bytes)

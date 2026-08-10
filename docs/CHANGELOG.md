@@ -2,20 +2,29 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2026-08-02] - Corevia ERP Product Identity Rename
+## [2026-08-09] - Kraal Code Product Identity Migration
 
 ### Changed
 
-- Renamed the SRS workspace to `projects/CoreviaERP` and renamed all 108 phase-local Word deliverables to the `CoreviaERP_*.docx` convention.
-- Updated product-facing text, compact project tokens, deployment examples, local hostnames, session identifiers, database examples, cross-project references, alignment plans, and build permissions to the canonical Corevia values.
-- Rewrote previous product tokens inside every DOCX OOXML package while preserving document structure and formatting.
-- Renamed the alignment analysis and Wave 1 plan filenames to use Corevia.
+- Established `Kraal Code` as the canonical product name and `kraalcode.com` as the canonical product website.
+- Renamed the SRS workspace to `projects/KraalCode`, converted compact tokens to `KraalCode`, deployment and repository slugs to `kraal-code`, and runtime identifiers to the `KRAAL_CODE` namespace.
+- Updated project, cross-project, domain-reference, alignment, build-permission, and engine-inventory references.
+- Renamed and regenerated the complete Word delivery set using the `KraalCode_*.docx` convention.
 
 ### Validation
 
-- `python -X utf8 -m engine validate projects/CoreviaERP`: `ENGINE CONTRACT: PASS`.
-- 162 phase-local and exported DOCX files opened successfully; 0 package failures and 0 unexpected previous-brand hits.
-- The export contract produced 54 unique Corevia delivery documents.
+- SRS engine, identity-residue, DOCX-package, finance, design, accessibility, render, and anti-slop results are recorded in `projects/KraalCode/DOCUMENTATION-STATUS.md` and the project gate manifests.
+
+## [2026-08-02] - Predecessor Product Identity Migration (Superseded)
+
+### Changed
+
+- Applied the then-current product identity to the SRS workspace, Word deliverables, deployment examples, cross-project references, alignment plans, and build permissions.
+- This record is retained for change history; the 9 August 2026 Kraal Code migration supersedes its identity values.
+
+### Validation
+
+- The migration passed the SRS engine, DOCX package, and identity-residue checks recorded at that time.
 
 ## [2026-07-06] - Validation Kernel Fixes (glossary code spans, waiver dates, FR ID pattern)
 
@@ -93,7 +102,7 @@ When all 10 phases are executed the skills library will cover the complete SDLC 
 
 - **Kulima** — AI Farm Advisor module: PRD `FR-AI` business section (5 features: Natural Language Q&A, Photo Pest/Disease Diagnosis, Personalised Farm Plan, Seasonal Planting Advisory, Market Timing Advice); SRS FR-AI-001–006 technical requirements verified and strengthened with measurable thresholds; `Kulima_PRD.docx` and `Kulima_SRS.docx` built.
 - **Medic8** — AI Clinical Intelligence module: PRD `FR-AI` business section (5 features: At-Risk Patient EWS, Differential Diagnosis Support, SOAP Note Summarisation, Pharmacy Demand Forecasting, Disease Surveillance); SRS FR-AI-001–005 technical requirements added to `04-functional-requirements.md`; `Medic8_PRD.docx` and `Medic8_SRS.docx` built.
-- **CoreviaERP** — AI Intelligence module: new PRD file `10-ai-intelligence.md` (5 features: Cash Flow Intelligence, GL Anomaly Detection, Demand Forecasting and Reorder, Debtor Default Risk Scoring, Narrative Financial Reports); new SRS Module 15 directory (`15-ai-intelligence/`) with cover, introduction, FR-AI-001–005, NFRs, and traceability; `CoreviaERP_PRD.docx` rebuilt and `CoreviaERP_SRS_AIIntelligence.docx` built.
+- **KraalCode** — AI Intelligence module: new PRD file `10-ai-intelligence.md` (5 features: Cash Flow Intelligence, GL Anomaly Detection, Demand Forecasting and Reorder, Debtor Default Risk Scoring, Narrative Financial Reports); new SRS Module 15 directory (`15-ai-intelligence/`) with cover, introduction, FR-AI-001–005, NFRs, and traceability; `KraalCode_PRD.docx` rebuilt and `KraalCode_SRS_AIIntelligence.docx` built.
 - **Maduuka** — AI Business Intelligence module: PRD section `7A` (4 features: Sales Forecasting, Smart Reorder Advisor, Fraud and Anomaly Alerts, Business Health Advisor) inserted into `01-prd.md`; SRS FR-AI-001–004 appended to `04-functional-requirements.md`; `Maduuka_PRD.docx` and `Maduuka_SRS_Phase1.docx` rebuilt.
 - **BIRDC-ERP** — AI Intelligence Phase 7 contract extension: new PRD file `11-ai-module.md` (5 capabilities: Production Yield Prediction, Quality Defect Pattern Detection, Farmer Supply Forecasting, Predictive Equipment Maintenance, Export Demand Intelligence); SRS `08-fr-ai.md` added to Phase 6 (`06-srs-phase6-research-admin/`) with FR-AI-001–005; `PRD_BIRDC_ERP.docx` and `SRS_BIRDC_ERP_Phase6_ResearchAdmin.docx` rebuilt.
 - Implementation plan saved to `docs/plans/2026-04-07-ai-module-upgrade-all-projects.md`.
