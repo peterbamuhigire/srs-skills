@@ -70,6 +70,17 @@ If project evidence, renders, tools, reviewers, or current sources are unavailab
 
 Documentation never substitutes for executable, rendered, user, security, or release evidence. Preserve Waterfall, Agile, and Hybrid distinctions.
 
+## Mandatory 65-to-95 gate
+
+The first review is an initial analysis: show raw findings but publish only
+`min(raw_score, 65)` and list unassessed evidence and release blockers separately.
+After freezing that baseline, target 95/100 through a traceable improvement cycle.
+Each action must identify its root cause, exact document/template/gate/fixture,
+owner, measure, guardrail, stop/rollback rule, acceptance evidence, and re-audit date.
+Run it at engine level (routes, templates, standards, fixtures, validators, and
+handoffs) and product level (PRD, SRS, architecture, test, deployment, governance,
+or game document). Each product must carry its own traceability evidence.
+
 ## Anti-Patterns
 
 - A retrospective with no action owner. Fix: create a dated experiment and evidence.
