@@ -11,6 +11,7 @@ This phase codifies deterministic test governance aligned with BS ISO/IEC/IEEE 2
 | 1 | 01-test-strategy | Test_Strategy.md | BS ISO/IEC/IEEE 29119-3 Sec 6 |
 | 2 | 02-test-plan | Test_Plan.md | BS ISO/IEC/IEEE 29119-3 Sec 7-8 |
 | 3 | 03-test-report | Test_Report_Template.md | BS ISO/IEC/IEEE 29119-3 Sec 9-10 |
+| 4 | 10-full-coverage-saas-seeding | SaaS seed manifest, module coverage matrix, execution/evidence contract | SaaS demo and system-test readiness |
 
 ## Deterministic Conformance
 
@@ -18,7 +19,7 @@ Phase 05 now references the deterministic conformance checklist in `05-testing-d
 
 ## Execution Order
 
-Run 01-test-strategy FIRST (it defines test levels, types, tools, and criteria that govern all downstream testing artifacts). Then run 02-test-plan (it derives test cases from SRS requirements using the strategy as its framework). Finally, run 03-test-report (it produces the execution report template structured around the test plan).
+Run 01-test-strategy FIRST (it defines test levels, types, tools, and criteria that govern all downstream testing artifacts). For a SaaS, run 10-full-coverage-saas-seeding after capability discovery and before final execution planning so its scenarios, data classes, and application-boundary rules feed 02-test-plan. Then run 02-test-plan and 03-test-report. Execution of the seed adapter belongs to the software-engineering companion skill, not this documentation skill.
 
 ## Dependencies
 

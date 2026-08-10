@@ -17,7 +17,7 @@ product audits. Published audit scores are hard-capped at 65/100; remediation pl
 95/100 and must be proven through deterministic gates, traceability, failed-path evidence,
 and a dated re-audit. Current external claims route to Digital Research Skills Engine.
 
-The active catalogue contains 156 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 50 routing fixtures at a top-three precision threshold of 100%.
+The active catalogue contains 157 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 50 routing fixtures at a top-three precision threshold of 100%.
 
 ```powershell
 python -X utf8 scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json
@@ -72,7 +72,7 @@ This engine is one of several sibling skill engines on the host. None is nativel
 
 Major SDLC documentation layer added across phases 01–09 for SaaS products, AI-on-SaaS features, agent products, AI incident response, and agent compliance attestation.
 
-**SaaS docs (16 phase-placed skills + 8 enhancements):** strategic-vision (MVP scoping, moat plan, pricing/packaging spec), requirements (billing/metering spec, billing addendums), design (multi-tenancy architecture spec), operations (tenant lifecycle runbook, SLO/error-budget doc, incident response, growth experiment doc, customer success playbook, onboarding journey, lifecycle email strategy, sales enablement pack), governance (data-isolation evidence pack, trust-center pack, DPA/privacy set).
+**SaaS docs (17 phase-placed skills + 8 enhancements):** strategic-vision (MVP scoping, moat plan, pricing/packaging spec), requirements (billing/metering spec, billing addendums), design (multi-tenancy architecture spec), testing (full-coverage SaaS seeding: reference-data separation, synthetic demo journeys, application-boundary execution, replay/reset, and evidence), operations (tenant lifecycle runbook, SLO/error-budget doc, incident response, growth experiment doc, customer success playbook, onboarding journey, lifecycle email strategy, sales enablement pack), governance (data-isolation evidence pack, trust-center pack, DPA/privacy set).
 
 **AI-on-SaaS docs (16 skills + 8 enhancements):** AI feature strategy, AI feature PRD, AI data/KB spec, AI architecture spec, AI model card (EU AI Act Annex IV cross-walk), AI prompt registry, AI coding-guidelines addendum, AI eval harness spec, AI red-team plan, AI hallucination SLO, AI rollout runbook, AI cost runbook, AI responsible-AI declaration, AI Act compliance, AI data flow + DPIA, AI ADR catalogue.
 
