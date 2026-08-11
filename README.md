@@ -11,6 +11,8 @@ blocked-phase handoff.
 
 ### Kaizen operating contract
 
+For a ready-to-run product or project operation, use [`prompts/full-kaizen-operation.md`](prompts/full-kaizen-operation.md).
+
 Continuous improvement is a mandatory SDLC and engine capability. Load
 `09-governance-compliance/31-kaizen-engine-and-product-improvement/SKILL.md` for engine or
 product audits. Published audit scores are hard-capped at 65/100; remediation plans target
