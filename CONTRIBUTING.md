@@ -12,6 +12,19 @@ Active skills live under the numbered phase roots. Discover them from the filesy
 
 ## Required checks
 
+The default pytest configuration enforces the repository coverage policy and
+therefore requires the development extra. From a fresh checkout, install it
+with the supported command below before running the default suite:
+
+```powershell
+python -m pip install -e ".[dev]"
+python -m pytest -q
+```
+
+If `pytest-cov` cannot be installed in the current environment, do not report a
+coverage pass. Run structural or logic-only tests with `-o addopts=` and record
+coverage as `NOT ASSESSED`.
+
 ```powershell
 python -X utf8 scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json
 python -X utf8 scripts/routing_smoke_test.py

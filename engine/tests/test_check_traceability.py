@@ -31,3 +31,22 @@ def test_flags_orphan_fr(tmp_path: Path):
     TraceabilityCheck("phase09.traceability").run(graph, findings)
     msgs = [f.message for f in findings]
     assert any("FR-002" in m for m in msgs)
+
+
+def test_rejects_unrelated_goal_and_test_ids_on_other_artifacts(tmp_path: Path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision\n- **BG-001** real goal.",
+        "02-requirements-engineering/srs/3.2.md": (
+            "---\nphase: '02'\n---\n# FRs\n"
+            "- **FR-001** has no valid mapped goal or test.\n"
+        ),
+        "03-design-documentation/traceability-notes.md": (
+            "# Notes\nFR-001 appears beside BG-999 and TC-999, but these are not links.\n"
+        ),
+    })
+    findings = FindingCollection()
+    TraceabilityCheck("phase09.traceability").run(graph, findings)
+    msgs = [f.message for f in findings]
+
+    assert any("no traceability link to any business goal" in msg for msg in msgs)
+    assert any("no traceability link to any test case" in msg for msg in msgs)

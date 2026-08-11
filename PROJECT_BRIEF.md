@@ -1,5 +1,14 @@
 # SDLC-Docs-Engine Project Brief
 
+## Current catalogue and phase model (2026-08-11)
+
+The current catalogue contains **157 filesystem-discovered active skills** and
+**1 inactive authoring template**, as recorded in the
+[`skill-quality-baseline.json`](tests/skill-quality-baseline.json) control and
+checked by [`validate_skill_engine.py`](scripts/validate_skill_engine.py).
+The phase model is `00-meta-initialization` plus SDLC phases `01` through `09`;
+Phase 02 contains the Waterfall, Agile, and Hybrid requirements tracks.
+
 ## What Is This?
 
 **SDLC-Docs-Engine** (v3.3) is an AI-powered, standards-driven documentation generator that creates **comprehensive, IEEE/ISO-compliant documentation** across all phases of software development.
@@ -8,7 +17,7 @@
 
 ---
 
-## What's New in v3.3?
+## Historical v3.3 release snapshot
 
 **Complete SDLC Coverage** (March 2026) - 23 new documentation skills across 6 phases, bringing the engine to **100% phase coverage**:
 
@@ -24,7 +33,8 @@
 
 **Phase 09: Governance & Compliance** - Traceability matrix, audit reports, compliance docs, risk assessment (IEEE 1012, GDPR/HIPAA/SOC2, ISO 31000)
 
-**Total: 46 documentation generation skills across all 10 SDLC phases.**
+**Historical v3.3 snapshot: 46 documentation generation skills across all 10
+SDLC phases.** The current catalogue is recorded above.
 
 ## What Was New in v3.2?
 
@@ -295,9 +305,9 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 
 ## Roadmap
 
-### v3.3 (Current - 2026-03-01)
+### v3.3 (Historical - 2026-03-01)
 - ✅ 100% phase coverage (all 10 SDLC phases fully implemented)
-- ✅ 46 documentation generation skills
+- ✅ 46 documentation generation skills in the v3.3 snapshot
 - ✅ Phases 04-09 complete (Development, Testing, Deployment, Agile, End-User, Governance)
 
 ### v3.2 (2026-02-28)

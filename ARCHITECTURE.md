@@ -4,7 +4,13 @@ SRS-Skills uses `projects/<ProjectName>/` as the canonical runtime workspace. Th
 
 For backward compatibility, many existing skill-local instructions still refer to `../project_context/` and `../output/`. Those relative paths are execution aliases into the active project workspace, not a separate architectural model.
 
-The repository is arranged as a linear pipeline of independent skill modules (01-08). Each skill encapsulates:
+The repository is arranged as a phase-oriented catalogue: `00-meta-initialization`
+plus SDLC phases `01` through `09`, with Waterfall, Agile, and Hybrid tracks
+under Phase 02. The active count is controlled by the
+[`skill-quality-baseline.json`](tests/skill-quality-baseline.json) catalogue
+control and checked against filesystem truth by
+[`validate_skill_engine.py`](scripts/validate_skill_engine.py). Each skill
+encapsulates:
 
 1. **Input Context:** Reads specific project context files from the active workspace, canonically `projects/<ProjectName>/_context/*.md` (vision, features, tech stack, quality standards, etc.).
 2. **Logic Core:** Executes a Python script (or LLM prompt) designed for a particular IEEE section.

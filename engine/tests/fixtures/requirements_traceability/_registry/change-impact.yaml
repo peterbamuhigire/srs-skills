@@ -1,0 +1,8 @@
+entries:
+  - id: CIA-001
+    raised_on: 2026-08-11
+    affected_baseline_ids: ["FR-001"]
+    decision: approved
+    decision_body: "Approved change to make duplicate-claim handling explicit."
+    decision_date: 2026-08-11
+    rollback_plan: "Restore the prior FR-001 baseline and re-run the requirements and acceptance checks."

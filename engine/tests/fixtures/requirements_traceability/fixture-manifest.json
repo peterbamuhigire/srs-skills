@@ -1,0 +1,10 @@
+{
+  "fixture_name": "requirements_traceability",
+  "classification": "behavioural",
+  "data_classification": "synthetic-test-only",
+  "coverage": [
+    "ambiguity-resolution",
+    "acceptance-criteria",
+    "controlled-change"
+  ]
+}

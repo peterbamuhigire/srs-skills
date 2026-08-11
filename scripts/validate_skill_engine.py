@@ -61,6 +61,20 @@ def active_roots(root: Path) -> list[Path]:
     return sorted(path for path in root.iterdir() if path.is_dir() and ACTIVE_ROOT_RE.match(path.name) and any(path.rglob("SKILL.md")))
 
 
+def active_skill_files(root: Path) -> list[Path]:
+    """Return the filesystem-backed active entrypoints in stable order."""
+    return sorted(
+        path
+        for active_root in active_roots(root)
+        for path in active_root.rglob("SKILL.md")
+    )
+
+
+def active_skill_paths(root: Path) -> list[str]:
+    """Return active entrypoint paths used by the catalogue control."""
+    return [path.relative_to(root).as_posix() for path in active_skill_files(root)]
+
+
 def template_files(root: Path) -> list[Path]:
     templates = root / "templates"
     return sorted(templates.rglob("SKILL.md")) if templates.exists() else []
@@ -165,10 +179,38 @@ def assess(path: Path, root: Path) -> list[str]:
     return sorted(set(findings))
 
 
+def baseline_mismatches(payload: dict, baseline: dict) -> list[str]:
+    """Compare measured engine state with the explicit baseline control."""
+    mismatches: list[str] = []
+    for key in ("active_skill_count", "template_count", "failure_counts"):
+        if payload[key] != baseline.get(key):
+            mismatches.append(
+                f"{key}: expected {baseline.get(key)!r}, got {payload[key]!r}"
+            )
+
+    expected_paths = baseline.get("active_skill_paths")
+    if not isinstance(expected_paths, list) or any(
+        not isinstance(path, str) for path in expected_paths
+    ):
+        mismatches.append(
+            "active_skill_paths: baseline must contain a list of relative paths"
+        )
+    elif payload["active_skill_paths"] != expected_paths:
+        missing = sorted(set(expected_paths) - set(payload["active_skill_paths"]))
+        unexpected = sorted(
+            set(payload["active_skill_paths"]) - set(expected_paths)
+        )
+        mismatches.append(
+            "active_skill_paths: catalogue differs from baseline "
+            f"(missing={missing!r}, unexpected={unexpected!r})"
+        )
+    return mismatches
+
+
 def main() -> int:
     args = arguments()
     root = args.root.resolve()
-    files = sorted(path for active in active_roots(root) for path in active.rglob("SKILL.md"))
+    files = active_skill_files(root)
     failures: Counter[str] = Counter()
     results: dict[str, list[str]] = {}
     names: dict[str, list[str]] = {}
@@ -212,6 +254,7 @@ def main() -> int:
     payload = {
         "active_roots": [path.name for path in active_roots(root)],
         "active_skill_count": len(files),
+        "active_skill_paths": [path.relative_to(root).as_posix() for path in files],
         "template_count": len(template_files(root)),
         "failure_counts": dict(sorted(failures.items())),
         "results": {path: found for path, found in results.items() if found},
@@ -219,9 +262,7 @@ def main() -> int:
     baseline_errors: list[str] = []
     if args.baseline:
         baseline = json.loads(args.baseline.read_text(encoding="utf-8"))
-        for key in ("active_skill_count", "template_count", "failure_counts"):
-            if payload[key] != baseline.get(key):
-                baseline_errors.append(f"{key}: expected {baseline.get(key)!r}, got {payload[key]!r}")
+        baseline_errors.extend(baseline_mismatches(payload, baseline))
         if baseline_errors:
             payload["baseline_errors"] = baseline_errors
     if args.json:

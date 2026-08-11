@@ -1,0 +1,14 @@
+{
+  "fixture_name": "tiny_project",
+  "classification": "negative",
+  "data_classification": "synthetic-test-only",
+  "purpose": "Exercise blocking findings for an intentionally incomplete SRS workspace.",
+  "expected_exit_code": 1,
+  "expected_high_findings": 28,
+  "expected_minimum_high_findings": 3,
+  "expected_gate_ids": [
+    "phase01.canonical_inputs_present",
+    "phase03.architecture_decisions_recorded",
+    "phase09.traceability"
+  ]
+}
