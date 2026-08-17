@@ -1,11 +1,10 @@
 # SDLC-Docs-Engine: Standards-Driven Documentation Across the Software Lifecycle
 
-The shared ten-engine agent, command, hook, evidence, and handoff mapping is
-documented in [`docs/control-plane-adoption.md`](docs/control-plane-adoption.md).
-Use `python scripts/create_sdd_handoff.py` to record a structured stop or
-blocked-phase handoff.
+**SDLC-Docs-Engine** (formerly SRS-Skills) is a repository of reusable skills for producing structured software-development documentation from strategic vision and requirements through design, testing, deployment, operations, and governance. It supports Waterfall, Agile, and Hybrid delivery where the relevant workflow and evidence are defined in the repository.
 
-**SDLC-Docs-Engine** (formerly SRS-Skills) is a modular, AI-driven toolkit for generating **comprehensive, standards-compliant documentation** across all phases of software development. It supports **Waterfall, Agile, and Hybrid methodologies**, providing IEEE/ISO-aligned documentation from strategic vision to deployment operations.
+Product owners, business analysts, software architects, delivery teams, testers, operators, and reviewers use it to turn agreed scope into requirements, design records, acceptance and test artefacts, release evidence, and handoff material. Its skills address unclear scope, missing traceability, inconsistent deliverables, and weak phase-to-phase handovers.
+
+Used with project-specific evidence, the engine creates a shared, reviewable documentation trail for decisions, validation, release, and operational transfer. It provides documentation methods and evidence structures rather than project facts, implementation, or professional sign-off; its operating roles and stop/recovery behaviour are documented in [`docs/control-plane-adoption.md`](docs/control-plane-adoption.md), and commercial or investment planning belongs with the <a href="https://github.com/peterbamuhigire/business-plan-skills" target="_blank" rel="noopener noreferrer">Business Plan Skills Suite</a> when triggered.
 
 ## July 2026 skill-engine conformance
 
@@ -17,7 +16,7 @@ Continuous improvement is a mandatory SDLC and engine capability. Load
 `09-governance-compliance/31-kaizen-engine-and-product-improvement/SKILL.md` for engine or
 product audits. Published audit scores are hard-capped at 65/100; remediation plans target
 95/100 and must be proven through deterministic gates, traceability, failed-path evidence,
-and a dated re-audit. Current external claims route to Digital Research Skills Engine.
+and a dated re-audit. Current external claims route to the <a href="https://github.com/peterbamuhigire/digital-research-skills" target="_blank" rel="noopener noreferrer">Digital Research Skills Engine</a>.
 
 The active catalogue contains 157 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 50 routing fixtures at a top-three precision threshold of 100%.
 
@@ -58,17 +57,17 @@ Every document set and the engine follow `Observe -> Baseline -> Select -> Exper
 Standardise -> Teach -> Re-measure`. Audits publish `min(raw_score, 65)` and produce 95/100 plans
 with owner, evidence, measure, risk, rollback, and re-audit. Product audits cover requirements,
 traceability, failed paths, accessibility, security, release evidence, user feedback, and handoff.
-Current claims route to the [Digital Research Engine](https://github.com/peterbamuhigire/digital-research-skills); presentation-layer work routes to
-`design-system-skills`. Raw book-extraction material was removed from the repository and backed up
+Current claims route to the <a href="https://github.com/peterbamuhigire/digital-research-skills" target="_blank" rel="noopener noreferrer">Digital Research Engine</a>; presentation-layer work routes to
+the <a href="https://github.com/peterbamuhigire/design-system-skills" target="_blank" rel="noopener noreferrer">Design System Skills Engine</a>. Raw book-extraction material was removed from the repository and backed up
 externally; see `docs/continuous-improvement/srs-raw-extraction-removal-2026-08.md`.
 
 ## Architecture & cross-cutting engines (updated 2026-06-21)
 
 This engine is one of several sibling skill engines on the host. None is natively discovered any more — every engine, including this one, is consulted through the global routing table by globbing `SKILL.md` directly and reading the matched file(s). Cross-cutting engines are **referenced** (path resolved per device from the global router), never mirrored into this repo.
 
-- **Design / UX visual layer → [Design System Skills](https://github.com/peterbamuhigire/design-system-skills).** This is the single home for all design, typography, UI/UX, and visual-formatting skills plus the anti-AI-slop visual doctrine. Consult it **in addition** for any presentation-layer work: the VISUAL side of a UX/design specification (design systems, UI tokens, dashboard/visual quality, the look of a generated `.docx`). The **content and structure** of specs — IA, requirements, acceptance criteria, the spec document itself — stays in this engine. Phase 03 design/UX skills here describe *what* the design must satisfy; the design engine governs *how* it looks.
-- **Finance / accounting → `chwezi-accounting-doctrine`** (referenced, not mirrored). Any money/ledger/tax/IFRS/IAS documentation work routes to the finance engine source via its `README.md` router. The old "build once, mirror everywhere" finance mirror was never populated — the empty `skills/finance/` shells were removed on 2026-06-21. Finance skills do **not** live inside this engine; only the `domains/finance/` knowledge base (PCI-DSS, SOX, AML defaults) is local.
-- **Engineering / methodology → engineering catalog engine** (see "Skill Categories" below), also referenced, not mirrored.
+- **Design / UX visual layer → <a href="https://github.com/peterbamuhigire/design-system-skills" target="_blank" rel="noopener noreferrer">Design System Skills</a>.** This is the single home for all design, typography, UI/UX, and visual-formatting skills plus the anti-AI-slop visual doctrine. Consult it **in addition** for any presentation-layer work: the VISUAL side of a UX/design specification (design systems, UI tokens, dashboard/visual quality, the look of a generated `.docx`). The **content and structure** of specs — IA, requirements, acceptance criteria, the spec document itself — stays in this engine. Phase 03 design/UX skills here describe *what* the design must satisfy; the design engine governs *how* it looks.
+- **Finance / accounting → <a href="https://github.com/peterbamuhigire/chwezi-accounting-doctrine" target="_blank" rel="noopener noreferrer">Chwezi Accounting Doctrine</a>** (referenced, not mirrored). Any money/ledger/tax/IFRS/IAS documentation work routes to the finance engine source via its README router. The old "build once, mirror everywhere" finance mirror was never populated — the empty `skills/finance/` shells were removed on 2026-06-21. Finance skills do **not** live inside this engine; only the `domains/finance/` knowledge base (PCI-DSS, SOX, AML defaults) is local.
+- **Engineering / methodology → <a href="https://github.com/peterbamuhigire/chwezi-dev-engine" target="_blank" rel="noopener noreferrer">Chwezi Dev Engine</a>** (see "Skill Categories" below), also referenced, not mirrored.
 
 ## SaaS + AI-on-SaaS + Agent Documentation Stack (May 2026)
 
@@ -134,7 +133,7 @@ The following client projects are maintained under `projects/` (gitignored — n
 | Maduuka | POS + Bookkeeping SaaS (Africa SMBs) | Hybrid (Water-Scrum-Fall) | AI Business Intelligence — 4 features (UGX 30K–200K/mo) | Full SDLC complete — development ready |
 | BIRDC-ERP | Bespoke Banana Factory ERP (BIRDC/PIBID) | Waterfall (consulting) | AI Intelligence Phase 7 — 5 capabilities (lump-sum extension) | Full SDLC complete — 38 docs delivered |
 
-> *Project files are gitignored. Only domains, templates, and documentation tooling are committed to this repository. Engineering/methodology skills live in the sibling engineering catalog engine at `C:\Users\Peter\.claude\skills`, and finance/accounting lives in the sibling finance engine resolved through the global engine router. Project DOCUMENTATION-STATUS.md files within each project directory are the authoritative status reference for each engagement.*
+> *Project files are gitignored. Only domains, templates, and documentation tooling are committed to this repository. Engineering/methodology skills live in the <a href="https://github.com/peterbamuhigire/chwezi-dev-engine" target="_blank" rel="noopener noreferrer">Chwezi Dev Engine</a>, and finance/accounting lives in the <a href="https://github.com/peterbamuhigire/chwezi-accounting-doctrine" target="_blank" rel="noopener noreferrer">Chwezi Accounting Doctrine</a>. Project DOCUMENTATION-STATUS.md files within each project directory are the authoritative status reference for each engagement.*
 
 ---
 
@@ -448,8 +447,8 @@ sdlc-docs-engine/
 ├── 08-end-user-documentation/       # User manuals, installation guides, FAQs
 └── 09-governance-compliance/        # Traceability, audits, compliance docs
 
-# Engineering/methodology skills live in the SIBLING engineering catalog engine at
-#   C:\Users\Peter\.claude\skills  (15 category subdirectories; see "Skill Categories" below)
+# Engineering/methodology skills live in the SIBLING Chwezi Dev Engine
+#   (15 category subdirectories; see "Skill Categories" below)
 #       skills/ai/<skill-name>/SKILL.md
 #       skills/android/<skill-name>/SKILL.md
 #       skills/architecture/<skill-name>/SKILL.md
@@ -465,13 +464,17 @@ sdlc-docs-engine/
 #       skills/saas/<skill-name>/SKILL.md
 #       skills/sdlc-meta/<skill-name>/SKILL.md
 #       skills/security/<skill-name>/SKILL.md
-# Finance/accounting lives in the SIBLING finance engine at
-#   https://github.com/peterbamuhigire/chwezi-accounting-doctrine  (consult its README.md router)
+# Finance/accounting lives in the SIBLING Chwezi Accounting Doctrine
+#   (consult its README.md router)
 ```
+
+Engineering/methodology source: <a href="https://github.com/peterbamuhigire/chwezi-dev-engine" target="_blank" rel="noopener noreferrer">Chwezi Dev Engine</a>.
+
+Finance/accounting source: <a href="https://github.com/peterbamuhigire/chwezi-accounting-doctrine" target="_blank" rel="noopener noreferrer">Chwezi Accounting Doctrine</a>.
 
 ### Skill Categories
 
-The portable skill catalog lives in the sibling **engineering catalog engine** at `C:\Users\Peter\.claude\skills`, grouped into 15 categories. Reference any individual skill as `skills/<category>/<skill-name>/SKILL.md` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`).
+The portable skill catalog lives in the sibling <a href="https://github.com/peterbamuhigire/chwezi-dev-engine" target="_blank" rel="noopener noreferrer">Chwezi Dev Engine</a>, grouped into 15 categories. Reference any individual skill as `skills/<category>/<skill-name>/SKILL.md` in that repository.
 
 - **ai** — LLM integration, agent runtime, RAG, prompt engineering, AI app architecture, evaluation/observability, AI economics, safety, security, UX, openai-agents-sdk.
 - **android** — Android development, UI/UX, data persistence, TDD.
@@ -994,7 +997,7 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 We welcome contributions! To add or improve skills:
 
 1. Review existing skills for format and structure
-2. Follow the `sdlc-meta/skill-writing/` meta-skill guidelines in the engineering catalog engine (`C:\Users\Peter\.claude\skills`)
+2. Follow the `sdlc-meta/skill-writing/` meta-skill guidelines in the <a href="https://github.com/peterbamuhigire/chwezi-dev-engine" target="_blank" rel="noopener noreferrer">Chwezi Dev Engine</a>
 3. Ensure 500-line limit and two-tier documentation structure
 4. Add examples and anti-patterns
 5. Update `README.md` and `PROJECT_BRIEF.md`
@@ -1012,8 +1015,8 @@ This project is licensed under the MIT License. See `LICENSE.txt` for details.
 
 ## 💬 Support
 
-- **Issues:** https://github.com/peterbamuhigire/srs-skills/issues
-- **Discussions:** https://github.com/peterbamuhigire/srs-skills/discussions
+- **Issues:** <a href="https://github.com/peterbamuhigire/srs-skills/issues" target="_blank" rel="noopener noreferrer">SRS Skills issues</a>
+- **Discussions:** <a href="https://github.com/peterbamuhigire/srs-skills/discussions" target="_blank" rel="noopener noreferrer">SRS Skills discussions</a>
 - **Documentation:** See `CLAUDE.md` for AI assistant guidance
 
 ---
@@ -1044,6 +1047,6 @@ This project builds on industry standards:
 |------|---------|--------|
 | **Waterfall SRS** | `02-requirements-engineering/waterfall/01-initialize-srs` | IEEE 830 SRS |
 | **Agile User Stories** | `02-requirements-engineering/agile/01-user-story-generation` | User story backlog |
-| **Methodology Selection** | `00-meta-initialization` (engineering catalog engine) | Documentation roadmap |
+| **Methodology Selection** | `00-meta-initialization` (<a href="https://github.com/peterbamuhigire/chwezi-dev-engine" target="_blank" rel="noopener noreferrer">Chwezi Dev Engine</a>) | Documentation roadmap |
 | **Design Docs** | `03-design-documentation/01-high-level-design` | HLD, architecture diagrams |
 | **Traceability** | `09-governance-compliance/01-traceability-matrix` | RTM, audit report |
