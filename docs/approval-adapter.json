@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "engine": "srs",
+  "policy_version": "approval-policy-1.0.0",
+  "actions": [
+    {"action_type":"srs.draft","class":"L1","side_effect":"local-draft","owner":"requirements-owner","allowed_approver_roles":["requirements-owner"],"requires_dual_approval":false,"preview_required":true,"approval_ttl_seconds":null,"idempotency_required":true,"rollback":"discard-draft","verification":"validator-check","sensitive_fields":["private-requirements"]},
+    {"action_type":"srs.requirement.baseline","class":"L3","side_effect":"approved-baseline-change","owner":"requirements-owner","allowed_approver_roles":["requirements-reviewer","product-owner"],"requires_dual_approval":false,"preview_required":true,"approval_ttl_seconds":900,"idempotency_required":true,"rollback":"restore-prior-baseline","verification":"traceability-and-review-check","sensitive_fields":["client-data"]},
+    {"action_type":"srs.architecture.baseline","class":"L3","side_effect":"approved-architecture-change","owner":"architecture-owner","allowed_approver_roles":["architecture-reviewer","product-owner"],"requires_dual_approval":false,"preview_required":true,"approval_ttl_seconds":900,"idempotency_required":true,"rollback":"restore-prior-architecture","verification":"architecture-and-risk-check","sensitive_fields":["security-design"]},
+    {"action_type":"srs.test.waive","class":"L3","side_effect":"quality-gate-waiver","owner":"quality-owner","allowed_approver_roles":["quality-owner","security-reviewer"],"requires_dual_approval":true,"preview_required":true,"approval_ttl_seconds":900,"idempotency_required":true,"rollback":"reinstate-test-gate","verification":"waiver-expiry-and-risk-check","sensitive_fields":["defect-details"]},
+    {"action_type":"srs.release.approve","class":"L3","side_effect":"release-authorisation","owner":"release-owner","allowed_approver_roles":["release-owner","domain-owner"],"requires_dual_approval":true,"preview_required":true,"approval_ttl_seconds":900,"idempotency_required":true,"rollback":"revert-release-decision","verification":"evidence-bundle-and-release-check","sensitive_fields":["release-notes"]},
+    {"action_type":"srs.policy.change","class":"L3","side_effect":"governance-policy-change","owner":"governance-owner","allowed_approver_roles":["governance-owner","security-reviewer"],"requires_dual_approval":true,"preview_required":true,"approval_ttl_seconds":900,"idempotency_required":true,"rollback":"restore-policy-version","verification":"policy-validator-and-audit-check","sensitive_fields":["policy-exceptions"]}
+  ]
+}

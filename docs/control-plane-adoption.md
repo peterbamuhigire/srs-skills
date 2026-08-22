@@ -34,3 +34,10 @@ Use the real thin command surfaces `validate`, `validate-skills`, `baseline`,
 
 Where native hooks are unavailable, use repository scripts, CI, or an explicit
 skill step. Safety and release failures must fail closed or be `NOT ASSESSED`.
+
+## Human approval adapter
+
+The lifecycle mutation catalogue and explicit pre-action approval rules are in
+[`approval-enforcement.md`](approval-enforcement.md) and
+[`approval-adapter.json`](approval-adapter.json). Baseline, waiver, release,
+policy, and incident mutations must call the shared trusted gate before write.
