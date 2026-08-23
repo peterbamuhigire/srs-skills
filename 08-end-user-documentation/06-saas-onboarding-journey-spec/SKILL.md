@@ -92,6 +92,24 @@ Example: if a claim, segment, trigger, metric, or intervention lacks product evi
 - [Skill notes](README.md): consult for local examples and invocation context.
 - [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
 
+## First-value and friction controls
+
+The aha event is the first meaningful outcome, not account creation or profile
+completion. Make nonessential fields, permissions, invitations, and education
+progressive and deferrable; prefer learn-by-doing and contextual guidance over
+a mandatory tour. Every path needs skip/dismiss, resume, recovery, and a route
+for returning users. If identity, consent, or verification is a genuine
+prerequisite, explain the purpose and consequence, minimise the step, and name
+support/recovery rather than bypassing the control.
+
+Replace fixed KPI defaults with product-specific baselines and predeclared
+thresholds. The event catalogue must distinguish signup, first value, repeated
+value, and retention; it must not imply activation merely because a user
+registered. Validate the journey with representative users and inspect
+drop-off, task success, support questions, accessibility, and guardrails.
+
+Practitioner cross-check: [Eleken mobile onboarding guide](https://www.eleken.co/blog-posts/mobile-app-onboarding-best-practices); platform corroboration: [Apple onboarding guidance](https://developer.apple.com/design/human-interface-guidelines/onboarding).
+
 <!-- dual-compat-end -->
 
 ## Overview

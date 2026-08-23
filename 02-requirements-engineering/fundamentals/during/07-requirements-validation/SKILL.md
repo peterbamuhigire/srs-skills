@@ -82,6 +82,25 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Inspection Process](references/inspection-process.md)
 - [Prototype Validation](references/prototype-validation.md)
 - [Review Checklist](references/review-checklist.md)
+## Product-experience validation checks
+
+Where the requirements affect adoption or user experience, validate more than
+sentence quality. Check that the set names the first meaningful user outcome,
+does not make optional setup mandatory without evidence, and includes skip,
+resume, error, empty, loading, accessibility, and recovery behaviour. For
+dashboards, require a named decision, metric definitions, comparison basis,
+freshness/staleness behaviour, and a first-run state. For financial flows,
+require explicit fees/FX, confirmation, status, reversibility, support, and
+error-prevention rules where applicable. Each check needs an owner, evidence,
+and deterministic oracle; otherwise mark it `not assessed` and block the
+affected baseline decision.
+
+When requirements were AI-assisted, verify the summary against source artefacts,
+record decisions and unresolved inferences, and inspect the diff after scoped
+changes. Plausible generated prose is not validation evidence.
+
+Practitioner cross-checks: [Eleken onboarding](https://www.eleken.co/blog-posts/mobile-app-onboarding-best-practices), [dashboard guidance](https://www.eleken.co/blog-posts/dashboard-design-examples-that-catch-the-eye), and [AI design workflow](https://www.eleken.co/blog-posts/ai-design-workflow). Use [WCAG 2.2](https://www.w3.org/TR/WCAG22/) for accessibility authority.
+
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

@@ -79,6 +79,25 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 ## References
 
 - [Skill authoring and release standard](../../../../docs/skill-authoring-standard.md)
+## Evidence escalation and AI-assisted discovery
+
+Choose the cheapest prototype that can answer the uncertainty, but escalate
+evidence with risk: problem/market and alternative review, user research or
+observation, concept/landing test, click-through flow, workflow/concierge
+simulation, technical spike, and (where justified) a pilot or real commitment.
+For each stage record the hypothesis, target users, observable behaviour,
+threshold, guardrail, time box, decision, and remaining unknowns. A prototype,
+portfolio example, or stakeholder enthusiasm is not evidence of approval or
+product-market fit.
+
+If AI assists research, synthesis, requirements, or prototyping, preserve the
+source context, ask it to surface questions/options before generating, verify
+summaries and competitor claims against originals, keep a decision log, and
+review scoped deltas rather than accepting broad regeneration. Human owners
+retain product, requirements, accessibility, and release judgement.
+
+Practitioner cross-checks: [Eleken product-idea validation](https://www.eleken.co/blog-posts/how-to-validate-product-ideas), [AI design workflow](https://www.eleken.co/blog-posts/ai-design-workflow); corroborating practice: [GOV.UK making prototypes](https://www.gov.uk/service-manual/design/making-prototypes).
+
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 
