@@ -1,43 +1,9 @@
-# Control-plane adoption
+# Skills-engine control-plane adoption
 
-This engine adopts the shared ten-engine contract defined in
-`C:\wamp64\www\skills-web-dev\docs\engine-control-plane.md` and registered in
-`engine-control-plane.json`. SRS doctrine remains authoritative for
-requirements, architecture, testing, governance, and release evidence.
+This repository exposes the srs-skills engine through the declarative .skills-engine/engine-manifest.yaml contract.
 
-## Local roles and commands
+The engine remains independently usable. Its router and domain SKILL.md files are authoritative. Universal coordination may read the router, discover skills, inspect Git, and review declared validators.
 
-| Role | Responsibility | Boundary |
-|---|---|---|
-| Requirements validator | Check completeness, consistency, feasibility, and test oracles. | Does not approve its own requirement changes. |
-| Traceability auditor | Reconcile requirements, design, tasks, tests, and evidence. | Reports gaps; does not silently invent coverage. |
-| Standards reviewer | Verify current standards and mandated terminology. | Unverified standards claims remain `NOT ASSESSED`. |
+Missing dependency, platform, source, or approval evidence is NOT ASSESSED. Writes, pulls, publication, submissions, ledger/filing changes, deployment, and control changes require explicit approval.
 
-Use the real thin command surfaces `validate`, `validate-skills`, `baseline`,
-`pack`, `signoff`, and `sync`, plus `scripts/create_sdd_handoff.py` for the
-`stop` hook, to route to canonical SRS skills and validators.
-
-## Hook contract
-
-- `preflight` confirms the feature workspace, selected SDD stage, permissions,
-  and applicable cross-engine routes.
-- `context` loads the authoritative specification, source register, and prior
-  decisions; duplicate or stale copies are flagged.
-- `before_write` checks scope, change impact, acceptance oracles, and
-  persistent-waiver fields (owner, reason, expiry, scope, rollback).
-- `after_write` runs the relevant validator and updates traceability and
-  evidence records.
-- `release` requires the SDD phase-boundary validator, tests, standards
-  evidence, reviewer sign-off, and a resumable handoff.
-- `stop` records the current phase, completed checks, blockers, open risks,
-  and next owner; interruption is never completion.
-
-Where native hooks are unavailable, use repository scripts, CI, or an explicit
-skill step. Safety and release failures must fail closed or be `NOT ASSESSED`.
-
-## Human approval adapter
-
-The lifecycle mutation catalogue and explicit pre-action approval rules are in
-[`approval-enforcement.md`](approval-enforcement.md) and
-[`approval-adapter.json`](approval-adapter.json). Baseline, waiver, release,
-policy, and incident mutations must call the shared trusted gate before write.
+MCP-safe operations are read-only discovery, router read, skill read, and documented-check inspection. Forks are inspected from their own checkout; no validator is invented when the repository is not catalogued.
