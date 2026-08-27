@@ -81,6 +81,7 @@ If any required capability is unavailable, return the narrowest useful qualified
 
 - [Content and form quality gates](references/ux-content-and-form-quality-gates.md)
 - [UX Specification neighbour](../05-ux-specification/SKILL.md)
+- [Human English and reader-centred craft](../../book-extractions/human-english-craft-synthesis-2026.md) for calm, grammatical, state-aware microcopy.
 <!-- dual-compat-end -->
 
 

@@ -93,6 +93,7 @@ Example: if a claim, metric, citation, API, or package is unverified, verify, qu
 
 - [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
 - [Independent AI slop audit](../29-ai-slop-audit/SKILL.md): run after major iterations and before release.
+- [Human English and reader-centred craft](../../book-extractions/human-english-craft-synthesis-2026.md): language, register, grammar, microcopy, and read-aloud overlay.
 
 <!-- dual-compat-end -->
 

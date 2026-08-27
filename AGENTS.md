@@ -153,3 +153,9 @@ engine; presentation comes from design-system-skills. Hard rule: never use a ban
 (Inter, Geist, Roboto, Arial, Open Sans, Lato, Space Grotesk, bare system stacks) as primary
 type — state the chosen typeface and reason before producing any artifact.
 <!-- /design-system-skills:trigger -->
+
+## Human-English editorial standard (2026-08 Kaizen)
+
+Load [`book-extractions/human-english-craft-synthesis-2026.md`](book-extractions/human-english-craft-synthesis-2026.md) for requirements, UX content, user manuals, FAQs, release notes, runbooks, training, support messages, and other human-facing documentation. Apply it alongside the applicable IEEE/ISO, traceability, accessibility, security, and `28-anti-ai-slop` controls.
+
+Technical prose must remain exact: name actors, states, constraints, terminology, and test oracles. User-facing text must also be calm, respectful, grammatical, and useful in the current state. Never add errors, slang, unexplained humour, or vague adjectives to make text seem human. Record artefact type, reader/task, source traceability, terminology checks, test-oracle review, language/proof status, gaps, reviewer, and date.
