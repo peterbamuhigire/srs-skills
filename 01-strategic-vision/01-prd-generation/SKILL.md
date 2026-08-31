@@ -312,3 +312,8 @@ The PRD's persona section must:
 ### 3. Field-of-Dreams flag (Levy)
 
 If the PRD contains no validated user research and no plan to acquire it, mark the PRD itself as "speculative." Speculative PRDs cannot be priced as execution engagements; they must precede a discovery engagement. Document the speculative-status banner at the top of the PRD.
+
+## Book-derived additions
+
+For feature hypotheses, experiments, measures, and stop decisions, load
+[evidence-backed hypothesis and learning](references/evidence-backed-hypothesis-and-learning.md).

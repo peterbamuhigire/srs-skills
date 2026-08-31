@@ -351,3 +351,4 @@ baselining. See [SDD Phase-Boundary Contract](../../../../docs/sdd-phase-boundar
 - `references/review-checklist.md` -- Quality attribute checklist with pass/fail indicators
 - `references/inspection-process.md` -- Fagan inspection protocol adapted for requirements
 - `references/prototype-validation.md` -- Prototype walkthrough protocol and feedback capture
+- `references/uncertainty-and-evidence-review.md` -- claim status, uncertainty, communication, and acceptance checks

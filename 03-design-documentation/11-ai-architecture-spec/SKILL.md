@@ -180,3 +180,6 @@ ADR seeds: model choice per feature, RAG-vs-fine-tune, vector store choice, eval
 - OWASP LLM Top 10
 - NIST AI RMF MAP / MEASURE
 - ISO/IEC 42001
+
+For human-owned decisions, governed memory, correction, drift, and fallback,
+load [human agency and system boundaries](references/human-agency-and-system-boundaries.md).

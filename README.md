@@ -61,6 +61,10 @@ Current claims route to the <a href="https://github.com/peterbamuhigire/digital-
 the <a href="https://github.com/peterbamuhigire/design-system-skills" target="_blank" rel="noopener noreferrer">Design System Skills Engine</a>. Raw book-extraction material was removed from the repository and backed up
 externally; see `docs/continuous-improvement/srs-raw-extraction-removal-2026-08.md`.
 
+## September 2026 book-driven Kaizen wave
+
+See [`docs/continuous-improvement/book-driven-kaizen-2026-09-01.md`](docs/continuous-improvement/book-driven-kaizen-2026-09-01.md) for the dissertation, uncertainty, hypothesis, and human-agency upgrades.
+
 ## Architecture & cross-cutting engines (updated 2026-06-21)
 
 This engine is one of several sibling skill engines on the host. None is natively discovered any more — every engine, including this one, is consulted through the global routing table by globbing `SKILL.md` directly and reading the matched file(s). Cross-cutting engines are **referenced** (path resolved per device from the global router), never mirrored into this repo.
