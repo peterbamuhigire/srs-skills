@@ -93,12 +93,21 @@ or game document). Each product must carry its own traceability evidence.
 
 If a game SRS has a complete feature list but no failed-path, accessibility, performance, or player-evidence links, keep the readiness gate blocked, add the missing evidence plan, run it, and then re-score.
 
+## Mandatory Digital Research currentness gate
+
+Every Kaizen cycle must begin with `digital-research-skills` source evaluation
+and source verification. Record scope, dates, freshness class, support status,
+uncertainty, and review date for current standards, policies, technology,
+security, platform, and lifecycle claims; quarantine unsupported claims as
+`NOT_ASSESSED`. Apply the [portfolio Kaizen currentness gate](../../../digital-research-skills/docs/continuous-improvement/kaizen-currentness-gate.md).
+
 ## References
 
 - [Local adoption plan](../../docs/continuous-improvement/kaizen-adoption-2026-08.md)
-- Portfolio standard: `C:\wamp64\www\digital-research-engine\docs\continuous-improvement\portfolio-kaizen-standard-2026-08.md`
+- Portfolio standard: resolve `digital-research-skills` through the global engine-routing table and read its `docs/continuous-improvement/portfolio-kaizen-standard-2026-08.md`.
 - `07-agile-artifacts/04-retrospective-template/`
 - `09-governance-compliance/29-ai-slop-audit/`
 - [Product audit evidence matrix](references/product-audit-evidence-matrix.md)
+- [Book-driven improvement and adoption](references/book-driven-improvement-and-adoption.md) - improvement hypotheses, transfer evidence, agent decision safety, and currentness boundary.
 
 <!-- dual-compat-end -->
