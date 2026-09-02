@@ -41,3 +41,7 @@ Could this requirement or explanation belong to any product? Add the real actor,
 ## Evidence record
 
 Record artefact type, reader/task, source and traceability status, terminology checks, test-oracle review, user-facing language review, proof status, unresolved context gaps, reviewer, and date.
+
+## Collocation and lexical-precision overlay (2026-09-02)
+
+Apply [`english-collocations-and-lexical-precision-2026-09-02.md`](english-collocations-and-lexical-precision-2026-09-02.md) for the detailed book-informed overlay. It adds grammatical-frame, collocation, register, synonym, idiom, spelling, and calibrated-claim checks. The intended quality is polished, literate, exact, and restrained; never use ornate diction, fake warmth, or errors to imitate a person.
