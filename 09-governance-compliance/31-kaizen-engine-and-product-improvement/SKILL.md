@@ -109,5 +109,6 @@ security, platform, and lifecycle claims; quarantine unsupported claims as
 - `09-governance-compliance/29-ai-slop-audit/`
 - [Product audit evidence matrix](references/product-audit-evidence-matrix.md)
 - [Book-driven improvement and adoption](references/book-driven-improvement-and-adoption.md) - improvement hypotheses, transfer evidence, agent decision safety, and currentness boundary.
+- [Book-driven Kaizen Wave 3](references/book-driven-kaizen-wave-3-2026-09-02.md) - cross-engine contracts, testing, failure paths, traceability, and currentness boundaries.
 
 <!-- dual-compat-end -->
