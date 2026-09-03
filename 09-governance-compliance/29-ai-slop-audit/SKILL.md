@@ -96,6 +96,14 @@ Example: if a required check cannot be run, mark it not assessed and qualify the
 
 <!-- dual-compat-end -->
 
+## Machine-error audit extension
+
+Use the Digital Research machine-error gate and report ME1-ME7 with exact requirement IDs,
+paragraphs, or table rows. A semantic finding needs the compared units and the missing delta; a
+keyword or repeated heading alone is not evidence. Mark the check `NOT_ASSESSED` when source context
+or reviewer access is incomplete. Do not flag deliberate repetition needed for traceability,
+testability, accessibility, safety, or controlled identifiers.
+
 The detector. Given any artefact, it decides how much it reads as AI slop, names exactly why, and says how to fix each finding. Production-side prevention is the companion `28-anti-ai-slop` skill. In this engine it runs as the final gate after the Phase 09 audit and feeds the V&V fail tags.
 
 ## Cadence — run after each major iteration

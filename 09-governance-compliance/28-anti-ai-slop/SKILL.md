@@ -97,6 +97,24 @@ Example: if a claim, metric, citation, API, or package is unverified, verify, qu
 
 <!-- dual-compat-end -->
 
+## Machine-error editorial gate (cross-engine Kaizen)
+
+Apply Digital Research's `docs/continuous-improvement/machine-errors-editorial-gate-2026-09-03.md`
+while authoring. Review every requirement clause, rationale, table, and paragraph for:
+
+| ID | SRS-specific test |
+|---|---|
+| ME1 | Does this restate a nearby requirement, rationale, or constraint without a new trace, state, or oracle? |
+| ME2 | Is parallel requirement structure expressing a real comparison, or only making the specification look balanced? |
+| ME3 | Can an implementer or reviewer act from the existing wording without another restatement? |
+| ME4 | Does the quality claim exceed its metric, threshold, or evidence? |
+| ME5 | Is the example grounded in `_context/`, or would it fit any product? |
+| ME6 | Has the same rhetorical construction become a repeated template tic? |
+| ME7 | Does the paragraph add a requirement, constraint, test oracle, decision, or trace? |
+
+Merge or cut units with no delta. Preserve repetition required for deterministic testability,
+traceability, accessibility, safety, or exact API/schema identifiers, and record that exception.
+
 The guardrail every generated artefact passes before it ships. Detection lives in the companion `29-ai-slop-audit` skill; this skill governs **production** — writing the SRS, spec, design doc, test doc, or code so slop never appears in the first place. It sits on top of this engine's V&V SOP and IEEE/ISO grounding, never below them: a requirement that is verifiable but generic still fails here.
 
 ## Real-time application (this is a LIVE constraint, not only a final gate)
