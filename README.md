@@ -6,6 +6,17 @@ Product owners, business analysts, software architects, delivery teams, testers,
 
 Used with project-specific evidence, the engine creates a shared, reviewable documentation trail for decisions, validation, release, and operational transfer. It provides documentation methods and evidence structures rather than project facts, implementation, or professional sign-off; its operating roles and stop/recovery behaviour are documented in [`docs/control-plane-adoption.md`](docs/control-plane-adoption.md), and commercial or investment planning belongs with the <a href="https://github.com/peterbamuhigire/business-plan-skills" target="_blank" rel="noopener noreferrer">Business Plan Skills Suite</a> when triggered.
 
+## Capability map
+
+| Need | Primary route |
+|---|---|
+| Strategy, vision, business case, and product framing | `01-strategic-vision/` |
+| Requirements, user journeys, domain models, and traceability | `02-requirements-engineering/` |
+| Architecture, UX/content specifications, and technical design | `03-design-documentation/` and `04-development-artifacts/` |
+| Test strategy, acceptance, quality, and evidence | `05-testing-documentation/` and `09-governance-compliance/` |
+| Deployment, operations, release, and handoff | `06-deployment-operations/` |
+| Agile, game, AI, SaaS, finance, and regulated overlays | Triggered phase routes with the relevant companion engine |
+
 ## July 2026 skill-engine conformance
 
 ### Kaizen operating contract
