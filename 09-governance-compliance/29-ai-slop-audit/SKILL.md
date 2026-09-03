@@ -104,6 +104,15 @@ keyword or repeated heading alone is not evidence. Mark the check `NOT_ASSESSED`
 or reviewer access is incomplete. Do not flag deliberate repetition needed for traceability,
 testability, accessibility, safety, or controlled identifiers.
 
+### Impeccable-derived overlay audit
+
+For SRS artefacts containing interfaces or rendered presentation, audit AS1-AS7 and record
+`cli`, `browser`, `llm_only`, or `human_review` evidence. Purple gradients, glassmorphism, neon
+glow, AI-beige defaults, decorative editorial scaffolding, and decorative motion are blocking
+visual findings unless a task, state, accessibility, data, or approved design-system reason is
+recorded. Mark visual checks `not_applicable` for text-only SRS and unavailable render evidence
+`NOT_ASSESSED`; preserve functional requirements and trace links.
+
 The detector. Given any artefact, it decides how much it reads as AI slop, names exactly why, and says how to fix each finding. Production-side prevention is the companion `28-anti-ai-slop` skill. In this engine it runs as the final gate after the Phase 09 audit and feeds the V&V fail tags.
 
 ## Cadence — run after each major iteration

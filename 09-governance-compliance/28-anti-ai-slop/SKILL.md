@@ -115,6 +115,27 @@ while authoring. Review every requirement clause, rationale, table, and paragrap
 Merge or cut units with no delta. Preserve repetition required for deterministic testability,
 traceability, accessibility, safety, or exact API/schema identifiers, and record that exception.
 
+### Impeccable-derived AS overlay
+
+When an SRS includes a website, UI specification, presentation, rendered document, or design
+system, apply AS1-AS7 from the shared gate. For ordinary requirements prose, use AS1, AS3, AS5,
+and AS6; mark visual checks `not_applicable` when no visual artifact is in scope.
+
+| ID | SRS-specific overlay test |
+|---|---|
+| AS1 | Is the template, terminology, UI pattern, or copy default justified by this product and reader? |
+| AS2 | Do labels, badges, metrics, or section numbers add a requirement or merely imply importance? |
+| AS3 | Do repeated requirements, cards, or sections represent distinct actors/states, or is the structure cloned? |
+| AS4 | Does proposed animation, glow, gradient, or transition serve a state, task, or accessibility need? |
+| AS5 | Is each example, icon, asset, endpoint, or screen traceable to product context rather than placeholder material? |
+| AS6 | Are buzzwords, em-dash cadence, aphoristic contrasts, or theatrical framing hiding an untestable requirement? |
+| AS7 | Does the rendered requirement remain readable, complete, accessible, and structurally valid? |
+
+For visual SRS deliverables, purple gradients, glassmorphism, neon glow, AI-beige defaults,
+decorative editorial scaffolding, and decorative motion are no-ship choices. Preserve repeated
+identifiers, acceptance criteria, error states, trace links, and safety wording when they carry
+implementation or verification function; record the exception.
+
 The guardrail every generated artefact passes before it ships. Detection lives in the companion `29-ai-slop-audit` skill; this skill governs **production** — writing the SRS, spec, design doc, test doc, or code so slop never appears in the first place. It sits on top of this engine's V&V SOP and IEEE/ISO grounding, never below them: a requirement that is verifiable but generic still fails here.
 
 ## Real-time application (this is a LIVE constraint, not only a final gate)
