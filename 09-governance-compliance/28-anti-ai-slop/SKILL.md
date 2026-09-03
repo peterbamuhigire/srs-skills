@@ -49,8 +49,8 @@ When files, tools, network, rendering, fonts, execution, or evidence are unavail
 ## Workflow
 
 1. Confirm the requested artefact, audience, scope, decision owner, and applicable baseline or version. Work read-only by default; source mutation, publication, signature, certification, production change, or risk acceptance requires explicit authority.
-2. Inspect every required input and record missing, stale, conflicting, or inaccessible evidence. Stop claims that depend on an unresolved required input.
-3. Apply the Decision Rules, then execute the existing Core Instructions below in order; preserve project terminology and trace each material statement to its source.
+2. Select one requirement, section, flow, or evidence unit and inspect every required input before changing it. Record missing, stale, conflicting, or inaccessible evidence; stop claims that depend on an unresolved required input.
+3. Apply the Decision Rules, then execute the existing Core Instructions below in order; preserve project terminology, trace each material statement to its source, and make one concrete refinement before selecting the next unit.
 4. Test the draft against the output acceptance conditions and domain quality standards. If a check cannot run, mark it `not assessed` and never convert it into a pass.
 5. On failure, recover by preserving completed evidence, identifying the narrowest corrective action and owner, and rerunning only the affected checks before handoff.
 6. Produce the named artefact and evidence record; publish, sign, certify, mutate production, or accept risk only under explicit authority.
