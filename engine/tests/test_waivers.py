@@ -38,6 +38,17 @@ def test_does_not_match_after_expiry(tiny_project: Path):
     )
     assert reg.matches(finding, today=date(2026, 6, 1)) is None
 
+def test_waiver_only_applies_during_approved_interval(tiny_project: Path):
+    from datetime import timedelta
+    reg = WaiverRegister.load(tiny_project / "_registry" / "waivers.yaml")
+    waiver = next(iter(reg))
+    finding = Finding("kernel.no_unresolved_fail_markers", Severity.HIGH,
+                      "x", Path("_context/vision.md"), 4)
+    assert reg.matches(finding, waiver.approved_on - timedelta(days=1)) is None
+    assert reg.matches(finding, waiver.approved_on) is not None
+    assert reg.matches(finding, waiver.expires_on) is not None
+    assert reg.matches(finding, waiver.expires_on + timedelta(days=1)) is None
+
 def test_apply_strips_waived_findings(tiny_project: Path):
     reg = WaiverRegister.load(tiny_project / "_registry" / "waivers.yaml")
     findings = FindingCollection()

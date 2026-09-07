@@ -1,5 +1,29 @@
 # Repository Agents Guide
 
+## Codex-only model setup and Kaizen review
+
+Apply this section only when the active runner is Codex. Claude and other
+runners must skip it and retain their own models and full engine capabilities.
+
+Before substantive Codex work, resolve this engine's directory and an available
+Python 3.11+ interpreter (use its absolute path if absent from PATH), then run
+`python <engine-root>/.codex/ensure_model_policy.py --runtime codex --check`.
+If it reports configuration drift, Peter authorises the bounded
+`--runtime codex --apply` repair, followed by `--check`. The helper backs up
+changes and preserves unrelated settings. If Python or configuration access is
+unavailable, report the limitation; do not replace the user's config wholesale.
+Read `.codex/model-policy.md` for the full contract. Use Astra (`gpt-6-astra`)
+for the root/orchestrator and reviewer; explicitly pin execution subagents to
+Luna (`gpt-5.6-luna`). Delegate bounded work when useful and keep final review
+with Astra. A running session may need restarting for root settings to apply.
+
+Every Kaizen cycle MUST check latest official model releases and actual
+runtime availability, record dated evidence and a retain/change decision,
+and evaluate better candidates before recommending replacement. Preserve the
+pins until Peter authorises a verified change. Missing model-currentness
+evidence is `NOT_ASSESSED`. This Codex adapter must not change CLAUDE.md,
+Claude configuration, domain doctrine, permission settings or skill access.
+
 ## Universal agent integration
 
 See `.skills-engine/engine-manifest.yaml` for the declarative contract used by the optional universal coordination package. The router and domain SKILL.md files remain authoritative.
@@ -10,7 +34,7 @@ The package may read the router, discover skills, inspect Git, and run only decl
 
 Every Kaizen audit, skill edit, reference update, validator change, and
 standardisation decision MUST begin with the Digital Research Engine at
-`C:\wamp64\www\digital-research-engine`. Read its `source-evaluation` and
+`C:\wamp64\www\digital-research-skills`. Read its `source-evaluation` and
 `source-verification` skills and the currentness gate reference
 `docs/continuous-improvement/kaizen-currentness-gate.md`.
 
@@ -31,7 +55,7 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 ## Skill Families
 
-- Engineering/methodology skills live in the sibling **engineering catalog engine** at `C:\Users\Peter\.claude\skills` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router, then read the matching SKILL.md directly. Its `<category>` namespace is grouped into 15 categories; see the "Skill Categories" section in `CLAUDE.md`. Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
+- Engineering/methodology skills live in the sibling **engineering catalog engine** at `C:\wamp64\www\skills-web-dev` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router, then read the matching SKILL.md directly. Its `<category>` namespace is grouped into 15 categories; see the "Skill Categories" section in `CLAUDE.md`. Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
 - Root directories are reserved for project documentation and repository-level folders such as `docs/` and `projects/`, plus operational folders (`engine/`, `templates/`, `scripts/`, `domains/`) where relevant. Finance/accounting is the standalone cross-cutting **finance engine** at `C:\wamp64\www\chwezi-accounting-doctrine` — consult it whenever finance/IFRS/IAS/tax/bookkeeping arises, in addition to the active work.
 - Domain packs live under `domains/`. They are not skills by themselves; use them as context sources when a task is domain-specific.
 
@@ -39,11 +63,11 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 - New client-documentation or methodology-selection requests: start with `00-meta-initialization` (engineering catalog engine).
 - SDLC document generation or review: route to the relevant numbered phase skill first, then load supporting domain references from `domains/<domain>/`.
-- General software engineering work: start with `sdlc-meta/world-class-engineering` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`), then add the narrowest relevant skills.
-- Skill authoring or upgrades: use `sdlc-meta/skill-writing` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`).
-- Word or `.docx` output quality work: use `product-business/professional-word-output` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`).
-- BDS programme intake, selection, monitoring, or donor dashboard requirements: use `product-business/bds-intake-and-monitoring-system-spec` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`).
-- E-commerce platform, payment, API, AI, data-protection, or integration audit requirements: use `architecture/ecommerce-platform-audit-requirements` in the engineering catalog engine (`C:\Users\Peter\.claude\skills`).
+- General software engineering work: start with `sdlc-meta/world-class-engineering` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev`), then add the narrowest relevant skills.
+- Skill authoring or upgrades: use `sdlc-meta/skill-writing` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev`).
+- Word or `.docx` output quality work: use `product-business/professional-word-output` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev`).
+- BDS programme intake, selection, monitoring, or donor dashboard requirements: use `product-business/bds-intake-and-monitoring-system-spec` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev`).
+- E-commerce platform, payment, API, AI, data-protection, or integration audit requirements: use `architecture/ecommerce-platform-audit-requirements` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev`).
 
 ## Skill Authoring and Release Gate
 

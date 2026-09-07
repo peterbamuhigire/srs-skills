@@ -34,7 +34,7 @@ class Waiver:
     def applies_to(self, finding: Finding, today: date) -> bool:
         if finding.gate_id != self.gate:
             return False
-        if today > self.expires_on:
+        if not self.approved_on <= today <= self.expires_on:
             return False
         if finding.location is None:
             return self.scope in ("*", "")

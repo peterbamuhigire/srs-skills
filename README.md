@@ -351,7 +351,7 @@ Clone this engine beside your project or copy it into your standard tools worksp
 
 ```bash
 git clone https://github.com/peterbamuhigire/srs-skills.git
-cd skills
+cd srs-skills
 git checkout main
 ```
 
@@ -576,7 +576,7 @@ Many existing skill-local files still use `../project_context/` and `../output/`
 - 5 orchestration strategies (Sequential, Parallel, Conditional, Looping, Retry)
 - 3 AI-specific patterns (Agent Handoff, Fan-Out/Fan-In, Human-in-the-Loop)
 - Real-world examples from MADUUKA and BRIGHTSOMA projects
-- 30-75% faster development through parallelization
+- Parallel task coordination; performance gains require measured project evidence.
 
 👉 **[Learn AI Agent Orchestration](skills/ai-assisted-development/SKILL.md)**
 
@@ -589,7 +589,7 @@ Many existing skill-local files still use `../project_context/` and `../output/`
 - 7 prevention strategies to catch Claude's mistakes early
 - Common failure modes: Hallucination, Incomplete Solutions, Misunderstanding, Lazy Solutions
 - App-specific checklists (MADUUKA, MEDIC8, BRIGHTSOMA, DDA, CROWNPOINT)
-- **Saves 50-75% of wasted tokens** through early error detection
+- Early error detection; token savings are not established by this repository audit.
 
 👉 **[Learn Error Prevention](skills/ai-error-prevention/SKILL.md)**
 
@@ -625,8 +625,7 @@ Many existing skill-local files still use `../project_context/` and `../output/`
 
 #### **prompting-patterns-reference.md**
 10 essential patterns for better AI instructions
-- Reduces clarification questions by 50%
-- Improves first-time-right code by 60%
+- Supports clearer inputs and verification; outcome improvements require project measurements.
 - Patterns: Clear Task+Context+Constraints, Chain-of-Thought, Few-Shot Learning, etc.
 
 #### **orchestration-patterns-reference.md**
@@ -671,7 +670,7 @@ ACCEPTANCE OR ITERATION
 └─ All checks passed? → USE CODE ✓
 ```
 
-**Result:** Production-ready code, 50-75% fewer wasted tokens, higher quality output
+**Result:** A review workflow. Production readiness and token savings require separate execution and outcome evidence.
 
 ---
 
