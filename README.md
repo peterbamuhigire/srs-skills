@@ -1081,3 +1081,9 @@ The default coverage gate was also invoked and failed its configured 90%
 threshold because this selected run covered 13% of the whole engine; this is a
 test limitation, not a readiness result. Next action is to wire the declaration
 into the broader project evidence and acceptance workflow.
+## Agent runtime safety — 2026-09-07
+
+[`docs/agent-runtime-safety.md`](docs/agent-runtime-safety.md) adds a
+runner-neutral plan/build/verify contract with evidence checkpoints, disposable
+memory, sanitization of foreign content, approval boundaries, observability,
+kill-switch guidance, and reversible delivery handoffs.
