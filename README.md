@@ -1064,3 +1064,20 @@ This project builds on industry standards:
 | **Methodology Selection** | `00-meta-initialization` (<a href="https://github.com/peterbamuhigire/chwezi-dev-engine" target="_blank" rel="noopener noreferrer">Chwezi Dev Engine</a>) | Documentation roadmap |
 | **Design Docs** | `03-design-documentation/01-high-level-design` | HLD, architecture diagrams |
 | **Traceability** | `09-governance-compliance/01-traceability-matrix` | RTM, audit report |
+
+## Kaizen P0 implementation status — 2026-09-07
+
+The behavioural traceability fixture now carries a machine-checkable `evidence`
+declaration: decision identifier, decision text, evidence paths, and review
+status. `engine/checks/fixture_manifest.py` validates the declaration, while
+the behavioural fixture test covers both valid evidence and a missing decision
+identifier. The declaration is synthetic test evidence; project acceptance,
+live test execution, deployment, and operational readiness remain
+NOT_ASSESSED.
+
+The focused checks pass with `python -B -X utf8 -m pytest --no-cov -q
+engine/tests/test_traceability_behavioural_fixture.py engine/tests/test_waivers.py`.
+The default coverage gate was also invoked and failed its configured 90%
+threshold because this selected run covered 13% of the whole engine; this is a
+test limitation, not a readiness result. Next action is to wire the declaration
+into the broader project evidence and acceptance workflow.

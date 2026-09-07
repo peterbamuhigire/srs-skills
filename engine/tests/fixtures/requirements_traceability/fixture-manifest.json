@@ -6,5 +6,11 @@
     "ambiguity-resolution",
     "acceptance-criteria",
     "controlled-change"
-  ]
+  ],
+  "evidence": {
+    "decision_id": "TRACEABILITY-FIXTURE-001",
+    "decision": "accepted-for-structural-and-behavioural-gate-testing",
+    "evidence_paths": ["02-requirements-engineering/requirements.md", "05-testing-documentation/test-case.md"],
+    "review_status": "synthetic-test-only"
+  }
 }

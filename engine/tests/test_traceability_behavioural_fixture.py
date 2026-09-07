@@ -11,6 +11,7 @@ from engine.checks.traceability import TraceabilityCheck
 from engine.findings import FindingCollection
 from engine.gates.phase02 import Phase02Gate
 from engine.workspace import Workspace
+from engine.checks.fixture_manifest import validate_fixture_manifest
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -35,6 +36,7 @@ def test_traceability_fixture_covers_ambiguity_acceptance_and_controlled_change(
         "acceptance-criteria",
         "controlled-change",
     }
+    assert validate_fixture_manifest(manifest) == []
     assert "Ambiguity status: resolved" in requirements
     assert "**AC-001**" in requirements
     assert "Given" in test_case and "when" in test_case and "then" in test_case
@@ -65,6 +67,12 @@ def test_traceability_fixture_covers_ambiguity_acceptance_and_controlled_change(
         graph, change_findings
     )
     assert list(change_findings) == []
+
+
+def test_fixture_evidence_declaration_rejects_missing_decision(tmp_path: Path) -> None:
+    manifest = json.loads((FIXTURE / "fixture-manifest.json").read_text(encoding="utf-8"))
+    del manifest["evidence"]["decision_id"]
+    assert any("evidence missing fields" in error for error in validate_fixture_manifest(manifest))
 
 
 def _copy_fixture(tmp_path: Path) -> Path:
