@@ -34,6 +34,8 @@ Acknowledgement: Shared by Peter Bamuhigire, techguypeter.com.
 2. Inventory phase routes, traceability, templates, examples, deterministic gates, project evidence, and cross-engine handoffs.
 3. Score each applicable dimension and output type. Publish `min(raw score, 65)` and list blockers separately.
 4. Audit purpose, requirements quality, traceability, architecture/design coherence, test and failed-path evidence, accessibility, security, deployment, operations, governance, and handoff.
+   For client-facing or visual work, also load `references/ux-friction-and-premium-experience-requirements.md`
+   and test whether the SRS captures purpose-fit design intent without prescribing a copied visual style.
 5. Build a P0/P1/P2 remediation plan targeting 95/100 with named files, owners, measures, acceptance evidence, and rollback.
 6. Run one small PDCA or retrospective experiment. If a gate fails, stop, recover the last safe artefact, and rerun the affected checks.
 7. Promote successful learning into the relevant skill, addendum, template, fixture, routing rule, or governance gate; schedule re-audit.
@@ -69,6 +71,9 @@ If project evidence, renders, tools, reviewers, or current sources are unavailab
 ## Quality Standards
 
 Documentation never substitutes for executable, rendered, user, security, or release evidence. Preserve Waterfall, Agile, and Hybrid distinctions.
+Requirements for premium UX must name the client context, user job, information hierarchy, critical states,
+accessibility and responsive expectations, measurable outcome, and design-trace link. They must preserve
+creative authorship as a decision with rationale, not turn a competitor's surface treatment into a requirement.
 
 ## Mandatory 65-to-95 gate
 
@@ -88,6 +93,10 @@ or game document). Each product must carry its own traceability evidence.
 - Calling a template compliant without project proof. Fix: verify authority and evidence.
 - Adding process without reducing waste. Fix: measure cycle time, defects, rework, or decision latency.
 - Closing a gap without re-running gates. Fix: require before/after proof.
+- Treating “premium” or “world-class” as an untestable adjective. Fix: decompose it into client fit,
+  purpose, authored thesis, state coverage, and acceptance evidence.
+- Copying a reference product into normative requirements. Fix: capture the transferable user principle,
+  reject the recognisable surface treatment, and trace the new design thesis.
 
 ## Worked Example
 
@@ -111,5 +120,6 @@ security, platform, and lifecycle claims; quarantine unsupported claims as
 - [Product audit evidence matrix](references/product-audit-evidence-matrix.md)
 - [Book-driven improvement and adoption](references/book-driven-improvement-and-adoption.md) - improvement hypotheses, transfer evidence, agent decision safety, and currentness boundary.
 - [Book-driven Kaizen Wave 3](references/book-driven-kaizen-wave-3-2026-09-02.md) - cross-engine contracts, testing, failure paths, traceability, and currentness boundaries.
+- [UX friction and premium experience requirements](references/ux-friction-and-premium-experience-requirements.md) - converts targeted UX improvements, dashboard hierarchy, and purpose-fit authorship into traceable SRS evidence.
 
 <!-- dual-compat-end -->

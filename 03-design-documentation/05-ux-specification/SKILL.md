@@ -377,6 +377,9 @@ The system shall produce developer-ready handoff specifications:
 - Interaction timing shall match specification within 50ms tolerance.
 - Premium products shall include a premium UI/UX gate score with every category at 8/10 or better before design sign-off.
 
+## Premium experience and originality addendum
+Apply `09-governance-compliance/31-kaizen-engine-and-product-improvement/references/ux-friction-and-premium-experience-requirements.md` for client-facing, dashboard, onboarding, data-entry, or high-stakes UX; it requires client context, a purpose-fit thesis, authored decisions, decision-surface logic, critical states, measures, handoff proof, and `NOT ASSESSED` for missing render or user evidence.
+
 ## Output Format
 
 The generated `UX_Specification.md` shall use this section structure with a Document Header (Date, Version, Authors, Standard), followed by eight sections:
