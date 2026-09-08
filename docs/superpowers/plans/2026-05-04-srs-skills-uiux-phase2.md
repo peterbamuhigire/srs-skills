@@ -6,7 +6,7 @@
 
 **Architecture:** Documentation/skill upgrade — markdown only. Each task creates or extends a markdown file. Verification = file exists, expected line count, grep markers pass. One commit at end.
 
-**Tech Stack:** Markdown only. Sources at `C:\Users\BIRDC\.claude\skills\book-extractions\` (read-only). Targets at `C:\wamp64\www\srs-skills\`.
+**Tech Stack:** Markdown only. Read-only sources in the [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) `book-extractions/` directory; targets in this SRS engine repository.
 
 **Spec:** `C:\wamp64\www\srs-skills\docs\superpowers\specs\2026-05-04-srs-skills-uiux-phase2-design.md`
 
@@ -36,7 +36,7 @@ srs-skills/
 ## Conventions
 
 - Each SKILL.md append marks itself: `## <Section Title> (added 2026-05-04 from <book>)`
-- Shared doc starts with provenance citing canonical extractions at `C:\Users\BIRDC\.claude\skills\book-extractions\`
+- Shared doc starts with provenance citing the Chwezi Dev Engine's canonical `book-extractions/` directory
 - Do NOT modify existing frontmatter; do NOT introduce emojis
 - Append at end-of-file with leading blank line
 
@@ -51,7 +51,7 @@ srs-skills/
 
 ```markdown
 # UX Foundations — srs-skills
-**Source:** Distilled from canonical extractions at `C:\Users\BIRDC\.claude\skills\book-extractions\` (Phase 1 deliverable, 2026-05-04).
+**Source:** Distilled from the [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) canonical `book-extractions/` directory (Phase 1 deliverable, 2026-05-04).
 **Used by:** 03-design-documentation/05-ux-specification, 01-strategic-vision/01-prd-generation, 01-strategic-vision/03-vision-statement, 01-strategic-vision/04-lean-canvas, 01-strategic-vision/07-premium-product-positioning.
 
 ---
@@ -267,7 +267,7 @@ Overall experience with the organization (customer experience level). Examples: 
 - `deacon-ux-ui-strategy-extraction.md`
 - `fekeshazi-pm-ux-guide-extraction.md`
 
-All located at `C:\Users\BIRDC\.claude\skills\book-extractions\`.
+All located in the Chwezi Dev Engine's `book-extractions/` directory.
 
 ### Skill consumption map
 - `03-design-documentation/05-ux-specification/` — uses Sections 1, 3, 4, 5 (deepest integration)

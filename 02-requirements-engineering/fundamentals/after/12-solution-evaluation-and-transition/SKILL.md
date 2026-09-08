@@ -168,3 +168,8 @@ Write `projects/<ProjectName>/<phase>/<document>/solution_evaluation_transition_
 - [ ] Go/no-go criteria are explicit and measurable.
 - [ ] Adoption, support, and hypercare plans are documented.
 - [ ] Post-implementation evaluation metrics are tied to goals.
+
+For Java/JVM platform or framework transitions, apply the
+[Java enterprise requirements overlay](../../../references/java-enterprise-requirements-overlay.md)
+to define compatibility stages, reconciliation, rollout stops, recovery and
+retirement evidence.

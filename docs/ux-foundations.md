@@ -1,5 +1,5 @@
 # UX Foundations — srs-skills
-**Source:** Distilled from canonical extractions at `C:\Users\BIRDC\.claude\skills\book-extractions\` (Phase 1 deliverable, 2026-05-04).
+**Source:** Distilled from the [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) canonical `book-extractions/` directory (Phase 1 deliverable, 2026-05-04).
 **Used by:** 03-design-documentation/05-ux-specification, 01-strategic-vision/01-prd-generation, 01-strategic-vision/03-vision-statement, 01-strategic-vision/04-lean-canvas, 01-strategic-vision/07-premium-product-positioning.
 
 ---
@@ -215,7 +215,7 @@ Overall experience with the organization (customer experience level). Examples: 
 - `deacon-ux-ui-strategy-extraction.md`
 - `fekeshazi-pm-ux-guide-extraction.md`
 
-All located at `C:\Users\BIRDC\.claude\skills\book-extractions\`.
+All located in the Chwezi Dev Engine's `book-extractions/` directory.
 
 ### Skill consumption map
 - `03-design-documentation/05-ux-specification/` — uses Sections 1, 3, 4, 5 (deepest integration)

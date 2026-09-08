@@ -16,10 +16,10 @@ example and validate it, run these five commands:
 ```bash
 git clone https://github.com/peterbamuhigire/srs-skills.git
 cd srs-skills
-# Engineering/methodology skills live in the sibling engineering catalog engine at
-#   C:\Users\BIRDC\.claude\skills  (skills under skills/<category>/<skill-name>/SKILL.md)
-# Finance/accounting lives in the sibling finance engine at
-#   C:\wamp64\www\chwezi-accounting-doctrine  (consult its README.md router)
+# Resolve engineering/methodology skills through the Chwezi Dev Engine:
+#   https://github.com/peterbamuhigire/chwezi-dev-engine
+# Resolve finance/accounting doctrine through the Chwezi Accounting Doctrine:
+#   https://github.com/peterbamuhigire/chwezi-accounting-doctrine
 pip install -e ".[dev]"
 python -m engine doctor
 python -m engine new-project Acme --methodology waterfall --domain healthcare --example healthcare-saas

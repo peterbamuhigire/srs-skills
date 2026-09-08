@@ -303,3 +303,4 @@ The generated `requirements_analysis_report.md` SHALL contain the following sect
 - `references/feasibility-analysis.md` -- TELOS framework with scoring rubric
 - `references/requirements-prioritization.md` -- Four prioritization methods compared
 - `references/goal-modeling.md` -- KAOS and i* goal-oriented requirements engineering
+- [Java enterprise requirements overlay](../../../references/java-enterprise-requirements-overlay.md) -- analyse Java/JVM constraints as supported lifecycle, correctness, resource, failure, and migration obligations

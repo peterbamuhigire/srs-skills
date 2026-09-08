@@ -423,3 +423,4 @@ Each finding in Section 2 shall use this format:
 - `references/domain-checklists.md` -- Domain-specific elicitation checklists
 - `references/benchmarking-template.md` -- Benchmark comparison table and gap classification guide (Technique G)
 - `references/artifact-analysis-checklist.md` -- Artifact inventory, business rule extraction, and migration gap checklist (Technique H)
+- [Java enterprise requirements overlay](../../../references/java-enterprise-requirements-overlay.md) -- elicit version, transaction, failure, migration, production, and support evidence for Java/JVM estates

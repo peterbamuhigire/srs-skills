@@ -36,8 +36,11 @@ git diff --check
 
 Run the canonical quick validator for each changed skill directory:
 
+Resolve the [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine)
+through the global engine registry, then run its canonical validator:
+
 ```powershell
-python -X utf8 C:\Users\Peter\.claude\skills\skills\sdlc-meta\skill-writing\scripts\quick_validate.py <skill-directory>
+python -X utf8 <chwezi-dev-engine-root>\skills\sdlc-meta\skill-writing\scripts\quick_validate.py <skill-directory>
 ```
 
 The baseline must remain empty. Do not add findings to it. A deliberate active-skill or template-count change requires an evidence-backed routing decision, updated fixtures, and an explicit baseline count update in the same change.

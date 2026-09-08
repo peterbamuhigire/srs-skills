@@ -9,7 +9,7 @@ from engine.artifact_graph import ArtifactGraph
 from engine.findings import FindingCollection
 from engine.gates.base import GateRegistry
 from engine.checks.markers import NoUnresolvedFailMarkersGate
-from engine.waivers import WaiverRegister
+from engine.waivers import WaiverError, WaiverRegister, validate_scope
 from engine.reporters.markdown import render_markdown
 from engine.reporters.junit import render_junit
 from engine.reporters.sarif import render_sarif
@@ -209,15 +209,27 @@ def waive(project: str, gate: str, scope: str, reason: str,
     """Append a new waiver to the project's _registry/waivers.yaml."""
     from datetime import date, timedelta
     from ruamel.yaml import YAML
-    if days > 90:
-        click.echo(f"ERROR: --days must be <= 90 (got {days})", err=True)
-        sys.exit(1)
+    if not 1 <= days <= 90:
+        raise click.ClickException(f"--days must be between 1 and 90 (got {days})")
+    for field, value in (("gate", gate), ("reason", reason), ("approver", approver)):
+        if not value.strip():
+            raise click.ClickException(f"--{field} must be a non-empty value")
+    try:
+        scope = validate_scope(scope)
+    except WaiverError as exc:
+        raise click.ClickException(str(exc)) from exc
     yaml = YAML()
     ws = Workspace.load(Path(project))
     reg_dir = ws.root / "_registry"
     reg_dir.mkdir(exist_ok=True)
     waivers_path = reg_dir / "waivers.yaml"
     if waivers_path.exists():
+        try:
+            WaiverRegister.load(waivers_path)
+        except WaiverError as exc:
+            raise click.ClickException(
+                f"Existing waiver register is invalid; no change made: {exc}"
+            ) from exc
         data = yaml.load(waivers_path.read_text(encoding="utf-8")) or {"waivers": []}
     else:
         data = {"waivers": []}

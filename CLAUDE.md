@@ -7,8 +7,8 @@ You are an expert Systems Architect. You are assisting in developing and executi
 ## Directory Logic & Pathing
 
 - **Repository Root:** This directory (where root project documentation and repository-level folders live).
-- **Skills:** Engineering/methodology skills live in the sibling **engineering catalog engine** at `C:\Users\Peter\.claude\skills` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router, then read the matching SKILL.md directly. Use these skills for methodology selection, document generation support, and reusable engineering workflows.
-- **Finance/Accounting:** Finance/accounting is the standalone cross-cutting **finance engine** at `C:\wamp64\www\chwezi-accounting-doctrine` — consult it whenever finance/IFRS/IAS/tax/bookkeeping arises, in addition to the active work.
+- **Skills:** Engineering/methodology skills live in the [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) (skills under `skills/<category>/<skill-name>/SKILL.md`). Resolve the engine through the global engine registry, consult its router, then read the matching `SKILL.md` directly. Use these skills for methodology selection, document generation support, and reusable engineering workflows.
+- **Finance/Accounting:** Finance/accounting is the standalone cross-cutting [Chwezi Accounting Doctrine](https://github.com/peterbamuhigire/chwezi-accounting-doctrine) engine. Resolve it through the global engine registry and consult it whenever finance, IFRS, IAS, tax, or bookkeeping arises, in addition to the active work.
 - **Domain Knowledge:** Located in `/domains/`. Read the relevant domain `INDEX.md` when generating requirements for a domain-specific project.
 - **Project Workspace:** Located in `projects/<ProjectName>/` (untracked, gitignored). All client documentation is built here.
 - **Context Source of Truth:** Read all project-specific data from `projects/<ProjectName>/_context/`.
@@ -90,7 +90,7 @@ Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: 
 
 ## Skill Categories
 
-The engineering catalog engine (`C:\Users\Peter\.claude\skills`) organizes its portable skill catalog into 15 category subdirectories under `<category>/<skill-name>/...`. When routing to an individual skill, always include the category segment in the path.
+The [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) organises its portable skill catalogue into 15 category subdirectories under `<category>/<skill-name>/...`. When routing to an individual skill, always include the category segment in the path.
 
 | Category | Scope |
 | --- | --- |
@@ -110,7 +110,7 @@ The engineering catalog engine (`C:\Users\Peter\.claude\skills`) organizes its p
 | `sdlc-meta` | World-class engineering, engineering management/strategy, advanced testing strategy, E2E testing, AI-assisted development, git collaboration workflow, plan implementation, project requirements, SDLC (planning/design/documentation/testing/user-deploy), markdown lint cleanup, doc-architect, capability matrix, continuous improvement, custom sub-agents, implementation status auditor, skill-writing, skill safety audit, skill composition standards, update-claude-documentation. |
 | `security` | Code safety scanner, DPIA generator, dual-auth RBAC, Linux security hardening, network security, Uganda DPPA compliance, vibe security skill, web app security audit. |
 
-To locate a specific skill quickly: `ls "C:\Users\Peter\.claude\skills\skills\<category>"` in the engineering catalog engine, then read the matching `<skill-name>/SKILL.md`.
+To locate a specific skill quickly, resolve the Chwezi Dev Engine through the global engine registry, inspect `skills/<category>/`, then read the matching `<skill-name>/SKILL.md`.
 
 ## Skill authoring gate
 
@@ -267,7 +267,7 @@ The validation kernel (`python -m engine validate <project>`) will fail if:
 
 ## Finance & Accounting Trigger
 
-Consult the finance engine at `C:\wamp64\www\chwezi-accounting-doctrine` whenever the user's request, the artefact being generated, or the code being edited touches **any** of:
+Consult the [Chwezi Accounting Doctrine](https://github.com/peterbamuhigire/chwezi-accounting-doctrine) engine whenever the user's request, the artefact being generated, or the code being edited touches **any** of:
 
 - Money flows: sales, purchases, payments, refunds, credit notes, expenses
 - Stock and inventory
@@ -284,13 +284,13 @@ Consult the finance engine at `C:\wamp64\www\chwezi-accounting-doctrine` wheneve
 
 When the trigger fires:
 
-1. Consult the finance engine at `C:\wamp64\www\chwezi-accounting-doctrine` — start from its `README.md` router.
+1. Resolve the Chwezi Accounting Doctrine through the global engine registry and start from its `README.md` router.
 2. Follow the router to the relevant doctrine and reference material in that engine.
 3. Read the relevant finance skill `SKILL.md` in that engine.
 4. Apply the **finance & accounting quality gate** defined in that engine.
 5. Record the gate run in the artefact manifest.
 
-The `finance-module-audit` skill (in the finance engine at `C:\wamp64\www\chwezi-accounting-doctrine`) auto-runs whenever the user asks to analyse, review, audit, build, propose, or replace any software system with even a slight finance element.
+The `finance-module-audit` skill in the Chwezi Accounting Doctrine auto-runs whenever the user asks to analyse, review, audit, build, propose, or replace any software system with even a slight finance element.
 
 
 <!-- design-system-skills:trigger v1 -->

@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026-09-08] - Waiver Integrity and Engine Routing
+
+### Changed
+
+- Hardened waiver loading and CLI writes against malformed YAML, invalid field
+  types, duplicate IDs, unsafe scopes, blank approvals, and invalid durations.
+- Routed Codex and Claude to the
+  [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine)
+  without embedding a machine-specific checkout path; removed stale
+  home-mirror references.
+- Added the comprehensive Kaizen evidence record at
+  `docs/audits/2026-09-08-comprehensive-kaizen.md`.
+
+### Validation
+
+- 157 active skills and 52/52 routing fixtures pass; the engine contract,
+  source-ingestion guard, and 255 tests pass. The configured 90% coverage gate
+  passes at 95.93% total coverage.
+
 ## [2026-08-09] - Kraal Code Product Identity Migration
 
 ### Changed
@@ -54,7 +73,7 @@ All notable changes to this project will be documented in this file. This projec
 
 ### Added
 
-- **`docs/plans/execute-completion/`** — 10-phase execution plan to complete the `C:\Users\Peter\.claude\skills\` library to a world-class SDLC software execution engine for Chwezi Core Systems ICT consultancy.
+- **`docs/plans/execute-completion/`** — 10-phase execution plan to complete the canonical [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) library as an SDLC software execution engine for Chwezi Core Systems ICT consultancy.
   - `README.md` — Master index: all 12 new skills, 8 enhancements, 3 stubs, and 4 deprecations in one summary table; priority override directing infrastructure phases first.
   - `phase-01.md` — Client Engagement, Discovery & Strategic Planning: 15 existing skills inventoried; practice workflow and reading list (Nomadic Developer, INSPIRED, Software Requirements).
   - `phase-02.md` — Requirements Engineering & Documentation Engine: full 8-phase SRS workflow, Uganda DPPA compliance annex, professional Word output; already world-class.

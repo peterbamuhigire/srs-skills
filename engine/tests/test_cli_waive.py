@@ -1,6 +1,7 @@
 from datetime import date, timedelta
 from pathlib import Path
 from click.testing import CliRunner
+import pytest
 from ruamel.yaml import YAML
 from engine.cli import main
 
@@ -37,7 +38,8 @@ def test_waive_creates_waiver_entry(tmp_path: Path):
     assert w["expires_on"] == (date.today() + timedelta(days=30)).isoformat()
 
 
-def test_waive_rejects_days_gt_90(tmp_path: Path):
+@pytest.mark.parametrize("days", ["0", "120"])
+def test_waive_rejects_days_outside_approved_range(tmp_path: Path, days: str):
     project = _mkproject(tmp_path)
     runner = CliRunner()
     result = runner.invoke(main, [
@@ -45,9 +47,43 @@ def test_waive_rejects_days_gt_90(tmp_path: Path):
         "--gate", "phase02.smart_nfr",
         "--reason", "deferred",
         "--approver", "Tech Lead",
-        "--days", "120",
+        "--days", days,
     ])
     assert result.exit_code == 1
+
+
+def test_waive_rejects_scope_outside_project_without_writing(tmp_path: Path):
+    project = _mkproject(tmp_path)
+    result = CliRunner().invoke(main, [
+        "waive", str(project),
+        "--gate", "phase02.smart_nfr",
+        "--scope", "../outside.md",
+        "--reason", "deferred",
+        "--approver", "Tech Lead",
+    ])
+    assert result.exit_code == 1
+    assert "scope" in result.output
+    assert not (project / "_registry" / "waivers.yaml").exists()
+
+
+def test_waive_preserves_existing_invalid_register(tmp_path: Path):
+    project = _mkproject(tmp_path)
+    registry = project / "_registry"
+    registry.mkdir()
+    waivers_path = registry / "waivers.yaml"
+    original = "waivers: not-a-list\n"
+    waivers_path.write_text(original, encoding="utf-8")
+
+    result = CliRunner().invoke(main, [
+        "waive", str(project),
+        "--gate", "phase02.smart_nfr",
+        "--reason", "deferred",
+        "--approver", "Tech Lead",
+    ])
+
+    assert result.exit_code == 1
+    assert "no change made" in result.output
+    assert waivers_path.read_text(encoding="utf-8") == original
 
 
 def test_signoff_creates_ledger_entry(tmp_path: Path):

@@ -2,9 +2,9 @@
 
 Date: 2026-07-13
 
-Engine: `C:\wamp64\www\srs-skills`
+Engine: [SRS Skills](https://github.com/peterbamuhigire/srs-skills)
 
-Benchmark: canonical `skills-web-dev` skill-writing, composition, engine-audit, anti-slop, and slop-audit contracts at `C:\Users\Peter\.claude\skills`
+Benchmark: canonical [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) skill-writing, composition, engine-audit, anti-slop, and slop-audit contracts
 
 ## Before state
 

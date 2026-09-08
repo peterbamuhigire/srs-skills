@@ -81,6 +81,7 @@ If any required capability is unavailable, return the narrowest useful qualified
 
 - [Strategy brief template](references/engineering-strategy-brief-template.md)
 - [SaaS architecture assumptions](references/saas-architecture-assumptions-and-scaling-checklist.md)
+- [Java enterprise requirements overlay](../../02-requirements-engineering/references/java-enterprise-requirements-overlay.md) -- use for Java platform policy, modernisation stages, evidence gates and implementation handoff
 - [HLD neighbour](../01-high-level-design/SKILL.md)
 <!-- dual-compat-end -->
 

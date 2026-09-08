@@ -29,7 +29,7 @@ product audits. Published audit scores are hard-capped at 65/100; remediation pl
 95/100 and must be proven through deterministic gates, traceability, failed-path evidence,
 and a dated re-audit. Current external claims route to the <a href="https://github.com/peterbamuhigire/digital-research-skills" target="_blank" rel="noopener noreferrer">Digital Research Skills Engine</a>.
 
-The active catalogue contains 157 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 50 routing fixtures at a top-three precision threshold of 100%.
+The active catalogue contains 157 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 52 routing fixtures at a top-three precision threshold of 100%.
 
 ```powershell
 python -X utf8 scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json
@@ -992,17 +992,16 @@ See `docs/MIGRATION_V2_TO_V3.md` for complete migration guide.
 
 ### v3.1.0 (2026-02-07)
 - AI-Assisted Development Skills (4 skills + 3 reference guides)
-- Token efficiency improvements (50-75% savings)
+- Token-efficiency guidance; this repository retains no measured savings evidence for that release
 
 ### v3.0.0 (2026-02-06)
 - Multi-methodology support (Waterfall + Agile)
 - Reorganized phase structure (00-09)
 - Agile user story generation skill
 
-### v4.0.0 (Planned - Q3 2026)
-- ⏳ Automated doc generation from code (API docs, schema docs)
-- ⏳ Integration with CI/CD pipelines
-- ⏳ Multi-language support (docs in Spanish, French, etc.)
+### Historical v4.0.0 roadmap (recorded for Q3 2026)
+- Automated documentation from code, CI/CD integration, and multilingual output were proposed.
+- Delivery against that historical roadmap is `NOT ASSESSED`; use current project and release evidence before treating an item as implemented.
 
 ---
 

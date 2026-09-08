@@ -26,7 +26,7 @@ Hybrid (per user choice "D"): one shared doc holds cross-cutting UX foundations 
 
 **Note on `skills/ux-standards.md`:** This existing file is a SaaS implementation-patterns doc (Select2 dropdowns, etc.), not a UX-philosophy doc. It is **not modified** by this spec. The new `docs/ux-foundations.md` lives at a different layer (philosophy + process) and references the canonical extractions in `book-extractions/`.
 
-**Note on `book-extractions/`:** SRS does NOT have a local `book-extractions/` folder (per Phase 1 spec — SRS references the canonical at `C:\Users\BIRDC\.claude\skills\book-extractions\`). The new doc cites that canonical path.
+**Note on `book-extractions/`:** SRS does NOT have a local `book-extractions/` folder (per Phase 1 spec). It references the canonical `book-extractions/` directory in the [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine).
 
 ## New shared doc — `docs/ux-foundations.md`
 

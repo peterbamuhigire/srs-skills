@@ -327,6 +327,7 @@ Write `projects/<ProjectName>/<phase>/<document>/traceability_matrix.md` followi
 
 - `references/trace-matrix-template.md`: Traceability matrix template and usage guide.
 - `references/trace-link-types.md`: Trace link taxonomy and bidirectional maintenance rules.
+- [Java enterprise requirements overlay](../../../references/java-enterprise-requirements-overlay.md): trace Java requirements through implementation, tests, migrations, release evidence, telemetry and runbook ownership.
 
 ---
 **Last Updated:** 2026-03-07

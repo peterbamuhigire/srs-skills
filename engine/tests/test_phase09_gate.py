@@ -281,6 +281,29 @@ def test_flags_waiver_with_expiry_before_approval(tmp_path):
     assert "expiry before approval date" in msgs[0]
 
 
+def test_flags_waiver_without_positive_approval_window(tmp_path):
+    graph = _ws(tmp_path, {
+        "_context/vision.md": "# Vision",
+        "_registry/waivers.yaml": (
+            "waivers:\n"
+            "  - id: \"W-004\"\n"
+            "    gate: \"phase02.smart_nfr\"\n"
+            "    scope: \"*\"\n"
+            "    reason: \"No effective window\"\n"
+            "    approver: \"peter\"\n"
+            "    approved_on: 2026-05-01\n"
+            "    expires_on: 2026-05-01\n"
+        ),
+    })
+    findings = FindingCollection()
+    Phase09Gate().evaluate(graph, findings)
+    msgs = [f.message for f in findings
+            if f.gate_id == "phase09.waivers_have_expiry"]
+    assert len(msgs) == 1
+    assert "W-004" in msgs[0]
+    assert "minimum allowed: 1 day" in msgs[0]
+
+
 # -- clause attachment ------------------------------------------------------
 
 def test_findings_carry_iso_27001_clause_label(tmp_path):

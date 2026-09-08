@@ -231,6 +231,17 @@ class Phase09Gate(Gate):
                         f"{waiver.expires_on})"
                     ),
                     location=Path("_registry/waivers.yaml"),
+                        line=None,
+                    ), _CLAUSE_WAIVERS))
+            elif delta == 0:
+                findings.add(attach_clause(Finding(
+                    gate_id=f"{self.id}.waivers_have_expiry",
+                    severity=Severity.HIGH,
+                    message=(
+                        f"Waiver '{waiver.id}' has no approval window "
+                        "(minimum allowed: 1 day)"
+                    ),
+                    location=Path("_registry/waivers.yaml"),
                     line=None,
                 ), _CLAUSE_WAIVERS))
             elif delta > 90:
