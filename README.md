@@ -1,6 +1,6 @@
 # SDLC-Docs-Engine: Standards-Driven Documentation Across the Software Lifecycle
 
-**SDLC-Docs-Engine** (formerly SRS-Skills) is a requirements and SDLC documentation engine for turning a real project context into precise, traceable decisions, specifications, acceptance oracles, test artefacts, release evidence, and operational handoffs. It works in deliberate slices—actors, states, constraints, data transitions, failure paths, and evidence—so downstream engineering and design teams can build from understood detail rather than an opaque brief.
+**SDLC-Docs-Engine** is a requirements and SDLC documentation engine for turning a real project context into precise, traceable decisions, specifications, acceptance oracles, test artefacts, release evidence, and operational handoffs. It works in deliberate slices—actors, states, constraints, data transitions, failure paths, and evidence—so downstream engineering and design teams can build from understood detail rather than an opaque brief.
 
 Product owners, business analysts, software architects, delivery teams, testers, operators, and reviewers use it to turn agreed scope into requirements, design records, acceptance and test artefacts, release evidence, and handoff material. Its skills address unclear scope, missing traceability, inconsistent deliverables, and weak phase-to-phase handovers.
 
