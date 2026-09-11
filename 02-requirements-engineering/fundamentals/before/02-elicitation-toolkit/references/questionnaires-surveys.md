@@ -56,7 +56,8 @@ Use a 5-point scale for consistency:
 | **Short Answer** | 1-2 sentence response | Specific feedback | "What is the most frustrating part of the current process?" |
 | **Long Answer** | Paragraph response | Detailed exploration | "Describe your ideal workflow for order processing." |
 
-**Guideline**: Limit open-ended questions to 2-3 per survey. They produce rich data but are harder to analyze at scale.
+Use only the open-ended questions needed for the decision frontier. Pilot the completion time and
+analysis burden rather than applying a universal question-count rule.
 
 ## Survey Design Template
 
@@ -127,14 +128,16 @@ Use a 5-point scale for consistency:
 
 ## Distribution Strategies
 
-| Strategy | Channel | Best For | Response Rate |
-|----------|---------|----------|---------------|
-| **Email Distribution** | Direct email with survey link | Known stakeholder list | 30-50% |
-| **Meeting Embed** | Distribute during a scheduled meeting | Captive audience | 70-90% |
-| **Intranet Post** | Post on company intranet or collaboration tool | Broad reach | 10-20% |
-| **Facilitated Session** | Complete survey together in a group setting | High completion, immediate | 95-100% |
+| Strategy | Channel | Best For | Required control |
+|----------|---------|----------|------------------|
+| **Email distribution** | Direct email with survey link | Known stakeholder list | consent, sender identity, deadline, reminder policy |
+| **Meeting embed** | Scheduled meeting | Immediate clarification | protect dissent and avoid coerced consensus |
+| **Intranet post** | Company collaboration space | Broad internal reach | define population and selection bias |
+| **Facilitated session** | Guided completion | Access or literacy support | facilitator neutrality and private-response option |
 
-**Minimum response threshold**: Aim for responses from at least 60% of the target stakeholder group for statistical validity. If response rate is below 40%, consider follow-up reminders or switching to interviews.
+Set the completion threshold from the decision risk, population, sampling method, subgroup coverage,
+and planned analysis. A response percentage alone does not establish statistical validity. If coverage
+is inadequate, report the missing groups and uncertainty, then follow up or switch method.
 
 ## Analysis Templates
 

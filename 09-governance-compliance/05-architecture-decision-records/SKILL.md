@@ -89,6 +89,7 @@ Example: if a required source, owner, obligation, or acceptance condition is mis
 ## References
 
 - [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
+- [Domain language and decision context](../../02-requirements-engineering/fundamentals/during/05-conceptual-data-modeling/references/domain-language-and-decisions.md)
 
 <!-- dual-compat-end -->
 

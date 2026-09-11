@@ -82,6 +82,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Data Quality Rules](references/data-quality-rules.md)
 - [Er Modeling Guide](references/er-modeling-guide.md)
 - [Mdm Requirements](references/mdm-requirements.md)
+- [Domain language and decision context](references/domain-language-and-decisions.md)
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

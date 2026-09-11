@@ -30,10 +30,12 @@ metadata:
 
 ## Workflow
 
-1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
-2. Apply this skill's existing domain workflow and decision rules to produce `Elicitation plan, raw evidence, and issue log`.
-3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
-4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
+1. Inspect the required inputs and log the exact sources, versions, unresolved assumptions, and decision owners.
+2. Build a dependency graph of open decisions. Resolve discoverable facts from project or verified external evidence instead of asking stakeholders to retrieve them.
+3. Ask only the current decision frontier: unresolved choices whose prerequisites are satisfied. Batch independent questions; do not ask a dependent choice early.
+4. Apply the selected elicitation technique and update the decision graph, glossary, confirmed facts, conflicts, and open issues after each round.
+5. Stop when a required source, accountable decision owner, deterministic test oracle, or shared-understanding gate is absent.
+6. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence or decision needed.
 
 ## Outputs
 
@@ -85,6 +87,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Observation Ethnography](references/observation-ethnography.md)
 - [Prototyping For Elicitation](references/prototyping-for-elicitation.md)
 - [Questionnaires Surveys](references/questionnaires-surveys.md)
+- [Decision-frontier elicitation](references/decision-frontier-elicitation.md)
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

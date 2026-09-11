@@ -1,0 +1,10 @@
+version: 1
+decisions:
+  - id: DEC-001
+    question: Replace with the accountable choice.
+    owner: Replace with the decision owner.
+    prerequisites: []
+    options: []
+    evidence: []
+    state: frontier
+    downstream: []
