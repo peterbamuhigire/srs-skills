@@ -101,6 +101,9 @@ changes. Plausible generated prose is not validation evidence.
 
 Practitioner cross-checks: [Eleken onboarding](https://www.eleken.co/blog-posts/mobile-app-onboarding-best-practices), [dashboard guidance](https://www.eleken.co/blog-posts/dashboard-design-examples-that-catch-the-eye), and [AI design workflow](https://www.eleken.co/blog-posts/ai-design-workflow). Use [WCAG 2.2](https://www.w3.org/TR/WCAG22/) for accessibility authority.
 
+## Book-informed practice route
+
+Use [the 2026-09-14 requirements and architecture synthesis](../../../../book-extractions/2026-09-14-requirements-architecture-synthesis.md) to demand measurable oracles, explicit assumptions, and failure-aware validation.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

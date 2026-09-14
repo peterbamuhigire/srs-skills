@@ -81,6 +81,9 @@ If any required capability is unavailable, return the narrowest useful qualified
 
 - [Vision Statement neighbour](../03-vision-statement/SKILL.md)
 - [High-Level Design neighbour](../../03-design-documentation/01-high-level-design/SKILL.md)
+## Book-informed practice route
+
+Use [the 2026-09-14 requirements and architecture synthesis](../../book-extractions/2026-09-14-requirements-architecture-synthesis.md) for actor, boundary, state, data ownership, and failure context.
 <!-- dual-compat-end -->
 
 

@@ -81,6 +81,9 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Skill authoring and release standard](../../../../docs/skill-authoring-standard.md)
 - [Trace Link Types](references/trace-link-types.md)
 - [Trace Matrix Template](references/trace-matrix-template.md)
+## Book-informed practice route
+
+Use [the 2026-09-14 requirements and architecture synthesis](../../../../book-extractions/2026-09-14-requirements-architecture-synthesis.md) for scenario-to-requirement-to-test-to-evidence links.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

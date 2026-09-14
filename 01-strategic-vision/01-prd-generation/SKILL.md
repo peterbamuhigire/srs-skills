@@ -83,6 +83,9 @@ If any required capability is unavailable, return the narrowest useful qualified
 - [AI feature PRD addendum](references/ai-feature-prd-addendum.md)
 - [PRD learning contract](references/kaizen-prd-learning-contract.md)
 - [Generation logic](logic.prompt)
+## Book-informed practice route
+
+Use [the 2026-09-14 requirements and architecture synthesis](../../book-extractions/2026-09-14-requirements-architecture-synthesis.md) for North Star scenarios, prioritised milestones, and evidence-backed requirements.
 <!-- dual-compat-end -->
 
 
