@@ -1,6 +1,6 @@
 {
   "standard": "canonical-july-2026-zero-debt",
-  "active_skill_count": 157,
+  "active_skill_count": 158,
   "active_skill_paths": [
     "01-strategic-vision/01-prd-generation/SKILL.md",
     "01-strategic-vision/02-business-case/SKILL.md",
@@ -44,6 +44,7 @@
     "02-requirements-engineering/fundamentals/during/10-prototyping-and-solution-discovery/SKILL.md",
     "02-requirements-engineering/fundamentals/during/11-experience-mapping-requirements/SKILL.md",
     "02-requirements-engineering/fundamentals/during/12-service-blueprint-requirements/SKILL.md",
+    "02-requirements-engineering/hospitality-operating-model-srs/SKILL.md",
     "02-requirements-engineering/hybrid/hybrid-synchronization/SKILL.md",
     "02-requirements-engineering/retail-operating-model-srs/SKILL.md",
     "02-requirements-engineering/waterfall/01-initialize-srs/SKILL.md",

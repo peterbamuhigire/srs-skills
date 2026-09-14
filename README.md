@@ -16,6 +16,7 @@ Used with project-specific evidence, the engine creates a shared, reviewable doc
 | Test strategy, acceptance, quality, and evidence | `05-testing-documentation/` and `09-governance-compliance/` |
 | Deployment, operations, release, and handoff | `06-deployment-operations/` |
 | Agile, game, AI, SaaS, finance, and regulated overlays | Triggered phase routes with the relevant companion engine |
+| Hotel, resort, lodge, inn, guest house, restaurant, bar, catering, or venue SRS | `02-requirements-engineering/hospitality-operating-model-srs/` and `domains/hospitality/` |
 
 ## July 2026 skill-engine conformance
 
