@@ -20,6 +20,13 @@ Used with project-specific evidence, the engine creates a shared, reviewable doc
 
 ## July 2026 skill-engine conformance
 
+## Prompt-generation capability — September 2026
+
+Every standalone SRS fork can generate ready-to-paste prompts through the local
+[domain prompt contract](docs/ai-prompting/domain-prompt-compilation-contract.md),
+including requirements context, acceptance criteria, traceability, risks,
+assumptions, and inspect/plan/verify handoffs.
+
 ### Kaizen operating contract
 
 For a ready-to-run product or project operation, use [`prompts/full-kaizen-operation.md`](prompts/full-kaizen-operation.md).

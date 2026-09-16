@@ -201,6 +201,10 @@ Technical prose must remain exact: name actors, states, constraints, terminology
 
 Load [`book-extractions/english-collocations-and-lexical-precision-2026-09-02.md`](book-extractions/english-collocations-and-lexical-precision-2026-09-02.md) for the collocation, register, idiom, lexical-precision, and human-quality overlay. It strengthens the English layer; it does not override approved product terminology, accessibility rules, requirements traceability, or current Digital Research verification.
 
+## DOMAIN PROMPT GENERATION CONTRACT
+
+For a prompt handoff, read the local [domain prompt contract](docs/ai-prompting/domain-prompt-compilation-contract.md). Generate a ready-to-paste prompt for the named AI tool using actor and decision, supplied context, one primary intent, requirements, structure, hard constraints, risks, output contract, and acceptance checks. For SRS work, include actors, states, traceability, constraints, and deterministic test oracles; distinguish requirements discovery from implementation. Return assumptions and any NOT ASSESSED evidence. **Ready-to-paste prompt:** include the prompt package. **Failure action:** revise the smallest failed requirement or regenerate when the structure is wrong.
+
 ## PORTFOLIO CRAFT CONTRACT
 
 Load `C:\wamp64\www\chwezi-engine-agents\docs\operations\portfolio-craft-standard-2026-09-04.md` when available. Every SRS, requirement, architecture note, and governance artefact is built in named slices: frame the actor and decision, select one flow or requirement, inspect existing context, make the smallest useful change, exercise normal and failure states, refine, and record proof before continuing. Requirements must carry concrete actors, states, constraints, and test oracles; do not generate a whole specification as one opaque batch. Apply `Observe -> Baseline -> Select -> Experiment -> Check -> Standardise -> Teach -> Re-measure` to kaizen itself. Missing execution, render, source, reviewer, or stakeholder evidence is `NOT ASSESSED`, never a pass.
