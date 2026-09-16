@@ -20,7 +20,9 @@ Used with project-specific evidence, the engine creates a shared, reviewable doc
 
 ## July 2026 skill-engine conformance
 
-## Prompt-generation capability — September 2026
+## Prompt-generation capability — 2026-09-17
+
+This release adds evidence-first candidate testing, failure-slice review, and explicit `NOT_ASSESSED` handling for volatile prompt claims.
 
 Every standalone SRS fork can generate ready-to-paste prompts through the local
 [domain prompt contract](docs/ai-prompting/domain-prompt-compilation-contract.md),
