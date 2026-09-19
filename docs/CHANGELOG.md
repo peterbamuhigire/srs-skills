@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026-09-19] - Phase 1 Kaizen references
+
+- Added the bounded Phase 1 Kaizen reference slice: requirements problem/goal,
+  event-centred trace, and fit-criteria fixtures; governance pause-point,
+  dependency-exception, and pilot-evaluation templates; and healthcare
+  care-to-cash, denial/compliance, role/credential, and listening/safe-service
+  references.
+- Added focused contract tests covering normal and failure paths. Current payer,
+  credential, privacy, clinical, legal, and accounting claims remain explicit
+  project inputs and are not admitted by these references.
+
 ## [2026-09-08] - Waiver Integrity and Engine Routing
 
 ### Changed

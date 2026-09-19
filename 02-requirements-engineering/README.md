@@ -16,6 +16,13 @@ This directory contains **three layers** for requirements engineering:
 
 [Start with Fundamentals](fundamentals/README.md)
 
+### Reusable fit and trace references
+
+Use the references in [`references/`](references/) when a requirements slice
+needs an outcome-based problem statement, event-centred trace, or measurable
+fit criterion. The fixtures include normal, boundary, exception, orphan-link,
+and `NOT_ASSESSED` paths; they do not supply project facts or current policy.
+
 ---
 
 ### 📋 Waterfall Pipeline (`waterfall/`)

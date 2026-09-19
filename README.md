@@ -86,6 +86,14 @@ externally; see `docs/continuous-improvement/srs-raw-extraction-removal-2026-08.
 
 See [`docs/continuous-improvement/book-driven-kaizen-2026-09-01.md`](docs/continuous-improvement/book-driven-kaizen-2026-09-01.md) for the dissertation, uncertainty, hypothesis, and human-agency upgrades.
 
+The Phase 1 reference slice is recorded in
+[`docs/continuous-improvement/srs-kaizen-wave-1-2026-09.md`](docs/continuous-improvement/srs-kaizen-wave-1-2026-09.md).
+It adds requirements fit/trace fixtures, pause-point and pilot-evaluation
+templates, and healthcare state/evidence references. These are reusable
+contracts, not current payer, credential, privacy, clinical, legal, or
+accounting policy. Supply the named project source and reviewer before treating
+an item as verified.
+
 ## Architecture & cross-cutting engines (updated 2026-06-21)
 
 This engine is one of several sibling skill engines on the host. None is natively discovered any more — every engine, including this one, is consulted through the global routing table by globbing `SKILL.md` directly and reading the matched file(s). Cross-cutting engines are **referenced** (path resolved per device from the global router), never mirrored into this repo.
