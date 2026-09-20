@@ -18,7 +18,18 @@ cd srs-skills
 
 `install.sh`/`install.ps1` delegate to the vendored `scripts/install-engine.js` (Node ≥18), which also supports `--dry-run` (prints the plan, writes nothing), `--json`, and `--scope user` (default, installs to `~/.claude`) as an alternative to `--scope project` (installs to `.claude` under the current directory).
 
-This engine works alongside three sister engines it already routes to in its own doctrine — each is an independent, optional install, never a hard dependency: the **engineering-catalog engine** (`skills-web-dev`, local checkout `C:\wamp64\www\skills-web-dev`), which supplies the methodology, architecture, testing, security, and deployment skills this engine's own `CLAUDE.md` explicitly defers to for engineering execution once requirements are agreed; **`chwezi-accounting-doctrine`**, consulted alongside this engine whenever finance, IFRS, IAS, tax, or bookkeeping content arises in a requirement or business case; and **`business-plan-skills`**, to which this engine's own README already routes commercial and investment planning that falls outside documentation scope.
+This engine works alongside three sister engines it already routes to in its own doctrine — each is an independent, optional install, never a hard dependency: the **engineering-catalog engine** (`chwezi-dev-engine`, local checkout `C:\wamp64\www\chwezi-dev-engine`), which supplies the methodology, architecture, testing, security, and deployment skills this engine's own `CLAUDE.md` explicitly defers to for engineering execution once requirements are agreed; **`chwezi-accounting-doctrine`**, consulted alongside this engine whenever finance, IFRS, IAS, tax, or bookkeeping content arises in a requirement or business case; and **`business-plan-skills`**, to which this engine's own README already routes commercial and investment planning that falls outside documentation scope.
+
+## Content integrity
+
+This repository contains no client names, client data, or project-specific
+work product; client and project directories are excluded from version
+control by design (see `.gitignore`). Users installing this engine should
+still exercise their own due diligence — you can ask Claude Code or Codex to
+run a security scan of this engine, its skills, and its reference files
+before relying on it in a sensitive environment (for example: "scan this
+repository for hardcoded secrets, personal paths, or unexpected network
+calls").
 
 ## Capabilities
 

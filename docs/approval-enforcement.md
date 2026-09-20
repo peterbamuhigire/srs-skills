@@ -2,7 +2,7 @@
 
 The SRS engine declares its lifecycle controls in
 [`approval-adapter.json`](approval-adapter.json) and uses the shared contract
-from `skills-web-dev/docs/approval-contract.md`.
+from `chwezi-dev-engine/docs/approval-contract.md`.
 
 ## Lifecycle gate
 

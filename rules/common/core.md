@@ -44,7 +44,7 @@ who must supply it — do not silently round the assessment up to pass.
 
 ## Cross-engine routing for methodology and finance content
 
-Engineering/methodology skills route to the `skills-web-dev` engine; finance,
+Engineering/methodology skills route to the `chwezi-dev-engine` engine; finance,
 IFRS, IAS, tax, and bookkeeping route to `chwezi-accounting-doctrine`. Consult
 both in addition to the active SRS work when the content calls for them — never
 duplicate their doctrine locally.

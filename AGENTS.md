@@ -62,7 +62,7 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 ## Skill Families
 
-- Engineering/methodology skills live in the sibling **engineering catalog engine** at `C:\wamp64\www\skills-web-dev` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router, then read the matching SKILL.md directly. Its `<category>` namespace is grouped into 15 categories; see the "Skill Categories" section in `CLAUDE.md`. Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
+- Engineering/methodology skills live in the sibling **engineering catalog engine** at `C:\wamp64\www\chwezi-dev-engine` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router, then read the matching SKILL.md directly. Its `<category>` namespace is grouped into 15 categories; see the "Skill Categories" section in `CLAUDE.md`. Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
 - Root directories are reserved for project documentation and repository-level folders such as `docs/` and `projects/`, plus operational folders (`engine/`, `templates/`, `scripts/`, `domains/`) where relevant. Finance/accounting is the standalone cross-cutting **finance engine** at `C:\wamp64\www\chwezi-accounting-doctrine` — consult it whenever finance/IFRS/IAS/tax/bookkeeping arises, in addition to the active work.
 - Domain packs live under `domains/`. They are not skills by themselves; use them as context sources when a task is domain-specific.
 
@@ -70,17 +70,17 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 - New client-documentation or methodology-selection requests: start with `00-meta-initialization` (engineering catalog engine).
 - SDLC document generation or review: route to the relevant numbered phase skill first, then load supporting domain references from `domains/<domain>/`.
-- General software engineering work: start with `sdlc-meta/world-class-engineering` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev`), then add the narrowest relevant skills.
-- Skill authoring or upgrades: use `sdlc-meta/skill-writing` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev`).
-- Word or `.docx` output quality work: use `product-business/professional-word-output` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev`).
-- BDS programme intake, selection, monitoring, or donor dashboard requirements: use `product-business/bds-intake-and-monitoring-system-spec` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev`).
-- E-commerce platform, payment, API, AI, data-protection, or integration audit requirements: use `architecture/ecommerce-platform-audit-requirements` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev`).
+- General software engineering work: start with `sdlc-meta/world-class-engineering` in the engineering catalog engine (`C:\wamp64\www\chwezi-dev-engine`), then add the narrowest relevant skills.
+- Skill authoring or upgrades: use `sdlc-meta/skill-writing` in the engineering catalog engine (`C:\wamp64\www\chwezi-dev-engine`).
+- Word or `.docx` output quality work: use `product-business/professional-word-output` in the engineering catalog engine (`C:\wamp64\www\chwezi-dev-engine`).
+- BDS programme intake, selection, monitoring, or donor dashboard requirements: use `product-business/bds-intake-and-monitoring-system-spec` in the engineering catalog engine (`C:\wamp64\www\chwezi-dev-engine`).
+- E-commerce platform, payment, API, AI, data-protection, or integration audit requirements: use `architecture/ecommerce-platform-audit-requirements` in the engineering catalog engine (`C:\wamp64\www\chwezi-dev-engine`).
 
 ## Skill Authoring and Release Gate
 
 The shared agents, commands, hooks, evidence, and handoff contract is mapped
 for SRS work in `docs/control-plane-adoption.md` and governed centrally by
-`C:\wamp64\www\skills-web-dev\docs\engine-control-plane.md`.
+`C:\wamp64\www\chwezi-dev-engine\docs\engine-control-plane.md`.
 
 On interruption or a blocked phase, write `sdd-handoff.json` with
 `python scripts/create_sdd_handoff.py`; an incomplete phase is never closed

@@ -7,7 +7,7 @@ You are an expert Systems Architect. You are assisting in developing and executi
 ## Directory Logic & Pathing
 
 - **Repository Root:** This directory (where root project documentation and repository-level folders live).
-- **Skills:** Engineering/methodology skills live in the [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) — the engineering-catalog engine, local checkout `C:\wamp64\www\skills-web-dev` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router (`CLAUDE.md`/`AGENTS.md`), then read the matching `SKILL.md` directly. Use these skills for methodology selection, document generation support, and reusable engineering workflows.
+- **Skills:** Engineering/methodology skills live in the [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) — the engineering-catalog engine, local checkout `C:\wamp64\www\chwezi-dev-engine` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router (`CLAUDE.md`/`AGENTS.md`), then read the matching `SKILL.md` directly. Use these skills for methodology selection, document generation support, and reusable engineering workflows.
 - **Finance/Accounting:** Finance/accounting is the standalone cross-cutting [Chwezi Accounting Doctrine](https://github.com/peterbamuhigire/chwezi-accounting-doctrine) engine (local checkout `C:\wamp64\www\chwezi-accounting-doctrine`). Resolve it through the global engine registry and consult it whenever finance, IFRS, IAS, tax, or bookkeeping arises, in addition to the active work.
 - **Domain Knowledge:** Located in `/domains/`. Read the relevant domain `INDEX.md` when generating requirements for a domain-specific project.
 - **Project Workspace:** Located in `projects/<ProjectName>/` (untracked, gitignored). All client documentation is built here.
@@ -40,7 +40,7 @@ If `projects/<ProjectName>/_context/methodology.md` declares `methodology: hybri
 ## Build Document Protocol
 
 When the user says "build the [document]":
-1. Resolve the document directory using the mapping in `00-meta-initialization/new-project/SKILL.md` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev\00-meta-initialization\new-project\SKILL.md` — not a path in this repo)
+1. Resolve the document directory using the mapping in `00-meta-initialization/new-project/SKILL.md` in the engineering catalog engine (`C:\wamp64\www\chwezi-dev-engine\00-meta-initialization\new-project\SKILL.md` — not a path in this repo)
 2. Check for `manifest.md` in the document directory — use it if present, otherwise sort all `*.md` files (excluding `manifest.md`) alphabetically
 3. Execute: `bash scripts/build-doc.sh <doc-dir> <OutputName>`
 4. Run `projects/<ProjectName>/export-docs.ps1` on Windows or `projects/<ProjectName>/export-docs.sh` on bash-capable shells to refresh `projects/<ProjectName>/export/`
@@ -90,7 +90,7 @@ Refer to `README.md` and `PROJECT_BRIEF.md` for the new eight-phase skill flow: 
 
 ## Skill Categories
 
-These categories belong to the external engineering-catalog engine (`C:\wamp64\www\skills-web-dev`), NOT to this repository — this repo's own skills follow the `NN-phase/NN-skill/SKILL.md` layout described in `README.md`. The [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) organises its portable skill catalogue into category subdirectories under `skills/<category>/<skill-name>/...`. When routing to an individual skill, always include the category segment in the path.
+These categories belong to the external engineering-catalog engine (`C:\wamp64\www\chwezi-dev-engine`), NOT to this repository — this repo's own skills follow the `NN-phase/NN-skill/SKILL.md` layout described in `README.md`. The [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) organises its portable skill catalogue into category subdirectories under `skills/<category>/<skill-name>/...`. When routing to an individual skill, always include the category segment in the path.
 
 | Category | Scope |
 | --- | --- |
@@ -210,7 +210,7 @@ Project workspaces (`projects/<ProjectName>/`) are **local only** and gitignored
 
 ### Filling Context Gaps
 
-When the kernel reports `[CONTEXT-GAP: <topic>]`, consult `00-meta-initialization/new-project/prompts/context-gap-fillers.md` in the engineering catalog engine (`C:\wamp64\www\skills-web-dev\00-meta-initialization\new-project\prompts\context-gap-fillers.md` — not a path in this repo) before authoring from scratch. It contains an opinionated prompt per topic you can paste into a fresh assistant session.
+When the kernel reports `[CONTEXT-GAP: <topic>]`, consult `00-meta-initialization/new-project/prompts/context-gap-fillers.md` in the engineering catalog engine (`C:\wamp64\www\chwezi-dev-engine\00-meta-initialization\new-project\prompts\context-gap-fillers.md` — not a path in this repo) before authoring from scratch. It contains an opinionated prompt per topic you can paste into a fresh assistant session.
 
 ### Failure Protocols
 

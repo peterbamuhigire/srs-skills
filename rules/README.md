@@ -1,7 +1,7 @@
 # Rules
 
 Always-on principles for this engine, separate from the on-demand `SKILL.md`
-playbooks. See `skills-web-dev/rules/README.md` for the full rationale behind
+playbooks. See `chwezi-dev-engine/rules/README.md` for the full rationale behind
 this split (skills are the "how", rules are the checkable "what"); this file is
 the short, engine-local version.
 

@@ -27,7 +27,7 @@ metadata:
   bootstrap; route to the relevant architecture/database/bootstrap skill.
 - The requester asks the SRS engine to mutate a tenant, database, production system,
   external integration, or live communications. This skill specifies and verifies;
-  implementation execution routes to skills-web-dev's matching skill.
+  implementation execution routes to chwezi-dev-engine's matching skill.
 - A capability is assumed from a menu, schema, or migration without an executable
   application boundary. Record a blocker or `NOT_ASSESSED` status.
 
@@ -195,7 +195,7 @@ or complete module coverage.
 - [Module coverage matrix](references/module-coverage-matrix.md) — module journey and evidence prompts.
 - [Contract test matrix](references/contract-test-matrix.md) — skill routing and refusal cases.
 - `05-testing-documentation/02-test-plan` — consume this skill's scenarios and data requirements.
-- `skills-web-dev/skills/saas/full-coverage-saas-seeding` — implementation/execution companion; resolve via the global routing table.
+- `chwezi-dev-engine/skills/saas/full-coverage-saas-seeding` — implementation/execution companion; resolve via the global routing table.
 - `09-governance-compliance/11-saas-data-isolation-evidence-pack` — tenant isolation evidence.
 - `09-governance-compliance/31-kaizen-engine-and-product-improvement` — apply the 65-to-95 improvement gate to this skill and each product fixture.
 <!-- dual-compat-end -->
