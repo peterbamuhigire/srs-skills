@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+import json
 import re
 from typing import Iterable
 
@@ -16,6 +17,11 @@ REQ_RE = re.compile(r"\b(?:FR|TR|OR|RR)-\d{3}\b")
 TASK_RE = re.compile(r"^\s*-\s*\[([ Xx])\]\s*(T\d{3})\b(.*)$")
 AFTER_RE = re.compile(r"\bafter:(T\d{3})\b")
 P1_RE = re.compile(r"\bP1\b", re.IGNORECASE)
+OVERALL_VERDICT_RE = re.compile(
+    r"^\s*(?:overall(?:\s+verdict)?|verdict)\s*:\s*"
+    r"(PASS|FAIL|NOT\s+ASSESSED)\s*$",
+    re.IGNORECASE | re.MULTILINE,
+)
 
 
 @dataclass(frozen=True)
@@ -25,7 +31,7 @@ class BoundaryFinding:
     message: str
 
 
-def validate_feature_dir(feature_dir: Path, stage: str = "all") -> list[BoundaryFinding]:
+def validate_feature_dir(feature_dir: Path, stage: str = "all", requirement_hash: str | None = None) -> list[BoundaryFinding]:
     """Return deterministic findings for an SDD feature workspace.
 
     Supported stages are ``spec-plan``, ``plan-tasks``, ``tasks-implement``,
@@ -52,7 +58,7 @@ def validate_feature_dir(feature_dir: Path, stage: str = "all") -> list[Boundary
         elif boundary == "tasks-implement":
             _validate_tasks_implement(root, findings)
         elif boundary == "implement-qc":
-            _validate_implement_qc(root, findings)
+            _validate_implement_qc(root, findings, requirement_hash)
     return findings
 
 
@@ -130,7 +136,7 @@ def _validate_tasks_implement(root: Path, findings: list[BoundaryFinding]) -> No
         findings.append(BoundaryFinding("error", "false-completed", f".completed exists while tasks remain incomplete: {', '.join(incomplete)}"))
 
 
-def _validate_implement_qc(root: Path, findings: list[BoundaryFinding]) -> None:
+def _validate_implement_qc(root: Path, findings: list[BoundaryFinding], requirement_hash: str | None = None) -> None:
     marker = root / ".qc-passed"
     if not marker.exists():
         return
@@ -139,8 +145,32 @@ def _validate_implement_qc(root: Path, findings: list[BoundaryFinding]) -> None:
         findings.append(BoundaryFinding("error", "missing-qc-report", ".qc-passed exists without qc-report.md"))
         return
     body = report.read_text(encoding="utf-8")
-    if not re.search(r"\bPASS\b", body, re.IGNORECASE):
-        findings.append(BoundaryFinding("error", "qc-verdict-mismatch", ".qc-passed exists but qc-report.md has no PASS verdict"))
+    verdicts = OVERALL_VERDICT_RE.findall(body)
+    if len(verdicts) != 1 or verdicts[0].upper().replace(" ", "_") != "PASS":
+        findings.append(
+            BoundaryFinding(
+                "error",
+                "qc-verdict-mismatch",
+                ".qc-passed requires exactly one explicit 'overall: PASS' verdict",
+            )
+        )
+    handoff = root / "sdd-handoff.json"
+    if not handoff.is_file():
+        return
+    try:
+        payload = json.loads(handoff.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        findings.append(BoundaryFinding("error", "invalid-handoff", "sdd-handoff.json is not valid JSON"))
+        return
+    if not isinstance(payload, dict):
+        findings.append(BoundaryFinding("error", "invalid-handoff", "sdd-handoff.json must contain an object"))
+        return
+    if payload.get("status") == "complete" and payload.get("evidence_status") != "verified":
+        findings.append(BoundaryFinding("error", "unverified-handoff", "complete handoff must carry evidence_status=verified"))
+    baseline = payload.get("requirement_baseline")
+    if requirement_hash is not None:
+        if not isinstance(baseline, dict) or baseline.get("hash") != requirement_hash:
+            findings.append(BoundaryFinding("error", "stale-requirement-baseline", "handoff requirement baseline does not match the current requirement hash"))
 
 
 def extract_p1_requirement_ids(spec: str) -> set[str]:

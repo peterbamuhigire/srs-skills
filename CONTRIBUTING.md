@@ -30,6 +30,7 @@ python -X utf8 scripts/validate_skill_engine.py --baseline tests/skill-quality-b
 python -X utf8 scripts/routing_smoke_test.py
 python -X utf8 scripts/validate_engine.py
 python -m engine validate-skills
+python scripts/validate_requirements_decision.py engine/tests/fixtures/requirements_decision/reuse.json
 pytest --cov=engine --cov-fail-under=90
 git diff --check
 ```

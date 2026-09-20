@@ -19,9 +19,10 @@ def main() -> int:
     parser.add_argument("--feature-dir", required=True, type=Path)
     parser.add_argument("--stage", choices=["spec-plan", "plan-tasks", "tasks-implement", "implement-qc", "all"], default="all")
     parser.add_argument("--json", action="store_true", dest="as_json")
+    parser.add_argument("--requirement-hash", help="Expected requirement baseline hash for stale-handoff rejection")
     args = parser.parse_args()
 
-    findings = validate_feature_dir(args.feature_dir, args.stage)
+    findings = validate_feature_dir(args.feature_dir, args.stage, args.requirement_hash)
     if args.as_json:
         print(json.dumps([finding.__dict__ for finding in findings], indent=2))
     else:

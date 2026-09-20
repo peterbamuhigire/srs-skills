@@ -6,6 +6,21 @@ Product owners, business analysts, software architects, delivery teams, testers,
 
 Used with project-specific evidence, the engine creates a shared, reviewable documentation trail for decisions, validation, release, and operational transfer. It provides documentation methods and evidence structures rather than project facts, implementation, or professional sign-off; its operating roles and stop/recovery behaviour are documented in [`docs/control-plane-adoption.md`](docs/control-plane-adoption.md), and commercial or investment planning belongs with the <a href="https://github.com/peterbamuhigire/business-plan-skills" target="_blank" rel="noopener noreferrer">Business Plan Skills Suite</a> when triggered.
 
+## Recommended companion: Chwezi Dev Engine
+
+Users should also have the [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) available alongside this SRS engine. It provides the engineering skills referenced here for architecture, implementation, testing, security, deployment, and operational handoff. Keep it as a separate checkout and consult its router when moving from requirements into engineering work.
+
+Use this engine to define and validate requirements, acceptance criteria, and traceability; use the Chwezi Dev Engine to implement and verify the resulting software. Pass the approved requirements and their evidence between the engines so implementation preserves the agreed scope and safeguards.
+
+The September 2026 boundary-hardening update requires an explicit current
+`overall: PASS` QC verdict, carries requirement baseline and invariant context
+through resumable handoffs, and rejects historical, negated, or contradictory
+PASS text. These checks complement the existing requirements and sign-off gates.
+
+Need, reuse, adaptation and requirement-debt records can be checked with
+`python scripts/validate_requirements_decision.py <record.json>`; new scope
+requires explicit authority and unassessed evidence remains unassessed.
+
 ## Capability map
 
 | Need | Primary route |
@@ -39,7 +54,7 @@ product audits. Published audit scores are hard-capped at 65/100; remediation pl
 95/100 and must be proven through deterministic gates, traceability, failed-path evidence,
 and a dated re-audit. Current external claims route to the <a href="https://github.com/peterbamuhigire/digital-research-skills" target="_blank" rel="noopener noreferrer">Digital Research Skills Engine</a>.
 
-The active catalogue contains 157 filesystem-discovered skills across `01-strategic-vision/` through `09-governance-compliance/`. `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 52 routing fixtures at a top-three precision threshold of 100%.
+The active catalogue contains 158 validator-active skills across `01-strategic-vision/` through `09-governance-compliance/`; filesystem discovery reports 159 `SKILL.md` paths because `templates/skill/SKILL.md` is the single inactive authoring template. Every active entrypoint now follows the local portable contract in [docs/skill-authoring-standard.md](docs/skill-authoring-standard.md), and CI enforces a zero-debt baseline plus 52 routing fixtures at a top-three precision threshold of 100%.
 
 ```powershell
 python -X utf8 scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json

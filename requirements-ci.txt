@@ -1,0 +1,9 @@
+# Verified in the Windows implementation environment on 2026-09-20.
+# Refresh deliberately after compatibility and security review.
+click==8.3.1
+ruamel.yaml==0.19.1
+mistune==3.3.4
+jsonschema==4.26.0
+pytest==9.0.3
+pytest-cov==7.1.0
+setuptools==82.0.1

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "decision_id": "RD-FIXTURE-001",
+  "problem": "A proposed requirement overlaps an approved capability and needs an applicability decision.",
+  "status": "reuse",
+  "source_refs": ["fixture-source-001"],
+  "capability_refs": ["existing.requirement-capability"],
+  "accepted_scope": ["Reuse the approved ID and retain its permission constraint."],
+  "rejected_alternatives": ["Create a duplicate requirement without lineage."],
+  "applicability": {"context": "synthetic fixture", "retained_constraints": "permission and traceability"},
+  "authority": {"owner": "fixture-reviewer", "approval_status": "approved"},
+  "evidence_status": "verified",
+  "review_trigger": "Fixture source or context changes"
+}
