@@ -152,6 +152,35 @@ Classify each requirement along two axes:
 
 Produce a classification matrix table listing every requirement with its type, obligation level, and source reference.
 
+### Step 2b: Tag Requirement Provenance
+
+> Adapted from ECC's `product-capability` skill
+> (`C:\Users\Peter\Downloads\ECC-main\skills\product-capability\SKILL.md`),
+> which frames itself as the PRD-to-SRS lane: "exposes constraints,
+> invariants, interfaces, and unresolved decisions before multi-service work
+> starts."
+
+Tag every requirement a third way, independent of Type and Obligation:
+
+| Tag | Meaning | Evidence required |
+|-----|---------|--------------------|
+| **Fixed policy** | A business rule, compliance obligation, contractual SLA, pricing rule, or data-retention policy that is not open for engineering judgment. | Cite the source document or stakeholder statement it came from. Never infer a fixed policy from the existing codebase or a prior project's behavior — "the repository tells you how the system behaves today, not what the business requires it to do." |
+| **Architecture preference** | A choice engineering is free to make differently without violating stakeholder intent (e.g., synchronous vs. queued processing for a non-time-critical notification). | Name who owns the preference and record it as a candidate for `05-architecture-decision-records`, not as a requirement carved in stone. |
+| **Still open** | The requirement's behavior, threshold, or scope is not yet decided. | Do not invent product truth to close the gap. Mark it explicitly with `[OPEN-DECISION]`, name the decision owner, and list it in the Blocking Decisions section of the downstream acceptance-criteria catalogue if it blocks safe progress. |
+
+Add a **Provenance** column to the classification matrix (Fixed Policy /
+Architecture Preference / Still Open) alongside Type and Obligation. A
+requirement tagged **Still Open** may still carry a Type and Obligation
+guess, but it must not be carried into `03-design-documentation` or
+`02-acceptance-criteria` as if it were settled — flag it for the reader,
+not just the requirements analyst.
+
+Also separate **user-visible promises** (what the requirement commits the
+product to, visible to the end user or operator) from **implementation
+details** (how it will be built) in the same pass — conflating the two is
+the most common cause of a requirement that reads as settled but is actually
+an unreviewed architecture choice in disguise.
+
 ### Step 3: Detect Conflicts
 
 Scan the classified requirements for four conflict types per Wiegers Practice 8:
@@ -238,6 +267,7 @@ The generated `requirements_analysis_report.md` SHALL contain the following sect
 ## 3. Requirements Classification Matrix
 ### 3.1 By Type (Functional / Non-Functional / Constraint / Interface)
 ### 3.2 By Obligation (Mandatory / Desirable / Optional)
+### 3.2b By Provenance (Fixed Policy / Architecture Preference / Still Open)
 ### 3.3 Classification Summary Statistics
 ## 4. Conflict Detection Report
 ### 4.1 Contradictions

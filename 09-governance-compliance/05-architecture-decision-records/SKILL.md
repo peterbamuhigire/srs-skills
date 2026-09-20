@@ -106,12 +106,61 @@ This skill produces one Architecture Decision Record (ADR) per significant archi
 - When deprecating or superseding an earlier architectural decision.
 - When a decision affects multiple modules, teams, or the cost model.
 
+### Decision-moment detection (trigger phrases)
+
+> Adapted from ECC's `architecture-decision-records` skill
+> (`C:\Users\Peter\Downloads\ECC-main\skills\architecture-decision-records\SKILL.md`),
+> whose contribution over a plain template is that it is a *capture
+> mechanism*, not just a format to fill in by hand.
+
+Do not wait for the user to say "record an ADR." Treat the following as
+signals that a decision moment just occurred, and suggest capturing it —
+never auto-create the file without explicit confirmation:
+
+**Explicit signals**
+- "Let's go with X."
+- "We should use X instead of Y."
+- "The trade-off is worth it because..."
+
+**The specific rejection-capture trigger**
+- "We decided to..."
+- "The reason we're doing X instead of Y is..."
+
+Either phrasing means a rejected alternative exists somewhere in the
+conversation that just happened. Do not let it evaporate — extract it into
+the Alternatives Considered block (below) in the same turn, while the
+reasoning is still available, rather than reconstructing it later from
+memory.
+
 ## Inputs
 
 - Decision title and one-paragraph context.
 - Options considered (at least two) and the selected option.
+- **For every rejected option: an explicit "Why not" line** (see Alternatives
+  Considered below) — not just pros/cons, a stated reason it lost.
 - Rationale: forces, trade-offs, and consequences.
 - Deciders (role names) and decision date.
+
+## Alternatives Considered — mandatory "Why not" line
+
+Every rejected alternative recorded in an ADR MUST carry an explicit reason
+it was rejected, not only a pros/cons list. Pros and cons describe the
+option; "why not" is the actual rejection rationale, and it is the part of
+an ADR that survives and the part AI-drafted ADRs most often omit. Use this
+shape for each alternative, matching the ADR body template already in this
+skill's `Output Contract`:
+
+```markdown
+### Alternative: [Name]
+- **Pros:** [benefits]
+- **Cons:** [drawbacks]
+- **Why not:** [the specific reason this alternative was rejected — not
+  "it was worse", but the concrete constraint, cost, or risk that decided it]
+```
+
+An alternative entry without a "Why not" line fails this skill's quality
+check the same way a missing decider or a dangling `superseded_by` does —
+"we just picked it" is not a valid rationale (see `Anti-Patterns` above).
 
 ## Stimulus / Process / Response
 

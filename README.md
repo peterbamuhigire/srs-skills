@@ -1,25 +1,51 @@
-# SDLC-Docs-Engine: Standards-Driven Documentation Across the Software Lifecycle
+# SRS Skills Engine
 
-**SDLC-Docs-Engine** is a requirements and SDLC documentation engine for turning a real project context into precise, traceable decisions, specifications, acceptance oracles, test artefacts, release evidence, and operational handoffs. It works in deliberate slices—actors, states, constraints, data transitions, failure paths, and evidence—so downstream engineering and design teams can build from understood detail rather than an opaque brief.
+**SRS Skills** (repository name `srs-skills`) is a 159-skill requirements and SDLC documentation engine that turns a real project context into precise, traceable decisions: PRDs, business cases, vision and lean-canvas artefacts, IEEE 830/1233/610.12/ASTM E1340-grounded software requirements specifications, design records, acceptance and test artefacts, release evidence, and operational handoffs. It is organised as nine numbered phases (`01-strategic-vision` through `09-governance-compliance`), each phase reading `_context/` evidence and writing files the next phase explicitly cites, plus domain overlays (Uganda DPPA/PPDA/EFRIS, healthcare, hospitality, logistics, and others) and SaaS/AI/game-specific specs layered onto the core waterfall, agile, and hybrid flows. Product owners, business analysts, software architects, delivery teams, testers, operators, and compliance reviewers use it to turn agreed scope into requirements, design records, acceptance criteria, test plans, release evidence, and end-user/handoff documentation. Concrete use cases: scaffolding a new client SRS project end to end (brainstorm → context capture → domain detection → phased document generation → DOCX export); producing a Uganda-domain SRS with a DPPA compliance annex and DPIA; generating an AI-agent or SaaS PRD/architecture/eval-harness/incident-runbook stack; running a Kaizen audit against this engine's own or a client product's documentation quality; and building a full waterfall-to-agile hybrid handoff with a documented sign-off gate. The engine is a grounding tool, not a generation tool — it never invents requirements, stakeholder names, or features absent from `_context/`; gaps are flagged (`[CONTEXT-GAP]`, `[V&V-FAIL]`) for human resolution, per its Human Review Gate.
 
-Product owners, business analysts, software architects, delivery teams, testers, operators, and reviewers use it to turn agreed scope into requirements, design records, acceptance and test artefacts, release evidence, and handoff material. Its skills address unclear scope, missing traceability, inconsistent deliverables, and weak phase-to-phase handovers.
+## Installation
 
-Used with project-specific evidence, the engine creates a shared, reviewable documentation trail for decisions, validation, release, and operational transfer. It provides documentation methods and evidence structures rather than project facts, implementation, or professional sign-off; its operating roles and stop/recovery behaviour are documented in [`docs/control-plane-adoption.md`](docs/control-plane-adoption.md), and commercial or investment planning belongs with the <a href="https://github.com/peterbamuhigire/business-plan-skills" target="_blank" rel="noopener noreferrer">Business Plan Skills Suite</a> when triggered.
+```
+# Native Claude Code plugin
+/plugin marketplace add https://github.com/peterbamuhigire/srs-skills
+/plugin install srs@chwezi-srs
 
-## Recommended companion: Chwezi Dev Engine
+# npm-free, from a clone
+git clone https://github.com/peterbamuhigire/srs-skills
+cd srs-skills
+./install.sh --scope project      # macOS/Linux/Git Bash
+.\install.ps1 -scope project      # Windows PowerShell
+```
 
-Users should also have the [Chwezi Dev Engine](https://github.com/peterbamuhigire/chwezi-dev-engine) available alongside this SRS engine. It provides the engineering skills referenced here for architecture, implementation, testing, security, deployment, and operational handoff. Keep it as a separate checkout and consult its router when moving from requirements into engineering work.
+`install.sh`/`install.ps1` delegate to the vendored `scripts/install-engine.js` (Node ≥18), which also supports `--dry-run` (prints the plan, writes nothing), `--json`, and `--scope user` (default, installs to `~/.claude`) as an alternative to `--scope project` (installs to `.claude` under the current directory).
 
-Use this engine to define and validate requirements, acceptance criteria, and traceability; use the Chwezi Dev Engine to implement and verify the resulting software. Pass the approved requirements and their evidence between the engines so implementation preserves the agreed scope and safeguards.
+This engine works alongside three sister engines it already routes to in its own doctrine — each is an independent, optional install, never a hard dependency: the **engineering-catalog engine** (`skills-web-dev`, local checkout `C:\wamp64\www\skills-web-dev`), which supplies the methodology, architecture, testing, security, and deployment skills this engine's own `CLAUDE.md` explicitly defers to for engineering execution once requirements are agreed; **`chwezi-accounting-doctrine`**, consulted alongside this engine whenever finance, IFRS, IAS, tax, or bookkeeping content arises in a requirement or business case; and **`business-plan-skills`**, to which this engine's own README already routes commercial and investment planning that falls outside documentation scope.
 
-The September 2026 boundary-hardening update requires an explicit current
-`overall: PASS` QC verdict, carries requirement baseline and invariant context
-through resumable handoffs, and rejects historical, negated, or contradictory
-PASS text. These checks complement the existing requirements and sign-off gates.
+## Capabilities
 
-Need, reuse, adaptation and requirement-debt records can be checked with
-`python scripts/validate_requirements_decision.py <record.json>`; new scope
-requires explicit authority and unassessed evidence remains unassessed.
+| Category | Skills | What it covers |
+|---|---|---|
+| `01-strategic-vision` | 13 | PRDs, business cases, vision/lean canvas, premium product positioning, SaaS MVP scoping, AI economic value briefs, game product/production briefs |
+| `02-requirements-engineering` | 41 | Fundamentals (before/during/after elicitation, analysis, traceability), waterfall/agile/hybrid SRS flows, SaaS billing/AI feature/AI agent/game requirement specs |
+| `03-design-documentation` | 18 | High-level design, API specification, UX specification, infrastructure and IoT design, SaaS multi-tenancy architecture, AI/AI-agent architecture specs, game system/3D pipeline specs |
+| `04-development-artifacts` | 6 | Coding guidelines, AI-agent coding guideline addenda, game technical implementation specs |
+| `05-testing-documentation` | 10 | Test strategy, AI eval harness and red-team test plans, AI-agent eval specs, full-coverage SaaS seeding |
+| `06-deployment-operations` | 23 | Monitoring, go-live readiness, SaaS tenant lifecycle/SLO/incident response, AI/AI-agent runbooks and rollout plans, game release and live-ops runbooks |
+| `07-agile-artifacts` | 5 | Definition of done, retrospective template, SaaS growth experiment documentation |
+| `08-end-user-documentation` | 9 | Customer success playbooks, onboarding journeys, lifecycle email strategy, sales enablement packs, AI-agent user disclosure packs |
+| `09-governance-compliance` | 34 | ADRs, formal review gates, SaaS trust-center/DPA/privacy doc sets, AI responsible-AI and regulatory compliance docs, SOC2/ISO27001/HIPAA control packs, the Kaizen engine, anti-AI-slop audits |
+
+Filesystem discovery reports 160 `SKILL.md` files; 159 are active entrypoints (the 160th, `templates/skill/SKILL.md`, is the inactive authoring template, excluded from the counts above).
+
+## References
+
+- Mustafa, A. et al. *Everything Claude Code* (ECC). GitHub: affaan-m/ECC, 2026. This engine's `09-governance-compliance/plan-canvas/SKILL.md` states it is "Adapted from ECC's plan-canvas skill," with the review-gate mechanism and its supporting scripts (`scripts/plan-canvas.js`, `scripts/lib/plan-canvas/`) vendored from the ECC checkout; `rules/common/core.md`'s Evidence Rule ("Show the gap, don't just name it") is grounded in ECC's `agent-self-evaluation` skill; and `rules/common/phase-handoff.md` is grounded in ECC's `docs/PLAN-PRD-PATTERN.md` ("Each arrow is a file on disk, not a conversation in memory").
+- Cunningham (2013) — cited in `CLAUDE.md` as the source for the Minimum-Length Directive and the Three-Emphasis Rule. The repository states author and year only; no title or publisher is recorded in this engine's files.
+- Etter (2016) — cited in `CLAUDE.md` for the Human Review Gate ("AI-generated content must be human-verified; verification is not optional") and the Three-Emphasis and Markdown Syntax rules. Author and year only; no title or publisher recorded.
+- Kodukula & Vinueza (2024) — cited in `CLAUDE.md` as the source of the PRIME methodology (Prepare/Relay/Inspect/Modify/Execute) and, in `02-requirements-engineering/waterfall/01-initialize-srs/SKILL.md`, as hallucination-mitigation guidance underpinning the strict-grounding rule. Author and year only; no title or publisher recorded.
+- Cone (2023) — cited in `CLAUDE.md` alongside Etter for Markdown Syntax Rules. Author and year only; no title or publisher recorded.
+- `book-extractions/human-english-craft-synthesis-2026.md` names David (ceramic manual — disciplined observation and traceability from method to conclusion), Gupta (vocabulary/confusable-word list), Pinnacle (grammar exercise set), and Betsis & Mamas (CAE exam material — genre, audience, register) as sources contributing to this engine's documentation-craft standard; the file records these as title-only or partial-source extractions with no full bibliographic detail (n.d.), and explicitly notes they do not replace IEEE/ISO requirements engineering or product evidence.
+
+The four author-year citations above (Cunningham, Etter, Kodukula & Vinueza, Cone) appear only as short in-text tags in this engine's own doctrine — no book-extractions file or references/ entry in this repository records their full titles or publishers, so none is invented here.
 
 ## Capability map
 

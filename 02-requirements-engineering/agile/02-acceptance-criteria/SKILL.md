@@ -119,6 +119,35 @@ Execute this skill after `01-user-story-generation` has produced `projects/<Proj
    - The happy-path scenario (normal successful flow)
    - At least one error or edge-case scenario
    - At least one boundary-condition scenario
+   - A **Must not** line where a prohibited side effect exists (see "Must not" field, below)
+
+### Must not — the prohibited-side-effect field
+
+> Source: ECC's `intent-driven-development` skill
+> (`C:\Users\Peter\Downloads\ECC-main\skills\intent-driven-development\SKILL.md`),
+> AC format.
+
+Add a **Must not** field alongside Given/When/Then wherever a criterion has
+an observable prohibited side effect — most security and data-isolation
+requirements live in this field and have nowhere else to go in a plain
+Given/When/Then template. State it as an assertion of absence, not a vague
+warning:
+
+```
+AC-001: Export generates file with correct headers
+- Given: authenticated user, at least one data row visible
+- When: user clicks "Export CSV"
+- Then: browser downloads file with columns [id, name, created_at]
+- Must not: expose internal fields or rows belonging to other users
+- Verification: automated integration test + manual schema spot-check
+```
+
+Omit the **Must not** line only when a criterion genuinely has no side
+effect worth constraining (e.g., a pure read with no cross-tenant or
+cross-record exposure risk) — do not pad every criterion with a boilerplate
+"must not fail" line. When in doubt whether a side effect is worth naming,
+name it; an unnecessary **Must not** line costs nothing, a missing one
+hides a security requirement inside a generic template with no slot for it.
 4. **Append NFR criteria.** If `projects/<ProjectName>/_context/quality_standards.md` exists, read it and append non-functional acceptance criteria with measurable thresholds (response time, throughput, encryption standard, etc.) to each relevant story.
 5. **Flag untestable stories.** If a story cannot yield deterministic, binary pass/fail criteria, tag it with `[AC-FAIL]` and append a remediation note identifying the missing or ambiguous element.
 6. **Write output.** Write `projects/<ProjectName>/<phase>/<document>/acceptance_criteria.md` with each story's criteria grouped under its US-XXX identifier, including cross-references back to the originating story and epic.
@@ -144,8 +173,11 @@ The generated `acceptance_criteria.md` shall follow this structure:
 ### Functional Criteria
 
 - [ ] **AC-001.1:** Given [precondition], When [action], Then [expected result]
+  - Must not: [prohibited side effect, when applicable]
 - [ ] **AC-001.2:** Given [error condition], When [action], Then [error handling result]
+  - Must not: [prohibited side effect, when applicable]
 - [ ] **AC-001.3:** Given [boundary condition], When [action], Then [boundary result]
+  - Must not: [prohibited side effect, when applicable]
 
 ### NFR Criteria (if applicable)
 
@@ -175,6 +207,7 @@ The generated `acceptance_criteria.md` shall follow this structure:
 - **Missing negative cases:** Every story shall include at least one error-path criterion. Omitting negative cases leaves validation gaps.
 - **Subjective language:** Words like "fast," "intuitive," or "user-friendly" violate IEEE 29148 verifiability. Replace with measurable thresholds.
 - **Orphaned criteria:** Every criterion shall trace back to exactly one US-XXX identifier. Criteria without story references shall be flagged.
+- **Missing "Must not" on a security- or data-isolation-relevant criterion:** if a criterion touches cross-user data, permissions, exported fields, or financial state and has no **Must not** line, the criterion is incomplete even if Given/When/Then reads cleanly.
 
 ## Verification Checklist
 
@@ -186,6 +219,7 @@ Before finalizing the output:
 - [ ] At least one boundary-condition criterion exists per story
 - [ ] All NFR criteria include measurable, numeric thresholds
 - [ ] Stories that lack testable criteria are tagged with `[AC-FAIL]` and include remediation notes
+- [ ] Every criterion touching cross-user data, permissions, exported fields, or financial state has a **Must not** line
 
 ## Integration
 
