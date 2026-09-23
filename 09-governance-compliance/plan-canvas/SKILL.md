@@ -1,6 +1,6 @@
 ---
 name: plan-canvas
-description: Use when an SRS, HLD/LLD, ADR, acceptance-criteria set, or any other governance artefact needs a human reviewer to point at the exact clause they mean and deliver an Approve / Request-changes verdict, instead of typing prose feedback like "change the third requirement in section 4.2". Use formal-review-gates for the gate's entry/exit criteria and sign-off-ledger to record the resulting verdict as an approval event.
+description: Use when a local SRS, HLD/LLD, ADR, acceptance-criteria set, or governance artefact needs anchored human review and an Approve or Request-changes verdict. Use formal-review-gates for gate criteria and sign-off-ledger to record approval.
 metadata:
   portable: true
   compatible_with:
@@ -25,6 +25,8 @@ Read the ECC original in full before wiring this up —
 `skills/plan-canvas/SKILL.md` and `docs/design/plan-canvas.md` in the ECC
 checkout — because the engineering lessons below are load-bearing, not
 decorative.
+
+<!-- dual-compat-start -->
 
 ## Why this engine needs it specifically
 
@@ -77,7 +79,7 @@ workflow), `tests/hooks/plan-canvas-pending-hook.test.js` (7), and
 (hooks live at this engine's repo-root `hooks/`, not ECC's `scripts/hooks/`)
 and no logic changes.
 
-## When to Use
+## Use When
 
 - An SRS baseline, HLD/LLD document, ADR, acceptance-criteria catalogue, or
   baseline delta is ready for `05-formal-review-gates` and needs a **reviewer
@@ -87,6 +89,8 @@ and no logic changes.
 - The artefact is a local `.md` file under a project's phase directory (see
   `projects/<ProjectName>/<phase>/<document>/`) or a rendered `.html`
   deliverable.
+
+## Do Not Use When
 
 Do NOT use for: code review of diffs, running the delivered system, or remote
 URLs. The canvas serves local artefact files only — the same boundary ECC
@@ -211,17 +215,70 @@ directly.
 
 ## Anti-Patterns
 
-- Polling with a timeout loop instead of leaving a plain `await` running.
-- Ending the agent's turn with no `await` listening while a review is open.
-- Reading feedback and answering only in the terminal instead of the canvas.
-- Treating a `request-changes` verdict on a baselined artefact as license to
-  edit the baseline directly instead of routing through `07-baseline-delta`.
-- Recording an `approve` verdict in `09-sign-off-ledger` without confirming
-  the reviewer is the named decision authority for that gate.
+- Polling with a timeout loop instead of leaving a plain `await` running. Fix: keep the listener parked.
+- Ending the agent's turn with no `await` listening while a review is open. Fix: keep the session active.
+- Reading feedback and answering only in the terminal instead of the canvas. Fix: respond through the canvas.
+- Treating a `request-changes` verdict on a baselined artefact as license to edit the baseline directly. Fix: route through `07-baseline-delta`.
+- Recording an `approve` verdict without confirming the reviewer is the named decision authority. Fix: verify authority before ledger entry.
+
+## Required Inputs
+
+| Artefact | Source | Required? | Missing behaviour |
+|---|---|---|---|
+| Local governance artefact and review scope | Project owner or gate brief | yes | Stop and return a qualified gap note if the artefact is unavailable. |
+| Reviewer identity and decision authority | Named gate owner | yes | Record the authority gap; do not treat an unassigned verdict as approval. |
+| Vendored plan-canvas CLI | This engine | yes | Mark the review mechanism unavailable and do not claim a verdict. |
+
+## Workflow
+
+1. Confirm the local artefact, review scope, reviewer authority, and CLI path before opening a session.
+2. Open the artefact, keep `await` listening, and retain anchored annotations and the verdict as JSON.
+3. Route `approve` to the sign-off ledger and route `request-changes` items to the owning change path.
+4. Stop release when the verdict, authority, or artefact identity is unresolved; recover by correcting
+   the missing input and reopening the same review session.
+
+## Outputs
+
+| Artefact | Consumer | Acceptance condition |
+|---|---|---|
+| Anchored annotation and verdict record | Governance owner and gate reviewer | Each item identifies the artefact, anchor, reviewer, verdict, and next action. |
+| Review handoff | Change owner or sign-off ledger | Approved work has accountable sign-off; requested changes remain open with owners. |
+
+## Evidence Produced
+
+| Evidence | Consumer | Acceptance condition |
+|---|---|---|
+| Canvas session JSON | Reviewer and gate owner | Feedback and verdict are retained from the CLI response, not reconstructed from prose. |
+| Authority and limitation note | Release reviewer | Reviewer identity, local-only boundary, unavailable checks, and unresolved items are explicit. |
+
+## Capability and permission boundaries
+
+Read and search access to the local artefact plus execution access to the vendored CLI are required.
+The review is local and read-only unless a separately authorised governance edit is requested.
+Publication, remote URL access, and approval outside the named authority are out of scope.
+
+## Degraded mode
+
+If the CLI, local artefact, reviewer, or authority is unavailable, return the narrowest qualified
+review checklist and mark the verdict `not assessed`. Do not manufacture anchored feedback or
+convert a missing listener into approval.
+
+## Decision Rules
+
+| Choice | Action | Wrong-choice failure or risk |
+|---|---|---|
+| Reviewer has named authority and the artefact is local | Run the canvas review and retain its JSON | Approval cannot be attributed or reproduced. |
+| Reviewer requests changes | Keep the gate open and route each annotation to an owner | Unresolved defects are mistaken for sign-off. |
+| CLI or artefact is unavailable | Stop, record the gap, and recover the dependency | A missing review is presented as a passed gate. |
+
+## Quality Standards
+
+Anchors must identify the reviewed clause or row, verdicts must be attributable to the named
+authority, and unavailable or failed checks must remain visible in the review record.
 
 ## References
 
-- ECC original: `skills/plan-canvas/SKILL.md`, `docs/design/plan-canvas.md`,
+- [ECC original](https://agentskills.io/): `skills/plan-canvas/SKILL.md`, `docs/design/plan-canvas.md`,
   `scripts/plan-canvas.js`, `scripts/lib/plan-canvas/*.js`,
   `scripts/lib/loopback-guard.js`, `scripts/hooks/plan-canvas-pending.js`,
   `scripts/hooks/plan-canvas-sessions.js`
@@ -235,3 +292,4 @@ directly.
   rights this skill's verdicts feed), `09-sign-off-ledger/SKILL.md` (where
   `approve` verdicts are recorded), `07-baseline-delta` and
   `06-change-impact-analysis` (where post-baseline `request-changes` route).
+<!-- dual-compat-end -->

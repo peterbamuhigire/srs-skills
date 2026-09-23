@@ -1,6 +1,6 @@
 {
   "standard": "canonical-july-2026-zero-debt",
-  "active_skill_count": 158,
+  "active_skill_count": 159,
   "active_skill_paths": [
     "01-strategic-vision/01-prd-generation/SKILL.md",
     "01-strategic-vision/02-business-case/SKILL.md",
@@ -159,7 +159,8 @@
     "09-governance-compliance/28-anti-ai-slop/SKILL.md",
     "09-governance-compliance/29-ai-slop-audit/SKILL.md",
     "09-governance-compliance/30-game-delivery-evidence-and-greenlight-pack/SKILL.md",
-    "09-governance-compliance/31-kaizen-engine-and-product-improvement/SKILL.md"
+    "09-governance-compliance/31-kaizen-engine-and-product-improvement/SKILL.md",
+    "09-governance-compliance/plan-canvas/SKILL.md"
   ],
   "template_count": 1,
   "failure_counts": {},

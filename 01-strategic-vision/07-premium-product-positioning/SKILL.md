@@ -69,6 +69,23 @@ If any required capability is unavailable, return the narrowest useful qualified
 - Verify standards, citations, APIs and package names before relying on them; qualify what cannot be checked.
 - Stop release for a failed safety, security, legal, financial, accessibility or data-integrity gate.
 
+## Commercial promise translation (Kaizen adoption)
+
+Translate each premium promise into a small evidence record (synthesis): promise, target user and
+job, observable product or service behaviour, proof artifact, acceptance procedure, owner, and
+review date. Add two challenge rows before approval:
+
+- **Countercase:** name the user, context, failure mode, or lower-cost alternative for which the
+  promise may not hold; narrow the claim or add a test.
+- **AI alternative:** identify what an AI-generated or AI-assisted substitute could produce, then
+  state the human, service, reliability, accessibility, privacy, or governance evidence that must
+  still be demonstrated. AI output is not delivery proof by itself.
+
+Link every accepted claim to the [premium requirements gate](references/premium-product-requirements-gate.md)
+and retain failed checks as `failed` and unavailable checks as `not assessed`. Use the [WCAG 2.2 Recommendation](https://www.w3.org/TR/WCAG22/)
+(accessed 2026-09-22) for the applicable accessibility requirements; the link is a source route, not a
+claim that the product conforms.
+
 ## Anti-Patterns
 
 - Replacing value with luxury adjectives. Fix: name the buyer outcome and proof.
@@ -87,56 +104,37 @@ If any required capability is unavailable, return the narrowest useful qualified
 
 
 
-## Premium positioning gate (added 2026-05-04 from Synechron Enterprise UX)
+## Premium positioning acceptance
 
-Canonical reference: `docs/ux-foundations.md` Section 3 (5 outcomes + 5-level UX maturity).
+Use the five outcome questions as a review lens, not a validated pricing formula.
+The project owner defines acceptance criteria before observing results; record
+the method, participants, environment, limitations and accountable reviewer.
 
-Premium-pricing claims must pass two gates: outcomes (launch gate) and maturity (process gate). Both are required; neither alone is sufficient.
-
-### Gate 1 — Five Outcomes (launch gate)
-
-A premium positioning document must declare evidence-based pass on ALL FIVE outcomes:
-
-| Outcome | Evidence required |
+| Outcome | Project-specific evidence |
 |---|---|
-| **Useful** | Persona-validated; tested against documented goals |
-| **Easy to use** | First-task success in usability test without coaching |
-| **Efficient** | Task time benchmarked against competitor or prior baseline |
-| **Pleasing** | Subjective rating ≥ 4/5 on initial-impression test |
-| **Accessible** | ADA / Section 508 / WCAG 2.1 AA verified |
+| Useful | Target users can explain the benefit and complete a relevant task |
+| Easy to use | Agreed first-task and recovery scenarios, including assistance needed |
+| Efficient | Task effort/time compared with an appropriate baseline or alternative |
+| Appropriate visual experience | Target-buyer interpretation of the authored design, with reasons and disagreement recorded |
+| Accessible | Applicable standard/version/level and scoped criteria, manual and automated evidence, unresolved defects and retest |
 
-**4-of-5 disqualifies premium pricing.** Drop the positioning to standard tier and re-engage when the missing outcome has evidence.
+Do not impose a universal 4/5 aesthetic threshold or infer price acceptance from
+passing four or five dimensions. Required task, accessibility or reliability
+failures hold the affected release promise; they are not cured by changing a
+pricing label. Missing evidence remains NOT_ASSESSED. Buyer willingness to pay
+requires separate commercial evidence.
 
-### Gate 2 — UX Maturity Level (process gate)
+Identify jurisdiction and contractual obligations. WCAG 2.2 is a current W3C
+technical reference in this audit; verify the required version and conformance
+scope for the engagement. ADA and Section 508 are US-specific legal contexts,
+not universal substitutes for local law or proof of accessibility.
 
-A premium claim must operate at UX Maturity Level 3 (UX Design) minimum. Top-tier (luxury, regulated, mission-critical) requires Level 4 (Experience Design).
+Select discovery, research, journeys, information architecture, prototypes,
+usability work, visual exploration and operational rehearsal according to the
+decision and risk. Record why each activity is needed and its acceptance output.
+A maturity label or a count of documents does not establish premium capability.
 
-Required documented activities at Level 3:
-- Problem definition + business objective
-- Stakeholder discussions (interview notes)
-- Success criteria (signed)
-- User research (qualitative + quantitative)
-- Competitor analysis matrix
-- Personas (named, with goals + pain points)
-- User journeys (per primary persona)
-- Information architecture (sitemap + navigation flow)
-- Wireframes (low-fi + high-fi)
-- Clickable prototype (per crucial scenarios)
-- Heuristic evaluation report
-- Visual design mockups
-- ADA / Section 508 verification
-
-Level 4 additionally requires: experience maps, mood boards, usability testing, test cases & scenarios.
-
-### Cross-engine references
-
-- Website engine `design-quality-score` — Category 8 (UX Maturity) scores the same gate independently per artefact. Same project may carry separate scores in each engine.
-- Website engine `premium-ui-ux-design` reference `enterprise-five-outcomes.md` — same outcomes, applied to website templates.
-
-### Procedure when either gate fails
-
-Do not re-position the product as premium. Either:
-1. Close the gap (add the missing evidence or activities) and re-engage, OR
-2. Re-position at a lower tier (standard / mid-tier) honestly
-
-Premium claims that fail either gate damage credibility on first audit.
+For visual execution, load the canonical design-system engine and its premium
+UI/UX and delivery gates. For websites, load the website premium-product route.
+When evidence fails, repair the product or narrow the unsupported promise and
+repeat the affected assessment. Retain the original finding and its disposition.
