@@ -136,4 +136,4 @@ For each source state whether the data may be used to train the model provider's
 - ISO/IEC 42001
 - NIST AI RMF MAP-2 (data characteristics)
 - GDPR Art. 25 (data minimisation, purpose limitation)
-- OWASP LLM06 (sensitive information disclosure)
+- OWASP LLM02:2026 Sensitive Information Disclosure (LLM02:2025)

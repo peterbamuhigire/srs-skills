@@ -165,7 +165,7 @@ Every agent FR has a row in the agent eval rig with:
 - ISO/IEC/IEEE 29148:2018 (requirements engineering; supersedes IEEE 830-1998)
 - NIST AI RMF MAP / MEASURE
 - EU AI Act Art. 13 (transparency), Art. 14 (human oversight)
-- OWASP Top 10 for LLM Applications 2025 and OWASP Top 10 for Agentic Applications 2026 (verified 2026-09-24)
+- OWASP Top 10 for LLM Applications 2026 (published 2026-08-03) and OWASP Top 10 for Agentic Applications 2026 (verified 2026-09-24)
 
 ## Resources
 

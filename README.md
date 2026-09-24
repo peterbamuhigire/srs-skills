@@ -574,7 +574,7 @@ The portable skill catalog lives in the sibling <a href="https://github.com/pete
 - **mobile-cross** — KMP development, PWA offline-first, mobile platform operations, mobile reports.
 - **product-business** — Product strategy/vision/discovery, PLG, premium positioning/execution, software business models/pricing, growth telemetry, experiment engineering, customer service, content/proposal writing, Excel, professional Word output.
 - **saas** — SaaS architecture strategy, modular/multi-tenant, control plane, admin/backoffice, lifecycle email, entitlements/plan gating, rate limiting/quotas, SSO/SCIM, tenant onboarding/portability/erasure, deployment models, business metrics, SaaS ERP/accounting, subscription billing, Stripe payments.
-- **sdlc-meta** — World-class engineering, engineering management/strategy, advanced testing strategy, E2E testing, AI-assisted development, git collaboration workflow, plan implementation, project requirements, SDLC (planning/design/documentation/testing/user-deploy), doc-architect, capability matrix, continuous improvement, custom sub-agents, skill-writing, skill safety audit, skill composition standards.
+- **sdlc-meta** — World-class engineering, engineering management/strategy, advanced testing strategy, E2E testing, AI-assisted development, git collaboration workflow, plan implementation, project requirements, SDLC (planning/design/documentation/testing/user-deploy), doc-architect, capability matrix, continuous improvement, custom sub-agents, skill-writing, skill-engine-audit (incl. skill safety gate), skill composition standards.
 - **security** — Code safety scanner, DPIA generator, dual-auth RBAC, Linux security hardening, network security, Uganda DPPA compliance, web app security audit.
 
 ## Pathing Model

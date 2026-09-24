@@ -12,5 +12,5 @@ Produce the AI Data and Knowledge-Base Spec: what data feeds the models, who own
 
 - ISO/IEC 42001
 - NIST AI RMF MAP-2
-- OWASP LLM06
+- OWASP LLM02:2026 Sensitive Information Disclosure
 - GDPR Art. 25

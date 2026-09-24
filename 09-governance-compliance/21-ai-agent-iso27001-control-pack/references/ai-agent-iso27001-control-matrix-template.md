@@ -19,7 +19,7 @@ Worked example: agentic-CX SaaS, EU + UK + US footprint, single ISMS scope inclu
 ### A.5.7 — Threat intelligence
 
 | Applicability | Applicable |
-| Agent treatment | Agentic CVE-style advisories monitored (OWASP Top 10 for LLM Applications 2025 and OWASP Top 10 for Agentic Applications 2026, MITRE ATLAS updates, provider advisories); new red-team scenarios added within 7 days of public advisory |
+| Agent treatment | Agentic CVE-style advisories monitored (OWASP Top 10 for LLM Applications 2026 and OWASP Top 10 for Agentic Applications 2026, MITRE ATLAS updates, provider advisories); new red-team scenarios added within 7 days of public advisory |
 | ISO 42001 overlay | Clause 6.1.2 (risk assessment) |
 | Evidence | threat-intel monitoring source list; red-team scenario change log |
 | Frequency | continuous |

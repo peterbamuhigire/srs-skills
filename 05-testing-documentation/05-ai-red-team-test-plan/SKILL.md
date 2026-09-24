@@ -103,7 +103,7 @@ Given an approved project source and a conflicting implementation detail, record
 <!-- dual-compat-end -->
 ## Overview
 
-The AI-specific security test plan. Whereas the eval harness measures whether the system does its job, red-team measures whether the system can be made to fail dangerously. Anchored in the OWASP Top 10 for LLM Applications 2025 and the NIST AI RMF MEASURE function.
+The AI-specific security test plan. Whereas the eval harness measures whether the system does its job, red-team measures whether the system can be made to fail dangerously. Anchored in the OWASP Top 10 for LLM Applications 2026 and the NIST AI RMF MEASURE function.
 
 ## Core Instructions
 
@@ -176,7 +176,7 @@ Scenarios are versioned in the red-team registry. New attacks reported externall
 
 ## Standards
 
-- OWASP Top 10 for LLM Applications 2025 and OWASP Top 10 for Agentic Applications 2026 (verified 2026-09-24 at genai.owasp.org; an "OWASP GenAI LLM Top 10 2026" resource was published 2026-08-03 but its identifiers are `NOT_ASSESSED` - keep LLMxx:2025 IDs until re-mapped)
+- OWASP Top 10 for LLM Applications 2026 (published 2026-08-03; LLM01:2026-LLM10:2026 verified 2026-09-24 against the edition PDF at genai.owasp.org/resource/owasp-genai-llm-top-10-2026) and OWASP Top 10 for Agentic Applications 2026. Cite 2026 IDs; add the LLMxx:2025 ID only where an existing control set still uses it (2025-to-2026 map: `05-ai-red-team-test-plan/references/red-team-scenario-library.md`)
 - NIST AI RMF MEASURE-2
 - ISO/IEC 42001 Clause 8.3 (operational planning and control)
 - MITRE ATLAS

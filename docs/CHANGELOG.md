@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026-09-24] - OWASP 2026 re-mapping and follow-up fixes
+
+- AI skills, red-team scenario library, agent security requirements and the ISO 27001 control
+  template re-mapped to the OWASP Top 10 for LLM Applications 2026 (published 2026-08-03), with
+  2025 IDs kept in brackets; every citation carries its edition year. A mis-cited "LLM06"
+  (sensitive information disclosure) corrected to LLM02.
+- Router tables updated for the chwezi-dev-engine consolidation (doc-architect and
+  skill-engine-audit absorb markdown lint, doc maintenance and the skill safety gate).
+
 ## [2026-09-24] - Book-extraction retirement and requirement-quality currentness
 
 ### Removed
