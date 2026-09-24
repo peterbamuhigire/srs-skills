@@ -13,9 +13,16 @@ LARGE_BOOK_TEXT_BYTES = 80_000
 RAW_BOOK_EXTENSIONS = {".epub", ".mobi", ".azw", ".azw3"}
 SOURCE_TEXT_EXTENSIONS = {".md", ".txt", ".rst", ".html", ".htm"}
 BOOK_SOURCE_PATH_RE = re.compile(
-    r"(?:^|/)(?:book-extractions?|book-dumps?|raw-books?|source-books?)(?:/|$)",
+    r"(?:^|/)(?:book-extractions?|extracted-books?|book-dumps?|raw-books?|source-books?|book-study)(?:/|$)",
     re.IGNORECASE,
 )
+EXTRACTION_FILENAME_RE = re.compile(r"(?:-extractions?|books?-analysis)\.md$", re.IGNORECASE)
+EXTRACTION_TARGET = r"(?:book-extractions?|extracted-books?|book-dumps?|raw-books?|source-books?|book-study)/"
+# Markdown link targets into an extraction folder, e.g. [x](../../book-extractions/y.md).
+EXTRACTION_LINK_RE = re.compile(r"\]\([^)\s]*" + EXTRACTION_TARGET + r"[^)\s]*\)", re.IGNORECASE)
+# Backticked file paths inside an extraction folder, e.g. `book-extractions/y.md` (skills and root docs only).
+EXTRACTION_CODE_PATH_RE = re.compile(r"`[^`\s]*" + EXTRACTION_TARGET + r"[^`\s]+\.md`", re.IGNORECASE)
+LINK_SCAN_EXCLUDED_TOP = {"projects"}
 FULL_TEXT_MARKERS = {
     "isbn": re.compile(r"\bISBN(?:-1[03])?\s*:?\s*[\dXx][\dXx\-\s]{8,}"),
     "copyright": re.compile(r"\bcopyright\s+(?:\u00a9|\(c\)|&copy;|[12]\d{3})", re.IGNORECASE),
@@ -42,6 +49,26 @@ class Finding:
         return f"[ERROR] {self.code}: {self.path} {self.message}"
 
 
+def _link_findings(path: Path, relative: Path, top: str) -> list[Finding]:
+    try:
+        content = path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return []
+    found: list[Finding] = []
+    match = EXTRACTION_LINK_RE.search(content)
+    if match:
+        found.append(
+            Finding("book-extraction-link", relative, f"links to a book-extraction path: {match.group(0)}")
+        )
+    elif top != "docs":
+        match = EXTRACTION_CODE_PATH_RE.search(content)
+        if match:
+            found.append(
+                Finding("book-extraction-link", relative, f"references a book-extraction file: {match.group(0)}")
+            )
+    return found
+
+
 def scan(root: Path) -> list[Finding]:
     root = root.resolve()
     findings: list[Finding] = []
@@ -65,6 +92,26 @@ def scan(root: Path) -> list[Finding]:
 
         in_book_source_path = BOOK_SOURCE_PATH_RE.search(relative.as_posix()) is not None
         size = path.stat().st_size
+        top = relative.parts[0] if relative.parts else ""
+        if top not in LINK_SCAN_EXCLUDED_TOP:
+            if in_book_source_path:
+                findings.append(
+                    Finding(
+                        "book-extraction-folder",
+                        relative,
+                        "book extraction folders are not allowed; fold knowledge into skill references",
+                    )
+                )
+            elif EXTRACTION_FILENAME_RE.search(path.name):
+                findings.append(
+                    Finding(
+                        "book-extraction-file",
+                        relative,
+                        "extraction or book-analysis digests are not allowed; fold knowledge into skill references",
+                    )
+                )
+            if suffix == ".md":
+                findings.extend(_link_findings(path, relative, top))
         if suffix == ".pdf" and in_book_source_path:
             findings.append(
                 Finding(

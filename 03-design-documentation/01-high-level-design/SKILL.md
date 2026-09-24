@@ -82,6 +82,7 @@ If any required capability is unavailable, return the narrowest useful qualified
 - [SaaS HLD mode](references/saas-hld-mode.md)
 - [AI HLD mode](references/ai-hld-mode.md)
 - [Practical architecture](references/practical-architecture-knowledge.md)
+- [Solution design views and controls](references/solution-design-views-and-controls.md): load when tracing requirements across experience, process, data and security views, or when specifying input, output, data-quality, workflow, privacy and security controls.
 <!-- dual-compat-end -->
 
 

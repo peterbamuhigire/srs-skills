@@ -82,6 +82,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Skill guidance](README.md)
 - [Executable generation logic](logic.prompt)
 - [Ai Data And Knowledge Base Spec Template](references/ai-data-and-knowledge-base-spec-template.md)
+- [Data governance, catalog, and lineage requirements](../fundamentals/during/05-conceptual-data-modeling/references/data-governance-catalog-lineage-requirements.md): load when sources come from a data catalog or data contracts; supplies `AIM-*` access-filtering, citation, and deprecation-exclusion requirements and `LIN-04` erasure reach.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

@@ -103,7 +103,7 @@ Practitioner cross-checks: [Eleken onboarding](https://www.eleken.co/blog-posts/
 
 ## Book-informed practice route
 
-Use [the 2026-09-14 requirements and architecture synthesis](../../../../book-extractions/2026-09-14-requirements-architecture-synthesis.md) to demand measurable oracles, explicit assumptions, and failure-aware validation.
+Use [the scenario-spine and requirement-contract reference](../../after/09-traceability-engineering/references/scenario-spine-and-requirement-contract.md) to demand measurable oracles, explicit assumptions, and failure-aware validation.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

@@ -53,6 +53,8 @@
     {"id":"game-evidence-positive","kind":"positive","prompt":"Assemble the game delivery evidence and greenlight pack across player rights build test security accessibility release and replication.","expected":"30-game-delivery-evidence-and-greenlight-pack"},
     {"id":"game-evidence-failure","kind":"failure-path","prompt":"Review a world-class game claim where prose exists but signed builds failed-path tests and independent replication are missing.","expected":"30-game-delivery-evidence-and-greenlight-pack"},
     {"id":"game-blender-pipeline-positive","kind":"positive","prompt":"Specify the Blender source to engine pipeline with rigs animation clips UV bakes materials collision LOD export import lineage runtime budgets and clean reimport evidence.","expected":"18-game-3d-content-and-blender-pipeline-specification"},
-    {"id":"game-blender-pipeline-neighbour","kind":"collision","prompt":"The game architecture is approved; define GASSET asset class Blender source export import and runtime acceptance contracts rather than whole-system components.","expected":"18-game-3d-content-and-blender-pipeline-specification"}
+    {"id":"game-blender-pipeline-neighbour","kind":"collision","prompt":"The game architecture is approved; define GASSET asset class Blender source export import and runtime acceptance contracts rather than whole-system components.","expected":"18-game-3d-content-and-blender-pipeline-specification"},
+    {"id": "attribute-mapping-positive", "kind": "positive", "prompt": "Write the SRS non-functional quality attribute requirements for performance, reliability, availability and security.", "expected": "07-attribute-mapping"},
+    {"id": "data-quality-governance-positive", "kind": "positive", "prompt": "Write data quality and data governance requirements.", "expected": "05-conceptual-data-modeling"}
   ]
 }

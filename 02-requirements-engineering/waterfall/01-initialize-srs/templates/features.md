@@ -18,7 +18,7 @@ Use this as a fillable Markdown table. Add rows as needed for additional feature
 - **Functional Requirements**: Bullet list of specific, observable behaviors (what the system does).
 - **Non-Functional Requirements**: Bullet list of qualities (performance, security, usability, etc.).
 - **Acceptance Criteria**: Measurable, testable conditions (Gherkin-style: Given/When/Then implied).
-- **IEEE 830 Reference**: Cite clauses (e.g., 4.3 for characteristics like complete, consistent).
+- **IEEE 830 Reference**: Cite the SRS layout clause (e.g., 5.3.2); judge quality characteristics (complete, consistent, verifiable) against ISO/IEC/IEEE 29148:2018.
 - **Dependencies**: Upstream features, external systems, or data sources.
 - **Risks & Mitigations**: Potential issues and planned responses.
 - **Estimated Effort**: Use story points, hours, or t-shirt sizes for planning.

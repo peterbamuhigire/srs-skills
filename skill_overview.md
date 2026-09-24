@@ -58,7 +58,7 @@ Repository-level pathing is canonicalized to `projects/<ProjectName>/...`.
 |-----------------|--------|----------------|-------------------|----------------|
 | 01-high-level-design | ../output/SRS_Draft.md, ../project_context/tech_stack.md | Generate system architecture with component, deployment, and data flow diagrams (Mermaid), technology decisions, and traceability | IEEE 1016-2009 Sec 5 – Design Viewpoints | ../output/HLD.md |
 | 02-low-level-design | ../output/HLD.md, SRS_Draft.md, ../project_context/business_rules.md | Decompose HLD into module specs with class, sequence, and state diagrams (Mermaid), algorithm formalization (LaTeX), error handling design | IEEE 1016-2009 Sec 6 – Design Elements | ../output/LLD.md |
-| 03-api-specification | ../output/SRS_Draft.md, HLD.md, ../project_context/tech_stack.md | Generate REST API endpoint definitions, schemas, auth, error format, and machine-readable OpenAPI 3.0 YAML | OpenAPI 3.0; IEEE 29148-2018; RFC 7231 | ../output/API_Specification.md, openapi.yaml |
+| 03-api-specification | ../output/SRS_Draft.md, HLD.md, ../project_context/tech_stack.md | Generate REST API endpoint definitions, schemas, auth, error format, and machine-readable OpenAPI 3.1 YAML | OpenAPI 3.1.x; IEEE 29148-2018; RFC 9110; RFC 9457 | ../output/API_Specification.md, openapi.yaml |
 | 04-database-design | ../output/SRS_Draft.md, HLD.md, ../project_context/business_rules.md, tech_stack.md | Generate ERD (Mermaid), normalized table definitions, indexing strategy, data dictionary, migration strategy. MANDATORY: mysql-best-practices for MySQL | IEEE 1016-2009 Sec 6.7; ISO/IEC 25010 | ../output/Database_Design.md, erd.mmd |
 
 ### Phase 03 Strategy And UX Content Additions

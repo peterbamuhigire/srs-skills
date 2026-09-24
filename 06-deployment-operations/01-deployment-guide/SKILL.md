@@ -100,6 +100,7 @@ Given an approved project source and a conflicting implementation detail, record
 
 - [logic.prompt](logic.prompt) - load only when its template, logic, or detail is needed.
 - [README.md](README.md) - load only when its template, logic, or detail is needed.
+- [references/delivery-pipeline-requirements.md](references/delivery-pipeline-requirements.md) - load when the guide or SRS must state verifiable requirements for artifact identity, provenance, pipeline credentials, rollout abort criteria, reversal time, IaC changes, or DORA delivery metrics.
 <!-- dual-compat-end -->
 ## Overview
 

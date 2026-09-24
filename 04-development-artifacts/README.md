@@ -8,7 +8,7 @@ This phase generates development-facing documentation that guides implementation
 
 | Order | Skill | Output | Standard |
 |-------|-------|--------|----------|
-| 1 | 01-technical-specification | Technical_Specification.md | IEEE 1016-2009, IEEE 830-1998 |
+| 1 | 01-technical-specification | Technical_Specification.md | IEEE 1016-2009, ISO/IEC/IEEE 29148:2018 |
 | 2 | 02-coding-guidelines | Coding_Guidelines.md | IEEE 730 |
 | 2 | 03-dev-environment-setup | Dev_Environment_Setup.md | IEEE 1074 |
 | 3 | 04-contribution-guide | Contribution_Guide.md | IEEE 1074 |

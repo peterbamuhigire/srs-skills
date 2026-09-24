@@ -10,7 +10,7 @@ This phase generates design documentation that translates verified requirements 
 |-------|-------|--------|----------|
 | 1 | 01-high-level-design | HLD.md | IEEE 1016-2009 Sec 5 |
 | 2 | 02-low-level-design | LLD.md | IEEE 1016-2009 Sec 6 |
-| 3 | 03-api-specification | API_Specification.md, openapi.yaml | OpenAPI 3.0 |
+| 3 | 03-api-specification | API_Specification.md, openapi.yaml | OpenAPI 3.1.x, RFC 9457 |
 | 3 | 04-database-design | Database_Design.md, erd.mmd | IEEE 1016 Sec 6.7 |
 | 3 | 05-ux-specification | UX_Specification.md | UX and interaction design practices |
 | 4 | 06-infrastructure-design | Infrastructure_Design.md | IEEE 1016, ISO/IEC 25010 |

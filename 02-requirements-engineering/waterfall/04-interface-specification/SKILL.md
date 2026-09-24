@@ -90,6 +90,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Skill authoring and release standard](../../../docs/skill-authoring-standard.md)
 - [Skill guidance](README.md)
 - [Executable generation logic](logic.prompt)
+- [API interface requirements and API NFRs](references/api-interface-requirements.md) - load when an interface is an HTTP/event/webhook/streaming API or AI-agent tool and needs verifiable contract, error, latency, limit, compatibility, authorisation, and delivery requirements.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

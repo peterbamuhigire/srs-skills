@@ -60,6 +60,7 @@ If any required capability is unavailable, return the narrowest useful qualified
 |---|---|---|
 | Benefits and costs have defensible ranges | Calculate scenarios and recommend | Recommendation rests on auditable evidence |
 | A decision-critical input is unavailable | Issue a conditional case and block final approval | False precision drives investment |
+| The investment includes an AI capability | Apply the AI business-case addendum: compare against an optimised non-AI option and cost evaluation, review, drift and model-change lines | AI return overstated against the wrong comparator |
 
 ## Quality Standards
 
@@ -80,6 +81,7 @@ If any required capability is unavailable, return the narrowest useful qualified
 ## References
 
 - [SaaS business-case addendum](references/saas-business-case-addendum.md)
+- [AI business-case addendum](references/ai-business-case-addendum.md): load when any option includes AI; adds the three-option comparator, AI cost lines, readiness scoring, kill criteria, and finance-engine routing.
 - [Generation logic](logic.prompt)
 <!-- dual-compat-end -->
 

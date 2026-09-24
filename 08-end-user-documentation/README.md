@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Generate user-facing documentation that enables end users to install, operate, troubleshoot, and stay informed about the software product per ISO 26514 and IEEE 830 standards.
+Generate user-facing documentation that enables end users to install, operate, troubleshoot, and stay informed about the software product per ISO/IEC/IEEE 26514 and ISO/IEC/IEEE 29148:2018.
 
 ## Skills in This Phase
 
@@ -11,7 +11,7 @@ Generate user-facing documentation that enables end users to install, operate, t
 | 1 | 01-user-manual | User_Manual.md | ISO 26514 |
 | 2 | 02-installation-guide | Installation_Guide.md | ISO 26514 |
 | 3 | 03-faq | FAQ.md | ISO 26514 |
-| 4 | 04-release-notes | Release_Notes_Template.md | IEEE 830 |
+| 4 | 04-release-notes | Release_Notes_Template.md | ISO/IEC/IEEE 29148:2018 |
 
 ## Execution Order
 

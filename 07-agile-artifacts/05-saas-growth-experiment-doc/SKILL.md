@@ -89,6 +89,7 @@ Example: if primary metric, instrumentation, or stop rule is unverified, do not 
 ## References
 
 - [Generation logic](logic.prompt): load when creating the complete artefact.
+- [Experiment validity and platform requirements](references/experiment-validity-and-platform-requirements.md): load when classifying test intent, scheduling SRM/A-A/canary checks, setting peeking and concurrency rules, planning holdbacks, or specifying the experimentation platform itself.
 - [Skill notes](README.md): consult for local examples and invocation context.
 - [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
 

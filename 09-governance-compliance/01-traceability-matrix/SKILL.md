@@ -89,6 +89,7 @@ Example: if required evidence is missing or inaccessible, mark the check not ass
 ## References
 
 - [Generation logic](logic.prompt): load when creating the complete artefact.
+- [Outcome roadmap and objective trace](../../01-strategic-vision/01-prd-generation/references/outcome-roadmap-and-objective-trace.md): load when the RTM must start at funded objectives and end at production telemetry (OBJ-OUT-OPP-REQ-ACC-TEL chain and orphan checks).
 - [Skill notes](README.md): consult for local examples and invocation context.
 - [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
 
@@ -242,10 +243,10 @@ This ensures `scripts/build-doc.sh` assembles sections in the intended order rat
 | Standard | Governs |
 |----------|---------|
 | IEEE 1012-2016 | V&V traceability requirements and bidirectional link mandates |
-| IEEE 830-1998 | Requirement identifier structure and SRS section mapping |
+| IEEE 830-1998 (superseded by ISO/IEC/IEEE 29148:2018) | SRS section-layout mapping only |
 
 ## Resources
 
 - IEEE 1012-2016: Standard for System, Software, and Hardware Verification and Validation
-- IEEE 830-1998: Recommended Practice for Software Requirements Specifications
+- IEEE 830-1998: Recommended Practice for Software Requirements Specifications (superseded; layout only - ISO/IEC/IEEE 29148:2018 is authoritative)
 - CLAUDE.md: Project-level V&V Standard Operating Procedure

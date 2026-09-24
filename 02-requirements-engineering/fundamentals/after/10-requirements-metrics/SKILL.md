@@ -83,7 +83,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Quality Gate Thresholds](references/quality-gate-thresholds.md)
 ## Book-informed practice route
 
-Use [the 2026-09-14 requirements and architecture synthesis](../../../../book-extractions/2026-09-14-requirements-architecture-synthesis.md) to measure verifiability, NFR specificity, uncertainty, and trace completeness.
+Use [the scenario-spine and requirement-contract reference](../09-traceability-engineering/references/scenario-spine-and-requirement-contract.md) to measure verifiability, NFR specificity, uncertainty, and trace completeness.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

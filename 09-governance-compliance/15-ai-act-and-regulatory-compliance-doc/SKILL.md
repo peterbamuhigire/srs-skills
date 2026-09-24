@@ -88,6 +88,7 @@ Example: if a required source, owner, obligation, or acceptance condition is mis
 
 ## References
 
+- [EU AI Act application timeline](references/eu-ai-act-application-timeline.md): load when any feature has an EU AI Act verdict and needs dated obligations.
 - [Generation logic](logic.prompt): load when creating the complete artefact.
 - [Skill notes](README.md): consult for local examples and invocation context.
 - [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
@@ -100,12 +101,12 @@ Example: if a required source, owner, obligation, or acceptance condition is mis
 
 For each feature evaluate:
 
-- **Prohibited (Art. 5)** — social scoring, manipulative AI, predictive policing of natural persons, untargeted scraping of facial images, emotion inference in workplace/education, exploiting vulnerability, biometric categorisation by protected characteristic, real-time remote biometric identification in publicly accessible spaces.
+- **Prohibited (Art. 5)** — social scoring, manipulative AI, predictive policing of natural persons, untargeted scraping of facial images, emotion inference in workplace/education, exploiting vulnerability, biometric categorisation by protected characteristic, real-time remote biometric identification in publicly accessible spaces; and, added by the Digital Omnibus on AI (Regulation (EU) 2026/1744), systems generating non-consensual intimate imagery or child sexual abuse material.
 - **High-risk (Annex III)** — biometric / critical infrastructure / education-and-training / employment / essential private and public services (including credit and insurance) / law enforcement / migration / administration of justice / influencing elections.
 - **Limited-risk (Art. 50)** — chatbots, generative content, deep fakes -- transparency obligations.
 - **Minimal-risk** — everything else.
 
-Each feature carries the verdict + cited Article / Annex point.
+Each feature carries the verdict, the cited Article / Annex point, and the "Applies from" date from [the application timeline](references/eu-ai-act-application-timeline.md) (Annex III high-risk from 2 December 2027, Annex I from 2 August 2028, Art. 50 transparency from 2 August 2026, as amended by the Digital Omnibus on AI).
 
 ### Step 2: US sectoral exposure
 
@@ -162,7 +163,7 @@ EU AI Act high-risk classification (Annex III) drives extra documentation that t
 
 ## Standards
 
-- EU Reg 2024/1689 (AI Act)
+- EU Reg 2024/1689 (AI Act), as amended by Regulation (EU) 2026/1744 (Digital Omnibus on AI, in force 27 July 2026)
 - ISO/IEC 42001
 - NIST AI RMF
 - US sectoral statutes named above

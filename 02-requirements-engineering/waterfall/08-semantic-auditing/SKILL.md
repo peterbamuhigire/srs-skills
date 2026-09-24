@@ -81,6 +81,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Skill authoring and release standard](../../../docs/skill-authoring-standard.md)
 - [Skill guidance](README.md)
 - [Executable generation logic](logic.prompt)
+- [Final requirements quality gate](../../references/final-requirements-quality-gate.md): load after this audit, as the last check before the SRS goes to the Human Review Gate or `build-doc.sh`.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 
@@ -94,7 +95,7 @@ Run this skill after Sections 1.0–3.5 have been generated so it can audit the 
 
 ## Core Instructions
 1. Execute `python semantic_auditing.py` from this directory or trigger via `logic.prompt`. The script logs all reads, forces unique requirement IDs, and generates the audit report as a stand-alone artifact so the SRS remains unchanged.
-2. Load `../ieee-830-compliance-checklist.md` and use its checklist IDs (IEEE830-4.3.1 through IEEE830-5.4.3) when reporting all findings.
+2. Load `../ieee-830-compliance-checklist.md` and use its checklist IDs (IEEE830-4.3.1 through IEEE830-5.4.3) when reporting all findings. Apply its Part 7 ISO/IEC/IEEE 29148:2018 overlay (IDs `29148-IND-*`, `29148-SET-*`) as the governing requirement-quality test; IEEE 830 is superseded and retained only for section layout.
 3. The Requirements Audit section reviews ALL eight IEEE 830 quality attributes with enhanced checks:
    - **Ranking completeness** (IEEE830-4.3.5): every requirement must have Essential/Conditional/Optional priority
    - **TBD protocol** (IEEE830-4.3.3.1): every TBD must include condition, resolution, owner, deadline
@@ -117,6 +118,7 @@ For every domain-specific term, acronym, or project-specific phrase used in the 
 
 **Checklist:**
 - [ ] Zero [GLOSSARY-GAP] tags unresolved
+- [ ] [Final requirements quality gate](../../references/final-requirements-quality-gate.md) rows G1-G11 recorded as pass, with no `not assessed` row left open
 
 ## Resources
 - `README.md`: Execution steps and precision reminders.

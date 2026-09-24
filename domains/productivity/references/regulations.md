@@ -49,4 +49,4 @@ Before shipping any feature that transmits user content or metadata off-device, 
 - Section 508 of the Rehabilitation Act (conceptual)
 - ISO/IEC 25010:2023 (systems and software quality model)
 - ISO/IEC 27001 (information security management, used as local-hygiene reference)
-- IEEE 830, IEEE 1012, IEEE 1233, IEEE 610.12, ASTM E1340
+- ISO/IEC/IEEE 29148:2018 (supersedes IEEE 830), IEEE 1012, IEEE 1233, IEEE 610.12, ASTM E1340

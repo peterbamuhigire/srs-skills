@@ -41,7 +41,7 @@ SDLC phases.** The current catalogue is recorded above.
 **Documentation Skills Expansion** (February 2026) - 11 new skills across 3 phases:
 - **Phase 01: Strategic Vision** - Vision Statement, PRD, Business Case (IEEE 29148, IEEE 1058)
 - **Phase 02: Agile Track Complete** - Acceptance Criteria, Story Mapping, Backlog Prioritization (IEEE 29148)
-- **Phase 03: Design Documentation** - HLD, LLD, API Specification, Database Design (IEEE 1016, OpenAPI 3.0)
+- **Phase 03: Design Documentation** - HLD, LLD, API Specification, Database Design (IEEE 1016, OpenAPI 3.1)
 - **Infrastructure:** Setup scripts (PowerShell + Bash) for bootstrapping new SRS projects
 
 ## What Was New in v3.1?
@@ -123,7 +123,7 @@ Run: 06-deployment-operations/02-runbook-generation
 ### Design Documentation
 - High-Level Design (HLD) - IEEE 1016
 - Low-Level Design (LLD) - IEEE 1016
-- API Specifications - OpenAPI 3.0
+- API Specifications - OpenAPI 3.1
 - Database Design - ERDs, schema docs
 
 ### Testing Documentation
@@ -195,7 +195,7 @@ All documentation aligns with industry standards:
 - **IEEE 829**: Software Test Documentation
 - **ISO/IEC 25010**: Software Product Quality
 - **ISO 26514**: User Documentation
-- **OpenAPI 3.0**: API Documentation
+- **OpenAPI 3.1.x**: API Documentation (3.2.x optional where the toolchain supports it)
 
 ---
 

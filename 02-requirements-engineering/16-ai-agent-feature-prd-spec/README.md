@@ -10,6 +10,6 @@ Produce the AI Agent Feature PRD Spec: agent-distinctive clauses on every agent 
 
 ## Standards
 
-- IEEE 830-1998
+- ISO/IEC/IEEE 29148:2018 (requirements engineering; supersedes IEEE 830-1998)
 - NIST AI RMF MAP / MEASURE
 - EU AI Act Art. 14

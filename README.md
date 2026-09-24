@@ -54,9 +54,9 @@ Filesystem discovery reports 160 `SKILL.md` files; 159 are active entrypoints (t
 - Etter (2016) — cited in `CLAUDE.md` for the Human Review Gate ("AI-generated content must be human-verified; verification is not optional") and the Three-Emphasis and Markdown Syntax rules. Author and year only; no title or publisher recorded.
 - Kodukula & Vinueza (2024) — cited in `CLAUDE.md` as the source of the PRIME methodology (Prepare/Relay/Inspect/Modify/Execute) and, in `02-requirements-engineering/waterfall/01-initialize-srs/SKILL.md`, as hallucination-mitigation guidance underpinning the strict-grounding rule. Author and year only; no title or publisher recorded.
 - Cone (2023) — cited in `CLAUDE.md` alongside Etter for Markdown Syntax Rules. Author and year only; no title or publisher recorded.
-- `book-extractions/human-english-craft-synthesis-2026.md` names David (ceramic manual — disciplined observation and traceability from method to conclusion), Gupta (vocabulary/confusable-word list), Pinnacle (grammar exercise set), and Betsis & Mamas (CAE exam material — genre, audience, register) as sources contributing to this engine's documentation-craft standard; the file records these as title-only or partial-source extractions with no full bibliographic detail (n.d.), and explicitly notes they do not replace IEEE/ISO requirements engineering or product evidence.
+- `09-governance-compliance/28-anti-ai-slop/references/human-english-and-lexical-precision.md` is an independent documentation-craft synthesis informed by general English usage, collocation, grammar and CAE-level writing guidance; it reproduces no source text and does not replace IEEE/ISO requirements engineering or product evidence.
 
-The four author-year citations above (Cunningham, Etter, Kodukula & Vinueza, Cone) appear only as short in-text tags in this engine's own doctrine — no book-extractions file or references/ entry in this repository records their full titles or publishers, so none is invented here.
+The four author-year citations above (Cunningham, Etter, Kodukula & Vinueza, Cone) appear only as short in-text tags in this engine's own doctrine — no references/ entry in this repository records their full titles or publishers, so none is invented here.
 
 ## Capability map
 
@@ -132,7 +132,7 @@ with owner, evidence, measure, risk, rollback, and re-audit. Product audits cove
 traceability, failed paths, accessibility, security, release evidence, user feedback, and handoff.
 Current claims route to the <a href="https://github.com/peterbamuhigire/digital-research-skills" target="_blank" rel="noopener noreferrer">Digital Research Engine</a>; presentation-layer work routes to
 the <a href="https://github.com/peterbamuhigire/design-system-skills" target="_blank" rel="noopener noreferrer">Design System Skills Engine</a>. Raw book-extraction material was removed from the repository and backed up
-externally; see `docs/continuous-improvement/srs-raw-extraction-removal-2026-08.md`.
+externally; see `docs/continuous-improvement/srs-raw-extraction-removal-2026-08.md`. The remaining syntheses were folded into skill references and the folder removed on 2026-09-24; see `docs/continuous-improvement/book-extraction-retirement-2026-09-24.md`.
 
 ## September 2026 book-driven Kaizen wave
 
@@ -168,7 +168,7 @@ Major SDLC documentation layer added across phases 01–09 for SaaS products, AI
 
 **Agent compliance docs (9 skills + 11 enhancements + 12 templates):** SOC2 control pack (AICPA TSC CC1–CC9, A1, C1, PI1, P1–P8), ISO 27001 control pack (Annex A 2022 + ISO 42001 overlay), HIPAA control pack (§164.308/.310/.312/.316 with PHI-touch classification), compliance policy pack (7 bundled signed policies), attestation prep spec (12-mo SOC2 Type II / 6-mo ISO surveillance / 90-day HIPAA timelines), evidence pack spec (SHA-256 chain-of-custody, HIPAA 6yr / SOC2 7yr retention), agent compliance runbook, BAA + DPA templates (KE/NG/ZA/UG/RW annexes), regulator overlap matrix.
 
-**Book extractions** (in `book-extractions/`): 7 SaaS books distilled through the docs lens, plus 6 audit documents.
+**Book-derived knowledge:** held only as paraphrased, task-oriented skill content and `references/` files. The former `book-extractions/` folder was retired on 2026-09-24; see `docs/continuous-improvement/book-extraction-retirement-2026-09-24.md`.
 
 ## Embedded Accounting Engine Additions
 
@@ -222,7 +222,7 @@ The following client projects are maintained under `projects/` (gitignored — n
 
 ---
 
-> **Version: v4.0.0-completion-2026-04-16.** End-to-end engine kernel completion. See [docs/plans/completion2026-04-16/](docs/plans/completion2026-04-16/) for the nine sub-plans and [projects/_demo-hybrid-regulated/README.md](projects/_demo-hybrid-regulated/README.md) for the end-to-end proof project.
+> **Version: v4.0.0-completion-2026-04-16.** End-to-end engine kernel completion. The nine sub-plans (formerly `docs/plans/completion2026-04-16/`) are no longer in the repository; see [projects/_demo-hybrid-regulated/README.md](projects/_demo-hybrid-regulated/README.md) for the end-to-end proof project.
 
 ## What changed in v4.0
 
@@ -237,7 +237,7 @@ The following client projects are maintained under `projects/` (gitignored — n
   to make beauty, pleasantness, dashboard clarity, Android/iOS platform fit,
   accessibility, and commercial credibility testable UX requirements.
 
-See [docs/plans/completion2026-04-16/PROGRESS.md](docs/plans/completion2026-04-16/PROGRESS.md) for the full execution ledger.
+The execution ledger (formerly `docs/plans/completion2026-04-16/PROGRESS.md`) is no longer in the repository.
 
 ## What's New in v3.6
 
@@ -262,7 +262,7 @@ See [docs/plans/completion2026-04-16/PROGRESS.md](docs/plans/completion2026-04-1
 - **AI Economic Value Brief** - strategic AI brief for AI apps, agents, analytics, automation, evaluation gates, and operating ownership
 - **Phase 01: Strategic Vision** - 3 new skills: Vision Statement (IEEE 29148), PRD (IEEE 29148/1233), Business Case (IEEE 1058)
 - **Phase 02: Agile Track Complete** - 3 new skills: Acceptance Criteria, Story Mapping, Backlog Prioritization (IEEE 29148)
-- **Phase 03: Design Documentation** - 4 new skills: HLD, LLD (IEEE 1016), API Specification (OpenAPI 3.0), Database Design (IEEE 1016)
+- **Phase 03: Design Documentation** - 4 new skills: HLD, LLD (IEEE 1016), API Specification (OpenAPI 3.1), Database Design (IEEE 1016)
 - **Setup Scripts** - PowerShell and Bash scripts for bootstrapping new SRS projects
 
 ## What's New in v3.0
@@ -323,7 +323,7 @@ See [docs/plans/completion2026-04-16/PROGRESS.md](docs/plans/completion2026-04-1
 ### **Design Documentation (Phase 03)**
 - **HLD (High-Level Design)** - IEEE 1016-2009, scalability patterns (ByteByteGo)
 - **LLD (Low-Level Design)** - IEEE 1016-2009
-- **API Specifications** - OpenAPI 3.0, advanced API patterns (Geewax)
+- **API Specifications** - OpenAPI 3.1 (JSON Schema 2020-12, RFC 9457 problem details), advanced API patterns (Geewax)
 - **Database Design** - ERDs, schema documentation
 - **UX Specification** (NEW) - Information architecture, wireframes, design systems, usability testing
 - **Premium UI/UX Specification** (NEW) - Premium visual quality, data/dashboard
@@ -387,7 +387,7 @@ See [docs/plans/completion2026-04-16/PROGRESS.md](docs/plans/completion2026-04-1
 - **ISO/IEC 15504**: Process Assessment Framework
 - **ISO/IEC 25010**: Software Product Quality Model
 - **ISO 26514**: User Documentation
-- **OpenAPI 3.0**: API Documentation
+- **OpenAPI 3.1.x**: API Documentation (3.2.x optional where the toolchain supports it)
 
 ---
 
@@ -648,7 +648,7 @@ Many existing skill-local files still use `../project_context/` and `../output/`
 - Real-world examples from MADUUKA and BRIGHTSOMA projects
 - Parallel task coordination; performance gains require measured project evidence.
 
-👉 **[Learn AI Agent Orchestration](skills/ai-assisted-development/SKILL.md)**
+👉 **[Learn AI Agent Orchestration](https://github.com/peterbamuhigire/chwezi-dev-engine/tree/main/skills/sdlc-meta/ai-assisted-development)**
 
 ---
 
@@ -661,7 +661,7 @@ Many existing skill-local files still use `../project_context/` and `../output/`
 - App-specific checklists (MADUUKA, MEDIC8, BRIGHTSOMA, DDA, CROWNPOINT)
 - Early error detection; token savings are not established by this repository audit.
 
-👉 **[Learn Error Prevention](skills/ai-error-prevention/SKILL.md)**
+👉 **Learn Error Prevention:** now a reference of `ai/ai-incident-response` (`references/ai-error-prevention/`) in the Chwezi Dev Engine.
 
 ---
 
@@ -674,7 +674,7 @@ Many existing skill-local files still use `../project_context/` and `../output/`
 - Verification checklist
 - Anti-patterns guide
 
-👉 **[Learn Orchestration Rules](skills/orchestration-best-practices/SKILL.md)**
+👉 **[Learn Orchestration Rules](https://github.com/peterbamuhigire/chwezi-dev-engine/tree/main/skills/architecture/orchestration-best-practices)**
 
 ---
 
@@ -687,7 +687,7 @@ Many existing skill-local files still use `../project_context/` and `../output/`
 - Validation loop with max 3 iterations
 - Automated recovery strategies
 
-👉 **[Learn Validation Stack](skills/ai-error-handling/SKILL.md)**
+👉 **Learn Validation Stack:** now a reference of `ai/ai-incident-response` (`references/ai-error-handling/`) in the Chwezi Dev Engine.
 
 ---
 

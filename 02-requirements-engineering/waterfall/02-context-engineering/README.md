@@ -2,7 +2,7 @@
 
 ## Objective
 
-This skill synthesizes the introduction (Section 1.0) of the SRS by transforming `vision.md` and `glossary.md` into a high-density introduction that respects IEEE 830 and ISO/IEC conventions. It captures the difference between the software purpose and the SRS purpose, defines scope with traceability to stakeholder needs, renders standardized definitions, lists the governing standards, and delivers a roadmap for the remainder of the document.
+This skill synthesizes the introduction (Section 1.0) of the SRS by transforming `vision.md` and `glossary.md` into a high-density introduction that follows the IEEE 830 section layout and ISO/IEC/IEEE 29148:2018 (the authoritative, superseding standard). It captures the difference between the software purpose and the SRS purpose, defines scope with traceability to stakeholder needs, renders standardized definitions, lists the governing standards, and delivers a roadmap for the remainder of the document.
 
 ## Execution Steps
 

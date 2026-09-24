@@ -111,7 +111,7 @@ This is the fourth skill in Phase 08 (End-User Documentation). It produces a rel
 | **Inputs**   | `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` (optional) |
 | **Output**   | `projects/<ProjectName>/<phase>/<document>/Release_Notes_Template.md` |
 | **Tone**     | Professional, concise, user-facing |
-| **Standard** | IEEE 830 |
+| **Standard** | ISO/IEC/IEEE 29148:2018 |
 | **Time**     | 10-15 minutes |
 
 ## Input Files
@@ -227,7 +227,7 @@ The generated `Release_Notes_Template.md` SHALL contain these sections in order:
 
 ## Standards Compliance
 
-- **IEEE 830** -- Recommended Practice for Software Requirements Specifications. Governs traceability of features to requirements and structured documentation of changes.
+- **ISO/IEC/IEEE 29148:2018** -- Requirements engineering (supersedes IEEE 830). Governs traceability of features to requirements and structured documentation of changes.
 
 ## Resources
 

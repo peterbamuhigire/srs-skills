@@ -82,6 +82,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Skill guidance](README.md)
 - [Executable generation logic](logic.prompt)
 - [Ai Agent Feature Prd Spec Template](references/ai-agent-feature-prd-spec-template.md)
+- [Agent security and oversight requirements](references/agent-security-and-oversight-requirements.md) — load when an agent FR reads untrusted content, calls tools, holds memory, or needs approval and stop controls; verifiable ASR/AOR patterns mapped to OWASP LLM 2025 and Agentic 2026.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 
@@ -95,7 +96,7 @@ Produces the agent-feature complement to `ai-feature-prd-spec`. Every agent FR c
 |-----------|-------|
 | **Inputs** | `AI_Agent_Strategy_Doc.md`, `AI_Feature_PRD_Spec.md`, `AI_Feature_Strategy_Doc.md`, `Multi_Tenancy_Architecture_Spec.md`, pricing & packaging spec |
 | **Output** | `AI_Agent_Feature_PRD_Spec.md` |
-| **Standard** | IEEE 830-1998, NIST AI RMF MAP/MEASURE, EU AI Act Art. 13 + Art. 14 |
+| **Standard** | ISO/IEC/IEEE 29148:2018 (supersedes IEEE 830-1998), NIST AI RMF MAP/MEASURE, EU AI Act Art. 13 + Art. 14 |
 
 ## Core Instructions
 
@@ -161,10 +162,10 @@ Every agent FR has a row in the agent eval rig with:
 
 ## Standards
 
-- IEEE 830-1998
+- ISO/IEC/IEEE 29148:2018 (requirements engineering; supersedes IEEE 830-1998)
 - NIST AI RMF MAP / MEASURE
 - EU AI Act Art. 13 (transparency), Art. 14 (human oversight)
-- OWASP LLM Top 10 (agentic addendum)
+- OWASP Top 10 for LLM Applications 2025 and OWASP Top 10 for Agentic Applications 2026 (verified 2026-09-24)
 
 ## Resources
 

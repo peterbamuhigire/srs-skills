@@ -81,6 +81,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Skill authoring and release standard](../../../docs/skill-authoring-standard.md)
 - [Skill guidance](README.md)
 - [Executable generation logic](logic.prompt)
+- [Scenario quality rules](references/scenario-quality-rules.md): load when writing or reviewing Given-When-Then criteria, NFR ranges, or post-delivery scenario filing.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

@@ -138,6 +138,6 @@ Prompts contain no secrets. Tenant identifiers are guarded claims, not free text
 
 ## Standards
 
-- OWASP LLM01 (prompt injection)
+- OWASP Top 10 for LLM Applications 2025: LLM01:2025 Prompt Injection and LLM07:2025 System Prompt Leakage
 - Anthropic prompt-engineering guide
 - NIST AI RMF MANAGE

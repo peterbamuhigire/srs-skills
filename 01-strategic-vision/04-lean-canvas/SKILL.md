@@ -377,7 +377,7 @@ The generated `Lean_Canvas.md` shall contain:
 
 ## Lean Canvas ↔ Business Model Canvas mapping (added 2026-05-04 from Levy)
 
-Canonical reference: `docs/ux-foundations.md` Section 2 (Business Model Canvas — 9 building blocks).
+Canonical reference: [UX requirements foundations](../../03-design-documentation/05-ux-specification/references/ux-requirements-foundations.md) section 7 (business-model blocks the UX strategy must evidence).
 
 This is an **additive mapping** — it does not replace the existing Lean Canvas methodology in this skill. Lean Canvas (Maurya) and Osterwalder's BMC are complementary tools; both have their place.
 

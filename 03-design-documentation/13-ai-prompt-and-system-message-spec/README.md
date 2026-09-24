@@ -10,6 +10,6 @@ Produce the Prompt and System-Message Spec: the registry, the change-control rul
 
 ## Standards
 
-- OWASP LLM01
+- OWASP Top 10 for LLM Applications 2025: LLM01:2025 Prompt Injection, LLM07:2025 System Prompt Leakage
 - Anthropic prompt-engineering guidance
 - NIST AI RMF MANAGE

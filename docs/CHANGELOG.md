@@ -2,6 +2,60 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026-09-24] - Book-extraction retirement and requirement-quality currentness
+
+### Removed
+
+- `book-extractions/` (15 files), `docs/research/adzic-books-analysis.md` and
+  `docs/ux-foundations.md`; knowledge folded into task-oriented skill references
+  and all links repointed. See
+  `docs/continuous-improvement/book-extraction-retirement-2026-09-24.md`.
+
+### Added
+
+- References: scenario spine and requirement contract (traceability), human
+  English and lexical precision (anti-slop), UX requirements foundations (UX
+  specification), story splitting patterns, scenario quality rules, and the
+  ISO/IEC 25010:2023 NFR coverage map (attribute mapping).
+- Part 7 ISO/IEC/IEEE 29148:2018 requirement-quality overlay in the waterfall
+  compliance checklist; `08-semantic-auditing` applies it.
+- "Never store book extractions" section in `AGENTS.md` and `CLAUDE.md`.
+- `scripts/source_ingestion_guardrail.py` fails on extraction folders,
+  extraction-named files and links into them; tests in
+  `tests/test_source_ingestion_guardrail.py`.
+
+### Changed
+
+- `CLAUDE.md` principles now name ISO/IEC/IEEE 29148:2018 (IEEE 830 kept only as
+  section layout), ISO/IEC/IEEE 24765 (successor to IEEE 610.12) and
+  ISO/IEC 25010:2023 with IEEE 982-2024 measures (982.1-2005 replaced).
+- UX specification: WCAG 2.2 and project-validated list limits replace
+  WCAG 2.1 and fixed "7 plus or minus 2" caps.
+- `03-api-specification`: generates OpenAPI 3.1.2 (3.2.x optional when the
+  toolchain supports it), JSON Schema 2020-12 schemas and RFC 9457 problem
+  details; rate-limit headers are a documented project decision (IETF
+  RateLimit fields still a draft); RFC 9110 replaces RFC 7231. Heading
+  contract of `API_Specification.md` unchanged.
+- IEEE 830-1998 no longer cited as a governing standard in skills, templates
+  and domain packs; ISO/IEC/IEEE 29148:2018 is named as authoritative.
+- "OWASP LLM Top 10 (agentic addendum)" replaced by OWASP Top 10 for LLM
+  Applications 2025 and OWASP Top 10 for Agentic Applications 2026; red-team
+  scenario library re-mapped from 2023 v1.1 names to LLM01:2025-LLM10:2025.
+- `03-vision-statement` filter rewritten as five task-oriented checks.
+- `05-conceptual-data-modeling` description covers data contracts,
+  dictionaries, catalogs, lineage, and data quality/governance requirements.
+- `07-attribute-mapping` description aligned to its body (SRS Sections
+  3.3-3.6 quality attributes).
+
+### Added (Kaizen follow-up)
+
+- `09-governance-compliance/15-ai-act-and-regulatory-compliance-doc/references/eu-ai-act-application-timeline.md`
+  (AI Act dates as amended by Regulation (EU) 2026/1744).
+- `02-requirements-engineering/references/final-requirements-quality-gate.md`,
+  linked from `01-prd-generation`, `01-initialize-srs` and `08-semantic-auditing`.
+- Routing fixtures `attribute-mapping-positive` and
+  `data-quality-governance-positive`.
+
 ## [2026-09-19] - Phase 1 Kaizen references
 
 - Added the bounded Phase 1 Kaizen reference slice: requirements problem/goal,

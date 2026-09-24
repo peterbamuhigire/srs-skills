@@ -172,7 +172,7 @@ ADR seeds: planner choice per feature, memory store technology, durable state st
 
 ## Standards
 
-- OWASP LLM Top 10 (agentic addendum)
+- OWASP Top 10 for LLM Applications 2025 and OWASP Top 10 for Agentic Applications 2026 (verified 2026-09-24 at genai.owasp.org; an "OWASP GenAI LLM Top 10 2026" resource was published 2026-08-03 but its identifiers are `NOT_ASSESSED` - keep LLMxx:2025 IDs until re-mapped)
 - NIST AI RMF MAP / MEASURE / MANAGE
 - ISO/IEC 42001 Clause 8
 - AWS Well-Architected ML/AI Lens

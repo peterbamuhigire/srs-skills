@@ -75,8 +75,8 @@ The system shall define a modular type scale. Recommended ratio: 1.25 (Major Thi
 | `type-code` | 14px | 400 (mono) | 1.6 | Code snippets, technical values |
 
 **Font Families:**
-- Primary: System font stack (`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`).
-- Monospace: `"Fira Code", "JetBrains Mono", "Consolas", monospace`.
+- Primary and monospace families are chosen through the `design-system-skills` engine (`skills/01-typography-and-fonts/`), which owns typeface selection and the banned-font list. The UX specification records the chosen family, its licence, fallback stack and the reason for the choice as a requirement; it does not default to a bare system stack or a banned face (Inter, Roboto, Arial, Open Sans, Lato, Geist, Space Grotesk) as primary type.
+- Record which scale values above are placeholders until the design engine confirms them; render and device proof stays `NOT_ASSESSED` until performed.
 
 ### Spacing Scale
 

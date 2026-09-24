@@ -136,7 +136,7 @@ text
 |------|------------|
 | MTBF | Mean Time Between Failures |
 | 99th Percentile | Value below which 99% of measurements fall |
-| IEEE 830 | Standard for Software Requirements Specifications |
+| ISO/IEC/IEEE 29148:2018 | Requirements engineering standard (supersedes IEEE 830-1998) |
 
 ---
 

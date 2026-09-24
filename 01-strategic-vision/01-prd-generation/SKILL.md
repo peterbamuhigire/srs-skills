@@ -60,6 +60,8 @@ If any required capability is unavailable, return the narrowest useful qualified
 |---|---|---|
 | Discovery maturity: Evidence resolves target user, problem and outcome | Write the PRD | Premature requirements harden guesses |
 | Material assumption remains untested | Route it to the Lean Canvas hypothesis board | False certainty enters the backlog |
+| Opportunity Record O1-O4 unanswered, or a Must-have feature has a product risk at evidence rung E0 | Mark the PRD `SPECULATIVE` and block baseline | Engineering builds an unvalidated guess |
+| A requirement has no path to a funded objective or its outcome has no telemetry | Tag `[TRACE-ORPHAN]` or `[TRACE-BLIND]` and resolve before baseline | Scope that cannot be justified or judged |
 
 ## Quality Standards
 
@@ -79,13 +81,16 @@ If any required capability is unavailable, return the narrowest useful qualified
 
 ## References
 
+- [Final requirements quality gate](../../02-requirements-engineering/references/final-requirements-quality-gate.md): load as the last step before the PRD goes to review or is built.
 - [SaaS PRD addendum](references/saas-prd-addendum.md)
 - [AI feature PRD addendum](references/ai-feature-prd-addendum.md)
 - [PRD learning contract](references/kaizen-prd-learning-contract.md)
+- [Opportunity and product-risk evidence gate](references/opportunity-and-product-risk-evidence.md): load before Step 5 for any new product, module or material change; adds the Opportunity Record and the value/usability/feasibility/viability evidence register.
+- [Outcome roadmap and objective trace](references/outcome-roadmap-and-objective-trace.md): load at Step 9 for the release strategy, the objective-to-telemetry trace chain, and release-change requirements for existing users.
 - [Generation logic](logic.prompt)
 ## Book-informed practice route
 
-Use [the 2026-09-14 requirements and architecture synthesis](../../book-extractions/2026-09-14-requirements-architecture-synthesis.md) for North Star scenarios, prioritised milestones, and evidence-backed requirements.
+Use [the scenario-spine and requirement-contract reference](../../02-requirements-engineering/fundamentals/after/09-traceability-engineering/references/scenario-spine-and-requirement-contract.md) for North Star scenarios, prioritised milestones, and evidence-backed requirements.
 <!-- dual-compat-end -->
 
 
@@ -206,7 +211,7 @@ Flag unknown baselines with `[BASELINE-TBD]`.
 ### Step 9: Generate Remaining Sections and Write Output
 
 - **Constraints and Dependencies**: Budget, timeline, technology, and regulatory constraints from `vision.md`. External system dependencies and API integrations.
-- **Release Strategy**: Phased rollout plan mapping features to releases by priority tier.
+- **Release Strategy**: Phased rollout plan mapping features to releases by priority tier. Use the Now/Next/Later outcome format and trace chain in `references/outcome-roadmap-and-objective-trace.md`; only the Now horizon carries committed feature scope and dates.
 - **Standards Traceability Appendix**: Table mapping each PRD section to the corresponding IEEE 29148-2018 and IEEE 1233-1998 clause numbers.
 
 Write the completed document to `projects/<ProjectName>/<phase>/<document>/PRD.md`. Log the total section count and feature count.
@@ -267,6 +272,7 @@ The generated `PRD.md` shall follow this template structure:
 - [ ] Success Metrics include baseline, target, method, and timeline for each KPI.
 - [ ] No marketing language or subjective adjectives appear without a defined metric.
 - [ ] Standards Traceability appendix maps sections to IEEE 29148 and IEEE 1233 clauses.
+- [ ] Final gate passed: run the [final requirements quality gate](../../02-requirements-engineering/references/final-requirements-quality-gate.md) (IDs, singularity, verification method, trace, no implementation detail, ISO/IEC 25010:2023 NFRs, assumptions/constraints/out-of-scope, glossary, versioning, anti-AI-slop) before the Human Review Gate.
 
 ## Integration
 
@@ -288,7 +294,7 @@ The generated `PRD.md` shall follow this template structure:
 
 ## Strategic foundations check (added 2026-05-04 from Levy + Branson)
 
-Canonical reference: `docs/ux-foundations.md` Sections 1 and 2.
+Canonical reference: [UX requirements foundations](../../03-design-documentation/05-ux-specification/references/ux-requirements-foundations.md) sections 2 (persona discipline) and 3 (strategy-statement filter).
 
 Three checks before producing or finalizing the PRD:
 

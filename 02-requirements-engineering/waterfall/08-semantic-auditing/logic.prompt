@@ -61,6 +61,6 @@ You are executing the 08-Semantic-Auditing skill. Your mandate is to read every 
 10. Append a "Standard Conformance Statement" with:
     - Clause-by-clause compliance summary referencing checklist IDs
     - Overall compliance verdict: COMPLIANT / PARTIALLY COMPLIANT / NON-COMPLIANT
-    - List of all [V&V-FAIL] items requiring remediation before the SRS can be considered IEEE 830 compliant
+    - List of all [V&V-FAIL] items requiring remediation before the SRS can be considered compliant with ISO/IEC/IEEE 29148:2018 (quality) and the IEEE 830 layout
 
 11. Write the full report to `Audit_Report.md` at the workspace root. Do not modify `SRS_Draft.md`. After writing, log the count of RTM rows, flagged ambiguity entries, orphan requirements, unmet goals, missing sections, and unranked requirements.

@@ -1,7 +1,7 @@
 # Advanced API Patterns Reference
 
 **Source:** API Design Patterns (JJ Geewax, Manning 2021)
-**Standards:** OpenAPI 3.0, RFC 7231, IEEE 29148-2018
+**Standards:** OpenAPI 3.1.x, RFC 9110 (obsoletes RFC 7231), IEEE 29148-2018
 
 ---
 

@@ -1,7 +1,9 @@
 # IEEE 830-1998 Compliance Checklist
 
 > **Authoritative Reference for All Waterfall SRS Skills**
-> Every skill in the `02-requirements-engineering/waterfall/` pipeline SHALL reference this checklist to ensure generated requirements meet IEEE Std 830-1998.
+> Every skill in the `02-requirements-engineering/waterfall/` pipeline SHALL reference this checklist to ensure generated requirements follow the IEEE Std 830-1998 section layout and meet the ISO/IEC/IEEE 29148:2018 quality characteristics in Part 7, which are authoritative where the two differ.
+>
+> **Currency note (verified 2026-09-24):** IEEE Std 830-1998 is superseded by ISO/IEC/IEEE 29148 (first published 2011; current edition 2018, revision in progress under IEEE P29148). This engine keeps the 830 section layout because the build pipeline, gates and templates depend on it, and applies the 29148:2018 requirement-quality characteristics in Part 7 as the governing quality test.
 
 ---
 
@@ -199,6 +201,42 @@ Every TBD entry in the SRS SHALL include all four fields:
 
 ---
 
+## Part 7: ISO/IEC/IEEE 29148:2018 Requirement-Quality Overlay
+
+Apply after Parts 1 to 6. Report findings with these IDs alongside the IEEE830 IDs; the overlay adds tests that IEEE 830 does not make explicit.
+
+### Individual requirement characteristics
+
+| ID | Characteristic | Pass condition | Fail example |
+|---|---|---|---|
+| 29148-IND-NECESSARY | Necessary | Removing it leaves a stakeholder need, regulation or scenario unmet; source cited | Requirement with no source that no scenario needs |
+| 29148-IND-APPROPRIATE | Appropriate | Written at the level of the entity it constrains; no design choice the stakeholders did not mandate | "The system shall store sessions in Redis" with no mandate |
+| 29148-IND-UNAMBIGUOUS | Unambiguous | One interpretation; terms in glossary | "Recent transactions" with no period |
+| 29148-IND-COMPLETE | Complete | Actor, trigger, condition, response and measure present; no TBD without owner and date | Response time with no load condition |
+| 29148-IND-SINGULAR | Singular | States one capability or constraint; no "and/or" joining separate behaviours | "shall validate, store and email the form" |
+| 29148-IND-FEASIBLE | Feasible | Achievable within stated constraints at acceptable risk; conflicting constraints logged | 99.999% availability on a single-server budget |
+| 29148-IND-VERIFIABLE | Verifiable | Deterministic oracle and named verification method (test, analysis, inspection, demonstration) | "shall be easy to use" |
+| 29148-IND-CORRECT | Correct | Accurately represents the traced need; confirmed by the owner | Threshold differs from the signed-off vision |
+| 29148-IND-CONFORMING | Conforming | Follows the project requirement template and ID scheme | Free-text requirement outside Section 3 structure |
+
+### Requirement-set characteristics
+
+| ID | Characteristic | Pass condition |
+|---|---|---|
+| 29148-SET-COMPLETE | Complete | Every scenario, feature, interface and relevant ISO/IEC 25010:2023 characteristic is covered or explicitly excluded |
+| 29148-SET-CONSISTENT | Consistent | No conflicting requirements, duplicate thresholds or clashing terms (`phase09.nfr_threshold_dedup`) |
+| 29148-SET-FEASIBLE | Feasible | The set is achievable together within cost, schedule and technical constraints |
+| 29148-SET-COMPREHENSIBLE | Comprehensible | Readers know what is expected of the system and how it relates to its environment |
+| 29148-SET-VALIDATABLE | Able to be validated | The set can be shown to satisfy stakeholder needs through planned validation (reviews, prototypes, acceptance) |
+
+### Attributes each baselined requirement carries
+
+Identifier, statement, source, rationale, priority, stability, risk, owner, verification method, acceptance condition, trace links (up and down) and status. See `07-attribute-mapping` for the register and `09-traceability-engineering/references/scenario-spine-and-requirement-contract.md` for the contract.
+
+Evidence/currentness (accessed 2026-09-24): ISO/IEC/IEEE 29148:2018 remains active; IEEE P29148 revision PAR approved 2025-09-10 and ISO DIS 29148 (edition 2) in enquiry (standards.ieee.org/ieee/29148/12262; iso.org/standard/94091). IEEE 830-1998 superseded by 29148:2011 (standards.ieee.org/ieee/830/1222). Characteristic names confirmed via secondary summaries of the 2018 text; clause numbers not re-verified: `NOT_ASSESSED`. Re-check when the new edition publishes.
+
+---
+
 **Standard:** IEEE Std 830-1998, IEEE Recommended Practice for Software Requirements Specifications
 **Maintained by:** SDLC-Docs-Engine Waterfall Pipeline
-**Last Updated:** 2026-03-08
+**Last Updated:** 2026-09-24

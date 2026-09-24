@@ -15,7 +15,7 @@ This skill performs a ruthless audit of `projects/<ProjectName>/<phase>/<documen
 - RTM rows follow the format `[Req ID] | [Feature Name] | [Source/Vision Goal] | [ISO/IEC 25010 Quality Tag] | [Verification Method]` with unique IDs such as `R-REQ-001`.
 - Ambiguity findings are marked as `FAIL` with precise citations; any requirement that lacks a measurable target or uses weak terminology is highlighted.
 - Gap Analysis lists Orphan Requirements and Unmet Goals so the audit links to IEEE 1012 (Verification & Validation) while staying grounded in IEEE 830.
-- Standard Conformance Statement references both IEEE 830 and US ISO/IEC 25010, emphasizing traceability and measurability.
+- Standard Conformance Statement references ISO/IEC/IEEE 29148:2018 (authoritative), the IEEE 830 layout, and ISO/IEC 25010:2023, emphasizing traceability and measurability.
 
 ## Quality Reminder
 

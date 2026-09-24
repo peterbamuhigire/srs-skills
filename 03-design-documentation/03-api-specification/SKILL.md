@@ -28,8 +28,8 @@ metadata:
 
 1. Read the named inputs and confirm their approval, version and unresolved decisions.
 2. Apply the decision rules below before drafting; stop on a missing authority, unsafe assumption or unresolved scope driver.
-3. Produce the API specification and valid OpenAPI 3 artefact through the existing domain procedure and load only the references needed for the chosen branch.
-4. Trace each material statement in the API specification and valid OpenAPI 3 artefact to an input, decision or explicitly qualified assumption.
+3. Produce the API specification and valid OpenAPI 3.1 artefact through the existing domain procedure and load only the references needed for the chosen branch.
+4. Trace each material statement in the API specification and valid OpenAPI 3.1 artefact to an input, decision or explicitly qualified assumption.
 5. Verify the observable acceptance conditions, record unassessed checks, and hand the artefacts to their named consumers.
 6. If validation fails, recover by correcting the source decision or artefact and rerun the affected check; do not weaken the acceptance condition.
 
@@ -37,7 +37,7 @@ metadata:
 
 | Artefact | Consumer | Observable acceptance condition |
 |---|---|---|
-| API specification and valid OpenAPI 3 artefact | Provider, frontend, mobile, SDK, test and operations teams | The OpenAPI parses; examples conform to schemas; auth, errors, pagination, idempotency and observable acceptance cover each operation. |
+| API specification and valid OpenAPI 3.1 artefact | Provider, frontend, mobile, SDK, test and operations teams | The OpenAPI parses; examples conform to schemas; auth, errors, pagination, idempotency and observable acceptance cover each operation. |
 
 ## Evidence Produced
 
@@ -52,7 +52,7 @@ Read-only is the default for analysis, review, evaluation and planning. Read and
 
 ## Degraded mode
 
-If any required capability is unavailable, return the narrowest useful qualified API specification and valid OpenAPI 3 artefact draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
+If any required capability is unavailable, return the narrowest useful qualified API specification and valid OpenAPI 3.1 artefact draft plus a gap register showing the missing item, affected sections, risk and owner. Never convert an unassessed check into a pass.
 
 ## Decision Rules
 
@@ -89,7 +89,7 @@ If any required capability is unavailable, return the narrowest useful qualified
 
 ## Overview
 
-This skill generates comprehensive API documentation and a machine-readable OpenAPI 3.0 specification. It translates functional requirements from the SRS and architectural decisions from the HLD into a complete, implementation-ready API contract. The skill can run after 01-high-level-design completes and operates in parallel with 02-low-level-design and 04-database-design.
+This skill generates comprehensive API documentation and a machine-readable OpenAPI 3.1 specification (JSON Schema 2020-12 dialect, RFC 9457 problem details for errors). It translates functional requirements from the SRS and architectural decisions from the HLD into a complete, implementation-ready API contract. The skill can run after 01-high-level-design completes and operates in parallel with 02-low-level-design and 04-database-design.
 
 ## When to Use
 
@@ -104,7 +104,7 @@ This skill generates comprehensive API documentation and a machine-readable Open
 | **Inputs**    | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/_context/tech_stack.md` |
 | **Outputs**   | `projects/<ProjectName>/<phase>/<document>/API_Specification.md`, `projects/<ProjectName>/<phase>/<document>/openapi.yaml`           |
 | **Tone**      | Technical, specification-grade, implementation-ready                  |
-| **Standards** | OpenAPI 3.0, IEEE 29148-2018, RFC 7231                               |
+| **Standards** | OpenAPI 3.1.x (3.1.2), JSON Schema 2020-12, RFC 9457, RFC 9110, IEEE 29148-2018 |
 
 ## Input Files
 
@@ -119,7 +119,7 @@ This skill generates comprehensive API documentation and a machine-readable Open
 | File                   | Location                              | Description                                      |
 |------------------------|---------------------------------------|--------------------------------------------------|
 | API_Specification.md   | `projects/<ProjectName>/<phase>/<document>/API_Specification.md`      | Human-readable API reference with all sections   |
-| openapi.yaml           | `projects/<ProjectName>/<phase>/<document>/openapi.yaml`              | Machine-readable OpenAPI 3.0 specification       |
+| openapi.yaml           | `projects/<ProjectName>/<phase>/<document>/openapi.yaml`              | Machine-readable OpenAPI 3.1 specification       |
 
 ## Core Instructions
 
@@ -149,24 +149,26 @@ For each endpoint, specify: path (RESTful URL), HTTP method, description, path p
 
 ### Step 6: Define Error Response Format
 
-Define a standardized error response format for all endpoints. Reference `skills/api-error-handling/` for the canonical pattern:
+Define one error format for all endpoints using RFC 9457 Problem Details for HTTP APIs (media type `application/problem+json`; RFC 9457 obsoletes RFC 7807). Reference `skills/api-error-handling/` in the engineering catalog for implementation patterns.
 
 ```json
 {
-  "success": false,
-  "error": {
-    "code": "string",
-    "message": "string",
-    "details": []
-  }
+  "type": "https://api.example.com/problems/insufficient-balance",
+  "title": "Insufficient wallet balance",
+  "status": 422,
+  "detail": "Wallet W-2231 holds UGX 12,000; the transfer needs UGX 50,000.",
+  "instance": "/transfers/7f3c9a",
+  "code": "WALLET_INSUFFICIENT_BALANCE",
+  "retryable": false,
+  "errors": []
 }
 ```
 
-Every error status code shall return this structure.
+Every error status code shall return this structure. `type`, `title` and `status` are mandatory in this engine; `code`, `retryable` and `errors` (field-level validation failures) are documented extension members. Each `type` URI and `code` appears once in the Section 5.2 Error Code Registry. If a legacy client contract already fixes a different envelope, record it as a decision with owner and migration date rather than silently mixing formats.
 
 ### Step 7: Define Rate Limiting
 
-Extract performance constraints from SRS Section 3.3 (Performance Requirements). Define rate limits per endpoint tier: public endpoints, authenticated endpoints, and administrative endpoints. Specify the rate limit headers: `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`.
+Extract performance constraints from SRS Section 3.3 (Performance Requirements). Define rate limits per endpoint tier: public endpoints, authenticated endpoints, and administrative endpoints. Document the chosen header scheme explicitly (header names, units, reset semantics, and the `429 Too Many Requests` plus `Retry-After` behaviour). No rate-limit header scheme is an IETF standard yet: the `RateLimit` / `RateLimit-Policy` fields are still an Internet-Draft (draft-ietf-httpapi-ratelimit-headers), and `X-RateLimit-*` is a vendor convention. Record whichever the project adopts as a decision; do not present either as a standard.
 
 ### Step 8: Define Pagination
 
@@ -189,7 +191,7 @@ Write the human-readable specification to `projects/<ProjectName>/<phase>/<docum
 
 ### Step 11: Generate openapi.yaml
 
-Generate a valid OpenAPI 3.0 document at `projects/<ProjectName>/<phase>/<document>/openapi.yaml`. The document shall include: `openapi: "3.0.3"`, `info` block, `servers` block, `paths` with all endpoints, `components/schemas` with all request/response models, and `components/securitySchemes` with the authentication definition.
+Generate a valid OpenAPI 3.1 document at `projects/<ProjectName>/<phase>/<document>/openapi.yaml`. The document shall include: `openapi: "3.1.2"` (3.1.x is the default; use 3.2.x only when every consumer toolchain - validators, code generators, gateways, mock servers - is confirmed to support it, and record that decision), `info` block, `servers` block, `paths` with all endpoints, `components/schemas` with all request/response models, and `components/securitySchemes` with the authentication definition, and `components/responses` holding a shared `Problem` response (`application/problem+json`). Write schemas in the JSON Schema 2020-12 dialect that OpenAPI 3.1 uses: express nullability as `type: [string, "null"]` (not the 3.0 `nullable: true`) and use `examples` arrays in schemas. Parse the file with a 3.1-aware validator before handoff; if none is available, mark the check `not assessed`.
 
 ## Output Format
 
@@ -240,7 +242,9 @@ Section 10 (Traceability Matrix) shall map each endpoint to its originating SRS 
 - [ ] Every endpoint specifies authentication requirements, request/response schemas, and all applicable status codes.
 - [ ] The error response format is consistent across all endpoints.
 - [ ] List endpoints include pagination parameters and response metadata.
-- [ ] The `openapi.yaml` file is valid OpenAPI 3.0 and contains all endpoints defined in `API_Specification.md`.
+- [ ] The `openapi.yaml` file declares `openapi: 3.1.x` (or a recorded 3.2.x decision), parses with a 3.1-aware validator, and contains all endpoints defined in `API_Specification.md`.
+- [ ] Every error response uses the RFC 9457 `application/problem+json` shape, and every `type`/`code` appears in the Error Code Registry.
+- [ ] The rate-limit header scheme is documented as a project decision, not claimed as a standard.
 - [ ] For long-lived or side-effecting APIs, the specification includes a consumer contract matrix, idempotency map, stable error-code registry with retryability, versioning/deprecation policy, and contract-test obligations.
 
 ## Integration
@@ -258,9 +262,12 @@ Section 10 (Traceability Matrix) shall map each endpoint to its originating SRS 
 
 ## Standards
 
-- **OpenAPI 3.0**: The OpenAPI Specification defines a standard, language-agnostic interface to HTTP APIs. Governs the structure of `openapi.yaml`.
+- **OpenAPI 3.1.x (current patch 3.1.2, 19 September 2025)**: Governs the structure of `openapi.yaml`; Schema Objects use the JSON Schema Draft 2020-12 dialect. OpenAPI 3.2.x is published and optional when the consumer toolchain supports it.
 - **IEEE 29148-2018**: Systems and software engineering -- Life cycle processes -- Requirements engineering. Ensures traceability from requirements to API endpoints.
-- **RFC 7231**: Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content. Defines HTTP method semantics and status code meanings.
+- **RFC 9110 (HTTP Semantics, STD 97)**: Defines method semantics and status codes; obsoletes RFC 7231.
+- **RFC 9457 (Problem Details for HTTP APIs)**: Error response format; obsoletes RFC 7807.
+
+Evidence/currentness (accessed 2026-09-24): spec.openapis.org/oas/ lists v3.1.2 as latest 3.1.x and v3.2.1 as latest 3.2.x; spec.openapis.org/oas/v3.1.2 confirms the JSON Schema 2020-12 dialect; rfc-editor.org/info/rfc9457 and rfc-editor.org/info/rfc9110 confirm status and obsoletions; datatracker.ietf.org shows draft-ietf-httpapi-ratelimit-headers-11 (May 2026) still an Internet-Draft. Review by 2027-03-24.
 
 ## Resources
 

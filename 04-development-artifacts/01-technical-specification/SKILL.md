@@ -118,7 +118,7 @@ This is the first skill in Phase 04 (Development Artifacts). It transforms the L
 | **Inputs**  | `projects/<ProjectName>/<phase>/<document>/LLD.md`, `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`, `projects/<ProjectName>/_context/tech_stack.md` |
 | **Output**  | `projects/<ProjectName>/<phase>/<document>/Technical_Specification.md` |
 | **Tone**    | Implementation-precise, contract-driven, developer-facing |
-| **Standard** | IEEE 1016-2009, IEEE 830-1998 |
+| **Standard** | IEEE 1016-2009, ISO/IEC/IEEE 29148:2018 |
 
 ## Input Files
 
@@ -225,7 +225,7 @@ The generated `Technical_Specification.md` shall contain these sections in order
 ## Standards
 
 - **IEEE 1016-2009** -- Software Design Descriptions. Governs module contract structure and design viewpoints.
-- **IEEE 830-1998** -- Recommended Practice for Software Requirements Specifications. Ensures requirement traceability in the specification.
+- **ISO/IEC/IEEE 29148:2018** -- Requirements engineering (supersedes IEEE 830-1998). Ensures requirement traceability in the specification.
 
 ## Resources
 

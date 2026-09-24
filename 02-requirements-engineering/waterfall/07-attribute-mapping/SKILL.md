@@ -1,6 +1,6 @@
 ---
 name: 07-attribute-mapping
-description: "Use when assigning priority, source, rationale, risk, stability, verification method, owner, and other governed attributes to requirements; use traceability-engineering for lifecycle links."
+description: "Use when writing SRS Sections 3.3-3.6 non-functional quality attribute requirements (performance, constraints, reliability, availability, security, maintainability, standards compliance) as measurable ISO/IEC 25010:2023 scenarios; use feature-decomposition for Section 3.2 functions."
 metadata:
   portable: true
   compatible_with:
@@ -14,24 +14,24 @@ metadata:
 <!-- dual-compat-start -->
 ## Use When
 
-- assigning priority, source, rationale, risk, stability, verification method, owner, and other governed attributes to requirements; use traceability-engineering for lifecycle links.
-- Use this procedure when the required source artefacts are available and `Requirement attribute register` is the next lifecycle deliverable.
+- writing SRS Sections 3.3-3.6 quality-attribute requirements (performance, design constraints, reliability, availability, security, maintainability, standards compliance, other non-functional requirements) as measurable ISO/IEC 25010:2023 scenarios after Sections 1.0-3.2 exist.
+- Use this procedure when the required source artefacts are available and `SRS Sections 3.3-3.6` is the next lifecycle deliverable.
 
 ## Do Not Use When
 
-- Use `traceability-engineering` when that neighbouring route owns the decision or deliverable.
+- Use `feature-decomposition` for Section 3.2 functional requirements and `traceability-engineering` for lifecycle links.
 - Do not invent missing project evidence, standards clauses, thresholds, or stakeholder decisions.
 
 ## Required Inputs
 
 | Artefact | Source or provider | Required? | Behaviour when missing |
 | --- | --- | --- | --- |
-| Atomic requirements, attribute schema, owners, priorities, risks, and verification strategy | Requirements owner and governance standards | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
+| `_context/quality_standards.md`, `_context/tech_stack.md`, and SRS Sections 1.0-3.2 | Requirements owner, architect, and quality owner | Yes | Stop the affected step, name the missing source, and return only a qualified gap record. |
 
 ## Workflow
 
 1. Inspect the required inputs and log the exact sources, versions, and unresolved assumptions.
-2. Apply this skill's existing domain workflow and decision rules to produce `Requirement attribute register`.
+2. Apply this skill's existing domain workflow and decision rules to produce `SRS Sections 3.3-3.6`.
 3. Stop when a required source, accountable decision owner, or deterministic test oracle is absent.
 4. Recover by preserving valid work, marking the blocked scope, and returning the narrowest qualified artefact plus the next evidence needed.
 
@@ -39,13 +39,13 @@ metadata:
 
 | Artefact | Consumer | Acceptance condition |
 | --- | --- | --- |
-| Requirement attribute register | Requirements management, design, testing, and governance | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
+| SRS Sections 3.3-3.6 quality-attribute requirements | Requirements management, design, testing, and governance | Required sections are populated, source links resolve, and every material requirement or decision has an observable review or test oracle. |
 
 ## Evidence Produced
 
 | Evidence | Reviewer | Acceptance condition |
 | --- | --- | --- |
-| Source, decision, trace, and validation record for `Requirement attribute register` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
+| Source, decision, trace, and validation record for `SRS Sections 3.3-3.6` | Requirements quality reviewer | Inputs used, decisions made, checks run, failures, and unassessed items are explicit. |
 
 ## Capability and permission boundaries
 
@@ -59,18 +59,18 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 
 | Choice or condition | Action | Failure or risk avoided |
 | --- | --- | --- |
-| A mandatory attribute has no evidence or accountable owner | Mark the requirement incomplete and withhold baseline approval. | Unowned or unverifiable requirements. |
+| A quality characteristic is relevant but has no metric, threshold, measurement method, or accountable owner | Tag it `[SMART-FAIL: NFR not measurable]` and withhold baseline approval. | Unmeasurable or unowned NFRs. |
 | Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
 | A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
 
 ## Quality Standards
 
-- Preserve stable identifiers and bidirectional traceability from project evidence to `Requirement attribute register` and its acceptance checks.
+- Preserve stable identifiers and bidirectional traceability from project evidence to `SRS Sections 3.3-3.6` and its acceptance checks.
 - Apply ISO/IEEE measures only with a named metric, method, threshold, evidence source, and responsible reviewer; run the anti-slop gate before release.
 
 ## Anti-Patterns
 
-- Producing `Requirement attribute register` from assumed context. Fix: cite the project source or mark the scope blocked.
+- Producing `SRS Sections 3.3-3.6` from assumed context. Fix: cite the project source or mark the scope blocked.
 - Accepting a material requirement without a deterministic oracle. Fix: add a measurable result, boundary, and verification method.
 - Crossing into `traceability-engineering` without routing the decision. Fix: hand off the named input and preserve trace links.
 - Treating an unavailable check as passed. Fix: mark it `not assessed` and state the release consequence.
@@ -81,6 +81,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Skill authoring and release standard](../../../docs/skill-authoring-standard.md)
 - [Skill guidance](README.md)
 - [Executable generation logic](logic.prompt)
+- [ISO/IEC 25010:2023 NFR coverage map](references/iso-25010-2023-nfr-coverage.md): load before writing Sections 3.3-3.6 to record a relevance decision for all nine 2023 characteristics and place each in the existing section layout.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 
@@ -100,7 +101,8 @@ Apply this skill after Sections 1.0–3.2 exist. It produces the non-functional 
 5. Generate **Section 3.5.5 – Standards Compliance** (IEEE 830 §5.3.5.1) listing requirements derived from standards/regulations: report formats, data naming, accounting procedures, audit tracing.
 6. Generate **Section 3.6 – Other Requirements** (IEEE 830 §5.3.8) for requirements not fitting 3.1–3.5 (portability, installation, localization). If none, state "No additional requirements beyond those specified in Sections 3.1–3.5 have been identified."
 7. Reference `../ieee-830-compliance-checklist.md` (IDs IEEE830-5.3.3 through IEEE830-5.3.7) for compliance verification.
-8. Preserve existing sections (1.0–3.2, 4.0+) when writing to `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`; only replace Sections 3.3–3.6.
+8. Before finalising, apply `references/iso-25010-2023-nfr-coverage.md`: every one of the nine ISO/IEC 25010:2023 characteristics (including interaction capability, flexibility and safety) carries a relevance decision; write Sections 3.3-3.6 items here and return any uncovered 3.1 or 3.2 item to `04-interface-specification` or `05-feature-decomposition` as a `[CONTEXT-GAP]`. Section numbering stays unchanged for the build pipeline.
+9. Preserve existing sections (1.0–3.2, 4.0+) when writing to `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md`; only replace Sections 3.3–3.6.
 
 ## Resources
 - `README.md`: Quality model rationale and measurement reminders.

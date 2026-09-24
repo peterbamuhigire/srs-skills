@@ -1,6 +1,6 @@
 ---
 name: 05-conceptual-data-modeling
-description: "Use when translating business language into conceptual entities, relationships, identifiers, ownership, and invariants before logical database design; use database-design for physical schema decisions."
+description: "Use when translating business language into conceptual entities, relationships, identifiers, ownership, and invariants before logical database design, or when writing data contract, data dictionary, data catalog, lineage, and data quality and governance requirements; use database-design for physical schema decisions."
 metadata:
   portable: true
   compatible_with:
@@ -15,6 +15,7 @@ metadata:
 ## Use When
 
 - translating business language into conceptual entities, relationships, identifiers, ownership, and invariants before logical database design; use database-design for physical schema decisions.
+- writing data contract, data dictionary, data catalog, lineage, and data quality and governance requirements (load the matching reference below).
 - Use this procedure when the required source artefacts are available and `Conceptual data model` is the next lifecycle deliverable.
 
 ## Do Not Use When
@@ -83,6 +84,9 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Er Modeling Guide](references/er-modeling-guide.md)
 - [Mdm Requirements](references/mdm-requirements.md)
 - [Domain language and decision context](references/domain-language-and-decisions.md)
+- [Data quality NFR catalogue](references/data-quality-nfr-catalogue.md): load when Step 5 profiles must become baselined `DQ-*` NFRs with window, measurement point, threshold, and breach response.
+- [Data contract and dictionary requirements](references/data-contract-and-dictionary-requirements.md): load when a dataset crosses a team or system boundary and needs a data dictionary and `DIR-*` interface requirements.
+- [Data governance, catalog, and lineage requirements](references/data-governance-catalog-lineage-requirements.md): load when ownership, three-axis classification, catalog findability, lineage, or AI use of metadata must be specified.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 
@@ -309,3 +313,6 @@ The generated `conceptual_data_model.md` SHALL contain the following sections:
 - `references/er-modeling-guide.md` -- Entity identification, relationship types, Mermaid syntax
 - `references/data-quality-rules.md` -- Six data quality dimensions with measurement criteria
 - `references/mdm-requirements.md` -- Master Data Management requirements and golden record rules
+- `references/data-quality-nfr-catalogue.md` -- Quality dimensions as `DQ-*` NFRs, ISO/IEC 25012 crosswalk, DPPA section 15 anchor
+- `references/data-contract-and-dictionary-requirements.md` -- Data dictionary template and `DIR-*` data interface requirements
+- `references/data-governance-catalog-lineage-requirements.md` -- Governance, classification, catalog, lineage, and AI-metadata requirements

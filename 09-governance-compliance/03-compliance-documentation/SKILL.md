@@ -91,6 +91,7 @@ Example: if a required source, owner, obligation, or acceptance condition is mis
 - [Generation logic](logic.prompt): load when creating the complete artefact.
 - [Skill notes](README.md): consult for local examples and invocation context.
 - [Repository operating rules](../../AGENTS.md): apply the engine's routing, evidence, and release gates.
+- [Data governance, catalog, and lineage requirements](../../02-requirements-engineering/fundamentals/during/05-conceptual-data-modeling/references/data-governance-catalog-lineage-requirements.md): load when obligations cover data ownership, classification, retention, lineage, or erasure evidence.
 
 <!-- dual-compat-end -->
 

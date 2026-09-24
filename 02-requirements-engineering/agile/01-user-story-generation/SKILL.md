@@ -81,6 +81,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Skill authoring and release standard](../../../docs/skill-authoring-standard.md)
 - [Invest Criteria](references/invest-criteria.md)
 - [Output Examples](references/output-examples.md)
+- [Story splitting patterns](references/story-splitting-patterns.md): load when a story fails the Small or Independent test or the backlog has no impact hierarchy.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

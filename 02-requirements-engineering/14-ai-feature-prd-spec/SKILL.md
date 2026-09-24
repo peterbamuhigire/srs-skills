@@ -60,6 +60,8 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 | Choice or condition | Action | Failure or risk avoided |
 | --- | --- | --- |
 | A model behaviour has no measurable evaluation oracle | Mark it blocked and define the dataset, metric, threshold, and owner. | An AI claim that cannot be tested or governed. |
+| The prototype handoff pack (evaluation set, failure-mode catalogue, versioned instructions, known limits) is incomplete | Keep the affected AI-FR `[DRAFT]` and list the missing items | Demo behaviour hardened into production requirements |
+| An AI-FR does not beat the optimised non-AI option by the pre-agreed uplift | Withdraw it or return it to discovery | Paying AI cost and risk for no net gain |
 | Required inputs and test oracles are complete | Continue through the existing workflow and record evidence. | A deliverable whose acceptance cannot be reproduced. |
 | A mandatory source or owner is missing | Stop the affected branch and issue a qualified gap record. | Fabricated context or unauthorised decisions. |
 
@@ -85,6 +87,8 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 - [Ai Feature Prd Addendum](references/ai-feature-prd-addendum.md)
 - [Ai Feature Prd Spec Template](references/ai-feature-prd-spec-template.md)
 - [AI system and human-control contract](references/ai-system-human-control-contract.md)
+- [AI evaluation set, graduation gate and failure behaviour](references/ai-eval-set-and-graduation-requirements.md): load at Steps 2 and 7 for evaluation-set governance, prototype graduation, non-AI uplift, the failure-class fallback table, and cost-per-successful-task NFRs.
+- [Human-AI collaboration requirements](references/human-ai-collaboration-requirements.md): load when writing verifiable override, explanation, confidence, reliance, handoff, error-recovery or disclosure requirements for an AI function.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 
@@ -98,7 +102,7 @@ Produces the AI-feature complement to the generic PRD. Every AI-powered FR carri
 |-----------|-------|
 | **Inputs** | `AI_Economic_Value_Brief.md`, `AI_Feature_Strategy_Doc.md`, `PRD.md`, `Multi_Tenancy_Architecture_Spec.md`, pricing & packaging spec |
 | **Output** | `AI_Feature_PRD_Spec.md` |
-| **Standard** | IEEE 830-1998, NIST AI RMF MAP/MEASURE |
+| **Standard** | ISO/IEC/IEEE 29148:2018 (supersedes IEEE 830-1998), NIST AI RMF MAP/MEASURE |
 
 ## Core Instructions
 
@@ -150,10 +154,10 @@ Every AI FR has a row in the eval harness golden set with a pass threshold. Acce
 
 ## Standards
 
-- IEEE 830-1998
+- ISO/IEC/IEEE 29148:2018 (requirements engineering; supersedes IEEE 830-1998)
 - NIST AI RMF MAP / MEASURE
 - EU AI Act Art. 13 (transparency), Art. 14 (human oversight)
-- OWASP LLM Top 10
+- OWASP Top 10 for LLM Applications 2025 and OWASP Top 10 for Agentic Applications 2026 (verified 2026-09-24 at genai.owasp.org; an "OWASP GenAI LLM Top 10 2026" resource was published 2026-08-03 but its identifiers are `NOT_ASSESSED` - keep LLMxx:2025 IDs until re-mapped)
 
 ## Resources
 

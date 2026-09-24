@@ -2,7 +2,7 @@
 
 **Purpose:** Construct, validate, and simplify decision tables for formalizing complex business logic with multiple conditions and outcomes.
 
-**Standards:** IEEE 830-1998 Section 5.3.1, Wiegers Practice 10
+**Standards:** ISO/IEC/IEEE 29148:2018 (authoritative; IEEE 830-1998 §5.3.1 retained for SRS layout only), Wiegers Practice 10
 
 ---
 

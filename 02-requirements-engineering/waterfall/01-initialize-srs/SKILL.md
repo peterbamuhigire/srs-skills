@@ -108,6 +108,7 @@ Fallback: if a required file, reviewer, standard source, network check, renderer
 ## References
 
 - [Skill authoring and release standard](../../../docs/skill-authoring-standard.md)
+- [Final requirements quality gate](../../references/final-requirements-quality-gate.md): the exit gate every SRS started here must pass before review or build.
 <!-- dual-compat-end -->
 <!-- local-contract-end -->
 

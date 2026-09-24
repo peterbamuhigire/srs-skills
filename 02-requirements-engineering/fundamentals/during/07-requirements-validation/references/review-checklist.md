@@ -1,8 +1,8 @@
 # Requirements Review Checklist
 
-**Purpose:** Structured checklist for validating requirements against Wiegers' 7 quality attributes and IEEE 830's 8 quality criteria, with pass/fail indicators and common defect patterns.
+**Purpose:** Structured checklist for validating requirements against Wiegers' 7 quality attributes and the IEEE 830 eight quality criteria (legacy names; ISO/IEC/IEEE 29148:2018 individual and set characteristics are authoritative), with pass/fail indicators and common defect patterns.
 
-**Standards:** IEEE 830-1998 Section 4.3, IEEE 1012-2016, Wiegers Practices 13-14
+**Standards:** ISO/IEC/IEEE 29148:2018 §5.2.5-5.2.6 (authoritative), IEEE 830-1998 §4.3 (superseded; legacy criteria names), IEEE 1012-2016, Wiegers Practices 13-14
 
 ---
 

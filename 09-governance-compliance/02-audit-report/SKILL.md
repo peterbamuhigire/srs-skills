@@ -222,10 +222,10 @@ The generated `Audit_Report.md` SHALL contain the following sections:
 | Standard | Governs |
 |----------|---------|
 | IEEE 1012-2016 | V&V audit methodology, finding classification, and compliance assessment |
-| IEEE 830-1998 | SRS quality criteria (correct, unambiguous, complete, consistent) |
+| ISO/IEC/IEEE 29148:2018 | Requirement quality characteristics (supersedes the IEEE 830-1998 criteria) |
 
 ## Resources
 
 - IEEE 1012-2016: Standard for System, Software, and Hardware Verification and Validation
-- IEEE 830-1998: Recommended Practice for Software Requirements Specifications
+- IEEE 830-1998: Recommended Practice for Software Requirements Specifications (superseded; layout only - ISO/IEC/IEEE 29148:2018 is authoritative)
 - CLAUDE.md: V&V Standard Operating Procedure and Failure Protocols

@@ -1,7 +1,7 @@
 # Long-Running Operations (LRO) Reference
 
 **Source:** API Design Patterns (JJ Geewax, Manning 2021)
-**Standards:** OpenAPI 3.0, RFC 7231 (HTTP Semantics), IEEE 29148-2018
+**Standards:** OpenAPI 3.1.x, RFC 9110 (HTTP Semantics; obsoletes RFC 7231), IEEE 29148-2018
 
 ---
 

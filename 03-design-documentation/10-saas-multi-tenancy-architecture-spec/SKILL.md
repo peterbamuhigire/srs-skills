@@ -288,4 +288,4 @@ Strict heading order as above. Mermaid for all diagrams. LaTeX for any quota / c
 - `README.md` — Quick-start.
 - `references/saas-tenancy-decision-template.md` — ADR template per service.
 - `references/saas-control-plane-services.md` — Canonical control-plane service catalogue.
-- `book-extractions/saas-architectures-srs-extraction.md` — Source synthesis.
+- Sources: Golding (2024) *Building Multi-Tenant SaaS Architectures*, O'Reilly (concepts only; see Standards).

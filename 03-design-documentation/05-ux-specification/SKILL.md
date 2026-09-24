@@ -83,15 +83,12 @@ If any required capability is unavailable, return the narrowest useful qualified
 - [Usability testing](references/usability-testing.md)
 - [Premium UX specification](references/premium-ui-ux-specification.md)
 - [UX content neighbour](../09-ux-content-and-form-specification/SKILL.md)
+- Presentation handoff: typeface, colour, layout, motion and visual QA are owned by the `design-system-skills` engine (resolve via the global engine table); this skill states what the experience must achieve and how it is verified.
 <!-- dual-compat-end -->
-
-
-
-
 
 ## Overview
 
-Produces a complete UX specification document that bridges user research insights and engineering implementation. The output includes information architecture diagrams (Mermaid flowcharts), wireframing standards across three fidelity levels, design system token definitions, usability testing protocols with quantitative metrics, and developer-ready design handoff specifications. This skill draws on ISO 9241-210 (Human-centred design for interactive systems), ISO 25010 (Systems and software quality models), and principles from "The Effective Product Designer" and "Design for How People Think" (John Whalen).
+Produces a complete UX specification document that bridges user research insights and engineering implementation. The output includes information architecture diagrams (Mermaid flowcharts), wireframing standards across three fidelity levels, design system token definitions, usability testing protocols with quantitative metrics, and developer-ready design handoff specifications. This skill draws on ISO 9241-210 (Human-centred design for interactive systems), ISO/IEC 25010:2023 (Systems and software quality models), and principles from "The Effective Product Designer" and "Design for How People Think" (John Whalen).
 
 The UX specification must treat the design system as a maintained product, not a style appendix. Token layers, component contracts, source-of-truth expectations, and governance responsibilities are part of the specification.
 
@@ -111,7 +108,7 @@ For premium, revenue-critical, executive-facing, dashboard-heavy, Android, or iO
 | **Inputs**  | `projects/<ProjectName>/<phase>/<document>/SRS_Draft.md` or `projects/<ProjectName>/_context/user_stories.md`, `projects/<ProjectName>/<phase>/<document>/HLD.md`, `projects/<ProjectName>/_context/vision.md`, `projects/<ProjectName>/_context/features.md`, `projects/<ProjectName>/_context/stakeholder_register.md` |
 | **Outputs** | `projects/<ProjectName>/<phase>/<document>/UX_Specification.md` |
 | **Tone**    | Precise, user-centred, standards-grounded |
-| **Standard** | ISO 9241-210:2019, ISO 25010:2011, WCAG 2.1 AA |
+| **Standard** | ISO 9241-210:2019, ISO/IEC 25010:2023, WCAG 2.2 AA |
 
 ## Input Files
 
@@ -284,7 +281,7 @@ Each interaction shall specify: trigger, animation duration (in ms), easing func
 
 ### Step 6: Define Accessibility Requirements
 
-The system shall enforce WCAG 2.1 Level AA compliance:
+The system shall enforce WCAG 2.2 Level AA compliance (W3C Recommendation, 12 December 2024 edition; verified 2026-09-24):
 
 | Criterion | Requirement | Verification Method |
 |-----------|-------------|---------------------|
@@ -292,7 +289,8 @@ The system shall enforce WCAG 2.1 Level AA compliance:
 | Keyboard Navigation | All interactive elements shall be reachable via Tab, operable via Enter/Space, dismissible via Escape | Manual keyboard walkthrough |
 | Screen Reader | All images shall have alt text, all form fields shall have associated labels, dynamic content shall use ARIA live regions | Screen reader testing (NVDA, VoiceOver) |
 | Focus Management | Visible focus indicator on all interactive elements, logical tab order, focus trap in modals | Manual inspection |
-| Touch Targets | Minimum 44x44px touch target size on mobile | Design review |
+| Touch Targets | WCAG 2.2 SC 2.5.8 minimum 24x24 CSS px (or spacing exception); premium mobile target 44x44 pt (iOS) / 48x48 dp (Android) | Design review and rendered measurement |
+| WCAG 2.2 additions | Focus not obscured by sticky UI (SC 2.4.11); single-pointer alternative to every drag (2.5.7); no memory or transcription test at login without paste, password manager or passkey (3.3.8); help in consistent order (3.2.6); no redundant re-entry within a process (3.3.7) | Keyboard, login and journey walkthroughs at each breakpoint |
 | Motion | The system shall respect `prefers-reduced-motion` and provide static alternatives | CSS media query audit |
 
 ### Step 7: Create Usability Testing Protocol
@@ -373,7 +371,7 @@ The system shall produce developer-ready handoff specifications:
 - The implemented component shall match the design specification within 2px tolerance.
 - All design tokens shall be consumed from the shared token system, not hard-coded.
 - Responsive layouts shall function correctly at all three breakpoint ranges.
-- All WCAG 2.1 AA criteria defined in Step 6 shall pass automated and manual testing.
+- All WCAG 2.2 AA criteria defined in Step 6 shall pass automated and manual testing.
 - Interaction timing shall match specification within 50ms tolerance.
 - Premium products shall include a premium UI/UX gate score with every category at 8/10 or better before design sign-off.
 
@@ -388,7 +386,7 @@ The generated `UX_Specification.md` shall use this section structure with a Docu
 2. **Wireframe Standards** -- Fidelity levels, annotation requirements, responsive breakpoints
 3. **Design System** -- Design tokens (color, typography, spacing, elevation), component catalog, pattern library
 4. **Interaction Specifications** -- Micro-interactions, transitions, loading states, error states
-5. **Accessibility Requirements** -- WCAG 2.1 AA criteria with verification methods
+5. **Accessibility Requirements** -- WCAG 2.2 AA criteria with verification methods
 6. **Usability Testing Protocol** -- Task scenarios, success metrics, observation format, feedback loop
 7. **Design Handoff** -- Annotation standards, asset delivery, acceptance criteria
 8. **Traceability Matrix** -- Screen/Component mapped to SRS Section/Requirement IDs
@@ -421,7 +419,7 @@ For premium visual quality, platform fit, data quality, and production gates, re
 - [ ] All three wireframe fidelity levels are defined with annotation requirements.
 - [ ] Design tokens cover color, typography, spacing, and elevation.
 - [ ] Component catalog entries include all required properties (name, variants, states, props, accessibility).
-- [ ] WCAG 2.1 AA criteria are specified with verification methods.
+- [ ] WCAG 2.2 AA criteria are specified with verification methods.
 - [ ] Usability testing protocol defines quantitative success metrics.
 - [ ] Design handoff uses token references, not raw values.
 - [ ] Traceability matrix links every screen/component to SRS requirements.
@@ -442,9 +440,9 @@ For premium visual quality, platform fit, data quality, and production gates, re
 ## Standards
 
 - **ISO 9241-210:2019** -- Human-centred design for interactive systems: iterative design process, user research, usability evaluation
-- **ISO 25010:2011** -- Systems and software quality models: usability characteristics (learnability, operability, error protection, accessibility, user interface aesthetics)
-- **WCAG 2.1 Level AA** -- Web Content Accessibility Guidelines: perceivable, operable, understandable, robust
-- **IEEE 830-1998** -- Requirement traceability for UX-to-requirement mapping
+- **ISO/IEC 25010:2023** -- Systems and software quality models: interaction capability (formerly usability), including appropriateness recognisability, learnability, operability, user error protection, user engagement (replaces user interface aesthetics), inclusivity, user assistance and self-descriptiveness
+- **WCAG 2.2 Level AA** -- Web Content Accessibility Guidelines: perceivable, operable, understandable, robust
+- **ISO/IEC/IEEE 29148:2018** (supersedes IEEE 830-1998) -- Requirement traceability for UX-to-requirement mapping
 
 ## Resources
 
@@ -459,25 +457,25 @@ For premium visual quality, platform fit, data quality, and production gates, re
 
 ## UX foundations integration (added 2026-05-04 from Branson + Synechron + Deacon)
 
-Canonical reference: `docs/ux-foundations.md` (engine-local, 6 sections).
+Canonical reference: [UX requirements foundations](references/ux-requirements-foundations.md) (engine-local, 7 sections).
 
 This skill consumes the broadest portion of the foundations doc. Required reading before producing a UX specification:
 
-- **Section 1 (Branson personas)** — every UX spec's persona section must declare an Essential Persona and pass the Mechanics floor (name, demographics, goals, environment, pain points, stress points)
-- **Section 3 (Synechron 5 outcomes + maturity)** — every UX spec must declare which maturity level (Level 3 minimum for premium) and document the 5 outcomes as launch criteria
-- **Section 4 (working memory + 4-stage affordance)** — used as NFR templates and design-review heuristics
-- **Section 5 (Deacon 3 levels of scope)** — every UX spec declares which scope level it targets
+- **Section 2 (persona and actor discipline)** — every UX spec's persona section must declare one primary persona and evidence its role, tasks, goals, context, pain points and constraints
+- **Section 4 (UX outcome launch gate and maturity)** — every UX spec must declare which maturity level (Level 3 minimum for premium) and document the 5 outcomes as launch criteria
+- **Sections 5 and 6 (cognitive load and affordance review)** — used as NFR templates and design-review heuristics
+- **Section 1 (experience scope)** — every UX spec declares which scope level it targets
 
-### Required NFR templates (drawn from Section 4)
+### Required NFR templates (drawn from Section 5)
 
 The UX spec's non-functional-requirements section must include, where applicable:
 
-- **List-length cap** — primary navigation, dropdowns, and primary action lists ≤ 7 items (Miller). If more required, chunk into groups.
-- **Form-field-per-step cap** — ≤ 7 visible fields per step. Longer forms split into multi-step flows with explicit progress and saved state.
+- **List-length limit** — set a project-specific limit for primary navigation and primary action lists and validate it in usability testing; the "7 plus or minus 2" figure is not a design rule (see the reference's currentness note). Chunk longer sets into labelled groups.
+- **Form-step scope** — one decision theme per step; longer forms split into multi-step flows with explicit progress and saved state.
 - **Cognitive-load minimization** — plot working-memory load across the primary user task; identify task-closure points; redesign if load never reaches zero across the flow.
 - **Stacking-safe interruption recovery** — every multi-step flow auto-saves state; every page that can be interrupted has a "back to where you were" affordance.
 
-### Required affordance audit (drawn from Section 4)
+### Required affordance audit (drawn from Section 6)
 
 For every primary CTA listed in the UX spec, document Yes/No on each of:
 - **Presence** — does the affordance exist?
@@ -487,13 +485,13 @@ For every primary CTA listed in the UX spec, document Yes/No on each of:
 
 Any No = redesign required before launch.
 
-### Required scope declaration (drawn from Section 5)
+### Required scope declaration (drawn from Section 1)
 
-The UX spec opens with one sentence: "This specification targets [Single Interaction / Journey / Relationship] level UX scope, per Deacon's 3-level model."
+The UX spec opens with one sentence: "This specification targets [Single Interaction / Journey / Relationship] level UX scope."
 
-### Required maturity declaration (drawn from Section 3)
+### Required maturity declaration (drawn from Section 4)
 
-The UX spec opens with one sentence: "This specification operates at UX Maturity Level [3 / 4], per the Synechron 5-level model. Premium-pricing claims require Level 3 minimum."
+The UX spec opens with one sentence: "This specification operates at UX Maturity Level [3 / 4]. Premium-pricing claims require Level 3 minimum."
 
 ### Existing references unchanged
 

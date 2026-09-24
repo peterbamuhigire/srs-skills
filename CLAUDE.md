@@ -56,13 +56,13 @@ When the user says "build the [document]":
 
 ## Core Engineering Principles
 
-1. **IEEE/ASTM Grounding:** Every requirement generated must be mapped to the standards listed in the README (IEEE 830, 1233, 610.12, and ASTM E1340).
+1. **IEEE/ISO/ASTM Grounding:** Every requirement generated must be mapped to the standards listed in the README. Requirement quality is judged against ISO/IEC/IEEE 29148:2018 (individual and set characteristics; see Part 7 of `02-requirements-engineering/waterfall/ieee-830-compliance-checklist.md`). IEEE 830-1998 is superseded and is kept only as the SRS section layout the build pipeline and gates depend on; IEEE 1233 and ASTM E1340 remain supporting guides.
 2. **Strict Grounding:** Never "hallucinate" features. If a detail is missing from `projects/<ProjectName>/_context/`, flag the gap to the user instead of making an assumption.
 3. **The "Stimulus-Response" Rule:** Functional requirements (Skill 05) must follow a stimulus-response pattern to ensure they are **Verifiable**.
-4. **Terminology:** Use **IEEE Std 610.12-1990** definitions. Maintain a strict glossary in the parent project to avoid ambiguity.
+4. **Terminology:** Use **ISO/IEC/IEEE 24765** definitions (the successor to the superseded IEEE Std 610.12-1990; legacy 610.12 citations remain acceptable only where a client document uses them). Maintain a strict glossary in the parent project to avoid ambiguity.
 5. **Technical Precision:** Use LaTeX for any mathematical logic or algorithms: $LateFee = Balance \times Rate$. Use professional, active-voice engineering prose (e.g., "The system shall..." instead of "The system can...").
 6. **Minimum-Length Directive:** Output only the content required for verifiability and completeness. Every sentence must earn its length. No padding, no restatements of the obvious, no vague qualifiers. Long sentences are acceptable only when every word is load-bearing. *(Cunningham, 2013)*
-7. **Prohibition on Vague Adjectives:** Do not use "fast," "intuitive," "reliable," "robust," "seamless," or similar adjectives without defining the specific IEEE-982.1 metric. Replace with measurable thresholds: "response time ≤ 500 ms at P95 under normal load."
+7. **Prohibition on Vague Adjectives:** Do not use "fast," "intuitive," "reliable," "robust," "seamless," or similar adjectives without defining a specific metric (ISO/IEC 25010:2023 characteristic plus an ISO/IEC 25023 or IEEE 982 measure; "IEEE-982.1" tags elsewhere in this engine refer to that measure family — IEEE 982.1-2005 was replaced by IEEE 982-2024). Replace with measurable thresholds: "response time ≤ 500 ms at P95 under normal load."
 
 ## Premium Default
 
@@ -100,7 +100,9 @@ These categories belong to the external engineering-catalog engine (`C:\wamp64\w
 | `backend-databases` | MySQL and PostgreSQL engineering/administration/operations/performance, database design, internals and reliability, vector databases. |
 | `devops-cloud` | CI/CD (pipeline design, Jenkins, DevSecOps), Docker, Kubernetes (fundamentals/platform/production/SaaS delivery), IaC, cloud architecture, deployment/release, observability, reliability engineering. |
 | `finance-accounting` | Accounting engine, finance/controller, chart of accounts, payroll (Uganda), inventory costing/management, demand forecasting, fixed assets/depreciation, multicurrency/FX, chwezi finance engine skeletons. |
-| `frontend-ux` | React, Next.js App Router, Tailwind, design audit/principles/maturity, premium and practical UI, enterprise UX process, motion/interaction/form/data-viz, healthcare/POS UI, image compression, web app GUI design, UX content strategy, frontend performance. |
+| `frontend-ux` | Frontend engineering only: React, Next.js App Router, Tailwind, frontend architecture/performance, Avalonia desktop, POS UI engineering standards, image compression, UX content strategy. Visual design, typography, UI/UX audits, motion, accessibility QA and design systems moved to the `design-system-skills` engine. |
+| `execution-plan-scripts` | Converting an approved long-running plan into self-contained execution prompts with dependency order, checkpoints and evidence handoff. |
+| `game-development` | Game build engineering: 2D/3D asset pipelines (incl. Blender), audio, AI behaviour, accessibility/localisation, build and platform release. |
 | `gis` | GIS mapping, maps integration, PostGIS backend, platform engineering, enterprise GIS domain. |
 | `ios` | iOS development, architecture, data persistence, UI/UX, AI/ML, monetization, platform capabilities, quality/release, security/RBAC; macOS AppKit/sandbox/system-integrations/git-libgit2; Swift concurrency; Xcode Cloud/TestFlight, Instruments, project engineering. |
 | `languages` | JavaScript modern/patterns, TypeScript (mastery/effective/full-stack/patterns), Node.js, Python (modern, data analytics, data pipelines, ML predictive, SaaS integration), PHP modern/security, language standards. |
@@ -122,6 +124,26 @@ python -X utf8 scripts/routing_smoke_test.py
 ```
 
 Do not waive a finding through the baseline. Update routing fixtures when a trigger or neighbour boundary changes, and run the anti-slop audit on changed human-facing content before release.
+
+## Never store book extractions
+
+Book extractions, book summaries, chapter-by-chapter notes and book-by-book analysis digests must
+never be stored in this repository (no `book-extractions/`, `extracted-books/` or `docs/book-study/`
+folder, no `*-extraction.md` or `*-books-analysis.md` files). Keeping them infringes copyright.
+Knowledge from purchased books enters only as paraphrased, task-oriented skill content and
+`references/` files (procedures, decision rules, checklists, templates, acceptance criteria,
+original worked examples) organised by task, with a short citation (Author (Year) *Title*) and an
+Evidence/currentness note. Verbatim quotations stay rare and under 25 words. Staging notes live
+outside the repository and are never linked from skills. `scripts/source_ingestion_guardrail.py`
+fails if an extraction folder or extraction-named file exists or if a skill, reference, root doc or
+`docs/` file links to one; plan and audit documents may name books but not store their content.
+
+## Currentness gate
+
+Before admitting any standard edition, law, platform capability, version or metric threshold into a
+skill or generated requirement, follow the Digital Research Engine currentness gate described in
+`AGENTS.md` (source-evaluation, source-verification, dated evidence, `NOT_ASSESSED` when unverified).
+Books are durable concept inputs only.
 
 ## Compliance Skills (Uganda Domain)
 

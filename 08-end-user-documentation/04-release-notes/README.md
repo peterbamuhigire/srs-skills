@@ -17,4 +17,4 @@ Release notes entries shall describe user-facing impact, not implementation deta
 
 ## Standards
 
-- IEEE 830 (Software Requirements Specifications)
+- ISO/IEC/IEEE 29148:2018 (Requirements engineering; supersedes IEEE 830)

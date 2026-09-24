@@ -18,4 +18,4 @@ Every module contract shall define preconditions, postconditions, and exception 
 ## Standards
 
 - IEEE 1016-2009 (Software Design Descriptions)
-- IEEE 830-1998 (Software Requirements Specifications)
+- ISO/IEC/IEEE 29148:2018 (Requirements engineering; supersedes IEEE 830-1998)

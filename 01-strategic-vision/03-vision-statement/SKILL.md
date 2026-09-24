@@ -255,38 +255,28 @@ Before marking this skill as complete, confirm all of the following:
 ## Standards
 
 - **IEEE 29148-2018 Sec 6.2** — Vision and scope documentation structure
-- **IEEE 610.12-1990** — Terminology definitions for all domain terms
+- **ISO/IEC/IEEE 24765** (successor to IEEE 610.12-1990) — Terminology definitions for all domain terms
 
 ## Resources
 
 - `logic.prompt` — Executable prompt containing the step-by-step generation logic
 - `README.md` — Quick-start guide for this skill
 
-## Vision-statement filter (added 2026-05-04 from Levy)
+## Vision-statement filter
 
-Canonical reference: `docs/ux-foundations.md` Section 2 (Top-10 Not-UX-Strategies).
+Canonical reference: [UX requirements foundations](../../03-design-documentation/05-ux-specification/references/ux-requirements-foundations.md) section 3 (strategy-statement filter).
 
-Reject any vision statement that matches one of Levy's anti-patterns. Most common SRS-context failures, in order of frequency:
+Run these five checks on every draft vision statement before it enters `_context/vision.md`. A draft that fails any check goes back to discovery; it is not polished.
 
-### #10 — The North Star
-**Symptom:** "Be the [Uber / Airbnb / Stripe] of [industry]." No operational meaning. Reads like a slogan.
-**Fix:** rewrite to describe the *change* the product creates in the user's life — what specifically becomes possible that wasn't before?
+| Check | Fails when the draft... | Rewrite rule |
+|---|---|---|
+| Names a user | has no identifiable user or buyer in the sentence (for example "AI-powered platform for the future of agriculture") | Name the user and their situation: "Bushenyi dairy cooperative clerks recording evening milk intake". |
+| States a change | describes the product or borrows another brand's identity ("the Stripe of payroll") instead of what becomes possible | Describe the before-and-after in the user's work or life. |
+| Is falsifiable | would fit any product ("empower every team, everywhere") or lists values ("excellence, innovation, delight") | Add the evidence that would show the change is happening, and what would show it is not. |
+| Carries no trend vocabulary | strings technologies or trends together with no user action | Keep a technology word only if the user directly experiences it. |
+| Rests on a validated problem | presents a feature idea as the vision, with no discovery evidence behind it | Cite the interview, observation or data in `_context/` that shows the problem exists. |
 
-### #9 — The Hallmark-card affirmation
-**Symptom:** "Deliver excellence, innovation, and customer delight." Too vague to act on. Cannot be operationalized into requirements.
-**Fix:** name the specific user, the specific change, the specific evidence that the change has happened.
-
-### #4 — The buzzword permutation
-**Symptom:** "AI-powered Web3 platform for the metaverse." Trends concatenated. No customer in the sentence.
-**Fix:** drop every buzzword that doesn't directly describe what the user does or experiences.
-
-### #5 — Generic motivational statement
-**Symptom:** "Empower every team, every day, everywhere." Could fit any product.
-**Fix:** make it falsifiable — what would prove this is happening, and what would prove it isn't?
-
-### #1 — The killer idea
-**Symptom:** "Our killer idea is X." Idea-as-vision. No persona, no problem, no validation.
-**Fix:** rewrite as user-problem + observable outcome.
+Sources: Levy (2021) *UX Strategy*, 2nd ed., used as a concept input and independently restated as the checks above.
 
 ### Procedure when a draft matches an anti-pattern
 

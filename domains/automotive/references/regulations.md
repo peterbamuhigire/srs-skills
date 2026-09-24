@@ -62,4 +62,4 @@ The platform MUST NOT lock customer service history or vehicle data behind a sin
 - SAE J1979 / ISO 15031 (OBD-II diagnostic trouble codes)
 - GDPR, Uganda DPPA 2019, CCPA, LGPD, PDPA (SG, TH)
 - Local e-invoicing: URA EFRIS, KRA eTIMS, RRA EBM, ZATCA, CFDI, Peppol
-- IEEE 830, IEEE 1012, IEEE 1233, IEEE 610.12, ASTM E1340
+- ISO/IEC/IEEE 29148:2018 (supersedes IEEE 830), IEEE 1012, IEEE 1233, IEEE 610.12, ASTM E1340

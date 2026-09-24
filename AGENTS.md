@@ -43,7 +43,8 @@ Every Kaizen audit, skill edit, reference update, validator change, and
 standardisation decision MUST begin with the Digital Research Engine at
 `C:\wamp64\www\digital-research-engine`. Read its `source-evaluation` and
 `source-verification` skills and the currentness gate reference
-`docs/continuous-improvement/kaizen-currentness-gate.md`.
+`docs/continuous-improvement/kaizen-currentness-gate.md` (in the Digital Research
+Engine, not this repository).
 
 Before admitting any standard, policy, law, technology, platform capability,
 software version, command, security control, benchmark, or lifecycle claim,
@@ -62,7 +63,7 @@ This repository is a dual-compatible skill system for Claude Code and Codex. The
 
 ## Skill Families
 
-- Engineering/methodology skills live in the sibling **engineering catalog engine** at `C:\wamp64\www\chwezi-dev-engine` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router, then read the matching SKILL.md directly. Its `<category>` namespace is grouped into 15 categories; see the "Skill Categories" section in `CLAUDE.md`. Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
+- Engineering/methodology skills live in the sibling **engineering catalog engine** at `C:\wamp64\www\chwezi-dev-engine` (skills under `skills/<category>/<skill-name>/SKILL.md`). Consult its router, then read the matching SKILL.md directly. Its `<category>` namespace is grouped into 17 categories (verified 2026-09-24); see the "Skill Categories" section in `CLAUDE.md`. Methodology-selection skills such as `00-meta-initialization` live at the outer numbered-phase roots (e.g. `01-strategic-vision/`).
 - Root directories are reserved for project documentation and repository-level folders such as `docs/` and `projects/`, plus operational folders (`engine/`, `templates/`, `scripts/`, `domains/`) where relevant. Finance/accounting is the standalone cross-cutting **finance engine** at `C:\wamp64\www\chwezi-accounting-doctrine` — consult it whenever finance/IFRS/IAS/tax/bookkeeping arises, in addition to the active work.
 - Domain packs live under `domains/`. They are not skills by themselves; use them as context sources when a task is domain-specific.
 
@@ -89,11 +90,33 @@ without a resumable owner, next step, blockers, risks, and evidence list.
 - The local standard is `docs/skill-authoring-standard.md`; start new skills from `templates/skill/SKILL.md`.
 - Active skills are discovered from numbered phase roots. Do not maintain a hand-edited active-skill table as the source of truth.
 - Books and other copyrighted sources may inform independently written skills, but raw books, OCR output, chapter reconstructions, and long extracts must never enter this repository. Keep source files outside the repository and retain only the minimum independently expressed facts or framework needed.
+- See "Never store book extractions" below; the source-ingestion guardrail enforces it.
 - Run `python -X utf8 scripts/source_ingestion_guardrail.py` for every skill or source-reference change; any finding blocks release.
 - Before releasing any skill change, run `python -X utf8 scripts/validate_skill_engine.py --baseline tests/skill-quality-baseline.json` and `python -X utf8 scripts/routing_smoke_test.py`.
 - The baseline is zero debt, not a waiver. Any structural finding, duplicate name, broken mandatory resource, routing failure, active-count drift, or template-count drift blocks release.
 - Anti-AI-slop pre-ship gate: run `09-governance-compliance/28-anti-ai-slop` on every generated SRS/spec/doc/code artefact before delivery (MANDATORY).
 - Slop analysis/audit: `09-governance-compliance/29-ai-slop-audit` auto-runs whenever the user asks to analyse, review, evaluate, audit, critique, or de-slop any spec, requirement, document, system, or codebase, or asks "does this look AI-generated?".
+
+## Never store book extractions
+
+Book extractions, book summaries, chapter-by-chapter notes and book-by-book
+"analysis" digests must never be stored in this repository: no
+`book-extractions/`, `extracted-books/`, `book-dumps/`, `raw-books/`,
+`source-books/` or `docs/book-study/` folder, and no `*-extraction.md` or
+`*-books-analysis.md` files. Keeping them infringes copyright. Knowledge from
+purchased books enters only as paraphrased, task-oriented skill content and
+`references/` files (procedures, decision rules, checklists, rubrics,
+templates, acceptance criteria, original worked examples), organised by task
+rather than by the book's chapter order, with a short "Sources" line (Author
+(Year) *Title*) and an Evidence/currentness note. Verbatim quotations stay rare
+and under 25 words per file. Staging notes live outside the repository and are
+never linked from skills or root docs. Plans, audits and change logs may name
+books but must not store their content.
+
+`python -X utf8 scripts/source_ingestion_guardrail.py` fails when an
+extraction folder or extraction-named file exists, or when a skill, reference,
+root document or `docs/` file links to one. The 2026-09-24 retirement is
+recorded in `docs/continuous-improvement/book-extraction-retirement-2026-09-24.md`.
 
 ## Cross-Engine Handoffs
 
@@ -202,11 +225,11 @@ type — state the chosen typeface and reason before producing any artifact.
 
 ## Human-English editorial standard (2026-08 Kaizen)
 
-Load [`book-extractions/human-english-craft-synthesis-2026.md`](book-extractions/human-english-craft-synthesis-2026.md) for requirements, UX content, user manuals, FAQs, release notes, runbooks, training, support messages, and other human-facing documentation. Apply it alongside the applicable IEEE/ISO, traceability, accessibility, security, and `28-anti-ai-slop` controls.
+Load [`09-governance-compliance/28-anti-ai-slop/references/human-english-and-lexical-precision.md`](09-governance-compliance/28-anti-ai-slop/references/human-english-and-lexical-precision.md) for requirements, UX content, user manuals, FAQs, release notes, runbooks, training, support messages, and other human-facing documentation. Apply it alongside the applicable IEEE/ISO, traceability, accessibility, security, and `28-anti-ai-slop` controls.
 
 Technical prose must remain exact: name actors, states, constraints, terminology, and test oracles. User-facing text must also be calm, respectful, grammatical, and useful in the current state. Never add errors, slang, unexplained humour, or vague adjectives to make text seem human. Record artefact type, reader/task, source traceability, terminology checks, test-oracle review, language/proof status, gaps, reviewer, and date.
 
-Load [`book-extractions/english-collocations-and-lexical-precision-2026-09-02.md`](book-extractions/english-collocations-and-lexical-precision-2026-09-02.md) for the collocation, register, idiom, lexical-precision, and human-quality overlay. It strengthens the English layer; it does not override approved product terminology, accessibility rules, requirements traceability, or current Digital Research verification.
+The same reference carries the collocation, register, idiom, lexical-precision and calibrated-claim overlay. It strengthens the English layer; it does not override approved product terminology, accessibility rules, requirements traceability, or current Digital Research verification.
 
 ## DOMAIN PROMPT GENERATION CONTRACT
 
